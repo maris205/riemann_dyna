@@ -1,0 +1,9 @@
+# Maintained as separate Git repositories.
+/docs/related_programs/prime_dynamics_theory/
+/docs/prior_work/legacy/
+
+# Jupyter-generated temporary files.
+.ipynb_checkpoints/
+
+# Local Codex session metadata.
+/id.txt

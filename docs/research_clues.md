@@ -1,0 +1,802 @@
+# HP-Dynamics 后续研究线索库
+
+**文件名：** `research_clues.md`  
+**版本：** v0.1  
+**用途：** 保存可复用、可调用、可证伪的 Hilbert–Pólya 动力学研究线索。
+
+---
+
+## 0. 使用规则
+
+本文件不是结论列表，也不是论文摘要集合。
+
+每条线索必须满足：
+
+```text
+1. 有明确来源
+2. 有证据等级
+3. 能映射到 Route-A 或 Route-B 的具体层
+4. 有一个最小可验证实验或 theorem obligation
+5. 有明确失败条件
+```
+
+线索状态：
+
+```text
+ACTIVE
+PROMISING
+UNDER_TEST
+BLOCKED
+REFUTED
+SUPERSEDED
+ARCHIVED
+```
+
+证据等级：
+
+```text
+PROVED
+CONDITIONAL_THEOREM
+NUMERICALLY_CERTIFIED
+NUMERICAL_OBSERVATION
+HEURISTIC
+MODELING_CHOICE
+OPEN
+```
+
+---
+
+# 1. 总体线索链
+
+当前基础研究链为：
+
+\[
+\text{素数筛符号结构}
+\rightarrow
+\text{临界动力学骨架}
+\rightarrow
+\text{一维表达上限}
+\rightarrow
+\text{非自治漂移}
+\rightarrow
+\text{保守/辛提升}
+\rightarrow
+\text{UPO 与加权 Zeta}
+\rightarrow
+\text{自然量子化}
+\rightarrow
+\text{自伴随谱实现}.
+\]
+
+这条链只提供搜索先验，不表示每一步已经严格成立。
+
+---
+
+# 2. Route-A 线索
+
+## CLUE-A1-001 — 素数筛的符号动力学骨架
+
+**来源：** Prime–Chaos 基础论文  
+**证据：** `HEURISTIC` + 部分数值/组合结构  
+**状态：** `ACTIVE`  
+**对应层：** `A1`
+
+### 内容
+
+Eratosthenes sieve 的奇偶与禁止字结构可能对应某种临界符号动力学骨架。
+
+### 可迁移结构
+
+- parity rigidity；
+- forbidden words；
+- kneading-like order；
+- finite-state symbolic grammar；
+- critical band-merging regime。
+
+### 最小测试
+
+比较候选的 primitive symbolic words 与：
+
+- parity constraints；
+- sieve-derived words；
+- shuffled symbolic controls。
+
+### 失败条件
+
+候选只能通过逐项输入素数表产生对应关系。
+
+---
+
+## CLUE-A1-002 — 一维模型是 mod-2 投影，不是完整宿主
+
+**来源：** Transient Chaos / Topological Bounds  
+**证据：** `PROVED` 与结构性结论混合  
+**状态：** `ACTIVE`  
+**对应层：** `A1`, `A4`
+
+### 内容
+
+一维 unimodal 模型可以表达奇偶骨架，但有限阶段存在 MSS admissibility 缺陷，而且缺乏产生完整 mod-3 及更高 residue resonance 的内部自由度。
+
+### 推论
+
+重点搜索：
+
+- 二维及更高维辛映射；
+- higher-memory subshift；
+- multi-sheet cover；
+- non-Abelian symbolic extension；
+- graph flow；
+- residue-state suspension。
+
+### 最小测试
+
+构造从 mod-2 状态扩张到 mod-6 或更高 residue memory 的最小状态图，检测是否能产生非平凡 mod-3 resonance，而不直接编码素数。
+
+### 失败条件
+
+增加状态后只是把素数表重新写进 transition table。
+
+---
+
+## CLUE-A1-003 — Primitive periods 必须与权重一起判断
+
+**来源：** 显式公式与 Route-A 讨论  
+**证据：** `ESTABLISHED_EXTERNAL` / 项目规则  
+**状态：** `ACTIVE`  
+**对应层：** `A1`, `A2`
+
+### 内容
+
+仅有
+
+\[
+T_{\gamma_p}\approx\log p
+\]
+
+不足以构成黎曼动力学。
+
+还要解释：
+
+\[
+A_{\gamma_p,r}
+\sim
+\frac{\log p}{p^{r/2}}
+\]
+
+以及 repetition、phase、orientation 和 multiplicity。
+
+### 最小测试
+
+对每个候选同时计算：
+
+```text
+period assignment loss
+stability-weight loss
+phase consistency
+repetition consistency
+unmatched-orbit penalty
+```
+
+### 失败条件
+
+周期吻合，但权重完全随机或依赖人工拟合。
+
+---
+
+## CLUE-A1-004 — 从非自治系统提升为自治高维系统
+
+**来源：** Prime aging 与 Sequential Birkhoff 工作  
+**证据：** `HEURISTIC` + `CONDITIONAL_THEOREM`  
+**状态：** `PROMISING`  
+**对应层：** `A1`, `A4`
+
+### 内容
+
+慢漂移 schedule 可以看作更高维自治系统中的额外慢变量。
+
+### 候选形式
+
+\[
+(x_{n+1},u_{n+1})=
+(F_{u_n}(x_n),G(u_n)).
+\]
+
+### 潜在价值
+
+- 避免手工时间依赖；
+- 提供统一 phase space；
+- 更适合 UPO 和自然量子化；
+- 可能把 aging 变成几何 roof function。
+
+### 最小测试
+
+构造最小二维/三维 autonomous lift，比较：
+
+- 原 schedule；
+- lifted orbit structure；
+- primitive cycle grammar；
+- conserved/symplectic extension。
+
+### 风险
+
+lift 可能仅形式化重写，并未产生新的算术结构。
+
+---
+
+## CLUE-A2-001 — Weighted dynamical Zeta 是 Route-A 主目标
+
+**来源：** 当前研究规划  
+**证据：** `PROJECT_DECISION`  
+**状态：** `ACTIVE`  
+**对应层：** `A2`
+
+### 目标
+
+\[
+D_{\mathrm{dyn}}(s)
+\approx
+e^{g(s)}\xi(s).
+\]
+
+### 候选实现
+
+- direct cycle product；
+- Ruelle Zeta；
+- Selberg-like determinant；
+- transfer-operator Fredholm determinant；
+- quantum-graph secular determinant。
+
+### 最小测试
+
+使用人工 Euler-product positive control 验证：
+
+- root finder；
+- argument principle；
+- cutoff drift；
+- extra-zero detection。
+
+### 失败条件
+
+不同实验混用 \(Z\)、\(1/Z\)、\(Z'/Z\) 或 determinant convention。
+
+---
+
+## CLUE-A2-002 — Signed/complex cancellation 是核心结构
+
+**来源：** 旧 RH signed-completion 路线  
+**证据：** `PROVED_OBSTRUCTION`  
+**状态：** `ACTIVE`  
+**对应层：** `A2`, `A3`
+
+### 内容
+
+orbit、diffuse、head 或 sideband 项不能分别取绝对值后再拼接。关键闭合可能依赖精细 signed/complex cancellation。
+
+### 工程要求
+
+所有 orbit records 必须保留：
+
+```text
+amplitude
+phase
+orientation
+repetition
+alias class
+complex sign
+```
+
+### 最小测试
+
+比较：
+
+```text
+signed cycle expansion
+absolute-value majorant
+phase-randomized control
+```
+
+### 失败条件
+
+候选只能在丢弃相位后“吻合”。
+
+---
+
+## CLUE-A2-003 — Sideband / off-alias 背景不可忽略
+
+**来源：** RH-338 至 RH-341 一类结果  
+**证据：** `PROVED_OBSTRUCTION` + `OPEN`  
+**状态：** `ACTIVE`  
+**对应层：** `A2`, `A3`
+
+### 内容
+
+主 critical order 匹配不代表完整 prefix 或 determinant 已闭合。邻近 sideband 和 off-alias aggregate 可能包含 super-target 原子或额外零点来源。
+
+### 最小测试
+
+每个候选必须报告：
+
+```text
+dominant orbit sector
+nearest sidebands
+off-alias weighted mass
+extra-zero scan
+punctured aggregate
+cutoff migration
+```
+
+### 失败条件
+
+只展示主峰或前几个零点。
+
+---
+
+## CLUE-A2-004 — 同一 clock、normalization 和数据类型
+
+**来源：** 旧 RH 路线的 wrong-clock 与 gluing obstruction  
+**证据：** `PROVED_OBSTRUCTION`  
+**状态：** `ACTIVE`  
+**对应层：** `A2`, `A3`, `B4`, `B5`
+
+### 内容
+
+不能用一个 clock 证明 head、另一个 clock 证明 tail，再用第三个 normalization 匹配 spectrum。
+
+### 最小测试
+
+所有结果写入 frozen manifest：
+
+```yaml
+clock:
+normalization:
+determinant_convention:
+cutoff:
+spectral_map:
+```
+
+### 失败条件
+
+任一组件使用不兼容数据类型。
+
+---
+
+## CLUE-A3-001 — 从逐零点拟合转向 annular norm
+
+**来源：** 旧 RH direct annular route  
+**证据：** `OPEN`，但已有明确闭合条件  
+**状态：** `PROMISING`  
+**对应层：** `A3`
+
+### 内容
+
+对误差生成函数
+
+\[
+g_\sigma(z)
+=
+\sum_{n\ge2}
+\frac{\tau_{\sigma,n}-a_n}{n}z^n
+\]
+
+若能在认证环域上控制 \(H^\infty\) 或 \(H^2\) 范数，可能比逐零点拟合更接近整体解析闭合。
+
+### 最小测试
+
+对候选 determinant residual 构造：
+
+```text
+annular H∞ residual
+annular H2 residual
+log-derivative residual
+argument-principle discrepancy
+```
+
+### 风险
+
+有限网格上的小 norm 不能自动升级为全环域定理。
+
+---
+
+## CLUE-A3-002 — Completed \(\xi\) 而非裸 \(\zeta\)
+
+**来源：** 当前规划  
+**证据：** `PROJECT_DECISION`  
+**状态：** `ACTIVE`  
+**对应层：** `A3`, `B5`
+
+### 内容
+
+必须处理：
+
+- Gamma factor；
+- trivial zeros；
+- pole cancellation；
+- functional equation；
+- entire prefactor。
+
+### 最小测试
+
+把候选 determinant 与：
+
+\[
+\xi(s)
+\]
+
+而不是仅与前若干非平凡零点比较。
+
+---
+
+## CLUE-A3-003 — Moving-order theorem 优先于固定截断漂亮结果
+
+**来源：** 旧 RH 项目和当前 Route-A 规范  
+**证据：** `PROVED_OBSTRUCTION` / `PROJECT_DECISION`  
+**状态：** `ACTIVE`  
+**对应层：** `A2`, `A3`
+
+### 内容
+
+固定周期、固定矩阵维度或固定 \(k\) 的吻合不能推出 all-order 结构。
+
+### 最小测试
+
+监控：
+
+\[
+D_N(s)\to D_{N+1}(s),
+\qquad
+\widehat\gamma_j^{(N)}
+\to
+\widehat\gamma_j^{(N+1)}.
+\]
+
+### 必须报告
+
+- root drift；
+- zero-count drift；
+- omitted-orbit estimate；
+- precision scaling；
+- cutoff scaling。
+
+---
+
+## CLUE-A4-001 — Hénon-like symplectic map 加 magnetic/topological twist
+
+**来源：** Area-preserving Hénon 工作与时间反演讨论  
+**证据：** `HEURISTIC` + `MODELING_CHOICE`  
+**状态：** `PROMISING`  
+**对应层：** `A1`, `A4`
+
+### 内容
+
+标准面积保持 Hénon 可作为母模板，但需要显式检查或破坏反幺正时间反演对称性。
+
+### 候选形式
+
+\[
+p' = p-\partial_qV(q)+A_\theta(q,p),
+\qquad
+q' = q+\partial_pT(p').
+\]
+
+### 可搜索组件
+
+- magnetic flux；
+- orientation-dependent phase；
+- topological twist；
+- compact torus；
+- multi-sheet cover；
+- kicked schedule。
+
+### 最小测试
+
+- symplecticity；
+- antiunitary symmetry audit；
+- primitive UPO；
+- Floquet quantization；
+- GUE 只作为次级指标。
+
+---
+
+## CLUE-A4-002 — Symbolic suspension 可能是最适合解析证明的候选
+
+**来源：** 一维表达上限与 transfer-operator 路线  
+**证据：** `HEURISTIC`  
+**状态：** `PROMISING`  
+**对应层：** `A1`, `A2`, `A3`, `A4`
+
+### 内容
+
+有限/可数状态 subshift 加 roof function 和 potential，可以直接定义 UPO 和 Fredholm determinant。
+
+### 关键问题
+
+- \(\log p\) 是否由低复杂度规则产生；
+- 权重是否由 Jacobian/potential 自然产生；
+- 是否存在核 transfer operator；
+- 是否避免直接编码 primes。
+
+### 最小测试
+
+先构造：
+
+```text
+mod-2 baseline
+→ mod-6 lift
+→ higher residue memory
+```
+
+并比较随机图和简化图。
+
+---
+
+## CLUE-A4-003 — Magnetic quantum graph 作为 Route-A/Route-B 桥梁
+
+**来源：** exact trace formula 思路  
+**证据：** `HEURISTIC`  
+**状态：** `PROMISING`  
+**对应层：** `A1`, `A2`, `A4`, `B1`, `B4`
+
+### 内容
+
+Quantum graph 的 primitive cycles、magnetic phases 和 secular determinant 使其天然适合连接 classical orbit 与 quantum spectrum。
+
+### 最大风险
+
+直接把 edge length 设置为 \(\log p\) 会变成人工编码。
+
+### 最小测试
+
+搜索低复杂度 graph grammar，使边长或 cycle length 由生成规则产生，而不是逐个输入。
+
+---
+
+# 3. Route-B 线索
+
+## CLUE-B1-001 — 自然 Hilbert 空间必须从候选结构中出现
+
+**证据：** `PROJECT_DECISION`  
+**状态：** `ACTIVE`  
+**对应层：** `B1`
+
+### 内容
+
+Route B 不接受先拟合 spectrum，再临时选择 Hilbert 空间和边界条件。
+
+### 最小 theorem obligation
+
+明确：
+
+```text
+Hilbert space
+measure
+inner product
+dense domain
+boundary conditions
+operator action
+closedness
+```
+
+---
+
+## CLUE-B2-001 — PT 对称只能作为辅助，不是自伴随证明
+
+**证据：** `ESTABLISHED_EXTERNAL` / 项目规则  
+**状态：** `ACTIVE`  
+**对应层：** `B2`
+
+### 内容
+
+PT 对称、实数值有限谱和形式 Hermitian 都不足以证明 \(H=H^\ast\)。
+
+### 可行证明工具
+
+- Kato–Rellich；
+- essential self-adjointness；
+- deficiency indices；
+- quadratic forms；
+- boundary triplets；
+- canonical self-adjoint extension。
+
+---
+
+## CLUE-B3-001 — 关键是 compact resolvent 或正确谱类型，而非紧致相空间
+
+**证据：** `PROJECT_DECISION`  
+**状态：** `ACTIVE`  
+**对应层：** `B3`
+
+### 内容
+
+非紧致系统也可能具有离散谱；开放系统也可能具有离散 resonances。必须检查实际 operator spectral type。
+
+### 最小 theorem obligation
+
+证明其中之一：
+
+```text
+compact resolvent
+confining quadratic form
+trace-class heat kernel
+controlled resonance realization
+```
+
+---
+
+## CLUE-B4-001 — von Mangoldt-weighted prime-power trace 是核心门
+
+**来源：** Hilbert–Pólya / explicit-formula 目标  
+**证据：** `OPEN`  
+**状态：** `ACTIVE`  
+**对应层：** `B4`
+
+### 目标
+
+\[
+\operatorname{Tr}f(H)
+=
+\text{smooth term}
++
+\sum_p\sum_{r\ge1}
+A_{p,r}\widehat f(r\log p).
+\]
+
+### 必须解释
+
+- \(\log p\)；
+- \(p^{-r/2}\)；
+- repetitions；
+- multiplicities；
+- phases；
+- smooth Weyl term。
+
+### 失败条件
+
+只存在半经典类比或低阶数值吻合。
+
+---
+
+## CLUE-B5-001 — completed-xi divisor equality 是最终门
+
+**证据：** `OPEN`  
+**状态：** `ACTIVE`  
+**对应层：** `B5`
+
+### 目标
+
+\[
+\det_\zeta(E-H)
+=
+e^{q(E)}
+\xi\!\left(\frac12+iE\right).
+\]
+
+### 必须证明
+
+- determinant 存在；
+- prefactor zero-free；
+- multiplicity 一致；
+- 无额外 eigenvalues；
+- 无遗漏 zeros；
+- 全局恒等式；
+- analytic continuation；
+- growth order。
+
+---
+
+# 4. 优先级队列
+
+## Priority 0 — 基础验证
+
+1. Synthetic Euler-product positive control  
+2. Shuffled-period / random-weight / random-phase controls  
+3. Argument-principle root counter  
+4. Signed cycle expansion  
+5. Cutoff and precision drift  
+
+## Priority 1 — 最值得并行的三条 Route-A 路线
+
+1. Twisted Hénon / kicked symplectic maps  
+2. Higher-memory symbolic suspension  
+3. Low-complexity magnetic quantum graphs  
+
+## Priority 2 — 旧 RH 解析纵深
+
+1. Common-clock signed completion  
+2. Actual head/counterloop transport  
+3. Critical and lower-sideband compensation  
+4. Off-alias aggregate  
+5. Direct annular theorem  
+
+## Priority 3 — Route-B 入口
+
+只对 Route-A 强候选启动：
+
+1. natural Hilbert space；
+2. operator domain；
+3. self-adjointness path；
+4. compact resolvent；
+5. exact trace formula。
+
+---
+
+# 5. 线索调用模板
+
+```yaml
+clue_id:
+title:
+source:
+evidence_status:
+current_status:
+route:
+layer:
+candidate_family:
+exact_hypothesis:
+minimum_test:
+success_condition:
+failure_condition:
+known_obstructions:
+latest_evaluation:
+next_action:
+```
+
+---
+
+# 6. 当前最重要的三个开放问题
+
+## OQ-1
+
+能否从低复杂度动力学规则自然产生：
+
+\[
+T_{\gamma_p}=\log p
+\]
+
+而不直接编码素数？
+
+## OQ-2
+
+能否从 Jacobian、stability 或 potential 自然产生：
+
+\[
+A_{\gamma_p,r}
+\sim
+\frac{\log p}{p^{r/2}}?
+\]
+
+## OQ-3
+
+能否找到一个强 Route-A determinant，同时具有自然 unitary/self-adjoint lift？
+
+这三个问题分别控制：
+
+```text
+A1
+A1–A2
+A4–B1
+```
+
+---
+
+# 7. 维护规则
+
+出现以下情况时更新本文件：
+
+- 新候选产生可迁移结构；
+- 新 obstruction 被证明；
+- 旧线索被反例否定；
+- 某线索升级为 theorem；
+- Route-A/Route-B Skill 增加新的评估层；
+- 旧 RH 路线出现新的 reopening condition。
+
+任何线索升级或降级，必须记录：
+
+```yaml
+date:
+clue_id:
+old_status:
+new_status:
+evidence:
+commit:
+consequence:
+```
