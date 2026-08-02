@@ -1,0 +1,40 @@
+candidate_id: SS-0001
+clue_id: CLUE-A1-002
+title: Mod-6 Cayley symbolic-suspension baseline
+mathematical_object:
+  base_graph: "Cay(Z/6Z, {+1, -1})"
+  phase_space: "bi-infinite directed paths on the six-vertex Cayley graph"
+  dynamics: "left shift on admissible paths"
+  suspension: "constant roof tau=1"
+  potential: "zero"
+data_type:
+  primary: "exact integer adjacency matrix and exact determinant polynomial"
+  orbit_data: "closed-walk traces and primitive-orbit counts by Mobius inversion"
+clock: "one unit per graph transition; T_gamma equals symbolic period"
+normalization: "raw unnormalized adjacency matrix; no scale, offset, unfolding, or spectral anchoring"
+determinant_convention: "D(s)=det(I-exp(-s)A); the associated zeta is 1/D(s)"
+cutoff:
+  orbit_census: 24
+  determinant: "exact all-order 6x6 determinant"
+precision:
+  exact: "integer arithmetic for adjacency powers, traces, primitive counts, and determinant coefficients"
+  floating: "Python binary64 only for displayed logarithms and asymptotic diagnostics"
+allowed_data:
+  - "the graph definition fixed above"
+  - "exact finite-dimensional linear algebra"
+  - "Mobius inversion"
+  - "the Riemann-von Mangoldt asymptotic formula as a target structural constraint"
+forbidden_data:
+  - "prime tables"
+  - "Riemann-zero tables"
+  - "fitting to prime or zero locations"
+  - "post-hoc changes to roof, weights, scale, offset, graph, or determinant convention"
+training_split: "symbolic periods 1-8; identity checks only; no fitted parameters"
+validation_split: "symbolic periods 9-16; frozen exact definition"
+test_split: "symbolic periods 17-24 plus all-order analytic determinant and zero-count audit"
+stopping_conditions:
+  - "stop and reject if primitive periods remain integral clock values with no intrinsic log-prime mechanism"
+  - "stop and reject if the exact divisor has only finitely many vertical arithmetic progressions"
+  - "stop and reject if zero counting is O(T) rather than Riemann-von Mangoldt O(T log T)"
+  - "stop and reject if functional-equation or completed-xi structure requires post-hoc factors"
+

@@ -259,15 +259,118 @@ latest_evaluation:
 当前状态：
 
 ```text
-Project initialized.
-No candidate has yet passed Route A or Route B.
+First formal Route-A baseline completed.
+SS-0001 is STOP_SCOPED by an exact divisor-count obstruction.
+No candidate has entered Route B.
 ```
 
 汇总表：
 
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
-| — | — | — | — | — | — | — | Select first clue and create source lock |
+| SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
+
+---
+
+## SS-0001 — Mod-6 Cayley symbolic-suspension baseline
+
+### Identity
+
+- **Family:** Higher-memory symbolic suspension control
+- **Parent candidate:** 1D mod-2 projection clue
+- **Created:** 2026-08-02
+- **Current status:** `STOP_SCOPED`
+- **Owner:** sole main research agent
+- **Branch:** `main`
+- **Latest commit:** `278f707eeaa12a7836a4621d5d1cd5aa2f24df1c` plus current evaluation worktree
+- **Uses prime table:** `false`
+- **Uses zero table:** `false`
+
+### Exact definition
+
+The base is the directed Cayley graph
+
+\[
+\operatorname{Cay}(\mathbb Z/6\mathbb Z,\{+1,-1\}),
+\]
+
+with the left shift on bi-infinite admissible paths, constant suspension roof
+\(\tau=1\), zero potential, and adjacency matrix \(A\). The frozen determinant is
+
+\[
+D(s)=\det(I-e^{-s}A).
+\]
+
+### Source lock
+
+```text
+configs/source_locks/SS-0001.yaml
+```
+
+### Route-A status
+
+```yaml
+a1: A1_WEAK
+a2: A2_FAIL
+a3: A3_FAIL
+a4: A4_FORMAL_HINT
+overall: ROUTE_A_REJECTED
+latest_evaluation: evaluations/route_a/SS-0001/20260802T163302Z.yaml
+```
+
+### Route-B status
+
+```yaml
+b1: NOT_INVOKED
+b2: NOT_INVOKED
+b3: NOT_INVOKED
+b4: NOT_INVOKED
+b5: NOT_INVOKED
+overall: NOT_INVOKED
+latest_evaluation: null
+```
+
+### Positive evidence
+
+- The mathematical object is parameter-free and does not query primes or zeros.
+- Primitive and repeated orbit counts are exactly reproducible by adjacency traces and Möbius inversion.
+- Nontrivial mod-3 Fourier modes occur, so residue memory can be added without directly encoding a prime table.
+- The determinant is exact:
+  \(D(s)=(1-4e^{-2s})(1-e^{-2s})^2\).
+
+### Failed controls and obstructions
+
+- All odd symbolic periods vanish because the graph is bipartite.
+- The clock is integral and supplies no intrinsic \(\log p\) mechanism.
+- The divisor is a finite union of vertical arithmetic progressions.
+- The zero count is \(O(T)\), not the Riemann-von Mangoldt \(\Theta(T\log T)\) count.
+- The canonical graph adjacency quantization is finite-dimensional and cannot open Route B.
+
+### Reproduction
+
+```bash
+python3 -m unittest -v tests/test_ss_0001_mod6_cayley.py
+python3 experiments/ss_0001_mod6_cayley.py --max-period 24 --output artifacts/ss_0001/route_a_baseline.json
+```
+
+### Claim boundary
+
+**Established:** SS-0001 is exactly analyzable, contains mod-3 character modes, and is structurally incompatible with the completed-\(\xi\) divisor.
+
+**Not established:** the result does not yet cover countable-state systems, unbounded roofs, non-locally-constant potentials, or infinite-dimensional nuclear transfer operators.
+
+### Next smallest test
+
+Do not create `SS-0002` until a countable-state or infinite-dimensional
+mathematical object has an explicit intrinsic clock and determinant convention
+that lies outside the proved finite-state obstruction.
+
+### Decision history
+
+| Date | Previous state | New state | Evidence | Commit | Reviewer |
+|---|---|---|---|---|---|
+| 2026-08-02 | `GENERATED` | `STOP_SCOPED` | Exact determinant and divisor-count mismatch | worktree from `278f707` | sole main research agent |
+| 2026-08-02 | `STOP_SCOPED` | `STOP_SCOPED` | Family-level finite-state finite-roof zero-count theorem | worktree from `278f707` | sole main research agent |
 
 ---
 

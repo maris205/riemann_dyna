@@ -45,11 +45,12 @@ Route A 成功、Route B 失败，仍然可能构成重要的“黎曼动力学�
 ## 2. 项目只依赖两个核心 Skills
 
 ```text
-skills/
-├── route-a-evaluator/
-│   └── SKILL.md
-└── route-b-evaluator/
-    └── SKILL.md
+.agents/
+└── skills/
+    ├── route-a-evaluator/
+    │   └── SKILL.md
+    └── route-b-evaluator/
+        └── SKILL.md
 ```
 
 ### Route-A Evaluator
@@ -469,8 +470,8 @@ S4：完整 Hilbert–Pólya 实现
 ```text
 1. 本文件
 2. docs/main_agent_rules.md
-3. skills/route-a-evaluator/SKILL.md
-4. skills/route-b-evaluator/SKILL.md
+3. .agents/skills/route-a-evaluator/SKILL.md
+4. .agents/skills/route-b-evaluator/SKILL.md
 5. docs/research_clues.md
 6. docs/prior_work/README.md
 7. docs/prior_work/claims_matrix.md

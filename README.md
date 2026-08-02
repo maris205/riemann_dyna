@@ -107,8 +107,8 @@ Read these files in order:
 ```text
 1. docs/HP_Dynamics_Project_Entry.md
 2. docs/main_agent_rules.md
-3. skills/route-a-evaluator/SKILL.md
-4. skills/route-b-evaluator/SKILL.md
+3. .agents/skills/route-a-evaluator/SKILL.md
+4. .agents/skills/route-b-evaluator/SKILL.md
 5. docs/research_clues.md
 6. docs/prior_work/README.md
 7. docs/prior_work/claims_matrix.md
@@ -136,11 +136,12 @@ HP-Dynamics/
 ├── AGENTS.md
 ├── CHANGELOG.md
 │
-├── skills/
-│   ├── route-a-evaluator/
-│   │   └── SKILL.md
-│   └── route-b-evaluator/
-│       └── SKILL.md
+├── .agents/
+│   └── skills/
+│       ├── route-a-evaluator/
+│       │   └── SKILL.md
+│       └── route-b-evaluator/
+│           └── SKILL.md
 │
 ├── docs/
 │   ├── HP_Dynamics_Project_Entry.md
@@ -186,7 +187,7 @@ HP-Dynamics/
 Location:
 
 ```text
-skills/route-a-evaluator/SKILL.md
+.agents/skills/route-a-evaluator/SKILL.md
 ```
 
 It evaluates:
@@ -215,7 +216,7 @@ ROUTE_A_SUCCESS_ROUTE_B_READY
 Location:
 
 ```text
-skills/route-b-evaluator/SKILL.md
+.agents/skills/route-b-evaluator/SKILL.md
 ```
 
 It evaluates:

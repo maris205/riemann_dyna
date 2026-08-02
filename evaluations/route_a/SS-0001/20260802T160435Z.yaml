@@ -1,0 +1,111 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: SS-0001
+source_commit: 278f707eeaa12a7836a4621d5d1cd5aa2f24df1c
+evaluation_date: "2026-08-02T16:04:35Z"
+
+source_lock:
+  object: "constant-roof suspension over the edge shift of Cay(Z/6Z,{+1,-1}), with zero potential"
+  data_type: "exact integer adjacency matrix, exact determinant polynomial, and exact closed-walk/primitive-orbit counts"
+  clock: "one unit per graph transition; T_gamma is the integer symbolic period"
+  normalization: "raw unnormalized adjacency matrix; no scale, offset, unfolding, or anchoring"
+  determinant_convention: "D(s)=det(I-exp(-s)A); associated zeta=1/D(s)"
+  cutoff: "primitive-orbit census n<=24; determinant exact at all orders"
+  precision: "exact integer arithmetic; binary64 only for displayed logarithms and asymptotic diagnostics"
+  allowed_data:
+    - "frozen graph definition"
+    - "exact finite-dimensional linear algebra"
+    - "Mobius inversion"
+    - "Riemann-von Mangoldt asymptotic as a structural target"
+  forbidden_data:
+    - "prime tables"
+    - "Riemann-zero tables"
+    - "prime/zero fitting"
+    - "post-hoc changes to graph, roof, weights, clock, normalization, or determinant convention"
+  training_split: "periods 1-8; identity checks only"
+  validation_split: "periods 9-16 under the frozen definition"
+  test_split: "periods 17-24 plus exact all-order divisor and zero-count audit"
+  stopping_conditions:
+    - "integral primitive clock has no intrinsic log-prime mechanism"
+    - "exact divisor is a finite union of vertical arithmetic progressions"
+    - "zero count is O(T), not O(T log T)"
+    - "completed-xi structure would require post-hoc factors"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: "The graph and shift intrinsically define a complete primitive-orbit census; Mobius inversion gives integral primitive-orbit counts through the sealed period-24 window, and Fourier modes include nontrivial mod-3 characters."
+  strongest_failure: "Every primitive period is an integer symbolic length. There is no intrinsic mechanism producing T_gamma=log(p), and all odd periods vanish because the graph is bipartite."
+  metrics:
+    graph_vertices: 6
+    out_degree: 2
+    orbit_cutoff: 24
+    primitive_orbits_period_24: 1397740
+    odd_period_closed_walks: 0
+    mod3_character_modes_present: true
+  artifacts:
+    - configs/source_locks/SS-0001.yaml
+    - artifacts/ss_0001/route_a_baseline.json
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: "The determinant is exact: D(s)=(1-4*exp(-2s))*(1-exp(-2s))^2, with no cutoff or precision drift."
+  strongest_failure: "Its zeros lie on finitely many vertical arithmetic progressions with real parts 0 and log(2); this divisor cannot match completed xi beyond any finite region."
+  metrics:
+    zero_error_train: "not_applicable_no_fitting"
+    zero_error_validation: "not_applicable_no_fitting"
+    zero_error_test: "structural_divisor_mismatch"
+    extra_zero_count: "infinite relative to the xi divisor"
+    missing_zero_count: "infinite relative to the xi divisor"
+    root_count_discrepancy: "candidate N(T)=O(T), target N_xi(T)=Theta(T log T)"
+    cutoff_drift: 0
+    precision_drift: 0
+    control_margin: "exact structural failure, independent of numerical tolerance"
+  artifacts:
+    - artifacts/ss_0001/route_a_baseline.json
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: "Exact factorization supplies global analytic continuation of this finite exponential polynomial."
+  strongest_failure: "The divisor lacks the Riemann-von Mangoldt counting law, completed-xi Gamma/trivial-zero structure, and s<->1-s symmetry; no zero-free prefactor can repair a divisor-count mismatch."
+  metrics:
+    analytic_continuation: "entire exponential polynomial"
+    candidate_zero_count_growth: "O(T)"
+    target_zero_count_growth: "Theta(T log T)"
+    functional_equation: "fails under the frozen normalization"
+    moving_order_control: "exact finite determinant; mismatch persists at all orders"
+  artifacts:
+    - artifacts/ss_0001/route_a_baseline.json
+
+a4:
+  verdict: A4_FORMAL_HINT
+  evidence_status: PROVED
+  strongest_evidence: "The undirected six-cycle has a canonical finite-dimensional self-adjoint adjacency operator on C^6."
+  strongest_failure: "That finite operator has only six eigenvalues and is not a spectral host for the suspension determinant or a T log T spectrum; promoting it would be an abstract finite completion, not a Route-B-ready lift."
+  metrics:
+    natural_hilbert_space: "C^6"
+    natural_operator: "graph adjacency matrix"
+    target_spectral_type: "fails: finite spectrum"
+  artifacts:
+    - experiments/ss_0001_mod6_cayley.py
+
+overall_verdict: ROUTE_A_REJECTED
+claim_boundary:
+  what_is_established:
+    - "A mod-6 finite-state lift can carry nontrivial mod-3 character modes without reading prime data."
+    - "For SS-0001, the primitive orbit census and determinant are exact."
+    - "SS-0001 has O(T) divisor growth and cannot equal completed xi up to a zero-free factor."
+  what_is_not_established:
+    - "No obstruction is proved here for countable-state shifts, unbounded/non-locally-constant roofs, or infinite-dimensional nuclear transfer operators."
+    - "No Hilbert-Polya operator or Riemann Hypothesis result is obtained."
+  what_would_change_the_status: "A structurally different suspension with an intrinsic non-integral/log-prime clock and an infinite-dimensional determinant supporting T log T counting."
+blocking_conditions:
+  - "integer constant roof"
+  - "finite-state finite-dimensional determinant"
+  - "finite set of vertical zero progressions"
+  - "wrong global zero-count growth"
+next_smallest_test: "Prove the scoped generalization that every nonzero finite-state transfer determinant with finitely many locally constant positive roof values is an exponential polynomial of finite type and has O(T) zeros in bounded vertical strips."
+route_b_invocation_allowed: false
+

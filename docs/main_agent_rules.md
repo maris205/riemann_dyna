@@ -59,11 +59,12 @@ Git repository
 建议仓库结构：
 
 ```text
-skills/
-├── route-a-evaluator/
-│   └── SKILL.md
-└── route-b-evaluator/
-    └── SKILL.md
+.agents/
+└── skills/
+    ├── route-a-evaluator/
+    │   └── SKILL.md
+    └── route-b-evaluator/
+        └── SKILL.md
 
 docs/
 ├── prior_work/
@@ -137,7 +138,7 @@ expected_layer: A1 | A2 | A3 | A4 | B1 | B2 | B3 | B4 | B5
 所有新的动力系统、周期轨道、Zeta、Fredholm determinant、传递算子、quantum graph 和 classical-flow 候选，默认先调用：
 
 ```text
-skills/route-a-evaluator/SKILL.md
+.agents/skills/route-a-evaluator/SKILL.md
 ```
 
 Route A 检查：
@@ -210,7 +211,7 @@ ROUTE_A_SUCCESS_ROUTE_B_READY
 调用：
 
 ```text
-skills/route-b-evaluator/SKILL.md
+.agents/skills/route-b-evaluator/SKILL.md
 ```
 
 Route B 检查：

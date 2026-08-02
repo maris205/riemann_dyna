@@ -5,5 +5,9 @@
 # Jupyter-generated temporary files.
 .ipynb_checkpoints/
 
+# Python-generated caches.
+__pycache__/
+*.py[cod]
+
 # Local Codex session metadata.
 /id.txt

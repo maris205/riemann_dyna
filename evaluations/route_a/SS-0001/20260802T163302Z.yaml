@@ -1,0 +1,78 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: SS-0001
+source_commit: 278f707eeaa12a7836a4621d5d1cd5aa2f24df1c
+evaluation_date: "2026-08-02T16:33:02Z"
+supersedes_for_latest_status: evaluations/route_a/SS-0001/20260802T160435Z.yaml
+
+source_lock:
+  object: "constant-roof suspension over the edge shift of Cay(Z/6Z,{+1,-1}), with zero potential"
+  data_type: "exact finite adjacency determinant and exact primitive-orbit counts"
+  clock: "one unit per graph transition"
+  normalization: "raw adjacency; no fitting or affine spectral adjustment"
+  determinant_convention: "D(s)=det(I-exp(-s)A)"
+  cutoff: "orbit census n<=24; determinant exact all-order"
+  precision: "exact integer algebra except displayed floating diagnostics"
+  allowed_data: ["frozen graph", "exact algebra", "Riemann-von Mangoldt target asymptotic"]
+  forbidden_data: ["prime tables", "zero tables", "post-hoc fitting"]
+  training_split: "periods 1-8"
+  validation_split: "periods 9-16"
+  test_split: "periods 17-24 and all-order divisor audit"
+  stopping_conditions: ["integer clock", "finite exponential determinant", "O(T) zero count"]
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: "Exact primitive-orbit structure and nontrivial mod-3 character modes."
+  strongest_failure: "Integral bipartite clock; no intrinsic log-prime period mechanism."
+  metrics: {mod3_character_modes_present: true, odd_period_closed_walks: 0, orbit_cutoff: 24}
+  artifacts: [artifacts/ss_0001/route_a_baseline.json]
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: "D(s)=(1-4*exp(-2s))*(1-exp(-2s))^2 exactly."
+  strongest_failure: "The project theorem now proves the broader finite-state finite-roof finite-dimensional class has only O(T) zeros in bounded vertical strips."
+  metrics:
+    zero_error_train: "not_applicable_no_fitting"
+    zero_error_validation: "not_applicable_no_fitting"
+    zero_error_test: "structural_divisor_mismatch"
+    extra_zero_count: "infinite relative to xi"
+    missing_zero_count: "infinite relative to xi"
+    root_count_discrepancy: "O(T) versus Theta(T log T)"
+    cutoff_drift: 0
+    precision_drift: 0
+    control_margin: "proved asymptotic incompatibility"
+  artifacts:
+    - formal/obstructions/finite_state_finite_roof_zero_count.md
+    - artifacts/ss_0001/route_a_baseline.json
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: "The determinant is an entire exponential polynomial with exact global continuation."
+  strongest_failure: "A zero-free factor or fixed affine spectral map cannot change O(T) divisor growth into the completed-xi Theta(T log T) divisor."
+  metrics: {analytic_class: "finite exponential polynomial", zero_count_growth: "O(T)", target_growth: "Theta(T log T)"}
+  artifacts: [formal/obstructions/finite_state_finite_roof_zero_count.md]
+
+a4:
+  verdict: A4_FORMAL_HINT
+  evidence_status: PROVED
+  strongest_evidence: "Canonical graph adjacency on C^6 is self-adjoint."
+  strongest_failure: "Finite spectrum and no compatible completed-xi trace/determinant mechanism."
+  metrics: {hilbert_space: "C^6", spectrum_cardinality: 6}
+  artifacts: [experiments/ss_0001_mod6_cayley.py]
+
+overall_verdict: ROUTE_A_REJECTED
+claim_boundary:
+  what_is_established:
+    - "SS-0001 is STOP_SCOPED."
+    - "Finite-state finite-dimensional transfer determinants with finitely many locally constant roof values have O(T) zeros in bounded vertical strips."
+  what_is_not_established:
+    - "The theorem does not cover countable-state, unbounded-roof, non-locally-constant, or infinite-dimensional nuclear systems."
+    - "No Route-B or RH claim is made."
+  what_would_change_the_status: "An explicit infinite-dimensional or countable-state object with an intrinsic clock and a rigorously defined determinant escaping the theorem."
+blocking_conditions: ["finite state", "finite-dimensional transfer determinant", "locally constant finite roof data", "wrong divisor growth"]
+next_smallest_test: "Do not open SS-0002 until a countable-state or infinite-dimensional mathematical object, its clock, and its determinant convention are explicit."
+route_b_invocation_allowed: false
+

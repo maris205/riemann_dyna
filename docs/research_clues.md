@@ -111,7 +111,7 @@ Eratosthenes sieve 的奇偶与禁止字结构可能对应某种临界符号动�
 
 **来源：** Transient Chaos / Topological Bounds  
 **证据：** `PROVED` 与结构性结论混合  
-**状态：** `ACTIVE`  
+**状态：** `BLOCKED`
 **对应层：** `A1`, `A4`
 
 ### 内容
@@ -136,6 +136,34 @@ Eratosthenes sieve 的奇偶与禁止字结构可能对应某种临界符号动�
 ### 失败条件
 
 增加状态后只是把素数表重新写进 transition table。
+
+### 2026-08-02 基线结果
+
+`SS-0001` 使用不读取素数表的模 6 Cayley 图边移位，证明了有限状态
+扩张可以真正携带非平凡 mod-3 character；因此“加入 residue memory”本身
+是可实现的。然而常 roof \(1\) 使所有 primitive periods 保持为整数，且
+
+\[
+D(s)=\det(I-e^{-s}A)=(1-4e^{-2s})(1-e^{-2s})^2
+\]
+
+只有 \(O(T)\) 个高度不超过 \(T\) 的零点，不能满足 completed-\(\xi\) 的
+\(\Theta(T\log T)\) 计数。该候选 `STOP_SCOPED`，但线索保留。
+
+### Scoped theorem
+
+`formal/obstructions/finite_state_finite_roof_zero_count.md` 已证明：任何
+非零有限状态、有限维、locally constant 正 roof transfer determinant 都是
+有限指数和，并且在有界竖直带中的零点计数为 \(O(T)\)。因此有限 residue
+memory、有限 sheet 或有限 phase decoration 本身不能达到 completed-\(\xi\)
+的 \(\Theta(T\log T)\) divisor。
+
+### Reopening condition
+
+先明确一个不属于上述 theorem 的数学对象，例如 countable-state、unbounded
+roof、non-locally-constant potential 或 infinite-dimensional nuclear transfer
+operator；同时冻结其 intrinsic clock 和 determinant convention。对象明确前
+不得创建 `SS-0002`。
 
 ---
 
@@ -799,4 +827,28 @@ new_status:
 evidence:
 commit:
 consequence:
+```
+
+## Status update — CLUE-A1-002
+
+```yaml
+date: 2026-08-02
+clue_id: CLUE-A1-002
+old_status: ACTIVE
+new_status: UNDER_TEST
+evidence: "SS-0001 exact mod-6 Cayley suspension evaluation"
+commit: "worktree from 278f707eeaa12a7836a4621d5d1cd5aa2f24df1c"
+consequence: "Finite residue memory is feasible, but constant-roof finite-state determinants are STOP_SCOPED; next test is the finite-roof O(T) theorem."
+```
+
+## Status update — CLUE-A1-002 theorem closure
+
+```yaml
+date: 2026-08-02
+clue_id: CLUE-A1-002
+old_status: UNDER_TEST
+new_status: BLOCKED
+evidence: "finite-state finite-roof zero-count theorem"
+commit: "worktree from 278f707eeaa12a7836a4621d5d1cd5aa2f24df1c"
+consequence: "The finite-state finite-dimensional branch is STOP_SCOPED. Reopen only with an explicit object outside the theorem's assumptions."
 ```

@@ -1,0 +1,260 @@
+{
+  "adjacency": [
+    [
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  ],
+  "adjacency_spectrum_with_multiplicity": {
+    "-1": 2,
+    "-2": 1,
+    "1": 2,
+    "2": 1
+  },
+  "candidate_id": "SS-0001",
+  "clue_id": "CLUE-A1-002",
+  "determinant_convention": "D(s)=det(I-exp(-s)A)",
+  "determinant_in_z": {
+    "coefficients_increasing_degree": [
+      1,
+      0,
+      -6,
+      0,
+      9,
+      0,
+      -4
+    ],
+    "factorization": "(1-4*z^2)*(1-z^2)^2"
+  },
+  "graph": "Cay(Z/6Z,{+1,-1})",
+  "mod3_character_modes_present": true,
+  "orbit_census": {
+    "test_17_24": [
+      {
+        "closed_walks": 0,
+        "period": 17,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 524292,
+        "period": 18,
+        "primitive_orbits": 29120,
+        "primitive_points": 524160
+      },
+      {
+        "closed_walks": 0,
+        "period": 19,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 2097156,
+        "period": 20,
+        "primitive_orbits": 104754,
+        "primitive_points": 2095080
+      },
+      {
+        "closed_walks": 0,
+        "period": 21,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 8388612,
+        "period": 22,
+        "primitive_orbits": 381300,
+        "primitive_points": 8388600
+      },
+      {
+        "closed_walks": 0,
+        "period": 23,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 33554436,
+        "period": 24,
+        "primitive_orbits": 1397740,
+        "primitive_points": 33545760
+      }
+    ],
+    "training_1_8": [
+      {
+        "closed_walks": 0,
+        "period": 1,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 12,
+        "period": 2,
+        "primitive_orbits": 6,
+        "primitive_points": 12
+      },
+      {
+        "closed_walks": 0,
+        "period": 3,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 36,
+        "period": 4,
+        "primitive_orbits": 6,
+        "primitive_points": 24
+      },
+      {
+        "closed_walks": 0,
+        "period": 5,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 132,
+        "period": 6,
+        "primitive_orbits": 20,
+        "primitive_points": 120
+      },
+      {
+        "closed_walks": 0,
+        "period": 7,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 516,
+        "period": 8,
+        "primitive_orbits": 60,
+        "primitive_points": 480
+      }
+    ],
+    "validation_9_16": [
+      {
+        "closed_walks": 0,
+        "period": 9,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 2052,
+        "period": 10,
+        "primitive_orbits": 204,
+        "primitive_points": 2040
+      },
+      {
+        "closed_walks": 0,
+        "period": 11,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 8196,
+        "period": 12,
+        "primitive_orbits": 670,
+        "primitive_points": 8040
+      },
+      {
+        "closed_walks": 0,
+        "period": 13,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 32772,
+        "period": 14,
+        "primitive_orbits": 2340,
+        "primitive_points": 32760
+      },
+      {
+        "closed_walks": 0,
+        "period": 15,
+        "primitive_orbits": 0,
+        "primitive_points": 0
+      },
+      {
+        "closed_walks": 131076,
+        "period": 16,
+        "primitive_orbits": 8160,
+        "primitive_points": 130560
+      }
+    ]
+  },
+  "structural_conclusion": "The mod-6 lift contains nontrivial mod-3 character modes, but its constant integer clock and finite-state determinant yield only finitely many vertical arithmetic progressions of zeros with O(T) counting, not a log-prime orbit clock or Riemann-von Mangoldt O(T log T) growth.",
+  "vertex_out_degrees": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "zero_count_diagnostics": [
+    {
+      "candidate_count": 189,
+      "candidate_over_T_log_T": 0.41040828539857294,
+      "height": 100.0,
+      "riemann_von_mangoldt_main": 29.00234358732535
+    },
+    {
+      "candidate_count": 19101,
+      "candidate_over_T_log_T": 0.20738647247085032,
+      "height": 10000.0,
+      "riemann_von_mangoldt_main": 10142.965347526813
+    },
+    {
+      "candidate_count": 1909857,
+      "candidate_over_T_log_T": 0.13824005938738315,
+      "height": 1000000.0,
+      "riemann_von_mangoldt_main": 1747145.508632109
+    }
+  ],
+  "zero_real_parts": [
+    0.0,
+    0.6931471805599453
+  ]
+}
