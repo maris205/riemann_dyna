@@ -108,4 +108,3 @@ blocking_conditions:
   - "wrong global zero-count growth"
 next_smallest_test: "Prove the scoped generalization that every nonzero finite-state transfer determinant with finitely many locally constant positive roof values is an exponential polynomial of finite type and has O(T) zeros in bounded vertical strips."
 route_b_invocation_allowed: false
-

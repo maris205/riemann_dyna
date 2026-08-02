@@ -37,4 +37,3 @@ stopping_conditions:
   - "stop and reject if the exact divisor has only finitely many vertical arithmetic progressions"
   - "stop and reject if zero counting is O(T) rather than Riemann-von Mangoldt O(T log T)"
   - "stop and reject if functional-equation or completed-xi structure requires post-hoc factors"
-

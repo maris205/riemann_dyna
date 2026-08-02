@@ -1,8 +1,8 @@
 # Finite-State Finite-Roof Zero-Count Obstruction
 
-**Status:** proved in the project under the assumptions below  
-**Active clue:** `CLUE-A1-002`  
-**Triggering baseline:** `SS-0001`  
+**Status:** proved in the project under the assumptions below
+**Active clue:** `CLUE-A1-002`
+**Triggering baseline:** `SS-0001`
 **Route-A layers:** A2, A3
 
 ## 1. Theorem
@@ -167,4 +167,3 @@ python3 experiments/ss_0001_mod6_cayley.py --max-period 24 --output artifacts/ss
 This is a scoped family obstruction for finite-dimensional transfer
 determinants. It does not rule out symbolic dynamics as a whole and does not
 establish any result about the truth or falsity of the Riemann Hypothesis.
-

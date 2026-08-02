@@ -837,7 +837,7 @@ clue_id: CLUE-A1-002
 old_status: ACTIVE
 new_status: UNDER_TEST
 evidence: "SS-0001 exact mod-6 Cayley suspension evaluation"
-commit: "worktree from 278f707eeaa12a7836a4621d5d1cd5aa2f24df1c"
+commit: "5abca8f"
 consequence: "Finite residue memory is feasible, but constant-roof finite-state determinants are STOP_SCOPED; next test is the finite-roof O(T) theorem."
 ```
 
@@ -849,6 +849,6 @@ clue_id: CLUE-A1-002
 old_status: UNDER_TEST
 new_status: BLOCKED
 evidence: "finite-state finite-roof zero-count theorem"
-commit: "worktree from 278f707eeaa12a7836a4621d5d1cd5aa2f24df1c"
+commit: "5abca8f"
 consequence: "The finite-state finite-dimensional branch is STOP_SCOPED. Reopen only with an explicit object outside the theorem's assumptions."
 ```

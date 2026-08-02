@@ -282,7 +282,7 @@ No candidate has entered Route B.
 - **Current status:** `STOP_SCOPED`
 - **Owner:** sole main research agent
 - **Branch:** `main`
-- **Latest commit:** `278f707eeaa12a7836a4621d5d1cd5aa2f24df1c` plus current evaluation worktree
+- **Latest commit:** current `HEAD` (research content introduced in `5abca8f`)
 - **Uses prime table:** `false`
 - **Uses zero table:** `false`
 
@@ -369,8 +369,8 @@ that lies outside the proved finite-state obstruction.
 
 | Date | Previous state | New state | Evidence | Commit | Reviewer |
 |---|---|---|---|---|---|
-| 2026-08-02 | `GENERATED` | `STOP_SCOPED` | Exact determinant and divisor-count mismatch | worktree from `278f707` | sole main research agent |
-| 2026-08-02 | `STOP_SCOPED` | `STOP_SCOPED` | Family-level finite-state finite-roof zero-count theorem | worktree from `278f707` | sole main research agent |
+| 2026-08-02 | `GENERATED` | `STOP_SCOPED` | Exact determinant and divisor-count mismatch | `5abca8f` | sole main research agent |
+| 2026-08-02 | `STOP_SCOPED` | `STOP_SCOPED` | Family-level finite-state finite-roof zero-count theorem | `5abca8f` | sole main research agent |
 
 ---
 

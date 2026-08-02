@@ -75,4 +75,3 @@ claim_boundary:
 blocking_conditions: ["finite state", "finite-dimensional transfer determinant", "locally constant finite roof data", "wrong divisor growth"]
 next_smallest_test: "Do not open SS-0002 until a countable-state or infinite-dimensional mathematical object, its clock, and its determinant convention are explicit."
 route_b_invocation_allowed: false
-
