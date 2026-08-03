@@ -259,8 +259,10 @@ latest_evaluation:
 当前状态：
 
 ```text
-First formal Route-A baseline completed.
-SS-0001 is STOP_SCOPED by an exact divisor-count obstruction.
+Two formal Route-A baselines completed.
+SS-0001 is STOP_SCOPED by the finite-state divisor-count obstruction.
+SS-0002 escapes that finite-state theorem but is STOP_SCOPED by the
+finite-area Selberg/Weyl divisor obstruction.
 No candidate has entered Route B.
 ```
 
@@ -269,6 +271,7 @@ No candidate has entered Route B.
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
+| SS-0002 | Countable-state symbolic suspension / modular transfer operator | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_REJECTED` | Not invoked | Exact C6 holonomy, nuclear Fredholm determinant, Selberg identity, and natural Laplacian | Same determinant has at least `Omega(T^2)` Selberg spectral zeros, not `Theta(T log T)` | Define one explicit non-Selberg nuclear object and prove its own divisor-count regime before assigning SS-0003 |
 
 ---
 
@@ -371,6 +374,158 @@ that lies outside the proved finite-state obstruction.
 |---|---|---|---|---|---|
 | 2026-08-02 | `GENERATED` | `STOP_SCOPED` | Exact determinant and divisor-count mismatch | `5abca8f` | sole main research agent |
 | 2026-08-02 | `STOP_SCOPED` | `STOP_SCOPED` | Family-level finite-state finite-roof zero-count theorem | `5abca8f` | sole main research agent |
+
+---
+
+## SS-0002 — Paired-Gauss commutator-cover Mayer operator
+
+### Identity
+
+- **Family:** Countable-state symbolic suspension / modular transfer operator
+- **Parent candidate:** `SS-0001` and the `CLUE-A1-002` reopening condition
+- **Created:** 2026-08-03
+- **Current status:** `STOP_SCOPED`
+- **Owner:** sole main research agent
+- **Branch:** `main`
+- **Latest commit:** current checkpoint; source state `934d85c`
+- **Uses prime table:** `false`
+- **Uses zero table:** `false`
+
+### Exact definition
+
+Let
+
+\[
+\Gamma=\operatorname{PSL}_2(\mathbb Z),\qquad
+\alpha:\Gamma\to C_6,
+\quad \alpha(S)=3,\quad\alpha(T)=1,
+\]
+
+and set \(\Gamma_{\rm com}=\ker\alpha=[\Gamma,\Gamma]\). For the paired
+Gauss map \(H=G^2\), use inverse branches
+
+\[
+\phi_{a,b}(z)=\frac{z+a}{b(z+a)+1},
+\qquad a,b\geq1,
+\]
+
+with branch matrix
+
+\[
+A_{a,b}=
+\begin{pmatrix}1&a\\b&ab+1\end{pmatrix}
+=ST^{-b}ST^a
+\]
+
+and cocycle \(c(a,b)=a-b\pmod 6\). On
+\(\mathcal A(D_{3/2})\otimes\mathbb C^6\), freeze
+
+\[
+(\mathcal M_s f)_r(z)
+=\sum_{a,b\ge1}[b(z+a)+1]^{-2s}
+f_{r-(a-b)}\!\left(\frac{z+a}{b(z+a)+1}\right).
+\]
+
+The only determinant convention is
+
+\[
+D_{\rm ab}(s)=\det_{\rm Fr}(I-\mathcal M_s)
+=Z_{\Gamma_{\rm com}}(s).
+\]
+
+The defining operator is nuclear of order zero for \(\Re s>1/2\); the
+Selberg identity is first used for \(\Re s>1\), then continued only through
+the cited theorem chain.
+
+### Source lock
+
+```text
+configs/source_locks/SS-0002.yaml
+```
+
+### Route-A status
+
+```yaml
+a1: A1_WEAK
+a2: A2_FAIL
+a3: A3_FAIL
+a4: A4_NATURAL_QUANTIZATION
+overall: ROUTE_A_REJECTED
+latest_evaluation: evaluations/route_a/SS-0002/20260803T012711Z.yaml
+```
+
+### Route-B status
+
+```yaml
+b1: NOT_INVOKED
+b2: NOT_INVOKED
+b3: NOT_INVOKED
+b4: NOT_INVOKED
+b5: NOT_INVOKED
+overall: NOT_INVOKED
+latest_evaluation: null
+```
+
+### Positive evidence
+
+- The object is countable-branch, infinite-dimensional, and non-locally
+  constant, so it genuinely escapes `OBR-005`.
+- Exact paired-branch and cocycle checks pass on disjoint frozen digit blocks.
+- The regular `C6` representation retains character modes of orders two,
+  three, and six without reading arithmetic tables.
+- Nonzero base holonomy is handled correctly: a holonomy of order `d` produces
+  `6/d` primitive lifts with length multiplied by `d`.
+- The Fredholm determinant and the canonical hyperbolic Laplacian are natural,
+  theorem-backed objects using the same closed-geodesic clock.
+
+### Failed controls and obstructions
+
+- Primitive lengths are modular closed-geodesic lengths, not a natural
+  rational-prime `log p` clock.
+- No von-Mangoldt prime-power amplitude is generated.
+- The inherited modular cusp spectrum already contributes at least
+  `T^2/12 + o(T^2)` positive-height Selberg zeros.
+- The full area-`2*pi` finite-surface resonance law has a two-sided `T^2`
+  main term, incompatible with completed-`xi` `Theta(T log T)` counting.
+- The modular scattering determinant contains a separate zeta ratio and cannot
+  be glued to the Mayer determinant.
+
+### Reproduction
+
+```bash
+python3 -m unittest -v tests/test_ss_0002_commutator_mayer.py
+python3 experiments/ss_0002_commutator_mayer.py --output artifacts/ss_0002/route_a_structural_audit.json
+```
+
+### Artifacts
+
+```text
+artifacts/ss_0002/route_a_structural_audit.json
+docs/literature/ss_0002_gauss_mayer_sources.md
+formal/obstructions/finite_area_selberg_weyl_mismatch.md
+```
+
+### Claim boundary
+
+**Established:** SS-0002 is a rigorous escape from the finite-state theorem,
+but its same-object Selberg divisor is structurally incompatible with
+completed `xi`.
+
+**Not established:** no prime correspondence, completed-xi determinant,
+Route-B entry, Hilbert--Polya operator, or RH claim is obtained.
+
+### Next smallest test
+
+Before creating `SS-0003`, define one explicit non-Selberg countable-state or
+nuclear transfer object and prove which zero-count regime its own Fredholm
+determinant permits. A proposal that borrows a separate scattering quotient is
+inadmissible.
+
+### Decision history
+
+| Date | Previous state | New state | Evidence | Commit | Reviewer |
+|---|---|---|---|---|---|
+| 2026-08-03 | `GENERATED` | `STOP_SCOPED` | Exact regular-holonomy audit, Mayer/Artin identity, and finite-area Weyl mismatch | current checkpoint (source `934d85c`) | sole main research agent |
 
 ---
 

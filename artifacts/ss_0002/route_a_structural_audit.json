@@ -1,0 +1,237 @@
+{
+  "banach_space": "A(D_3/2) tensor C^6",
+  "branch_tail_diagnostics": [
+    {
+      "cutoffs": [
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "increments_strictly_decrease": true,
+      "partial_sums_at_z_1": [
+        1.4084579701431328,
+        1.9237636162527596,
+        2.369978546401456,
+        2.7260832313732717,
+        2.9970252185666575
+      ],
+      "sigma": 0.75,
+      "successive_block_increments": [
+        0.5153056461096268,
+        0.4462149301486966,
+        0.35610468497181547,
+        0.2709419871933858
+      ]
+    },
+    {
+      "cutoffs": [
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "increments_strictly_decrease": true,
+      "partial_sums_at_z_1": [
+        0.5235790264817871,
+        0.6201374500545892,
+        0.678481759674649,
+        0.7107229851003272,
+        0.7276959004754715
+      ],
+      "sigma": 1.0,
+      "successive_block_increments": [
+        0.09655842357280209,
+        0.058344309620059764,
+        0.0322412254256782,
+        0.016972915375144337
+      ]
+    },
+    {
+      "cutoffs": [
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "increments_strictly_decrease": true,
+      "partial_sums_at_z_1": [
+        0.21619132811598463,
+        0.2365098111609382,
+        0.24545052666080183,
+        0.24900102485448736,
+        0.2503338327154418
+      ],
+      "sigma": 1.25,
+      "successive_block_increments": [
+        0.020318483044953567,
+        0.008940715499863638,
+        0.003550498193685525,
+        0.001332807860954438
+      ]
+    }
+  ],
+  "candidate_id": "SS-0002",
+  "character_modes": [
+    {
+      "character_order": 1,
+      "mode": 0
+    },
+    {
+      "character_order": 6,
+      "mode": 1
+    },
+    {
+      "character_order": 3,
+      "mode": 2
+    },
+    {
+      "character_order": 2,
+      "mode": 3
+    },
+    {
+      "character_order": 3,
+      "mode": 4
+    },
+    {
+      "character_order": 6,
+      "mode": 5
+    }
+  ],
+  "clock": "periodic sum of log|H'| = 2 log(lambda_gamma) = geodesic length",
+  "clue_id": "CLUE-A1-002",
+  "counting_diagnostics": [
+    {
+      "cover_resonance_two_sided_weyl_main": 10000.0,
+      "height": 100.0,
+      "lifted_quadratic_over_T_log_T": 1.8095603412635493,
+      "lifted_quadratic_over_xi_main": 28.733310148684605,
+      "modular_cusp_lift_positive_weyl_main": 833.3333333333334,
+      "xi_positive_main": 29.00234358732535
+    },
+    {
+      "cover_resonance_two_sided_weyl_main": 1000000.0,
+      "height": 1000.0,
+      "lifted_quadratic_over_T_log_T": 12.063735608423661,
+      "lifted_quadratic_over_xi_main": 128.4786423718236,
+      "modular_cusp_lift_positive_weyl_main": 83333.33333333333,
+      "xi_positive_main": 648.6162353129674
+    },
+    {
+      "cover_resonance_two_sided_weyl_main": 100000000.0,
+      "height": 10000.0,
+      "lifted_quadratic_over_T_log_T": 90.47801706317746,
+      "lifted_quadratic_over_xi_main": 821.587479381981,
+      "modular_cusp_lift_positive_weyl_main": 8333333.333333333,
+      "xi_positive_main": 10142.965347526813
+    },
+    {
+      "cover_resonance_two_sided_weyl_main": 1000000000000.0,
+      "height": 1000000.0,
+      "lifted_quadratic_over_T_log_T": 6031.867804211831,
+      "lifted_quadratic_over_xi_main": 47696.84775630246,
+      "modular_cusp_lift_positive_weyl_main": 83333333333.33333,
+      "xi_positive_main": 1747145.508632109
+    }
+  ],
+  "cover_geometry": {
+    "base_area": 1.0471975511965976,
+    "cover_area": 6.283185307179586,
+    "curvature": -1,
+    "cusp_width": 6,
+    "cusps": 1,
+    "elliptic_points": 0,
+    "genus": 1,
+    "topology": "once-punctured torus"
+  },
+  "determinant_ledger": {
+    "frozen": "D_ab(s)=det_Fr(I-M_s)=Z_Gamma_com(s)",
+    "initial_identity_domain": "Re(s)>1",
+    "separate_objects": [
+      "1/D_ab",
+      "D_ab'/D_ab",
+      "modular scattering determinant",
+      "completed xi"
+    ]
+  },
+  "group": {
+    "abelianization": "C6",
+    "alpha_S": 3,
+    "alpha_T": 1,
+    "ambient": "PSL(2,Z)",
+    "cover_group": "commutator subgroup ker(alpha)",
+    "index": 6
+  },
+  "holonomy_lift_ledger": [
+    {
+      "cocycle": 0,
+      "length_multiplier": 1,
+      "order": 1,
+      "primitive_lifts": 6,
+      "regular_trace_before_closure": 6
+    },
+    {
+      "cocycle": 1,
+      "length_multiplier": 6,
+      "order": 6,
+      "primitive_lifts": 1,
+      "regular_trace_before_closure": 0
+    },
+    {
+      "cocycle": 2,
+      "length_multiplier": 3,
+      "order": 3,
+      "primitive_lifts": 2,
+      "regular_trace_before_closure": 0
+    },
+    {
+      "cocycle": 3,
+      "length_multiplier": 2,
+      "order": 2,
+      "primitive_lifts": 3,
+      "regular_trace_before_closure": 0
+    },
+    {
+      "cocycle": 4,
+      "length_multiplier": 3,
+      "order": 3,
+      "primitive_lifts": 2,
+      "regular_trace_before_closure": 0
+    },
+    {
+      "cocycle": 5,
+      "length_multiplier": 6,
+      "order": 6,
+      "primitive_lifts": 1,
+      "regular_trace_before_closure": 0
+    }
+  ],
+  "nontrivial_mod3_character_modes": [
+    2,
+    4
+  ],
+  "nuclearity_domain": "Re(s)>1/2",
+  "paired_branch": {
+    "cocycle": "a-b mod 6",
+    "derivative": "phi_ab'(z)=[b(z+a)+1]^(-2)",
+    "fibre_update": "r -> r-(a-b) mod 6",
+    "map": "phi_ab(z)=(z+a)/(b(z+a)+1)",
+    "matrix": "[[1,a],[b,ab+1]]=S*T^(-b)*S*T^a",
+    "sealed_test": {
+      "branch_pairs_checked": 64,
+      "digit_start": 9,
+      "digit_stop": 16
+    },
+    "validation": {
+      "branch_pairs_checked": 64,
+      "digit_start": 1,
+      "digit_stop": 8
+    }
+  },
+  "structural_conclusion": "The countable-branch, infinite-dimensional nuclear operator genuinely escapes OBR-005. Its same-object Fredholm determinant is nevertheless the finite-area cover Selberg zeta, whose spectral/resonance divisor has a quadratic Weyl scale rather than the completed-xi T log T scale. The modular scattering determinant is a separate ledger and is not used.",
+  "uses_prime_table": false,
+  "uses_zero_table": false
+}

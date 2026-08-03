@@ -1,0 +1,155 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: SS-0002
+source_commit: 934d85c82a8aae61ea9ac648f3d0241122cdb78e
+evaluation_date: "2026-08-03T01:27:11Z"
+
+source_lock:
+  object: >-
+    Paired-Gauss transfer operator on A(D_3/2) tensor C^6 with regular
+    C6 holonomy for Gamma_com=[PSL(2,Z),PSL(2,Z)].
+  data_type: "exact group/branch identities plus established Mayer-Selberg, Artin-factorization, and Weyl theorems"
+  clock: "periodic sum of log|H'| = 2 log(lambda_gamma) = curvature-minus-one geodesic length"
+  normalization: "Selberg s variable, N(gamma)=exp(ell(gamma)), no affine scaling or zero anchoring"
+  determinant_convention: "D_ab(s)=det_Fr(I-M_s)=Z_Gamma_com(s); scattering determinant and xi are separate objects"
+  cutoff: "no mathematical cutoff; diagnostics use a,b<=128 and heights 100,1000,10000,1000000"
+  precision: "exact integer algebra; binary64 only for non-evidentiary asymptotic tables"
+  allowed_data:
+    - "frozen modular group and C6 abelianization"
+    - "published transfer-operator, Artin-factorization, and Weyl theorems"
+    - "Riemann-von Mangoldt target asymptotic"
+  forbidden_data:
+    - "prime tables or primality predicates"
+    - "Riemann-zero tables"
+    - "fitted roofs, weights, phases, scales, or normalizations"
+    - "discarding nonzero-holonomy base cycles"
+    - "cross-gluing the Mayer and scattering determinants"
+  training_split: "empty; parameter-free candidate and no target optimization"
+  validation_split: "exact branch/cocycle checks for 1<=a,b<=8 and branch-tail diagnostics through cutoff 64"
+  test_split: "disjoint exact checks for 9<=a,b<=16, cutoff 128, and theorem-level divisor-growth audit"
+  stopping_conditions:
+    - "NOT_TESTABLE if D_ab=Z_Gamma_com is not supported as a same-object identity"
+    - "REVISE if branch, cocycle, or cover checks fail"
+    - "REJECTED if prime/zero leakage or determinant gluing appears"
+    - "STOP_SCOPED if the determinant has Omega(T^2) rather than Theta(T log T) divisor growth"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Primitive cycles are intrinsic paired continued-fraction words with exact
+    C6 holonomy; the regular representation correctly turns a base holonomy of
+    order d into 6/d primitive lifts of length d times the base length.
+  strongest_failure: >-
+    The orbit clock is the modular closed-geodesic length spectrum. No natural
+    rational-prime correspondence, log(p) assignment, or von-Mangoldt
+    repetition weight is present.
+  metrics:
+    branch_pairs_validation: 64
+    branch_pairs_sealed_test: 64
+    countable_branch_family: true
+    nontrivial_mod3_character_modes: [2, 4]
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    orbit_completeness_basis: "Mayer-Selberg periodic-orbit theorem with regular-representation holonomy"
+  artifacts:
+    - artifacts/ss_0002/route_a_structural_audit.json
+    - docs/literature/ss_0002_gauss_mayer_sources.md
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    M_s is nuclear of order zero for Re(s)>1/2, and the frozen Fredholm
+    determinant equals the Selberg zeta of the six-sheeted commutator cover,
+    initially for Re(s)>1 and then through the cited continuation theorem.
+  strongest_failure: >-
+    The same determinant contains at least Omega(T^2) lifted modular spectral
+    zeros, so its global divisor cannot match the completed-xi Theta(T log T)
+    divisor. The scattering xi-ratio is a separate determinant data type.
+  metrics:
+    zero_error_train: "not_applicable_no_fitting"
+    zero_error_validation: "not_applicable_exact_structural_checks"
+    zero_error_test: "structural_divisor_exponent_mismatch"
+    extra_zero_count: "at least Omega(T^2) Selberg spectral zeros relative to a Theta(T log T) target"
+    missing_zero_count: "not enumerated; global divisor equality is already impossible"
+    root_count_discrepancy: "Omega(T^2) versus Theta(T log T)"
+    cutoff_drift: "no determinant cutoff; diagnostic branch-block increments decrease through a,b<=128"
+    precision_drift: "none in exact identities; floating tables are non-evidentiary"
+    control_margin: "power-law exponent mismatch"
+    determinant_identity_domain: "Re(s)>1 initially"
+    nuclearity_domain: "Re(s)>1/2"
+  artifacts:
+    - formal/obstructions/finite_area_selberg_weyl_mismatch.md
+    - artifacts/ss_0002/route_a_structural_audit.json
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Selberg theory supplies analytic continuation, a functional equation,
+    primitive-geodesic Euler product, and a canonical spectral/resonance
+    interpretation for this determinant.
+  strongest_failure: >-
+    Those global structures are the wrong ones for completed xi: the finite-area
+    divisor has quadratic Weyl scale and cusp-related meromorphic structure,
+    rather than the Riemann-von Mangoldt T log T entire divisor.
+  metrics:
+    cover_index: 6
+    cover_area: "2*pi"
+    cover_topology: "once-punctured torus"
+    inherited_positive_spectral_zero_lower_scale: "T^2/12 + o(T^2)"
+    full_two_sided_resonance_main_scale: "T^2"
+    target_positive_zero_scale: "T/(2*pi) log(T/(2*pi)) - T/(2*pi) + O(log T)"
+    same_divisor_possible: false
+  artifacts:
+    - formal/obstructions/finite_area_selberg_weyl_mismatch.md
+    - docs/literature/ss_0002_gauss_mayer_sources.md
+
+a4:
+  verdict: A4_NATURAL_QUANTIZATION
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The curvature-minus-one surface Gamma_com backslash H has the canonical
+    Laplace-Beltrami operator on L2(Gamma_com backslash H), and Selberg theory
+    links its eigenvalues and scattering resonances to the same geodesic clock.
+  strongest_failure: >-
+    The natural quantization has the already-rejected Selberg divisor and a
+    cusp/continuous-scattering sector. Naturalness does not supply the required
+    prime-power trace or completed-xi spectral type.
+  metrics:
+    natural_hilbert_space: "L2(Gamma_com backslash H)"
+    natural_operator: "Laplace-Beltrami operator"
+    finite_area_noncompact: true
+    same_clock_preserved: true
+    route_b_ready: false
+  artifacts:
+    - docs/literature/ss_0002_gauss_mayer_sources.md
+
+overall_verdict: ROUTE_A_REJECTED
+recommended_candidate_state: STOP_SCOPED
+claim_boundary:
+  what_is_established:
+    - "SS-0002 is an explicit countable-branch, infinite-dimensional nuclear transfer object outside OBR-005."
+    - "Its regular C6 holonomy is intrinsic and retains nontrivial mod-3 character modes without prime or zero lookup."
+    - "Its frozen Fredholm determinant is the Selberg zeta of the modular commutator cover."
+    - "That divisor is structurally incompatible with completed xi by an Omega(T^2) versus Theta(T log T) count."
+  what_is_not_established:
+    - "No rational-prime orbit correspondence or von-Mangoldt weight is obtained."
+    - "No scattering determinant is identified with the Mayer determinant."
+    - "No Route-B layer or Hilbert-Polya realization is opened."
+    - "The obstruction does not cover every countable-state or nuclear transfer operator."
+  what_would_change_the_status: >-
+    A single explicitly defined non-Selberg determinant with an intrinsic clock,
+    no target-data encoding, and a proved T log T divisor law within the same
+    determinant ledger.
+blocking_conditions:
+  - "modular closed-geodesic clock rather than log-prime clock"
+  - "Selberg divisor with inherited quadratic Weyl growth"
+  - "cusp/scattering data cannot be glued to the Mayer determinant"
+next_smallest_test: >-
+  Before creating SS-0003, define one explicit non-Selberg countable-state or
+  nuclear transfer object and prove which zero-count regime its own Fredholm
+  determinant permits; reject any proposal that relies on a separate scattering
+  quotient or direct arithmetic table.
+route_b_invocation_allowed: false

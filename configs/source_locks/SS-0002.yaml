@@ -1,0 +1,68 @@
+candidate_id: SS-0002
+clue_id: CLUE-A1-002
+title: Paired-Gauss regular-holonomy transfer operator for the modular commutator cover
+mathematical_object:
+  ambient_group: "Gamma=PSL(2,Z)=<S,T | S^2=(ST)^3=1>"
+  abelianization: "alpha:Gamma->Z/6Z with alpha(S)=3 and alpha(T)=1"
+  cover_group: "Gamma_com=ker(alpha)=[Gamma,Gamma], an index-six normal subgroup"
+  phase_space: "((0,1)\\Q) x Z/6Z with the paired Gauss map H=G^2 and regular Z/6Z holonomy"
+  base_map: "G(x)=1/x-floor(1/x); H=G^2"
+  inverse_branches: "phi_ab(z)=(z+a)/(b(z+a)+1), a,b>=1"
+  branch_matrix: "A_ab=[[1,a],[b,ab+1]]=S*T^(-b)*S*T^a in PSL(2,Z)"
+  cocycle: "c(a,b)=alpha(A_ab)=a-b mod 6; the frozen fibre update is r -> r-c(a,b)"
+  banach_space: "A(D_3/2) tensor C^6, where D_3/2={z:|z-1|<3/2} and A(D_3/2) is the disk algebra with the supremum norm"
+  transfer_operator: >-
+    (M_s f)_r(z)=sum_{a,b>=1} [b(z+a)+1]^(-2s)
+    f_{r-(a-b)}((z+a)/(b(z+a)+1)), using the principal logarithm.
+  potential: "canonical analytic Jacobian weight exp(-s*tau); no fitted weights or phases"
+data_type:
+  primary: "exact group, branch, cocycle, and Fredholm-determinant identities"
+  orbit_data: "primitive closed geodesics and repetitions on Gamma_com\\H"
+  analytic_data: "external Mayer-Selberg, Artin-factorization, and finite-area Weyl theorems"
+clock: >-
+  On the real coding, tau=log|H'|. For a periodic branch word the sum of tau is
+  2 log(lambda_gamma)=ell(gamma), the curvature-minus-one closed-geodesic length.
+  Only this periodic-orbit identity is used; no separate arithmetic clock is introduced.
+normalization: >-
+  Hyperbolic curvature -1; Selberg spectral variable s; N(gamma)=exp(ell(gamma));
+  branch weight exp(-s*tau); no affine scale, offset, unfolding, or zero anchoring.
+determinant_convention:
+  frozen_object: "D_ab(s)=det_Fr(I-M_s)"
+  identity: "D_ab(s)=Z_Gamma_com(s)"
+  identity_domain: "first asserted in the absolutely convergent half-plane Re(s)>1"
+  nuclearity_domain: "M_s is nuclear of order zero for Re(s)>1/2"
+  continuation_boundary: "continuation outside the defining half-plane may be used only through the cited Mayer-Selberg and Artin theorems"
+  excluded_ledgers:
+    - "1/D_ab"
+    - "D_ab'/D_ab"
+    - "the modular scattering determinant"
+    - "the completed Riemann xi function"
+cutoff:
+  mathematical_object: "none; the branch family and Fredholm determinant are infinite/all-order"
+  branch_diagnostic: "square cutoffs a,b<=8,16,32,64,128 at z=1"
+  counting_diagnostic_heights: [100, 1000, 10000, 1000000]
+precision:
+  exact: "integer arithmetic for matrices, cocycles, holonomy orders, and cover topology"
+  floating: "IEEE-754 binary64 for non-evidentiary tail and asymptotic tables"
+allowed_data:
+  - "the frozen group presentation, abelianization, and paired Gauss branches"
+  - "exact finite group representation theory"
+  - "published Mayer-Selberg and Artin-factorization theorems"
+  - "published finite-area Selberg/resonance Weyl laws"
+  - "the Riemann-von Mangoldt asymptotic formula as a target structural constraint"
+forbidden_data:
+  - "prime tables or primality predicates"
+  - "Riemann-zero tables"
+  - "fitting any branch, roof, weight, phase, scale, or normalization to primes or zeros"
+  - "discarding base primitive cycles with nonzero cover holonomy"
+  - "replacing signed or complex character cancellation by absolute values"
+  - "gluing the Mayer determinant to the modular scattering determinant or a xi ratio"
+training_split: "empty: the candidate is parameter-free and no target data are optimized"
+validation_split: "exact branch, derivative, determinant-one, and cocycle checks for 1<=a,b<=8; tail diagnostics through cutoff 64"
+test_split: "disjoint exact checks for 9<=a,b<=16; cutoff 128 tail diagnostic; theorem-level Selberg divisor-growth audit"
+stopping_conditions:
+  - "mark NOT_TESTABLE if the same-object identity D_ab=Z_Gamma_com cannot be sourced or proved"
+  - "mark REVISE if the branch matrix, derivative, cocycle, or cover topology checks fail"
+  - "mark REJECTED if any prime/zero lookup, fitting, or determinant-ledger gluing is introduced"
+  - "mark STOP_SCOPED once the same determinant is proved to have Omega(T^2) spectral/resonance zeros rather than Theta(T log T)"
+  - "do not invoke Route B after A2 or A3 fails"

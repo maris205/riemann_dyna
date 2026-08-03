@@ -158,12 +158,46 @@ D(s)=\det(I-e^{-s}A)=(1-4e^{-2s})(1-e^{-2s})^2
 memory、有限 sheet 或有限 phase decoration 本身不能达到 completed-\(\xi\)
 的 \(\Theta(T\log T)\) divisor。
 
+### 2026-08-03 reopening result
+
+`SS-0002` 明确定义了一个真正位于 `OBR-005` 之外的对象：模曲面交换子群
+六层覆盖上的 paired-Gauss regular-holonomy Mayer 算子。它具有：
+
+- 可数无穷分支；
+- infinite-dimensional disk-algebra 作用空间；
+- 非 locally constant 且无界的双 Gauss roof；
+- `Re(s)>1/2` 上的 nuclear Fredholm determinant；
+- 不读取 prime/zero 表的内禀 `C6` holonomy。
+
+其冻结行列式为
+
+\[
+D_{\rm ab}(s)
+=\det_{\rm Fr}(I-\mathcal M_s)
+=Z_{[\operatorname{PSL}_2(\mathbb Z),
+       \operatorname{PSL}_2(\mathbb Z)]}(s).
+\]
+
+因此该对象成功逃离有限状态 `O(T)` theorem，但落入新的 `OBR-006`：
+有限指标模覆盖继承至少 \(T^2/12+o(T^2)\) 个正高度谱零点，故同一
+Selberg/Fredholm divisor 为 \(\Omega(T^2)\)，仍不能匹配 completed-\(\xi\)
+的 \(\Theta(T\log T)\)。自然 Laplace--Beltrami quantization 不改变该失败。
+
+Route-A tuple：
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)
+```
+
+候选状态：`STOP_SCOPED`。模散射行列式中的 completed-zeta ratio 属于另一
+determinant ledger，不得与 Mayer determinant 拼接。
+
 ### Reopening condition
 
-先明确一个不属于上述 theorem 的数学对象，例如 countable-state、unbounded
-roof、non-locally-constant potential 或 infinite-dimensional nuclear transfer
-operator；同时冻结其 intrinsic clock 和 determinant convention。对象明确前
-不得创建 `SS-0002`。
+下一对象必须同时位于 `OBR-005` 和 `OBR-006` 之外：先明确一个
+non-Selberg countable-state 或 nuclear determinant，冻结 intrinsic clock 与
+determinant convention，并证明其自身允许的 divisor-count regime。若需要借用
+独立 scattering quotient、prime 表或 zero 表，不得创建 `SS-0003`。
 
 ---
 
@@ -556,6 +590,14 @@ mod-2 baseline
 
 并比较随机图和简化图。
 
+### 2026-08-03 subclass boundary
+
+`SS-0002` 证明 countable branches 和 nuclearity 足以逃离有限状态
+`OBR-005`，但并不足以产生 Riemann divisor。若 determinant 直接等于有限面积
+模覆盖的 Selberg zeta，则 `OBR-006` 的 \(\Omega(T^2)\) Weyl count 立即阻断。
+后续 symbolic-suspension 搜索必须在创建候选前报告自己的 divisor-count
+mechanism，而不能仅以“存在 Fredholm determinant”为成功标准。
+
 ---
 
 ## CLUE-A4-003 — Magnetic quantum graph 作为 Route-A/Route-B 桥梁
@@ -851,4 +893,16 @@ new_status: BLOCKED
 evidence: "finite-state finite-roof zero-count theorem"
 commit: "5abca8f"
 consequence: "The finite-state finite-dimensional branch is STOP_SCOPED. Reopen only with an explicit object outside the theorem's assumptions."
+```
+
+## Status update — CLUE-A1-002 nuclear reopening closure
+
+```yaml
+date: 2026-08-03
+clue_id: CLUE-A1-002
+old_status: BLOCKED
+new_status: BLOCKED
+evidence: "SS-0002 paired-Gauss commutator-cover Route-A evaluation and OBR-006"
+commit: "current checkpoint; source state 934d85c"
+consequence: "A countable-state nuclear escape exists, but the finite-area Selberg subclass is STOP_SCOPED by quadratic Weyl divisor growth. Reopen only with an explicit non-Selberg same-ledger determinant."
 ```

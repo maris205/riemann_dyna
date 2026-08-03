@@ -96,3 +96,103 @@ The family-level obstruction is now recorded as `OBR-005`. `CLUE-A1-002` is
 non-locally-constant, or infinite-dimensional nuclear object is defined.
 No new candidate ID is allowed before that object, clock, and determinant
 convention are explicit.
+
+---
+
+## 2026-08-03 — SS-0002 countable-state reopening
+
+### Repository synchronization
+
+- `main` was synchronized with `origin/main` at source commit
+  `934d85c82a8aae61ea9ac648f3d0241122cdb78e` before research edits.
+- The active clue remained `CLUE-A1-002`; its exact reopening condition was an
+  explicit countable-state or infinite-dimensional nuclear object outside
+  `OBR-005`.
+- Broken inline Markdown math delimiters in the existing
+  `finite_state_finite_roof_zero_count.md` theorem were repaired without
+  changing the theorem or its scope.
+
+### Candidate and source lock
+
+`SS-0002` is the paired-Gauss regular-holonomy Mayer operator for the
+commutator cover
+
+\[
+\Gamma_{\rm com}
+=[\operatorname{PSL}_2(\mathbb Z),
+  \operatorname{PSL}_2(\mathbb Z)].
+\]
+
+Its paired inverse branches and frozen mod-six cocycle are
+
+\[
+\phi_{a,b}(z)=\frac{z+a}{b(z+a)+1},
+\qquad
+c(a,b)=a-b\pmod6.
+\]
+
+On \(\mathcal A(D_{3/2})\otimes\mathbb C^6\), the only determinant ledger is
+
+\[
+D_{\rm ab}(s)=\det_{\rm Fr}(I-\mathcal M_s)
+=Z_{\Gamma_{\rm com}}(s).
+\]
+
+The full source lock is `configs/source_locks/SS-0002.yaml`. No prime table,
+primality predicate, Riemann-zero table, fitted phase, or fitted normalization
+is allowed.
+
+### Route-A result
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)
+overall: ROUTE_A_REJECTED
+candidate state: STOP_SCOPED
+Route B: not authorized
+```
+
+Strongest positive result: this is a genuine escape from `OBR-005`. It has
+countably many branches, an infinite-dimensional nuclear operator, exact
+regular-`C6` holonomy, nontrivial mod-three character modes, and a canonical
+Laplace--Beltrami quantization.
+
+Strongest failure: the same Fredholm determinant is a finite-area Selberg
+zeta. The modular cuspidal spectrum lifts to the cover, giving at least
+
+\[
+N^+_{D_{\rm ab}}(T)\geq T^2/12+o(T^2),
+\]
+
+whereas completed `xi` has `Theta(T log T)` nontrivial-zero counting. The
+area-`2*pi` cover has the stronger full two-sided resonance main term `T^2`.
+This yields family obstruction `OBR-006`.
+
+### Determinant-ledger audit
+
+The modular scattering determinant is separate from the Mayer/Selberg
+Fredholm determinant. Its completed-zeta ratio has zeros and poles and was not
+used to cancel, complete, or modify `D_ab`. Such a gluing would violate
+`OBR-001`.
+
+### Reproduction commands
+
+```bash
+git status --short --branch
+git pull --rebase origin main
+python3 -m unittest -v tests/test_ss_0002_commutator_mayer.py
+python3 experiments/ss_0002_commutator_mayer.py --output artifacts/ss_0002/route_a_structural_audit.json
+```
+
+### Claim boundary
+
+Established: the countable-state/nuclear reopening is mathematically explicit,
+and the direct finite-area modular Selberg subclass has the wrong divisor
+growth. Not established: a rational-prime orbit clock, von-Mangoldt weights,
+completed-xi determinant, Route-B result, Hilbert--Polya realization, or RH.
+
+### Next smallest task
+
+Do not create `SS-0003` from another finite-area Selberg cover. First define
+one explicit non-Selberg countable-state or nuclear transfer object and prove
+the zero-count regime permitted by its own Fredholm determinant, with no
+separate scattering quotient or arithmetic-table lookup.

@@ -7,11 +7,11 @@
 
 ## 1. Theorem
 
-Let (G=(V,E)) be a finite directed multigraph. Assign to every edge
-(e\in E):
+Let \(G=(V,E)\) be a finite directed multigraph. Assign to every edge
+\(e\in E\):
 
-- a fixed complex weight (w_e\in\mathbb C);
-- a positive roof value (\tau_e>0).
+- a fixed complex weight \(w_e\in\mathbb C\);
+- a positive roof value \(\tau_e>0\).
 
 Define the finite transfer matrix
 
@@ -28,8 +28,8 @@ and the determinant
 D(s)=\det(I-L_s).
 \]
 
-Assume (D\not\equiv0). For every bounded real interval
-([a,b]\subset\mathbb R), the number of zeros of (D), counted with
+Assume \(D\not\equiv0\). For every bounded real interval
+\([a,b]\subset\mathbb R\), the number of zeros of \(D\), counted with
 multiplicity, in
 
 \[
@@ -37,21 +37,21 @@ multiplicity, in
 \ |\Im s|\leq T\}
 \]
 
-is (O(T)) as (T\to\infty).
+is \(O(T)\) as \(T\to\infty\).
 
 Consequently, no determinant in this class can have the same global divisor
-as the completed Riemann function (\xi(s)), even after multiplication by a
+as the completed Riemann function \(\xi(s)\), even after multiplication by a
 zero-free entire factor or after a fixed nondegenerate affine change of the
 spectral variable.
 
 The same counting obstruction applies to zeros or poles obtained from
-(1/D), (D'/D), or another convention whose divisor is supported on the
+\(1/D\), \(D'/D\), or another convention whose divisor is supported on the
 zeros of this same finite determinant. The conventions must still be reported
 separately.
 
 ## 2. Proof
 
-Because (G) has finitely many edges, every entry of (L_s) is a finite
+Because \(G\) has finitely many edges, every entry of \(L_s\) is a finite
 exponential sum. Expanding the determinant over permutations and then
 expanding the finite edge sums gives
 
@@ -59,8 +59,8 @@ expanding the finite edge sums gives
 D(s)=\sum_{k=0}^{M} c_k e^{-\lambda_k s},
 \]
 
-where (M<\infty), (c_k\in\mathbb C), and every (\lambda_k\geq0) is a
-finite sum of edge roofs. Thus (D) is an entire exponential polynomial.
+where \(M<\infty\), \(c_k\in\mathbb C\), and every \(\lambda_k\geq0\) is a
+finite sum of edge roofs. Thus \(D\) is an entire exponential polynomial.
 
 Set
 
@@ -70,7 +70,7 @@ Set
 C=\sum_k |c_k|.
 \]
 
-For every (s\in\mathbb C),
+For every \(s\in\mathbb C\),
 
 \[
 |D(s)|
@@ -80,8 +80,8 @@ For every (s\in\mathbb C),
 C e^{\Lambda|s|}.
 \]
 
-Since (D\not\equiv0), choose (s_0\in\mathbb C) with (D(s_0)\neq0).
-Apply Jensen's formula to (z\mapsto D(s_0+z)). The growth estimate gives
+Since \(D\not\equiv0\), choose \(s_0\in\mathbb C\) with \(D(s_0)\neq0\).
+Apply Jensen's formula to \(z\mapsto D(s_0+z)\). The growth estimate gives
 
 \[
 \frac1{2\pi}\int_0^{2\pi}
@@ -91,9 +91,9 @@ Apply Jensen's formula to (z\mapsto D(s_0+z)). The growth estimate gives
 \]
 
 Jensen's formula therefore bounds the number of zeros in
-(|s-s_0|\leq R/2) by (O(R)), with multiplicity. A rectangle with
-(a\leq\Re s\leq b) and (|\Im s|\leq T) lies in a disk centered at
-(s_0) of radius (T+O(1)). Hence its zero count is (O(T)).
+\(|s-s_0|\leq R/2\) by \(O(R)\), with multiplicity. A rectangle with
+\(a\leq\Re s\leq b\) and \(|\Im s|\leq T\) lies in a disk centered at
+\(s_0\) of radius \(T+O(1)\). Hence its zero count is \(O(T)\).
 
 On the other hand, the Riemann-von Mangoldt formula gives
 
@@ -108,10 +108,10 @@ N_\xi(T)
 
 for the nontrivial zeros in the critical strip with positive imaginary part.
 A zero-free entire factor does not change a divisor. A fixed affine spectral
-change (s\mapsto\alpha s+\beta), (\alpha\neq0), changes heights only by a
-constant factor and preserves the (O(T)) versus (\Theta(T\log T))
+change \(s\mapsto\alpha s+\beta\), \(\alpha\neq0\), changes heights only by a
+constant factor and preserves the \(O(T)\) versus \(\Theta(T\log T)\)
 incompatibility. Therefore no determinant in the stated finite-dimensional
-class can equal (e^{g(s)}\xi(s)) globally or share its divisor. ∎
+class can equal \(e^{g(s)}\xi(s)\) globally or share its divisor. ∎
 
 ## 3. Corollary for finite-memory symbolic suspensions
 
@@ -122,7 +122,7 @@ theorem applies.
 
 Therefore, adding only finite residue memory, a finite number of sheets, or a
 finite locally constant phase decoration cannot by itself produce the
-completed-(\xi) divisor through a finite-dimensional determinant.
+completed-\(\xi\) divisor through a finite-dimensional determinant.
 
 ## 4. Scope boundary
 
