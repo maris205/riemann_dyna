@@ -6,7 +6,7 @@ clue_id: CLUE-A2-001
 formal_candidate: false
 source_commit: 1088862c01cd400632fd1d8c17c5ba3a436d1f0e
 source_commit_role: "base commit before the CTRL-0001 worktree; this commit does not contain the control"
-result_commit: "PENDING_STABLE_COMMIT"
+result_commit: 6fb293c81cd77edb0a1354c63665e91a98ceb66d
 evaluation_date: "2026-08-03T17:18:47Z"
 
 source_lock:
