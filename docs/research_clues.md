@@ -429,7 +429,7 @@ spectral_map:
 
 **证据：** `NUMERICAL_OBSERVATION` + `FITTED_PARAMETER`
 
-**状态：** `UNDER_TEST`
+**状态：** `BLOCKED`
 
 **对应层：** `A1`, `A2`, `A4`
 
@@ -480,28 +480,60 @@ finite-precision solver conditioning，而不是归一化单独制造相角。
 因此当前低相角 level rule 尚不稳定，但 Logistic 线保留为数值 benchmark
 和 autonomous slow-variable lift 的搜索先验。
 
+### Physical-epsilon medium result
+
+在 version-2 source lock 下，本次运行没有读取 zero、prime 或 USTC table，
+也没有重新优化参数；但 `epsilon=0.001916` 是历史上由 zeros 2--6 选择的，
+所以这是 target-free robustness audit，不是 blind arithmetic validation。
+
+冻结的 `2048 bins x 100000 steps` reference 只产生 4 个
+residual-certified upper-half strong branches ((|\lambda|\ge0.5))，低于预注册
+门槛 20。所有 mechanics、raw hash/round-trip、solver convergence、`450/450`
+Ritz return、residual、强/中层共轭、Q/B、fixed-start、`k=300/450` guard 与
+独立 `256 bins x 5000 steps` anchor 上的 dense/sparse solver gate 均通过；
+该 anchor 不与四条 reference branches 做 cutoff matching。
+
+- bins 与 time cutoff 的四支 matching 全部稳定，且收敛门通过；
+- 跨全部 profile 的 stable intersection 为 3/4，即 `0.75`；
+- half-bin translated-domain control 的 median/p90/max complex drift 为
+  `0.028783/0.046071/0.051659`，最大 phase drift 为 `0.033001`，
+  phase-rank median/max displacement 为 `1/1`；
+- median nearest-static normalized distance 为 `0.0009477`；
+- dynamic/static margin median 为 `0.03789`，且达到 margin `1.5` 的比例为
+  `0`。
+
+因此冻结的 strong-layer empirical phase observable 判为 `STOP_SCOPED`。
+该判定不淘汰 Logistic dynamics 本身，也不评价尚未定义的 autonomous lift、
+chronological cocycle 或 Fredholm determinant。
+
 ### Route-A 边界
 
 ```text
 formal candidate: none
-status: NOT_TESTABLE
+Route-A status: NOT_TESTABLE
 diagnostic tuple: (A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)
+empirical phase-observable verdict: STOP_SCOPED
 Route B: not authorized
 ```
 
-### 最小下一步
+### Reopening condition
 
-用固定 physical epsilon 做 medium-fidelity target-free 分支跟踪：保存原始
-(T)，冻结全部 eigensolver 参数，报告模长与残差，并在 bins、steps 和半格
-分区移动下用复平面 matching 跟踪同一 eigenbranch。稳定性门通过前不得查看
-新的 zero-match 指标。
+当前经验相位 observable 内没有更小的合规任务。只有在先明确给出 autonomous
+slow-variable lift 或 chronological transfer-cocycle/Fredholm determinant 的
+数学对象、clock 与 determinant convention 后，才可用新 source lock 重开。
+否则项目转入 `CLUE-A2-001` 的 synthetic Euler-product positive control。
+不得由本结果解封新的 zero-match 指标。
 
 Artifacts:
 
 - `configs/source_locks/P4-LOGISTIC-LEGACY-AUDIT.yaml`
 - `configs/source_locks/P4-LOGISTIC-DETERMINISTIC-SMOKE.yaml`
+- `configs/source_locks/P4-LOGISTIC-MEDIUM-PHYSICAL-EPSILON.yaml`
 - `artifacts/p4_logistic_legacy/route_a_pre_candidate_audit.json`
 - `artifacts/p4_logistic_legacy/deterministic_smoke_profile.json`
+- `artifacts/p4_logistic_medium/branch_audit.json`
+- `artifacts/p4_logistic_medium/raw/dynamic_reference_T.npz`
+- `artifacts/p4_logistic_medium/raw/static_mean_matched_T.npz`
 - `docs/prior_work/logistic_legacy_pre_audit.md`
 
 ---
@@ -841,8 +873,8 @@ e^{q(E)}
 
 ## Priority 0 — 基础验证
 
-1. Logistic physical-epsilon medium-fidelity eigenbranch audit
-2. Synthetic Euler-product positive control
+1. `[STOP_SCOPED]` Logistic physical-epsilon medium-fidelity eigenbranch audit
+2. `[NEXT]` Synthetic Euler-product positive control (`CLUE-A2-001`)
 3. Shuffled-period / random-weight / random-phase controls
 4. Argument-principle root counter
 5. Signed cycle expansion
@@ -1001,4 +1033,16 @@ new_status: UNDER_TEST
 evidence: "legacy notebook audit plus target-free deterministic dense/ARPACK smoke profile"
 commit: "current checkpoint; source state 338ee15"
 consequence: "The fitted prefix is retained as a numerical benchmark, but no formal candidate exists. Freeze and track residual-certified eigenbranches before any new zero comparison or autonomous lift."
+```
+
+## Status update — CLUE-A2-005 physical-epsilon closure
+
+```yaml
+date: 2026-08-03
+clue_id: CLUE-A2-005
+old_status: UNDER_TEST
+new_status: BLOCKED
+evidence: "P4-LOGISTIC-MEDIUM-PHYSICAL-EPSILON version-2 audit: 4 reference strong branches, translated-grid phase-rank failure, and dynamic/static margin median 0.03789"
+commit: "current checkpoint; source state ef79805"
+consequence: "The frozen occupation-aggregated strong-layer phase observable is STOP_SCOPED, while Route A remains NOT_TESTABLE. Reopen only with an explicit autonomous lift or chronological transfer-cocycle/Fredholm object; do not unlock new zero matching."
 ```

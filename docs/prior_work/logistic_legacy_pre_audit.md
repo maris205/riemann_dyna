@@ -2,7 +2,8 @@
 
 Date: 2026-08-03
 
-Audit IDs: `P4-LOGISTIC-LEGACY-AUDIT`, `P4-LOGISTIC-DETERMINISTIC-SMOKE`
+Audit IDs: `P4-LOGISTIC-LEGACY-AUDIT`, `P4-LOGISTIC-DETERMINISTIC-SMOKE`,
+`P4-LOGISTIC-MEDIUM-PHYSICAL-EPSILON`
 
 Formal candidate created: no
 
@@ -181,39 +182,96 @@ full-cutoff reproduction. It shows that deterministic eigensolving can work,
 while the legacy “lowest phase equals lowest energy” rule is not yet a stable
 observable.
 
+## Physical-epsilon medium-fidelity result
+
+The version-2 source lock froze the historical physical value
+`epsilon=0.001916`, a `2048 bins x 100000 steps` reference, time prefixes
+`50000/100000/200000` from one schedule, bin controls `1536/2048/3072`, a
+half-bin translated-domain stress control, and four identical-estimator static
+controls. The reference runtime was CPython `3.12.3`, NumPy `2.4.4`, SciPy
+`1.16.1`, Numba `0.66.0`, and llvmlite `0.48.0`.
+
+This computation read no zero, prime, or USTC table and performed no new target
+optimization. It is not blind arithmetic validation: the frozen epsilon was
+historically selected using Riemann zeros 2--6.
+
+All mechanics gates passed:
+
+- raw dynamic and mean-matched static (T) matrices reproduced bitwise by
+  content hash and survived save/load round trips;
+- every sparse profile converged with all `450/450` requested Ritz values,
+  residual, mass, row-sum, static-kernel, strong/moderate conjugacy, and
+  spectral-edge gates passing;
+- the `k=300/450` guard, both fixed starts, and (Q/B) similarity audit
+  reproduced every strong reference branch;
+- on the separate `256 bins x 5000 steps` physical-epsilon anchor, dense and
+  sparse eigensolvers reproduced all 23 anchor strong branches. This is a
+  solver check on its own matrix, not a reference-branch cutoff comparison.
+
+The reference nevertheless contained only four residual-certified upper-half
+strong branches with (|\lambda|\ge0.5), below the preregistered minimum of 20.
+Their cutoff drifts were:
+
+| Control | Median drift | P90 drift | Max drift | Median/max phase-rank displacement |
+|---|---:|---:|---:|---:|
+| 1536 bins | 0.003231 | 0.004470 | 0.004851 | 0 / 0 |
+| 3072 bins | 0.001999 | 0.003429 | 0.003865 | 0 / 0 |
+| 50000 steps | 0.006023 | 0.010591 | 0.010904 | 0 / 0 |
+| 200000 steps | 0.004890 | 0.008346 | 0.008492 | 0 / 0 |
+| translated half-bin grid | 0.028783 | 0.046071 | 0.051659 | 1 / 1 |
+
+The translated grid produced five strong branches, only three of the four
+reference branches passed every stability gate, and its maximum phase drift
+was `0.033001`, above the frozen `0.03` ceiling. The all-profile stable
+survival fraction was therefore `0.75`, while the phase-rank gate failed.
+
+The dynamic branches were also indistinguishable from the preregistered static
+parents under the identical estimator. The median nearest-static normalized
+distance was `0.0009477`; the median dynamic/static margin was only `0.03789`,
+and zero of four branches reached margin `1.5`.
+
+This gives a scoped negative result: the frozen strong-layer empirical phase
+observable is `STOP_SCOPED`. It does not reject Logistic dynamics, a future
+autonomous slow-variable lift, a chronological transfer cocycle, or a
+Fredholm determinant that has not yet been defined.
+
 ## Route-A preassessment
 
 ```text
 formal candidate: none
-status: NOT_TESTABLE
+Route-A status: NOT_TESTABLE
 diagnostic tuple: (A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)
+empirical phase-observable verdict: STOP_SCOPED
 Route B: not authorized
 ```
 
-Strongest evidence: the target-fitted prefix is a genuine stored numerical
-observation and can serve as a regression benchmark.
+Strongest evidence: the four strong reference branches are reproducible across
+time and bin cutoffs, fixed starts, (Q/B), the k guard, raw-matrix rebuilding,
+and raw save/load. Separately, the dense anchor validates dense/sparse solver
+agreement on its own reduced matrix.
 
-Strongest failure: there is no primitive-orbit ledger, intrinsic prime-like
+Strongest failure: there are too few strong branches, the translated-grid
+phase ranking fails, and the same branches lie far inside static-parent
+uncertainty. There is also no primitive-orbit ledger, intrinsic prime-like
 clock, explicit dynamical determinant, blind validation, global divisor law,
-or natural lift. A fixed finite matrix determinant would also remain inside
+or natural lift. A fixed finite matrix determinant would remain inside
 `OBR-005`; a moving-cutoff infinite-operator limit would need a separate
 definition and theorem.
 
-## Next smallest task
+## Scoped stop and reopening condition
 
-Run a medium-fidelity, target-free branch audit with physical epsilon fixed:
+There is no further target-free task for this frozen empirical phase
+observable. Reopen the Logistic line only after one of the following is an
+explicit mathematical object with a new source lock:
 
-1. save and hash the raw (T) matrix;
-2. construct both (Q=D^{-1}T) and (B=TD^{-1});
-3. fix `v0`, `k`, `ncv`, tolerance and maximum iterations;
-4. report every eigenvalue modulus and residual;
-5. track residual-certified branches by complex-plane matching across bins,
-   steps and a half-bin partition shift;
-6. do not inspect Riemann-zero agreement until the branch identities are
-   frozen.
+- an autonomous slow-variable lift with genuine chronological primitive
+  orbits; or
+- a chronological transfer-cocycle/Fredholm determinant with a fixed clock and
+  determinant convention.
 
-Only if stable branches survive should the project define either an autonomous
-slow-variable lift or a genuine transfer-cocycle/Fredholm determinant.
+Otherwise the next queued project task is the `CLUE-A2-001` synthetic
+Euler-product positive control. No new zero-match inspection is authorized by
+this audit.
 
 ## Reproduction commands
 
@@ -225,4 +283,8 @@ python3 experiments/p4_logistic_legacy_audit.py \
   --output artifacts/p4_logistic_legacy/route_a_pre_candidate_audit.json
 python3 experiments/p4_logistic_deterministic_smoke.py \
   --output artifacts/p4_logistic_legacy/deterministic_smoke_profile.json
+python3 -m unittest -v tests/test_p4_logistic_medium_branch_audit.py
+python3 experiments/p4_logistic_medium_branch_audit.py \
+  --output artifacts/p4_logistic_medium/branch_audit.json \
+  --raw-directory artifacts/p4_logistic_medium/raw
 ```

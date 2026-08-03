@@ -314,3 +314,149 @@ Run a medium-fidelity target-free profile with physical epsilon fixed. Save the
 raw (T) matrix, freeze every eigensolver parameter, and track only
 residual-certified eigenbranches across bins, steps and a half-bin partition
 shift. Do not inspect new zero-match metrics until branch identities are frozen.
+
+---
+
+## 2026-08-03 — Logistic physical-epsilon medium checkpoint
+
+### Current clue
+
+`CLUE-A2-005` — frozen strong-layer eigenbranch robustness of the legacy
+occupation-conditioned Logistic matrix.
+
+Candidate ID: none. No formal candidate, Route-A evaluation YAML, obstruction
+number, or operator obligation was created.
+
+### Source lock
+
+`P4-LOGISTIC-MEDIUM-PHYSICAL-EPSILON`, version 2:
+
+- one frozen million-step schedule with
+  `k=0.1185699450083701`, `u_c=1.543078787606443`;
+- historically target-fitted physical `epsilon=0.001916`, used without reading
+  a target table or reoptimizing it;
+- `2048 bins x 100000 steps` reference;
+- time prefixes `50000/100000/200000` from the same schedule;
+- bin controls `1536/2048/3072` and a half-bin translated-domain stress
+  control;
+- mean-matched static `mu=1.544195814880148`, both schedule endpoints, and the
+  legacy regression static control, all using their own density evolution;
+- ARPACK `k=450`, `ncv=1200`, tolerance `1e-11`, maximum iterations `100000`,
+  fixed ones and seed-17 starts;
+- signed-complex matching with explicit unmatched support before phase ranking;
+- no phase-to-height scale and no prime, zero, or USTC table access.
+
+The lock revision from version 1 to 2 was documentation-only: it recorded the
+already frozen initial state, kernel boundary rule, imaginary-part threshold,
+matching cutoff, translated-domain geometry, runtime, and historical epsilon
+provenance. No computational value or acceptance threshold changed.
+
+### Route-A evaluation
+
+```text
+Route A status: NOT_TESTABLE
+Diagnostic tuple: (A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)
+Route B: inactive and not authorized
+Empirical phase-observable verdict: STOP_SCOPED
+```
+
+There is still no chronological primitive-orbit ledger, dynamical Zeta,
+Fredholm determinant, global analytic object, or natural lift. The scoped
+verdict applies only to the frozen finite empirical-matrix phase observable.
+
+### Numerical result
+
+All mechanics gates passed:
+
+- every sparse profile converged and returned all `450/450` requested Ritz
+  values;
+- mass, row-sum, residual, static-kernel identity, strong/moderate conjugacy,
+  all-profile edge, `k=300/450`, fixed-start, (Q/B), raw round-trip, and
+  repeat-hash gates passed;
+- dense and sparse eigensolvers matched all 23 strong upper-half branches on
+  the separate `256 bins x 5000 steps` anchor matrix; this does not compare
+  those anchor branches with the four reference branches;
+- the reference edge modulus at `k=450` was `0.00225768`;
+- dynamic and mean-matched static raw hashes reproduced exactly as
+  `1d739153...d6270` and `5b6e20f7...65f950`.
+
+The reference had only 4 upper-half strong branches, below the frozen minimum
+20. All four matched stably in each time and bin control, with median drifts:
+
+- bins 1536: `0.003231`;
+- bins 3072: `0.001999`;
+- steps 50000: `0.006023`;
+- steps 200000: `0.004890`.
+
+The half-bin translated grid produced five strong branches. Four matched, only
+three passed every stability gate, median/p90/max drift was
+`0.028783/0.046071/0.051659`, maximum phase drift was `0.033001`, and
+phase-rank median/max displacement was `1/1`. The all-profile stable survival
+fraction was `0.75`, but the frozen phase-rank gate failed.
+
+The median nearest-static normalized distance was `0.0009477`. The
+dynamic/static margin median was `0.03789`, and none of the four branches
+reached margin `1.5`. The strong branches therefore cannot be distinguished
+from the preregistered static-parent spectra at the internal numerical scale.
+
+### Reusable knowledge
+
+- strong empirical branches can be cutoff- and solver-reproducible yet fail as
+  a phase-level observable under a translated-domain stress control;
+- identical-estimator static controls are essential: here they explain the
+  dynamic strong spectrum more closely than the internal perturbation radius;
+- weak ARPACK-edge truncation must not be promoted to a strong/moderate
+  conjugacy failure;
+- branch matching with dummies must enforce the distance cutoff inside the
+  assignment objective, not discard over-cutoff pairs only after assignment;
+- “target-free run” does not mean “target-independent model” when a frozen
+  hyperparameter was historically fitted to target zeros.
+
+This is a single-source-lock numerical failure, not a family theorem, so no new
+entry was added to `docs/obstruction_registry.md`.
+
+### Updated files
+
+- `configs/source_locks/P4-LOGISTIC-MEDIUM-PHYSICAL-EPSILON.yaml`;
+- `experiments/p4_logistic_medium_branch_audit.py`;
+- `tests/test_p4_logistic_medium_branch_audit.py`;
+- `artifacts/p4_logistic_medium/branch_audit.json`;
+- `artifacts/p4_logistic_medium/raw/dynamic_reference_T.npz`;
+- `artifacts/p4_logistic_medium/raw/static_mean_matched_T.npz`;
+- `docs/prior_work/logistic_legacy_pre_audit.md`;
+- `docs/research_clues.md`;
+- `docs/research_log.md`;
+- `HP_HANDOFF.md`.
+
+### Tests and reproduction commands
+
+Reference runtime: CPython `3.12.3`, NumPy `2.4.4`, SciPy `1.16.1`, Numba
+`0.66.0`, llvmlite `0.48.0`.
+
+```bash
+python3 -m unittest -v tests/test_p4_logistic_medium_branch_audit.py
+python3 experiments/p4_logistic_medium_branch_audit.py \
+  --output artifacts/p4_logistic_medium/branch_audit.json \
+  --raw-directory artifacts/p4_logistic_medium/raw \
+  > /tmp/p4_logistic_medium_stdout.json
+python3 -m unittest discover -v
+git diff --check
+```
+
+### Claim boundary
+
+Established: reproducible finite-matrix mechanics and a scoped negative result
+for the frozen strong-layer phase observable at the registered cutoffs.
+
+Not established: blind zero prediction, rejection of Logistic dynamics,
+behavior of a future autonomous lift or chronological cocycle, primitive-orbit
+structure, a dynamical determinant, analytic continuation, completed-`xi`
+divisor equality, natural quantization, Route B, Hilbert--Polya, or RH.
+
+### Next smallest task
+
+The active observable is `STOP_SCOPED`, so no further task is authorized inside
+`CLUE-A2-005`. Reopening requires a newly explicit autonomous lift or
+chronological transfer-cocycle/Fredholm object with its own source lock.
+Otherwise the next queued project task is the `CLUE-A2-001` synthetic
+Euler-product positive control.

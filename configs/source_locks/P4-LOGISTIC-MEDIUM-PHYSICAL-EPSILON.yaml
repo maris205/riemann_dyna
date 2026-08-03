@@ -1,0 +1,152 @@
+audit_id: P4-LOGISTIC-MEDIUM-PHYSICAL-EPSILON
+lock_version: 2
+lock_revision_note: >-
+  Version 2 records low-level constants and provenance that were already frozen
+  in the version-1 implementation before the first full run. No numerical
+  parameter, profile, threshold, or result-dependent choice changed.
+formal_candidate: false
+parent_audits:
+  - P4-LOGISTIC-LEGACY-AUDIT
+  - P4-LOGISTIC-DETERMINISTIC-SMOKE
+clue_id: CLUE-A2-005
+title: Target-table-free-computation physical-epsilon Logistic eigenbranch audit
+mathematical_object:
+  phase_space: "reference grids use equal-width cells on [-1,1]"
+  translated_grid_control: >-
+    A +0.5-bin translation of every cell center and both window endpoints.
+    This is not a fixed-domain staggered partition of [-1,1].
+  dynamic_map: "x_(n+1)=1-mu_n*x_n^2"
+  legacy_schedule: >-
+    mu_n=u_c+k/log(n+10)^2 with k and u_c fixed once by the legacy
+    10^6-step endpoints mu_1=1.5637 and mu_1000000=1.5437
+  static_controls:
+    primary: "mu=mean(mu_n,1<=n<=100000)=1.544195814880148"
+    endpoint_high: "mu=1.5637"
+    endpoint_low: "mu=1.5437"
+    legacy_regression: "mu=1.543689"
+  empirical_flux: "T_N(i,j)=sum_(n<=N) V_(n-1)(i) K_n(i,j)"
+  normalized_matrix: "Q_N=D_N^(-1) T_N, D_N=diag(T_N*1)"
+  comparison_matrix: "B_N=T_N D_N^(-1)=D_N Q_N D_N^(-1)"
+  branch_object: >-
+    residual-certified eigenvalues of Q_N, matched with dummy/unmatched support
+    by complex-plane distance before any phase-rank diagnostic
+  initial_state: "point mass in the cell containing x_0=0.5"
+  transition_kernel: >-
+    For each occupied source-cell center x_i, Gaussian weights proportional to
+    exp(-(x_j-(1-mu*x_i^2))^2/(2*epsilon^2)) are retained through radius
+    floor(5*epsilon/dx)+1, clipped to the finite grid, and renormalized over the
+    retained destination cells. Source masses below 1e-12 are discarded and
+    reported.
+data_type:
+  primary: "finite empirical transition matrices and complex eigenbranches"
+  excluded: "Riemann zeros, prime data, dynamical-Zeta zeros, and operator eigenvalues"
+clock: >-
+  One map iteration under a single frozen legacy 10^6-step schedule. Time
+  cutoffs 50000, 100000, and 200000 are prefixes of that same schedule and are
+  not independently endpoint-anchored.
+normalization: >-
+  Reference physical state coordinate x in [-1,1]; the declared half-bin
+  control translates that window. Fixed physical Gaussian epsilon 0.001916,
+  row-normalized Q_N, no phase-to-height scale, offset, unfolding, or
+  target-derived mode correspondence.
+determinant_convention: "none; this remains a pre-candidate eigenbranch audit"
+cutoff:
+  reference_bins: 2048
+  reference_steps: 100000
+  time_prefixes: [50000, 100000, 200000]
+  bin_profiles: [1536, 2048, 3072]
+  translated_grid_shifts_in_bins: [0.0, 0.5]
+  dense_physical_epsilon_anchor: {bins: 256, steps: 5000}
+  epsilon: 0.001916
+  gaussian_sigma_cutoff: 5.0
+  gaussian_radius_rule: "floor(5*epsilon/dx)+1 bins; no second exact-distance truncation"
+  probability_threshold: 1.0e-12
+precision:
+  construction: "Numba 0.66.0 compiled binary64, fastmath=false"
+  reference_runtime: >-
+    CPython 3.12.3, NumPy 2.4.4, SciPy 1.16.1, Numba 0.66.0,
+    llvmlite 0.48.0; exact versions are also written into the artifact
+  eigensolver: "scipy.sparse.linalg.eigs, which=LM"
+  profile_k: 450
+  reference_k_guard: [300, 450]
+  ncv: 1200
+  tolerance: 1.0e-11
+  maxiter: 100000
+  starts: [ones, seed17_normal]
+branch_layers:
+  strong: "|lambda|>=0.5"
+  moderate: "0.1<=|lambda|<0.5"
+  weak_diagnostic: "0.001<=|lambda|<0.1"
+branch_acceptance:
+  upper_half_imaginary_part_floor: 1.0e-8
+  branch_match_normalized_distance_cutoff: 0.10
+  matching_objective: >-
+    maximize the number of pairs strictly inside the distance cutoff, then
+    minimize their total signed-complex normalized drift
+  residual_ceiling: 1.0e-9
+  conjugate_pair_defect_ceiling: 1.0e-8
+  minimum_upper_half_strong_branches: 20
+  all_profile_survival_fraction_minimum: 0.75
+  normalized_complex_drift_median_ceiling: 0.01
+  normalized_complex_drift_p90_ceiling: 0.05
+  normalized_complex_drift_max_ceiling: 0.10
+  wrapped_phase_drift_ceiling: 0.03
+  log_modulus_ratio_ceiling: 0.10
+  phase_rank_median_displacement_ceiling: 0
+  phase_rank_max_displacement_ceiling: 2
+  nearest_second_nearest_ambiguity_ratio_ceiling: 0.6666666666666666
+  dynamic_static_margin_median_minimum: 2.0
+  dynamic_static_margin_fraction_above_1_5_minimum: 0.6666666666666666
+mechanics_acceptance:
+  probability_mass_loss_ceiling: 1.0e-6
+  row_sum_error_ceiling: 1.0e-12
+  static_kernel_identity_ceiling: 1.0e-10
+  k_edge_modulus_ceiling: 0.4
+  required_solver_state: >-
+    every sparse profile and both reference k-guard solves must converge and
+    return the requested number of Ritz values
+  required_solver_controls: >-
+    both fixed starts on Q and B and the k=300/450 reference guard must
+    reproduce every reference strong branch; on the separate 256-bin,
+    5000-step anchor matrix, dense and sparse solvers must reproduce every
+    anchor strong branch within the frozen matching gates
+allowed_data:
+  - >-
+    the frozen legacy schedule and numerical discretization constants,
+    including historically zero-fitted epsilon=0.001916 without reopening the
+    target table or reoptimizing epsilon
+  - "raw T matrices, Q/B matrices, eigenvalues, eigenvectors, and residuals"
+  - "target-free cutoff, translated-grid, solver-start, and static-parent controls"
+  - "prior audit artifacts only for implementation provenance"
+forbidden_data:
+  - "Riemann zeros, prime tables, USTC data, or any target spectral table"
+  - "changing epsilon, branch layers, thresholds, k, ncv, or solver starts after inspecting results"
+  - "best-of-start, best-of-cutoff, best-of-static-control, or best-of-partition reporting"
+  - "re-ranking branches only by phase without modulus and complex-plane identity"
+  - "calling the half-bin translated grid a fixed-domain staggered partition"
+  - "calling T_N a chronological transfer cocycle or its graph cycles dynamical periodic orbits"
+  - "calling this audit a dynamical Zeta, Fredholm determinant, or Route-B object"
+training_split: >-
+  Historical provenance only: legacy zero 1 fixed the discarded phase scale
+  and legacy zeros 2--6 selected epsilon=0.001916. This audit inherits only the
+  frozen epsilon, reads no target table, uses no phase-to-height scale, and
+  performs no new target optimization.
+validation_split: >-
+  Fully reported target-free comparisons across time prefixes, bin counts,
+  translated-grid control, solver starts, k edge guard, and all four static controls.
+test_split: >-
+  none; this is a target-free robustness audit rather than blind arithmetic
+  validation, and a formal candidate and arithmetic test windows remain unopened
+stopping_conditions:
+  - >-
+    NOT_TESTABLE if raw T hashes fail reproduction, mechanics gates fail,
+    any required solve does not converge or return k values, Q/B or fixed-start
+    controls fail, residuals fail, or any k=450 profile edge modulus is at least 0.4
+  - >-
+    STOP_SCOPED for the empirical phase-level observable if the reference has
+    fewer than 20 strong upper-half branches, all-profile stable survival is
+    below 0.75, or phase ranks substantially reorder
+  - "REVISE if branches are internally stable but cannot be distinguished from every preregistered static control"
+  - "GO_WITH_LIMITATIONS only if every mechanics, stability, convergence, and dynamic/static margin gate passes"
+  - "even GO_WITH_LIMITATIONS only opens autonomous-lift or determinant definition; it does not create a formal candidate"
+  - "do not invoke Route B"
