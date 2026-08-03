@@ -58,6 +58,10 @@ with `O(T)` zero counting rather than the required `Theta(T log T)` behavior.
 
 ### Reproduction commands
 
+Final verification passed `14/14` focused control tests and `46/46` repository
+tests. Regenerating the JSON artifact produced a byte-identical file; both YAML
+files parsed successfully and `git diff --check` passed.
+
 ```bash
 git status --short --branch
 git pull --rebase origin main
@@ -460,3 +464,198 @@ The active observable is `STOP_SCOPED`, so no further task is authorized inside
 chronological transfer-cocycle/Fredholm object with its own source lock.
 Otherwise the next queued project task is the `CLUE-A2-001` synthetic
 Euler-product positive control.
+
+---
+
+## 2026-08-03 — CTRL-0001 Route-A A2 positive control
+
+### Current clue
+
+`CLUE-A2-001` — validate the weighted dynamical-Zeta/Fredholm evaluator before
+using numerical zero evidence from a new candidate.
+
+`CTRL-0001` is an explicitly non-candidate control. It does not consume
+`SS-0003`, does not read primes or Riemann zeros, and does not authorize Route B.
+
+### Source lock and exact object
+
+The source lock `configs/source_locks/CTRL-0001.yaml` was written before the
+implementation and freezes
+
+\[
+\mathcal H=\ell^2(\{A_+,A_-,B,C\}\times\mathbb N_0),
+\qquad
+\mathcal L_s e_{c,n}=a_cq_c^ne^{-s}e_{c,n},
+\]
+
+with four rationally parameterized channels. The sole determinant convention is
+
+\[
+D(s)=\det_{\rm Fr}(I-\mathcal L_s)
+=\prod_c\prod_{n\ge0}(1-a_cq_c^ne^{-s}).
+\]
+
+The reciprocal `1/D`, logarithmic derivative `D'/D`, exponential of a
+truncated log series, and absolute-value ablation are separate ledgers.
+
+After adversarial review, lock version 2 added only explicit formulas for
+`D_N` and `D_K`, deterministic-holdout wording, and supplemental precision and
+ledger audits. No mathematical object, channel constant, rectangle, primary
+cutoff, match radius, or acceptance threshold changed.
+
+The frozen open rectangle is
+
+\[
+-8/25<\Re s<17/25,
+\qquad
+|\Im s|<34/5,
+\]
+
+with exact post-discovery scoring counts total/core/upper/lower
+`22/12/5/5` and minimum boundary clearance `0.07`.
+
+### Route-A result
+
+```text
+control tuple:
+(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+ A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)
+candidate interpretation:
+(A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)
+overall as a candidate: ROUTE_A_REJECTED
+infrastructure control verdict: GO_WITH_LIMITATIONS
+candidate-scope verdict: STOP_SCOPED
+Route B: inactive and not authorized
+```
+
+The analytic trace-class statement and entire Fredholm determinant are exact.
+The A2 numerical pipeline passes every frozen gate, but the object is engineered
+and has no natural prime orbit or completed-xi target structure.
+
+### Independent numerical paths
+
+Root discovery uses q-binomial Fredholm coefficients in `z=exp(-s)` and then
+enumerates every logarithm branch in the rectangle. Exact formula roots are
+opened only afterward for one-to-one scoring. An independent Newton/trace
+recurrence agrees through degree 24 with global scaled defect
+`5.97e-13`; the coefficient conjugation defect through degree 32 is
+`1.88e-13`.
+
+Supplemental `K=28` mpmath recomputations at 50, 80, and 120 decimal digits
+all find 22 roots. Maximum root drift is `4.35e-49` from 50 to 80 dps,
+`8.62e-79` from 80 to 120 dps, and `5.41e-13` from complex128 to 120 dps.
+The 120-dps truncation error against the exact scoring ledger remains
+`8.89658e-9`, showing that the primary error is coefficient cutoff rather than
+floating precision.
+
+Argument-principle counting uses only the direct finite-mode product. Frozen
+grid results are:
+
+| points/edge | winding | max adjacent phase step |
+|---:|---:|---:|
+| 128 | 22 | 2.00839 |
+| 256 | 22 | 1.11299 |
+| 512 | 22 | 0.568995 |
+| 1024 | 22 | 0.285756 |
+
+The first two grids have the correct count but fail the `pi/3` phase-step gate;
+only the successive 512/1024 pair is accepted.
+
+This is a sampled numerical winding diagnostic, not a rigorous
+interval-arithmetic certificate: endpoint phase increments and successive
+refinement cannot exclude every possible between-sample loop. The exact root
+ledger establishes the control truth; the sampler tests whether the numerical
+pipeline reproduces it independently.
+
+Coefficient cutoffs expose both count and identity failures:
+
+| K | roots found | strict matches at `1e-4` | missing | extra | global max assignment error |
+|---:|---:|---:|---:|---:|---:|
+| 16 | 28 | 6 | 16 | 22 | `1.35492e-1` |
+| 20 | 22 | 15 | 7 | 7 | `2.02999e-3` |
+| 24 | 22 | 22 | 0 | 0 | `1.25037e-5` |
+| 28 | 22 | 22 | 0 | 0 | `8.89663e-9` |
+| 32 | 22 | 22 | 0 | 0 | `7.82564e-13` |
+
+Mode cutoff `N=2` has winding 18; every frozen `N>=3` has winding 22. The
+maximum relative contour-value drift from `N=40` to `N=48` remains
+`8.46440e-7`, so root-count stability and determinant-value stability are
+reported separately.
+
+### Mandatory falsification controls
+
+- deleting the conjugate `A_plus/A_minus, n=1` modes gives counts
+  `18/10/4/4` and exactly `4 missing, 0 extra`;
+- adding the frozen conjugate extra factors gives `26/14/6/6` and exactly
+  `0 missing, 4 extra`;
+- balanced deletion plus addition restores all counts to `22/12/5/5`, while
+  the matcher still reports `4 missing, 4 extra`;
+- replacing all complex channel weights by absolute values changes total
+  winding to 30 and is rejected as a different determinant;
+- at repetition four, the signed trace is `-0.33393858995368`, while the sum
+  of absolute channel terms is `33.59028440713514`, for cancellation ratio
+  `0.00994152`.
+
+Executable determinant-ledger controls additionally give:
+
+- `D` winding `+22`;
+- `1/D` winding `-22`, recorded as 22 poles and no zeros;
+- `D'/D` trapezoidal contour integrals `22.0000110` and `22.0000028` at
+  512 and 1024 points per edge, plus local scaled residue approximately 1;
+- winding zero for the order-four truncated-log exponential, which is
+  analytically zero-free.
+
+Every missing/extra/balanced/absolute injection contour also passes its own
+frozen phase-step and integer-residual diagnostics.
+
+The balanced control is the main reusable result: regional argument count is
+necessary but cannot certify divisor identity without explicit missing/extra
+matching.
+
+### Updated files
+
+- `configs/source_locks/CTRL-0001.yaml`;
+- `experiments/ctrl_0001_qpochhammer.py`;
+- `tests/test_ctrl_0001_qpochhammer.py`;
+- `artifacts/ctrl_0001/route_a_positive_control.json`;
+- `evaluations/route_a/CTRL-0001/20260803T171847Z.yaml`;
+- `docs/candidate_registry.md`;
+- `docs/research_clues.md`;
+- `docs/research_log.md`;
+- `HP_HANDOFF.md`.
+
+No obstruction or operator-obligation entry was created. This control proves no
+new candidate-family impossibility and opens no Route-B operator.
+
+### Reproduction commands
+
+```bash
+python3 -m unittest -v tests/test_ctrl_0001_qpochhammer.py
+python3 experiments/ctrl_0001_qpochhammer.py \
+  --quiet \
+  --output artifacts/ctrl_0001/route_a_positive_control.json
+python3 -m unittest discover -v
+git diff --check
+```
+
+### Claim boundary
+
+Established: a deterministic, table-free A2 evaluator benchmark with exact
+analytic determinant, independent root and winding implementations, explicit
+cutoff failures, one-to-one missing/extra reporting, and signed-cancellation
+falsification.
+
+Not established: natural primitive dynamics, rational-prime correspondence,
+von-Mangoldt weights, completed-xi functional equation or divisor, physical
+quantization, self-adjointness, Route B, Hilbert--Polya, or RH.
+
+Also not established: a rigorous interval or derivative-bound certificate for
+the sampled winding path. This is the limitation attached to the control
+verdict.
+
+### Next smallest task
+
+Before allocating `SS-0003`, define one explicit non-Selberg mathematical
+object with its own intrinsic clock and same-object Fredholm determinant. Then
+apply the `CTRL-0001` independent winding, cutoff, one-to-one matching, balanced
+corruption, and signed-cancellation gates before interpreting any zero match.

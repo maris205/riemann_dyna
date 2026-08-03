@@ -1,0 +1,243 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: CTRL-0001
+audit_id: CTRL-A2-QPOCH-001
+clue_id: CLUE-A2-001
+formal_candidate: false
+source_commit: 1088862c01cd400632fd1d8c17c5ba3a436d1f0e
+source_commit_role: "base commit before the CTRL-0001 worktree; this commit does not contain the control"
+result_commit: "PENDING_STABLE_COMMIT"
+evaluation_date: "2026-08-03T17:18:47Z"
+
+source_lock:
+  lock_version: 2
+  sha256: ed3ba6a20d08d0e43776119481397afb495e4fabc0fa38eae526bba1a3125c25
+  object: >-
+    The analytic diagonal trace-class family on
+    ell^2({A_plus,A_minus,B,C} x N_0), with
+    L_s e_(c,n)=a_c q_c^n exp(-s)e_(c,n), using the four frozen
+    rational alpha/beta values and phases in configs/source_locks/CTRL-0001.yaml.
+  data_type: "entire Fredholm determinant and its complex divisor; synthetic positive-control data only"
+  clock: "unit roof per diagonal mode; z=exp(-s); imaginary branch period 2*pi"
+  normalization: "no scaling, offset, unfolding, affine remapping, or zero anchoring"
+  determinant_convention: >-
+    D(s)=det_Fr(I-L_s)=product_c product_(n>=0)(1-a_c q_c^n exp(-s)).
+    The reciprocal 1/D, logarithmic derivative D'/D, and exponential of a
+    truncated log series remain separate ledgers.
+  cutoff: >-
+    Open rectangle -8/25<Re(s)<17/25 and |Im(s)|<34/5; mode cutoffs
+    2,3,8,16,24,32,40,48; coefficient cutoffs 16,20,24,28,32;
+    contour grids 128,256,512,1024 points per edge.
+  precision: >-
+    numpy.complex128; root-match radius 1e-4; normalized polynomial residual
+    gate 1e-10; winding residual gate 1e-8; adjacent phase gate pi/3.
+    Supplemental K=28 root audits use mpmath at 50, 80, and 120 dps without
+    retuning the primary gates.
+  allowed_data:
+    - "frozen rational constants, pi, exp, and formula-generated operator data"
+    - "exact synthetic roots only after root discovery, for scoring"
+    - "frozen synthetic fault-injection factors"
+  forbidden_data:
+    - "prime tables, primality predicates, or prime-fitted constants"
+    - "Riemann-zero tables or xi/zeta evaluations"
+    - "exact scoring roots as seeds or discovery inputs"
+    - "post-score tuning or absolute-value replacement in the nominal determinant"
+  training_split: "empty; the control is parameter-free"
+  validation_split: "core strip |Im(s)|<17/5 with 12 exact scoring roots"
+  test_split: "deterministic upper and lower holdout strips with 5 roots each; not cryptographically sealed because the synthetic formula is public"
+  stopping_conditions:
+    - "REVISE if nominal cutoff, winding, matching, or fault-injection gates fail"
+    - "REJECTED if determinant ledgers are mixed or forbidden data enter discovery"
+    - "GO only as an A2 infrastructure control"
+    - "STOP_SCOPED under any Riemann-dynamics or Hilbert-Polya interpretation"
+
+a1:
+  verdict: A1_WEAK
+  candidate_interpretation: A1_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The synthetic primitive factors are explicitly indexed by (channel,mode),
+    their unit clock and complex weights are frozen, and repetitions are retained
+    exactly through p_r=sum_c a_c^r/(1-q_c^r). Enumeration is complete and uses
+    no prime or zero lookup.
+  strongest_failure: >-
+    These factors are an engineered diagonal trace-class ledger, not primitive
+    periodic orbits of a natural classical phase-space dynamics. There is no
+    rational-prime correspondence, log-prime clock, monodromy, or
+    von-Mangoldt-weighted repetition law.
+  metrics:
+    synthetic_channels: 4
+    exact_roots_in_frozen_rectangle: 22
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    repetition_trace_r4_real: -0.33393858995368175
+    repetition_trace_r4_sum_absolute_terms: 33.59028440713514
+    repetition_trace_r4_cancellation_ratio: 0.0099415231471737
+  artifacts:
+    - configs/source_locks/CTRL-0001.yaml
+    - artifacts/ctrl_0001/route_a_positive_control.json
+
+a2:
+  verdict: A2_ANALYTIC_DETERMINANT
+  candidate_interpretation: A2_FAIL
+  evidence_status: PROVED
+  numerical_pipeline_evidence_status: NUMERICAL_OBSERVATION
+  strongest_evidence: >-
+    L_s is analytic trace class for every complex s and its Fredholm determinant
+    is the frozen entire q-Pochhammer product. Independent q-binomial and trace
+    recurrences agree, polynomial root discovery finds all 22 roots at K>=24,
+    and the independent direct-product argument-principle sampler reproduces
+    regional counts 22/12/5/5 on successive accepted grids 512 and 1024.
+  strongest_failure: >-
+    This validates only a deliberately constructed synthetic control. It does
+    not match a completed-xi divisor or supply arithmetic primitive orbits; its
+    exact roots were designed for evaluator falsification rather than discovered
+    from a natural dynamics.
+  metrics:
+    zero_error_train: "not_applicable_empty_training_split"
+    zero_error_validation:
+      k24_max: 1.2503705123212872e-5
+      k28_max: 8.896631990447083e-9
+      k32_max: 7.825638193517895e-13
+    zero_error_test:
+      k28_upper_max: 8.896583337289626e-9
+      k28_lower_max: 8.896631990447083e-9
+      upper_missing: 0
+      upper_extra: 0
+      lower_missing: 0
+      lower_extra: 0
+    extra_zero_count:
+      k16: 22
+      k20: 7
+      k24: 0
+      k28: 0
+      k32: 0
+    missing_zero_count:
+      k16: 16
+      k20: 7
+      k24: 0
+      k28: 0
+      k32: 0
+    root_count_discrepancy: >-
+      K16 finds 28 roots and only 6 strict matches; K20 has the correct count 22
+      but only 15 strict matches. K24, K28, and K32 have 22 one-to-one matches.
+    cutoff_drift:
+      k24_to_k28_max_branch_drift: 1.2498284887605847e-5
+      n40_to_n48_max_relative_contour_value_drift: 8.464397881619062e-7
+      mode_count_n2: 18
+      mode_count_n3_and_above: 22
+    precision_drift:
+      role: "supplemental observation; no primary threshold was retuned"
+      k28_root_counts_at_dps_50_80_120: [22, 22, 22]
+      max_root_drift_dps50_to_dps80: 4.354327499723178e-49
+      max_root_drift_dps80_to_dps120: 8.619619808797482e-79
+      max_root_drift_complex128_to_dps120: 5.411786014348651e-13
+      dps120_k28_max_error_to_exact_ledger: 8.896575456547871e-9
+      claim_boundary: "not a rigorous interval certificate and not a moving-order theorem"
+    control_margin:
+      minimum_exact_boundary_clearance: 0.07
+      match_radius: 1.0e-4
+      max_normalized_polynomial_residual: 6.285778739811538e-15
+      coefficient_global_scaled_defect_through_m24: 5.969457222737178e-13
+      coefficient_conjugation_defect_through_k32: 1.8807211752629512e-13
+      phase_increment_512: 0.5689946606200225
+      phase_increment_gate: "pi/3"
+      contour_gate_status: >-
+        Numerical anti-alias gate only; endpoint phase increments and successive
+        refinements do not constitute an interval-arithmetic winding proof.
+    determinant_ledger_controls:
+      D_winding: 22
+      reciprocal_1_over_D_winding: -22
+      D_prime_over_D_scaled_residue_probe: "1.0000006437-2.5973e-6 i"
+      D_prime_over_D_contour_integral_512: "22.0000110255+2.83e-16 i"
+      D_prime_over_D_contour_integral_1024: "22.0000027626+2.12e-16 i"
+      truncated_log_exponential_order4_winding: 0
+      ledgers_combined: false
+    mandatory_fault_injections:
+      missing_only: "counts 18/10/4/4; 4 missing and 0 extra"
+      extra_only: "counts 26/14/6/6; 0 missing and 4 extra"
+      balanced: "counts remain 22/12/5/5; matcher reports 4 missing and 4 extra"
+      absolute_value: "winding count changes to 30; invalid as a nominal substitute"
+      winding_quality: "all injected regional contours pass the frozen pi/3 phase-step and 1e-8 integer-residual diagnostics"
+  artifacts:
+    - experiments/ctrl_0001_qpochhammer.py
+    - tests/test_ctrl_0001_qpochhammer.py
+    - artifacts/ctrl_0001/route_a_positive_control.json
+
+a3:
+  verdict: A3_PARTIAL_ANALYTIC_STRUCTURE
+  candidate_interpretation: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Analytic trace-class dependence proves that D is entire. The conjugate
+    channel pair and real B/C channels give D(conj(s))=conj(D(s)), and the exact
+    divisor formula supplies an all-order continuation and multiplicity ledger.
+  strongest_failure: >-
+    D is 2*pi*i periodic and has only linear vertical zero density in a fixed
+    real strip. It has no completed-xi functional equation, Gamma factor,
+    trivial-zero ledger, or Riemann-von Mangoldt T log T count. The analytic
+    structure is intentionally the wrong global target.
+  metrics:
+    entire: true
+    exact_divisor_formula: "s_(c,n,k)=alpha_c-n beta_c+i(theta_c+2*pi*k)"
+    conjugation_defect_numeric: 1.8807211752629512e-13
+    imaginary_period: "2*pi"
+    fixed_strip_vertical_zero_growth: "Theta(T), not Theta(T log T)"
+    completed_xi_functional_equation: false
+    hidden_zero_producing_prefactor: false
+  artifacts:
+    - configs/source_locks/CTRL-0001.yaml
+    - artifacts/ctrl_0001/route_a_positive_control.json
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The trace-class family is completely defined on an explicit Hilbert space,
+    so the evaluator has a clean operator-valued analytic test object.
+  strongest_failure: >-
+    It is not a quantization of a classical symplectic, contact, or scattering
+    system. L_s is generally non-self-adjoint, no Hamiltonian generator or
+    physical boundary conditions are supplied, and the synthetic unit clock
+    has no natural Route-B lift.
+  metrics:
+    hilbert_space_defined: true
+    classical_phase_space_defined: false
+    natural_quantization_defined: false
+    self_adjoint_generator_defined: false
+    route_b_ready: false
+  artifacts:
+    - configs/source_locks/CTRL-0001.yaml
+
+overall_verdict: ROUTE_A_REJECTED
+control_route_a_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+candidate_route_a_tuple: [A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL]
+recommended_control_verdict: GO_WITH_LIMITATIONS
+recommended_candidate_state: STOP_SCOPED
+claim_boundary:
+  what_is_established:
+    - "CTRL-0001 is a deterministic, table-free regression benchmark for the Route-A A2 evaluator."
+    - "The exact Fredholm determinant and frozen 22-root prefix pass independent product, coefficient, root-matching, cutoff, and sampled-winding regression checks."
+    - "Balanced corruption proves that regional root count alone cannot certify divisor identity."
+    - "The r=4 trace demonstrates why signed complex cancellation cannot be replaced by separate absolute-value bounds."
+    - "Executable controls distinguish the +22 determinant winding, -22 reciprocal pole winding, D'/D residue ledger, and zero-free truncated-log exponential."
+  what_is_not_established:
+    - "CTRL-0001 is not a formal Riemann-dynamics candidate and must not receive an SS candidate number."
+    - "No natural prime orbit, completed-xi determinant, physical dynamics, or Hilbert-Polya operator is obtained."
+    - "No fixed-order numerical result is promoted to a moving-order theorem for another family."
+    - "The sampled contour gate is not an interval-arithmetic or derivative-bound proof excluding every hidden between-sample winding."
+  what_would_change_the_status: >-
+    Nothing should promote this engineered control itself. Its reusable role is
+    to falsify future candidate pipelines that miss log branches, ignore extra
+    roots, accept aliased contour counts, mix determinant ledgers, or discard
+    signed cancellation.
+blocking_conditions:
+  - "engineered diagonal factors rather than natural primitive dynamics"
+  - "linear periodic divisor rather than completed-xi global structure"
+  - "no natural quantization or Route-B operator"
+next_smallest_test: >-
+  Apply the frozen CTRL-0001 regression gates to the next explicit non-Selberg
+  candidate before interpreting any numerical zero match: require independent
+  winding, one-to-one missing/extra matching, cutoff drift, and balanced
+  corruption under a candidate-specific source lock.
+route_b_invocation_allowed: false

@@ -322,6 +322,59 @@ e^{g(s)}\xi(s).
 
 不同实验混用 \(Z\)、\(1/Z\)、\(Z'/Z\) 或 determinant convention。
 
+### 2026-08-03 positive-control closure
+
+`CTRL-0001` 完成了本线索的 evaluator positive control。它不是正式候选，
+不得分配 `SS-0003`。冻结对象为四通道对角 trace-class 族
+
+\[
+\mathcal L_s e_{c,n}=a_cq_c^ne^{-s}e_{c,n},
+\qquad
+D(s)=\det_{\rm Fr}(I-\mathcal L_s)
+=\prod_c\prod_{n\ge0}(1-a_cq_c^ne^{-s}).
+\]
+
+在冻结矩形中，精确 scoring ledger 为 total/core/upper/lower
+`22/12/5/5`。根发现使用 q-binomial Fredholm 系数，多项式根仅在
+`z=e^{-s}` 中求得后才枚举全部 logarithm branches；argument principle
+独立使用 direct mode product。结果包括：
+
+- `K=16` 找到 28 roots，仅 6 个在 `1e-4` 半径内严格匹配；
+- `K=20` 虽然 root count 已是 22，但只有 15 个严格匹配；
+- `K=24/28/32` 均为 22 个一一匹配，最大误差分别约
+  `1.25e-5/8.90e-9/7.83e-13`；
+- `N=2` winding 为 18，`N>=3` 为 22，但 `N=40 -> 48` determinant
+  contour value drift 仍为 `8.46e-7`，说明 count stability 与 value
+  stability 必须分开；
+- 冻结的 `128/256` grids 虽给出正确 count，但相邻相位步长未通过
+  `pi/3`；`512/1024` successive grids 才被接受；
+- balanced corruption 保持 `22/12/5/5` 计数，却被 matcher 报告为
+  `4 missing + 4 extra`；
+- `r=4` signed trace 的 cancellation ratio 为 `0.0099415`，而将所有
+  phase 取绝对值会把 winding count 改成 30。
+- executable ledger controls 分别得到 `D` winding `+22`、`1/D` pole
+  winding `-22`、`D'/D` contour integral 收敛到 22，以及四阶 truncated-log
+  exponential winding `0`；
+- `K=28` 的 50/80/120 dps mpmath 复算均找到 22 roots，complex128 与
+  120 dps 的最大 root drift 为 `5.41e-13`。
+
+因此，作为 A2 evaluator infrastructure，结论为 `GO_WITH_LIMITATIONS`；作为任何
+Riemann-dynamics candidate，结论为 `STOP_SCOPED`。它验证了 root finder、
+argument principle、cutoff drift、extra/missing detection 与 determinant
+ledger 分离，但不提供自然 primitive orbit、completed-\(\xi\) 结构或 Route B
+入口。
+
+限制是：离散 contour endpoint 的 phase-step gate 与 successive refinement
+属于 numerical anti-alias diagnostic，不能替代 interval arithmetic 或
+`D'/D` 导数上界所给出的严格 winding certificate。控制语境下的 tuple 为
+`(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)`；
+若把同一对象解释为 completed-\(\xi\) 候选，则 tuple 为
+`(A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)`。
+
+下一次调用本线索时，应把 `CTRL-0001` 作为 regression benchmark，要求新
+对象在自己的 source lock 下通过同样的 independent winding、one-to-one
+matching、balanced corruption 与 signed-cancellation gates。
+
 ---
 
 ## CLUE-A2-002 — Signed/complex cancellation 是核心结构
@@ -874,11 +927,10 @@ e^{q(E)}
 ## Priority 0 — 基础验证
 
 1. `[STOP_SCOPED]` Logistic physical-epsilon medium-fidelity eigenbranch audit
-2. `[NEXT]` Synthetic Euler-product positive control (`CLUE-A2-001`)
-3. Shuffled-period / random-weight / random-phase controls
-4. Argument-principle root counter
-5. Signed cycle expansion
-6. Cutoff and precision drift
+2. `[GO_WITH_LIMITATIONS_CONTROL]` Synthetic Fredholm/Euler-product positive control (`CTRL-0001`, `CLUE-A2-001`)
+3. `[NEXT]` Define one explicit non-Selberg candidate and run the `CTRL-0001` regression gates before assigning `SS-0003`
+4. Candidate-specific shuffled-period / random-weight / random-phase controls
+5. Candidate-specific signed cycle expansion and moving-cutoff drift
 
 ## Priority 1 — 最值得并行的三条 Route-A 路线
 
@@ -1045,4 +1097,16 @@ new_status: BLOCKED
 evidence: "P4-LOGISTIC-MEDIUM-PHYSICAL-EPSILON version-2 audit: 4 reference strong branches, translated-grid phase-rank failure, and dynamic/static margin median 0.03789"
 commit: "current checkpoint; source state ef79805"
 consequence: "The frozen occupation-aggregated strong-layer phase observable is STOP_SCOPED, while Route A remains NOT_TESTABLE. Reopen only with an explicit autonomous lift or chronological transfer-cocycle/Fredholm object; do not unlock new zero matching."
+```
+
+## Status update — CLUE-A2-001 positive-control closure
+
+```yaml
+date: 2026-08-03
+clue_id: CLUE-A2-001
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "CTRL-0001 four-channel q-Pochhammer Fredholm control passes all frozen coefficient, sampled-winding, cutoff, matching, balanced-corruption, executable-ledger, and cancellation gates, with supplemental 50/80/120-dps stability"
+commit: "current checkpoint; source state 1088862"
+consequence: "The A2 evaluator infrastructure is GO_WITH_LIMITATIONS because sampled winding is not an interval certificate; CTRL-0001 is STOP_SCOPED as a Riemann candidate. Reuse it as a regression benchmark for the next explicit non-Selberg object; do not create SS-0003 from the control."
 ```

@@ -1,0 +1,134 @@
+control_id: CTRL-0001
+audit_id: CTRL-A2-QPOCH-001
+clue_id: CLUE-A2-001
+formal_candidate: false
+lock_version: 2
+revision_note: >-
+  Version 2 adds only explicit truncation formulas, deterministic-holdout
+  wording, and supplemental precision/ledger audits requested by adversarial
+  review. The mathematical object, channel constants, rectangle, primary
+  cutoffs, match radius, and acceptance thresholds are unchanged from the
+  pre-implementation lock.
+title: Four-channel q-Pochhammer Fredholm determinant positive control
+
+mathematical_object:
+  hilbert_space: "ell^2({A_plus,A_minus,B,C} x N_0)"
+  operator_family: "L_s e_(c,n) = a_c q_c^n exp(-s) e_(c,n)"
+  channels:
+    A_plus:
+      alpha: "11/20"
+      beta: "2/5"
+      theta: "+pi/3"
+    A_minus:
+      alpha: "11/20"
+      beta: "2/5"
+      theta: "-pi/3"
+    B:
+      alpha: "9/20"
+      beta: "1/2"
+      theta: "pi"
+    C:
+      alpha: "3/10"
+      beta: "9/20"
+      theta: "0"
+  parameterization: "a_c=exp(alpha_c+i theta_c), q_c=exp(-beta_c)"
+  trace_class_statement: "For every complex s, sum_(c,n) |a_c q_c^n exp(-s)| is finite, so L_s is trace class and analytic in trace norm."
+
+data_type:
+  primary: "entire Fredholm determinant D(s)=det_Fr(I-L_s) and its complex divisor"
+  secondary:
+    - "finite direct-mode products D_N(s) of the same determinant"
+    - "Fredholm coefficient polynomials D_K(z), z=exp(-s), of the same determinant"
+    - "formula-generated exact synthetic divisor used only after root discovery for scoring"
+  interpretation: "synthetic infrastructure positive control; not a Riemann-dynamics candidate"
+
+clock: "unit roof per diagonal mode; z=exp(-s); imaginary branch period 2*pi"
+normalization: "no scale, offset, unfolding, affine remapping, or zero anchoring"
+
+determinant_convention:
+  frozen_object: "D(s)=det_Fr(I-L_s)=product_c product_(n>=0) (1-a_c q_c^n exp(-s))"
+  reciprocal_zeta: "Z(s)=1/D(s), retained only as a distinct pole ledger"
+  logarithmic_derivative: "D'(s)/D(s), retained only as a distinct meromorphic diagnostic"
+  truncated_log_expansion: "not a determinant approximation for root discovery because its exponential has no zeros"
+  excluded_mixtures:
+    - "using zeros of D as zeros of 1/D"
+    - "using D'/D poles as determinant zeros without an explicit pole ledger"
+    - "exponentiating a truncated log series and treating it as D_K"
+    - "combining signed coefficients with an absolute-value determinant"
+
+cutoff:
+  mode_truncation_definition: "D_N(s)=product_c product_(0<=n<N) (1-a_c q_c^n exp(-s))"
+  coefficient_truncation_definition: "D_K(z)=sum_(m=0)^K d_m z^m with z=exp(-s)"
+  rectangle:
+    real_open: ["-8/25", "17/25"]
+    imaginary_open: ["-34/5", "34/5"]
+    minimum_exact_boundary_clearance: 0.07
+  partitions:
+    validation_core: "|Im(s)| < 17/5; exact scoring count 12"
+    test_upper: "17/5 < Im(s) < 34/5; exact scoring count 5"
+    test_lower: "-34/5 < Im(s) < -17/5; exact scoring count 5"
+  mode_cutoffs: [2, 3, 8, 16, 24, 32, 40, 48]
+  coefficient_cutoffs: [16, 20, 24, 28, 32]
+  primary_mode_cutoff: 48
+  primary_coefficient_cutoff: 28
+  coefficient_guard: 32
+  contour_points_per_edge: [128, 256, 512, 1024]
+
+precision:
+  primary: "numpy.complex128"
+  supplemental_audit: "mpmath coefficient/root recomputation at K=28 with 50, 80, and 120 decimal digits; observational and not used to retune primary gates"
+  exact_constants: "frozen rational alpha/beta values and mathematical pi"
+  match_radius: 1.0e-4
+  normalized_polynomial_residual_max: 1.0e-10
+  integer_winding_residual_max: 1.0e-8
+  contour_phase_step_max: "pi/3"
+  coefficient_scaled_defect_max_through_m24: 1.0e-9
+  coefficient_conjugation_defect_max: 5.0e-12
+  mode_n40_to_n48_relative_drift_max: 2.0e-6
+  coefficient_error_gates:
+    k24_max_root_error: 5.0e-5
+    k28_max_root_error: 1.0e-6
+    k32_max_root_error: 1.0e-8
+    k24_to_k28_max_branch_drift: 2.0e-5
+
+allowed_data:
+  - "the frozen rational channel constants, pi, and exp"
+  - "operator evaluations and coefficients generated from the frozen formulas"
+  - "formula-generated exact roots only after independent root discovery, for scoring"
+  - "the frozen synthetic missing, extra, balanced, and absolute-value fault injections"
+  - "standard finite-dimensional polynomial root and one-to-one assignment algorithms"
+
+forbidden_data:
+  - "prime tables, primality predicates, or prime-derived fitted constants"
+  - "Riemann-zero tables or completed-xi/zeta evaluations"
+  - "exact synthetic roots as root-finder seeds or discovery inputs"
+  - "target-dependent tuning after validation or test scoring"
+  - "absolute-value replacement in the nominal determinant"
+  - "discarding complex signs or conjugate-channel cancellation"
+  - "changing clocks, rectangles, match radii, cutoffs, or determinant conventions after scoring"
+
+training_split: "empty; the positive control is parameter-free"
+validation_split: "core strip |Im(s)|<17/5, plus coefficient/mode diagnostics fixed above"
+test_split: "deterministic upper and lower holdout strips; not cryptographically sealed because the synthetic formula is public; scoring code opens the ledger only after root discovery"
+
+expected_truth_ledger:
+  total: 22
+  validation_core: 12
+  test_upper: 5
+  test_lower: 5
+  exact_root_formula_for_scoring_only: "s_(c,n,k)=alpha_c-n beta_c+i(theta_c+2*pi*k)"
+
+fault_injections:
+  missing_only: "delete modes (A_plus,1) and (A_minus,1); expect counts 18/10/4/4 and 4 missing, 0 extra"
+  extra_only: "multiply by (1-b_plus exp(-s))(1-b_minus exp(-s)), b_plus/minus=exp(1/20 +/- i*pi/2); expect 26/14/6/6 and 0 missing, 4 extra"
+  balanced: "apply missing-only and extra-only together; expect nominal counts 22/12/5/5 but 4 missing and 4 extra"
+  absolute_value: "replace every a_c by |a_c| only in the invalid ablation; expect winding count 30 and mandatory failure"
+
+stopping_conditions:
+  - "mark REVISE if the nominal determinant, cutoff gates, independent winding count, root matcher, or any mandatory injection fails"
+  - "mark REJECTED if determinant ledgers are mixed, exact scoring roots enter discovery, forbidden arithmetic data are read, or signed cancellation is replaced by absolute values"
+  - "mark NOT_TESTABLE if the required complex determinant or coefficient data cannot be computed with the frozen data type"
+  - "mark GO only for the A2 evaluation infrastructure positive control when all frozen gates pass"
+  - "prefer GO_WITH_LIMITATIONS when all frozen regression gates pass but the sampled winding path lacks an interval-arithmetic or derivative-bound certificate"
+  - "mark STOP_SCOPED for any interpretation as a Riemann-dynamics or Hilbert-Polya candidate"
+  - "never invoke Route B for this control"

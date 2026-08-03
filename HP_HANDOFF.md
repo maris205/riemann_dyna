@@ -2,208 +2,330 @@
 
 ## Current status
 
-The legacy non-autonomous Logistic strong-layer empirical phase observable has
-completed its target-free-computation, physical-epsilon robustness audit.
+The `CLUE-A2-001` synthetic Fredholm/Euler-product evaluator control is
+complete.
 
-- Active clue: `CLUE-A2-005`
-- Clue state: `BLOCKED`
-- Formal candidate: none
-- Route-A status: `NOT_TESTABLE`
-- Diagnostic Route-A tuple:
+- Active clue: `CLUE-A2-001`
+- Control ID: `CTRL-0001`
+- Formal candidate: `false`
+- Infrastructure verdict: `GO_WITH_LIMITATIONS`
+- Candidate-scope verdict: `STOP_SCOPED`
+- Control-context Route-A tuple:
+  `(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+    A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)`
+- Candidate-context Route-A tuple:
   `(A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)`
-- Empirical phase-observable verdict: `STOP_SCOPED`
+- Overall candidate interpretation: `ROUTE_A_REJECTED`
 - Route B: inactive and not authorized
 
 The latest formal candidate remains `SS-0002`, which is `STOP_SCOPED` under
-`OBR-006`. Do not reuse `SS-0003` for the Logistic line until an explicit
-mathematical determinant, clock and moving-cutoff object have been defined.
+`OBR-006`. `CTRL-0001` is reusable test infrastructure and must not be renamed
+or promoted to `SS-0003`.
 
-The `STOP_SCOPED` verdict is narrower than the Route-A status. It retires only
-the frozen occupation-aggregated strong-layer phase observable. Route A remains
-`NOT_TESTABLE` because no primitive-orbit Zeta or Fredholm determinant exists.
+The legacy Logistic line remains separately `BLOCKED`: its frozen empirical
+phase observable is `STOP_SCOPED`, while Route A is `NOT_TESTABLE`. Reopen it
+only with an explicit autonomous slow-variable lift or a chronological
+transfer-cocycle/Fredholm determinant under a new source lock.
 
 ## Current entry files
 
 - `docs/HP_Dynamics_Project_Entry.md`
 - `docs/main_agent_rules.md`
-- `docs/research_clues.md`
 - `.agents/skills/route-a-evaluator/SKILL.md`
 - `.agents/skills/route-b-evaluator/SKILL.md`
-- `docs/prior_work/logistic_legacy_pre_audit.md`
-- `configs/source_locks/P4-LOGISTIC-MEDIUM-PHYSICAL-EPSILON.yaml`
-- `artifacts/p4_logistic_medium/branch_audit.json`
+- `docs/research_clues.md`
+- `configs/source_locks/CTRL-0001.yaml`
+- `experiments/ctrl_0001_qpochhammer.py`
+- `tests/test_ctrl_0001_qpochhammer.py`
+- `artifacts/ctrl_0001/route_a_positive_control.json`
+- `evaluations/route_a/CTRL-0001/20260803T171847Z.yaml`
 
-## Current clue
+Source-lock version 2 is an adversarial-audit clarification: it adds explicit
+`D_N`/`D_K` formulas, deterministic-holdout wording, and supplemental
+precision/ledger diagnostics. It does not change the object, constants,
+rectangle, primary cutoffs, match radius, or frozen thresholds.
 
-The legacy micro notebook evolves
+## Frozen mathematical object
+
+On
 
 \[
-x_{n+1}=1-\mu_nx_n^2,
+\mathcal H=\ell^2(\{A_+,A_-,B,C\}\times\mathbb N_0),
+\]
+
+freeze the analytic diagonal trace-class family
+
+\[
+\mathcal L_s e_{c,n}=a_cq_c^ne^{-s}e_{c,n},
 \qquad
-\mu_n=u_c+\frac{k}{\log^2(n+10)},
+a_c=e^{\alpha_c+i\theta_c},
+\qquad
+q_c=e^{-\beta_c},
 \]
 
-and accumulates an occupation-conditioned empirical flux matrix
+with channels:
+
+| channel | alpha | beta | theta |
+|---|---:|---:|---:|
+| `A_plus` | `11/20` | `2/5` | `+pi/3` |
+| `A_minus` | `11/20` | `2/5` | `-pi/3` |
+| `B` | `9/20` | `1/2` | `pi` |
+| `C` | `3/10` | `9/20` | `0` |
+
+The sole determinant ledger is
 
 \[
-T_{ij}=\sum_n V_n(i)K_n(i,j).
+D(s)=\det_{\rm Fr}(I-\mathcal L_s)
+=\prod_c\prod_{n=0}^{\infty}(1-a_cq_c^ne^{-s}).
 \]
 
-The correct Markov surrogate is (Q=D^{-1}T), where
-(D=\operatorname{diag}(T\mathbf1)). The legacy CSR code instead computes
+Keep the following separate:
+
+- `1/D`, a pole ledger;
+- `D'/D`, a meromorphic logarithmic-derivative ledger;
+- the exponential of a truncated log expansion, which is zero-free and cannot
+  be used for root discovery;
+- the absolute-value ablation, which is a different determinant.
+
+The object uses a unit roof, `z=exp(-s)`, no affine scaling or unfolding, and no
+prime, zero, `zeta`, or `xi` data.
+
+## Frozen scoring region
+
+The open rectangle is
 
 \[
-B=TD^{-1}=DQD^{-1}.
+-8/25<\Re s<17/25,
+\qquad
+|\Im s|<34/5.
 \]
 
-Thus the normalization is wrong for Markov interpretation but does not alter
-the exact eigenvalue multiset. Its practical danger is the conditioning and
-nonnormality induced by a highly nonuniform occupation diagonal.
+Exact roots, used only after discovery for scoring, are
 
-The reported legacy observable is not a dynamical determinant. It retains
-upper-half-plane matrix eigenvalues, discards their moduli, sorts principal
-phases, and fixes a phase-to-height scale with the first Riemann zero. The
-occupation aggregate also erases chronological cocycle order.
+\[
+s_{c,n,k}=\alpha_c-n\beta_c+i(\theta_c+2\pi k).
+\]
 
-The completed medium audit removed the phase-to-height scale and read no zero,
-prime, or USTC table. It nevertheless inherits `epsilon=0.001916`, which was
-historically selected using zeros 2--6. This is therefore a robustness audit,
-not blind arithmetic validation.
+The exact count ledger is:
+
+- total: `22`;
+- validation core `|Im(s)|<17/5`: `12`;
+- upper deterministic holdout strip: `5`;
+- lower deterministic holdout strip: `5`;
+- minimum boundary clearance: `0.07`.
+
+Training is empty. No target values are fitted or used as root seeds. The
+holdout is deterministic rather than cryptographically sealed because the
+synthetic formula is public.
 
 ## Strongest evidence
 
-The frozen `2048 bins x 100000 steps` reference contains four
-residual-certified upper-half strong branches. They reproduce across:
+Two independent numerical paths pass:
 
-- time prefixes `50000/100000/200000` from one schedule;
-- bin counts `1536/2048/3072`;
-- `k=300/450`;
-- fixed ones and seed-17 ARPACK starts;
-- the correct (Q) and diagonally similar legacy (B) matrices;
-- raw-matrix reconstruction and save/load content hashes.
+1. q-binomial channel coefficients, independently checked by the
+   Newton/Fredholm trace recurrence, discover polynomial roots in `z` and then
+   enumerate all logarithm branches in the rectangle;
+2. direct finite-mode products compute argument-principle windings without
+   reading the polynomial roots.
 
-Separately, dense and sparse eigensolvers agree on all 23 strong upper-half
-branches of the `256 bins x 5000 steps` physical-epsilon anchor. That anchor is
-a solver check on its own matrix, not a match to the four reference branches.
+The coefficient cutoffs deliberately expose unstable prefixes:
 
-Every mechanics gate passes, including convergence with all `450/450` Ritz
-values, residuals, mass, row sums, static-kernel identity, strong/moderate
-conjugacy, and all-profile edge saturation. The reference `k=450` edge modulus
-is `0.00225768`.
+| K | roots | strict matches at `1e-4` | missing | extra | max global assignment error |
+|---:|---:|---:|---:|---:|---:|
+| 16 | 28 | 6 | 16 | 22 | `0.135492` |
+| 20 | 22 | 15 | 7 | 7 | `0.00202999` |
+| 24 | 22 | 22 | 0 | 0 | `1.25037e-5` |
+| 28 | 22 | 22 | 0 | 0 | `8.89663e-9` |
+| 32 | 22 | 22 | 0 | 0 | `7.82564e-13` |
 
-## Strongest failure
+The maximum branch drift from `K=24` to `K=28` is `1.24983e-5`.
+The independent coefficient constructions have global scaled defect
+`5.96946e-13` through degree 24, and the nominal coefficient conjugation defect
+through degree 32 is `1.88072e-13`.
 
-Only four reference strong branches exist, below the preregistered minimum 20.
-Across every internal profile, only three of the four pass all stability gates,
-for stable survival `0.75`.
+Supplemental `K=28` mpmath audits at 50/80/120 dps all find 22 roots. Maximum
+drifts are `4.35e-49` from 50 to 80 dps, `8.62e-79` from 80 to 120 dps, and
+`5.41e-13` from complex128 to 120 dps. The 120-dps error against the exact
+ledger is still `8.89658e-9`, so the primary error is cutoff, not precision.
 
-The half-bin translated-domain control produces five strong branches. Its
-matched branches have median/p90/max normalized drift
-`0.028783/0.046071/0.051659`, maximum phase drift `0.033001`, and phase-rank
-median/max displacement `1/1`; the frozen phase/rank gate fails.
+The frozen contour diagnostics are:
 
-The same four dynamic branches are much closer to preregistered static-parent
-spectra than to internal perturbation uncertainty:
+| points/edge | winding | max phase step | accepted |
+|---:|---:|---:|---|
+| 128 | 22 | `2.00839` | no |
+| 256 | 22 | `1.11299` | no |
+| 512 | 22 | `0.568995` | yes |
+| 1024 | 22 | `0.285756` | yes |
 
-- median nearest-static normalized distance: `0.0009477`;
-- median dynamic/static margin: `0.03789`;
-- fraction with margin at least `1.5`: `0`.
+The coarse grids happen to return the correct count but fail the frozen
+`pi/3` adjacent-phase gate. The successive 512/1024 grids pass.
 
-Thus reproducible finite-matrix modes do not provide a distinct, stable phase
-observable under this source lock.
+These are numerical anti-alias diagnostics, not an interval-arithmetic or
+derivative-bound proof. Endpoint sampling cannot rigorously exclude every
+possible between-sample winding. This limitation is why the control verdict is
+`GO_WITH_LIMITATIONS`, even though the exact analytic divisor is known.
 
-## Source locks and artifacts
+Mode cutoff `N=2` has count 18; every frozen `N>=3` has count 22. The maximum
+relative contour-value drift from `N=40` to `N=48` is `8.46440e-7`, showing
+that count stability does not imply determinant-value stability.
 
-- Legacy audit lock:
-  `configs/source_locks/P4-LOGISTIC-LEGACY-AUDIT.yaml`
-- Deterministic smoke lock:
-  `configs/source_locks/P4-LOGISTIC-DETERMINISTIC-SMOKE.yaml`
-- Physical-epsilon medium lock, version 2:
-  `configs/source_locks/P4-LOGISTIC-MEDIUM-PHYSICAL-EPSILON.yaml`
-- Saved-evidence audit:
-  `artifacts/p4_logistic_legacy/route_a_pre_candidate_audit.json`
-- Target-free smoke profile:
-  `artifacts/p4_logistic_legacy/deterministic_smoke_profile.json`
-- Medium branch audit:
-  `artifacts/p4_logistic_medium/branch_audit.json`
-- Raw reference matrices:
-  `artifacts/p4_logistic_medium/raw/dynamic_reference_T.npz` and
-  `artifacts/p4_logistic_medium/raw/static_mean_matched_T.npz`
-- Detailed audit:
-  `docs/prior_work/logistic_legacy_pre_audit.md`
+## Strongest falsification result
 
-No entry was added to `docs/candidate_registry.md`, no Route-A candidate YAML
-was created, and `docs/operator_obligations.md` remains unchanged. No new
-obstruction number was minted because this is one source lock's numerical
-failure, not a family-level theorem.
+The balanced corruption control proves that argument count alone is
+insufficient:
+
+- missing-only: counts `18/10/4/4`, matcher `4 missing, 0 extra`;
+- extra-only: counts `26/14/6/6`, matcher `0 missing, 4 extra`;
+- balanced: counts return to `22/12/5/5`, matcher still reports
+  `4 missing, 4 extra`;
+- absolute-value ablation: total winding changes to `30` and is rejected as a
+  different determinant.
+
+Executable ledger controls keep data types separate:
+
+- `D` winding is `+22`;
+- `1/D` winding is `-22`, interpreted as 22 poles and no zeros;
+- `D'/D` contour integrals are `22.0000110` and `22.0000028` at 512 and
+  1024 points per edge, with local scaled residue approximately 1;
+- the order-four truncated-log exponential has winding zero and is
+  analytically zero-free.
+
+Every injected contour passes its own phase-step and integer-residual
+diagnostics.
+
+Signed cancellation is material. At repetition four,
+
+\[
+p_4=-0.33393858995368,
+\qquad
+\sum_c\left|\frac{a_c^4}{1-q_c^4}\right|
+=33.59028440713514,
+\]
+
+so the cancellation ratio is `0.00994152`. Separate absolute-value bounds
+cannot replace the signed trace.
+
+## Route-A interpretation
+
+```text
+A1_WEAK
+```
+
+Synthetic factors and repetitions are exact and complete, but they are not
+primitive orbits of a natural classical dynamics and have no rational-prime or
+von-Mangoldt structure.
+
+```text
+A2_ANALYTIC_DETERMINANT
+```
+
+The trace-class Fredholm determinant is exact and the frozen evaluation prefix
+passes all root, sampled-winding, cutoff, matching, ledger, precision, and
+adversarial regression checks. `GO_WITH_LIMITATIONS` applies only to evaluator
+infrastructure; the limitation is the non-rigorous sampled winding gate.
+
+```text
+A3_PARTIAL_ANALYTIC_STRUCTURE
+```
+
+The determinant is entire and conjugation symmetric with an exact divisor, but
+it is `2*pi*i` periodic, has linear vertical zero density in a fixed strip, and
+has no completed-xi functional equation, Gamma factor, trivial-zero ledger, or
+Riemann-von Mangoldt count.
+
+```text
+A4_FAIL
+```
+
+The analytic family acts on an explicit Hilbert space but is not a natural
+quantization of a classical symplectic/contact/scattering system. No
+self-adjoint generator, physical domain problem, or Route-B obligation is
+defined.
+
+For completed-`xi` candidate interpretation, all four layers fail:
+
+```text
+(A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)
+```
+
+## Repository updates
+
+Created:
+
+- `configs/source_locks/CTRL-0001.yaml`;
+- `experiments/ctrl_0001_qpochhammer.py`;
+- `tests/test_ctrl_0001_qpochhammer.py`;
+- `artifacts/ctrl_0001/route_a_positive_control.json`;
+- `evaluations/route_a/CTRL-0001/20260803T171847Z.yaml`.
+
+Updated:
+
+- `docs/candidate_registry.md` with a separately labeled non-candidate control;
+- `docs/research_clues.md`;
+- `docs/research_log.md`;
+- this handoff.
+
+Unchanged by design:
+
+- `docs/obstruction_registry.md`, because no new family theorem was proved;
+- `docs/operator_obligations.md`, because Route B remains closed.
 
 ## Reproduction commands
 
+Final verification: `14/14` focused tests and `46/46` full repository tests
+passed. The regenerated artifact was byte-identical, both YAML files parsed,
+and `git diff --check` passed.
+
 ```bash
-python3 -m unittest -v \
-  tests/test_p4_logistic_legacy_audit.py \
-  tests/test_p4_logistic_deterministic_smoke.py
-python3 experiments/p4_logistic_legacy_audit.py \
-  --output artifacts/p4_logistic_legacy/route_a_pre_candidate_audit.json
-python3 experiments/p4_logistic_deterministic_smoke.py \
-  --output artifacts/p4_logistic_legacy/deterministic_smoke_profile.json
-python3 -m unittest -v tests/test_p4_logistic_medium_branch_audit.py
-python3 experiments/p4_logistic_medium_branch_audit.py \
-  --output artifacts/p4_logistic_medium/branch_audit.json \
-  --raw-directory artifacts/p4_logistic_medium/raw \
-  > /tmp/p4_logistic_medium_stdout.json
+python3 -m unittest -v tests/test_ctrl_0001_qpochhammer.py
+python3 experiments/ctrl_0001_qpochhammer.py \
+  --quiet \
+  --output artifacts/ctrl_0001/route_a_positive_control.json
 python3 -m unittest discover -v
 git diff --check
 ```
 
-Medium-audit reference runtime: CPython `3.12.3`, NumPy `2.4.4`, SciPy
-`1.16.1`, Numba `0.66.0`, llvmlite `0.48.0`.
-
-The earlier formal-candidate commands remain:
-
-```bash
-python3 -m unittest -v tests/test_ss_0001_mod6_cayley.py
-python3 -m unittest -v tests/test_ss_0002_commutator_mayer.py
-```
+Runtime environment for the control: CPython `3.12.3`, NumPy `2.4.4`, SciPy
+`1.16.1`.
 
 ## Claim boundary
 
 Established:
 
-- exact source and target-use provenance for the two proposed legacy notebooks;
-- the fitted-prefix and retrospective-error metrics;
-- the diagonal-similarity normalization identity;
-- deterministic dense/ARPACK agreement on a reduced target-free profile;
-- exact raw-matrix repeat hashes and expanded solver/mechanics controls at the
-  medium physical-epsilon cutoff;
-- four reproducible strong branches across time and bin cutoffs;
-- scoped failure of the current strong-layer phase observable under branch
-  count, translated-grid phase ranking, and identical-estimator static-parent
-  separation.
+- an exact analytic trace-class positive-control determinant;
+- independent direct-product winding and coefficient-root implementations;
+- a frozen 22-root scoring prefix with explicit boundary clearance;
+- cutoff-instability, coarse-phase, missing-only, extra-only, balanced, and
+  absolute-value falsification behavior;
+- a reusable one-to-one matching pattern with dummies and a signed-cancellation
+  regression gate;
+- executable separation of `D`, `1/D`, `D'/D`, and truncated-log ledgers;
+- supplemental 50/80/120-dps root-drift reporting.
 
 Not established:
 
-- an honest validation or sealed zero test;
-- a target-independent choice of `epsilon`;
-- intrinsic primitive periodic orbits of the non-autonomous object;
-- a rational-prime or von-Mangoldt clock;
-- a dynamical Zeta or Fredholm determinant;
-- a moving-cutoff infinite-operator limit;
-- analytic continuation or completed-`xi` divisor equality;
-- natural quantization, Route B, Hilbert--Polya, or RH.
+- a natural classical dynamical system or primitive-orbit census;
+- a rational-prime clock or von-Mangoldt repetition weights;
+- completed-xi analytic structure or divisor equality;
+- a moving-order theorem for another candidate;
+- an interval-arithmetic or derivative-bound certificate for the sampled
+  winding path;
+- physical quantization, self-adjointness, Route B, Hilbert--Polya, or RH.
 
 ## Next smallest task
 
-The active empirical observable is `STOP_SCOPED`, so there is no further task
-inside `CLUE-A2-005`. Do not inspect new zero-match metrics.
+Do not continue tuning `CTRL-0001` and do not create `SS-0003` from it.
 
-The Logistic direction may reopen only when an explicit new object is supplied:
+The next candidate-side task begins only when one explicit non-Selberg object
+is mathematically defined with:
 
-1. an autonomous slow-variable lift with chronological primitive orbits; or
-2. a chronological transfer-cocycle/Fredholm determinant with a frozen clock,
-   normalization, cutoff, and determinant convention.
+- an intrinsic clock;
+- one same-object Fredholm/dynamical determinant convention;
+- no prime or zero lookup;
+- a frozen train/validation/test split and cutoff policy.
 
-Absent such an object, the next queued repository-backed task is the
-`CLUE-A2-001` synthetic Euler-product positive control. Because the active
-observable is `STOP_SCOPED`, this handoff is a stable stopping checkpoint rather
-than authorization to continue the Logistic phase fit.
+Once such an object exists, its first smallest test is to run the `CTRL-0001`
+regression pattern: independent winding, logarithm-branch-complete root
+discovery, one-to-one missing/extra matching, cutoff drift, balanced corruption,
+and signed-complex cancellation. Until the object is explicit, no new formal
+candidate should be allocated and Route B remains closed.

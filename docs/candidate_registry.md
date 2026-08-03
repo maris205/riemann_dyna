@@ -263,6 +263,8 @@ Two formal Route-A baselines completed.
 SS-0001 is STOP_SCOPED by the finite-state divisor-count obstruction.
 SS-0002 escapes that finite-state theorem but is STOP_SCOPED by the
 finite-area Selberg/Weyl divisor obstruction.
+CTRL-0001 is a passed-with-limitations A2 evaluator positive control, explicitly not a formal
+candidate and not eligible for an SS candidate number.
 No candidate has entered Route B.
 ```
 
@@ -272,6 +274,12 @@ No candidate has entered Route B.
 |---|---|---|---|---|---|---|---|
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
 | SS-0002 | Countable-state symbolic suspension / modular transfer operator | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_REJECTED` | Not invoked | Exact C6 holonomy, nuclear Fredholm determinant, Selberg identity, and natural Laplacian | Same determinant has at least `Omega(T^2)` Selberg spectral zeros, not `Theta(T log T)` | Define one explicit non-Selberg nuclear object and prove its own divisor-count regime before assigning SS-0003 |
+
+Evaluator controls are tracked separately and do not change the formal-candidate count:
+
+| Control ID | Role | Control verdict | Candidate scope | Strongest evidence | Main limitation |
+|---|---|---|---|---|---|
+| CTRL-0001 | Four-channel q-Pochhammer Fredholm A2 positive control | `GO_WITH_LIMITATIONS` | `STOP_SCOPED`; not a formal candidate | Independent direct-product winding and Fredholm-coefficient root discovery pass all frozen gates, including balanced corruption and executable ledger controls | Sampled winding is a numerical anti-alias diagnostic, not an interval proof; engineered factors have no natural prime orbit or completed-xi structure |
 
 ---
 
@@ -526,6 +534,116 @@ inadmissible.
 | Date | Previous state | New state | Evidence | Commit | Reviewer |
 |---|---|---|---|---|---|
 | 2026-08-03 | `GENERATED` | `STOP_SCOPED` | Exact regular-holonomy audit, Mayer/Artin identity, and finite-area Weyl mismatch | current checkpoint (source `934d85c`) | sole main research agent |
+
+---
+
+## Evaluator control (not a formal candidate) — CTRL-0001
+
+This entry is an explicit exception to the formal-candidate-only registry rule:
+it records reusable evaluation infrastructure and must never be interpreted as
+`SS-0003`.
+
+### Identity
+
+- **Family:** Synthetic diagonal trace-class / q-Pochhammer Fredholm control
+- **Created:** 2026-08-03
+- **Formal candidate:** `false`
+- **Control verdict:** `GO_WITH_LIMITATIONS`
+- **Candidate-scope verdict:** `STOP_SCOPED`
+- **Uses prime table:** `false`
+- **Uses zero table:** `false`
+
+On
+
+\[
+\mathcal H=\ell^2(\{A_+,A_-,B,C\}\times\mathbb N_0),
+\qquad
+\mathcal L_s e_{c,n}=a_cq_c^n e^{-s}e_{c,n},
+\]
+
+the only determinant ledger is
+
+\[
+D(s)=\det_{\rm Fr}(I-\mathcal L_s)
+=\prod_c\prod_{n\ge0}(1-a_cq_c^ne^{-s}).
+\]
+
+The four channels, rectangle, cutoffs, scoring boundary, and fault injections
+are frozen in `configs/source_locks/CTRL-0001.yaml`.
+
+### Route-A control status
+
+```yaml
+a1: A1_WEAK
+a2: A2_ANALYTIC_DETERMINANT
+a3: A3_PARTIAL_ANALYTIC_STRUCTURE
+a4: A4_FAIL
+overall_as_candidate: ROUTE_A_REJECTED
+control_verdict: GO_WITH_LIMITATIONS
+candidate_scope: STOP_SCOPED
+latest_evaluation: evaluations/route_a/CTRL-0001/20260803T171847Z.yaml
+route_b: NOT_INVOKED
+```
+
+Candidate interpretation:
+
+```yaml
+a1: A1_FAIL
+a2: A2_FAIL
+a3: A3_FAIL
+a4: A4_FAIL
+overall: ROUTE_A_REJECTED
+```
+
+### Positive evidence
+
+- The analytic trace-class family and entire Fredholm determinant are exact.
+- Coefficient root discovery is independent of direct-product
+  argument-principle counting.
+- The frozen rectangle contains exactly `22/12/5/5` total/core/upper/lower
+  roots with minimum boundary clearance `0.07`.
+- `K=16` exposes 28 roots and only 6 strict matches; `K=20` has the correct
+  count but only 15 strict matches; `K>=24` passes all one-to-one matches.
+- Successive `512/1024` contour grids pass the `pi/3` phase-step gate, while
+  the coarser frozen grids are reported rather than silently accepted.
+- Balanced corruption preserves every regional count but produces exactly
+  four missing and four extra roots.
+- The `r=4` trace cancellation ratio is `0.0099415`; replacing channel weights
+  by absolute values changes the winding count from 22 to 30.
+- Executable ledger controls give determinant winding `+22`, reciprocal pole
+  winding `-22`, `D'/D` contour integral converging to `22`, and winding zero
+  for the order-four truncated-log exponential.
+- Supplemental `K=28` mpmath recomputations at 50/80/120 dps all find 22 roots;
+  complex128-to-120-dps drift is `5.41e-13`.
+
+The control verdict is limited because endpoint sampling plus a phase-step gate
+does not constitute a rigorous interval-arithmetic proof excluding every
+between-sample winding. The exact divisor is analytic; the contour sampler is a
+numerical regression diagnostic.
+
+### Claim boundary
+
+This is a regression benchmark for determinant conventions, root discovery,
+argument counting, cutoff drift, missing/extra matching, and signed complex
+cancellation. It has no natural primitive classical dynamics, rational-prime
+clock, completed-xi divisor, physical quantization, Route-B status, or RH
+content. It must not be promoted from fixed-control success to a theorem about
+another candidate.
+
+### Reproduction
+
+```bash
+python3 -m unittest -v tests/test_ctrl_0001_qpochhammer.py
+python3 experiments/ctrl_0001_qpochhammer.py \
+  --quiet \
+  --output artifacts/ctrl_0001/route_a_positive_control.json
+```
+
+### Next smallest test
+
+Apply the same ledger, winding, cutoff, and balanced-corruption requirements to
+the next explicitly defined non-Selberg candidate before interpreting any
+numerical zero match. Do not allocate `SS-0003` before that object is explicit.
 
 ---
 
