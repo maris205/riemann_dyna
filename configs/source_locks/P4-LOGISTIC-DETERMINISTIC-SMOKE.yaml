@@ -1,0 +1,43 @@
+audit_id: P4-LOGISTIC-DETERMINISTIC-SMOKE
+formal_candidate: false
+parent_audit: P4-LOGISTIC-LEGACY-AUDIT
+clue_id: CLUE-A2-005
+mathematical_object:
+  map: "x_(n+1)=1-mu_n*x_n^2"
+  schedule: "endpoint-anchored 1/log(n+10)^2 drift from 1.5637 to 1.5437"
+  empirical_flux: "T_ij=sum_n V_n(i) K_n(i,j)"
+  normalized_matrix: "Q=D^(-1)T"
+  comparison_matrix: "B=T D^(-1)=D Q D^(-1)"
+  partition_shifts_in_bins: [0.0, 0.5]
+data_type: "complete dense finite-matrix spectrum plus fixed-start ARPACK diagnostics"
+clock: "one non-autonomous map iteration; 1000-step finite window"
+normalization: "row-normalized occupation-conditioned empirical matrix; no phase-to-zero scale"
+determinant_convention: "none; target-free numerical-mechanics audit"
+cutoff:
+  bins: 128
+  steps: 1000
+  epsilon_policy: "preserve the legacy epsilon/dx ratio 5.748, not physical epsilon"
+  epsilon: 0.0898125
+  arpack_k: 40
+  arpack_ncv: 90
+precision:
+  arithmetic: "IEEE-754 binary64"
+  arpack_tolerance: 1.0e-10
+  arpack_maxiter: 10000
+  arpack_starts: [ones, ramp, seed17_normal]
+allowed_data:
+  - "frozen Logistic schedule and discretization constants"
+  - "dense eigenspectrum and residual-certified ARPACK output"
+  - "target-free partition and normalization controls"
+forbidden_data:
+  - "Riemann zeros, prime tables, USTC data, or any target-derived mode selection"
+  - "best-of-start reporting"
+  - "interpreting near-zero eigenvalue phases as stable energy levels"
+  - "calling this reduced profile a fidelity reproduction"
+training_split: "none"
+validation_split: "partition shift 0.0 versus 0.5 and three fully reported fixed starts"
+test_split: "none; a physical-epsilon medium-fidelity profile remains unopened"
+stopping_conditions:
+  - "REVISE if phase-ranked modes include unresolved near-zero eigenvalues"
+  - "REVISE if residual-certified branches drift under the half-bin partition shift"
+  - "do not create a formal candidate without an explicit determinant convention"

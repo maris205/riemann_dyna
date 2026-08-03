@@ -1,0 +1,281 @@
+{
+  "ablation_saved_metrics": {
+    "M0": {
+      "max_relative_error_percent": 151.96,
+      "mean_relative_error_percent": 6.68,
+      "mse": 28.67
+    },
+    "M1": {
+      "max_relative_error_percent": 595.35,
+      "mean_relative_error_percent": 459.84,
+      "mse": 655375.1
+    },
+    "M2": {
+      "max_relative_error_percent": 23.92,
+      "mean_relative_error_percent": 7.92,
+      "mse": 305.1
+    },
+    "M3": {
+      "max_relative_error_percent": 50.78,
+      "mean_relative_error_percent": 32.9,
+      "mse": 3818.01
+    },
+    "M4": {
+      "max_relative_error_percent": 25.12,
+      "mean_relative_error_percent": 5.66,
+      "mse": 78.08
+    }
+  },
+  "audit_id": "P4-LOGISTIC-LEGACY-AUDIT",
+  "claim_boundary": "The legacy notebooks establish a fitted finite-matrix eigenphase observation and a useful numerical benchmark. They do not establish a dynamical determinant, a blind zero match, a natural quantization, or a Hilbert-Polya operator.",
+  "data_boundary": {
+    "contaminated_training": [
+      "zero 1 fixes the phase scale",
+      "zeros 2-6 select epsilon and the reported eigensolver trial",
+      "zero 20 enters the reported trial score through a large-error reward",
+      "zeros 1-100 were used by the macro k optimizer underlying the ablation family"
+    ],
+    "honest_legacy_test": null,
+    "honest_legacy_validation": null,
+    "retrospective_only": "saved errors outside the fitted indices; useful for diagnosis, not sealed evidence"
+  },
+  "formal_candidate": false,
+  "legacy_object": {
+    "correct_surrogate": "Q=D^(-1)T with D=diag(T*1)",
+    "determinant_convention": null,
+    "empirical_flux": "T_ij=sum_n V_n(i)*K_(mu_n,epsilon)(i,j)",
+    "legacy_computed_matrix": "B=T*D^(-1)",
+    "map": "x_(n+1)=1-mu_n*x_n^2",
+    "phase_scale": "gamma_1/theta_1",
+    "reported_observable": "sorted upper-half-plane eigenvalue principal phases, with modulus discarded",
+    "schedule": "mu_n=u_c+k/log(n+10)^2, endpoint-anchored from 1.5637 to 1.5437",
+    "time_order_preserved": false
+  },
+  "next_smallest_test": "Freeze the legacy parameters, save one raw T matrix, construct Q and B explicitly, fix the eigensolver start and tolerances, report eigenvalue moduli and residuals, and track modes under a half-bin partition shift without target-data reselection.",
+  "normalization_audit": {
+    "best_dense_eigenvalue_matching_error": 3.0674698832338827e-16,
+    "correct_active_row_sum_max_error": 0.0,
+    "correct_formula": "Q=D^(-1)*T",
+    "interpretation": "The legacy matrix is not row-stochastic, but it is exactly similar to the correct row-normalized matrix. Exact eigenvalues are unchanged; eigenvectors, Markov meaning, nonnormality, and finite-precision eigensolver conditioning are not unchanged.",
+    "legacy_active_row_sum_max_error": 0.7,
+    "legacy_formula": "B=T*D^(-1)",
+    "row_sum_diagonal_condition_number": 2.0,
+    "similarity_identity": "B=D*Q*D^(-1)",
+    "similarity_max_abs_residual": 0.0
+  },
+  "pattern_checks": {
+    "ablation_method5_scoring_commented_out": true,
+    "epsilon_frozen_to_0_001916": true,
+    "epsilon_scan_has_402_requested_values": true,
+    "first_six_zeros_loaded_as_targets": true,
+    "legacy_destination_index_normalization": true,
+    "macro_optimizer_uses_first_100_zeros": true,
+    "n20_error_rewarded_in_selection": true,
+    "same_matrix_reused_for_20_trials": true
+  },
+  "recommended_verdict": "REVISE",
+  "route_a_preassessment": {
+    "diagnostic_tuple": [
+      "A1_FAIL",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ],
+    "route_b_invocation_allowed": false,
+    "status": "NOT_TESTABLE",
+    "strongest_evidence": "The selected saved run has MAE 0.3494 on fitted zeros 2-6 after zero 1 fixes scale.",
+    "strongest_failure": "There is no primitive-orbit ledger or explicit dynamical Zeta/Fredholm determinant, and the saved low-prefix match is target-fitted and solver-selected."
+  },
+  "saved_phase_match": {
+    "anchor_zero_1_error": 0.0,
+    "fitted_zeros_2_to_6": {
+      "absolute_error_sum": 1.7469707378000001,
+      "count": 5,
+      "mae": 0.34939414756000003,
+      "max_absolute_error": 0.900068999,
+      "mean_relative_error_percent": 1.3368472674172103,
+      "rmse": 0.5028188028702562
+    },
+    "retrospective_zeros_21_to_85": {
+      "absolute_error_sum": 4012.5614355000002,
+      "count": 65,
+      "mae": 61.731714392307694,
+      "max_absolute_error": 108.649729,
+      "mean_relative_error_percent": 39.84271459616689,
+      "rmse": 67.68809472471574
+    },
+    "retrospective_zeros_7_to_19_excluding_rewarded_n20": {
+      "absolute_error_sum": 87.341592802,
+      "count": 13,
+      "mae": 6.718584061692307,
+      "max_absolute_error": 12.1153304,
+      "mean_relative_error_percent": 10.726199903022863,
+      "rmse": 7.79086703136692
+    },
+    "retrospective_zeros_7_to_20": {
+      "absolute_error_sum": 103.826553002,
+      "count": 14,
+      "mae": 7.416182357285714,
+      "max_absolute_error": 16.4849602,
+      "mean_relative_error_percent": 11.486388736689056,
+      "rmse": 8.704772217834241
+    },
+    "rewarded_n20": {
+      "relative_error_percent": 21.368843574349565,
+      "signed_error": 16.4849602
+    }
+  },
+  "solver_selection_audit": {
+    "physical_ensemble": false,
+    "records": [
+      {
+        "error_sum_2_to_6": 2.0069,
+        "n20_error": 16.4963,
+        "trial": 1
+      },
+      {
+        "error_sum_2_to_6": 3.0862,
+        "n20_error": 16.5218,
+        "trial": 2
+      },
+      {
+        "error_sum_2_to_6": 3.5565,
+        "n20_error": 16.4997,
+        "trial": 3
+      },
+      {
+        "error_sum_2_to_6": 2.634,
+        "n20_error": 11.2052,
+        "trial": 4
+      },
+      {
+        "error_sum_2_to_6": 2.7395,
+        "n20_error": 16.5102,
+        "trial": 5
+      },
+      {
+        "error_sum_2_to_6": 2.0412,
+        "n20_error": 16.4999,
+        "trial": 6
+      },
+      {
+        "error_sum_2_to_6": 2.8871,
+        "n20_error": 11.3412,
+        "trial": 7
+      },
+      {
+        "error_sum_2_to_6": 4.0573,
+        "n20_error": 11.3546,
+        "trial": 8
+      },
+      {
+        "error_sum_2_to_6": 2.9651,
+        "n20_error": 11.181,
+        "trial": 9
+      },
+      {
+        "error_sum_2_to_6": 4.1928,
+        "n20_error": 11.3321,
+        "trial": 10
+      },
+      {
+        "error_sum_2_to_6": 5.363,
+        "n20_error": 11.2863,
+        "trial": 11
+      },
+      {
+        "error_sum_2_to_6": 3.0977,
+        "n20_error": 11.0049,
+        "trial": 12
+      },
+      {
+        "error_sum_2_to_6": 3.3782,
+        "n20_error": 11.2781,
+        "trial": 13
+      },
+      {
+        "error_sum_2_to_6": 3.2838,
+        "n20_error": 16.4968,
+        "trial": 14
+      },
+      {
+        "error_sum_2_to_6": 1.8801,
+        "n20_error": 11.1582,
+        "trial": 15
+      },
+      {
+        "error_sum_2_to_6": 4.4375,
+        "n20_error": 11.3985,
+        "trial": 16
+      },
+      {
+        "error_sum_2_to_6": 2.6653,
+        "n20_error": 16.4949,
+        "trial": 17
+      },
+      {
+        "error_sum_2_to_6": 2.6396,
+        "n20_error": 11.2276,
+        "trial": 18
+      },
+      {
+        "error_sum_2_to_6": 2.2678,
+        "n20_error": 11.2207,
+        "trial": 19
+      },
+      {
+        "error_sum_2_to_6": 1.747,
+        "n20_error": 16.485,
+        "trial": 20
+      }
+    ],
+    "same_matrix_trial_count": 20,
+    "selection_reads_n20": true,
+    "trial_count_below_2_2": 4,
+    "trial_error_sum_2_to_6_max": 5.363,
+    "trial_error_sum_2_to_6_mean": 3.04633,
+    "trial_error_sum_2_to_6_min": 1.747,
+    "trial_error_sum_2_to_6_std_population": 0.9061370338420123,
+    "trial_error_sum_2_to_6_std_sample": 0.9296769807445573
+  },
+  "source_commit": "338ee150b0407553c939046204f19501d4c5594f",
+  "source_files": {
+    "ablation": {
+      "path": "docs/prior_work/legacy/4-riemann_logistic/ablation_test.ipynb",
+      "sha256": "d9a394e8549c19e57c5df79aa1b48080dc73042da3c0f6522aa70b96634dd5cf"
+    },
+    "epsilon_scan": {
+      "path": "docs/prior_work/legacy/4-riemann_logistic/micro_find_best_eps_detail.ipynb",
+      "sha256": "003aedf76832ec55edb8f5899fe49c1d5ac555a2788482b52682ed1e63a50e87"
+    },
+    "macro_optimizer": {
+      "path": "docs/prior_work/legacy/4-riemann_logistic/macro_100_scale_find_1d.ipynb",
+      "sha256": "704b7333e9cd0d0a789bf49f3f6a0e0cad0aab9da0a46c4eddc3de144c69c4eb"
+    },
+    "micro": {
+      "path": "docs/prior_work/legacy/4-riemann_logistic/micro_ustc_data_match.ipynb",
+      "sha256": "0f739a04e935fa74875bc65d9cf6a01099358d7df1b9bea80dc8f04933888b1f"
+    }
+  },
+  "ustc_audit": {
+    "embedded_table_has_source_citation": false,
+    "independent_validation": false,
+    "largest_selected_experimental_error_bar": {
+      "index": 14,
+      "value": 4.14
+    },
+    "model_n20_error": 16.4849602,
+    "n20_experimental_deviations": [
+      0.26500000000000057,
+      -0.34499999999999886,
+      -0.32500000000000284
+    ],
+    "n20_experimental_error_bars": [
+      0.06,
+      0.09,
+      0.8300000000000001
+    ],
+    "notebook_discards_column_index_2": true,
+    "reason": "The model-selection score rewards a large N=20 error, and the model error magnitude does not match the embedded experimental deviations or their error bars."
+  }
+}

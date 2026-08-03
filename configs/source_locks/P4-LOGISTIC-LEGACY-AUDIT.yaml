@@ -1,0 +1,53 @@
+audit_id: P4-LOGISTIC-LEGACY-AUDIT
+formal_candidate: false
+clue_id: CLUE-A2-005
+title: Legacy non-autonomous Logistic empirical-eigenphase audit
+mathematical_object:
+  map: "x_(n+1)=1-mu_n*x_n^2"
+  schedule: "mu_n=u_c+k/log(n+10)^2, endpoint-anchored from 1.5637 to 1.5437"
+  empirical_flux: "T_ij=sum_n V_n(i) K_(mu_n,epsilon)(i,j)"
+  correct_surrogate: "Q=D^(-1)T, D=diag(T*1)"
+  legacy_matrix: "B=T D^(-1), produced by destination-index CSR scaling"
+  observable: "upper-half-plane principal eigenvalue phases sorted by angle; eigenvalue moduli discarded"
+data_type:
+  primary: "saved finite-matrix eigenphase predictions and notebook source/output audit"
+  excluded: "primitive-orbit Zeta, Fredholm determinant, operator spectrum, and physical ensemble"
+clock: >-
+  One non-autonomous map iteration n. The empirical matrix aggregates visits over
+  n=1,...,10^6 and therefore erases the ordered transfer-operator cocycle.
+normalization: >-
+  Legacy phase scale gamma_1/theta_1. No scale, epsilon, trial, phase branch, or
+  index correspondence may be reselected in retrospective diagnostics.
+determinant_convention: "none; this is a pre-candidate eigenphase audit"
+cutoff:
+  time_steps: 1000000
+  bins: 6000
+  gaussian_epsilon: 0.001916
+  gaussian_radius_bins: 29
+  arpack_requested_eigenpairs: 450
+  saved_phase_count: 85
+precision:
+  arithmetic: "IEEE-754 binary64"
+  legacy_arpack_tolerance: 1.0e-5
+  legacy_arpack_start: "unfixed v0"
+allowed_data:
+  - "legacy notebook source and saved textual outputs"
+  - "Riemann zeros only for retrospective scoring of already-saved predictions"
+  - "algebraic normalization checks and target-free numerical controls"
+forbidden_data:
+  - "using any Riemann zero in the candidate definition"
+  - "reoptimizing epsilon, schedule, scale, trial, or phase correspondence"
+  - "calling repeated eigensolver starts a physical ensemble"
+  - "calling the phase list a dynamical Zeta or Fredholm determinant"
+  - "using the rewarded N=20 error as independent USTC validation"
+training_split: >-
+  Historically contaminated: zero 1 fixed scale; zeros 2-6 selected epsilon and
+  the displayed trial; zero 20 entered the trial score; zeros 1-100 entered the
+  macro schedule optimization family.
+validation_split: "none in the legacy result; zeros outside fitted indices are retrospective diagnostics only"
+test_split: "none in the legacy result"
+stopping_conditions:
+  - "do not create SS-0003 until an explicit determinant convention and intrinsic clock are defined"
+  - "REJECTED if target data are used to reselect modes or parameters"
+  - "STOP_SCOPED for a fixed finite-state determinant covered by OBR-005"
+  - "continue to object definition only if stable eigenbranches survive target-free partition, cutoff, and solver controls"

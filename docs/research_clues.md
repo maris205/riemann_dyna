@@ -423,6 +423,89 @@ spectral_map:
 
 ---
 
+## CLUE-A2-005 — 非自治 Logistic 经验转移谱的确定性分支审计
+
+**来源：** Paper 4 legacy notebooks / 用户提出的 Logistic reopening
+
+**证据：** `NUMERICAL_OBSERVATION` + `FITTED_PARAMETER`
+
+**状态：** `UNDER_TEST`
+
+**对应层：** `A1`, `A2`, `A4`
+
+### 冻结对象
+
+Legacy micro 代码计算
+
+\[
+x_{n+1}=1-\mu_nx_n^2,
+\qquad
+T_{ij}=\sum_n V_n(i)K_{\mu_n,\epsilon}(i,j),
+\]
+
+并从 occupation-conditioned finite matrix 的复特征值中丢弃模长、按主值
+相角排序，再以第一个黎曼零点定 scale。该对象不是有序 transfer cocycle，
+也尚未定义 dynamical Zeta 或 Fredholm determinant。
+
+### 2026-08-03 legacy 审计
+
+- `epsilon=0.001916` 由零点 2--6 选择，零点 1 固定 scale；
+- 同一矩阵的 20 次 `eigs` 随机启动又用于挑选最佳结果；
+- N=20 误差被评分函数主动奖励，因而 USTC 叠图不是独立验证；
+- 保存结果在 fitted zeros 2--6 上 MAE `0.3494`，但 zeros 7--20 的
+  retrospective MAE 为 `7.4162`，zeros 21--85 为 `61.7317`；
+- anchored ablation 的 MSE `78.08` 高于 all-100-point linear-fit baseline
+  的 `28.67`，且 schedule 参数来自相同零点数据的优化家族。
+
+CSR destination-index 归一化得到 (B=TD^{-1})，正确行归一化为
+(Q=D^{-1}T)。虽然 (B) 不是 Markov 矩阵，但
+
+\[
+B=DQD^{-1},
+\]
+
+所以精确 eigenvalues 相同；真正风险是 eigenvector 解释、非正规性和
+finite-precision solver conditioning，而不是归一化单独制造相角。
+
+### Target-free smoke result
+
+在保持 (epsilon/dx=5.748) 的 `128 bins x 1000 steps` reduced profile 中：
+
+- fixed-start tight-ARPACK 可以复现 dense top-(|\lambda|) 谱；
+- 按 legacy 规则排列的前六个低相角里有五个满足
+  (|\lambda|<10^{-3})；
+- 半格移动分区后，13 个 resolved modes 的复平面匹配中位漂移
+  `0.00943`，90 分位 `0.0883`，最大 `0.15275`。
+
+因此当前低相角 level rule 尚不稳定，但 Logistic 线保留为数值 benchmark
+和 autonomous slow-variable lift 的搜索先验。
+
+### Route-A 边界
+
+```text
+formal candidate: none
+status: NOT_TESTABLE
+diagnostic tuple: (A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)
+Route B: not authorized
+```
+
+### 最小下一步
+
+用固定 physical epsilon 做 medium-fidelity target-free 分支跟踪：保存原始
+(T)，冻结全部 eigensolver 参数，报告模长与残差，并在 bins、steps 和半格
+分区移动下用复平面 matching 跟踪同一 eigenbranch。稳定性门通过前不得查看
+新的 zero-match 指标。
+
+Artifacts:
+
+- `configs/source_locks/P4-LOGISTIC-LEGACY-AUDIT.yaml`
+- `configs/source_locks/P4-LOGISTIC-DETERMINISTIC-SMOKE.yaml`
+- `artifacts/p4_logistic_legacy/route_a_pre_candidate_audit.json`
+- `artifacts/p4_logistic_legacy/deterministic_smoke_profile.json`
+- `docs/prior_work/logistic_legacy_pre_audit.md`
+
+---
+
 ## CLUE-A3-001 — 从逐零点拟合转向 annular norm
 
 **来源：** 旧 RH direct annular route  
@@ -758,11 +841,12 @@ e^{q(E)}
 
 ## Priority 0 — 基础验证
 
-1. Synthetic Euler-product positive control  
-2. Shuffled-period / random-weight / random-phase controls  
-3. Argument-principle root counter  
-4. Signed cycle expansion  
-5. Cutoff and precision drift  
+1. Logistic physical-epsilon medium-fidelity eigenbranch audit
+2. Synthetic Euler-product positive control
+3. Shuffled-period / random-weight / random-phase controls
+4. Argument-principle root counter
+5. Signed cycle expansion
+6. Cutoff and precision drift
 
 ## Priority 1 — 最值得并行的三条 Route-A 路线
 
@@ -905,4 +989,16 @@ new_status: BLOCKED
 evidence: "SS-0002 paired-Gauss commutator-cover Route-A evaluation and OBR-006"
 commit: "current checkpoint; source state 934d85c"
 consequence: "A countable-state nuclear escape exists, but the finite-area Selberg subclass is STOP_SCOPED by quadratic Weyl divisor growth. Reopen only with an explicit non-Selberg same-ledger determinant."
+```
+
+## Status update — CLUE-A2-005 creation
+
+```yaml
+date: 2026-08-03
+clue_id: CLUE-A2-005
+old_status: null
+new_status: UNDER_TEST
+evidence: "legacy notebook audit plus target-free deterministic dense/ARPACK smoke profile"
+commit: "current checkpoint; source state 338ee15"
+consequence: "The fitted prefix is retained as a numerical benchmark, but no formal candidate exists. Freeze and track residual-certified eigenbranches before any new zero comparison or autonomous lift."
 ```

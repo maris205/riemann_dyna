@@ -196,3 +196,121 @@ Do not create `SS-0003` from another finite-area Selberg cover. First define
 one explicit non-Selberg countable-state or nuclear transfer object and prove
 the zero-count regime permitted by its own Fredholm determinant, with no
 separate scattering quotient or arithmetic-table lookup.
+
+---
+
+## 2026-08-03 — Legacy Logistic pre-candidate reopening
+
+### Current clue
+
+`CLUE-A2-005` — deterministic branch audit for the empirical spectrum of the
+legacy non-autonomous Logistic construction.
+
+No formal candidate ID was created. The legacy notebooks define only a fitted
+finite-matrix eigenphase observable, not a primitive-orbit Zeta or Fredholm
+determinant. The Route-A skill therefore classifies the present object as
+`NOT_TESTABLE` rather than promoting it to `SS-0003`.
+
+### Read-only legacy audit
+
+The following separate-repository files were inspected without modification:
+
+- `docs/prior_work/legacy/4-riemann_logistic/ablation_test.ipynb`;
+- `docs/prior_work/legacy/4-riemann_logistic/micro_ustc_data_match.ipynb`;
+- the epsilon-scan and macro-optimizer notebooks needed for parameter
+  provenance.
+
+The micro object is the occupation-weighted aggregate
+
+\[
+T_{ij}=\sum_n V_n(i)K_n(i,j)
+\]
+
+for a noisy, non-autonomous quadratic map. It erases the chronological order of
+the transfer cocycle. The notebook then discards eigenvalue moduli, sorts
+principal phases, and anchors the scale with the first Riemann zero.
+
+Saved target-use audit:
+
+- zero 1 fixes scale;
+- zeros 2--6 select `epsilon=0.001916` and the displayed eigensolver trial;
+- zero 20 is explicitly rewarded in the trial score;
+- the macro schedule family uses the first 100 zeros;
+- there is no honest legacy validation or sealed test.
+
+The selected saved result has MAE `0.3494` on fitted zeros 2--6, retrospective
+MAE `7.4162` on zeros 7--20, and `61.7317` on zeros 21--85.
+
+### Normalization result
+
+The legacy CSR line computes (B=TD^{-1}), while correct row normalization is
+(Q=D^{-1}T). The exact identity
+
+\[
+B=DQD^{-1}
+\]
+
+shows that both matrices have the same exact eigenvalue multiset. The bug is
+real for the Markov/eigenvector interpretation and numerical conditioning, but
+it does not by itself create the reported phases.
+
+### Target-free deterministic smoke profile
+
+A reduced `128 bins x 1000 steps` profile preserved the legacy
+`epsilon/dx=5.748` ratio and used no prime, zero or USTC data.
+
+- fixed-start ARPACK at tolerance `1e-10` matched the dense top-40 spectrum to
+  below `3.7e-10` and produced residuals below `3.8e-15`;
+- five of the first six phase-ranked modes had modulus below `1e-3`;
+- a half-bin partition shift moved the 13 resolved modes by median complex
+  distance `0.00943`, 90th percentile `0.0883`, and maximum `0.15275`.
+
+The solver can be deterministic on the reduced profile, but the legacy
+low-phase level ordering is not yet a stable spectral observable.
+
+### Route-A preassessment
+
+```text
+Candidate ID: none
+Source locks: P4-LOGISTIC-LEGACY-AUDIT and P4-LOGISTIC-DETERMINISTIC-SMOKE
+Route A: NOT_TESTABLE
+Diagnostic tuple: (A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)
+Route B: inactive and not authorized
+Recommended verdict: REVISE
+```
+
+### Reusable knowledge
+
+- destination-index normalization and row normalization are diagonally
+  similar for the same occupation diagonal;
+- repeated sparse eigensolver starts are not a physical ensemble;
+- phase ranking must report modulus, residual and mode identity;
+- occupation-aggregated cycles need not be chronological dynamical cycles;
+- a fitted finite prefix is a regression benchmark, not determinant evidence.
+
+### Reproduction commands
+
+```bash
+python3 -m unittest -v \
+  tests/test_p4_logistic_legacy_audit.py \
+  tests/test_p4_logistic_deterministic_smoke.py
+python3 experiments/p4_logistic_legacy_audit.py \
+  --output artifacts/p4_logistic_legacy/route_a_pre_candidate_audit.json
+python3 experiments/p4_logistic_deterministic_smoke.py \
+  --output artifacts/p4_logistic_legacy/deterministic_smoke_profile.json
+```
+
+### Claim boundary
+
+Established only: a fitted low-prefix numerical observation, its data leakage
+and solver-selection provenance, the exact normalization similarity identity,
+and a reduced target-free partition/solver smoke test. Not established: a
+blind zero match, primitive orbit structure, prime clock, dynamical determinant,
+analytic continuation, natural quantization, Route B, Hilbert--Polya, or RH.
+
+### Next smallest task
+
+Run a medium-fidelity target-free profile with physical epsilon fixed. Save the
+raw (T) matrix, freeze every eigensolver parameter, and track only
+residual-certified eigenbranches across bins, steps and a half-bin partition
+shift. Do not inspect new zero-match metrics until branch identities are frozen.
