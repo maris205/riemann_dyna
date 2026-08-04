@@ -169,6 +169,7 @@ class LogisticUcFirstReturnSupportTests(unittest.TestCase):
         self.assertEqual(clue["status"], "OPEN_CONDITIONAL_CLUE")
         self.assertEqual(clue["endpoint_length_ratio_status"], "PROVED")
         self.assertEqual(clue["mass_ratio_status"], "OPEN_CONDITIONAL_CLUE")
+        self.assertIn("C*t^(-1/2)*(1+o(1))", clue["required_density_hypothesis"])
         self.assertAlmostEqual(
             float(clue["endpoint_length_ratio_limit"]), 0.3549108444, places=9
         )
@@ -209,6 +210,9 @@ class LogisticUcFirstReturnSupportTests(unittest.TestCase):
             Decimal(str(lock["precision"]["derivative_counterexample_x"])),
             support.DERIVATIVE_COUNTEREXAMPLE_X,
         )
+        self.assertIn(
+            "C*t^(-1/2)*(1+o(1))", lock["open_mass_ratio_hypothesis"]
+        )
 
     def test_saved_artifact_is_byte_reproducible(self) -> None:
         expected = json.dumps(self.report, indent=2, sort_keys=True) + "\n"
@@ -237,6 +241,14 @@ class LogisticUcFirstReturnSupportTests(unittest.TestCase):
     def test_route_a_scope_remains_exploratory(self) -> None:
         self.assertTrue(self.report["audit_passed"])
         self.assertTrue(all(self.report["computational_gates"].values()))
+        self.assertIn(
+            "critical_polynomial_changes_sign_on_rational_bracket",
+            self.report["computational_gates"],
+        )
+        self.assertNotIn(
+            "algebraic_u_c_is_rationally_isolated",
+            self.report["computational_gates"],
+        )
         self.assertNotIn("physical_odd_return_sets_are_empty", self.report["computational_gates"])
         self.assertEqual(
             self.report["formal_evidence"][

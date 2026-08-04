@@ -62,10 +62,11 @@ L_J=J\cap\{y<0\}=[1-U_c,0).
 For (y\in L_J), the event gap is the first-return time
 
 \[
-\tau_J(y)=\min\{n\ge1:f_{U_c}^n(y)\in L_J\},
+\tau_J(y)=\min\{n\ge1:f_{U_c}^n(y)\in L_J\}
 \]
 
-where zero is a non-event. At (u=U_c), the recurrent symbolic factor has
+when this set is nonempty, with (\tau_J(-\rho)=\infty). Zero is a non-event.
+At (u=U_c), the recurrent symbolic construction has
 exactly one interval branch symbol (m\ge1) for the even return label
 
 \[
@@ -304,8 +305,10 @@ f^{2n}:\operatorname{int}C_{2n}\longrightarrow(-\rho,0)
 
 is a real-analytic diffeomorphism. Hence every finite word of positive even
 return labels has a nonempty open cylinder. The recurrent tower's finite-word
-alphabet is therefore a proved physical return factor; choosing its invariant
-measure and coupling it to the aged fibre remain separate modeling steps.
+alphabet therefore has proved physical provenance; realization of every
+infinite one- or two-sided sequence, the full recurrent completion, its
+invariant measure, and its coupling to the aged fibre remain separate modeling
+steps.
 
 Writing (\ell_n=|C_{2n}|), the endpoint recursion and the mean-value theorem
 also give the exact asymptotic length ratio
@@ -317,9 +320,17 @@ also give the exact asymptotic length ratio
 =0.35491084440177\ldots.
 \]
 
-This is not yet an invariant-mass theorem. A square-root density spike at the
-left endpoint would conditionally change the ratio to its square root,
-(1/[2U_c(U_c-1)])=0.59574394197656\ldots, but that density law remains open.
+This is not yet an invariant-mass theorem. The exact open hypothesis is
+
+\[
+\frac{d\mu_{\rm ac}}{dx}(-\rho+t)
+=C\,t^{-1/2}(1+o(1)),
+\qquad C>0,
+\qquad t\downarrow0.
+\]
+
+Under that hypothesis the mass ratio conditionally tends to the square root,
+(1/[2U_c(U_c-1)])=0.59574394197656\ldots, but the density law remains open.
 
 The domain qualification is essential. On ambient `[-1,1]`, the transient
 interval `[-1,-rho)` supplies all odd return labels, so
@@ -677,9 +688,10 @@ not supply an A2 Riemann clock.
   channel.
 - Using `1.543689` can falsely look “almost correct” at low gap cutoff while
   changing the low-count long tail. No fixed tail endpoint is claimed.
-- The renewal alphabet is the exact physical first-return branch factor of
-  (f_{U_c}). Ambient transient odd branches are a separate zero-invariant-mass
-  ledger and are not tower symbols.
+- The renewal alphabet has exact one-branch-per-even-label and finite-word
+  provenance from (f_{U_c}). The unrestricted two-sided recurrent completion
+  remains a modeling choice. Ambient transient odd branches are a separate
+  zero-invariant-mass ledger and are not tower symbols.
 - The current symbolic factor captures parity and a geometric envelope. The
   repository's later correction says it lacks internal mod-(3) resonance.
 - The exact terminal equality is a block identity independent of a finite

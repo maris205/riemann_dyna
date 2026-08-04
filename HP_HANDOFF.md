@@ -131,7 +131,8 @@ f^{2n}:\operatorname{int}C_{2n}(J)\longrightarrow(-\rho,0)
 is a real-analytic diffeomorphism for every (n). Hence every finite word of
 positive even return labels has a nonempty open cylinder. The recurrent
 tower's unrestricted finite-word alphabet now has physical provenance; its
-invariant measure and aged fibre coupling remain separate modeling choices.
+full two-sided infinite completion, invariant measure, and aged fibre coupling
+remain separate modeling choices.
 
 On ambient (X), transient odd branches fill `[-1,-rho)`, so
 
@@ -177,8 +178,16 @@ The endpoint-length ratio has the proved limit
 =0.35491084440177\ldots.
 \]
 
-Only conditionally on a square-root endpoint density, the branch-mass ratio
-would tend to
+Only under the explicit open density hypothesis
+
+\[
+\frac{d\mu_{\rm ac}}{dx}(-\rho+t)
+=C\,t^{-1/2}(1+o(1)),
+\qquad C>0,
+\qquad t\downarrow0,
+\]
+
+would the branch-mass ratio tend to
 
 \[
 \sqrt\lambda=\frac{1}{2U_c(U_c-1)}
@@ -235,8 +244,8 @@ Full repository:
 Artifact SHA-256 values:
 
 ```text
-89c82cd1d601e4a151069add31bc1d2dd4b48f7170fe7c8bc61234aa58e20f2d  artifacts/p4_logistic_uc_first_return_support/structural_audit.json
-b113a90abdb65d913b7c162d76d925286f12a831fca259a974b8d04c81cc56ff  artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json
+93e591511aad7503d2c06cb786efacafdd575c4b0623fbcc1062bc77068cc101  artifacts/p4_logistic_uc_first_return_support/structural_audit.json
+f29984b0ae0fe610524c9d48e2d9ca64528519c599d4a28061d12d20b5a0f496  artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json
 ```
 
 Commands:
@@ -264,10 +273,12 @@ mass for ambient odd branches, conditional branch positivity under the named
 full-support-acip hypothesis, rational endpoint certification through return
 308, and the nonuniform-expansion obstruction.
 
-Not established: exact acip branch weights, their asymptotic ratio, a repaired
-transfer-operator theorem, complete fibre multiplicities, arithmetic
-prime-orbit correspondence, non-lattice clock, Fredholm/completed-ξ structure,
-natural quantization, Route B, Hilbert--Pólya, or RH.
+Not established: realization of every infinite return-label sequence or a
+complete full-shift conjugacy, exact acip branch weights, their asymptotic
+ratio, a repaired transfer-operator theorem, complete fibre multiplicities,
+arithmetic prime-orbit correspondence, non-lattice clock,
+Fredholm/completed-ξ structure, natural quantization, Route B,
+Hilbert--Pólya, or RH.
 
 Next smallest task:
 
@@ -277,7 +288,7 @@ Next smallest task:
 \frac{1}{2U_c(U_c-1)}.
 \]
 
-Prove or refute the required physical-acip square-root endpoint-density law.
+Prove or refute the displayed physical-acip endpoint-density asymptotic.
 Freeze either a direct Misiurewicz density argument, a weighted/cusp-adapted
 function space, or a further accelerated inducing domain. Do not fit weights
 or introduce a non-lattice roof before this is explicit.

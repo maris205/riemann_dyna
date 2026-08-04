@@ -20,9 +20,9 @@
     ]
   },
   "computational_gates": {
-    "algebraic_u_c_is_rationally_isolated": true,
     "ambient_support_contains_odd_transient_branches": true,
     "band_swap_identities_pass": true,
+    "critical_polynomial_changes_sign_on_rational_bracket": true,
     "old_uniform_expansion_claim_is_refuted": true,
     "period_two_witness_closes": true,
     "physical_endpoint_prefix_is_rationally_certified": true,
@@ -414,13 +414,14 @@
     "physical_invariant_core": "J=[1-U_c,1]=[-rho,1]",
     "zero_convention": "x=0 is not an L event"
   },
-  "next_smallest_task": "Prove or refute the square-root endpoint-density law for the physical acip and the resulting branch-mass ratio, using a weighted function space or a newly frozen accelerated inducing domain.",
+  "next_smallest_task": "Prove or refute d mu_ac/dx(-rho+t)=C*t^(-1/2)*(1+o(1)), C>0, and the resulting conditional branch-mass ratio, using a direct density argument, a weighted function space, or a newly frozen accelerated inducing domain.",
   "open_weight_clue": {
     "conditional_square_root_mass_ratio": "0.595743941976559373530677134113758646737345510937144045504890669308842974002485073055898333501091534901025164021402008588364301802457394488838613759851201629810609309200549154135928",
     "endpoint_length_ratio_limit": "0.354910844401770141568981570581660825053022343262199030847344829925525402760245803217304427428538376767747478357405121770522306343313429617978943227562439224531206942455576708265192",
     "endpoint_length_ratio_status": "PROVED",
-    "interpretation": "the value near 0.595744 can explain the legacy ~0.596 mass ratio only if the physical density has the required square-root endpoint spike",
+    "interpretation": "the value near 0.595744 follows only under the explicitly frozen endpoint-density asymptotic",
     "mass_ratio_status": "OPEN_CONDITIONAL_CLUE",
+    "required_density_hypothesis": "d mu_ac/dx(-rho+t)=C*t^(-1/2)*(1+o(1)), C>0, as t decreases to zero",
     "status": "OPEN_CONDITIONAL_CLUE"
   },
   "parent_audit_id": "P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK",

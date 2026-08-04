@@ -14,13 +14,14 @@ mathematical_object:
   event_and_gap: >-
     The candidate gap alphabet uses the physical event
     L_J=J_y intersect {y<0}=[-rho,0). For y in L_J,
-    tau_J(y)=min{n>=1:f_Uc^n(y) in L_J}; y=0 is a non-event. The separate
-    ambient ledger L_X=[-1,0) contains transient odd-return branches and
-    may not be used as the physical alphabet.
+    tau_J(y)=min{n>=1:f_Uc^n(y) in L_J} when the set is nonempty, with
+    tau_J(-rho)=infinity; y=0 is a non-event. The separate ambient ledger
+    L_X=[-1,0) contains transient odd-return branches and may not be used as
+    the physical alphabet.
   induced_gap_skeleton: >-
-    The physical factor has exactly one nondegenerate interval branch for
-    every even return label tau_J=2*m, m>=1, and no odd branch. This is proved
-    by the exact band swap and endpoint recursion in
+    The physical finite-word return ledger has exactly one nondegenerate
+    interval branch for every even return label tau_J=2*m, m>=1, and no odd
+    branch. This is proved by the exact band swap and endpoint recursion in
     formal/results/exact_uc_first_return_support.md. Every branch interior maps
     diffeomorphically onto the full event interior, so every finite even-label
     word has a nonempty open cylinder. The ambient X_y support is instead all
@@ -32,8 +33,9 @@ mathematical_object:
     X=[-1,1] x B, where B={(omega,j): omega in {1,2,...}^Z and
     1<=j<=2*omega_0}. Symbol m means the U_c return-gap length L=2*m.
     Exactly one symbolic branch is available for each even gap class, and all
-    finite concatenations have physical first-return cylinders. The choice of
-    tower invariant measure remains separate.
+    finite concatenations have physical first-return cylinders. Realization of
+    every infinite sequence, the full two-sided completion, and the choice of
+    tower invariant measure remain modeling choices.
   base_map: >-
     G(omega,j)=(omega,j+1) for j<2*omega_0 and
     G(omega,2*omega_0)=(sigma omega,1). The fibre update at the terminal
@@ -196,7 +198,7 @@ stopping_conditions:
   - "REVISE if U_c is not the algebraic critical root or its critical-orbit identity fails"
   - "REVISE if a block does not contain exactly L=2*m updates labelled 1 through L"
   - "REVISE if the terminal fibre update is not exactly algebraic U_c before renewal"
-  - "REVISE if the U_c center admits an odd gap in the frozen scan or the right controls fail to open the odd-gap channel"
+  - "REVISE if the post-burn-in physical-core U_c center scan admits an odd gap or the right-parameter controls fail to open the odd-gap channel"
   - "REVISE if the tower fixed-count formula, primitive census, or full-orbit existence theorem fails"
   - "REVISE while exact physical branch weights, complete fibre roots, a non-lattice roof, and a same-object Fredholm determinant remain undefined"
   - "STOP_SCOPED for the unaccelerated physical first-return map as a uniformly expanding ordinary-BV Markov map"
@@ -206,10 +208,10 @@ stopping_conditions:
 
 reopening_conditions:
   - >-
-    Prove the physical-acip endpoint-density law or define a further
-    accelerated inducing scheme / weighted function space that treats the
-    square-root inverse-Jacobian singularity, then derive the branch weights
-    without prime or zero data.
+    Prove or refute d mu_ac/dx(-rho+t)=C*t^(-1/2)*(1+o(1)), C>0, as
+    t decreases to zero; or define a further accelerated inducing scheme /
+    weighted function space that treats the square-root inverse-Jacobian
+    singularity. Only then derive branch weights without prime or zero data.
   - >-
     Define a first-return transfer operator on a named Banach space, prove
     nuclear summability and the same-object trace identity, and only then

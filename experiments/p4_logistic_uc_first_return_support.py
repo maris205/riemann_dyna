@@ -317,7 +317,7 @@ def build_report() -> dict[str, Any]:
     ]
 
     computational_gates = {
-        "algebraic_u_c_is_rationally_isolated": rational[
+        "critical_polynomial_changes_sign_on_rational_bracket": rational[
             "polynomial_negative_at_lower"
         ]
         and rational["polynomial_positive_at_upper"],
@@ -491,8 +491,11 @@ def build_report() -> dict[str, Any]:
             ],
             "mass_ratio_status": "OPEN_CONDITIONAL_CLUE",
             "status": "OPEN_CONDITIONAL_CLUE",
+            "required_density_hypothesis": (
+                "d mu_ac/dx(-rho+t)=C*t^(-1/2)*(1+o(1)), C>0, as t decreases to zero"
+            ),
             "interpretation": (
-                "the value near 0.595744 can explain the legacy ~0.596 mass ratio only if the physical density has the required square-root endpoint spike"
+                "the value near 0.595744 follows only under the explicitly frozen endpoint-density asymptotic"
             ),
         },
         "route_a_update": {
@@ -523,7 +526,7 @@ def build_report() -> dict[str, Any]:
             ],
         },
         "next_smallest_task": (
-            "Prove or refute the square-root endpoint-density law for the physical acip and the resulting branch-mass ratio, using a weighted function space or a newly frozen accelerated inducing domain."
+            "Prove or refute d mu_ac/dx(-rho+t)=C*t^(-1/2)*(1+o(1)), C>0, and the resulting conditional branch-mass ratio, using a direct density argument, a weighted function space, or a newly frozen accelerated inducing domain."
         ),
         "formal_evidence": formal_evidence,
         "computational_gates": computational_gates,

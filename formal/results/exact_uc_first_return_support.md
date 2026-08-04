@@ -149,8 +149,9 @@ f^{2n}:\operatorname{int}C_{2n}(J)\longrightarrow(-\rho,0)
 is a real-analytic diffeomorphism onto the full event interior. Consequently,
 every finite word of positive even return labels has a nonempty open cylinder.
 The induced map therefore has the full finite-word language used by the
-recurrent tower. This does not by itself choose an invariant tower measure or
-settle endpoint codings.
+recurrent tower. This does not by itself prove realization of every infinite
+one- or two-sided sequence, choose an invariant tower measure, or settle
+endpoint codings.
 
 ### Ambient interval
 
@@ -448,6 +449,40 @@ Therefore
 This is a Lebesgue-length statement. It does not imply an invariant-mass ratio
 without an additional theorem for the physical density near $-\rho$.
 
+## Conditional mass-ratio calculation
+
+The precise open hypothesis needed for the legacy value near $0.596$ is the
+endpoint-density asymptotic
+
+\[
+\frac{d\mu_{\rm ac}}{dx}(-\rho+t)
+=C\,t^{-1/2}(1+o(1))
+\qquad(t\downarrow0),
+\qquad C>0.
+\]
+
+Under this explicit hypothesis,
+
+\[
+\mu_{\rm ac}(C_{2n}(J))
+=\int_{\delta_n}^{\delta_{n-1}}
+C\,t^{-1/2}(1+o(1))\,dt
+=2C\bigl(\sqrt{\delta_{n-1}}-\sqrt{\delta_n}\bigr)(1+o(1)).
+\]
+
+Since $\delta_{n+1}/\delta_n\to\lambda$, it follows conditionally that
+
+\[
+\frac{\mu_{\rm ac}(C_{2n+2}(J))}
+     {\mu_{\rm ac}(C_{2n}(J))}
+\longrightarrow
+\sqrt\lambda
+=\frac{1}{2U_c(U_c-1)}.
+\]
+
+The density asymptotic is not proved here, so this remains an
+`OPEN_CONDITIONAL_CLUE`, not an invariant-mass theorem.
+
 ## Certified finite prefix
 
 The accompanying implementation uses an exact rational enclosure of $U_c$,
@@ -470,7 +505,8 @@ The first branches are approximately
 ## Claim boundary
 
 This theorem certifies the physical branch alphabet, its full finite-word
-language, and the asymptotic branch-length ratio used by the recurrent Logistic
-tower. It does not compute the physical branch weights, prove an expanding
-transfer-operator theorem, define a Fredholm determinant, or create an
-arithmetic prime correspondence.
+language, and the asymptotic length geometry of the physical branch partition.
+It does not assert realization of every infinite symbolic sequence, choose
+tower weights, compute the physical branch masses, prove the required endpoint
+density asymptotic, define an expanding transfer operator or Fredholm
+determinant, or create an arithmetic prime correspondence.

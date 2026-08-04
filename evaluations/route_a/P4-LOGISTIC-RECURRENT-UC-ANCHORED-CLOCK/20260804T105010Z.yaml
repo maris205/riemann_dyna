@@ -10,10 +10,12 @@ source_lock:
   object: >-
     Exact-U_c Logistic parent f(x)=1-U_c*x^2 on ambient X=[-1,1], with
     physical invariant core J=[1-U_c,1]=[-rho,1] and event L_J=[-rho,0).
-    Its proved first-return factor has exactly one interval branch C_(2m) for
-    every m>=1 and no odd physical branch. The recurrent candidate adds the
-    modeled tower B={(omega,j):omega in N_{>=1}^Z,1<=j<=2*omega_0} and the
-    terminally anchored Logistic fibre from the parent source lock.
+    Its proved finite-word first-return grammar has exactly one interval branch
+    C_(2m) for every m>=1, no odd physical branch, and a nonempty cylinder for
+    every finite even-label word. The recurrent candidate adds the modeled
+    two-sided tower B={(omega,j):omega in N_{>=1}^Z,1<=j<=2*omega_0} and the
+    terminally anchored Logistic fibre from the parent source lock; realization
+    of every infinite sequence is not asserted by the support theorem.
   data_type: >-
     Exact algebraic identities and all-order interval topology; exact-rational
     outward endpoint certificates; high-precision reproduction diagnostics;
@@ -28,7 +30,7 @@ source_lock:
     Raw coordinates, strict event x<0 with zero a non-event, raw integer
     return labels, and physical core J for the candidate alphabet. Ambient
     transient odd branches are a separate zero-invariant-mass ledger and may
-    not be mixed with the physical factor.
+    not be mixed with the physical finite-word branch ledger.
   determinant_convention: >-
     Z_T(z)=(1-z^2)/(1-2*z^2) is the tower Artin-Mazur zeta. The distinct full
     ledger is D_AM,F(z)=exp(-sum_(n>=1) Fix(F^n)*z^n/n), locally defined for
@@ -197,20 +199,21 @@ overall_verdict: ROUTE_A_EXPLORATORY
 recommended_audit_verdict: REVISE
 claim_boundary:
   what_is_established:
-    - "The physical exact-U_c first-return support is all positive even labels, with one interval branch per label."
+    - "The physical exact-U_c first-return support is all positive even labels, with one full interval branch per label and a nonempty cylinder for every finite even-label word."
     - "Ambient odd branches are transient and have zero mass for every invariant probability."
     - "Conditionally on the named physical acip having support J, every physical even branch has positive mass; no exact weight value is obtained."
     - "The modeled recurrent tower has an exact primitive census, terminal U_c anchoring, and finite signed full-fibre witnesses."
     - "The unaccelerated first-return map is not uniformly expanding, and the old ordinary-BV proof is invalid."
     - "Tower and full Artin-Mazur determinant ledgers are distinct, and the unit clock has a proved O(T) obstruction."
   what_is_not_established:
+    - "The support theorem does not assert realization of every infinite one- or two-sided label sequence or identify the modeled tower with a complete full shift."
     - "No exact or certified physical-acip branch weights or asymptotic mass-ratio theorem is obtained."
     - "No arithmetic prime correspondence, von-Mangoldt trace law, Fredholm determinant, or completed-xi divisor is obtained."
     - "No natural quantization, Route B, Hilbert-Polya realization, RH proof, or physical spectral claim is made."
   what_would_change_the_status: >-
-    A proof of the physical-acip endpoint-density law and branch-mass
-    asymptotics, or a fully frozen accelerated inducing scheme / weighted
-    function space with a same-object trace and Fredholm theorem. Any
+    A proof of d mu_ac/dx(-rho+t)=C*t^(-1/2)*(1+o(1)), C>0, and the resulting
+    branch-mass asymptotics; or a fully frozen accelerated inducing scheme /
+    weighted function space with a same-object trace and Fredholm theorem. Any
     non-lattice roof must still be intrinsic and target-free.
 blocking_conditions:
   - "physical-acip branch weights and their asymptotics are unknown"
@@ -219,8 +222,8 @@ blocking_conditions:
   - "a same-object Fredholm determinant and global analytic structure are absent"
   - "the unit lattice clock forces an O(T) periodic divisor"
 next_smallest_test: >-
-  Prove or refute the square-root endpoint-density law for the physical acip
-  and whether mu(C_(2n+2))/mu(C_(2n)) tends to
+  Prove or refute d mu_ac/dx(-rho+t)=C*t^(-1/2)*(1+o(1)), C>0, as t decreases
+  to zero, and whether it yields mu(C_(2n+2))/mu(C_(2n)) tending to
   1/(2*U_c*(U_c-1)). Freeze either a direct Misiurewicz density argument, a
   weighted/cusp-adapted function space, or an accelerated inducing domain
   before computing or fitting weights.

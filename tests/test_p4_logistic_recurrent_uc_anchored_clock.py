@@ -261,6 +261,16 @@ class LogisticRecurrentUcAnchoredClockTests(unittest.TestCase):
             "physical event",
             lock["mathematical_object"]["event_and_gap"],
         )
+        self.assertIn(
+            "tau_J(-rho)=infinity",
+            lock["mathematical_object"]["event_and_gap"],
+        )
+        self.assertTrue(
+            any(
+                "post-burn-in physical-core" in condition
+                for condition in lock["stopping_conditions"]
+            )
+        )
 
     def test_experiment_has_no_prime_or_zero_lookup(self) -> None:
         source = Path(
@@ -293,6 +303,13 @@ class LogisticRecurrentUcAnchoredClockTests(unittest.TestCase):
             self.report["route_a"]["recommended_audit_verdict"], "REVISE"
         )
         self.assertFalse(self.report["route_a"]["route_b_invocation_allowed"])
+        ambient_claim = next(
+            claim
+            for claim in self.report["claim_boundary"]["established"]
+            if "ambient [-1,1] support" in claim
+        )
+        self.assertIn("topologically nonempty", ambient_claim)
+        self.assertIn("zero invariant mass", ambient_claim)
 
 
 if __name__ == "__main__":

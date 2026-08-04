@@ -302,8 +302,22 @@ Latest evaluation:
 evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml
 ```
 
-Next smallest test: prove or refute the square-root endpoint-density law for
-the standard physical acip and whether
+Next smallest test: with
+
+\[
+\rho=U_c-1
+\]
+
+prove or refute whether the standard physical acip has the endpoint asymptotic
+
+\[
+\frac{d\mu_{\rm ac}}{dx}(-\rho+t)
+=C\,t^{-1/2}(1+o(1)),
+\qquad C>0,
+\qquad t\downarrow0,
+\]
+
+and consequently whether
 
 \[
 \frac{\mu(C_{2n+2})}{\mu(C_{2n})}

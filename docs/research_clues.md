@@ -388,8 +388,9 @@ Thus every physical even label has exactly one nondegenerate interval branch.
 Each branch interior is mapped real-analytically and diffeomorphically by
 (f^{2n}) onto `(-rho,0)`, so every finite word of positive even return labels
 has a nonempty open cylinder. This proves the recurrent tower's finite-word
-alphabet provenance; it does not choose its invariant measure or aged fibre
-coupling.
+alphabet provenance; it does not prove realization of every infinite sequence
+or choose the full two-sided completion, its invariant measure, or its aged
+fibre coupling.
 
 On ambient `[-1,1]`, transient odd branches fill `[-1,-rho)`, so the ambient
 topological support is all positive integers; every invariant probability
@@ -438,10 +439,18 @@ map has derivative infimum zero on every branch (`OBR-009`). The legacy
 Paper-2 ordinary-`BV` uniform-expansion/spectral-gap proof therefore does not
 establish the claimed geometric branch-weight asymptotic.
 
-The next smallest task is to prove or refute the square-root endpoint-density
-law for the physical acip and the resulting branch-mass ratio, using a direct
-Misiurewicz density argument, a weighted/cusp-adapted space, or a newly frozen
-accelerated inducing domain. Do not introduce a non-lattice roof first.
+The next smallest task is to prove or refute the explicit density asymptotic
+
+\[
+\frac{d\mu_{\rm ac}}{dx}(-\rho+t)
+=C\,t^{-1/2}(1+o(1)),
+\qquad C>0,
+\qquad t\downarrow0,
+\]
+
+and its conditional branch-mass ratio, using a direct Misiurewicz density
+argument, a weighted/cusp-adapted space, or a newly frozen accelerated inducing
+domain. Do not introduce a non-lattice roof first.
 
 Artifacts:
 

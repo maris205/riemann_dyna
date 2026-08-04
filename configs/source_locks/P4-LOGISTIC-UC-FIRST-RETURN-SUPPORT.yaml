@@ -111,6 +111,11 @@ stopping_conditions:
   - "REJECTED if target arithmetic or zero data enters"
   - "STOP_SCOPED for the unaccelerated first-return map as a uniformly expanding BV Markov map"
 
+open_mass_ratio_hypothesis: >-
+  d mu_ac/dx(-rho+t)=C*t^(-1/2)*(1+o(1)) with C>0 as t decreases to zero.
+  Only under this explicit hypothesis does the branch-mass ratio tend
+  conditionally to 1/(2*U_c*(U_c-1)).
+
 success_conditions:
   - "prove the all-order physical-core support and unique branch formula"
   - "prove that every branch is full and every finite even-label word has a nonempty cylinder"

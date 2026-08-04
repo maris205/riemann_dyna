@@ -790,7 +790,7 @@ def build_report() -> dict[str, Any]:
                 "the frozen U_c left/center/right odd-gap-channel diagnostic",
                 "the physical-core first-return support is exactly 2*N with one interval branch per even label",
                 "every finite word of positive even return labels has a nonempty physical first-return cylinder",
-                "the ambient [-1,1] support is N because transient odd branches have zero invariant mass",
+                "the ambient [-1,1] support is N because transient odd branches are topologically nonempty; every such branch has zero invariant mass",
                 "a recurrent even-return tower with complete primitive base census through period 16",
                 "at least one signed-multiplier full Logistic lift per primitive base orbit in that prefix",
                 "finite full fixed counts and local convergence of the reciprocal Artin-Mazur log series",
@@ -805,9 +805,9 @@ def build_report() -> dict[str, Any]:
             ],
         },
         "next_smallest_task": (
-            "Prove or refute the square-root endpoint-density law for the physical acip and "
-            "the resulting branch-mass ratio, using a weighted function space or a newly "
-            "frozen accelerated inducing domain."
+            "Prove or refute d mu_ac/dx(-rho+t)=C*t^(-1/2)*(1+o(1)), C>0, "
+            "and the resulting conditional branch-mass ratio, using a direct density "
+            "argument, a weighted function space, or a newly frozen accelerated inducing domain."
         ),
     }
 
