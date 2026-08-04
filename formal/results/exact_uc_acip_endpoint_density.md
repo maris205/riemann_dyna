@@ -244,12 +244,42 @@ $|x|=\rho$. Substitution gives
 The equality uses $u^3\rho=2$, and the strict inequality follows from
 $u<2$.
 
-Thus $G$ is a finite, two-full-branch, branchwise real-analytic, uniformly
-expanding Markov map. Its two branches both cover both Markov intervals, so
-the Markov graph is primitive. The inverse branches extend holomorphically to
-thin complex neighborhoods of the closed Markov intervals. Strict inverse
-contraction lets those neighborhoods be chosen so that the closures map
-compactly into the corresponding branch neighborhoods. This verifies
+Here are the Jiang–Ruelle hypotheses explicitly. The polynomial $S$ is real
+analytic, and
+
+\[
+S'(x)=-4u^2x(1-ux^2).
+\]
+
+Since $ux^2\leq u\rho^2=1-\rho<1$ on $A$, its unique critical point is
+$0$, and it is nondegenerate because $S''(0)=-4u^2\ne0$. Moreover,
+
+\[
+S(0)=\rho,
+\qquad
+S^2(0)=S(\rho)=-\rho,
+\]
+
+so $A=[S^2(0),S(0)]$, and the postcritical orbit is the finite orbit
+
+\[
+0\longmapsto\rho\longmapsto-\rho\longmapsto-\rho.
+\]
+
+The endpoints $\pm\rho$ are polar and the common branch endpoint $0$ is
+nonpolar. The coordinate $q(\theta)=\rho\sin\theta$ has the required
+quadratic contact at the polar endpoints and a nonzero derivative at the
+nonpolar endpoint. The two exact factorizations above show directly that the
+two branches of $G$ extend real-analytically through every doubled endpoint.
+Each branch covers the full coordinate interval, hence both Markov intervals;
+the Markov adjacency matrix has every entry equal to one and is primitive.
+
+Finally, the displayed bound $\inf|G'|>1$ makes every inverse branch strictly
+contracting on the real Markov intervals. Its real-analytic extension is
+holomorphic on a complex neighborhood. By continuity and the strict
+contraction margin, sufficiently thin bounded complex neighborhoods can be
+chosen so that each inverse branch maps the closure of its target
+neighborhood compactly inside its source neighborhood. This is precisely
 Assumption A of Jiang–Ruelle (2005).
 
 The opening Main Theorem setup and `Properties of L` in that paper therefore

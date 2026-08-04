@@ -1,6 +1,9 @@
 from decimal import Decimal, localcontext
 import json
 from pathlib import Path
+import subprocess
+import sys
+import tempfile
 import unittest
 
 import yaml
@@ -37,6 +40,11 @@ class LogisticUcAcipEndpointDensityTests(unittest.TestCase):
         self.assertGreater(lower_bound, 1)
         self.assertLess(abs(lower_bound - multiplier), Decimal("1e-170"))
         self.assertLess(abs(lower_bound - sampled), Decimal("1e-170"))
+        sampled_maximum = Decimal(
+            self.report["computed_diagnostics"]["sampled_polar_maximum"]
+        )
+        u = Decimal(constants["U_c"])
+        self.assertLess(abs(sampled_maximum**2 - Decimal(8) / u), Decimal("1e-170"))
         self.assertTrue(
             self.report["computed_gates"][
                 "polar_grid_is_strictly_monotone_decreasing"
@@ -76,6 +84,24 @@ class LogisticUcAcipEndpointDensityTests(unittest.TestCase):
         self.assertEqual([int(row["t_exponent"]) for row in rows], [8, 16, 32, 64])
         self.assertLess(errors[-1], Decimal("1e-7"))
         self.assertTrue(all(right < left for left, right in zip(errors, errors[1:])))
+        for row in rows:
+            self.assertLess(
+                abs(Decimal(row["positive_T_inverse_residual"])),
+                Decimal("1e-170"),
+            )
+            self.assertLess(
+                abs(Decimal(row["negative_T_inverse_residual"])),
+                Decimal("1e-170"),
+            )
+            self.assertEqual(
+                row["positive_absolute_inverse_jacobian"],
+                row["negative_absolute_inverse_jacobian"],
+            )
+        self.assertTrue(
+            self.report["computed_gates"][
+                "reported_points_are_two_exact_inverse_branches"
+            ]
+        )
 
     def test_mass_ratio_closed_forms_agree(self) -> None:
         constants = self.report["constants"]
@@ -143,10 +169,42 @@ class LogisticUcAcipEndpointDensityTests(unittest.TestCase):
 
     def test_saved_artifact_is_byte_reproducible(self) -> None:
         expected = json.dumps(self.report, indent=2, sort_keys=True) + "\n"
-        actual = Path(
+        artifact_path = Path(
             "artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json"
-        ).read_text(encoding="utf-8")
+        )
+        actual = artifact_path.read_text(encoding="utf-8")
         self.assertEqual(actual, expected)
+
+        provenance = self.report["provenance"]
+        self.assertEqual(self.report["artifact_schema_version"], 2)
+        self.assertEqual(
+            provenance["generator_sha256"],
+            endpoint.file_sha256(provenance["generator"]),
+        )
+        for path, expected_sha in provenance["source_inputs_sha256"].items():
+            self.assertEqual(expected_sha, endpoint.file_sha256(path))
+        self.assertEqual(
+            provenance["reproduction_command"], endpoint.REPRODUCTION_COMMAND
+        )
+        self.assertFalse(provenance["external_target_data_used"])
+
+    def test_cli_reproduction_is_byte_identical(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "structural_audit.json"
+            subprocess.run(
+                [
+                    sys.executable,
+                    "experiments/p4_logistic_uc_acip_endpoint_density.py",
+                    "--quiet",
+                    "--output",
+                    str(output),
+                ],
+                check=True,
+            )
+            expected = Path(
+                "artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json"
+            ).read_bytes()
+            self.assertEqual(output.read_bytes(), expected)
 
 
 if __name__ == "__main__":

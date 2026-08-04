@@ -5,7 +5,9 @@ from __future__ import annotations
 
 import argparse
 from decimal import Decimal, ROUND_FLOOR, localcontext
+import hashlib
 import json
+import platform
 from pathlib import Path
 from typing import Any
 
@@ -21,6 +23,14 @@ ROOT_BRACKET_DIGITS = 100
 POLAR_GRID_INTERVALS = 1024
 T_EXPONENTS = (8, 16, 32, 64)
 CHAIN_RULE_FRACTIONS = ((1, 8), (1, 3), (1, 2), (3, 4), (7, 8))
+REPRODUCTION_COMMAND = (
+    "python3 experiments/p4_logistic_uc_acip_endpoint_density.py --quiet "
+    "--output artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json"
+)
+
+
+def file_sha256(path: str | Path) -> str:
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
 def critical_polynomial(value: Decimal) -> Decimal:
@@ -116,13 +126,29 @@ def inverse_jacobian_rows(u: Decimal, rho: Decimal) -> list[dict[str, str]]:
         y = -rho + t
         x = positive_t_inverse(y, u)
         fx = Decimal(1) - u * x * x
-        derivative = Decimal(4) * u * u * x * fx
-        two_branch_inverse_jacobian = Decimal(2) / derivative
+        positive_derivative = Decimal(4) * u * u * x * fx
+        negative_derivative = -positive_derivative
+        positive_inverse_jacobian = Decimal(1) / abs(positive_derivative)
+        negative_inverse_jacobian = Decimal(1) / abs(negative_derivative)
+        two_branch_inverse_jacobian = (
+            positive_inverse_jacobian + negative_inverse_jacobian
+        )
+        positive_inverse_residual = -reflected_map(x, u, rho) - y
+        negative_inverse_residual = -reflected_map(-x, u, rho) - y
         scaled = t.sqrt() * two_branch_inverse_jacobian
         rows.append(
             {
                 "t_exponent": str(exponent),
                 "positive_inverse_x": str(x),
+                "negative_inverse_x": str(-x),
+                "positive_T_inverse_residual": str(positive_inverse_residual),
+                "negative_T_inverse_residual": str(negative_inverse_residual),
+                "positive_absolute_inverse_jacobian": str(
+                    positive_inverse_jacobian
+                ),
+                "negative_absolute_inverse_jacobian": str(
+                    negative_inverse_jacobian
+                ),
                 "sqrt_t_times_two_branch_inverse_jacobian": str(scaled),
                 "target_coefficient_for_unit_density_at_zero": str(target),
                 "relative_error": str(abs(scaled / target - Decimal(1))),
@@ -175,6 +201,14 @@ def build_report() -> dict[str, Any]:
 
         inverse_rows = inverse_jacobian_rows(u, rho)
         final_inverse_relative_error = Decimal(inverse_rows[-1]["relative_error"])
+        maximum_inverse_residual = max(
+            abs(Decimal(row[key]))
+            for row in inverse_rows
+            for key in (
+                "positive_T_inverse_residual",
+                "negative_T_inverse_residual",
+            )
+        )
 
         computed_gates = {
             "critical_polynomial_residual_below_1e_170": abs(polynomial_residual)
@@ -203,6 +237,10 @@ def build_report() -> dict[str, Any]:
                 sampled_minimum - expansion_lower_bound
             )
             < Decimal("1e-170"),
+            "polar_sampled_maximum_matches_center_value": abs(
+                sampled_maximum**2 - Decimal(8) / u
+            )
+            < Decimal("1e-170"),
             "uniform_expansion_margin_is_positive": expansion_lower_bound > 1,
             "equivalent_mass_ratio_forms_match": abs(
                 endpoint_mass_ratio - mass_ratio_u_squared
@@ -210,13 +248,31 @@ def build_report() -> dict[str, Any]:
             < Decimal("1e-170"),
             "inverse_jacobian_coefficient_converges": final_inverse_relative_error
             < Decimal("1e-7"),
+            "reported_points_are_two_exact_inverse_branches": (
+                maximum_inverse_residual < Decimal("1e-170")
+            ),
         }
 
         return {
+            "artifact_schema_version": 2,
             "audit_id": AUDIT_ID,
             "parent_audit_id": PARENT_AUDIT_ID,
             "formal_candidate": False,
             "source_lock": SOURCE_LOCK,
+            "provenance": {
+                "generator": "experiments/p4_logistic_uc_acip_endpoint_density.py",
+                "generator_sha256": file_sha256(__file__),
+                "python_implementation": platform.python_implementation(),
+                "python_version": platform.python_version(),
+                "decimal_context_digits": DECIMAL_DIGITS,
+                "source_inputs_sha256": {
+                    SOURCE_LOCK: file_sha256(SOURCE_LOCK),
+                    FORMAL_RESULT: file_sha256(FORMAL_RESULT),
+                    LITERATURE_AUDIT: file_sha256(LITERATURE_AUDIT),
+                },
+                "reproduction_command": REPRODUCTION_COMMAND,
+                "external_target_data_used": False,
+            },
             "mathematical_object": {
                 "map": "f(x)=1-U_c*x^2",
                 "physical_core": "J=[-(U_c-1),1]",
@@ -327,6 +383,7 @@ def build_report() -> dict[str, Any]:
                 "maximum_chain_rule_relative_error": str(
                     maximum_chain_rule_relative_error
                 ),
+                "maximum_T_inverse_residual": str(maximum_inverse_residual),
                 "reflected_endpoint_mapping_residuals": {
                     key: str(value)
                     for key, value in endpoint_mapping_residuals.items()
