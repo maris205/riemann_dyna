@@ -1162,6 +1162,6 @@ clue_id: CLUE-A1-004
 old_status: PROMISING
 new_status: BLOCKED
 evidence: "P4-LOGISTIC-MONOTONE-CLOCK-LIFT exact compact-clock audit and OBR-007"
-commit: "current checkpoint; source state 425aa8b"
+commit: "b8fa828"
 consequence: "The strict-monotone clock subclass is STOP_SCOPED: every full periodic orbit lies on the static-limit slice and the formal orbit determinant reduces to the static parent. Reopen only with an intrinsic recurrent base or a fully defined chronological transfer-cocycle determinant."
 ```

@@ -3,7 +3,7 @@ skill_version: 0.1.0
 candidate_id: P4-LOGISTIC-MONOTONE-CLOCK-LIFT
 audit_id: P4-LOGISTIC-MONOTONE-CLOCK-LIFT
 formal_candidate: false
-source_commit: 425aa8ba9fbb21d8cf2f5e5844301c2b085a8a04
+source_commit: b8fa8288d5163e13fe4f2786abbe0cb1f669f28b
 evaluation_date: "2026-08-04T02:50:47Z"
 
 source_lock:
