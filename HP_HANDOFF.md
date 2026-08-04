@@ -16,6 +16,7 @@ P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
 - Overall Route-A interpretation: `ROUTE_A_EXPLORATORY`
 - Route B: inactive and not authorized
 - New reusable obstruction: `OBR-008`
+- Evaluation source commit: `95e72606c75e039ba3457a727e2d05377e35daf0`
 - Formal candidate count: unchanged (`SS-0001`, `SS-0002` only)
 
 The recurrent tower escapes the strict-monotone orbit-collapse obstruction

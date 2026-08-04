@@ -3,7 +3,7 @@ skill_version: 0.1.0
 candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
 audit_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
 formal_candidate: false
-source_commit: PENDING_FIRST_COMMIT
+source_commit: 95e72606c75e039ba3457a727e2d05377e35daf0
 evaluation_date: "2026-08-04T08:05:28Z"
 
 source_lock:

@@ -1243,6 +1243,6 @@ clue_id: CLUE-A1-004
 old_status: BLOCKED
 new_status: ACTIVE
 evidence: "P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK exact anchor, recurrent tower census, full-fibre witnesses, and OBR-008"
-commit: "current checkpoint; evaluation source commit pending"
+commit: "95e7260"
 consequence: "The recurrent construction escapes OBR-007 but remains a non-candidate REVISE audit. Certify the exact-U_c physical first-return branches and invariant weights before defining a non-lattice roof or transfer determinant."
 ```

@@ -915,6 +915,12 @@ and `formal_candidate: false`. The object is explicit enough for a versioned
 Route-A audit but is not promoted to `SS-0003`, because its physical
 first-return branch system and weights remain uncertified.
 
+Evaluation source commit:
+
+```text
+95e72606c75e039ba3457a727e2d05377e35daf0
+```
+
 ### Source lock
 
 The exact parent is
