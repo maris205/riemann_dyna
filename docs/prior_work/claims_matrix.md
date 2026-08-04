@@ -101,8 +101,8 @@ legacy/paper2_transient_chaos/
 | P2-C09 | Topological-defect density vanishes asymptotically. | Presented as asymptotic result | Proof audit required | Macroscopic prior | Separate theorem from finite scan |
 | P2-C10 | Only `Q3` and `Q5` are defective for `k <= 5000`. | `NUMERICAL_OBSERVATION` | `NUMERICAL_OBSERVATION` | Regression benchmark | Reproduce dataset |
 | P2-C11 | Odd gaps have zero invariant measure in the stated 1D model. | `PROVED_IN_PAPER` under model assumptions | `PROVED` on the physical core, with a corrected band-swap proof; ambient odd branches exist but have zero invariant mass | Parity baseline | Preserve the ambient/core domain distinction |
-| P2-C12 | Even-gap measures decay asymptotically geometrically. | `CONDITIONAL_THEOREM` using spectral ingredients | `OPEN`; the legacy Paper-2 uniform-expansion/BV proof is `REFUTED` by critical-preimage endpoints | Weight-asymptotic clue only | Use a weighted space, direct density theorem, or accelerated inducing domain |
-| P2-C13 | The 1D model has no internal mechanism for full Hardy–Littlewood mod-3 resonance. | Structural conclusion | `HEURISTIC` / numerical until P2-C12 is repaired | Higher-rank motivation only | Do not cite as a theorem; test weights directly |
+| P2-C12 | Even-gap measures decay asymptotically geometrically. | `CONDITIONAL_THEOREM` using spectral ingredients | Ratio-limit subclaim `PROVED` for the physical exact-$U_c$ acip; the stronger geometric asymptotic with exponential remainder remains `OPEN`, and the legacy ordinary-`BV` proof is `REFUTED` | Corrected physical mass-ratio theorem only | Cite the direct density proof for the ratio limit; do not claim the old exponential remainder, finite-$n$ weights, or a value of $h(0)$ |
+| P2-C13 | The 1D model has no internal mechanism for full Hardy–Littlewood mod-3 resonance. | Structural conclusion | `HEURISTIC`; repairing P2-C12 does not prove the stronger mod-3 impossibility claim | Higher-rank motivation only | Do not cite as a theorem; test the actual weighted residue modes directly |
 | P2-C14 | The Logistic construction is an abelian/mod-2 holographic projection. | `HEURISTIC` supported by structure | Project prior | Candidate guidance | Do not call theorem |
 | P2-C15 | A higher-dimensional/higher-mode lift is the main next problem. | `OPEN` | `PROJECT_DECISION` | Defines project direction | Implement Track A/B/C |
 
@@ -125,6 +125,12 @@ to:   low-dimensional symbolic projection and search prior
 - The unaccelerated first-return map has derivative infimum zero on every
   branch. Consequently the stated ordinary-`BV` uniform-expansion and spectral
   argument does not prove P2-C12.
+- The ratio-limit portion of P2-C12 is nevertheless repaired by the direct
+  physical-density theorem
+  \(h(-\rho+t)=h(0)(\sqrt2U_c)^{-1}t^{-1/2}+O(1)\), which gives
+  \(\mu(C_{2n+2})/\mu(C_{2n})\to1/[2U_c(U_c-1)]\). This does not restore the
+  refuted ordinary-`BV` spectral gap or prove the stronger exponential
+  remainder/full P2-C12 statement.
 
 ---
 

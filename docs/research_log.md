@@ -1523,3 +1523,177 @@ density asymptotic and whether
 Freeze one of: a direct Misiurewicz density argument, a weighted/cusp-adapted
 function space, or an accelerated inducing domain. Do not fit weights or add a
 non-lattice roof before that choice is explicit.
+
+## 2026-08-04 — exact-($U_c$) physical-acip endpoint theorem
+
+### Stable checkpoint
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: none. Parent audit and scoped theorem audit:
+
+```text
+P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY
+```
+
+Source lock:
+`configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml`.
+The physical map is `f(x)=1-U_c*x^2` on `J=[-(U_c-1),1]`, one `f`
+iterate is one clock tick, `mu_ac(J)=1`, and `h=d mu_ac/dx`. The
+conditional `T=f^2` density on `A=[-rho,rho]` is `g_A=2h`. The reflected
+map and polar coordinate are proof objects only. No determinant or target
+arithmetic data is admitted.
+
+Route-A tuple:
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+overall: ROUTE_A_EXPLORATORY
+scoped endpoint verdict: GO_WITH_LIMITATIONS
+parent audit verdict: REVISE
+formal candidate: false
+Route B: inactive and not authorized
+```
+
+Evaluation:
+`evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`.
+Evaluation source commit:
+`84111b3f436ed1e8111c871719e32b70a4def098`.
+
+### Strongest evidence
+
+For `T=f^2|_A` and `S=-T`, the coordinate `x=rho*sin(theta)` yields two
+analytic full branches and
+
+\[
+\inf|G'|=\frac4{U_c^2}=2U_c(U_c-1)>1.
+\]
+
+All Jiang–Ruelle Markov/RPF hypotheses are checked, including the unique
+nondegenerate critical point, finite postcritical orbit, primitive Markov
+graph, polar/nonpolar endpoints, holomorphic inverse branches, and compact
+containment. The resulting density is strictly positive and locally Lipschitz
+at zero. Reflection and the two-band lift give the unique full-support
+physical acip of `f`.
+
+The physical Perron–Frobenius inverse branches prove
+
+\[
+h(-\rho+t)
+=\frac{h(0)}{\sqrt2U_c}t^{-1/2}+O(1),
+\qquad h(0)>0.
+\]
+
+The independently proved endpoint-length geometry then gives
+
+\[
+\frac{\mu_{\rm ac}(C_{2n+2})}{\mu_{\rm ac}(C_{2n})}
+\longrightarrow
+\frac1{2U_c(U_c-1)}
+=\frac{U_c^2}{4}
+=0.5957439419765593735\ldots.
+\]
+
+The structural audit independently compares the simplified polar derivative
+with the raw chain rule, verifies both exact inverse branches at sealed
+endpoint scales, certifies a 100-digit sign bracket for `U_c`, records input
+hashes and environment metadata, and reproduces byte-identically through the
+CLI. The Baladi–Smania cross-check uses corrected equation (1.1) in the 2023
+supplement to arXiv:2008.01654v4.
+
+### Strongest failure
+
+No rigorous numerical enclosure for `h(0)` or exact finite-order physical
+branch masses is available. The branch-mass theorem proves a ratio limit, not
+the stronger legacy exponential-remainder formula. Return branches are not
+arithmetic primitive periodic orbits, and no von-Mangoldt trace, intrinsic
+non-lattice roof, s-dependent Fredholm determinant, global completed-xi
+structure, or natural quantization exists.
+
+`OBR-009` remains valid for the raw unaccelerated first-return operator. The
+new density proof repairs the legacy mass-ratio conclusion but does not restore
+the refuted ordinary-`BV` spectral gap. `OBR-008` still blocks the unit-lattice
+determinant route.
+
+### New reusable knowledge
+
+A postcritical quadratic cusp at an exact Misiurewicz anchor can be removed by
+a polar coordinate to obtain a uniformly expanding analytic Markov proof
+object. This can certify local physical-density spikes and branch-mass
+asymptotics while keeping the physical clock, normalization, and determinant
+ledgers separate.
+
+### Updated files
+
+- `CHANGELOG.md`;
+- `DERIVATION_PACKAGE.md`;
+- `configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml`;
+- `docs/literature/exact_uc_acip_density_sources.md`;
+- `docs/prior_work/README.md`;
+- `docs/prior_work/claims_matrix.md`;
+- `docs/research_clues.md`;
+- `docs/candidate_registry.md`;
+- `docs/obstruction_registry.md`;
+- `docs/research_log.md`;
+- `HP_HANDOFF.md`;
+- `experiments/p4_logistic_uc_acip_endpoint_density.py`;
+- `formal/results/exact_uc_acip_endpoint_density.md`;
+- `formal/results/exact_uc_first_return_support.md`;
+- `tests/test_p4_logistic_uc_acip_endpoint_density.py`;
+- `tests/test_p4_logistic_uc_first_return_support.py`;
+- `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`;
+- `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`.
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests
+
+Focused endpoint audit: `10/10 passed`.
+
+Endpoint plus first-return support audits: `26/26 passed`.
+
+Full repository: `99/99 passed`.
+
+Artifact SHA-256:
+
+```text
+ef015a2f1f4fc475c7daf8b87c1a2fedc75f35b8e76e151eb588b279eca53a8e  artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json
+```
+
+### Reproduction commands
+
+```bash
+python3 experiments/p4_logistic_uc_acip_endpoint_density.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json
+python3 -m unittest -v tests/test_p4_logistic_uc_acip_endpoint_density.py
+python3 -m unittest -v \
+  tests/test_p4_logistic_uc_acip_endpoint_density.py \
+  tests/test_p4_logistic_uc_first_return_support.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml","evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+sha256sum artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json
+git diff --check
+```
+
+### Claim boundary
+
+Established: the exact physical-acip endpoint spike, positivity and local
+regularity at zero, physical full support, every physical even branch having
+positive mass, and the asymptotic physical mass ratio.
+
+Not established: an enclosure for `h(0)`, exact finite-order weights, an
+exponential remainder/rate, an arithmetic primitive-orbit law, a viable
+Riemann determinant, global analytic structure, quantization, Route B,
+Hilbert–Pólya, or RH.
+
+### Next smallest task
+
+Use the uniformly expanding polar coordinate with a rigorously validated
+finite-rank approximation to enclose `h(0)`, the absolute endpoint
+coefficient, and selected finite branch masses. Freeze and separately report
+discretization, truncation, rounding, normalization, and stopping errors. Use
+no prime or zero data.
+
+Recommended verdict: `REVISE`.

@@ -1,6 +1,203 @@
 # HP-Dynamics Handoff
 
-## Current status — exact-(U_c) first-return support closure
+## Current status — exact-($U_c$) physical-acip endpoint theorem
+
+Current clue: `CLUE-A1-004`
+
+Candidate ID: none. Parent and scoped audit IDs:
+
+```text
+P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY
+```
+
+- Formal candidate: `false`
+- Source commit: `84111b3f436ed1e8111c871719e32b70a4def098`
+- Route-A evaluation:
+  `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall: `ROUTE_A_EXPLORATORY`
+- Scoped endpoint verdict: `GO_WITH_LIMITATIONS`
+- Parent-candidate verdict: `REVISE`
+- Route B: inactive and not authorized
+- Formal candidate count: unchanged (`SS-0001`, `SS-0002` only)
+
+The endpoint-density task is closed positively. This strengthens A1 but does
+not create `SS-0003`: no arithmetic primitive-orbit law, von-Mangoldt trace,
+s-dependent Fredholm determinant, non-lattice Riemann clock, or natural
+quantization has been obtained.
+
+### Source lock
+
+Let
+
+\[
+f(x)=1-U_cx^2,
+\qquad
+U_c^3-2U_c^2+2U_c-2=0,
+\qquad
+\rho=U_c-1,
+\]
+
+on the physical core `J=[-rho,1]`. The named measure is the unique physical
+absolutely continuous invariant probability `mu_ac`, normalized by
+`mu_ac(J)=1`, with density `h=d mu_ac/dx`.
+
+One `f` iterate remains one physical clock tick. The map `T=f^2` on
+`A=[-rho,rho]`, its reflection `S=-T`, and the polar coordinate
+`x=rho*sin(theta)` are proof coordinates only. The conditional `T`-acip on
+`A` has density `g_A=2h`; it may not be mixed with the full `f`-acip ledger.
+
+No determinant is defined. Prime tables, zero tables, zeta/xi evaluations,
+USTC data, fitted weights, and orbit histograms as theorem evidence are
+forbidden. The source lock is
+`configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml`.
+
+### Strongest evidence
+
+For
+
+\[
+T(x)=-\rho+2U_c^2x^2-U_c^3x^4,
+\qquad S=-T,
+\]
+
+the polar conjugate is a two-full-branch analytic Markov map with
+
+\[
+\inf|G'|=\frac4{U_c^2}=2U_c\rho>1.
+\]
+
+The Jiang–Ruelle analytically expanding Markov RPF theorem applies: the
+desingularized density is branchwise analytic, has matching traces at the
+nonpolar point zero, and is strictly positive. After reflection and the
+two-band lift, the exact Logistic map has a unique full-support physical acip
+with `0<h(0)<infinity` and local Lipschitz regularity at zero.
+
+The exact physical Perron–Frobenius ledger then gives
+
+\[
+\boxed{
+h(-\rho+t)
+=\frac{h(0)}{\sqrt2U_c}t^{-1/2}+O(1)
+\qquad(t\downarrow0).
+}
+\]
+
+Combining this with the independently proved endpoint-length ratio yields
+
+\[
+\boxed{
+\frac{\mu_{\rm ac}(C_{2n+2})}{\mu_{\rm ac}(C_{2n})}
+\longrightarrow
+\frac1{2U_c(U_c-1)}
+=\frac{U_c^2}{4}
+=0.5957439419765593735\ldots.
+}
+\]
+
+Ruelle (2009), Theorem 9 and Remark 16(a), independently cross-check the spike
+coefficient. The Baladi–Smania citation is locked to corrected equation (1.1)
+in the 2023 supplement to arXiv:2008.01654v4; the leading coefficient is
+unchanged from the published formula.
+
+### Strongest failure and reusable knowledge
+
+The result proves an asymptotic physical mass ratio, not an exact finite-order
+geometric law or the stronger legacy exponential-remainder formula. A closed
+form or rigorous numerical enclosure for `h(0)` and selected finite branch
+masses is still absent. First-return branches remain observables rather than
+arithmetic primitive periodic orbits, and the modeled tower measure/coupling
+remains additional structure.
+
+`OBR-009` remains active. The raw unaccelerated first-return map still has
+derivative infimum zero on every branch, so the legacy ordinary-`BV`
+Lasota–Yorke/spectral-gap proof is refuted. The new theorem repairs only its
+mass-ratio conclusion by a direct density argument; it does not restore that
+operator or define a Fredholm determinant. `OBR-008` continues to block every
+unit-lattice continuation as a completed-xi divisor.
+
+Reusable knowledge: a quadratic postcritical cusp can be removed by a polar
+coordinate, turning the parity-reduced exact-`U_c` map into a uniformly
+expanding analytic Markov proof object while preserving the original physical
+clock and normalization ledger.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml`
+- `docs/literature/exact_uc_acip_density_sources.md`
+- `docs/prior_work/README.md`
+- `docs/prior_work/claims_matrix.md`
+- `docs/research_clues.md`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_log.md`
+- `experiments/p4_logistic_uc_acip_endpoint_density.py`
+- `formal/results/exact_uc_acip_endpoint_density.md`
+- `formal/results/exact_uc_first_return_support.md`
+- `tests/test_p4_logistic_uc_acip_endpoint_density.py`
+- `tests/test_p4_logistic_uc_first_return_support.py`
+- `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
+- `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+Focused endpoint audit: `10/10 passed`.
+
+Focused endpoint plus first-return support audits: `26/26 passed`.
+
+Full repository: `99/99 passed`.
+
+Artifact SHA-256:
+
+```text
+ef015a2f1f4fc475c7daf8b87c1a2fedc75f35b8e76e151eb588b279eca53a8e  artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json
+```
+
+Commands:
+
+```bash
+python3 experiments/p4_logistic_uc_acip_endpoint_density.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json
+python3 -m unittest -v tests/test_p4_logistic_uc_acip_endpoint_density.py
+python3 -m unittest -v \
+  tests/test_p4_logistic_uc_acip_endpoint_density.py \
+  tests/test_p4_logistic_uc_first_return_support.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml","evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+sha256sum artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json
+git diff --check
+```
+
+### Claim boundary and next smallest task
+
+Established: physical-acip existence, uniqueness, physicality and full
+support; finite positive `h(0)`; the exact endpoint inverse-square-root law;
+positive mass for every physical even branch; and the asymptotic physical
+branch-mass ratio.
+
+Not established: a rigorous numerical enclosure of `h(0)`, exact finite-order
+branch weights, an exponential remainder/rate, the modeled tower
+measure/coupling, arithmetic primitive-orbit weights, a non-lattice clock, an
+s-dependent Fredholm/completed-xi determinant, natural quantization, Route B,
+Hilbert–Pólya, or RH.
+
+Next smallest task: use the uniformly expanding polar coordinate and a frozen
+validated approximation theorem to enclose `h(0)`, the absolute endpoint
+coefficient, and selected finite branch masses. Record discretization,
+truncation, rounding, normalization, and stopping errors separately; use no
+prime or zero data.
+
+Recommended verdict: `REVISE`.
+
+---
+
+## Previous checkpoint — exact-(U_c) first-return support closure
 
 Current clue: `CLUE-A1-004`
 

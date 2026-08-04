@@ -1,0 +1,230 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+audit_id: P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY
+parent_audit_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+formal_candidate: false
+source_commit: 84111b3f436ed1e8111c871719e32b70a4def098
+evaluation_date: "2026-08-04T16:25:11Z"
+
+source_lock:
+  object: >-
+    Exact-U_c Logistic map f(x)=1-U_c*x^2, where U_c is the unique real
+    root of u^3-2*u^2+2*u-2=0, on its physical core J=[-(U_c-1),1].
+    The endpoint audit uses T=f^2 on A=[-rho,rho], its reflection S=-T,
+    and the polar coordinate x=rho*sin(theta) only as proof coordinates.
+    The named measure is the unique physical f-acip mu_ac with total mass
+    one, and h=d mu_ac/dx is its canonical density representative.
+  data_type: >-
+    Exact algebra, Jiang-Ruelle analytically expanding Markov RPF theory,
+    exact physical Perron-Frobenius inverse-branch asymptotics, the already
+    proved first-return branch geometry and endpoint-length ratio, and
+    deterministic 180-decimal structural diagnostics. Published spike
+    decompositions are independent cross-checks, not fitted inputs.
+  clock: >-
+    One iterate of f is one physical tick. T=f^2 and the polar coordinate
+    are proof coordinates only. A physical branch C_(2n) retains return
+    time 2n; no acceleration or roof change is made.
+  normalization: >-
+    Raw x-coordinate, strict event x<0 with zero a non-event, mu_ac(J)=1,
+    and h=d mu_ac/dx. The conditional T-acip mu_A on A has total mass one,
+    while mu_ac(A)=1/2 and d mu_A/dx=2h on A. These ledgers are not mixed.
+  determinant_convention: >-
+    No candidate determinant is defined in this audit. The s-independent
+    RPF operator used to prove existence of the invariant density is not a
+    Riemann dynamical Zeta, Fredholm determinant, reciprocal zeta, or
+    completed-xi determinant.
+  cutoff: >-
+    The theorem covers all sufficiently small t>0 and n->infinity. Sealed
+    algebraic diagnostics use t=10^-8,10^-16,10^-32,10^-64 and a 1024-cell
+    polar derivative grid. The inherited exact endpoint certificate remains
+    through branch 154 / return 308 but is not used to fit the theorem.
+  precision: >-
+    Exact real analysis for the theorem; 180-decimal deterministic arithmetic
+    for algebraic and inverse-Jacobian diagnostics. Long binary64 orbit
+    histograms are excluded from theorem evidence.
+  allowed_data:
+    - "the algebraic U_c equation and exact first-return results already in the repository"
+    - "Jiang-Ruelle 2005 RPF theory and corrected published Misiurewicz spike results"
+    - "target-free exact or high-precision structural diagnostics"
+    - "legacy sources solely for explicit claim correction"
+  forbidden_data:
+    - "prime tables, primality predicates, prime-gap histograms, Riemann-zero tables, xi/zeta evaluations, or USTC data"
+    - "fitting the exponent, endpoint coefficient, branch weights, roof, phase, or partition to arithmetic targets"
+    - "using a floating-point orbit histogram as proof of an acip asymptotic"
+    - "mixing the A-conditional density with the full f-acip density"
+    - "restoring the refuted ordinary-BV uniform-expansion claim for the unaccelerated first-return map"
+    - "calling the proof-coordinate RPF operator a Riemann Fredholm determinant"
+  training_split: "empty; no fitting and no target data"
+  validation_split: >-
+    Algebraic band identities, the two-full-branch polar conjugacy, analytic
+    inverse branches, primitive Markov graph, and inf|G'|=4/U_c^2>1.
+  test_split: >-
+    Sealed inverse-Jacobian scales, the one-preimage ledger at -rho, the
+    corrected published spike coefficient, equivalent mass-ratio forms, and
+    byte reproduction of the structural artifact.
+  stopping_conditions:
+    - "REVISE if the physical acip, its normalization, or the finite positive trace h(0) is not proved"
+    - "REVISE if the polar conjugate fails the full-branch analytic-expansion hypotheses"
+    - "STOP_SCOPED for the raw first-return map as an ordinary uniformly expanding BV map"
+    - "STOP_SCOPED for any attempt to infer a Riemann determinant from this density-only result"
+    - "REJECTED if target arithmetic or zero data enters"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The exact physical first-return alphabet is one full interval branch for
+    every even label and no physical odd branch, with every finite even-label
+    word realized. The named physical acip now exists uniquely, has full
+    support, gives every physical branch positive mass, and satisfies the
+    exact endpoint law h(-rho+t)=h(0)/(sqrt(2)*U_c)*t^(-1/2)+O(1). Hence
+    mu_ac(C_(2n+2))/mu_ac(C_(2n)) tends to
+    1/(2*U_c*(U_c-1))=U_c^2/4.
+  strongest_failure: >-
+    Return branches are observables, not arithmetic primitive periodic
+    orbits. The absolute coefficient h(0), finite-n branch masses, modeled
+    renewal coupling, an exponential remainder/rate, complete fibre-root
+    multiplicities, log-prime clock, and von-Mangoldt repetition law remain
+    absent.
+  metrics:
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    physical_topological_support: "2*N_{>=1}"
+    physical_branch_multiplicity: "one interval per even label"
+    full_finite_return_word_language: PROVED
+    physical_acip_existence_uniqueness_full_support: PROVED
+    physical_acip_is_physical: PROVED
+    physical_acip_branch_positivity: PROVED
+    endpoint_density_exponent: "-1/2"
+    endpoint_density_coefficient: "h(0)/(sqrt(2)*U_c)"
+    endpoint_density_coefficient_positive: PROVED
+    endpoint_density_absolute_value_enclosed: false
+    asymptotic_branch_length_ratio: "1/(4*U_c^2*(U_c-1)^2)"
+    asymptotic_branch_mass_ratio: "1/(2*U_c*(U_c-1))=U_c^2/4"
+    asymptotic_branch_mass_ratio_decimal: "0.5957439419765593735..."
+    asymptotic_branch_mass_ratio_evidence: PROVED
+    exact_finite_n_branch_weights: false
+    primitive_tower_orbits_through_period_16: 70
+    full_fibre_witnesses: 70
+    full_fibre_witness_prefix_evidence: NUMERICAL_OBSERVATION
+    complete_fibre_root_census: false
+  artifacts:
+    - configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml
+    - formal/results/exact_uc_acip_endpoint_density.md
+    - formal/results/exact_uc_first_return_support.md
+    - artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json
+    - docs/literature/exact_uc_acip_density_sources.md
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The polar conjugate supplies a rigorously defined s-independent transfer
+    operator proving the invariant density, while the inherited tower zeta,
+    reciprocal Artin-Mazur ledger, and determinant conventions remain
+    explicitly separated. The endpoint theorem repairs the physical mass
+    ratio without pretending to repair the raw first-return operator.
+  strongest_failure: >-
+    No s-dependent same-object trace formula or Fredholm determinant is
+    defined. OBR-009 still blocks the natural unaccelerated first-return map
+    as an ordinary uniformly expanding BV operator, and any determinant that
+    retains only z=exp(-s) has the O(T) unit-lattice divisor obstruction.
+  metrics:
+    zero_error_train: "not_applicable_no_target_data"
+    zero_error_validation: "not_testable_no_target_root_ledger"
+    zero_error_test: "not_testable_no_target_root_ledger"
+    extra_zero_count: "not_testable_no_completed_divisor"
+    missing_zero_count: "not_testable_no_completed_divisor"
+    root_count_discrepancy: "proved_O(T)_versus_Theta(T_log_T)_for_unit_lattice_continuations"
+    cutoff_drift: "endpoint theorem all-order; no determinant cutoff exists"
+    precision_drift: "exact theorem plus stable 180-decimal diagnostics; no target-root ledger"
+    control_margin: "polar expansion margin 4/U_c^2-1>0; target data excluded"
+    invariant_density_transfer_operator_defined: true
+    invariant_density_transfer_operator_s_dependent: false
+    unaccelerated_uniform_expansion: false
+    fredholm_determinant_defined: false
+  artifacts:
+    - formal/results/exact_uc_acip_endpoint_density.md
+    - formal/obstructions/exact_uc_first_return_nonuniform_expansion.md
+    - formal/obstructions/unit_lattice_clock_vertical_periodicity.md
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The endpoint theorem is an all-scale local density statement, and the
+    unit-lattice vertical-periodicity obstruction remains a same-clock global
+    falsification criterion independent of finite zero fitting.
+  strongest_failure: >-
+    There is no analytic continuation theorem for a candidate determinant,
+    functional equation, Gamma or trivial-zero ledger, Riemann-von Mangoldt
+    law, moving-order bound, or completed-xi divisor.
+  metrics:
+    conjugation_symmetry: "not_applicable_no_candidate_determinant"
+    functional_equation: false
+    gamma_factor: false
+    trivial_zero_ledger: false
+    analytic_continuation: false
+    target_counting_law: false
+    unit_lattice_vertical_period: "2*pi*i"
+    unit_lattice_divisor_growth: "O(T) in bounded real strips"
+  artifacts:
+    - formal/obstructions/unit_lattice_clock_vertical_periodicity.md
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The parent construction remains an explicit autonomous recurrent skew
+    product with a coherent invariant phase space and a frozen physical clock.
+  strongest_failure: >-
+    The Logistic fibre is noninvertible, and no symplectic, contact,
+    scattering, or unitary structure, Hilbert space, operator domain,
+    boundary conditions, or natural same-clock quantization is defined.
+  metrics:
+    autonomous: true
+    recurrent_base: true
+    forward_invariant_fibre: true
+    invertible: false
+    symplectic_structure: false
+    natural_hilbert_space: null
+    operator_domain: null
+    route_b_ready: false
+  artifacts:
+    - experiments/p4_logistic_recurrent_uc_anchored_clock.py
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_audit_verdict: REVISE
+claim_boundary:
+  what_is_established:
+    - "The exact-U_c physical acip exists uniquely, has full support, is physical, and is locally Lipschitz with h(0)>0 near the critical point."
+    - "The endpoint density is h(-rho+t)=h(0)/(sqrt(2)*U_c)*t^(-1/2)+O(1)."
+    - "The physical even-branch mass ratio tends to 1/(2*U_c*(U_c-1))=U_c^2/4."
+    - "Every physical even branch has positive acip mass; ambient odd branches remain transient and have zero invariant mass."
+    - "The old ordinary-BV proof remains refuted even though its mass-ratio conclusion is repaired by a direct density theorem."
+  what_is_not_established:
+    - "No closed form or rigorous numerical enclosure for h(0) or selected finite branch masses is obtained."
+    - "No exact finite-n geometric weight law, exponential remainder/rate, or modeled tower measure coupling is obtained."
+    - "No arithmetic primitive-orbit correspondence, von-Mangoldt trace law, s-dependent Fredholm determinant, or completed-xi divisor is obtained."
+    - "No natural quantization, Route B, Hilbert-Polya realization, RH proof, or physical spectral claim is made."
+  what_would_change_the_status: >-
+    A rigorous numerical enclosure of h(0) would certify absolute endpoint and
+    finite-branch masses but would not by itself upgrade A2. A Route-A upgrade
+    additionally requires an intrinsic target-free orbit weight/clock and a
+    same-object s-dependent trace/Fredholm theorem escaping the unit-lattice
+    obstruction.
+blocking_conditions:
+  - "absolute h(0), finite-n branch weights, and an exponential remainder/rate are not certified"
+  - "first-return observables are not arithmetic primitive periodic orbits"
+  - "the unaccelerated ordinary-BV expansion route remains refuted"
+  - "a same-object s-dependent Fredholm determinant and global analytic structure are absent"
+  - "the unit lattice clock forces an O(T) periodic divisor"
+next_smallest_test: >-
+  Use the uniformly expanding polar coordinate and a frozen validated
+  approximation theorem to obtain a rigorous numerical enclosure of h(0),
+  hence of h(0)/(sqrt(2)*U_c) and selected finite physical branch masses,
+  without prime or zero data. Record discretization, truncation, rounding,
+  normalization, and stopping errors separately.
+route_b_invocation_allowed: false

@@ -390,9 +390,18 @@ Consequence:
 The ordinary piecewise-uniformly-expanding `BV` / Lasota--Yorke argument in
 legacy Paper 2 does not apply to this unaccelerated induced map. In particular,
 that argument does not establish its claimed ordinary-`BV` spectral gap or the
-downstream asymptotically geometric branch-weight theorem. This does not
-refute existence of the physical acip, the exact even topological support, or
-the observed finite-sample mass ratio.
+downstream asymptotically geometric branch-weight theorem. A later direct
+physical-density theorem independently proves the mass-ratio conclusion,
+
+\[
+\frac{\mu_{\rm ac}(C_{2n+2})}{\mu_{\rm ac}(C_{2n})}
+\longrightarrow\frac1{2U_c(U_c-1)},
+\]
+
+without restoring the failed ordinary-`BV` proof. Thus `OBR-009` remains an
+operator obstruction, while its direct-density reopening has successfully
+closed the narrower neighboring-mass-ratio obligation. The stronger legacy
+exponential-remainder statement remains open.
 
 Scope:
 The full negative-event first-return map on the exact physical core, with its
@@ -404,7 +413,9 @@ Reopening condition:
 Freeze one replacement domain and operator ledger, including its return
 convention, branch endpoints, function space, norm, distortion estimates, and
 action on the square-root singularity. Prove those properties before restoring
-any spectral-gap, Fredholm, or branch-weight asymptotic claim.
+any spectral-gap or Fredholm claim. The branch-weight ratio limit no longer
+needs this reopening because it has a separate direct proof; an exponential
+remainder still requires additional control.
 
 Artifacts:
 
@@ -412,5 +423,9 @@ Artifacts:
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `formal/results/exact_uc_first_return_support.md`
+- `formal/results/exact_uc_acip_endpoint_density.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
+- `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
+- `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
 - `tests/test_p4_logistic_uc_first_return_support.py`
+- `tests/test_p4_logistic_uc_acip_endpoint_density.py`

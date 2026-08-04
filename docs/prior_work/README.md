@@ -119,11 +119,28 @@ probability.
 The Paper-2 claim that the unaccelerated first-return map is uniformly
 expanding on its countable branches is false: the derivative infimum is zero
 on every branch because the endpoints accumulate on critical preimages. Its
-ordinary-`BV` spectral-gap and asymptotic gap-weight proof must therefore be
-treated as open pending a weighted function space, direct density theorem, or
-accelerated inducing scheme. See:
+ordinary-`BV` spectral-gap proof remains refuted. The neighboring-mass-ratio
+limit is now repaired independently by the direct physical-density theorem
+
+\[
+h(-\rho+t)
+=\frac{h(0)}{\sqrt2U_c}t^{-1/2}+O(1),
+\qquad h(0)>0,
+\]
+
+which gives
+
+\[
+\frac{\mu(C_{2n+2})}{\mu(C_{2n})}
+\longrightarrow\frac1{2U_c(U_c-1)}.
+\]
+
+This does not prove the stronger Paper-2 formula with an exponentially bounded
+remainder. That rate, a certified value of $h(0)$, and exact finite-order
+branch weights remain open. See:
 
 - `formal/results/exact_uc_first_return_support.md`;
+- `formal/results/exact_uc_acip_endpoint_density.md`;
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`.
 
 ---

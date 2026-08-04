@@ -249,7 +249,7 @@ unmatched-orbit penalty
 ## CLUE-A1-004 — 从非自治系统提升为自治高维系统
 
 **来源：** Prime aging 与 Sequential Birkhoff 工作  
-**证据：** `HEURISTIC` + `MODELING_CHOICE` + `CONDITIONAL_THEOREM` + scoped `PROVED_OBSTRUCTION`
+**证据：** `PROVED` + `HEURISTIC` + `MODELING_CHOICE` + scoped `PROVED_OBSTRUCTION`
 **状态：** `ACTIVE`
 **对应层：** `A1`, `A4`
 
@@ -394,10 +394,9 @@ fibre coupling.
 
 On ambient `[-1,1]`, transient odd branches fill `[-1,-rho)`, so the ambient
 topological support is all positive integers; every invariant probability
-assigns those odd branches zero mass. For the standard full-support physical
-acip with support (J), every physical even branch has positive mass. This is a
-conditional statement on the named support hypothesis; exact weights and their
-asymptotics remain open.
+assigns those odd branches zero mass. The standard physical acip is now proved
+to exist uniquely and have full support (J), so every physical even branch has
+positive mass.
 
 The recurrent tower uses this proved physical alphabet, with one symbol
 (m\geq1) for the even label (L=2m), and the anchored fibre law
@@ -439,31 +438,47 @@ map has derivative infimum zero on every branch (`OBR-009`). The legacy
 Paper-2 ordinary-`BV` uniform-expansion/spectral-gap proof therefore does not
 establish the claimed geometric branch-weight asymptotic.
 
-The next smallest task is to prove or refute the explicit density asymptotic
+The direct polar-coordinate density theorem now proves
 
 \[
 \frac{d\mu_{\rm ac}}{dx}(-\rho+t)
-=C\,t^{-1/2}(1+o(1)),
-\qquad C>0,
-\qquad t\downarrow0,
+=\frac{h(0)}{\sqrt2U_c}t^{-1/2}+O(1),
+\qquad h(0)>0,
 \]
 
-and its conditional branch-mass ratio, using a direct Misiurewicz density
-argument, a weighted/cusp-adapted space, or a newly frozen accelerated inducing
-domain. Do not introduce a non-lattice roof first.
+and therefore
+
+\[
+\frac{\mu_{\rm ac}(C_{2n+2})}{\mu_{\rm ac}(C_{2n})}
+\longrightarrow\frac1{2U_c(U_c-1)}=\frac{U_c^2}{4}.
+\]
+
+This repairs the legacy mass-ratio conclusion without restoring the refuted
+ordinary-`BV` first-return proof. It does not prove the stronger legacy
+exponential-remainder formula. The next smallest task is a rigorous numerical
+enclosure of `h(0)` and selected finite branch masses using the uniformly
+expanding polar coordinate. Do not introduce a non-lattice roof or target-zero
+comparison as part of that task.
 
 Artifacts:
 
 - `configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT.yaml`
+- `configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
+- `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
+- `experiments/p4_logistic_uc_acip_endpoint_density.py`
+- `docs/literature/exact_uc_acip_density_sources.md`
 - `formal/results/exact_uc_first_return_support.md`
+- `formal/results/exact_uc_acip_endpoint_density.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
 - `tests/test_p4_logistic_uc_first_return_support.py`
+- `tests/test_p4_logistic_uc_acip_endpoint_density.py`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
 
 ---
@@ -1328,4 +1343,16 @@ new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT all-order physical/ambient branch theorem, rational endpoint certificate through return 308, and OBR-009"
 commit: "cd2ba4e7fabbcb5ace2466427a57e4d500eeaa27"
 consequence: "The physical finite-word alphabet is now proved: one full interval branch for every even label, no physical odd branch, and a nonempty cylinder for every finite even-label word. Ambient odd branches are transient and have zero invariant mass. Route A remains A1_WEAK because exact acip weights, an arithmetic orbit law, and a non-lattice determinant clock are absent. The next task is the endpoint-density / branch-mass-ratio theorem, not a zero fit."
+```
+
+## Status update — CLUE-A1-004 exact-($U_c$) acip endpoint theorem
+
+```yaml
+date: 2026-08-04
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY direct polar-coordinate acip theorem, corrected published spike cross-check, and independently hardened structural audit"
+commit: "84111b3f436ed1e8111c871719e32b70a4def098"
+consequence: "The physical acip now exists uniquely with full support, h(-rho+t)=h(0)/(sqrt(2)*U_c)*t^(-1/2)+O(1), and the physical even-branch mass ratio tends to 1/(2*U_c*(U_c-1)). The old ordinary-BV proof remains refuted and Route A remains A1_WEAK/A2_FAIL. Next enclose h(0) and finite branch masses without target data."
 ```

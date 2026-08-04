@@ -270,8 +270,10 @@ it is STOP_SCOPED under OBR-007 and does not change the formal-candidate count.
 P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK is a second non-candidate structural
 audit: it escapes OBR-007 with genuine recurrent tower orbits, but remains
 REVISE / ROUTE_A_EXPLORATORY and does not change the formal-candidate count.
-Its physical exact-(U_c) first-return alphabet is now proved, while its exact
-invariant weights and arithmetic interpretation remain open.
+Its physical exact-(U_c) first-return alphabet and asymptotic physical mass
+ratio are proved, while certified finite-order weights, the modeled tower
+coupling, an exponential remainder/rate, and the arithmetic interpretation
+remain open.
 No candidate has entered Route B.
 ```
 
@@ -289,44 +291,30 @@ odd branches are transient and have zero mass for every invariant probability.
 Each physical branch maps diffeomorphically onto the full event interior, so
 every finite return-label word has a nonempty open cylinder. This upgrades the
 finite-word alphabet provenance from a modeling choice to `PROVED`, but
-does not supply exact physical-acip branch weights, an arithmetic primitive
-orbit correspondence, or a determinant. The unaccelerated induced map is also
-blocked as an ordinary uniformly expanding `BV` map by `OBR-009`, and the unit
-lattice clock remains blocked by `OBR-008`. The audit remains
+the subsequent endpoint-density theorem now also proves existence and full
+support of the physical acip, positivity of every physical branch, and the
+asymptotic mass ratio
+`1/(2*U_c*(U_c-1))`. It does not supply a certified value of `h(0)`, exact
+finite-order branch weights, an exponential error law, the modeled tower
+measure/coupling, an arithmetic primitive-orbit correspondence, or a
+determinant. The unaccelerated induced map remains blocked as an ordinary
+uniformly expanding `BV` map by `OBR-009`, and the unit lattice clock remains
+blocked by `OBR-008`. The audit remains
 `P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`, with Route-A tuple
 `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)` and verdict `REVISE`.
 
 Latest evaluation:
 
 ```text
-evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml
+evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml
 ```
 
-Next smallest test: with
-
-\[
-\rho=U_c-1
-\]
-
-prove or refute whether the standard physical acip has the endpoint asymptotic
-
-\[
-\frac{d\mu_{\rm ac}}{dx}(-\rho+t)
-=C\,t^{-1/2}(1+o(1)),
-\qquad C>0,
-\qquad t\downarrow0,
-\]
-
-and consequently whether
-
-\[
-\frac{\mu(C_{2n+2})}{\mu(C_{2n})}
-\longrightarrow
-\frac{1}{2U_c(U_c-1)}.
-\]
-
-No non-lattice roof or target-zero comparison is authorized before that
-object and its measure are frozen.
+Next smallest test: use the uniformly expanding polar coordinate to obtain a
+rigorous numerical enclosure of `h(0)`, hence of the absolute endpoint
+coefficient `h(0)/(sqrt(2)*U_c)` and selected finite physical branch masses.
+Freeze discretization, truncation, rounding, normalization, and stopping
+errors separately. No non-lattice roof or target-zero comparison is authorized
+as part of this task.
 
 汇总表：
 
