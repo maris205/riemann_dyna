@@ -270,6 +270,8 @@ it is STOP_SCOPED under OBR-007 and does not change the formal-candidate count.
 P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK is a second non-candidate structural
 audit: it escapes OBR-007 with genuine recurrent tower orbits, but remains
 REVISE / ROUTE_A_EXPLORATORY and does not change the formal-candidate count.
+Its physical exact-(U_c) first-return alphabet is now proved, while its exact
+invariant weights and arithmetic interpretation remain open.
 No candidate has entered Route B.
 ```
 
@@ -280,12 +282,37 @@ tracked in `docs/research_clues.md`, `docs/obstruction_registry.md`, and the
 Route-A evaluation tree rather than promoted to `SS-0003` or another formal ID.
 
 The recurrent exact-(U_c) audit is also intentionally not promoted. Its
-modeled all-even tower has an exact primitive census and full-fibre witnesses,
-but the identification of one branch per even label with the physical
-first-return system is not interval/kneading certified. Its unit lattice clock
-is additionally blocked by `OBR-008`. The audit remains
+modeled all-even tower has an exact primitive census and full-fibre witnesses.
+The later support audit proves that the physical invariant core has exactly one
+nondegenerate interval branch per even return label and no odd branch; ambient
+odd branches are transient and have zero mass for every invariant probability.
+Each physical branch maps diffeomorphically onto the full event interior, so
+every finite return-label word has a nonempty open cylinder. This upgrades the
+finite-word alphabet provenance from a modeling choice to `PROVED`, but
+does not supply exact physical-acip branch weights, an arithmetic primitive
+orbit correspondence, or a determinant. The unaccelerated induced map is also
+blocked as an ordinary uniformly expanding `BV` map by `OBR-009`, and the unit
+lattice clock remains blocked by `OBR-008`. The audit remains
 `P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`, with Route-A tuple
 `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)` and verdict `REVISE`.
+
+Latest evaluation:
+
+```text
+evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml
+```
+
+Next smallest test: prove or refute the square-root endpoint-density law for
+the standard physical acip and whether
+
+\[
+\frac{\mu(C_{2n+2})}{\mu(C_{2n})}
+\longrightarrow
+\frac{1}{2U_c(U_c-1)}.
+\]
+
+No non-lattice roof or target-zero comparison is authorized before that
+object and its measure are frozen.
 
 汇总表：
 

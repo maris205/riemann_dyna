@@ -6,8 +6,8 @@ Derive an autonomous recurrent Logistic construction in which:
 
 1. the distinguished parameter is the exact band-merging point (U_c), not
    its six-decimal approximation;
-2. gap symbols come only from first returns of the static map (f_{U_c}) to
-   its (L={y<0}) branch;
+2. gap symbols come only from first returns of the static map (f_{U_c}) on
+   its physical core (J=[1-U_c,1]) to (L_J=[1-U_c,0));
 3. every aging block contains exactly as many updates as its gap length;
 4. the terminal fibre update uses (U_c) exactly before renewal;
 5. the resulting primitive/repeated orbit grammar and determinant boundary
@@ -18,14 +18,14 @@ fit or inspect prime gaps or Riemann zeros.
 
 ## Status
 
-COHERENT EXPLORATORY MODEL / EXTRA ASSUMPTION
+COHERENT EXPLORATORY MODEL / PHYSICAL BRANCH GRAMMAR PROVED
 
 The legacy globally monotone schedule is not recurrent. It becomes a coherent
 periodic-orbit object only after two reframings:
 
 - its endpoint is replaced by the exact algebraic Misiurewicz value (U_c);
-- its block lengths are restricted to a modeled all-even first-return envelope
-  for (f_{U_c}), rather than an arbitrary parity-unconstrained alphabet.
+- its block lengths are restricted to the exact all-even physical first-return
+  branches of (f_{U_c}), rather than an arbitrary parity-unconstrained alphabet.
 
 The renewal reset is part of this new autonomous object. It is not claimed to
 leave the legacy trajectory unchanged.
@@ -38,9 +38,12 @@ The invariant object is the full skew product
 F:[-1,1]\times\mathcal B\longrightarrow[-1,1]\times\mathcal B,
 \]
 
-where (mathcal B) is the tower over a symbolic all-even return envelope for
-the exact (U_c) parent. Equality of this envelope with the complete physical
-first-return branch system remains an open certification obligation.
+where the symbol alphabet of (mathcal B) is supplied by the exact all-even
+physical return branches of the (U_c) parent. The full two-sided recurrent
+completion and its invariant measure remain modeling choices, although every
+finite symbol word has a physical open cylinder. The literal ambient interval
+`[-1,1]` has additional transient odd branches; they lie outside the
+forward-invariant core and have zero mass for every invariant probability.
 
 The parent map is
 
@@ -48,22 +51,22 @@ The parent map is
 f_u(y)=1-u y^2,
 \]
 
-with the symbolic partition
+Its physical forward-invariant core and event set are
 
 \[
-A=L=\{y<0\},
+J=[1-U_c,1],
 \qquad
-R=\{y>0\}.
+L_J=J\cap\{y<0\}=[1-U_c,0).
 \]
 
-For (y\in A), the event gap is the first-return time
+For (y\in L_J), the event gap is the first-return time
 
 \[
-\tau_u(y)=\min\{n\ge1:f_u^n(y)\in A\}.
+\tau_J(y)=\min\{n\ge1:f_{U_c}^n(y)\in L_J\},
 \]
 
-At (u=U_c), the recurrent symbolic factor makes the explicit modeling choice
-of one branch symbol (m\ge1) for the even return label
+where zero is a non-event. At (u=U_c), the recurrent symbolic factor has
+exactly one interval branch symbol (m\ge1) for the even return label
 
 \[
 \tau=2m.
@@ -86,12 +89,10 @@ countable shift, or the tower zeta alone.
   \]
 - The legacy value `1.543689` is only a rounded value and is not accepted as
   the exact anchor.
-- The repository's (RLR^\infty) Misiurewicz prior supplies the center parity
-  restriction at (U_c). It does not by itself certify that every even return
-  label has a nonempty interval branch.
-- One symbol (m\ge1) represents exactly one modeled even gap label (L=2m).
-  This one-branch-per-label rule is a `MODELING_CHOICE`, not a theorem about
-  the full induced Logistic map.
+- The exact band-swap theorem proves that physical odd branches are empty and
+  every even return label has exactly one nondegenerate interval branch.
+- One symbol (m\ge1) represents that certified physical branch (L=2m).
+- Ambient `[-1,1]` and physical-core return ledgers are kept separate.
 - A block of length (L) has updates labelled (j=1,\ldots,L).
 - The (j=L) fibre update is evaluated before the base renews.
 - The inherited aging constants are frozen as
@@ -157,10 +158,10 @@ The route is
 1. The postcritical relation derives the exact polynomial for (U_c).
 2. The rounded legacy value is proved to lie on the left side of the
    bifurcation by direct subtraction.
-3. The (U_c) first-return event defines the physical gap observable
-   intrinsically, while its full topological support remains to be certified.
-4. The center parity restriction motivates the modeled tower alphabet
-   (L=2m), excluding the right-side odd-gap channel from the center object.
+3. The exact band swap proves the physical support (S_top^J=2*N) and one
+   interval branch for every even label, while ambient support is all of N.
+4. The certified physical branches define the tower alphabet (L=2m), excluding
+   transient ambient odd branches and the right-parameter odd-gap channel.
 5. A one-based block formula makes the terminal update exactly (U_c).
 6. The tower has genuine recurrence, so it escapes the strict-monotone-clock
    obstruction `OBR-007`.
@@ -234,8 +235,14 @@ It is therefore slightly to the left of the true critical point.
 
 ### Step 2 — Define the intrinsic (U_c) gap event
 
-For an orbit (y_n=f_{U_c}^n(y_0)), write (L) whenever (y_n<0) and (R)
-whenever (y_n>0). If
+Freeze the physical core
+
+\[
+J=[1-U_c,1]=[-\rho,1],
+\qquad \rho=U_c-1,
+\]
+
+and write (L) whenever (y_n\in[-\rho,0)). Zero is a non-event. If
 
 \[
 n_0<n_1<n_2<\cdots
@@ -250,10 +257,89 @@ g_r=n_{r+1}-n_r.
 These gaps belong to the autonomous (U_c) parent. They are not the spacings
 between parameter samples and do not read a prime table.
 
-The repository's later correction establishes the correct claim boundary:
+The exact relation (U_c\rho^2=1-\rho) gives
 
-- at (U_c), odd gaps have zero invariant mass under the stated model;
-- the even-gap envelope is asymptotically geometric;
+\[
+f([-\rho,\rho])=[\rho,1],
+\qquad
+f([\rho,1])=[-\rho,\rho].
+\]
+
+Thus the two bands swap and a point starting in (L) cannot return at an odd
+time. Let (T=f^2) and define its positive inverse branch
+
+\[
+\psi(y)=
+\sqrt{\frac{1-\sqrt{(1-y)/U_c}}{U_c}},
+\qquad
+r_0=0,
+\qquad
+r_{n+1}=\psi(r_n).
+\]
+
+Then (r_n\uparrow\rho), and the complete physical branch ledger is
+
+\[
+C_2=(-r_1,0),
+\qquad
+C_{2n}=(-r_n,-r_{n-1}]\quad(n\ge2),
+\qquad
+C_{2n+1}=\varnothing.
+\]
+
+Hence
+
+\[
+S_{\rm top}^{J}=2\mathbb N_{\ge1},
+\]
+
+with exactly one nondegenerate interval branch per even label. The unique
+nonreturning point is (-\rho), which maps to the repelling fixed point (\rho).
+
+On every branch interior,
+
+\[
+f^{2n}:\operatorname{int}C_{2n}\longrightarrow(-\rho,0)
+\]
+
+is a real-analytic diffeomorphism. Hence every finite word of positive even
+return labels has a nonempty open cylinder. The recurrent tower's finite-word
+alphabet is therefore a proved physical return factor; choosing its invariant
+measure and coupling it to the aged fibre remain separate modeling steps.
+
+Writing (\ell_n=|C_{2n}|), the endpoint recursion and the mean-value theorem
+also give the exact asymptotic length ratio
+
+\[
+\frac{\ell_{n+1}}{\ell_n}
+\longrightarrow
+\frac{1}{4U_c^2(U_c-1)^2}
+=0.35491084440177\ldots.
+\]
+
+This is not yet an invariant-mass theorem. A square-root density spike at the
+left endpoint would conditionally change the ratio to its square root,
+(1/[2U_c(U_c-1)])=0.59574394197656\ldots, but that density law remains open.
+
+The domain qualification is essential. On ambient `[-1,1]`, the transient
+interval `[-1,-rho)` supplies all odd return labels, so
+
+\[
+S_{\rm top}^{[-1,1]}=\mathbb N_{\ge1}.
+\]
+
+Every invariant probability gives this transient interval zero mass. For the
+named physical acip with support (J), every physical even branch has positive
+mass. This is conditional on that support hypothesis; its exact weight is not
+computed here.
+
+The corrected claim boundary is therefore:
+
+- on the physical core, odd branches are topologically empty;
+- ambient odd branches exist but have zero mass for every invariant measure;
+- every physical even label has one positive-length branch;
+- the prior proof of asymptotically geometric branch weights is not valid,
+  because the unaccelerated first-return map is not uniformly expanding;
 - the one-dimensional system does not generate the Hardy--Littlewood mod-(3)
   resonance of actual prime gaps.
 
@@ -281,8 +367,8 @@ composite-preference claim.
 This is a finite numerical phase-boundary diagnostic. Raw long-tail support
 and its maximum depend on cutoff, seed, precision, and the last bits of the
 parameter. Only the exact algebraic critical-orbit relation carries theorem
-status here; the center parity statement inherits its previously recorded
-scope, and the all-even one-branch tower remains a modeling choice.
+status here. The exact physical all-even branch grammar is now proved; only
+the finite left/right parameter diagnostics retain numerical status.
 
 ### Step 4 — Diagnose the legacy finite-window endpoint
 
@@ -363,7 +449,8 @@ Let
 \ 1\le j\le2\omega_0\}.
 \]
 
-The symbol (m=\omega_0) represents the (U_c) return class (L=2m). Define
+The symbol (m=\omega_0) represents the certified physical (U_c) return branch
+(L=2m). Define
 
 \[
 G(\omega,j)=
@@ -434,7 +521,7 @@ F(x,\omega,j)
 
 ### Step 7 — Primitive tower grammar
 
-A cyclic modeled-return word
+A cyclic physical-return word
 
 \[
 W_b=(m_0,\ldots,m_{q-1})
@@ -577,9 +664,10 @@ D(s+2\pi i)=D(s).
 A discrete divisor with finitely many zeros in one fundamental strip then has
 only (O(T)) zeros up to height (T), not the completed-zeta
 (\Theta(T\log T)) count. The exact-(U_c)-anchored model therefore supplies a
-genuine recurrent symbolic orbit grammar, but only `A1_WEAK`: the physical
-branch system and weights are not certified and no arithmetic primitive-orbit
-correspondence is present. It does not supply an A2 Riemann clock.
+genuine recurrent symbolic orbit grammar, but only `A1_WEAK`: its physical
+branch support is certified, while exact invariant weights, an arithmetic
+primitive-orbit correspondence, and a non-lattice clock are absent. It does
+not supply an A2 Riemann clock.
 
 ## Remarks and Interpretation
 
@@ -589,18 +677,19 @@ correspondence is present. It does not supply an A2 Riemann clock.
   channel.
 - Using `1.543689` can falsely look “almost correct” at low gap cutoff while
   changing the low-count long tail. No fixed tail endpoint is claimed.
-- The renewal alphabet is no longer parity-arbitrary, but its identification
-  with the complete physical first-return factor of (f_{U_c}) still requires
-  interval/kneading certification.
+- The renewal alphabet is the exact physical first-return branch factor of
+  (f_{U_c}). Ambient transient odd branches are a separate zero-invariant-mass
+  ledger and are not tower symbols.
 - The current symbolic factor captures parity and a geometric envelope. The
   repository's later correction says it lacks internal mod-(3) resonance.
 - The exact terminal equality is a block identity independent of a finite
   experiment cutoff.
 - The recurrent object escapes `OBR-007`, because its base has nontrivial
   periodic points that traverse aging interiors.
-- A future first-return operator would require a named Banach space, branch
-  Jacobians, nuclear summability, and a same-object trace theorem before any
-  Fredholm determinant claim.
+- The natural unaccelerated first-return map is not uniformly expanding:
+  every branch has derivative infimum zero at a critical preimage. A future
+  operator requires a weighted/cusp-adapted space or a newly frozen accelerated
+  inducing domain before any Fredholm claim.
 
 ## Boundaries and Non-Claims
 
@@ -612,7 +701,9 @@ correspondence is present. It does not supply an A2 Riemann clock.
 - The inherited (k) is not independent evidence.
 - No complete census of all fibre fixed points is claimed; the exact result is
   existence of at least one full lift per primitive tower orbit.
-- No invariant branch-weight theorem is newly proved here.
+- Conditionally on the named physical acip having full support, every physical
+  branch has positive mass, but no exact weight or asymptotic mass-ratio theorem
+  is proved.
 - No Fredholm, Ruelle, Koopman, or transfer-operator determinant is defined.
 - No analytic continuation, functional equation, Gamma factor, trivial-zero
   ledger, or completed-ξ divisor is established.
@@ -622,10 +713,10 @@ correspondence is present. It does not supply an A2 Riemann clock.
 
 ## Open Risks
 
-- The one-branch-per-even-return symbolic factor is a modeling choice and still
-  needs an independent interval/kneading proof of its physical support.
-- Invariant return weights, rather than just allowed return classes, are needed
-  to test the gap statistics at theorem strength.
+- The old Paper-2 uniform-expansion and ordinary-BV spectral-gap argument is
+  refuted by the exact branch endpoints; its weight-asymptotic theorem is open.
+- Exact invariant return weights and the conjectured square-root endpoint
+  density law remain to be proved.
 - Full fibre-root multiplicities, tangencies, and completeness remain open.
 - Logistic critical fibres are noninvertible and not uniformly expanding, so
   standard nuclear transfer-operator theorems do not apply automatically to

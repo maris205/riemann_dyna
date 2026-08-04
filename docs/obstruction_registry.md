@@ -333,3 +333,84 @@ Artifacts:
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
+
+---
+
+## OBR-009 — Exact-(U_c) first-return branches are not uniformly expanding
+
+Status:
+PROVED_OBSTRUCTION
+
+Source:
+CLUE-A1-004 / P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT /
+`formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
+
+Statement:
+Let
+
+\[
+f(x)=1-U_cx^2,
+\qquad
+J=[1-U_c,1],
+\qquad
+L=J\cap\{x<0\},
+\]
+
+and let (R(x)=f^{\tau_L(x)}(x)) be the unaccelerated first-return map to
+(L). For every physical return branch (C_{2n}),
+
+\[
+\inf_{x\in C_{2n}}|R'(x)|=0.
+\]
+
+Already on (C_2=(-r_1,0)),
+
+\[
+(f^2)'(x)=4U_c^2x f(x)\longrightarrow0
+\qquad(x\uparrow0),
+\]
+
+and the interior witness `x=-0.01` has
+
+```text
+|(f^2)'(x)| = 0.0953043164222... < 1.
+```
+
+Every higher branch similarly accumulates on a critical preimage. The inverse
+Jacobian has a square-root endpoint singularity,
+
+\[
+\left|\frac{dx}{dy}\right|
+\sim
+\frac{1}{2\sqrt2\,U_c}(y+\rho)^{-1/2},
+\qquad \rho=U_c-1.
+\]
+
+Consequence:
+The ordinary piecewise-uniformly-expanding `BV` / Lasota--Yorke argument in
+legacy Paper 2 does not apply to this unaccelerated induced map. In particular,
+that argument does not establish its claimed ordinary-`BV` spectral gap or the
+downstream asymptotically geometric branch-weight theorem. This does not
+refute existence of the physical acip, the exact even topological support, or
+the observed finite-sample mass ratio.
+
+Scope:
+The full negative-event first-return map on the exact physical core, with its
+natural unaccelerated branches. The obstruction does not exclude a further
+accelerated inducing scheme, a weighted/cusp-adapted or anisotropic function
+space, or a direct theorem for the Misiurewicz physical density.
+
+Reopening condition:
+Freeze one replacement domain and operator ledger, including its return
+convention, branch endpoints, function space, norm, distortion estimates, and
+action on the square-root singularity. Prove those properties before restoring
+any spectral-gap, Fredholm, or branch-weight asymptotic claim.
+
+Artifacts:
+
+- `configs/source_locks/P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT.yaml`
+- `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
+- `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
+- `formal/results/exact_uc_first_return_support.md`
+- `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
+- `tests/test_p4_logistic_uc_first_return_support.py`

@@ -1,6 +1,292 @@
 # HP-Dynamics Handoff
 
-## Current status — exact-(U_c) recurrent Logistic audit
+## Current status — exact-(U_c) first-return support closure
+
+Current clue: `CLUE-A1-004`
+
+Candidate ID: none. Parent audit and scoped support audit:
+
+```text
+P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT
+```
+
+- Formal candidate: `false`
+- Operational verdict: `REVISE`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall Route-A interpretation: `ROUTE_A_EXPLORATORY`
+- Route B: inactive and not authorized
+- New reusable obstruction: `OBR-009`
+- Evaluation: `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
+- Evaluation source commit: pending checkpoint backfill
+- Formal candidate count: unchanged (`SS-0001`, `SS-0002` only)
+
+The exact physical first-return alphabet is now proved. This removes the prior
+interval/kneading support obligation, but it does not promote the recurrent
+Logistic construction to `SS-0003`: exact invariant weights, an arithmetic
+primitive-orbit law, a viable Fredholm determinant, and a non-lattice clock
+remain absent.
+
+## Current source lock
+
+Let
+
+\[
+f(x)=1-U_cx^2,
+\qquad
+U_c^3-2U_c^2+2U_c-2=0,
+\qquad
+\rho=U_c-1.
+\]
+
+The ambient and physical domains are frozen separately:
+
+\[
+X=[-1,1],
+\qquad
+J=f(X)=[-\rho,1],
+\]
+
+with event sets
+
+\[
+L_X=[-1,0),
+\qquad
+L_J=[-\rho,0).
+\]
+
+Zero is a non-event. For (D\in\{X,J\}),
+
+\[
+C_m(D)=L_D\cap
+\bigcap_{j=1}^{m-1}f^{-j}(D\setminus L_D)
+\cap f^{-m}(L_D).
+\]
+
+One iterate of (f) is one clock tick. The proof coordinate (T=f^2) does not
+replace the clock. Ambient and physical return ledgers may not be mixed.
+
+The support audit freezes an all-order theorem, a 100-decimal rational
+enclosure of (U_c), 130-digit outward square-root bounds, a certified endpoint
+prefix through branch 154 / return 308, and independent 180-digit midpoint
+checks through branch 64. Prime tables, zero tables, target zeta/xi values,
+USTC data, fitted gap weights, and empirical transition matrices are forbidden.
+
+The parent recurrent tower remains
+
+\[
+\mathcal B=\{(\omega,j):\omega\in\mathbb N_{\geq1}^{\mathbb Z},
+1\leq j\leq2\omega_0\},
+\]
+
+with one symbol (m) for physical label (2m) and the terminally anchored fibre
+from lock version 3. The tower zeta and full reciprocal Artin--Mazur ledger
+remain distinct; no first-return Fredholm determinant is defined.
+
+## Strongest evidence
+
+The algebraic identity (U_c\rho^2=1-\rho) gives the exact band swap
+
+\[
+f([-\rho,\rho])=[\rho,1],
+\qquad
+f([\rho,1])=[-\rho,\rho].
+\]
+
+Define
+
+\[
+h(y)=\sqrt{\frac{1-y}{U_c}},
+\qquad
+r_0=0,
+\qquad
+r_{n+1}=h(h(r_n)).
+\]
+
+Then (r_n\uparrow\rho) and
+
+\[
+C_2(J)=(-r_1,0),
+\qquad
+C_{2n}(J)=(-r_n,-r_{n-1}]\quad(n\ge2),
+\qquad
+C_{2n+1}(J)=\varnothing.
+\]
+
+Therefore
+
+\[
+\boxed{S_{\rm top}^{J}=2\mathbb N_{\ge1}},
+\]
+
+and every physical even label has exactly one nondegenerate interval branch.
+The only nonreturning point is (-\rho).
+
+More strongly,
+
+\[
+f^{2n}:\operatorname{int}C_{2n}(J)\longrightarrow(-\rho,0)
+\]
+
+is a real-analytic diffeomorphism for every (n). Hence every finite word of
+positive even return labels has a nonempty open cylinder. The recurrent
+tower's unrestricted finite-word alphabet now has physical provenance; its
+invariant measure and aged fibre coupling remain separate modeling choices.
+
+On ambient (X), transient odd branches fill `[-1,-rho)`, so
+
+\[
+\boxed{S_{\rm top}^{X}=\mathbb N_{\ge1}}.
+\]
+
+Every invariant probability assigns those ambient odd branches zero mass.
+Conditionally on the named physical acip having full support (J), every
+physical even branch has strictly positive mass. This audit does not reprove
+that support theorem, and exact values and mass asymptotics are not proved.
+
+The rational certificate strictly separates the first 154 endpoint intervals,
+and all 64 independent high-precision midpoint checks return at their predicted
+first time. The parent recurrent tower retains its exact primitive census;
+the signed full-fibre witness/residual ledger through period 16 remains a
+separately labeled finite numerical prefix.
+
+## Strongest failure and reusable knowledge
+
+First-return branches are observables, not arithmetic primitive periodic
+orbits. The renewal measure/coupling remains modeled, exact physical-acip
+weights are unknown, and there is no log-prime clock or von-Mangoldt amplitude.
+
+`OBR-009` proves that the natural unaccelerated first-return map is not
+uniformly expanding. On (C_2),
+
+\[
+(f^2)'(x)=4U_c^2x f(x)\longrightarrow0
+\qquad(x\uparrow0),
+\]
+
+and `x=-0.01` gives derivative magnitude `0.0953043164222... < 1`.
+Every branch has derivative infimum zero, while the inverse Jacobian has a
+square-root singularity at (-\rho). The old ordinary-`BV`
+Lasota--Yorke/spectral-gap proof and its geometric branch-weight theorem are
+therefore not established.
+
+The endpoint-length ratio has the proved limit
+
+\[
+\lambda=\frac{1}{4U_c^2(U_c-1)^2}
+=0.35491084440177\ldots.
+\]
+
+Only conditionally on a square-root endpoint density, the branch-mass ratio
+would tend to
+
+\[
+\sqrt\lambda=\frac{1}{2U_c(U_c-1)}
+=0.59574394197656\ldots.
+\]
+
+This is an `OPEN_CONDITIONAL_CLUE`, not a theorem. `OBR-008` independently
+keeps every unit-lattice continuation `STOP_SCOPED` as a completed-ξ divisor.
+
+## Current files
+
+- `DERIVATION_PACKAGE.md`
+- `configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml`
+- `configs/source_locks/P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT.yaml`
+- `experiments/p4_logistic_recurrent_uc_anchored_clock.py`
+- `experiments/p4_logistic_uc_first_return_support.py`
+- `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
+- `tests/test_p4_logistic_uc_first_return_support.py`
+- `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
+- `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
+- `formal/results/exact_uc_first_return_support.md`
+- `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
+- `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
+- `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
+- `docs/prior_work/README.md`
+- `docs/prior_work/claims_matrix.md`
+- `docs/research_clues.md`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_log.md`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+## Verification and reproduction
+
+Focused support tests:
+
+```text
+16/16 passed
+```
+
+Focused recurrent tests:
+
+```text
+16/16 passed
+```
+
+Full repository:
+
+```text
+89/89 passed
+```
+
+Artifact SHA-256 values:
+
+```text
+89c82cd1d601e4a151069add31bc1d2dd4b48f7170fe7c8bc61234aa58e20f2d  artifacts/p4_logistic_uc_first_return_support/structural_audit.json
+b113a90abdb65d913b7c162d76d925286f12a831fca259a974b8d04c81cc56ff  artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json
+```
+
+Commands:
+
+```bash
+python3 -m unittest -v tests/test_p4_logistic_uc_first_return_support.py
+python3 -m unittest -v tests/test_p4_logistic_recurrent_uc_anchored_clock.py
+python3 experiments/p4_logistic_uc_first_return_support.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_first_return_support/structural_audit.json
+python3 experiments/p4_logistic_recurrent_uc_anchored_clock.py \
+  --quiet \
+  --output artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json
+python3 -m unittest discover -v
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml","configs/source_locks/P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT.yaml","evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+sha256sum artifacts/p4_logistic_uc_first_return_support/structural_audit.json artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json
+git diff --check
+```
+
+## Claim boundary and next smallest task
+
+Established: exact physical/ambient return support, one full physical interval
+branch per even label, the full finite-word return language, zero invariant
+mass for ambient odd branches, conditional branch positivity under the named
+full-support-acip hypothesis, rational endpoint certification through return
+308, and the nonuniform-expansion obstruction.
+
+Not established: exact acip branch weights, their asymptotic ratio, a repaired
+transfer-operator theorem, complete fibre multiplicities, arithmetic
+prime-orbit correspondence, non-lattice clock, Fredholm/completed-ξ structure,
+natural quantization, Route B, Hilbert--Pólya, or RH.
+
+Next smallest task:
+
+\[
+\frac{\mu(C_{2n+2})}{\mu(C_{2n})}
+\stackrel{?}{\longrightarrow}
+\frac{1}{2U_c(U_c-1)}.
+\]
+
+Prove or refute the required physical-acip square-root endpoint-density law.
+Freeze either a direct Misiurewicz density argument, a weighted/cusp-adapted
+function space, or a further accelerated inducing domain. Do not fit weights
+or introduce a non-lattice roof before this is explicit.
+
+Recommended verdict: `REVISE`.
+
+---
+
+## Previous checkpoint — exact-(U_c) recurrent Logistic audit
 
 Current clue: `CLUE-A1-004`
 

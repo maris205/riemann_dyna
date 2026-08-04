@@ -231,7 +231,7 @@ class LogisticRecurrentUcAnchoredClockTests(unittest.TestCase):
         )
         lock = yaml.safe_load(lock_path.read_text(encoding="utf-8"))
         parameters = lock["mathematical_object"]["parameters"]
-        self.assertEqual(lock["lock_version"], 2)
+        self.assertEqual(lock["lock_version"], 3)
         self.assertFalse(lock["formal_candidate"])
         self.assertEqual(lock["audit_id"], recurrent.AUDIT_ID)
         self.assertEqual(parameters["u_c_binary64"], recurrent.U_C)
@@ -256,6 +256,10 @@ class LogisticRecurrentUcAnchoredClockTests(unittest.TestCase):
         )
         self.assertIn(
             "D_AM,F", lock["determinant_convention"]["frozen_full_object"]
+        )
+        self.assertIn(
+            "physical event",
+            lock["mathematical_object"]["event_and_gap"],
         )
 
     def test_experiment_has_no_prime_or_zero_lookup(self) -> None:

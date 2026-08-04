@@ -1,0 +1,119 @@
+audit_id: P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT
+parent_audit_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+lock_version: 1
+formal_candidate: false
+clue_id: CLUE-A1-004
+title: Exact-U_c physical-core and ambient first-return support audit
+
+mathematical_object:
+  map: >-
+    f(x)=1-U_c*x^2, where U_c is the unique real root of
+    u^3-2*u^2+2*u-2=0.
+  ambient_interval: "X=[-1,1]"
+  physical_invariant_core: >-
+    J=f(X)=[1-U_c,1]=[-rho,1], where rho=U_c-1. All iterates after the
+    first lie in J.
+  physical_bands: >-
+    A=[-rho,rho] and B=[rho,1], with f(A)=B and f(B)=A exactly.
+  event_sets: >-
+    L_X=X intersect {x<0} for the ambient ledger and
+    L_J=J intersect {x<0}=[-rho,0) for the physical-core ledger.
+  return_time: >-
+    tau_D(x)=min{m>=1:f^m(x) in L_D} for x in L_D, with tau_D=infinity
+    if no return exists. Intermediate states use D minus L_D, so x=0 is
+    a non-event state and branch endpoints that hit zero remain assigned.
+  return_sets: >-
+    C_m(D)=L_D intersect [intersection over j=1,...,m-1 of
+    f^{-j}(D minus L_D)] intersect f^{-m}(L_D).
+  proof_coordinate: >-
+    T=f^2 on A is used to prove the branch grammar. One T iterate equals
+    two original f iterates; this is a proof coordinate, not a replacement
+    clock for the recurrent candidate.
+  invariant_measure_ledger: >-
+    Topological support is measure-free. Every f-invariant probability on X
+    gives X minus J zero mass. Positivity of all physical even-branch weights
+    is a CONDITIONAL_THEOREM: if the named physical acip mu_ac has topological
+    support J, then every branch interior has positive mass. This audit does
+    not independently reprove existence or full support of mu_ac, and numerical
+    values of those weights are not frozen.
+
+data_type:
+  primary: >-
+    Exact algebraic band-swap identities, all-order interval branch formulas,
+    full-branch finite-word grammar, physical and ambient topological support,
+    the asymptotic branch-length ratio, invariant-measure support, and a
+    derivative obstruction for the first-return map.
+  secondary: >-
+    Exact-rational outward interval enclosures for a finite endpoint prefix
+    plus independent high-precision midpoint first-return diagnostics.
+  excluded: >-
+    Prime or zero data, fitted gap weights, empirical Markov probabilities,
+    and any Fredholm or completed-xi determinant claim.
+
+clock: >-
+  One iterate of f is one gap-clock tick. T=f^2 is used only to express the
+  parity-reduced proof. Return labels remain the original integer times m.
+
+normalization: >-
+  Raw x in X or J, strict event x<0, zero treated as a non-event, and raw
+  unshifted integer return time. Ambient and physical-core ledgers may not be
+  mixed.
+
+determinant_convention: >-
+  No new determinant is defined. The parent recurrent audit retains its
+  separate tower zeta Z_T and full reciprocal Artin-Mazur ledger. This support
+  audit changes only the physical provenance of the even branch alphabet.
+
+cutoff:
+  theorem_scope: "all return times m>=1"
+  exact_rational_endpoint_certificate: 154
+  maximum_certified_physical_return: 308
+  validation_branches: [1, 2, 3, 4, 5, 6, 7, 8]
+  test_branches: [9, 16, 32, 64, 96, 128, 154]
+  high_precision_midpoint_diagnostic_branches: 64
+  reported_endpoint_rows: 16
+
+precision:
+  structural: "exact algebraic equalities, monotonicity, and interval topology"
+  rational_u_lower: "1.5436890126920763615708559718017479865252032976509839352408040378311686739279738664851579145760591254"
+  rational_u_upper: "1.5436890126920763615708559718017479865252032976509839352408040378311686739279738664851579145760591255"
+  rational_sqrt_scale_digits: 130
+  high_precision_decimal_digits: 180
+  derivative_counterexample_x: -0.01
+
+allowed_data:
+  - "the algebraic U_c equation and direct deterministic f iterates"
+  - "exact rational arithmetic, integer square-root bounds, and elementary interval topology"
+  - "the repository's standard Misiurewicz physical-acip support statement, used only as the explicit hypothesis of a conditional branch-positivity claim"
+  - "legacy Paper 2 source solely for claim auditing and correction"
+
+forbidden_data:
+  - "prime tables, primality predicates, prime-gap histograms, Riemann-zero tables, xi/zeta target evaluations, or USTC data"
+  - "selecting the initial domain after inspecting return parities"
+  - "calling ambient transient odd branches physically positive-weight branches"
+  - "claiming branch weights are measure-independent"
+  - "using the old MSS proof direction or the old uniform-expansion lemma without reproof"
+  - "promoting a finite endpoint certificate to the all-order proof"
+
+training_split: "empty; no fitting and no target data"
+validation_split: >-
+  Algebraic root and band-swap identities, branch formulas 1 through 8,
+  ambient C_1, zero endpoint convention, and the C_2 derivative counterexample.
+test_split: >-
+  Sealed branch indices 9,16,32,64,96,128,154; ambient odd branches beyond
+  C_1; invariant-measure support; rational interval separation; and Paper 2
+  uniform-expansion falsification.
+
+stopping_conditions:
+  - "REVISE if ambient and physical-core return ledgers are not separated"
+  - "REVISE if any physical odd branch is nonempty or an even label lacks a nondegenerate interval branch"
+  - "REVISE if the exact-rational prefix fails strict endpoint separation"
+  - "REJECTED if target arithmetic or zero data enters"
+  - "STOP_SCOPED for the unaccelerated first-return map as a uniformly expanding BV Markov map"
+
+success_conditions:
+  - "prove the all-order physical-core support and unique branch formula"
+  - "prove that every branch is full and every finite even-label word has a nonempty cylinder"
+  - "classify the ambient transient support without hiding zero-mass branches"
+  - "state exactly which weight conclusions depend on the physical acip"
+  - "audit the old expansion claim with an explicit derivative counterexample"

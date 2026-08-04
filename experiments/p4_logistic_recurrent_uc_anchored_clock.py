@@ -745,8 +745,10 @@ def build_report() -> dict[str, Any]:
         "source_lock": SOURCE_LOCK,
         "mathematical_object": {
             "critical_parent": "f_Uc(y)=1-U_c*y^2 with p(U_c)=0",
-            "event": "L hit: y<0",
-            "gap": "first return time to L at exact U_c",
+            "ambient_parent_interval": "[-1,1]",
+            "physical_parent_core": "J=[1-U_c,1]",
+            "event": "physical L hit: y in J and y<0; y=0 is a non-event",
+            "gap": "first return time to physical L at exact U_c",
             "tower_alphabet": "one symbol m>=1 for gap L=2*m",
             "full_map": "F(x,omega,j)=(1-mu(j,2*omega_0)*x^2,G(omega,j))",
         },
@@ -786,12 +788,16 @@ def build_report() -> dict[str, Any]:
                 "the algebraic U_c anchor and its postcritical fixed-point identity",
                 "the rounded legacy value lies on the left side of the exact critical point",
                 "the frozen U_c left/center/right odd-gap-channel diagnostic",
+                "the physical-core first-return support is exactly 2*N with one interval branch per even label",
+                "every finite word of positive even return labels has a nonempty physical first-return cylinder",
+                "the ambient [-1,1] support is N because transient odd branches have zero invariant mass",
                 "a recurrent even-return tower with complete primitive base census through period 16",
                 "at least one signed-multiplier full Logistic lift per primitive base orbit in that prefix",
                 "finite full fixed counts and local convergence of the reciprocal Artin-Mazur log series",
             ],
             "not_established": [
                 "full arithmetic prime-gap statistics or mod-3 resonance",
+                "closed-form or certified physical-acip branch weights",
                 "complete fibre periodic-orbit enumeration and multiplicities",
                 "an intrinsic non-lattice roof or von-Mangoldt repetition weights",
                 "a Ruelle or Fredholm determinant, analytic continuation, or completed-xi divisor",
@@ -799,9 +805,9 @@ def build_report() -> dict[str, Any]:
             ],
         },
         "next_smallest_task": (
-            "Audit the exact U_c first-return branches and invariant branch weights on a frozen "
-            "induced-map function space; do not add a non-lattice roof until the same dynamics "
-            "derives it without prime or zero data."
+            "Prove or refute the square-root endpoint-density law for the physical acip and "
+            "the resulting branch-mass ratio, using a weighted function space or a newly "
+            "frozen accelerated inducing domain."
         ),
     }
 

@@ -100,9 +100,9 @@ legacy/paper2_transient_chaos/
 | P2-C08 | The observed threshold is `k0 = 6` through `k <= 5000`. | `NUMERICAL_OBSERVATION` | `NUMERICAL_OBSERVATION` | Regression benchmark | Re-run independently |
 | P2-C09 | Topological-defect density vanishes asymptotically. | Presented as asymptotic result | Proof audit required | Macroscopic prior | Separate theorem from finite scan |
 | P2-C10 | Only `Q3` and `Q5` are defective for `k <= 5000`. | `NUMERICAL_OBSERVATION` | `NUMERICAL_OBSERVATION` | Regression benchmark | Reproduce dataset |
-| P2-C11 | Odd gaps have zero invariant measure in the stated 1D model. | `PROVED_IN_PAPER` under model assumptions | Model-specific result | Parity baseline | Verify kneading argument |
-| P2-C12 | Even-gap measures decay asymptotically geometrically. | `CONDITIONAL_THEOREM` using spectral ingredients | `CONDITIONAL_THEOREM` | Expressiveness analysis | Audit spectral assumptions |
-| P2-C13 | The 1D model has no internal mechanism for full Hardy–Littlewood mod-3 resonance. | Structural conclusion | Retained with model scope | Main higher-rank motivation | Test mod-3 observables |
+| P2-C11 | Odd gaps have zero invariant measure in the stated 1D model. | `PROVED_IN_PAPER` under model assumptions | `PROVED` on the physical core, with a corrected band-swap proof; ambient odd branches exist but have zero invariant mass | Parity baseline | Preserve the ambient/core domain distinction |
+| P2-C12 | Even-gap measures decay asymptotically geometrically. | `CONDITIONAL_THEOREM` using spectral ingredients | `OPEN`; the legacy Paper-2 uniform-expansion/BV proof is `REFUTED` by critical-preimage endpoints | Weight-asymptotic clue only | Use a weighted space, direct density theorem, or accelerated inducing domain |
+| P2-C13 | The 1D model has no internal mechanism for full Hardy–Littlewood mod-3 resonance. | Structural conclusion | `HEURISTIC` / numerical until P2-C12 is repaired | Higher-rank motivation only | Do not cite as a theorem; test weights directly |
 | P2-C14 | The Logistic construction is an abelian/mod-2 holographic projection. | `HEURISTIC` supported by structure | Project prior | Candidate guidance | Do not call theorem |
 | P2-C15 | A higher-dimensional/higher-mode lift is the main next problem. | `OPEN` | `PROJECT_DECISION` | Defines project direction | Implement Track A/B/C |
 
@@ -112,6 +112,19 @@ legacy/paper2_transient_chaos/
 from: candidate complete arithmetic realization
 to:   low-dimensional symbolic projection and search prior
 ```
+
+**2026-08-04 later correction**
+
+- The physical core (J=[1-U_c,1]) has exact first-return support
+  (2\mathbb N), with one nondegenerate interval branch per even label.
+- The literal ambient interval `[-1,1]` has topological support
+  ℕ because transient odd branches fill `[-1,1-U_c)`; every invariant
+  probability gives them zero mass.
+- The MSS proof of the old parity lemma had its inequality interpretation
+  reversed; the conclusion is repaired by the exact band swap.
+- The unaccelerated first-return map has derivative infimum zero on every
+  branch. Consequently the stated ordinary-`BV` uniform-expansion and spectral
+  argument does not prove P2-C12.
 
 ---
 

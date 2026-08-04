@@ -107,6 +107,25 @@ Paper 2 explicitly revises part of this framework.
 
 Where Paper 2 conflicts with Paper 1 on finite-stage admissibility, Paper 2 takes precedence.
 
+**Later correction — 2026-08-04**
+
+The parity conclusion is retained only after replacing the legacy Paper-2 MSS
+argument by an exact band-swap proof on the physical core
+(J=[1-U_c,1]). On that core the first-return support is exactly
+(2\mathbb N), with one interval branch per even label. On ambient
+`[-1,1]`, transient odd branches exist but have zero mass for every invariant
+probability.
+
+The Paper-2 claim that the unaccelerated first-return map is uniformly
+expanding on its countable branches is false: the derivative infimum is zero
+on every branch because the endpoints accumulate on critical preimages. Its
+ordinary-`BV` spectral-gap and asymptotic gap-weight proof must therefore be
+treated as open pending a weighted function space, direct density theorem, or
+accelerated inducing scheme. See:
+
+- `formal/results/exact_uc_first_return_support.md`;
+- `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`.
+
 ---
 
 ### Paper 3 — Sequential Birkhoff theorem

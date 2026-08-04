@@ -348,8 +348,58 @@ This is a target-free finite numerical phase-boundary diagnostic. The right
 support contains odd primes and odd composites; no composite-preference claim
 is made, and low-count long-tail support is cutoff/precision sensitive.
 
-The audit defines a recurrent modeled tower with one symbol (m\geq1) for the
-even label (L=2m), and the anchored fibre law
+The exact physical domain is the forward-invariant core
+
+\[
+J=[1-U_c,1]=[-\rho,1],
+\qquad \rho=U_c-1,
+\]
+
+not the full ambient interval. The band swap
+
+\[
+f([-\rho,\rho])=[\rho,1],
+\qquad
+f([\rho,1])=[-\rho,\rho]
+\]
+
+proves that the physical first-return support is exactly
+(2\mathbb N_{\geq1}). If
+
+\[
+h(y)=\sqrt{\frac{1-y}{U_c}},
+\qquad
+r_0=0,
+\qquad
+r_{n+1}=h(h(r_n)),
+\]
+
+then (r_n\uparrow\rho) and
+
+\[
+C_2(J)=(-r_1,0),
+\qquad
+C_{2n}(J)=(-r_n,-r_{n-1}]\quad(n\geq2),
+\qquad
+C_{2n+1}(J)=\varnothing.
+\]
+
+Thus every physical even label has exactly one nondegenerate interval branch.
+Each branch interior is mapped real-analytically and diffeomorphically by
+(f^{2n}) onto `(-rho,0)`, so every finite word of positive even return labels
+has a nonempty open cylinder. This proves the recurrent tower's finite-word
+alphabet provenance; it does not choose its invariant measure or aged fibre
+coupling.
+
+On ambient `[-1,1]`, transient odd branches fill `[-1,-rho)`, so the ambient
+topological support is all positive integers; every invariant probability
+assigns those odd branches zero mass. For the standard full-support physical
+acip with support (J), every physical even branch has positive mass. This is a
+conditional statement on the named support hypothesis; exact weights and their
+asymptotics remain open.
+
+The recurrent tower uses this proved physical alphabet, with one symbol
+(m\geq1) for the even label (L=2m), and the anchored fibre law
 
 \[
 \mu(j,L)=U_c+k\left[
@@ -367,9 +417,9 @@ Z_T(z)=\frac{1-z^2}{1-2z^2},
 \]
 
 and every primitive tower orbit through period 16 has a signed full-fibre
-fixed-point witness. First-return gaps are not themselves periodic orbits;
-the tower is an additional modeling choice. Equality of its all-even alphabet
-with the physical exact-(U_c) interval/kneading branch system is still open.
+fixed-point witness. First-return branches are not themselves primitive
+periodic orbits, and the tower measure/coupling remains an additional modeling
+choice; the finite-word alphabet provenance is now proved.
 
 Route-A result:
 
@@ -383,16 +433,28 @@ Route B: inactive and not authorized
 
 The unit clock substitution (z=e^{-s}) forces a (2\pi i)-periodic divisor
 with (O(T)) count in bounded real strips (`OBR-008`), so it cannot be the
-completed-ξ divisor. The next smallest task is to prove or refute the exact
-physical return support and certify branch weights before introducing any
-non-lattice roof.
+completed-ξ divisor. Independently, the unaccelerated physical first-return
+map has derivative infimum zero on every branch (`OBR-009`). The legacy
+Paper-2 ordinary-`BV` uniform-expansion/spectral-gap proof therefore does not
+establish the claimed geometric branch-weight asymptotic.
+
+The next smallest task is to prove or refute the square-root endpoint-density
+law for the physical acip and the resulting branch-mass ratio, using a direct
+Misiurewicz density argument, a weighted/cusp-adapted space, or a newly frozen
+accelerated inducing domain. Do not introduce a non-lattice roof first.
 
 Artifacts:
 
 - `configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml`
+- `configs/source_locks/P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
+- `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
+- `formal/results/exact_uc_first_return_support.md`
+- `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
+- `tests/test_p4_logistic_uc_first_return_support.py`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
 
 ---
@@ -1245,4 +1307,16 @@ new_status: ACTIVE
 evidence: "P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK exact anchor, recurrent tower census, full-fibre witnesses, and OBR-008"
 commit: "95e7260"
 consequence: "The recurrent construction escapes OBR-007 but remains a non-candidate REVISE audit. Certify the exact-U_c physical first-return branches and invariant weights before defining a non-lattice roof or transfer determinant."
+```
+
+## Status update — CLUE-A1-004 exact-(U_c) first-return support
+
+```yaml
+date: 2026-08-04
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT all-order physical/ambient branch theorem, rational endpoint certificate through return 308, and OBR-009"
+commit: "current checkpoint; source state dba34c9"
+consequence: "The physical finite-word alphabet is now proved: one full interval branch for every even label, no physical odd branch, and a nonempty cylinder for every finite even-label word. Ambient odd branches are transient and have zero invariant mass. Route A remains A1_WEAK because exact acip weights, an arithmetic orbit law, and a non-lattice determinant clock are absent. The next task is the endpoint-density / branch-mass-ratio theorem, not a zero fit."
 ```

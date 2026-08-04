@@ -1202,3 +1202,310 @@ Prove or refute (S_{\rm top}=2\mathbb N) for exact (U_c) by interval or
 kneading methods, and determine which branches have positive invariant weight.
 Do not introduce a non-lattice roof until the same dynamics derives it without
 prime or zero data.
+
+---
+
+## 2026-08-04 — Exact-(U_c) first-return support closure
+
+### Current clue and candidate state
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: none. The parent audit remains
+
+```text
+P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+```
+
+and the scoped support audit is
+
+```text
+P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT
+```
+
+Both have `formal_candidate: false`. The versioned Route-A result is
+
+```text
+evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml
+```
+
+with source commit pending the checkpoint backfill.
+
+### Source lock
+
+Let
+
+\[
+f(x)=1-U_cx^2,
+\qquad
+U_c^3-2U_c^2+2U_c-2=0,
+\qquad
+\rho=U_c-1.
+\]
+
+The two return ledgers are frozen separately:
+
+\[
+X=[-1,1],
+\qquad
+J=f(X)=[-\rho,1],
+\]
+
+\[
+L_X=[-1,0),
+\qquad
+L_J=[-\rho,0).
+\]
+
+For (D\in\{X,J\}), zero is a non-event and
+
+\[
+C_m(D)=L_D\cap
+\bigcap_{j=1}^{m-1}f^{-j}(D\setminus L_D)
+\cap f^{-m}(L_D).
+\]
+
+One (f)-iterate is one clock tick. The use of (T=f^2) in the proof does not
+change the clock or the return labels. No determinant is added by this support
+audit. Prime data, zero data, target arithmetic, USTC data, fitted weights, and
+empirical transition matrices are forbidden.
+
+The exact-rational reproduction certificate freezes a 100-decimal enclosure
+of (U_c), 130-digit outward square-root bounds, the first 154 endpoint
+intervals, and physical returns through 308. The independent midpoint
+diagnostic uses 180 decimal digits through branch 64.
+
+### Exact support theorem
+
+The algebraic identity (U_c\rho^2=1-\rho) gives the exact band swap
+
+\[
+f([-\rho,\rho])=[\rho,1],
+\qquad
+f([\rho,1])=[-\rho,\rho].
+\]
+
+Define
+
+\[
+h(y)=\sqrt{\frac{1-y}{U_c}},
+\qquad
+r_0=0,
+\qquad
+r_{n+1}=h(h(r_n)).
+\]
+
+Then (r_n\uparrow\rho) and the complete physical ledger is
+
+\[
+C_2(J)=(-r_1,0),
+\]
+
+\[
+C_{2n}(J)=(-r_n,-r_{n-1}]\quad(n\ge2),
+\qquad
+C_{2n+1}(J)=\varnothing.
+\]
+
+Therefore
+
+\[
+S_{\rm top}^{J}=2\mathbb N_{\ge1},
+\]
+
+with exactly one nondegenerate interval branch for every even label. The only
+nonreturning point of (L_J) is (-\rho).
+
+For every (n),
+
+\[
+f^{2n}:\operatorname{int}C_{2n}(J)\longrightarrow(-\rho,0)
+\]
+
+is a real-analytic diffeomorphism. Therefore every finite word of positive
+even return labels has a nonempty open cylinder. This proves the recurrent
+tower's finite-word alphabet provenance, while leaving its invariant measure
+and aged fibre coupling as separate modeling choices.
+
+On the literal ambient interval, define (q_n=-h(r_n)). Then
+
+\[
+C_1(X)=[-1,q_0),
+\qquad
+C_{2n+1}(X)=[q_{n-1},q_n)\quad(n\ge1),
+\]
+
+and these branches fill `[-1,-rho)`. Thus
+
+\[
+S_{\rm top}^{X}=\mathbb N_{\ge1}.
+\]
+
+This ambient/core distinction is mandatory. Since (f(X)\subset J), every
+invariant probability gives (X\setminus J) zero mass. Hence every ambient odd
+branch has zero invariant weight. Conditionally on the named physical acip
+having support (J), every physical even branch has positive weight, but this
+audit does not reprove that support theorem. The exact values are not computed,
+and positivity is not measure-independent.
+
+### Prior-work correction and obstruction
+
+The old Paper-2 MSS proof interpreted its admissibility inequality in the
+wrong direction. The parity conclusion is retained and strengthened by the
+band-swap proof above.
+
+The claimed uniformly expanding induced map is refuted. On the first branch,
+
+\[
+(f^2)'(x)=4U_c^2x f(x)\longrightarrow0
+\qquad(x\uparrow0),
+\]
+
+and `x=-0.01` gives
+
+```text
+|(f^2)'(x)| = 0.0953043164222... < 1.
+```
+
+Every branch has derivative infimum zero, and the inverse Jacobian has a
+square-root singularity at (-\rho). This creates `OBR-009`: the legacy Paper-2
+ordinary-`BV` Lasota--Yorke/spectral-gap route does not establish the claimed
+geometric branch-weight theorem. A weighted space, further acceleration, or a
+direct physical-density theorem is required.
+
+The endpoint-length ratio nevertheless has the proved limit
+
+\[
+\lambda=\frac{1}{4U_c^2(U_c-1)^2}
+=0.35491084440177\ldots.
+\]
+
+If the physical density has the required square-root endpoint spike, the
+branch-mass ratio would conditionally tend to
+
+\[
+\sqrt\lambda
+=\frac{1}{2U_c(U_c-1)}
+=0.59574394197656\ldots.
+\]
+
+This is recorded only as `OPEN_CONDITIONAL_CLUE`.
+
+### Route-A result
+
+```text
+Route-A tuple: (A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+Overall: ROUTE_A_EXPLORATORY
+Recommended verdict: REVISE
+Formal candidate: false
+Route B: inactive and not authorized
+```
+
+- `A1_WEAK / PROVED`: the physical one-even-label/one-full-interval grammar and
+  full finite-word language are exact, and the recurrent tower retains its
+  exact primitive combinatorics. The signed full-fibre residual ledger is a
+  separately labeled finite numerical prefix. Exact acip weights, an
+  arithmetic orbit correspondence, log-prime clock, and von-Mangoldt law are
+  absent.
+- `A2_FAIL / PROVED`: no first-return Fredholm operator is defined; `OBR-009`
+  blocks the old ordinary-`BV` construction and `OBR-008` blocks every
+  unit-lattice continuation as a completed-ξ divisor.
+- `A3_FAIL / PROVED`: the unit-clock global count is incompatible with the
+  completed-ξ count, while all positive analytic-structure obligations remain
+  absent.
+- `A4_FAIL / NOT_TESTABLE`: no natural quantization, Hilbert space, domain, or
+  self-adjoint/scattering object is defined.
+
+### Updated files
+
+- `DERIVATION_PACKAGE.md`;
+- `configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml`;
+- `configs/source_locks/P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT.yaml`;
+- `experiments/p4_logistic_recurrent_uc_anchored_clock.py`;
+- `experiments/p4_logistic_uc_first_return_support.py`;
+- `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`;
+- `tests/test_p4_logistic_uc_first_return_support.py`;
+- `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`;
+- `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`;
+- `formal/results/exact_uc_first_return_support.md`;
+- `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`;
+- `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`;
+- `docs/prior_work/README.md`;
+- `docs/prior_work/claims_matrix.md`;
+- `docs/research_clues.md`;
+- `docs/candidate_registry.md`;
+- `docs/obstruction_registry.md`;
+- `docs/research_log.md`;
+- `HP_HANDOFF.md`.
+
+`docs/operator_obligations.md` remains unchanged because Route B is closed.
+
+### Tests and reproduction commands
+
+Focused support audit:
+
+```text
+16/16 passed
+```
+
+Focused recurrent audit:
+
+```text
+16/16 passed
+```
+
+Full repository:
+
+```text
+89/89 passed
+```
+
+Artifact SHA-256 values:
+
+```text
+89c82cd1d601e4a151069add31bc1d2dd4b48f7170fe7c8bc61234aa58e20f2d  artifacts/p4_logistic_uc_first_return_support/structural_audit.json
+b113a90abdb65d913b7c162d76d925286f12a831fca259a974b8d04c81cc56ff  artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json
+```
+
+Reproduction commands:
+
+```bash
+python3 -m unittest -v tests/test_p4_logistic_uc_first_return_support.py
+python3 -m unittest -v tests/test_p4_logistic_recurrent_uc_anchored_clock.py
+python3 experiments/p4_logistic_uc_first_return_support.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_first_return_support/structural_audit.json
+python3 experiments/p4_logistic_recurrent_uc_anchored_clock.py \
+  --quiet \
+  --output artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json
+python3 -m unittest discover -v
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml","configs/source_locks/P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT.yaml","evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+sha256sum artifacts/p4_logistic_uc_first_return_support/structural_audit.json artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json
+git diff --check
+```
+
+### Claim boundary and next smallest task
+
+Established: exact physical and ambient return support, one full physical
+branch per even label, the full finite-word return language, invariant-measure
+annihilation of ambient odd branches, conditional physical branch positivity
+under the named full-support-acip hypothesis, rational endpoint certification
+through return 308, the recurrent tower's prior exact grammar, and `OBR-009`.
+
+Not established: exact acip branch weights, their asymptotic ratio, a repaired
+transfer-operator theorem, complete fibre multiplicities, an arithmetic
+prime-orbit law, a non-lattice clock, Fredholm/completed-ξ structure, natural
+quantization, Route B, Hilbert--Pólya, or RH.
+
+Next smallest task: prove or refute the physical-acip square-root endpoint law
+and whether
+
+\[
+\frac{\mu(C_{2n+2})}{\mu(C_{2n})}
+\longrightarrow
+\frac{1}{2U_c(U_c-1)}.
+\]
+
+Freeze one of: a direct Misiurewicz density argument, a weighted/cusp-adapted
+function space, or an accelerated inducing domain. Do not fit weights or add a
+non-lattice roof before that choice is explicit.

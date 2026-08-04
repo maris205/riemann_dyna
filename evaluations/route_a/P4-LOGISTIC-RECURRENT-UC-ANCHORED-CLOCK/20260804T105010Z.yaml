@@ -1,0 +1,227 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+audit_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+formal_candidate: false
+source_commit: PENDING_BACKFILL
+evaluation_date: "2026-08-04T10:50:10Z"
+
+source_lock:
+  object: >-
+    Exact-U_c Logistic parent f(x)=1-U_c*x^2 on ambient X=[-1,1], with
+    physical invariant core J=[1-U_c,1]=[-rho,1] and event L_J=[-rho,0).
+    Its proved first-return factor has exactly one interval branch C_(2m) for
+    every m>=1 and no odd physical branch. The recurrent candidate adds the
+    modeled tower B={(omega,j):omega in N_{>=1}^Z,1<=j<=2*omega_0} and the
+    terminally anchored Logistic fibre from the parent source lock.
+  data_type: >-
+    Exact algebraic identities and all-order interval topology; exact-rational
+    outward endpoint certificates; high-precision reproduction diagnostics;
+    exact recurrent-tower primitive/repetition grammar; one signed full-fibre
+    witness per primitive tower orbit through period 16; reciprocal
+    Artin-Mazur ledger.
+  clock: >-
+    One f iterate is one physical return-clock tick and one tower-age step is
+    one Logistic fibre update. T=f^2 is proof notation only. Symbol m has
+    exactly 2*m updates; the terminal update uses U_c before renewal.
+  normalization: >-
+    Raw coordinates, strict event x<0 with zero a non-event, raw integer
+    return labels, and physical core J for the candidate alphabet. Ambient
+    transient odd branches are a separate zero-invariant-mass ledger and may
+    not be mixed with the physical factor.
+  determinant_convention: >-
+    Z_T(z)=(1-z^2)/(1-2*z^2) is the tower Artin-Mazur zeta. The distinct full
+    ledger is D_AM,F(z)=exp(-sum_(n>=1) Fix(F^n)*z^n/n), locally defined for
+    |z|<1/4. Neither is a Fredholm determinant, and Z, 1/Z, Z'/Z, and
+    det(I-L_s) are not interchanged.
+  cutoff: >-
+    First-return support theorem for every m>=1; exact-rational endpoint
+    certificate through branch 154 / return 308; high-precision midpoint
+    diagnostics through branch 64; tower primitive and full-fibre witness
+    census through period 16; frozen four-seed gap scans use burn-in 20000 and
+    300000 recorded updates.
+  precision: >-
+    Exact algebraic and interval-topological proof where stated; 100-decimal
+    rational enclosure of U_c with 130-digit outward square-root scale;
+    180-decimal diagnostic arithmetic; CPython IEEE-754 binary64 for the
+    recurrent-tower implementation and its frozen residual thresholds.
+  allowed_data:
+    - "the algebraic U_c equation, direct deterministic iterates, and elementary real analysis"
+    - "exact rational arithmetic, integer square-root bounds, and finite combinatorics"
+    - "repository prior-work source used for explicit claim correction"
+  forbidden_data:
+    - "prime tables, primality predicates, prime-gap histograms, Riemann-zero tables, xi/zeta evaluations, or USTC data"
+    - "target-driven retuning of U_c, k, offset, return labels, weights, phases, or partitions"
+    - "mixing ambient transient odd branches into the physical alphabet"
+    - "claiming invariant branch weights without naming the invariant measure"
+    - "using the refuted ordinary-BV uniform-expansion proof"
+  training_split: "empty; no fitting and no target data"
+  validation_split: >-
+    Algebraic band-swap identities, physical branches 1 through 8, ambient
+    C_1, zero-endpoint convention, and the C_2 derivative counterexample;
+    recurrent-tower validation periods and controls remain as in lock version 3.
+  test_split: >-
+    Sealed physical branches 9,16,32,64,96,128,154; ambient odd branches after
+    C_1; rational endpoint separation; invariant-measure support; Paper-2
+    expansion falsification; recurrent-tower periods 9 through 16 and frozen
+    timing/repetition/reorder controls.
+  stopping_conditions:
+    - "REVISE while exact physical-acip branch weights and their asymptotics are unknown"
+    - "STOP_SCOPED for the unaccelerated first-return map as a uniformly expanding ordinary-BV Markov map"
+    - "STOP_SCOPED for a determinant retaining only the unit lattice clock z=exp(-s)"
+    - "REJECTED if target lookup, target-driven retuning, or determinant-ledger mixing enters"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The exact-U_c physical first-return support is proved to be 2*N_{>=1},
+    with exactly one nondegenerate interval branch for every even label and no
+    physical odd branch. Every branch interior maps diffeomorphically onto the
+    full event interior, so every finite even-label word has a nonempty open
+    cylinder. The recurrent tower therefore has a proved physical finite-word
+    alphabet provenance, and its primitive/repetition grammar is exact.
+  strongest_failure: >-
+    First-return branches are observables, not arithmetic primitive periodic
+    orbits. Their exact physical-acip weights are unknown, and the renewal
+    measure/tower coupling remains modeled. There is no non-accidental
+    prime-orbit correspondence, log-prime clock, von-Mangoldt repetition law,
+    or complete fibre-root census.
+  metrics:
+    formal_candidate: false
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    physical_topological_support: "2*N_{>=1}"
+    physical_branch_multiplicity: "one interval per even label"
+    physical_support_evidence: PROVED
+    full_finite_return_word_language: PROVED
+    ambient_topological_support: "N_{>=1}"
+    ambient_odd_branch_invariant_mass: 0
+    physical_acip_branch_positivity: CONDITIONAL_THEOREM
+    rationally_certified_endpoint_branches: 154
+    maximum_certified_physical_return: 308
+    high_precision_midpoint_branches: 64
+    asymptotic_branch_length_ratio: "1/(4*U_c^2*(U_c-1)^2)"
+    asymptotic_branch_length_ratio_evidence: PROVED
+    asymptotic_branch_mass_ratio_evidence: OPEN
+    primitive_tower_orbits_through_period_16: 70
+    full_fibre_witnesses: 70
+    full_fibre_witness_prefix_evidence: NUMERICAL_OBSERVATION
+    maximum_fibre_return_residual: 3.7761460625063137e-14
+    signed_multiplier_preserved: true
+    exact_physical_acip_weights: false
+    complete_fibre_root_census: false
+  artifacts:
+    - artifacts/p4_logistic_uc_first_return_support/structural_audit.json
+    - formal/results/exact_uc_first_return_support.md
+    - DERIVATION_PACKAGE.md
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The physical branch alphabet is now exact, the tower zeta is exact, and
+    the full reciprocal Artin-Mazur log series has finite coefficients with a
+    proved local disk |z|<1/4. All determinant ledgers remain separated.
+  strongest_failure: >-
+    The natural unaccelerated first-return map is not uniformly expanding:
+    every branch has derivative infimum zero and its inverse Jacobian has a
+    square-root endpoint singularity. No repaired weighted-space or
+    accelerated Fredholm operator is defined. Any continuation still
+    factoring only through z=exp(-s) also has the O(T) unit-lattice divisor
+    obstruction and cannot have the completed-xi divisor.
+  metrics:
+    zero_error_train: "not_applicable_no_target_data"
+    zero_error_validation: "not_testable_no_target_root_ledger"
+    zero_error_test: "not_testable_no_target_root_ledger"
+    extra_zero_count: "not_testable_no_completed_divisor"
+    missing_zero_count: "not_testable_no_completed_divisor"
+    root_count_discrepancy: "proved_O(T)_versus_Theta(T_log_T)_for_unit_lattice_continuations"
+    cutoff_drift: "support theorem all-order; finite endpoint certificate stable through return 308"
+    precision_drift: "rational endpoint certificate plus 180-digit diagnostics; no target-root ledger"
+    control_margin: "ambient/core, neighboring-parameter, timing, repetition, reorder, and derivative controls pass"
+    tower_zeta: "(1-z^2)/(1-2*z^2)"
+    full_artin_mazur_log_series_disk: "|z|<1/4"
+    unaccelerated_uniform_expansion: false
+    fredholm_determinant_defined: false
+  artifacts:
+    - formal/obstructions/exact_uc_first_return_nonuniform_expansion.md
+    - formal/obstructions/unit_lattice_clock_vertical_periodicity.md
+    - artifacts/p4_logistic_uc_first_return_support/structural_audit.json
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The unit-lattice vertical-periodicity obstruction remains a same-clock
+    global falsification criterion independent of finite zero fitting.
+  strongest_failure: >-
+    There is no analytic continuation theorem for a same-object Fredholm
+    determinant, no functional equation, Gamma/trivial-zero ledger,
+    Riemann-von Mangoldt law, moving-order control, or completed-xi divisor.
+  metrics:
+    conjugation_symmetry: "local real-coefficient formal ledger only"
+    functional_equation: false
+    gamma_factor: false
+    trivial_zero_ledger: false
+    analytic_continuation: false
+    target_counting_law: false
+    unit_lattice_vertical_period: "2*pi*i"
+    unit_lattice_divisor_growth: "O(T) in bounded real strips"
+  artifacts:
+    - formal/obstructions/unit_lattice_clock_vertical_periodicity.md
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The construction is an explicit autonomous recurrent skew product on a
+    coherent invariant phase space and preserves the same tower-age clock.
+  strongest_failure: >-
+    The Logistic fibre is noninvertible and no symplectic, contact, scattering,
+    or unitary structure, Hilbert space, operator domain, boundary condition,
+    or natural same-clock quantization is defined.
+  metrics:
+    autonomous: true
+    recurrent_base: true
+    forward_invariant_fibre: true
+    invertible: false
+    symplectic_structure: false
+    natural_hilbert_space: null
+    operator_domain: null
+    route_b_ready: false
+  artifacts:
+    - experiments/p4_logistic_recurrent_uc_anchored_clock.py
+
+overall_verdict: ROUTE_A_EXPLORATORY
+recommended_audit_verdict: REVISE
+claim_boundary:
+  what_is_established:
+    - "The physical exact-U_c first-return support is all positive even labels, with one interval branch per label."
+    - "Ambient odd branches are transient and have zero mass for every invariant probability."
+    - "Conditionally on the named physical acip having support J, every physical even branch has positive mass; no exact weight value is obtained."
+    - "The modeled recurrent tower has an exact primitive census, terminal U_c anchoring, and finite signed full-fibre witnesses."
+    - "The unaccelerated first-return map is not uniformly expanding, and the old ordinary-BV proof is invalid."
+    - "Tower and full Artin-Mazur determinant ledgers are distinct, and the unit clock has a proved O(T) obstruction."
+  what_is_not_established:
+    - "No exact or certified physical-acip branch weights or asymptotic mass-ratio theorem is obtained."
+    - "No arithmetic prime correspondence, von-Mangoldt trace law, Fredholm determinant, or completed-xi divisor is obtained."
+    - "No natural quantization, Route B, Hilbert-Polya realization, RH proof, or physical spectral claim is made."
+  what_would_change_the_status: >-
+    A proof of the physical-acip endpoint-density law and branch-mass
+    asymptotics, or a fully frozen accelerated inducing scheme / weighted
+    function space with a same-object trace and Fredholm theorem. Any
+    non-lattice roof must still be intrinsic and target-free.
+blocking_conditions:
+  - "physical-acip branch weights and their asymptotics are unknown"
+  - "the unaccelerated ordinary-BV expansion route is refuted"
+  - "complete fibre multiplicities and an intrinsic non-lattice roof are unknown"
+  - "a same-object Fredholm determinant and global analytic structure are absent"
+  - "the unit lattice clock forces an O(T) periodic divisor"
+next_smallest_test: >-
+  Prove or refute the square-root endpoint-density law for the physical acip
+  and whether mu(C_(2n+2))/mu(C_(2n)) tends to
+  1/(2*U_c*(U_c-1)). Freeze either a direct Misiurewicz density argument, a
+  weighted/cusp-adapted function space, or an accelerated inducing domain
+  before computing or fitting weights.
+route_b_invocation_allowed: false
