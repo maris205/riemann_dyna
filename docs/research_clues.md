@@ -1317,6 +1317,6 @@ clue_id: CLUE-A1-004
 old_status: ACTIVE
 new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT all-order physical/ambient branch theorem, rational endpoint certificate through return 308, and OBR-009"
-commit: "current checkpoint; source state dba34c9"
+commit: "28b0a1dee8a65057c3d3220f95cd0ce17c1d9db7"
 consequence: "The physical finite-word alphabet is now proved: one full interval branch for every even label, no physical odd branch, and a nonempty cylinder for every finite even-label word. Ambient odd branches are transient and have zero invariant mass. Route A remains A1_WEAK because exact acip weights, an arithmetic orbit law, and a non-lattice determinant clock are absent. The next task is the endpoint-density / branch-mass-ratio theorem, not a zero fit."
 ```

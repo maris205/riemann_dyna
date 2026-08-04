@@ -1229,7 +1229,11 @@ Both have `formal_candidate: false`. The versioned Route-A result is
 evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml
 ```
 
-with source commit pending the checkpoint backfill.
+with source commit
+
+```text
+28b0a1dee8a65057c3d3220f95cd0ce17c1d9db7
+```
 
 ### Source lock
 

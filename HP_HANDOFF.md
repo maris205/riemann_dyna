@@ -18,7 +18,7 @@ P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT
 - Route B: inactive and not authorized
 - New reusable obstruction: `OBR-009`
 - Evaluation: `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
-- Evaluation source commit: pending checkpoint backfill
+- Evaluation source commit: `28b0a1dee8a65057c3d3220f95cd0ce17c1d9db7`
 - Formal candidate count: unchanged (`SS-0001`, `SS-0002` only)
 
 The exact physical first-return alphabet is now proved. This removes the prior
