@@ -16,8 +16,16 @@ class LogisticUcAcipEndpointDensityTests(unittest.TestCase):
     def test_algebraic_identity_gates_close(self) -> None:
         gates = self.report["computed_gates"]
         self.assertTrue(gates["critical_polynomial_residual_below_1e_170"])
+        self.assertTrue(gates["critical_root_has_100_digit_sign_bracket"])
         self.assertTrue(gates["band_identity_residual_below_1e_170"])
         self.assertTrue(gates["multiplier_identity_residual_below_1e_170"])
+
+        constants = self.report["constants"]
+        lower = Decimal(constants["U_c_100_digit_lower_bound"])
+        upper = Decimal(constants["U_c_100_digit_upper_bound"])
+        self.assertEqual(upper - lower, Decimal("1e-100"))
+        self.assertLess(Decimal(constants["U_c_lower_polynomial_value"]), 0)
+        self.assertGreater(Decimal(constants["U_c_upper_polynomial_value"]), 0)
 
     def test_polar_conjugate_has_strict_expansion_margin(self) -> None:
         constants = self.report["constants"]
@@ -31,7 +39,34 @@ class LogisticUcAcipEndpointDensityTests(unittest.TestCase):
         self.assertLess(abs(lower_bound - sampled), Decimal("1e-170"))
         self.assertTrue(
             self.report["computed_gates"][
-                "polar_grid_is_monotone_decreasing"
+                "polar_grid_is_strictly_monotone_decreasing"
+            ]
+        )
+
+    def test_polar_closed_form_matches_independent_chain_rule(self) -> None:
+        diagnostics = self.report["computed_diagnostics"]
+        rows = diagnostics["polar_chain_rule_rows"]
+        self.assertEqual(
+            [row["x_over_rho"] for row in rows],
+            ["1/8", "1/3", "1/2", "3/4", "7/8"],
+        )
+        closed_values = [
+            Decimal(row["closed_form_derivative_squared"]) for row in rows
+        ]
+        self.assertTrue(
+            all(right < left for left, right in zip(closed_values, closed_values[1:]))
+        )
+        self.assertTrue(
+            all(Decimal(row["relative_error"]) < Decimal("1e-170") for row in rows)
+        )
+        self.assertTrue(
+            self.report["computed_gates"][
+                "polar_closed_form_matches_independent_chain_rule"
+            ]
+        )
+        self.assertTrue(
+            self.report["computed_gates"][
+                "reflected_branch_endpoint_mapping_is_exact"
             ]
         )
 
@@ -85,6 +120,9 @@ class LogisticUcAcipEndpointDensityTests(unittest.TestCase):
         self.assertEqual(
             lock["cutoff"]["algebraic_diagnostic_t_exponents"],
             list(endpoint.T_EXPONENTS),
+        )
+        self.assertEqual(
+            lock["precision"]["u_bracket_digits"], endpoint.ROOT_BRACKET_DIGITS
         )
         self.assertIn("Jiang-Ruelle", lock["data_type"]["primary"])
         self.assertIn("No determinant", lock["determinant_convention"])

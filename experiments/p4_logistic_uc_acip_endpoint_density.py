@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import argparse
-from decimal import Decimal, localcontext
+from decimal import Decimal, ROUND_FLOOR, localcontext
 import json
 from pathlib import Path
 from typing import Any
@@ -17,8 +17,14 @@ FORMAL_RESULT = "formal/results/exact_uc_acip_endpoint_density.md"
 LITERATURE_AUDIT = "docs/literature/exact_uc_acip_density_sources.md"
 
 DECIMAL_DIGITS = 180
+ROOT_BRACKET_DIGITS = 100
 POLAR_GRID_INTERVALS = 1024
 T_EXPONENTS = (8, 16, 32, 64)
+CHAIN_RULE_FRACTIONS = ((1, 8), (1, 3), (1, 2), (3, 4), (7, 8))
+
+
+def critical_polynomial(value: Decimal) -> Decimal:
+    return value**3 - 2 * value**2 + 2 * value - 2
 
 
 def decimal_root(precision: int = DECIMAL_DIGITS) -> Decimal:
@@ -28,13 +34,22 @@ def decimal_root(precision: int = DECIMAL_DIGITS) -> Decimal:
             "1.54368901269207636157085597180174798652520329765098393524"
         )
         for _ in range(40):
-            polynomial = value**3 - 2 * value**2 + 2 * value - 2
+            polynomial = critical_polynomial(value)
             derivative = 3 * value**2 - 4 * value + 2
             update = polynomial / derivative
             value -= update
             if update == 0:
                 break
         return value
+
+
+def decimal_root_bracket(
+    value: Decimal, digits: int = ROOT_BRACKET_DIGITS
+) -> tuple[Decimal, Decimal]:
+    quantum = Decimal(10) ** (-digits)
+    lower_units = (value / quantum).to_integral_value(rounding=ROUND_FLOOR)
+    lower = lower_units * quantum
+    return lower, lower + quantum
 
 
 def polar_derivative_squared(x: Decimal, u: Decimal) -> Decimal:
@@ -45,6 +60,47 @@ def polar_derivative_squared(x: Decimal, u: Decimal) -> Decimal:
         * (Decimal(1) - x * x)
     )
     return numerator / denominator
+
+
+def reflected_map(x: Decimal, u: Decimal, rho: Decimal) -> Decimal:
+    return rho - Decimal(2) * u**2 * x**2 + u**3 * x**4
+
+
+def reflected_derivative(x: Decimal, u: Decimal) -> Decimal:
+    return -Decimal(4) * u**2 * x * (Decimal(1) - u * x**2)
+
+
+def polar_chain_rule_derivative_squared(
+    x: Decimal, u: Decimal, rho: Decimal
+) -> Decimal:
+    sx = reflected_map(x, u, rho)
+    derivative = reflected_derivative(x, u)
+    return (
+        derivative**2
+        * (rho**2 - x**2)
+        / (rho**2 - sx**2)
+    )
+
+
+def polar_chain_rule_rows(
+    u: Decimal, rho: Decimal
+) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    for numerator, denominator in CHAIN_RULE_FRACTIONS:
+        fraction = Decimal(numerator) / Decimal(denominator)
+        x = rho * fraction
+        closed_form = polar_derivative_squared(x, u)
+        chain_rule = polar_chain_rule_derivative_squared(x, u, rho)
+        rows.append(
+            {
+                "x_over_rho": f"{numerator}/{denominator}",
+                "x": str(x),
+                "closed_form_derivative_squared": str(closed_form),
+                "independent_chain_rule_derivative_squared": str(chain_rule),
+                "relative_error": str(abs(closed_form / chain_rule - Decimal(1))),
+            }
+        )
+    return rows
 
 
 def positive_t_inverse(y: Decimal, u: Decimal) -> Decimal:
@@ -80,7 +136,10 @@ def build_report() -> dict[str, Any]:
         context.prec = DECIMAL_DIGITS
         u = decimal_root(DECIMAL_DIGITS)
         rho = u - 1
-        polynomial_residual = u**3 - 2 * u**2 + 2 * u - 2
+        polynomial_residual = critical_polynomial(u)
+        root_lower, root_upper = decimal_root_bracket(u)
+        root_lower_residual = critical_polynomial(root_lower)
+        root_upper_residual = critical_polynomial(root_upper)
 
         band_identity_residual = u * rho**2 - (Decimal(1) - rho)
         multiplier_identity_residual = u**3 * rho - Decimal(2)
@@ -97,11 +156,22 @@ def build_report() -> dict[str, Any]:
         for index in range(POLAR_GRID_INTERVALS + 1):
             x = rho * Decimal(index) / Decimal(POLAR_GRID_INTERVALS)
             sampled_values.append(polar_derivative_squared(x, u))
-        sampled_monotone = all(
-            right <= left
+        sampled_strictly_decreasing = all(
+            right < left
             for left, right in zip(sampled_values, sampled_values[1:])
         )
+        sampled_maximum = max(sampled_values).sqrt()
         sampled_minimum = min(sampled_values).sqrt()
+
+        chain_rule_rows = polar_chain_rule_rows(u, rho)
+        maximum_chain_rule_relative_error = max(
+            Decimal(row["relative_error"]) for row in chain_rule_rows
+        )
+        endpoint_mapping_residuals = {
+            "S_0_minus_rho": reflected_map(Decimal(0), u, rho) - rho,
+            "S_rho_plus_rho": reflected_map(rho, u, rho) + rho,
+            "S_minus_rho_plus_rho": reflected_map(-rho, u, rho) + rho,
+        }
 
         inverse_rows = inverse_jacobian_rows(u, rho)
         final_inverse_relative_error = Decimal(inverse_rows[-1]["relative_error"])
@@ -109,13 +179,26 @@ def build_report() -> dict[str, Any]:
         computed_gates = {
             "critical_polynomial_residual_below_1e_170": abs(polynomial_residual)
             < Decimal("1e-170"),
+            "critical_root_has_100_digit_sign_bracket": (
+                root_lower_residual < 0 < root_upper_residual
+                and root_upper - root_lower == Decimal("1e-100")
+            ),
             "band_identity_residual_below_1e_170": abs(band_identity_residual)
             < Decimal("1e-170"),
             "multiplier_identity_residual_below_1e_170": abs(
                 multiplier_identity_residual
             )
             < Decimal("1e-170"),
-            "polar_grid_is_monotone_decreasing": sampled_monotone,
+            "reflected_branch_endpoint_mapping_is_exact": all(
+                abs(residual) < Decimal("1e-170")
+                for residual in endpoint_mapping_residuals.values()
+            ),
+            "polar_grid_is_strictly_monotone_decreasing": (
+                sampled_strictly_decreasing
+            ),
+            "polar_closed_form_matches_independent_chain_rule": (
+                maximum_chain_rule_relative_error < Decimal("1e-170")
+            ),
             "polar_sampled_minimum_matches_exact_bound": abs(
                 sampled_minimum - expansion_lower_bound
             )
@@ -150,6 +233,10 @@ def build_report() -> dict[str, Any]:
                 "U_c": str(u),
                 "rho": str(rho),
                 "critical_polynomial_residual": str(polynomial_residual),
+                "U_c_100_digit_lower_bound": str(root_lower),
+                "U_c_100_digit_upper_bound": str(root_upper),
+                "U_c_lower_polynomial_value": str(root_lower_residual),
+                "U_c_upper_polynomial_value": str(root_upper_residual),
                 "U_c_times_rho_squared_identity_residual": str(
                     band_identity_residual
                 ),
@@ -232,8 +319,18 @@ def build_report() -> dict[str, Any]:
             },
             "computed_diagnostics": {
                 "decimal_digits": DECIMAL_DIGITS,
+                "root_bracket_digits": ROOT_BRACKET_DIGITS,
                 "polar_grid_intervals": POLAR_GRID_INTERVALS,
+                "sampled_polar_maximum": str(sampled_maximum),
                 "sampled_polar_minimum": str(sampled_minimum),
+                "polar_chain_rule_rows": chain_rule_rows,
+                "maximum_chain_rule_relative_error": str(
+                    maximum_chain_rule_relative_error
+                ),
+                "reflected_endpoint_mapping_residuals": {
+                    key: str(value)
+                    for key, value in endpoint_mapping_residuals.items()
+                },
                 "inverse_jacobian_rows": inverse_rows,
             },
             "computed_gates": computed_gates,
