@@ -1,0 +1,349 @@
+{
+  "audit_id": "P4-LOGISTIC-MONOTONE-CLOCK-LIFT",
+  "audit_passed": true,
+  "claim_boundary": {
+    "established": [
+      "The compact lift exactly reproduces the frozen logarithmic schedule from its declared initial clock.",
+      "All full-space periodic and primitive orbits lie on v=0 and coincide with the static f_u_c parent.",
+      "Modulo and clamped clocks create different, cutoff-dependent systems."
+    ],
+    "not_established": [
+      "No analytic continuation or Fredholm determinant is defined.",
+      "The result does not exclude autonomous lifts with an intrinsic recurrent base.",
+      "No Route-B, Hilbert-Polya, RH, prime-orbit, or completed-xi claim is made."
+    ]
+  },
+  "clock_regression": {
+    "all_strictly_decrease": true,
+    "any_interior_clock_return": false,
+    "max_absolute_error": 1.1102230246251565e-16,
+    "rows": [
+      {
+        "absolute_error": 0.0,
+        "closed": 0.40242960438184466,
+        "direct": 0.40242960438184466,
+        "full_state_clock_return": false,
+        "period": 1,
+        "strict_decrease": true
+      },
+      {
+        "absolute_error": 5.551115123125783e-17,
+        "closed": 0.38987124525128003,
+        "direct": 0.3898712452512801,
+        "full_state_clock_return": false,
+        "period": 2,
+        "strict_decrease": true
+      },
+      {
+        "absolute_error": 0.0,
+        "closed": 0.3789231816899512,
+        "direct": 0.3789231816899512,
+        "full_state_clock_return": false,
+        "period": 3,
+        "strict_decrease": true
+      },
+      {
+        "absolute_error": 1.1102230246251565e-16,
+        "closed": 0.36926937306885504,
+        "direct": 0.36926937306885516,
+        "full_state_clock_return": false,
+        "period": 4,
+        "strict_decrease": true
+      },
+      {
+        "absolute_error": 5.551115123125783e-17,
+        "closed": 0.3396232718951086,
+        "direct": 0.33962327189510866,
+        "full_state_clock_return": false,
+        "period": 8,
+        "strict_decrease": true
+      },
+      {
+        "absolute_error": 1.1102230246251565e-16,
+        "closed": 0.3034130755422791,
+        "direct": 0.3034130755422792,
+        "full_state_clock_return": false,
+        "period": 16,
+        "strict_decrease": true
+      },
+      {
+        "absolute_error": 0.0,
+        "closed": 0.265872585674852,
+        "direct": 0.265872585674852,
+        "full_state_clock_return": false,
+        "period": 32,
+        "strict_decrease": true
+      },
+      {
+        "absolute_error": 2.7755575615628914e-17,
+        "closed": 0.23161615589971674,
+        "direct": 0.23161615589971676,
+        "full_state_clock_return": false,
+        "period": 64,
+        "strict_decrease": true
+      }
+    ]
+  },
+  "clue_id": "CLUE-A1-004",
+  "controls": {
+    "boundary_parent": {
+      "boundary_clock_multiplier": 1.0,
+      "boundary_parameter": 1.543078787606443,
+      "clock_return_error": 0.0,
+      "finite_window_endpoint": 1.5437,
+      "fixed_x": 0.543756369010751,
+      "is_full_boundary_fixed_point": true,
+      "legacy_regression_parameter": 1.543689,
+      "neutral_clock_direction": true,
+      "x_return_error": 2.220446049250313e-16
+    },
+    "clamped_clock": {
+      "cutoff_dependent_parent": true,
+      "parent_mu_range": 0.007792226398215529,
+      "rows": [
+        {
+          "clamped_parent_mu": 1.5572715590265978,
+          "cutoff": 8,
+          "distance_from_true_limit_u_c": 0.014192771420154848
+        },
+        {
+          "clamped_parent_mu": 1.5515661510078838,
+          "cutoff": 32,
+          "distance_from_true_limit_u_c": 0.00848736340144085
+        },
+        {
+          "clamped_parent_mu": 1.5494793326283822,
+          "cutoff": 64,
+          "distance_from_true_limit_u_c": 0.006400545021939319
+        }
+      ]
+    },
+    "modulo_clock": [
+      {
+        "absolute_discrepancy": 0.006944884591523426,
+        "period": 8,
+        "periodized_mu_at_step_P_plus_1": 1.5637,
+        "same_schedule": false,
+        "true_mu_at_step_P_plus_1": 1.5567551154084767
+      },
+      {
+        "absolute_discrepancy": 0.012239712634699584,
+        "period": 32,
+        "periodized_mu_at_step_P_plus_1": 1.5637,
+        "same_schedule": false,
+        "true_mu_at_step_P_plus_1": 1.5514602873653005
+      },
+      {
+        "absolute_discrepancy": 0.014260403945242528,
+        "period": 64,
+        "periodized_mu_at_step_P_plus_1": 1.5637,
+        "same_schedule": false,
+        "true_mu_at_step_P_plus_1": 1.5494395960547576
+      }
+    ],
+    "projected_fixed_point": {
+      "clock_return_error": 0.014602787042401644,
+      "fixed_x": 0.5414956813031832,
+      "full_state_returns": false,
+      "initial_clock": 0.4170323914242463,
+      "mu": 1.5637,
+      "next_clock": 0.40242960438184466,
+      "projected_x_returns": true,
+      "x_return_error": 1.1102230246251565e-16
+    }
+  },
+  "determinant_ledger": {
+    "analytic_continuation_asserted": false,
+    "exact_formal_identity": "D_AM,F=D_AM,f_u_c",
+    "fredholm_determinant_defined": false,
+    "frozen_object": "D_AM,F(z)=1/Z_AM,F(z)",
+    "logarithmic_derivative_is_target": false,
+    "zeta": "Z_AM,F(z)=exp(sum_(m>=1) #Fix(F^m) z^m/m)"
+  },
+  "formal_candidate": false,
+  "gates": {
+    "boundary_parent_is_static_u_c": true,
+    "clamped_clock_is_cutoff_dependent": true,
+    "clock_closed_form_matches": true,
+    "determinant_ledgers_separated": true,
+    "endpoint_schedule_matches": true,
+    "interior_clock_has_no_return": true,
+    "modulo_clock_changes_schedule": true,
+    "parameter_formula_matches_lock": true,
+    "phase_space_forward_invariant": true,
+    "projected_return_is_not_full_return": true,
+    "short_trajectory_matches": true,
+    "test_schedule_matches": true,
+    "validation_schedule_matches": true
+  },
+  "mathematical_object": {
+    "clock_map": "G(v)=v/(1+v*log1p(exp(-1/v))) for v>0; G(0)=0",
+    "initial_state": [
+      0.5,
+      0.4170323914242463
+    ],
+    "map": "F(x,v)=(1-(u_c+k*v^2)*x^2,G(v))",
+    "phase_space": "[-1,1] x [0,1/log(11)]"
+  },
+  "next_smallest_task": "Define an intrinsic recurrent base whose nontrivial periodic orbits leave the static-limit slice and carry a nondegenerate same-object determinant.",
+  "parameters": {
+    "derived_k": 0.11856994500837022,
+    "derived_u_c": 1.543078787606443,
+    "k": 0.1185699450083701,
+    "mu_1": 1.5637,
+    "mu_1000000": 1.5437,
+    "mu_limit": 1.543078787606443,
+    "u_c": 1.543078787606443
+  },
+  "periodic_orbit_proof": {
+    "base_fixed_set": "Fix(G^m)={0} for every m>=1",
+    "boundary_clock_multiplier": 1.0,
+    "clock_iterate_identity": "G^m(v)=1/log(exp(1/v)+m)",
+    "full_fixed_set_identity": "Fix(F^m)=Fix(f_u_c^m) x {0}",
+    "interior_aging_orbits_are_periodic": false,
+    "primitive_orbit_identity": "Prim(F)=Prim(f_u_c) x {0}",
+    "stability_weight_status": "neutral clock multiplier makes the usual hyperbolic monodromy denominator degenerate"
+  },
+  "phase_space": {
+    "forward_invariant": true,
+    "image_x_maximum": 1.0,
+    "image_x_minimum": -0.5637000000000001,
+    "maximum_mu": 1.5637,
+    "minimum_mu": 1.543078787606443
+  },
+  "route_a": {
+    "a1_evidence": "PROVED",
+    "a2_evidence": "PROVED",
+    "a3_evidence": "NOT_TESTABLE",
+    "a4_evidence": "NOT_TESTABLE",
+    "overall": "ROUTE_A_REJECTED",
+    "recommended_audit_verdict": "STOP_SCOPED",
+    "route_b_invocation_allowed": false,
+    "tuple": [
+      "A1_FAIL",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ]
+  },
+  "schedule_regression": {
+    "test": {
+      "max_clock_error": 5.551115123125783e-17,
+      "max_mu_error": 0.0,
+      "rows": [
+        {
+          "clock_error": 5.551115123125783e-17,
+          "closed_clock": 0.14455659960120903,
+          "expected_clock": 0.1445565996012091,
+          "expected_mu": 1.5455564975628977,
+          "index": 1000,
+          "lifted_mu": 1.5455564975628977,
+          "mu_error": 0.0
+        },
+        {
+          "clock_error": 0.0,
+          "closed_clock": 0.0723823612587038,
+          "expected_clock": 0.0723823612587038,
+          "expected_mu": 1.5437,
+          "index": 1000000,
+          "lifted_mu": 1.5437,
+          "mu_error": 0.0
+        }
+      ]
+    },
+    "validation": {
+      "max_clock_error": 5.551115123125783e-17,
+      "max_mu_error": 0.0,
+      "rows": [
+        {
+          "clock_error": 0.0,
+          "closed_clock": 0.4170323914242463,
+          "expected_clock": 0.4170323914242463,
+          "expected_mu": 1.5637,
+          "index": 1,
+          "lifted_mu": 1.5637,
+          "mu_error": 0.0
+        },
+        {
+          "clock_error": 0.0,
+          "closed_clock": 0.40242960438184466,
+          "expected_clock": 0.40242960438184466,
+          "expected_mu": 1.562281141169852,
+          "index": 2,
+          "lifted_mu": 1.562281141169852,
+          "mu_error": 0.0
+        },
+        {
+          "clock_error": 5.551115123125783e-17,
+          "closed_clock": 0.38987124525128003,
+          "expected_clock": 0.3898712452512801,
+          "expected_mu": 1.5611013703819323,
+          "index": 3,
+          "lifted_mu": 1.5611013703819323,
+          "mu_error": 0.0
+        },
+        {
+          "clock_error": 5.551115123125783e-17,
+          "closed_clock": 0.34597625626119355,
+          "expected_clock": 0.3459762562611936,
+          "expected_mu": 1.5572715590265978,
+          "index": 8,
+          "lifted_mu": 1.5572715590265978,
+          "mu_error": 0.0
+        },
+        {
+          "clock_error": 0.0,
+          "closed_clock": 0.267546386419054,
+          "expected_clock": 0.267546386419054,
+          "expected_mu": 1.5515661510078838,
+          "index": 32,
+          "lifted_mu": 1.5515661510078838,
+          "mu_error": 0.0
+        }
+      ]
+    }
+  },
+  "source_lock": "configs/source_locks/P4-LOGISTIC-MONOTONE-CLOCK-LIFT.yaml",
+  "strongest_evidence": "Every full periodic orbit is exactly a static-limit f_u_c orbit on v=0.",
+  "strongest_failure": "No primitive orbit traverses the aging interior, and the formal orbit determinant adds nothing beyond the static parent.",
+  "trajectory_regression": {
+    "max_x_error": 0.0,
+    "rows": [
+      {
+        "direct_x": -0.34603552739557397,
+        "initial_x": -1.0,
+        "lifted_x": -0.34603552739557397,
+        "max_x_error": 0.0,
+        "steps": 8.0
+      },
+      {
+        "direct_x": 0.12657540659379685,
+        "initial_x": -0.5,
+        "lifted_x": 0.12657540659379685,
+        "max_x_error": 0.0,
+        "steps": 8.0
+      },
+      {
+        "direct_x": 0.9123557763102919,
+        "initial_x": 0.0,
+        "lifted_x": 0.9123557763102919,
+        "max_x_error": 0.0,
+        "steps": 8.0
+      },
+      {
+        "direct_x": 0.12657540659379685,
+        "initial_x": 0.5,
+        "lifted_x": 0.12657540659379685,
+        "max_x_error": 0.0,
+        "steps": 8.0
+      },
+      {
+        "direct_x": -0.34603552739557397,
+        "initial_x": 1.0,
+        "lifted_x": -0.34603552739557397,
+        "max_x_error": 0.0,
+        "steps": 8.0
+      }
+    ]
+  }
+}

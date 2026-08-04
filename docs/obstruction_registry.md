@@ -174,3 +174,93 @@ Artifacts:
 - `docs/literature/ss_0002_gauss_mayer_sources.md`
 - `formal/obstructions/finite_area_selberg_weyl_mismatch.md`
 - `tests/test_ss_0002_commutator_mayer.py`
+
+---
+
+## OBR-007 — Strict-monotone clock lifts collapse periodic orbits to the clock fixed set
+
+Status:
+PROVED_OBSTRUCTION
+
+Source:
+CLUE-A1-004 / P4-LOGISTIC-MONOTONE-CLOCK-LIFT /
+`formal/obstructions/strict_monotone_clock_orbit_collapse.md`
+
+Statement:
+For a skew product
+
+\[
+F(y,b)=(f_b(y),g(b)),
+\]
+
+every full-space periodic point projects to a periodic point of the base:
+
+\[
+\operatorname{Fix}(F^m)
+=
+\bigcup_{b\in\operatorname{Fix}(g^m)}
+\left\{
+(y,b):
+f_{g^{m-1}b}\circ\cdots\circ f_b(y)=y
+\right\}.
+\]
+
+Hence an aperiodic base gives no periodic orbits, and a strict Lyapunov clock
+confines every periodic orbit to its base fixed set.
+
+Logistic corollary:
+For the exact compact clock
+
+\[
+v_n=\frac1{\log(n+10)},
+\qquad
+G(v)=\frac1{\log(e^{1/v}+1)},
+\qquad G(0)=0,
+\]
+
+the autonomous lift
+
+\[
+F(x,v)=\left(1-(u_c+kv^2)x^2,G(v)\right)
+\]
+
+reproduces the frozen legacy schedule, but
+
+\[
+\operatorname{Fix}(F^m)
+=
+\operatorname{Fix}(f_{u_c}^m)\times\{0\}
+\]
+
+for every \(m\geq1\). Thus no primitive orbit visits the aging interior, and
+the reciprocal Artin--Mazur formal series is exactly that of the static limit
+parent. Moreover \(G'(0)=1\), so every boundary orbit has a neutral clock
+multiplier and the usual hyperbolic monodromy denominator is degenerate.
+
+Invalid shortcuts:
+
+- periodizing the clock changes the schedule after the chosen period;
+- clamping at a finite cutoff creates a cutoff-dependent static parent;
+- a projected fibre return is not a full-state periodic point;
+- graph cycles of an occupation-aggregated matrix are not chronological UPOs;
+- silently deleting the neutral multiplier changes the determinant ledger.
+
+Scope:
+Autonomous skew-product lifts with an aperiodic base, or with a strict
+Lyapunov clock whose recurrence is confined to a fixed subset. The result does
+not exclude autonomous lifts with an intrinsic nontrivial recurrent base.
+
+Reopening condition:
+Give a new recurrent base whose nontrivial periodic orbits leave the
+static-limit slice while genuinely reproducing logarithmic aging, together
+with a nondegenerate same-object determinant; or define a chronological
+transfer-cocycle determinant with a frozen function space, horizon, clock,
+normalization, repetition law, and trace theorem.
+
+Artifacts:
+
+- `configs/source_locks/P4-LOGISTIC-MONOTONE-CLOCK-LIFT.yaml`
+- `evaluations/route_a/P4-LOGISTIC-MONOTONE-CLOCK-LIFT/20260804T025047Z.yaml`
+- `artifacts/p4_logistic_monotone_clock_lift/structural_audit.json`
+- `formal/obstructions/strict_monotone_clock_orbit_collapse.md`
+- `tests/test_p4_logistic_monotone_clock_lift.py`

@@ -659,3 +659,239 @@ Before allocating `SS-0003`, define one explicit non-Selberg mathematical
 object with its own intrinsic clock and same-object Fredholm determinant. Then
 apply the `CTRL-0001` independent winding, cutoff, one-to-one matching, balanced
 corruption, and signed-cancellation gates before interpreting any zero match.
+
+---
+
+## 2026-08-04 — Compact monotone-clock Logistic lift obstruction
+
+### Active clue and source lock
+
+The active clue was `CLUE-A1-004`, the proposed autonomous higher-dimensional
+lift of the legacy non-autonomous Logistic schedule. No formal candidate ID was
+allocated. The audit ID is
+
+```text
+P4-LOGISTIC-MONOTONE-CLOCK-LIFT
+```
+
+The source lock was written before the implementation at
+`configs/source_locks/P4-LOGISTIC-MONOTONE-CLOCK-LIFT.yaml`. It excludes the
+historically zero-fitted epsilon, empirical transition matrices, eigenphases,
+best-of-seed selection, Riemann-zero and prime tables, USTC data, artificial
+clock resets, and determinant-ledger mixing.
+
+The legacy schedule constants are frozen solely as object provenance:
+
+\[
+k=0.1185699450083701,
+\qquad
+u_c=1.543078787606443,
+\]
+
+with
+
+\[
+\mu_1=1.5637,
+\qquad
+\mu_{10^6}=1.5437.
+\]
+
+No arithmetic target was scored.
+
+### Frozen autonomous object
+
+Set
+
+\[
+v_n=\frac1{\log(n+10)}
+\]
+
+and define on
+
+\[
+X=[-1,1]\times[0,1/\log11]
+\]
+
+the compact autonomous skew product
+
+\[
+F(x,v)=\left(1-(u_c+kv^2)x^2,G(v)\right),
+\]
+
+where
+
+\[
+G(v)=
+\begin{cases}
+\displaystyle
+\frac1{\log(e^{1/v}+1)}
+=
+\frac{v}{1+v\log(1+e^{-1/v})},&v>0,\\[6pt]
+0,&v=0.
+\end{cases}
+\]
+
+Starting at \(v_1=1/\log11\), the exact identity
+
+\[
+G^{n-1}(v_1)=\frac1{\log(n+10)}
+\]
+
+reproduces the frozen schedule. Since
+
+\[
+0<u_c\le u_c+kv^2\le1.5637<2,
+\]
+
+the fibre maps preserve `[-1,1]` and the lift is a well-defined autonomous
+map on the declared compact phase space.
+
+### Proved obstruction
+
+For a general skew product
+
+\[
+F(y,b)=(f_b(y),g(b)),
+\]
+
+full-space periodic points must project to base periodic points. For the compact
+clock,
+
+\[
+G^m(v)=\frac1{\log(e^{1/v}+m)}<v
+\]
+
+for every \(v>0\) and \(m\ge1\), while \(G^m(0)=0\). Therefore
+
+\[
+\operatorname{Fix}(F^m)
+=
+\operatorname{Fix}(f_{u_c}^m)\times\{0\},
+\]
+
+and likewise
+
+\[
+\operatorname{Prim}(F)
+=
+\operatorname{Prim}(f_{u_c})\times\{0\}.
+\]
+
+No periodic orbit visits the aging interior. The autonomous clock lift adds no
+primitive-orbit data beyond the static limiting Logistic map.
+
+Moreover,
+
+\[
+G'(0)=1,
+\]
+
+so every boundary orbit carries a neutral clock multiplier. A standard
+hyperbolic stability factor containing `det(I-DF^m)` is degenerate in the clock
+direction; silently removing that factor would change the determinant ledger.
+
+This reusable theorem is registered as `OBR-007` and proved in
+`formal/obstructions/strict_monotone_clock_orbit_collapse.md`.
+
+### Determinant convention
+
+The sole ledger is the reciprocal formal Artin--Mazur series
+
+\[
+Z_{\rm AM,F}(z)
+=
+\exp\left(
+\sum_{m\ge1}\frac{\#\operatorname{Fix}(F^m)}m z^m
+\right),
+\qquad
+D_{\rm AM,F}=Z_{\rm AM,F}^{-1}.
+\]
+
+The fixed-set theorem gives the exact formal identity
+
+\[
+D_{\rm AM,F}=D_{\rm AM,f_{u_c}}.
+\]
+
+This is not called a Fredholm determinant. No convergence, analytic
+continuation, functional equation, root ledger, or completed-xi divisor is
+asserted.
+
+### Adversarial controls
+
+- a point fixed by the first fibre map returns in `x` but not in the full
+  `(x,v)` state;
+- periodizing the clock at `P=8,32,64` makes step `P+1` reuse `mu_1`, so it no
+  longer follows the frozen schedule;
+- clamping at those cutoffs creates three different static parent parameters;
+- the boundary parent is `u_c`, not the finite-window endpoint `1.5437` or the
+  separate legacy regression value `1.543689`;
+- all schedule, phase-space, fixed-set, ledger, modulo, clamp, and target-free
+  gates passed.
+
+The direct-versus-closed clock regression maximum error was
+`1.1102230246251565e-16`; the short direct-versus-lifted trajectory regression
+maximum error was zero in binary64. These are implementation checks, not the
+proof basis.
+
+### Route-A result
+
+```text
+(A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)
+overall: ROUTE_A_REJECTED
+audit verdict: STOP_SCOPED
+formal candidate: false
+Route B: inactive and not authorized
+```
+
+- `A1_FAIL / PROVED`: all primitive orbits are static boundary orbits;
+- `A2_FAIL / PROVED`: the formal determinant reduces exactly to the static
+  parent and the neutral multiplier blocks the usual hyperbolic weight;
+- `A3_FAIL / NOT_TESTABLE`: no analytic determinant or global divisor exists;
+- `A4_FAIL / NOT_TESTABLE`: no same-clock natural quantization, Hilbert space,
+  or operator domain is defined, and the map is noninvertible.
+
+### Updated files
+
+- `configs/source_locks/P4-LOGISTIC-MONOTONE-CLOCK-LIFT.yaml`;
+- `experiments/p4_logistic_monotone_clock_lift.py`;
+- `tests/test_p4_logistic_monotone_clock_lift.py`;
+- `artifacts/p4_logistic_monotone_clock_lift/structural_audit.json`;
+- `formal/obstructions/strict_monotone_clock_orbit_collapse.md`;
+- `evaluations/route_a/P4-LOGISTIC-MONOTONE-CLOCK-LIFT/20260804T025047Z.yaml`;
+- `docs/candidate_registry.md` with an explicit non-candidate summary note;
+- `docs/obstruction_registry.md`;
+- `docs/research_clues.md`;
+- `docs/research_log.md`;
+- `HP_HANDOFF.md`.
+
+The formal-candidate registry and operator-obligation ledger remain unchanged:
+the object failed before candidate promotion and Route B was not authorized.
+
+### Reproduction commands
+
+```bash
+python3 -m unittest -v tests/test_p4_logistic_monotone_clock_lift.py
+python3 experiments/p4_logistic_monotone_clock_lift.py \
+  --quiet \
+  --output artifacts/p4_logistic_monotone_clock_lift/structural_audit.json
+python3 -m unittest discover -v
+git diff --check
+```
+
+### Claim boundary and next task
+
+Established: exact schedule embedding, compact phase-space invariance,
+full fixed-set and primitive-orbit collapse to the static limit slice, neutral
+clock multiplier, formal determinant reduction, and failure of modulo/clamped
+clock repairs.
+
+Not established: an analytic/Fredholm determinant, intrinsic prime clock,
+completed-xi structure, natural quantization, Route B, Hilbert--Polya, RH, or a
+no-go theorem for every autonomous lift.
+
+Next smallest task: define one intrinsic recurrent base with a nontrivial
+periodic orbit that leaves the static-limit slice while genuinely reproducing
+logarithmic aging, and freeze a nondegenerate same-object determinant before
+any numerical zero comparison. No such object is presently defined, so this
+branch stops at the scoped obstruction.

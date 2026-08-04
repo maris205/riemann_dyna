@@ -2,330 +2,389 @@
 
 ## Current status
 
-The `CLUE-A2-001` synthetic Fredholm/Euler-product evaluator control is
-complete.
+The `CLUE-A1-004` autonomous Logistic slow-clock audit is complete.
 
-- Active clue: `CLUE-A2-001`
-- Control ID: `CTRL-0001`
+- Audit ID: `P4-LOGISTIC-MONOTONE-CLOCK-LIFT`
 - Formal candidate: `false`
-- Infrastructure verdict: `GO_WITH_LIMITATIONS`
-- Candidate-scope verdict: `STOP_SCOPED`
-- Control-context Route-A tuple:
-  `(A1_WEAK, A2_ANALYTIC_DETERMINANT,
-    A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)`
-- Candidate-context Route-A tuple:
-  `(A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)`
-- Overall candidate interpretation: `ROUTE_A_REJECTED`
+- Operational verdict: `STOP_SCOPED`
+- Route-A tuple: `(A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall Route-A interpretation: `ROUTE_A_REJECTED`
 - Route B: inactive and not authorized
+- New reusable obstruction: `OBR-007`
 
-The latest formal candidate remains `SS-0002`, which is `STOP_SCOPED` under
-`OBR-006`. `CTRL-0001` is reusable test infrastructure and must not be renamed
-or promoted to `SS-0003`.
+The audit does not allocate `SS-0003` or any other formal candidate ID.
+`SS-0001` and `SS-0002` remain the two completed formal Route-A baselines,
+both `STOP_SCOPED`. `CTRL-0001` remains a
+`GO_WITH_LIMITATIONS` evaluator control and is not a candidate.
 
-The legacy Logistic line remains separately `BLOCKED`: its frozen empirical
-phase observable is `STOP_SCOPED`, while Route A is `NOT_TESTABLE`. Reopen it
-only with an explicit autonomous slow-variable lift or a chronological
-transfer-cocycle/Fredholm determinant under a new source lock.
+The earlier occupation-conditioned Logistic eigenphase observable remains
+separately `STOP_SCOPED`. The present result evaluates a new mathematical
+object: an exact compact autonomous clock lift, not the empirical matrix.
 
 ## Current entry files
 
-- `docs/HP_Dynamics_Project_Entry.md`
-- `docs/main_agent_rules.md`
-- `.agents/skills/route-a-evaluator/SKILL.md`
-- `.agents/skills/route-b-evaluator/SKILL.md`
+- `configs/source_locks/P4-LOGISTIC-MONOTONE-CLOCK-LIFT.yaml`
+- `experiments/p4_logistic_monotone_clock_lift.py`
+- `tests/test_p4_logistic_monotone_clock_lift.py`
+- `artifacts/p4_logistic_monotone_clock_lift/structural_audit.json`
+- `formal/obstructions/strict_monotone_clock_orbit_collapse.md`
+- `evaluations/route_a/P4-LOGISTIC-MONOTONE-CLOCK-LIFT/20260804T025047Z.yaml`
 - `docs/research_clues.md`
-- `configs/source_locks/CTRL-0001.yaml`
-- `experiments/ctrl_0001_qpochhammer.py`
-- `tests/test_ctrl_0001_qpochhammer.py`
-- `artifacts/ctrl_0001/route_a_positive_control.json`
-- `evaluations/route_a/CTRL-0001/20260803T171847Z.yaml`
-
-Source-lock version 2 is an adversarial-audit clarification: it adds explicit
-`D_N`/`D_K` formulas, deterministic-holdout wording, and supplemental
-precision/ledger diagnostics. It does not change the object, constants,
-rectangle, primary cutoffs, match radius, or frozen thresholds.
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_log.md`
 
 ## Frozen mathematical object
 
-On
+The legacy micro schedule is
 
 \[
-\mathcal H=\ell^2(\{A_+,A_-,B,C\}\times\mathbb N_0),
+\mu_n=u_c+\frac{k}{\log^2(n+10)},
+\qquad n\geq1,
 \]
 
-freeze the analytic diagonal trace-class family
+with
 
 \[
-\mathcal L_s e_{c,n}=a_cq_c^ne^{-s}e_{c,n},
+k=0.1185699450083701,
 \qquad
-a_c=e^{\alpha_c+i\theta_c},
+u_c=1.543078787606443,
+\]
+
+so that
+
+\[
+\mu_1=1.5637,
 \qquad
-q_c=e^{-\beta_c},
+\mu_{10^6}=1.5437.
 \]
 
-with channels:
-
-| channel | alpha | beta | theta |
-|---|---:|---:|---:|
-| `A_plus` | `11/20` | `2/5` | `+pi/3` |
-| `A_minus` | `11/20` | `2/5` | `-pi/3` |
-| `B` | `9/20` | `1/2` | `pi` |
-| `C` | `3/10` | `9/20` | `0` |
-
-The sole determinant ledger is
+Set
 
 \[
-D(s)=\det_{\rm Fr}(I-\mathcal L_s)
-=\prod_c\prod_{n=0}^{\infty}(1-a_cq_c^ne^{-s}).
+v_n=\frac1{\log(n+10)}
 \]
 
-Keep the following separate:
-
-- `1/D`, a pole ledger;
-- `D'/D`, a meromorphic logarithmic-derivative ledger;
-- the exponential of a truncated log expansion, which is zero-free and cannot
-  be used for root discovery;
-- the absolute-value ablation, which is a different determinant.
-
-The object uses a unit roof, `z=exp(-s)`, no affine scaling or unfolding, and no
-prime, zero, `zeta`, or `xi` data.
-
-## Frozen scoring region
-
-The open rectangle is
+and define on
 
 \[
--8/25<\Re s<17/25,
+X=[-1,1]\times[0,1/\log11]
+\]
+
+the compact autonomous skew product
+
+\[
+F(x,v)=\left(1-(u_c+kv^2)x^2,G(v)\right),
+\]
+
+where
+
+\[
+G(v)=
+\begin{cases}
+\displaystyle
+\frac1{\log(e^{1/v}+1)}
+=
+\frac{v}{1+v\log(1+e^{-1/v})},&v>0,\\[6pt]
+0,&v=0.
+\end{cases}
+\]
+
+The source lock uses the continuum anchor
+
+\[
+(x_0,v_1)=(0.5,1/\log11).
+\]
+
+The historical empirical discretization placed its point mass at the cell
+containing `0.5`; that matrix object, its fitted epsilon, and its eigenphases
+are excluded from this audit.
+
+No prime, Riemann-zero, `xi`, `zeta`, or USTC table is read. There is no phase
+scale, partition, Gaussian kernel, affine spectral map, unfolding, modulo
+clock, reset, clamp, or repeated finite monodromy.
+
+## Exact schedule and phase-space checks
+
+For every \(v>0\) and integer \(m\geq0\),
+
+\[
+G^m(v)
+=
+\frac1{\log(e^{1/v}+m)}
+=
+\frac{v}{1+v\log(1+me^{-1/v})}.
+\]
+
+Therefore
+
+\[
+G^{n-1}(1/\log11)=\frac1{\log(n+10)},
+\]
+
+which exactly reproduces the frozen schedule.
+
+The parameter range is
+
+\[
+0<u_c\leq u_c+kv^2\leq1.5637<2.
+\]
+
+Thus every fibre map sends `[-1,1]` into itself and \(F:X\to X\) is
+well-defined.
+
+The diagnostic direct-versus-closed clock maximum error over the frozen
+periods was `1.1102230246251565e-16`. The short direct-versus-lifted trajectory
+maximum error over all five frozen initial `x` controls was zero in binary64.
+These diagnostics check the implementation; the structural result below is
+exact.
+
+## Proved periodic-orbit obstruction
+
+For any skew product
+
+\[
+F(y,b)=(f_b(y),g(b)),
+\]
+
+one has
+
+\[
+\operatorname{Fix}(F^m)
+=
+\bigcup_{b\in\operatorname{Fix}(g^m)}
+\left\{
+(y,b):
+f_{g^{m-1}b}\circ\cdots\circ f_b(y)=y
+\right\}.
+\]
+
+For the frozen compact clock,
+
+\[
+G^m(v)<v
+\]
+
+for every \(v>0\) and \(m\geq1\), while \(G^m(0)=0\). Hence
+
+\[
+\boxed{
+\operatorname{Fix}(F^m)
+=
+\operatorname{Fix}(f_{u_c}^m)\times\{0\}
+}
+\]
+
+and
+
+\[
+\operatorname{Prim}(F)
+=
+\operatorname{Prim}(f_{u_c})\times\{0\}.
+\]
+
+Every full periodic orbit lies on the static-limit boundary. No periodic orbit
+visits or samples the aging interior.
+
+Moreover,
+
+\[
+G'(0)=1.
+\]
+
+Every boundary orbit therefore has a neutral clock multiplier. A usual
+hyperbolic stability factor involving `det(I-DF^m)` is degenerate in that
+direction. Removing the multiplier by hand would define a different
+determinant ledger.
+
+This theorem is registered as:
+
+```text
+OBR-007 — Strict-monotone clock lifts collapse periodic orbits to the clock fixed set
+```
+
+## Frozen determinant convention
+
+The sole ledger is
+
+\[
+Z_{\rm AM,F}(z)
+=
+\exp\left(
+\sum_{m\geq1}\frac{\#\operatorname{Fix}(F^m)}m z^m
+\right),
 \qquad
-|\Im s|<34/5.
+D_{\rm AM,F}(z)=Z_{\rm AM,F}(z)^{-1},
 \]
 
-Exact roots, used only after discovery for scoring, are
+interpreted only as a formal Artin--Mazur power series.
+
+The fixed-set theorem gives
 
 \[
-s_{c,n,k}=\alpha_c-n\beta_c+i(\theta_c+2\pi k).
+D_{\rm AM,F}=D_{\rm AM,f_{u_c}}
 \]
 
-The exact count ledger is:
+coefficient by coefficient. The slow-clock lift contributes no new
+periodic-orbit determinant data beyond the static limiting Logistic parent.
 
-- total: `22`;
-- validation core `|Im(s)|<17/5`: `12`;
-- upper deterministic holdout strip: `5`;
-- lower deterministic holdout strip: `5`;
-- minimum boundary clearance: `0.07`.
+No convergence, analytic continuation, root ledger, Ruelle determinant,
+Fredholm determinant, functional equation, Gamma factor, trivial-zero ledger,
+or completed-`xi` divisor is asserted.
 
-Training is empty. No target values are fitted or used as root seeds. The
-holdout is deterministic rather than cryptographically sealed because the
-synthetic formula is public.
+## Adversarial controls
 
-## Strongest evidence
+- A point fixed by the first fibre map returns in `x`, but the clock changes,
+  so it is not a full-state fixed point.
+- Periodizing the clock at `P=8,32,64` makes step `P+1` reuse `mu_1`; each
+  control changes the original schedule.
+- Clamping at those cutoffs creates different static parent parameters, hence
+  a cutoff-dependent orbit ledger.
+- The true boundary parent parameter is `u_c`, not the finite-window endpoint
+  `1.5437` and not the separate legacy regression value `1.543689`.
+- The formal Artin--Mazur ledger remains separate from matrix, projected-cycle,
+  logarithmic-derivative, Koopman, and Fredholm ledgers.
 
-Two independent numerical paths pass:
-
-1. q-binomial channel coefficients, independently checked by the
-   Newton/Fredholm trace recurrence, discover polynomial roots in `z` and then
-   enumerate all logarithm branches in the rectangle;
-2. direct finite-mode products compute argument-principle windings without
-   reading the polynomial roots.
-
-The coefficient cutoffs deliberately expose unstable prefixes:
-
-| K | roots | strict matches at `1e-4` | missing | extra | max global assignment error |
-|---:|---:|---:|---:|---:|---:|
-| 16 | 28 | 6 | 16 | 22 | `0.135492` |
-| 20 | 22 | 15 | 7 | 7 | `0.00202999` |
-| 24 | 22 | 22 | 0 | 0 | `1.25037e-5` |
-| 28 | 22 | 22 | 0 | 0 | `8.89663e-9` |
-| 32 | 22 | 22 | 0 | 0 | `7.82564e-13` |
-
-The maximum branch drift from `K=24` to `K=28` is `1.24983e-5`.
-The independent coefficient constructions have global scaled defect
-`5.96946e-13` through degree 24, and the nominal coefficient conjugation defect
-through degree 32 is `1.88072e-13`.
-
-Supplemental `K=28` mpmath audits at 50/80/120 dps all find 22 roots. Maximum
-drifts are `4.35e-49` from 50 to 80 dps, `8.62e-79` from 80 to 120 dps, and
-`5.41e-13` from complex128 to 120 dps. The 120-dps error against the exact
-ledger is still `8.89658e-9`, so the primary error is cutoff, not precision.
-
-The frozen contour diagnostics are:
-
-| points/edge | winding | max phase step | accepted |
-|---:|---:|---:|---|
-| 128 | 22 | `2.00839` | no |
-| 256 | 22 | `1.11299` | no |
-| 512 | 22 | `0.568995` | yes |
-| 1024 | 22 | `0.285756` | yes |
-
-The coarse grids happen to return the correct count but fail the frozen
-`pi/3` adjacent-phase gate. The successive 512/1024 grids pass.
-
-These are numerical anti-alias diagnostics, not an interval-arithmetic or
-derivative-bound proof. Endpoint sampling cannot rigorously exclude every
-possible between-sample winding. This limitation is why the control verdict is
-`GO_WITH_LIMITATIONS`, even though the exact analytic divisor is known.
-
-Mode cutoff `N=2` has count 18; every frozen `N>=3` has count 22. The maximum
-relative contour-value drift from `N=40` to `N=48` is `8.46440e-7`, showing
-that count stability does not imply determinant-value stability.
-
-## Strongest falsification result
-
-The balanced corruption control proves that argument count alone is
-insufficient:
-
-- missing-only: counts `18/10/4/4`, matcher `4 missing, 0 extra`;
-- extra-only: counts `26/14/6/6`, matcher `0 missing, 4 extra`;
-- balanced: counts return to `22/12/5/5`, matcher still reports
-  `4 missing, 4 extra`;
-- absolute-value ablation: total winding changes to `30` and is rejected as a
-  different determinant.
-
-Executable ledger controls keep data types separate:
-
-- `D` winding is `+22`;
-- `1/D` winding is `-22`, interpreted as 22 poles and no zeros;
-- `D'/D` contour integrals are `22.0000110` and `22.0000028` at 512 and
-  1024 points per edge, with local scaled residue approximately 1;
-- the order-four truncated-log exponential has winding zero and is
-  analytically zero-free.
-
-Every injected contour passes its own phase-step and integer-residual
-diagnostics.
-
-Signed cancellation is material. At repetition four,
-
-\[
-p_4=-0.33393858995368,
-\qquad
-\sum_c\left|\frac{a_c^4}{1-q_c^4}\right|
-=33.59028440713514,
-\]
-
-so the cancellation ratio is `0.00994152`. Separate absolute-value bounds
-cannot replace the signed trace.
+Every frozen schedule, invariance, clock, trajectory, projected-return,
+boundary-parent, modulo, clamp, source-lock parity, and ledger-separation gate
+passed.
 
 ## Route-A interpretation
 
 ```text
-A1_WEAK
+A1_FAIL / PROVED
 ```
 
-Synthetic factors and repetitions are exact and complete, but they are not
-primitive orbits of a natural classical dynamics and have no rational-prime or
-von-Mangoldt structure.
+All primitive orbits are static-limit boundary orbits. There is no aging
+primitive grammar, intrinsic `log p` clock, or von-Mangoldt repetition
+structure.
 
 ```text
-A2_ANALYTIC_DETERMINANT
+A2_FAIL / PROVED
 ```
 
-The trace-class Fredholm determinant is exact and the frozen evaluation prefix
-passes all root, sampled-winding, cutoff, matching, ledger, precision, and
-adversarial regression checks. `GO_WITH_LIMITATIONS` applies only to evaluator
-infrastructure; the limitation is the non-rigorous sampled winding gate.
+The reciprocal Artin--Mazur formal series reduces exactly to the static parent.
+No new analytic determinant is produced, and the neutral clock multiplier
+blocks the usual hyperbolic stability weight.
 
 ```text
-A3_PARTIAL_ANALYTIC_STRUCTURE
+A3_FAIL / NOT_TESTABLE
 ```
 
-The determinant is entire and conjugation symmetric with an exact divisor, but
-it is `2*pi*i` periodic, has linear vertical zero density in a fixed strip, and
-has no completed-xi functional equation, Gamma factor, trivial-zero ledger, or
-Riemann-von Mangoldt count.
+No analytic determinant exists to test conjugation symmetry, functional
+equation, completed factors, zero count, continuation, or divisor equality.
 
 ```text
-A4_FAIL
+A4_FAIL / NOT_TESTABLE
 ```
 
-The analytic family acts on an explicit Hilbert space but is not a natural
-quantization of a classical symplectic/contact/scattering system. No
-self-adjoint generator, physical domain problem, or Route-B obligation is
-defined.
+The compact autonomous map is noninvertible, singular at `x=0`, and has no
+frozen symplectic/contact/scattering structure, Hilbert space, operator domain,
+or same-clock natural quantization.
 
-For completed-`xi` candidate interpretation, all four layers fail:
+Overall:
 
 ```text
 (A1_FAIL, A2_FAIL, A3_FAIL, A4_FAIL)
+ROUTE_A_REJECTED
+STOP_SCOPED
+Route B not invoked
 ```
 
 ## Repository updates
 
 Created:
 
-- `configs/source_locks/CTRL-0001.yaml`;
-- `experiments/ctrl_0001_qpochhammer.py`;
-- `tests/test_ctrl_0001_qpochhammer.py`;
-- `artifacts/ctrl_0001/route_a_positive_control.json`;
-- `evaluations/route_a/CTRL-0001/20260803T171847Z.yaml`.
+- `configs/source_locks/P4-LOGISTIC-MONOTONE-CLOCK-LIFT.yaml`;
+- `experiments/p4_logistic_monotone_clock_lift.py`;
+- `tests/test_p4_logistic_monotone_clock_lift.py`;
+- `artifacts/p4_logistic_monotone_clock_lift/structural_audit.json`;
+- `formal/obstructions/strict_monotone_clock_orbit_collapse.md`;
+- `evaluations/route_a/P4-LOGISTIC-MONOTONE-CLOCK-LIFT/20260804T025047Z.yaml`.
 
 Updated:
 
-- `docs/candidate_registry.md` with a separately labeled non-candidate control;
+- `docs/candidate_registry.md`, with an explicit non-candidate summary note;
+- `docs/obstruction_registry.md`, with `OBR-007`;
 - `docs/research_clues.md`;
 - `docs/research_log.md`;
 - this handoff.
 
 Unchanged by design:
 
-- `docs/obstruction_registry.md`, because no new family theorem was proved;
-- `docs/operator_obligations.md`, because Route B remains closed.
+- `docs/operator_obligations.md`, because Route B remains closed;
+- the formal candidate count, because this audit failed before promotion;
+- all legacy repositories, caches, checkpoints, and prior artifacts.
 
-## Reproduction commands
+## Verification
 
-Final verification: `14/14` focused tests and `46/46` full repository tests
-passed. The regenerated artifact was byte-identical, both YAML files parsed,
-and `git diff --check` passed.
+Focused tests:
+
+```text
+11/11 passed
+```
+
+Full repository:
+
+```text
+57/57 passed
+```
+
+The regenerated artifact was byte-identical with SHA-256:
+
+```text
+579967237444cd6b4835cfa5932c9e95771ad279e06846422d95076d26348989
+```
+
+Both new YAML files parse successfully.
+
+Reproduction commands:
 
 ```bash
-python3 -m unittest -v tests/test_ctrl_0001_qpochhammer.py
-python3 experiments/ctrl_0001_qpochhammer.py \
+python3 -m unittest -v tests/test_p4_logistic_monotone_clock_lift.py
+python3 experiments/p4_logistic_monotone_clock_lift.py \
   --quiet \
-  --output artifacts/ctrl_0001/route_a_positive_control.json
+  --output artifacts/p4_logistic_monotone_clock_lift/structural_audit.json
 python3 -m unittest discover -v
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-MONOTONE-CLOCK-LIFT.yaml","evaluations/route_a/P4-LOGISTIC-MONOTONE-CLOCK-LIFT/20260804T025047Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
 git diff --check
 ```
 
-Runtime environment for the control: CPython `3.12.3`, NumPy `2.4.4`, SciPy
-`1.16.1`.
+Runtime for the new audit: CPython `3.12.3`; the implementation uses only the
+Python standard library. PyYAML `6.0.2` is used by the parity test.
 
 ## Claim boundary
 
 Established:
 
-- an exact analytic trace-class positive-control determinant;
-- independent direct-product winding and coefficient-root implementations;
-- a frozen 22-root scoring prefix with explicit boundary clearance;
-- cutoff-instability, coarse-phase, missing-only, extra-only, balanced, and
-  absolute-value falsification behavior;
-- a reusable one-to-one matching pattern with dummies and a signed-cancellation
-  regression gate;
-- executable separation of `D`, `1/D`, `D'/D`, and truncated-log ledgers;
-- supplemental 50/80/120-dps root-drift reporting.
+- exact compact autonomous embedding of the frozen logarithmic schedule;
+- forward invariance of the declared phase space;
+- exact fixed-set and primitive-orbit collapse to the static-limit slice;
+- neutral clock multiplier and the resulting stability-weight warning;
+- exact formal determinant reduction to the static parent;
+- modulo and clamped clocks are different, cutoff-dependent systems;
+- a reusable strict-monotone-base skew-product obstruction.
 
 Not established:
 
-- a natural classical dynamical system or primitive-orbit census;
-- a rational-prime clock or von-Mangoldt repetition weights;
-- completed-xi analytic structure or divisor equality;
-- a moving-order theorem for another candidate;
-- an interval-arithmetic or derivative-bound certificate for the sampled
-  winding path;
-- physical quantization, self-adjointness, Route B, Hilbert--Polya, or RH.
+- an analytic, Ruelle, transfer-operator, or Fredholm determinant;
+- rational-prime or von-Mangoldt orbit structure;
+- completed-`xi` analytic structure or divisor equality;
+- a no-go theorem for every autonomous lift;
+- natural quantization, self-adjointness, Route B, Hilbert--Polya, RH, or a
+  physical spectral realization.
 
 ## Next smallest task
 
-Do not continue tuning `CTRL-0001` and do not create `SS-0003` from it.
+Do not tune or numerically zero-match the present lift.
 
-The next candidate-side task begins only when one explicit non-Selberg object
-is mathematically defined with:
+The next object must be a new intrinsic recurrent base \(G\) with at least one
+nontrivial periodic orbit. It must be proved that its full-space periodic
+orbits leave the static-limit slice while its observable or roof genuinely
+reproduces logarithmic aging. A nondegenerate same-object determinant must then
+be frozen before any target comparison.
 
-- an intrinsic clock;
-- one same-object Fredholm/dynamical determinant convention;
-- no prime or zero lookup;
-- a frozen train/validation/test split and cutoff policy.
-
-Once such an object exists, its first smallest test is to run the `CTRL-0001`
-regression pattern: independent winding, logarithm-branch-complete root
-discovery, one-to-one missing/extra matching, cutoff drift, balanced corruption,
-and signed-complex cancellation. Until the object is explicit, no new formal
-candidate should be allocated and Route B remains closed.
+No such recurrent-base object is currently mathematically defined. This is the
+current stopping condition; the alternative reopening is a fully defined
+chronological transfer-cocycle determinant with a frozen function space,
+horizon, clock, normalization, repetition law, and trace theorem.

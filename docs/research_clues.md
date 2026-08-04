@@ -249,8 +249,8 @@ unmatched-orbit penalty
 ## CLUE-A1-004 — 从非自治系统提升为自治高维系统
 
 **来源：** Prime aging 与 Sequential Birkhoff 工作  
-**证据：** `HEURISTIC` + `CONDITIONAL_THEOREM`  
-**状态：** `PROMISING`  
+**证据：** `HEURISTIC` + `CONDITIONAL_THEOREM` + scoped `PROVED_OBSTRUCTION`
+**状态：** `BLOCKED`
 **对应层：** `A1`, `A4`
 
 ### 内容
@@ -283,6 +283,48 @@ unmatched-orbit penalty
 ### 风险
 
 lift 可能仅形式化重写，并未产生新的算术结构。
+
+### 2026-08-04 monotone-clock audit
+
+冻结的紧化时钟为
+
+\[
+v_n=\frac1{\log(n+10)},
+\qquad
+G(v)=\frac1{\log(e^{1/v}+1)},
+\qquad G(0)=0,
+\]
+
+并定义
+
+\[
+F(x,v)=\left(1-(u_c+kv^2)x^2,G(v)\right).
+\]
+
+该对象精确复现 legacy micro schedule，但对每个 \(m\geq1\)，
+
+\[
+\operatorname{Fix}(F^m)
+=
+\operatorname{Fix}(f_{u_c}^m)\times\{0\}.
+\]
+
+因此所有 primitive orbit 都坍缩到静态极限切片；没有周期轨道穿过
+aging interior。对应的 reciprocal Artin--Mazur formal series 也只等于静态
+父系统的 formal series，且边界 clock multiplier 为 `1`。该严格单调 clock
+子类判为 `STOP_SCOPED`，没有创建正式候选，也未启动 Route B。
+
+重新开启必须给出内生 recurrent base，使非平凡周期轨道离开静态极限切片，
+并冻结一个非退化的 same-object determinant；或给出完整定义的 chronological
+transfer-cocycle determinant。单纯 modulo、reset 或 finite-cutoff clamp 不属于
+同一 schedule。
+
+Artifacts:
+
+- `configs/source_locks/P4-LOGISTIC-MONOTONE-CLOCK-LIFT.yaml`
+- `evaluations/route_a/P4-LOGISTIC-MONOTONE-CLOCK-LIFT/20260804T025047Z.yaml`
+- `artifacts/p4_logistic_monotone_clock_lift/structural_audit.json`
+- `formal/obstructions/strict_monotone_clock_orbit_collapse.md`
 
 ---
 
@@ -928,9 +970,10 @@ e^{q(E)}
 
 1. `[STOP_SCOPED]` Logistic physical-epsilon medium-fidelity eigenbranch audit
 2. `[GO_WITH_LIMITATIONS_CONTROL]` Synthetic Fredholm/Euler-product positive control (`CTRL-0001`, `CLUE-A2-001`)
-3. `[NEXT]` Define one explicit non-Selberg candidate and run the `CTRL-0001` regression gates before assigning `SS-0003`
-4. Candidate-specific shuffled-period / random-weight / random-phase controls
-5. Candidate-specific signed cycle expansion and moving-cutoff drift
+3. `[STOP_SCOPED]` Strict-monotone autonomous Logistic clock lift (`P4-LOGISTIC-MONOTONE-CLOCK-LIFT`, `OBR-007`)
+4. `[NEXT]` Define an intrinsic recurrent base whose periodic orbits leave the static-limit slice, then freeze a nondegenerate same-object determinant before assigning a formal candidate ID
+5. Candidate-specific shuffled-period / random-weight / random-phase controls
+6. Candidate-specific signed cycle expansion and moving-cutoff drift
 
 ## Priority 1 — 最值得并行的三条 Route-A 路线
 
@@ -1109,4 +1152,16 @@ new_status: ACTIVE
 evidence: "CTRL-0001 four-channel q-Pochhammer Fredholm control passes all frozen coefficient, sampled-winding, cutoff, matching, balanced-corruption, executable-ledger, and cancellation gates, with supplemental 50/80/120-dps stability"
 commit: "current checkpoint; source state 1088862"
 consequence: "The A2 evaluator infrastructure is GO_WITH_LIMITATIONS because sampled winding is not an interval certificate; CTRL-0001 is STOP_SCOPED as a Riemann candidate. Reuse it as a regression benchmark for the next explicit non-Selberg object; do not create SS-0003 from the control."
+```
+
+## Status update — CLUE-A1-004 monotone-clock closure
+
+```yaml
+date: 2026-08-04
+clue_id: CLUE-A1-004
+old_status: PROMISING
+new_status: BLOCKED
+evidence: "P4-LOGISTIC-MONOTONE-CLOCK-LIFT exact compact-clock audit and OBR-007"
+commit: "current checkpoint; source state 425aa8b"
+consequence: "The strict-monotone clock subclass is STOP_SCOPED: every full periodic orbit lies on the static-limit slice and the formal orbit determinant reduces to the static parent. Reopen only with an intrinsic recurrent base or a fully defined chronological transfer-cocycle determinant."
 ```

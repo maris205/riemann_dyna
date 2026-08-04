@@ -1,0 +1,180 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: P4-LOGISTIC-MONOTONE-CLOCK-LIFT
+audit_id: P4-LOGISTIC-MONOTONE-CLOCK-LIFT
+formal_candidate: false
+source_commit: 425aa8ba9fbb21d8cf2f5e5844301c2b085a8a04
+evaluation_date: "2026-08-04T02:50:47Z"
+
+source_lock:
+  object: >-
+    Compact autonomous skew product F(x,v)=(1-(u_c+k*v^2)*x^2,G(v)) on
+    [-1,1] x [0,1/log(11)], where G(v)=1/log(exp(1/v)+1) for v>0 and G(0)=0.
+  data_type: >-
+    Exact clock, fixed-set, primitive-orbit, and formal Artin-Mazur identities,
+    with binary64 schedule and trajectory regressions only as implementation checks.
+  clock: >-
+    One F iteration; v_n=1/log(n+10). The interior clock strictly decreases
+    and has no reset, modulo, clamp, roof rescaling, or finite-horizon repetition.
+  normalization: >-
+    Raw x and compact v coordinates; no epsilon, partition, phase scale,
+    affine spectral map, offset, or unfolding.
+  determinant_convention: >-
+    D_AM,F(z)=1/Z_AM,F(z), interpreted only as the reciprocal formal
+    Artin-Mazur series. It is not a Fredholm determinant, Z'/Z, matrix
+    determinant, or projected-x cycle product.
+  cutoff: >-
+    Theorem scope all m>=1; regression periods 1,2,3,4,8,16,32,64;
+    validation schedule indices 1,2,3,8,32; test indices 1000,1000000.
+  precision: >-
+    Exact structural identities; CPython binary64 diagnostics with frozen
+    schedule ceiling 1e-13 and short-trajectory ceiling 1e-12.
+  allowed_data:
+    - "frozen legacy schedule formulas and endpoint constants"
+    - "direct deterministic Logistic and clock iterates"
+    - "elementary real analysis and prior repository audits for provenance"
+  forbidden_data:
+    - "prime tables, Riemann-zero tables, xi/zeta evaluations, or USTC data"
+    - "legacy epsilon, empirical matrices, eigenphases, or best-of-seed outputs"
+    - "artificial clock recurrence or determinant-ledger mixing"
+  training_split: "empty; no fitting and no target data"
+  validation_split: >-
+    Schedule indices 1,2,3,8,32; periods 1,2,3,4,8; initial-x controls;
+    phase-space invariance and strict clock decrease.
+  test_split: >-
+    Schedule indices 1000,1000000; periods 16,32,64; modulo, clamp,
+    projected-return, and boundary-parent controls.
+  stopping_conditions:
+    - "REVISE if schedule reproduction, invariance, or the fixed-set identity fails"
+    - "REJECTED if target data, empirical phase matching, or ledger mixing enters"
+    - "STOP_SCOPED when all full-space periodic orbits collapse to the static-limit slice"
+
+a1:
+  verdict: A1_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    For every m>=1, G^m(v)<v for v>0 and G^m(0)=0, so
+    Fix(F^m)=Fix(f_u_c^m) x {0} and Prim(F)=Prim(f_u_c) x {0} exactly.
+  strongest_failure: >-
+    No primitive full-space orbit visits the aging interior. The lift adds no
+    periodic-orbit grammar beyond the static limiting Logistic parent and has
+    no intrinsic prime-like clock or von-Mangoldt repetition structure.
+  metrics:
+    formal_candidate: false
+    exact_schedule_reproduction: true
+    validation_schedule_max_error: 0.0
+    test_schedule_max_error: 0.0
+    clock_direct_vs_closed_max_error: 1.1102230246251565e-16
+    full_space_periodic_orbit_support: "v=0 only"
+    interior_periodic_orbit_count: 0
+    primitive_orbit_reduction: "Prim(F)=Prim(f_u_c) x {0}"
+    boundary_clock_multiplier: 1.0
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    orbit_completeness_basis: "exact skew-product fixed-set theorem"
+  artifacts:
+    - artifacts/p4_logistic_monotone_clock_lift/structural_audit.json
+    - formal/obstructions/strict_monotone_clock_orbit_collapse.md
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The fixed-set identity proves coefficient by coefficient that the frozen
+    reciprocal Artin-Mazur formal series satisfies D_AM,F=D_AM,f_u_c.
+  strongest_failure: >-
+    The slow-clock lift contributes no new determinant data. No convergence,
+    analytic continuation, Fredholm determinant, or nondegenerate
+    stability-weighted orbit product is defined; the clock multiplier is 1 on
+    every boundary orbit.
+  metrics:
+    zero_error_train: "not_applicable_no_target_data"
+    zero_error_validation: "not_testable_formal_series_only"
+    zero_error_test: "not_testable_formal_series_only"
+    extra_zero_count: "not_testable_no_analytic_divisor"
+    missing_zero_count: "not_testable_no_analytic_divisor"
+    root_count_discrepancy: "not_testable_no_analytic_divisor"
+    cutoff_drift: "none for the exact fixed-set identity; no analytic determinant cutoff exists"
+    precision_drift: "1.1102230246251565e-16 for the clock regression; determinant identity is exact"
+    control_margin: >-
+      Every modulo control changes the schedule and clamped controls produce
+      cutoff-dependent static parent parameters.
+    formal_identity: "D_AM,F=D_AM,f_u_c"
+    fredholm_determinant_defined: false
+  artifacts:
+    - artifacts/p4_logistic_monotone_clock_lift/structural_audit.json
+    - formal/obstructions/strict_monotone_clock_orbit_collapse.md
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The formal coefficient ledger and the exact reduction to the static parent
+    are globally specified at the combinatorial level.
+  strongest_failure: >-
+    A formal Artin-Mazur series supplies no proved analytic continuation,
+    functional equation, Gamma/trivial-zero ledger, Riemann-von Mangoldt law,
+    completed-xi divisor, or moving-order theorem.
+  metrics:
+    analytic_continuation: false
+    conjugation_symmetry: "not_testable_without_an_analytic_determinant"
+    functional_equation: false
+    gamma_factor: false
+    trivial_zero_ledger: false
+    target_counting_law: false
+    same_divisor_possible: "not_testable; Route A already stops at A1/A2"
+  artifacts:
+    - formal/obstructions/strict_monotone_clock_orbit_collapse.md
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The lift has a coherent compact phase space and exactly embeds the frozen
+    non-autonomous schedule as an autonomous skew product.
+  strongest_failure: >-
+    The map is noninvertible and singular at x=0, carries no frozen
+    symplectic/contact/scattering structure, and has a neutral clock multiplier
+    on every periodic orbit. No Hilbert space, operator domain, or same-clock
+    natural quantization is defined.
+  metrics:
+    compact_phase_space: true
+    autonomous: true
+    invertible: false
+    symplectic_structure: false
+    boundary_clock_multiplier: 1.0
+    natural_hilbert_space: null
+    operator_domain: null
+    route_b_ready: false
+  artifacts:
+    - experiments/p4_logistic_monotone_clock_lift.py
+
+overall_verdict: ROUTE_A_REJECTED
+recommended_audit_verdict: STOP_SCOPED
+claim_boundary:
+  what_is_established:
+    - "The compact lift exactly reproduces the frozen logarithmic schedule."
+    - "All of its periodic and primitive orbits are static-limit boundary orbits."
+    - "Its reciprocal Artin-Mazur formal series is exactly the static-parent series."
+    - "Modulo and clamped clocks are different, cutoff-dependent systems."
+    - "Strict-monotone base recurrence collapse is a reusable scoped obstruction."
+  what_is_not_established:
+    - "No analytic, Ruelle, transfer-operator, or Fredholm determinant is obtained."
+    - "The obstruction does not cover autonomous lifts with an intrinsic recurrent base."
+    - "No prime correspondence, completed-xi identity, Route B, Hilbert-Polya, RH, or physical quantum claim is made."
+  what_would_change_the_status: >-
+    A new autonomous object with an intrinsic recurrent base whose nontrivial
+    periodic orbits leave the static-limit slice, together with a
+    nondegenerate same-object determinant; or a fully frozen chronological
+    transfer-cocycle determinant and trace theorem.
+blocking_conditions:
+  - "strictly monotone clock in the aging interior"
+  - "all periodic orbits confined to the static limit slice"
+  - "neutral clock multiplier on every boundary orbit"
+  - "formal Artin-Mazur ledger only; no analytic determinant"
+next_smallest_test: >-
+  Do not tune the present lift. Define one intrinsic recurrent base G with at
+  least one nontrivial periodic orbit, prove that its full-space periodic
+  orbits leave the static-limit slice while reproducing logarithmic aging, and
+  freeze a nondegenerate same-object determinant before any numerical zero test.
+route_b_invocation_allowed: false

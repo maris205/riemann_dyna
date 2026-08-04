@@ -265,8 +265,16 @@ SS-0002 escapes that finite-state theorem but is STOP_SCOPED by the
 finite-area Selberg/Weyl divisor obstruction.
 CTRL-0001 is a passed-with-limitations A2 evaluator positive control, explicitly not a formal
 candidate and not eligible for an SS candidate number.
+P4-LOGISTIC-MONOTONE-CLOCK-LIFT is a non-candidate structural audit:
+it is STOP_SCOPED under OBR-007 and does not change the formal-candidate count.
 No candidate has entered Route B.
 ```
+
+The Logistic clock-lift audit is intentionally not given a candidate entry.
+Its strict-monotone base confines every full periodic orbit to the static-limit
+slice, and its formal orbit determinant adds no data beyond that parent. It is
+tracked in `docs/research_clues.md`, `docs/obstruction_registry.md`, and the
+Route-A evaluation tree rather than promoted to `SS-0003` or another formal ID.
 
 汇总表：
 

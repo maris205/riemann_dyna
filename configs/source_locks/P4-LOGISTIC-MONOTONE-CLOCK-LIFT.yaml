@@ -1,0 +1,128 @@
+audit_id: P4-LOGISTIC-MONOTONE-CLOCK-LIFT
+lock_version: 1
+formal_candidate: false
+clue_id: CLUE-A1-004
+title: Autonomous compact monotone-clock Logistic lift obstruction audit
+
+mathematical_object:
+  phase_space: "X=[-1,1] x [0,1/log(11)]"
+  map: >-
+    F(x,v)=(1-(u_c+k*v^2)*x^2,G(v)), where
+    G(v)=v/(1+v*log(1+exp(-1/v))) for v>0 and G(0)=0.
+  initial_state: >-
+    (x_0,v_1)=(0.5,1/log(11)). The continuum x_0 is an audit anchor;
+    the legacy empirical matrix instead placed mass in the cell containing
+    0.5 and is excluded from this object.
+  exact_clock_iterate: >-
+    G^m(v)=1/log(exp(1/v)+m) for v>0, equivalently
+    v/(1+v*log(1+m*exp(-1/v))); G^m(0)=0.
+  legacy_correspondence: >-
+    Starting at v_1=1/log(11), G^(n-1)(v_1)=1/log(n+10), so the n-th
+    fibre update exactly reproduces the legacy micro schedule for n>=1.
+  schedule_parameters:
+    endpoint_high: 1.5637
+    endpoint_low: 1.5437
+    first_legacy_index: 1
+    last_legacy_index: 1000000
+    clock_offset: 10
+    k_formula: >-
+      (1.5637-1.5437)/(1/log(11)^2-1/log(1000010)^2)
+    u_c_formula: "1.5437-k/log(1000010)^2"
+    k_binary64: 0.1185699450083701
+    u_c_binary64: 1.543078787606443
+  parameter_provenance: >-
+    The endpoint schedule is inherited unchanged from the legacy micro
+    notebook and is not treated as blind arithmetic evidence. No epsilon,
+    empirical spectrum, Riemann zero, prime, USTC datum, or target-derived
+    phase scale enters this audit. The limiting boundary parameter is u_c,
+    not the finite-window endpoint 1.5437 or the separate legacy regression
+    parameter 1.543689.
+
+data_type:
+  primary: >-
+    Exact autonomous skew-product, clock, full fixed-set, primitive-orbit,
+    and formal Artin-Mazur identities.
+  secondary: "deterministic binary64 schedule and trajectory regressions"
+  excluded: >-
+    Occupation-conditioned empirical matrices, chronological transfer
+    cocycles, matrix eigenphases, operator spectra, and Fredholm determinants.
+
+clock: >-
+  One autonomous F iteration. The compact coordinate v_n=1/log(n+10)
+  strictly decreases for v>0 and has the single fixed point v=0. No modulo
+  operation, reset, clamp, finite-horizon repetition, roof rescaling, or
+  log-prime assignment is allowed.
+
+normalization: >-
+  Raw x in [-1,1] and raw compact clock v. There is no phase-to-zero scale,
+  affine spectral map, offset, unfolding, Gaussian smoothing, or partition.
+
+determinant_convention:
+  zeta: >-
+    Z_AM,F(z)=exp(sum_(m>=1) #Fix(F^m)*z^m/m), interpreted only as a
+    formal Artin-Mazur power series.
+  frozen_object: "D_AM,F(z)=1/Z_AM,F(z)"
+  exact_identity: "D_AM,F(z)=D_AM,f_uc(z) as formal power series"
+  analytic_continuation: "not asserted"
+  fredholm_determinant: "not defined"
+  excluded_ledgers:
+    - "Z_AM,F and D_AM,F may not be interchanged without the reciprocal convention above"
+    - "Z'/Z is not the determinant"
+    - "occupation-aggregated matrix determinants and graph cycles"
+    - "projected-x return cycles that do not return the clock coordinate"
+    - "a stability-weighted determinant with the neutral clock multiplier silently removed"
+    - "any Koopman or transfer-operator determinant without a separately frozen function space and trace theorem"
+
+cutoff:
+  theorem_scope: "all periods m>=1"
+  regression_periods: [1, 2, 3, 4, 8, 16, 32, 64]
+  schedule_indices: [1, 2, 3, 8, 32, 1000, 1000000]
+  initial_x_controls: [-1.0, -0.5, 0.0, 0.5, 1.0]
+  adversarial_clock_periods: [8, 32, 64]
+
+precision:
+  structural: "exact identities and inequalities"
+  regression: "CPython IEEE-754 binary64"
+  schedule_error_ceiling: 1.0e-13
+  trajectory_error_ceiling: 1.0e-12
+
+allowed_data:
+  - "the frozen legacy schedule formulas and endpoint constants"
+  - "direct deterministic Logistic and clock iterates"
+  - "elementary real analysis and exact skew-product identities"
+  - "prior repository audits for provenance only"
+
+forbidden_data:
+  - "prime tables, primality predicates, Riemann-zero tables, xi/zeta evaluations, or USTC data"
+  - "legacy epsilon=0.001916, empirical transition matrices, eigenphases, or best-of-seed outputs"
+  - "changing endpoints, clock map, compactification, or determinant convention after evaluation"
+  - "projected x recurrences called full-space periodic orbits"
+  - "time-aggregated graph cycles called chronological cycles"
+  - "a modulo, reset, or clamped clock treated as the same schedule"
+  - "calling the formal Artin-Mazur series a Fredholm determinant"
+
+training_split: "empty; no fitting and no target data"
+validation_split: >-
+  Schedule indices 1,2,3,8,32; periods 1,2,3,4,8; all initial-x controls;
+  and exact phase-space-invariance and clock-decrease checks.
+test_split: >-
+  Disjoint schedule indices 1000 and 1000000; periods 16,32,64; and the
+  modulo-clock, clamped-clock, projected-return, and boundary-parent controls.
+
+stopping_conditions:
+  - "REVISE if the lift fails exact schedule reproduction or phase-space invariance"
+  - "REVISE if the full fixed-set identity or determinant-ledger separation fails"
+  - "STOP_SCOPED once every full-space periodic orbit is proved confined to v=0 and equal to an orbit of the static limit parent f_uc"
+  - "REJECTED if target data, empirical phase matching, artificial recurrence, or determinant-ledger mixing is introduced"
+  - "never invoke Route B"
+
+reopening_conditions:
+  - >-
+    Define a new intrinsic recurrent base with nontrivial periodic points and
+    prove that its periodic orbits leave the static-limit slice while its
+    observable or roof reproduces logarithmic aging without an artificial
+    reset or finite-cutoff periodization.
+  - >-
+    Alternatively define a chronological transfer-cocycle determinant with a
+    frozen function space, start time, horizon, clock, normalization,
+    repetition law, and same-object trace theorem.
