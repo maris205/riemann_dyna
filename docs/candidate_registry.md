@@ -267,6 +267,9 @@ CTRL-0001 is a passed-with-limitations A2 evaluator positive control, explicitly
 candidate and not eligible for an SS candidate number.
 P4-LOGISTIC-MONOTONE-CLOCK-LIFT is a non-candidate structural audit:
 it is STOP_SCOPED under OBR-007 and does not change the formal-candidate count.
+P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK is a second non-candidate structural
+audit: it escapes OBR-007 with genuine recurrent tower orbits, but remains
+REVISE / ROUTE_A_EXPLORATORY and does not change the formal-candidate count.
 No candidate has entered Route B.
 ```
 
@@ -275,6 +278,14 @@ Its strict-monotone base confines every full periodic orbit to the static-limit
 slice, and its formal orbit determinant adds no data beyond that parent. It is
 tracked in `docs/research_clues.md`, `docs/obstruction_registry.md`, and the
 Route-A evaluation tree rather than promoted to `SS-0003` or another formal ID.
+
+The recurrent exact-(U_c) audit is also intentionally not promoted. Its
+modeled all-even tower has an exact primitive census and full-fibre witnesses,
+but the identification of one branch per even label with the physical
+first-return system is not interval/kneading certified. Its unit lattice clock
+is additionally blocked by `OBR-008`. The audit remains
+`P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`, with Route-A tuple
+`(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)` and verdict `REVISE`.
 
 汇总表：
 

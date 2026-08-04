@@ -1,0 +1,192 @@
+audit_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+lock_version: 2
+formal_candidate: false
+clue_id: CLUE-A1-004
+title: Exact-U_c first-return gap clock with recurrent anchored Logistic fibre
+
+mathematical_object:
+  critical_parent: >-
+    f_Uc(y)=1-U_c*y^2 on [-1,1], where U_c is the unique real root of
+    u^3-2*u^2+2*u-2=0. Equivalently, the critical orbit is
+    0 -> 1 -> 1-U_c -> U_c-1 -> U_c-1.
+  event_and_gap: >-
+    Use the symbolic partition A={y<0} (L event) and R={y>0}.
+    For y in A, tau(y)=min{n>=1:f_Uc^n(y) in A}. A gap is this first-return
+    time. Only the U_c parent defines the candidate gap alphabet.
+  induced_gap_skeleton: >-
+    The frozen symbolic factor is a modeling choice with one branch symbol
+    m>=1 for each even return label tau=2*m. The parity restriction is
+    inherited from the RLR^infinity Misiurewicz skeleton, but equality of the
+    physical topological return support with all of 2*N and the existence of
+    one interval branch for every label are not yet certified. The factor
+    records a parity envelope, not invariant probabilities. First-return gaps
+    are observables of the parent map, not themselves primitive periodic
+    orbits; primitive orbits arise only after the recurrent tower is defined.
+  phase_space: >-
+    X=[-1,1] x B, where B={(omega,j): omega in {1,2,...}^Z and
+    1<=j<=2*omega_0}. Symbol m means the U_c return-gap length L=2*m.
+    Exactly one symbolic branch is available for each even gap class.
+  base_map: >-
+    G(omega,j)=(omega,j+1) for j<2*omega_0 and
+    G(omega,2*omega_0)=(sigma omega,1). The fibre update at the terminal
+    age is performed before the renewal transition.
+  block_length_convention: >-
+    A gap symbol m has L=2*m fibre updates labelled j=1,...,L. The terminal
+    update is j=L. Neither j=0,...,L nor an L+1-update block is part of this
+    object.
+  fibre_map: >-
+    F(x,omega,j)=(1-mu(j,2*omega_0)*x^2,G(omega,j)), with
+    mu(j,L)=U_c+k*(1/log(offset+j)^2-1/log(offset+L)^2).
+  terminal_contract: >-
+    mu(L,L)=U_c exactly. Implementations must return the frozen binary64
+    representation of the algebraic U_c on the terminal branch before the
+    base renewal. Matching only the rounded legacy value 1.543689 fails.
+  periodic_word_convention: >-
+    A cyclic return word W=(m_0,...,m_(q-1)) has tower period
+    P(W)=2*sum_i m_i. It is primitive iff it is not a repetition of a
+    shorter cyclic word. Cyclic rotations represent the same oriented base
+    orbit; the lexicographically least rotation fixes the reporting phase.
+  parameters:
+    u_c_algebraic_equation: "u^3-2*u^2+2*u-2=0; unique real root"
+    u_c_binary64: 1.5436890126920764
+    legacy_rounded_u_c: 1.543689
+    legacy_rounding_error: -1.2692076278852937e-08
+    k: 6.764850551029437
+    offset: 100000
+    minimum_return_symbol: 1
+    minimum_gap_length: 2
+  parameter_provenance: >-
+    The algebraic U_c and its L/R first-return interpretation come from the
+    repository's band-merging/Misiurewicz prior. The inherited k is frozen,
+    without retuning, from legacy Model 4 and is target-contaminated provenance;
+    it supplies no arithmetic evidence. The recurrent anchored fibre is a new
+    modeling choice and does not claim to reproduce the original globally
+    monotone trajectory.
+
+data_type:
+  primary: >-
+    Exact algebraic critical anchor, U_c first-return parity envelope,
+    recurrent tower primitive/repeated structure, phase-space identities,
+    fixed-count bounds, and reciprocal Artin-Mazur series.
+  secondary: >-
+    Deterministic binary64 U_c-left/center/right gap-support scans and one
+    signed fibre-monodromy witness per primitive symbolic base orbit in the
+    frozen prefix.
+  excluded: >-
+    Prime-gap tables, occupation-aggregated transition matrices, Ulam spectra,
+    fitted eigenphase observables, and zero matching.
+
+clock: >-
+  One tower-age step equals one Logistic fibre update. Gap lengths are the
+  even U_c first-return classes 2*m. One sigma renewal is not one unit of this
+  clock. There is no warmup inside a block, no modulo of a finite global
+  schedule, no clamp, no state-index/update-index substitution, and no
+  prime-dependent roof.
+
+normalization: >-
+  Raw x,y in [-1,1], L/R partition at y=0, integer age j, and even integer
+  gap L=2*m. No partition tuning, Gaussian epsilon, phase scale, affine
+  spectral map, unfolding, or fitted time conversion is defined.
+
+determinant_convention:
+  tower_zeta: >-
+    Z_T(z)=exp(sum_(n>=1) #Fix(G^n) z^n/n)
+          =1/(1-sum_(m>=1) z^(2*m))=(1-z^2)/(1-2*z^2).
+  frozen_full_object: >-
+    D_AM,F(z)=exp(-sum_(n>=1) #Fix(F^n) z^n/n), the reciprocal
+    Artin-Mazur series of the full recurrent skew product.
+  convergence_claim: >-
+    Each coefficient is finite and the defining logarithmic series converges
+    at least for |z|<1/4 by #Fix(F^n)<=2^n #Fix(G^n)<4^n.
+  s_parameter_diagnostic: >-
+    Substitution z=exp(-s) is only a unit-lattice-clock diagnostic. Any
+    single-valued meromorphic continuation that still factors through exp(-s)
+    is 2*pi*i periodic and is not a completed-xi determinant candidate.
+  analytic_continuation: "not asserted beyond the proved local disk"
+  fredholm_determinant: "not defined"
+  excluded_ledgers:
+    - "Z_T is a tower-symbolic zeta and is not D_AM,F"
+    - "the ordinary unweighted shift on the countable symbols has infinite fixed counts and is not used"
+    - "Z, 1/Z, Z'/Z, and det(I-L_s) may not be interchanged"
+    - "the legacy occupation matrix determinant and eigenphase ledger"
+    - "a first-return transfer determinant without a frozen function space and trace theorem"
+    - "stability weights with signed multipliers replaced by absolute values"
+
+cutoff:
+  theorem_scope: "all return symbols m>=1 and all tower periods n>=1"
+  validation_gap_lengths: [2, 4, 6, 8, 12, 16]
+  test_gap_lengths: [10, 14, 18, 24, 32, 64]
+  validation_periods: [1, 2, 3, 4, 5, 6, 7, 8]
+  test_periods: [9, 10, 11, 12, 13, 14, 15, 16]
+  numerical_fibre_census: >-
+    One guaranteed fixed-point witness for every primitive symbolic base orbit
+    with total tower period at most 16; this is not a complete fibre-root census.
+  gap_scan:
+    initial_x_controls: [0.1, 0.5, -0.2, 0.314159265]
+    burn_in: 20000
+    recorded_updates: 300000
+    validation_deltas: [1.0e-05, 1.0e-06]
+    test_delta: 1.0e-07
+    maximum_reported_gap: 128
+  legacy_index_control:
+    warmup_steps: 2000000
+    record_updates: 10000000000
+    offset: 100000
+
+precision:
+  structural: "exact algebraic identities, inequalities, and finite combinatorics"
+  diagnostic: "CPython IEEE-754 binary64"
+  u_c_polynomial_residual_ceiling: 1.0e-14
+  terminal_anchor: "bitwise equality to the frozen binary64 algebraic U_c"
+  fixed_point_residual_ceiling: 1.0e-12
+  repeated_orbit_residual_ceiling: 1.0e-11
+
+allowed_data:
+  - "the algebraic Misiurewicz equation and frozen legacy formula/constants"
+  - "direct deterministic f_u iterates at U_c and the frozen neighboring controls"
+  - "elementary real analysis, finite combinatorics, and repository prior-work claims"
+  - "repository obstruction and candidate registries"
+
+forbidden_data:
+  - "prime tables, primality predicates, prime-gap histograms, Riemann-zero tables, xi/zeta evaluations, or USTC data"
+  - "retuning U_c, k, offset, gap classes, weights, or phases against target data"
+  - "using the rounded 1.543689 value as the exact band-merging anchor"
+  - "adding odd-gap symbols to the center U_c alphabet"
+  - "legacy epsilon, empirical transition matrices, eigenphases, or best-of-seed selection"
+  - "calling the renewal reset the original globally monotone schedule"
+  - "j=0,...,L, L+1 updates, or reset-before-terminal-update conventions"
+  - "warmup steps silently included in a block period"
+  - "calling the reciprocal Artin-Mazur series a Fredholm determinant"
+
+training_split: "empty; no fitting, no target data, and no stochastic seed selection"
+validation_split: >-
+  Frozen even gaps 2,4,6,8,12,16; periods 1 through 8; exact algebraic
+  anchor, U_c parity, left/right deltas 1e-5 and 1e-6, invariance,
+  primitive/repeated, and simpler-parent checks.
+test_split: >-
+  Sealed even gaps 10,14,18,24,32,64; periods 9 through 16; delta 1e-7;
+  rounded-U_c, legacy off-by-warmup, noncyclic same-total reorder,
+  neighboring-parameter, and source-scan controls.
+
+stopping_conditions:
+  - "REVISE if U_c is not the algebraic critical root or its critical-orbit identity fails"
+  - "REVISE if a block does not contain exactly L=2*m updates labelled 1 through L"
+  - "REVISE if the terminal fibre update is not exactly algebraic U_c before renewal"
+  - "REVISE if the U_c center admits an odd gap in the frozen scan or the right controls fail to open the odd-gap channel"
+  - "REVISE while the all-even symbolic envelope lacks branch-level interval or kneading certification"
+  - "REVISE if the tower fixed-count formula, primitive census, or full-orbit existence theorem fails"
+  - "REVISE while invariant branch weights, complete fibre roots, a non-lattice roof, and a same-object Fredholm determinant remain undefined"
+  - "STOP_SCOPED for any attempted Riemann determinant that retains only the unit lattice clock z=exp(-s)"
+  - "REJECTED if target tables, target-driven retuning, empirical phase matching, or determinant-ledger mixing enters"
+  - "never invoke Route B"
+
+reopening_conditions:
+  - >-
+    Prove or refute S_top={m:C_m is nonempty}=2*N for the exact U_c first-return
+    sets C_m, certify the corresponding interval/kneading branches and their
+    invariant weights, and preserve primitive/repeated consistency without
+    prime or zero data.
+  - >-
+    Define a first-return transfer operator on a named Banach space, prove
+    nuclear summability and the same-object trace identity, and only then
+    replace the reciprocal Artin-Mazur ledger by a Fredholm determinant.

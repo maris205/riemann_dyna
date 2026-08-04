@@ -249,8 +249,8 @@ unmatched-orbit penalty
 ## CLUE-A1-004 — 从非自治系统提升为自治高维系统
 
 **来源：** Prime aging 与 Sequential Birkhoff 工作  
-**证据：** `HEURISTIC` + `CONDITIONAL_THEOREM` + scoped `PROVED_OBSTRUCTION`
-**状态：** `BLOCKED`
+**证据：** `HEURISTIC` + `MODELING_CHOICE` + `CONDITIONAL_THEOREM` + scoped `PROVED_OBSTRUCTION`
+**状态：** `ACTIVE`
 **对应层：** `A1`, `A4`
 
 ### 内容
@@ -325,6 +325,75 @@ Artifacts:
 - `evaluations/route_a/P4-LOGISTIC-MONOTONE-CLOCK-LIFT/20260804T025047Z.yaml`
 - `artifacts/p4_logistic_monotone_clock_lift/structural_audit.json`
 - `formal/obstructions/strict_monotone_clock_orbit_collapse.md`
+
+### 2026-08-04 exact-(U_c) recurrent-clock audit
+
+The next recurrent object fixes the true band-merging anchor as the unique
+real root
+
+\[
+U_c^3-2U_c^2+2U_c-2=0,
+\qquad U_c=1.5436890126920764\ \text{(binary64)},
+\]
+
+not the rounded legacy literal `1.543689`. The critical orbit satisfies
+
+\[
+0\to1\to1-U_c\to U_c-1\to U_c-1.
+\]
+
+For the frozen event (L=\{x<0\}), all tested left and center controls have
+zero odd-gap mass, while every tested right control opens an odd-gap channel.
+This is a target-free finite numerical phase-boundary diagnostic. The right
+support contains odd primes and odd composites; no composite-preference claim
+is made, and low-count long-tail support is cutoff/precision sensitive.
+
+The audit defines a recurrent modeled tower with one symbol (m\geq1) for the
+even label (L=2m), and the anchored fibre law
+
+\[
+\mu(j,L)=U_c+k\left[
+\log^{-2}(a_0+j)-\log^{-2}(a_0+L)
+\right],
+\]
+
+so each block has exactly (L) updates and the terminal update satisfies
+(mu(L,L)=U_c) before renewal. The tower has
+
+\[
+Z_T(z)=\frac{1-z^2}{1-2z^2},
+\qquad
+\#\operatorname{Fix}(G^{2r})=2(2^r-1),
+\]
+
+and every primitive tower orbit through period 16 has a signed full-fibre
+fixed-point witness. First-return gaps are not themselves periodic orbits;
+the tower is an additional modeling choice. Equality of its all-even alphabet
+with the physical exact-(U_c) interval/kneading branch system is still open.
+
+Route-A result:
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+overall: ROUTE_A_EXPLORATORY
+audit verdict: REVISE
+formal candidate: false
+Route B: inactive and not authorized
+```
+
+The unit clock substitution (z=e^{-s}) forces a (2\pi i)-periodic divisor
+with (O(T)) count in bounded real strips (`OBR-008`), so it cannot be the
+completed-ξ divisor. The next smallest task is to prove or refute the exact
+physical return support and certify branch weights before introducing any
+non-lattice roof.
+
+Artifacts:
+
+- `configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml`
+- `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
+- `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
+- `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
+- `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
 
 ---
 
@@ -1164,4 +1233,16 @@ new_status: BLOCKED
 evidence: "P4-LOGISTIC-MONOTONE-CLOCK-LIFT exact compact-clock audit and OBR-007"
 commit: "b8fa828"
 consequence: "The strict-monotone clock subclass is STOP_SCOPED: every full periodic orbit lies on the static-limit slice and the formal orbit determinant reduces to the static parent. Reopen only with an intrinsic recurrent base or a fully defined chronological transfer-cocycle determinant."
+```
+
+## Status update — CLUE-A1-004 recurrent exact-(U_c) audit
+
+```yaml
+date: 2026-08-04
+clue_id: CLUE-A1-004
+old_status: BLOCKED
+new_status: ACTIVE
+evidence: "P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK exact anchor, recurrent tower census, full-fibre witnesses, and OBR-008"
+commit: "current checkpoint; evaluation source commit pending"
+consequence: "The recurrent construction escapes OBR-007 but remains a non-candidate REVISE audit. Certify the exact-U_c physical first-return branches and invariant weights before defining a non-lattice roof or transfer determinant."
 ```

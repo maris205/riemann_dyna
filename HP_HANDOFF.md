@@ -1,6 +1,222 @@
 # HP-Dynamics Handoff
 
-## Current status
+## Current status — exact-(U_c) recurrent Logistic audit
+
+Current clue: `CLUE-A1-004`
+
+Candidate ID: none. Audit ID:
+
+```text
+P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+```
+
+- Formal candidate: `false`
+- Operational verdict: `REVISE`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall Route-A interpretation: `ROUTE_A_EXPLORATORY`
+- Route B: inactive and not authorized
+- New reusable obstruction: `OBR-008`
+- Formal candidate count: unchanged (`SS-0001`, `SS-0002` only)
+
+The recurrent tower escapes the strict-monotone orbit-collapse obstruction
+`OBR-007`, but it is not promoted to `SS-0003`. The link between its modeled
+one-symbol-per-even alphabet and the complete physical exact-(U_c)
+first-return branch system is not yet interval/kneading certified.
+
+## Current source lock
+
+The parent is
+
+\[
+f_u(x)=1-ux^2,
+\]
+
+where (U_c) is the unique real root of
+
+\[
+u^3-2u^2+2u-2=0.
+\]
+
+The frozen implementation value is
+
+```text
+U_c = 1.5436890126920764
+hex = 0x1.8b2f3400b4fdcp+0
+```
+
+and
+
+\[
+0\to1\to1-U_c\to U_c-1\to U_c-1.
+\]
+
+The legacy literal `1.543689` is left of the exact point by
+(-1.2692076278852937\times10^{-8}) and is only a control.
+
+The event is (L=\{x<0\}); gaps are first-return times to (L). The critical
+seed (x_0=0) has one (L)-hit and no gap sequence, so numerical gap
+statistics use four frozen generic initial states.
+
+The recurrent modeled tower is
+
+\[
+\mathcal B=\{(\omega,j):\omega\in\mathbb N_{\geq1}^{\mathbb Z},
+1\leq j\leq2\omega_0\},
+\]
+
+with symbol (m) carrying exactly (L=2m) updates. The fibre law is
+
+\[
+\mu(j,L)=U_c+k\left[
+\log^{-2}(100000+j)-\log^{-2}(100000+L)
+\right],
+\]
+
+where `k=6.764850551029437`. The terminal branch returns `U_C` directly, so
+(mu(L,L)=U_c) bitwise before renewal. The inherited `k` is target-contaminated
+legacy provenance and contributes no arithmetic evidence.
+
+Prime/zero tables, primality predicates, target zeta/xi evaluations, USTC data,
+fitted phases, empirical transition matrices, best-seed selection, and
+determinant-ledger mixing are forbidden.
+
+## Strongest evidence
+
+The frozen gap diagnostic uses burn-in `20000` and `300000` updates for each of
+four initial states. For deltas (10^{-5},10^{-6},10^{-7}):
+
+- exact center: zero odd gaps;
+- every left control: zero odd gaps;
+- every right control: positive odd-gap count;
+- rounded `1.543689`: remains on the even left side.
+
+The correct statement is that the odd-gap channel opens to the right. It is
+not a composite-only channel. Low-count long-tail support is seed, cutoff,
+precision, and last-bit sensitive and is not used as a definition.
+
+The modeled tower has
+
+\[
+Z_T(z)=\frac{1-z^2}{1-2z^2},
+\qquad
+\#\operatorname{Fix}(G^{2r})=2(2^r-1),
+\]
+
+with no odd-period fixed points. Direct cyclic-word enumeration and Möbius
+inversion agree through period 16: 70 primitive tower orbits. Every one has a
+primitive full-fibre fixed-point witness, terminal (U_c) updates, and a
+signed multiplier. The maximum return residual is
+
+```text
+3.7761460625063137e-14
+```
+
+The full reciprocal Artin--Mazur ledger is distinct from the tower zeta:
+
+\[
+D_{\rm AM,F}(z)=
+\exp\left(-\sum_{n\geq1}\frac{\#\operatorname{Fix}(F^n)}n z^n\right).
+\]
+
+The bound
+
+\[
+N_G(n)\leq N_F(n)\leq2^nN_G(n)<4^n
+\]
+
+gives convergence of its logarithm for (|z|<1/4). No Fredholm determinant or
+analytic continuation is claimed.
+
+## Strongest failure and reusable knowledge
+
+First-return gaps are observables, not primitive periodic orbits. The recurrent
+tower is an extra modeling choice; one interval branch for every even label and
+the physical invariant weights remain unproved. There is no log-prime clock,
+von-Mangoldt repetition law, or arithmetic orbit correspondence.
+
+`OBR-008` proves that every nonzero single-valued meromorphic
+(H(e^{-s})) is (2\pi i)-periodic and has only (O(T)) divisor count in a
+bounded real strip. It cannot equal the completed-ξ
+(Theta(T\log T)) divisor. A zero-free prefactor cannot change that count.
+
+Thus the current unit clock is `STOP_SCOPED` as a Riemann determinant, while
+the broader exact-(U_c) branch audit remains `REVISE` and active.
+
+## Current files
+
+- `DERIVATION_PACKAGE.md`
+- `configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml`
+- `experiments/p4_logistic_recurrent_uc_anchored_clock.py`
+- `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
+- `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
+- `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
+- `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
+- `docs/research_clues.md`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_log.md`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+## Verification and reproduction
+
+Focused tests at the current checkpoint:
+
+```text
+16/16 passed
+```
+
+Full repository:
+
+```text
+73/73 passed
+```
+
+The regenerated artifact is byte-identical. SHA-256:
+
+```text
+16fc53e17a56eb84e491abd12d927cb0644fae9e3a543b8a9b25ca06d77f41cf
+```
+
+Commands:
+
+```bash
+python3 -m unittest -v tests/test_p4_logistic_recurrent_uc_anchored_clock.py
+python3 experiments/p4_logistic_recurrent_uc_anchored_clock.py \
+  --quiet \
+  --output artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json
+python3 -m unittest discover -v
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml","evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+git diff --check
+```
+
+## Claim boundary and next smallest task
+
+Established: exact (U_c), correct legacy endpoint diagnosis, exact terminal
+anchor, target-free odd-channel boundary, modeled tower primitive census,
+signed full-fibre witnesses, local Artin--Mazur convergence, and `OBR-008`.
+
+Not established: complete physical return support and weights, full fibre-root
+multiplicity, arithmetic prime correspondence, von-Mangoldt trace formula,
+Fredholm/completed-ξ determinant, natural quantization, Route B,
+Hilbert--Pólya, or RH.
+
+Next smallest task:
+
+\[
+S_{\rm top}=\{m:C_m\ne\varnothing\},
+\qquad
+C_m=L\cap\bigcap_{j=1}^{m-1}f^{-j}(I\setminus L)\cap f^{-m}(L).
+\]
+
+Prove or refute (S_{\rm top}=2\mathbb N) at exact (U_c), certify the
+interval/kneading branches, and determine which branches have positive
+invariant weight. Do not introduce a non-lattice roof before it is derived from
+the same target-free dynamics.
+
+---
+
+## Previous checkpoint — compact monotone-clock audit (retained)
 
 The `CLUE-A1-004` autonomous Logistic slow-clock audit is complete.
 

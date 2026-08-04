@@ -264,3 +264,72 @@ Artifacts:
 - `artifacts/p4_logistic_monotone_clock_lift/structural_audit.json`
 - `formal/obstructions/strict_monotone_clock_orbit_collapse.md`
 - `tests/test_p4_logistic_monotone_clock_lift.py`
+
+---
+
+## OBR-008 — Unit-lattice clocks force a vertically periodic divisor
+
+Status:
+PROVED_OBSTRUCTION
+
+Source:
+CLUE-A1-004 / P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK /
+`formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
+
+Statement:
+Let $H$ be a nonzero single-valued meromorphic function on
+$\mathbb C\setminus\{0\}$. Then
+
+\[
+D(s)=H(e^{-s})
+\]
+
+satisfies
+
+\[
+D(s+2\pi i)=D(s).
+\]
+
+For every bounded real interval $[a,b]$, the image of one vertical
+fundamental rectangle is the compact annulus
+
+\[
+\{z:e^{-b}\leq|z|\leq e^{-a}\}\subset\mathbb C^\ast.
+\]
+
+Meromorphicity gives only finitely many zeros and poles in that annulus, so
+periodicity implies $O(T)$ divisor count in
+$a\leq\Re s\leq b$, $0<\Im s\leq T$. This cannot equal the
+completed-ξ nontrivial-zero count $\Theta(T\log T)$. A zero-free entire
+prefactor changes neither conclusion nor the divisor.
+
+Logistic recurrent-clock corollary:
+The exact tower zeta
+
+\[
+Z_T(z)=\frac{1-z^2}{1-2z^2}
+\]
+
+and any continuation of the full reciprocal Artin--Mazur series that still
+depends on $s$ only through $z=e^{-s}$ fail the completed-ξ divisor-count
+requirement. The tower zeta and full determinant remain distinct ledgers.
+
+Scope:
+Single-valued meromorphic same-object determinants that factor through a unit
+lattice clock, possibly times a zero-free factor. The result does not exclude
+an intrinsically derived non-lattice roof or an operator family with genuine
+nonperiodic $s$-dependence.
+
+Reopening condition:
+Derive a non-lattice clock or same-object operator dependence from the frozen
+target-free dynamics, and prove its divisor-count regime. Adding a
+zero-producing correction by hand changes the ledger and does not reopen this
+case.
+
+Artifacts:
+
+- `configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml`
+- `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
+- `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
+- `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
+- `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`

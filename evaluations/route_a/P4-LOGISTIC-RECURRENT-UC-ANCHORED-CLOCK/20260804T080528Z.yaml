@@ -1,0 +1,187 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+audit_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+formal_candidate: false
+source_commit: PENDING_FIRST_COMMIT
+evaluation_date: "2026-08-04T08:05:28Z"
+
+source_lock:
+  object: >-
+    Exact-U_c Logistic parent f_u(y)=1-u*y^2 with L={y<0} first-return
+    observable, together with a modeled all-even recurrent tower
+    B={(omega,j):omega in N_{>=1}^Z, 1<=j<=2*omega_0} and anchored fibre
+    F(x,omega,j)=(1-mu(j,2*omega_0)*x^2,G(omega,j)).
+  data_type: >-
+    Exact algebraic anchor and finite combinatorics; deterministic binary64
+    left/center/right gap diagnostics; one signed full-fibre witness per
+    primitive tower orbit through period 16; reciprocal Artin-Mazur ledger.
+  clock: >-
+    One tower-age step equals one Logistic update. Symbol m has exactly L=2*m
+    updates j=1,...,L; the terminal update uses U_c before renewal. A sigma
+    renewal is not one clock unit.
+  normalization: >-
+    Raw x,y in [-1,1], partition at y=0, integer age, and raw even gap L=2*m.
+    No gap shift, time rescaling, unfolding, phase fit, or tuned partition.
+  determinant_convention: >-
+    Z_T(z)=(1-z^2)/(1-2*z^2) is the tower Artin-Mazur zeta. The distinct full
+    ledger is D_AM,F(z)=exp(-sum_(n>=1) Fix(F^n)*z^n/n), locally defined for
+    |z|<1/4. Neither object is called a Fredholm determinant.
+  cutoff: >-
+    Tower theorem all m,n>=1; exact enumerated prefix through physical period
+    16; one full-fibre witness per primitive base orbit in that prefix; gap
+    scans use four frozen initial states, burn-in 20000, and 300000 updates.
+  precision: >-
+    Exact algebraic identities and finite combinatorics where stated; CPython
+    IEEE-754 binary64 diagnostics; terminal anchor bitwise U_c; fibre return
+    residual ceiling 1e-12. Long-tail support is not certified.
+  allowed_data:
+    - "the algebraic Misiurewicz equation and frozen legacy formula/constants"
+    - "direct deterministic Logistic iterates and elementary finite combinatorics"
+    - "repository prior-work, candidate, and obstruction records"
+  forbidden_data:
+    - "prime tables, primality predicates, prime-gap histograms, Riemann-zero tables, xi/zeta evaluations, or USTC data"
+    - "target-driven retuning of U_c, k, offset, gap labels, weights, or phases"
+    - "legacy empirical matrices, eigenphases, best seeds, or determinant-ledger mixing"
+  training_split: "empty; no fitting and no target data"
+  validation_split: >-
+    Even gaps 2,4,6,8,12,16; periods 1 through 8; neighboring deltas 1e-5 and
+    1e-6; exact anchor, invariance, primitive/repetition, and simpler-parent checks.
+  test_split: >-
+    Even gaps 10,14,18,24,32,64; periods 9 through 16; delta 1e-7; rounded-U_c,
+    legacy indexing, same-total reorder, terminal ordering, and source-scan controls.
+  stopping_conditions:
+    - "REVISE while all-even physical branch support and invariant weights are uncertified"
+    - "STOP_SCOPED for a determinant that retains only the unit lattice clock z=exp(-s)"
+    - "REJECTED if target lookup, target-driven retuning, or determinant-ledger mixing enters"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: CONDITIONAL_THEOREM
+  strongest_evidence: >-
+    The explicitly defined recurrent tower has exact primitive/repetition
+    grammar, Fix(G^(2r))=2*(2^r-1), a complete primitive census through period
+    16, and every primitive base orbit has at least one primitive full Logistic
+    lift with a signed multiplier.
+  strongest_failure: >-
+    First-return gaps are not primitive periodic orbits. The one-symbol-per-even
+    tower is a modeling choice whose equality with the physical exact-U_c
+    interval/kneading branch system and invariant weights is not proved; no
+    log-prime clock or von-Mangoldt amplitude law is present.
+  metrics:
+    formal_candidate: false
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    center_odd_gap_count_all_frozen_seeds: 0
+    left_odd_gap_count_all_frozen_controls: 0
+    right_odd_gap_channel_all_frozen_controls: true
+    primitive_tower_orbits_through_period_16: 70
+    full_fibre_witnesses: 70
+    maximum_fibre_return_residual: 3.7761460625063137e-14
+    signed_multiplier_preserved: true
+    complete_fibre_root_census: false
+    physical_all_even_branch_certification: false
+  artifacts:
+    - artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json
+    - DERIVATION_PACKAGE.md
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The tower zeta is exact and the full reciprocal Artin-Mazur log series has
+    finite coefficients with a proved local disk |z|<1/4. The two ledgers are
+    explicitly separated.
+  strongest_failure: >-
+    No same-object stability-weighted or Fredholm determinant is defined. Any
+    single-valued meromorphic continuation still factoring through z=exp(-s)
+    is 2*pi*i periodic and has only O(T) divisor count in a bounded real strip,
+    so it cannot have the completed-xi divisor.
+  metrics:
+    zero_error_train: "not_applicable_no_target_data"
+    zero_error_validation: "not_testable_no_target_root_ledger"
+    zero_error_test: "not_testable_no_target_root_ledger"
+    extra_zero_count: "not_testable_no_completed_divisor"
+    missing_zero_count: "not_testable_no_completed_divisor"
+    root_count_discrepancy: "proved_O(T)_versus_Theta(T_log_T)_for_unit_lattice_continuations"
+    cutoff_drift: "tower prefix exact; physical long-tail gap support is cutoff sensitive"
+    precision_drift: "terminal anchor exact in frozen binary64; long-tail support not certified"
+    control_margin: "k=0, neighboring-k, rounded-U_c, timing, and same-total reorder controls pass"
+    tower_zeta: "(1-z^2)/(1-2*z^2)"
+    full_artin_mazur_log_series_disk: "|z|<1/4"
+    fredholm_determinant_defined: false
+  artifacts:
+    - artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json
+    - formal/obstructions/unit_lattice_clock_vertical_periodicity.md
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The unit-lattice vertical-periodicity obstruction gives a same-clock global
+    falsification criterion independent of any finite zero fit.
+  strongest_failure: >-
+    There is no analytic continuation theorem for the full reciprocal
+    Artin-Mazur series, no functional equation, Gamma/trivial-zero ledger,
+    Riemann-von Mangoldt law, moving-order control, or completed-xi divisor.
+  metrics:
+    conjugation_symmetry: "local real-coefficient formal ledger only"
+    functional_equation: false
+    gamma_factor: false
+    trivial_zero_ledger: false
+    analytic_continuation: false
+    target_counting_law: false
+    unit_lattice_vertical_period: "2*pi*i"
+    unit_lattice_divisor_growth: "O(T) in bounded real strips"
+  artifacts:
+    - formal/obstructions/unit_lattice_clock_vertical_periodicity.md
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The construction is an explicit autonomous recurrent skew product on a
+    coherent invariant phase space and preserves the same tower-age clock.
+  strongest_failure: >-
+    The Logistic fibre is noninvertible and no symplectic, contact, scattering,
+    or unitary structure, Hilbert space, operator domain, boundary condition,
+    or natural same-clock quantization is defined.
+  metrics:
+    autonomous: true
+    recurrent_base: true
+    forward_invariant_fibre: true
+    invertible: false
+    symplectic_structure: false
+    natural_hilbert_space: null
+    operator_domain: null
+    route_b_ready: false
+  artifacts:
+    - experiments/p4_logistic_recurrent_uc_anchored_clock.py
+
+overall_verdict: ROUTE_A_EXPLORATORY
+recommended_audit_verdict: REVISE
+claim_boundary:
+  what_is_established:
+    - "The exact critical anchor is the algebraic root U_c=1.5436890126920764 in binary64, not 1.543689."
+    - "The frozen left/center/right scans show an even center/left and a right-side odd-gap channel."
+    - "The modeled recurrent tower has an exact primitive census and terminal U_c anchoring."
+    - "Every primitive tower orbit in the period-16 prefix has a signed full-fibre witness."
+    - "Tower and full Artin-Mazur determinant ledgers are distinct, and the unit clock has a proved O(T) obstruction."
+  what_is_not_established:
+    - "The complete physical first-return support, branch multiplicities, and invariant weights are not certified."
+    - "No arithmetic prime correspondence, von-Mangoldt trace law, Fredholm determinant, or completed-xi divisor is obtained."
+    - "No natural quantization, Route B, Hilbert-Polya realization, RH proof, or physical spectral claim is made."
+  what_would_change_the_status: >-
+    Interval/kneading certification of the exact-U_c first-return branches and
+    their invariant weights, followed by a same-object transfer operator and
+    trace theorem; any non-lattice roof must be derived from those dynamics.
+blocking_conditions:
+  - "one-branch-per-even-return remains a modeling choice"
+  - "physical branch weights and complete fibre multiplicities are unknown"
+  - "full Fredholm determinant and global analytic structure are absent"
+  - "unit lattice clock forces an O(T) periodic divisor"
+next_smallest_test: >-
+  Prove or refute S_top={m:C_m is nonempty}=2*N for the exact U_c first-return
+  sets C_m using interval/kneading methods, and identify which branches carry
+  positive invariant weight. Do not add a non-lattice roof before this audit.
+route_b_invocation_allowed: false
