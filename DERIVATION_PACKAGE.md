@@ -320,17 +320,39 @@ also give the exact asymptotic length ratio
 =0.35491084440177\ldots.
 \]
 
-This is not yet an invariant-mass theorem. The exact open hypothesis is
+The invariant-mass theorem is now closed. Reflecting
+$T=f^2|_{[-\rho,\rho]}$ and using $x=\rho\sin\theta$ gives a two-full-branch
+Markov map $G$ with
 
 \[
-\frac{d\mu_{\rm ac}}{dx}(-\rho+t)
-=C\,t^{-1/2}(1+o(1)),
-\qquad C>0,
-\qquad t\downarrow0.
+\inf|G'|
+=\frac4{U_c^2}
+=2U_c(U_c-1)
+>1.
 \]
 
-Under that hypothesis the mass ratio conditionally tends to the square root,
-(1/[2U_c(U_c-1)])=0.59574394197656\ldots, but the density law remains open.
+The expanding-Markov Ruelle--Perron--Frobenius theorem therefore gives the
+unique full-support physical acip and a density $h$ which is finite and
+strictly positive at zero. The exact physical inverse-branch ledger then gives
+
+\[
+h(-\rho+t)
+=\frac{h(0)}{\sqrt2\,U_c}t^{-1/2}+O(1),
+\qquad t\downarrow0,
+\qquad h(0)>0.
+\]
+
+Consequently,
+
+\[
+\frac{\mu_{\rm ac}(C_{2n+2})}{\mu_{\rm ac}(C_{2n})}
+\longrightarrow
+\frac1{2U_c(U_c-1)}
+=0.59574394197656\ldots.
+\]
+
+This is an asymptotic theorem, not an exact finite-$n$ geometric law; the
+absolute coefficient still contains the unknown value $h(0)$.
 
 The domain qualification is essential. On ambient `[-1,1]`, the transient
 interval `[-1,-rho)` supplies all odd return labels, so
@@ -339,9 +361,9 @@ interval `[-1,-rho)` supplies all odd return labels, so
 S_{\rm top}^{[-1,1]}=\mathbb N_{\ge1}.
 \]
 
-Every invariant probability gives this transient interval zero mass. For the
-named physical acip with support (J), every physical even branch has positive
-mass. This is conditional on that support hypothesis; its exact weight is not
+Every invariant probability gives this transient interval zero mass. The named
+physical acip exists, has support (J), and gives every physical even branch
+positive mass. Closed forms for the individual finite branch weights are not
 computed here.
 
 The corrected claim boundary is therefore:
@@ -350,7 +372,9 @@ The corrected claim boundary is therefore:
 - ambient odd branches exist but have zero mass for every invariant measure;
 - every physical even label has one positive-length branch;
 - the prior proof of asymptotically geometric branch weights is not valid,
-  because the unaccelerated first-return map is not uniformly expanding;
+  because the unaccelerated first-return map is not uniformly expanding, but
+  its asymptotic mass-ratio conclusion is repaired by the direct density
+  theorem above;
 - the one-dimensional system does not generate the Hardy--Littlewood mod-(3)
   resonance of actual prime gaps.
 
@@ -676,7 +700,8 @@ A discrete divisor with finitely many zeros in one fundamental strip then has
 only (O(T)) zeros up to height (T), not the completed-zeta
 (\Theta(T\log T)) count. The exact-(U_c)-anchored model therefore supplies a
 genuine recurrent symbolic orbit grammar, but only `A1_WEAK`: its physical
-branch support is certified, while exact invariant weights, an arithmetic
+branch support and asymptotic mass ratio are certified, while closed-form or
+certified finite-$n$ branch weights, the modeled tower coupling, an arithmetic
 primitive-orbit correspondence, and a non-lattice clock are absent. It does
 not supply an A2 Riemann clock.
 
@@ -713,9 +738,9 @@ not supply an A2 Riemann clock.
 - The inherited (k) is not independent evidence.
 - No complete census of all fibre fixed points is claimed; the exact result is
   existence of at least one full lift per primitive tower orbit.
-- Conditionally on the named physical acip having full support, every physical
-  branch has positive mass, but no exact weight or asymptotic mass-ratio theorem
-  is proved.
+- The named physical acip has full support, every physical branch has positive
+  mass, and the asymptotic mass ratio is proved. No closed form for $h(0)$ or
+  for the individual finite branch masses is known.
 - No Fredholm, Ruelle, Koopman, or transfer-operator determinant is defined.
 - No analytic continuation, functional equation, Gamma factor, trivial-zero
   ledger, or completed-ξ divisor is established.
@@ -726,9 +751,10 @@ not supply an A2 Riemann clock.
 ## Open Risks
 
 - The old Paper-2 uniform-expansion and ordinary-BV spectral-gap argument is
-  refuted by the exact branch endpoints; its weight-asymptotic theorem is open.
-- Exact invariant return weights and the conjectured square-root endpoint
-  density law remain to be proved.
+  refuted by the exact branch endpoints. The mass-ratio conclusion is repaired
+  by a direct density theorem, not by restoring that proof.
+- A closed form or rigorous enclosure for $h(0)$ and for selected finite branch
+  masses remains open.
 - Full fibre-root multiplicities, tangencies, and completeness remain open.
 - Logistic critical fibres are noninvertible and not uniformly expanding, so
   standard nuclear transfer-operator theorems do not apply automatically to

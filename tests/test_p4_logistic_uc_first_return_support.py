@@ -164,7 +164,9 @@ class LogisticUcFirstReturnSupportTests(unittest.TestCase):
         )
         self.assertFalse(correction["ordinary_bv_markov_argument_ready"])
 
-    def test_weight_ratio_is_kept_open_and_conditional(self) -> None:
+    def test_historical_support_artifact_keeps_then_open_weight_clue(self) -> None:
+        # The versioned support artifact predates the separate density theorem
+        # and remains byte-stable as historical evidence.
         clue = self.report["open_weight_clue"]
         self.assertEqual(clue["status"], "OPEN_CONDITIONAL_CLUE")
         self.assertEqual(clue["endpoint_length_ratio_status"], "PROVED")

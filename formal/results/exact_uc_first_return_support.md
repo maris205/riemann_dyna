@@ -185,7 +185,7 @@ C_{2n+1}(X)=[q_{n-1},q_n)
 
 Their union is exactly the transient interval $[-1,-\rho)$.
 
-### Invariant weights: unconditional transient statement and conditional acip statement
+### Invariant weights
 
 Every $f$-invariant probability measure on $X$ assigns zero mass to every
 ambient odd branch. If $\mu_{\rm ac}$ is the standard physical absolutely
@@ -196,10 +196,10 @@ continuous invariant probability with support $J$, then
 \quad(n\geq1).
 \]
 
-The transient zero-mass assertion is unconditional. The positivity assertion
-is a `CONDITIONAL_THEOREM` under the named full-support-acip hypothesis; this
-audit does not independently reprove existence or full support of that acip.
-It is false for arbitrary invariant measures.
+Both assertions are now unconditional. Existence, uniqueness, and full support
+of the named physical acip are proved in
+`formal/results/exact_uc_acip_endpoint_density.md`. The positivity statement
+is still false for arbitrary invariant measures.
 
 ## Proof
 
@@ -390,9 +390,9 @@ For any invariant probability $\nu$,
 \]
 
 All ambient odd branches lie in $X\setminus J$ and therefore have zero
-invariant mass. Each physical even branch contains a nonempty open interval;
-the definition of support then gives positive mass for every full-support
-physical acip. ∎
+invariant mass. The separate exact endpoint-density theorem proves that the
+physical acip exists and has full support $J$. Each physical even branch
+contains a nonempty open interval, so it has positive physical-acip mass. ∎
 
 ## Corollary: endpoint-length ratio
 
@@ -446,31 +446,36 @@ Therefore
 }.
 \]
 
-This is a Lebesgue-length statement. It does not imply an invariant-mass ratio
-without an additional theorem for the physical density near $-\rho$.
+This is a Lebesgue-length statement. The additional density theorem needed to
+convert it into an invariant-mass ratio is now available.
 
-## Conditional mass-ratio calculation
+## Physical branch-mass ratio
 
-The precise open hypothesis needed for the legacy value near $0.596$ is the
-endpoint-density asymptotic
+The proof below imports only the separate endpoint-density theorem. Conversely,
+that theorem imports from this file only the independently proved branch
+geometry and endpoint-length-ratio corollary above, not this mass section.
+Thus the dependency is non-circular.
+
+The exact endpoint-density theorem proves
 
 \[
 \frac{d\mu_{\rm ac}}{dx}(-\rho+t)
-=C\,t^{-1/2}(1+o(1))
-\qquad(t\downarrow0),
-\qquad C>0.
+=\frac{h(0)}{\sqrt2\,U_c}t^{-1/2}+O(1),
+\qquad t\downarrow0,
+\qquad h(0)>0.
 \]
 
-Under this explicit hypothesis,
+Writing $C=h(0)/(\sqrt2\,U_c)$, one has
 
 \[
 \mu_{\rm ac}(C_{2n}(J))
 =\int_{\delta_n}^{\delta_{n-1}}
-C\,t^{-1/2}(1+o(1))\,dt
-=2C\bigl(\sqrt{\delta_{n-1}}-\sqrt{\delta_n}\bigr)(1+o(1)).
+\bigl(Ct^{-1/2}+O(1)\bigr)\,dt
+=2C\bigl(\sqrt{\delta_{n-1}}-\sqrt{\delta_n}\bigr)
++O(\delta_{n-1}).
 \]
 
-Since $\delta_{n+1}/\delta_n\to\lambda$, it follows conditionally that
+Since $\delta_{n+1}/\delta_n\to\lambda$, it follows that
 
 \[
 \frac{\mu_{\rm ac}(C_{2n+2}(J))}
@@ -480,8 +485,9 @@ Since $\delta_{n+1}/\delta_n\to\lambda$, it follows conditionally that
 =\frac{1}{2U_c(U_c-1)}.
 \]
 
-The density asymptotic is not proved here, so this remains an
-`OPEN_CONDITIONAL_CLUE`, not an invariant-mass theorem.
+Thus the legacy value near $0.596$ is a proved asymptotic physical-mass ratio,
+not merely a conditional clue. This does not assert an exact finite-order
+geometric law.
 
 ## Certified finite prefix
 
@@ -505,8 +511,9 @@ The first branches are approximately
 ## Claim boundary
 
 This theorem certifies the physical branch alphabet, its full finite-word
-language, and the asymptotic length geometry of the physical branch partition.
-It does not assert realization of every infinite symbolic sequence, choose
-tower weights, compute the physical branch masses, prove the required endpoint
-density asymptotic, define an expanding transfer operator or Fredholm
-determinant, or create an arithmetic prime correspondence.
+language, the asymptotic length geometry of the physical branch partition, and
+the mass-ratio corollary supplied by the separate exact endpoint-density
+theorem. It does not assert realization of every infinite symbolic sequence,
+give a closed form for the finite branch masses or $h(0)$, choose the modeled
+tower weights, define an $s$-dependent Fredholm determinant, or create an
+arithmetic prime correspondence.

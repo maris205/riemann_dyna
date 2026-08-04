@@ -1,0 +1,142 @@
+audit_id: P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY
+parent_audit_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+lock_version: 1
+formal_candidate: false
+clue_id: CLUE-A1-004
+title: Exact-U_c physical-acip endpoint-density and branch-mass audit
+
+mathematical_object:
+  map: >-
+    f(x)=1-U_c*x^2, where U_c is the unique real root of
+    u^3-2*u^2+2*u-2=0 and rho=U_c-1.
+  physical_core: "J=[-rho,1]"
+  physical_bands: >-
+    A=[-rho,rho] and B=[rho,1], with f(A)=B and f(B)=A.
+  parity_reduced_map: >-
+    T=f^2|_A=-rho+2*U_c^2*x^2-U_c^3*x^4. The reflected map
+    S=-T is conjugated by x=rho*sin(theta) to a two-full-branch
+    uniformly expanding Markov map G on [-pi/2,pi/2].
+  invariant_measure: >-
+    mu_ac is the unique f-invariant absolutely continuous probability on J.
+    Its density h is the canonical representative obtained from the expanding
+    Markov density; h is locally Lipschitz and strictly positive at x=0. The
+    conditional T-invariant probability on A and the full f-invariant
+    probability are kept as distinct normalizations.
+  return_branches: >-
+    C_2=(-r_1,0) and C_(2n)=(-r_n,-r_(n-1)] for n>=2, with
+    r_(n+1)=psi(r_n), psi the positive inverse branch of T, and
+    delta_n=rho-r_n.
+  theorem_target: >-
+    Prove or refute h(-rho+t)=C*t^(-1/2)*(1+o(1)), C>0, and the
+    resulting limit mu_ac(C_(2n+2))/mu_ac(C_(2n)).
+
+data_type:
+  primary: >-
+    Exact algebraic identities, the Jiang-Ruelle 2005 analytically expanding
+    Markov Ruelle-Perron-Frobenius theorem with every local hypothesis checked,
+    exact Perron-
+    Frobenius inverse-branch asymptotics, and the already proved endpoint
+    recursion for the physical return branches.
+  secondary: >-
+    Deterministic high-precision checks of the algebraic identities, expansion
+    margin, inverse-Jacobian coefficient, and equivalent closed forms.
+  excluded: >-
+    Empirical orbit histograms as proof, fitted gap weights, target prime or
+    zero data, and any s-dependent Fredholm or completed-xi determinant.
+
+clock: >-
+  One iterate of f remains one physical clock tick. T=f^2 and the theta
+  coordinate are proof coordinates only; the return labels remain 2n.
+
+normalization: >-
+  Raw x-coordinate on J, strict event x<0, zero a non-event, mu_ac(J)=1,
+  and h=d mu_ac/dx. The T-invariant conditional probability on A has total
+  mass one, whereas mu_ac(A)=mu_ac(B)=1/2; these density ledgers may not be
+  mixed when reporting the absolute endpoint coefficient.
+
+determinant_convention: >-
+  No determinant is defined. The expanding transfer operator used to obtain
+  the invariant density is an s-independent proof object and is not a Riemann
+  dynamical Zeta, Fredholm determinant, Artin-Mazur ledger, or quantization.
+
+cutoff:
+  theorem_scope: "all sufficiently small t>0 and the limit n->infinity"
+  algebraic_diagnostic_t_exponents: [8, 16, 32, 64]
+  polar_derivative_grid_intervals: 1024
+  reported_inverse_jacobian_rows: 4
+
+precision:
+  structural: >-
+    Exact algebra and real analysis, plus Jiang-Ruelle 2005 (opening Main
+    Theorem setup, Assumption A, Markov graph, and Properties of L). Ruelle
+    2009 Theorem 9 and Remark 16(a), together with corrected equation (1.1) in
+    the 2023 supplement to arXiv:2008.01654v4, provide independent published
+    spike-decomposition cross-checks.
+  decimal_digits: 180
+  u_bracket_digits: 100
+  inverse_jacobian_relative_tolerance: "1e-7"
+
+allowed_data:
+  - "the algebraic U_c equation and the exact first-return theorem already in the repository"
+  - "classical expanding-Markov RPF theory and published Misiurewicz density-structure theorems"
+  - "deterministic exact/high-precision algebraic diagnostics that do not use arithmetic targets"
+  - "legacy Paper 2 and Paper 3 source solely for claim correction"
+
+forbidden_data:
+  - "prime tables, primality predicates, prime-gap histograms, Riemann-zero tables, xi/zeta evaluations, or USTC data"
+  - "choosing the exponent or coefficient after inspecting a fitted gap tail"
+  - "using a floating-point orbit histogram as theorem evidence"
+  - "restoring the refuted ordinary-BV uniform-expansion claim for the raw first-return map"
+  - "calling the proof-coordinate RPF operator a Riemann Fredholm determinant"
+  - "mixing the A-conditional density normalization with the full f-acip normalization"
+
+training_split: "empty; no fitting and no target data"
+validation_split: >-
+  Algebraic identities U_c*rho^2=1-rho and U_c^3*rho=2; the two-band
+  construction; full-branch polar conjugacy; and the analytic expansion bound
+  inf|G'|=4/U_c^2>1.
+test_split: >-
+  Sealed inverse-Jacobian scales t=10^-8,10^-16,10^-32,10^-64; the
+  one-preimage endpoint ledger at -rho; positivity/continuity at zero from the
+  RPF theorem; the exact coefficient transformation; and the branch-mass
+  ratio derived from the previously proved endpoint-length limit.
+
+stopping_conditions:
+  - "NOT_TESTABLE if the invariant probability, density representative, or normalization is ambiguous"
+  - "REVISE if the polar conjugate is not full-branch or its expansion lower bound is not strictly greater than one"
+  - "REVISE if x=0 lies in the postcritical spike set or h has no finite positive trace there"
+  - "REJECTED if target arithmetic or zero data enters"
+  - "STOP_SCOPED for any attempt to infer a Riemann determinant from this density-only theorem"
+
+success_conditions:
+  - "prove existence, uniqueness, and full support of the named physical acip"
+  - "prove h is finite, continuous, and strictly positive at x=0"
+  - "derive the one-sided endpoint coefficient without a fitted parameter"
+  - "prove the asymptotic physical branch-mass ratio"
+  - "keep OBR-009 active for the raw unaccelerated first-return map"
+
+published_source_lock:
+  primary:
+    citation: >-
+      Yunping Jiang and David Ruelle, Analyticity of the Susceptibility
+      Function for Unimodal Markovian Maps of the Interval, Nonlinearity 18
+      (2005), 2447-2453, opening Main Theorem, Assumption A, Markovian graph,
+      and Properties of L.
+    doi: 10.1088/0951-7715/18/6/002
+    arxiv: "math/0501161"
+  spike_cross_check:
+    citation: >-
+      David Ruelle, Structure and f-Dependence of the A.C.I.M. for a Unimodal
+      Map f of Misiurewicz Type, Communications in Mathematical Physics 287
+      (2009), 1039-1070, Theorem 9 and Remark 16(a).
+    doi: 10.1007/s00220-008-0637-8
+    arxiv: "0710.2015"
+  corrected_formula_cross_check:
+    citation: >-
+      Viviane Baladi and Daniel Smania, Fractional Susceptibility Functions for
+      the Quadratic Family: Misiurewicz-Thurston Parameters, Communications in
+      Mathematical Physics 385 (2021), 1957-2007; corrected equation (1.1) in
+      the 2023 supplementary note to arXiv:2008.01654v4. The leading
+      C_k^(0) coefficient is unchanged from the published formula.
+    doi: 10.1007/s00220-021-04015-z
+    arxiv: "2008.01654v4"
