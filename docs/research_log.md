@@ -1232,7 +1232,7 @@ evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yam
 with source commit
 
 ```text
-28b0a1dee8a65057c3d3220f95cd0ce17c1d9db7
+cd2ba4e7fabbcb5ace2466427a57e4d500eeaa27
 ```
 
 ### Source lock
