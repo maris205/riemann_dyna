@@ -91,7 +91,7 @@ In particular, $T_{LR}$ is not divided by the symbolic length two.
 
 ## 2. Exact multiplier of the $R$ orbit
 
-Modulo $P(u)=0$, direct factorization gives
+Direct factorization in $\mathbb Z[u,x]$ gives
 
 \[
 S(x)-x
@@ -141,8 +141,10 @@ Let
 D_2(X)=\frac{S(S(X))-X}{S(X)-X}.
 \]
 
-The division is exact in $\mathbb Q(u)[X]$, and its roots are the points of
-formal exact period two for the polynomial map $S$. Put
+The division is exact in $\mathbb Q(u)[X]$ and gives the period-two
+dynatomic quotient for the polynomial map $S$. The primitive open-branch
+$LR$ orbit is supplied independently by the parent full-branch coding theorem,
+not by the quotient alone. Put
 
 \[
 M(X)=S'(X)S'(S(X)).

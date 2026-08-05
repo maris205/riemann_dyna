@@ -334,9 +334,7 @@ def exact_algebra_certificate() -> dict[str, Any]:
     )
     critical_is_strictly_increasing = 16 - 4 * 3 * 2 < 0
     computed_gates = {
-        "fixed_point_factorization_zero_mod_P": (
-            fixed_zero and fixed_denominators
-        ),
+        "fixed_point_factorization_is_exact": fixed_residual.is_zero,
         "right_fixed_multiplier_is_minus_alpha": (
             right_multiplier_zero and right_multiplier_denominators
         ),
@@ -389,7 +387,7 @@ def exact_algebra_certificate() -> dict[str, Any]:
         "critical_at_2": "2",
         "critical_derivative_discriminant": -8,
         "fixed_point_factorization": (
-            "S(x)-x=(u*x^2-x-1)*(u^2*x^2+u*x-u+1) mod P(u)"
+            "S(x)-x=(u*x^2-x-1)*(u^2*x^2+u*x-u+1) in Z[u,x]"
         ),
         "fixed_factor_reduced_coefficient_count": fixed_coefficient_count,
         "alpha": "4*(u-1)",

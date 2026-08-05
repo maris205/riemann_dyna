@@ -55,7 +55,7 @@ class LogisticUcPolarNonLatticeTests(unittest.TestCase):
     def test_fixed_point_and_dynatomic_identities_are_exact(self) -> None:
         algebra = self.report["exact_algebra_certificate"]
         gates = algebra["computed_gates"]
-        self.assertTrue(gates["fixed_point_factorization_zero_mod_P"])
+        self.assertTrue(gates["fixed_point_factorization_is_exact"])
         self.assertTrue(gates["right_fixed_multiplier_is_minus_alpha"])
         self.assertTrue(gates["dynatomic_division_is_exact"])
         self.assertTrue(gates["dynatomic_degree_is_12"])

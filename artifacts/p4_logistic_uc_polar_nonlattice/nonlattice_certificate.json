@@ -114,7 +114,7 @@
       "critical_root_is_strictly_between_3_over_2_and_2": true,
       "dynatomic_degree_is_12": true,
       "dynatomic_division_is_exact": true,
-      "fixed_point_factorization_zero_mod_P": true,
+      "fixed_point_factorization_is_exact": true,
       "intrinsic_roof_is_non_lattice": true,
       "period_ratio_is_irrational": true,
       "period_two_multiplier_identity_zero_mod_P": true,
@@ -129,7 +129,7 @@
     "critical_polynomial": "u^3-2*u^2+2*u-2",
     "dynatomic_degree": 12,
     "fixed_factor_reduced_coefficient_count": 1,
-    "fixed_point_factorization": "S(x)-x=(u*x^2-x-1)*(u^2*x^2+u*x-u+1) mod P(u)",
+    "fixed_point_factorization": "S(x)-x=(u*x^2-x-1)*(u^2*x^2+u*x-u+1) in Z[u,x]",
     "multiplier_identity_reduced_coefficient_count": 11,
     "relative_multiplier_polynomial": "H_u(m)=m^3+(48-16*u^2)*m^2+256*(1+u^2)*m-4096",
     "remaining_case_exclusion": "H_u(alpha^2)=-8192*(u-2)*(2*u-3) != 0 for 3/2<u<2",
@@ -183,14 +183,14 @@
   "provenance": {
     "external_target_data_used": false,
     "generator": "experiments/p4_logistic_uc_polar_nonlattice.py",
-    "generator_sha256": "51cc154fb3b2ccc3ba76db0b358974213fecd6a8cccbf65148026115b671d00e",
+    "generator_sha256": "14bfd022dd4d013b8377986723df0149fcb3192066e0d9ba8660b37b4fcee50e",
     "reproduction_command": "python3 experiments/p4_logistic_uc_polar_nonlattice.py --quiet --output artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json",
     "source_inputs_sha256": {
       "configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml": "e0b8285478c49366fe1f36237d18c2f6fb40c49fa9dae2acbb97be01dad0c354",
       "configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml": "b782753fe1d14014e42c75015f200a28ca3836fd2d35844c5cbc79a0fd0bc88f",
       "configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml": "8a830367d7f880a01f10278ae98a3fb020b8e5996f30f6e4836bb6017ab9e5e3",
       "formal/results/exact_uc_acip_endpoint_density.md": "750b63188bdae148376c40cebef5ba7670f152df2210eea2ea80816f3ca87487",
-      "formal/results/exact_uc_polar_nonlattice.md": "f5eab5047e313e1b5a88273e4b77e09e9ca87d92be8443d25a46b65f6a3b7faa"
+      "formal/results/exact_uc_polar_nonlattice.md": "410bc9aba7dadf48043e93ac4279b20ff10f8e0f3b99b23c3567608c4419468e"
     }
   },
   "route_a_effect": {
