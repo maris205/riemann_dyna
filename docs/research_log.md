@@ -1929,3 +1929,139 @@ clock and normalization, and do not compare zeros or define a determinant
 before that theorem exists.
 
 Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped audit).
+
+## 2026-08-05 — quantitative exact-$U_c$ branch-mass-ratio rate
+
+### Stable checkpoint
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: no new formal candidate. Scoped audit:
+`P4-LOGISTIC-UC-BRANCH-MASS-RATE`, strengthening
+`P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE` under parent candidate
+`P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`.
+
+Implementation source commit:
+`02727fceef6e7cde3fc4a4452ea409b2faa21f1f`.
+
+Source lock:
+`configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml`.
+It freezes the exact map and endpoint recursion, physical clock, full-acip
+normalization, absent determinant convention, cusp radius `1/200`, all branch
+indices `n>=6`, 100-digit Arb precision, one common endpoint coefficient,
+allowed and forbidden data, data boundaries, and stopping conditions.
+
+Route-A tuple:
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+overall: ROUTE_A_EXPLORATORY
+scoped audit verdict: GO_WITH_LIMITATIONS
+parent verdict: REVISE
+```
+
+Route-B tuple: not evaluated. Route B remains inactive and unauthorized.
+
+### Strongest evidence
+
+The frozen physical density belongs locally to
+
+\[
+\mathcal X_{1/200}
+=\{c\,t^{-1/2}+b(t):b\in L^\infty\},
+\qquad
+\|v\|=|c|+\|b\|_\infty.
+\]
+
+A complete directed Arb interval proves `7/20 < psi' < 9/25` and
+`0 < psi'' < 4/25` on the whole cusp domain. The sharp coefficient bound,
+explicit remainder, sealed endpoint `delta_5`, and exact Fraction ledger then
+give, for every `n>=6`,
+
+\[
+\left|
+\frac{\mu(C_{2n+2})}{\mu(C_{2n})}-\frac{U_c^2}{4}
+\right|
+\leq\frac{36}{5}\sqrt{\delta_{n-1}}
+<\frac{243}{625}\left(\frac35\right)^{n-6}.
+\]
+
+No target data enters. The same physical coefficient $C_h$ is retained in
+both adjacent masses; independent marginal coefficient intervals are not
+divided.
+
+### Strongest failure
+
+The branch masses are physical observables rather than arithmetic primitive
+periodic orbits. There is no phase, multiplicity, repetition, von-Mangoldt
+weight, $s$-dependent determinant, completed-$\xi$ structure, or natural
+quantization. The legacy ordinary-`BV` proof remains refuted, while
+`OBR-008` and `OBR-009` remain active.
+
+### New reusable knowledge
+
+An all-tail adjacent-cusp-mass theorem can be obtained from a frozen local
+Banach decomposition, one complete derivative interval, and exact endpoint
+contraction without claiming a transfer-operator spectral gap. The leading
+cusp coefficient must remain common across the adjacent-mass ledger.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `HP_HANDOFF.md`
+- `configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/prior_work/README.md`
+- `docs/prior_work/claims_matrix.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
+- `experiments/p4_logistic_uc_branch_mass_rate.py`
+- `formal/results/exact_uc_branch_mass_rate.md`
+- `tests/test_p4_logistic_uc_branch_mass_rate.py`
+- `artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+Focused rate audit: `12/12 passed`.
+
+Full repository: `135/135 passed`.
+
+```bash
+python3 experiments/p4_logistic_uc_branch_mass_rate.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json
+python3 -m unittest -v tests/test_p4_logistic_uc_branch_mass_rate.py
+python3 -m unittest discover -v
+python3 -c 'import flint; print(flint.__version__, flint.__FLINT_VERSION__)'
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml","evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+sha256sum artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json experiments/p4_logistic_uc_branch_mass_rate.py
+git diff --check
+```
+
+Artifact SHA-256:
+
+```text
+0f7af76d8214aab49a11ac3c4e6e577df2740d0cec8be64befc4e44052eda9a8  artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json
+```
+
+### Claim boundary
+
+Established: the cusp space, complete derivative certificate, exact rational
+constant ledger, and explicit physical adjacent-ratio rate for all `n>=6`.
+
+Not established: an exact finite-order mass law, ordinary-`BV` spectral gap,
+arithmetic orbit law, determinant, analytic completion, quantization, Route B,
+Hilbert--Polya, or RH.
+
+### Next smallest task
+
+Freeze the existing polar map $G$ with the intrinsic positive roof
+$\tau=\log|G'|$. Before any target comparison, audit whether the roof is
+non-lattice and whether a same-object analytic Fredholm determinant exists.
+
+Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped audit).

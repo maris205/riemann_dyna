@@ -457,10 +457,11 @@ This repairs the legacy mass-ratio conclusion without restoring the refuted
 ordinary-`BV` first-return proof. The validated sharp polar-cone audit uses a
 complete directed Arb cover to prove `0.20655<h(0)<0.40008`,
 `0.09461<C_h<0.18327`, and tighter intervals for four finite branch masses.
-It still does not prove the stronger legacy exponential-remainder formula.
-The next smallest task is a quantitative convergence rate for the physical
-branch-mass ratio in one frozen analytic or cusp-adapted norm. Do not introduce
-a non-lattice roof or target-zero comparison as part of that task.
+It still does not restore the legacy ordinary-BV spectral proof or an exact
+finite-order mass law. The cusp-adapted audit now proves an explicit
+adjacent-ratio rate from branch index 6 onward. The next smallest task is to
+freeze the polar map's intrinsic positive roof tau=log|G'| and audit its
+non-lattice behavior before any determinant or target comparison.
 
 Artifacts:
 
@@ -469,27 +470,32 @@ Artifacts:
 - `configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml`
+- `configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE/20260804T233200Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json`
 - `artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json`
+- `artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json`
 - `experiments/p4_logistic_uc_acip_endpoint_density.py`
 - `docs/literature/exact_uc_acip_density_sources.md`
 - `formal/results/exact_uc_first_return_support.md`
 - `formal/results/exact_uc_acip_endpoint_density.md`
 - `formal/results/exact_uc_acip_cone_enclosure.md`
 - `formal/results/exact_uc_acip_sharp_cone_enclosure.md`
+- `formal/results/exact_uc_branch_mass_rate.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
 - `tests/test_p4_logistic_uc_first_return_support.py`
 - `tests/test_p4_logistic_uc_acip_endpoint_density.py`
 - `tests/test_p4_logistic_uc_acip_sharp_cone_enclosure.py`
+- `tests/test_p4_logistic_uc_branch_mass_rate.py`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
 
 ---
@@ -1390,4 +1396,16 @@ new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE complete directed Arb cover, sharp invariant cone, and tighter certified masses for returns 12,14,16,18"
 commit: "f34117824702404fe0837f5811a5465d33cc65de"
 consequence: "The target-free full-domain certificate proves 0.17013<D<0.17014, h(0) in (0.20655,0.40008), and C_h in (0.09461,0.18327). This sharpens the measure-theoretic evidence but does not create an arithmetic primitive-orbit law or determinant, so Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL). Next prove a quantitative physical branch-mass-ratio rate in one frozen analytic or cusp-adapted norm; do not compare zeros."
+```
+
+## Status update — CLUE-A1-004 quantitative branch-mass-ratio rate
+
+```yaml
+date: 2026-08-05
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "P4-LOGISTIC-UC-BRANCH-MASS-RATE frozen cusp-adapted space, complete Arb derivative interval, exact Fraction rate ledger, and all-tail ratio theorem"
+commit: "02727fceef6e7cde3fc4a4452ea409b2faa21f1f"
+consequence: "For every n>=6, |mu(C_(2n+2))/mu(C_(2n))-U_c^2/4| <= (36/5)*sqrt(delta_(n-1)) < (243/625)*(3/5)^(n-6). This is a genuine measure-theoretic rate edge but does not create primitive arithmetic orbits or a determinant. Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL). Next freeze the intrinsic positive roof tau=log|G'| on the polar map and audit non-lattice/Fredholm conditions before target comparison."
 ```

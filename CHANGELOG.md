@@ -5,6 +5,29 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-05
 
+### Quantitative exact-$U_c$ physical branch-mass-ratio rate
+
+- Froze the local cusp-adapted space
+  $v(t)=c\,t^{-1/2}+b(t)$ with norm $|c|+\|b\|_\infty$ on
+  $0<t\leq1/200$.
+- Combined the sharp lower bound for the common endpoint coefficient, the
+  explicit cusp remainder, exact endpoint recursion, and one complete Arb
+  derivative interval to prove, for every $n\geq6$,
+  \[
+  \left|\frac{\mu(C_{2n+2})}{\mu(C_{2n})}-\frac{U_c^2}{4}\right|
+  \leq\frac{36}{5}\sqrt{\delta_{n-1}}
+  <\frac{243}{625}\left(\frac35\right)^{n-6}.
+  \]
+- Kept the common physical coefficient across adjacent masses; independent
+  marginal mass intervals were not divided.
+- Added an exact Fraction rate ledger, byte-identical artifact reproduction,
+  source hashes, focused tests, and a versioned Route-A evaluation.
+- Kept (A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL) / REVISE; the theorem gives
+  no arithmetic primitive-orbit law, determinant, quantization, Route B, or
+  RH consequence.
+
+Source state: 02727fceef6e7cde3fc4a4452ea409b2faa21f1f.
+
 ### Validated sharp exact-$U_c$ polar-cone enclosure
 
 - Replaced the coarse distortion bound by a complete directed Arb cover of

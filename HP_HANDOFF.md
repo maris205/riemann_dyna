@@ -1,5 +1,150 @@
 # HP-Dynamics Handoff
 
+## Current status — quantitative exact-$U_c$ branch-mass-ratio rate
+
+Current clue: `CLUE-A1-004`
+
+Candidate ID: no new formal candidate. Scoped audit:
+`P4-LOGISTIC-UC-BRANCH-MASS-RATE`, strengthening parent audit
+`P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE` and parent candidate
+`P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`.
+
+- Formal candidate: `false`
+- Implementation source commit: `02727fceef6e7cde3fc4a4452ea409b2faa21f1f`
+- Route-A evaluation:
+  `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall Route A: `ROUTE_A_EXPLORATORY`
+- Scoped verdict: `GO_WITH_LIMITATIONS`
+- Parent verdict: `REVISE`
+- Route-B tuple: not evaluated; Route B is inactive and not authorized
+
+### Source lock
+
+`configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml` fixes the exact
+$U_c$ Logistic map, physical branch endpoints and masses, the cusp space
+
+\[
+\mathcal X_{1/200}
+=\{c\,t^{-1/2}+b(t):b\in L^\infty(0,1/200]\},
+\qquad
+\|v\|=|c|+\|b\|_\infty,
+\]
+
+one physical iterate per clock tick, full-acip normalization, absent
+determinant convention, all branch indices $n\geq6$, 100-digit Arb precision,
+allowed and forbidden data, train/validation/test boundaries, and stopping
+conditions. Adjacent masses retain the same physical coefficient $C_h$;
+independent marginal coefficient intervals may not be divided.
+
+### Strongest evidence
+
+One directed Arb interval evaluation on the complete local domain proves
+
+```text
+7/20 < psi' < 9/25
+0 < psi'' < 4/25
+59/100 < q=U_c^2/4 < 3/5
+C_h > 9461/100000
+||b||_infinity <= 61/100
+sqrt(delta_5) < 27/500
+```
+
+The remaining ledger is exact Fraction arithmetic. For every $n\geq6$,
+
+\[
+\boxed{
+\left|
+\frac{\mu(C_{2n+2})}{\mu(C_{2n})}-\frac{U_c^2}{4}
+\right|
+\leq\frac{36}{5}\sqrt{\delta_{n-1}}
+<\frac{243}{625}\left(\frac35\right)^{n-6}.
+}
+\]
+
+This is an all-tail, target-free measure-theoretic theorem edge. It is not a
+fixed-order extrapolation and does not use prime, zero, zeta, xi, or USTC data.
+
+### Strongest failure
+
+Physical first-return branch masses are observables, not primitive periodic
+orbits. The rate supplies no arithmetic multiplicity, phase, repetition, or
+von-Mangoldt law. No $s$-dependent transfer operator, Fredholm determinant,
+completed-$\xi$ structure, or natural quantization is defined. `OBR-008` and
+`OBR-009` remain active, and the legacy ordinary-`BV` spectral proof remains
+refuted.
+
+### New reusable knowledge
+
+For adjacent cusp masses, cancellation of the common leading coefficient must
+be carried out in one joint ledger. Dividing independent marginal mass
+intervals permits incompatible values of $C_h$ and loses the rate. A frozen
+cusp decomposition plus a complete derivative interval and exact endpoint
+contraction can yield an all-tail ratio theorem without a spectral-gap claim.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `HP_HANDOFF.md`
+- `configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/prior_work/README.md`
+- `docs/prior_work/claims_matrix.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
+- `experiments/p4_logistic_uc_branch_mass_rate.py`
+- `formal/results/exact_uc_branch_mass_rate.md`
+- `tests/test_p4_logistic_uc_branch_mass_rate.py`
+- `artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+Focused rate audit: `12/12 passed`.
+
+Full repository: `135/135 passed`.
+
+```bash
+python3 experiments/p4_logistic_uc_branch_mass_rate.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json
+python3 -m unittest -v tests/test_p4_logistic_uc_branch_mass_rate.py
+python3 -m unittest discover -v
+python3 -c 'import flint; print(flint.__version__, flint.__FLINT_VERSION__)'
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml","evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+sha256sum artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json experiments/p4_logistic_uc_branch_mass_rate.py
+git diff --check
+```
+
+Artifact and generator SHA-256:
+
+```text
+0f7af76d8214aab49a11ac3c4e6e577df2740d0cec8be64befc4e44052eda9a8  artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json
+7d03c4217208fa2628e372cc62a5aebe9d53dbbdca12fadab6653ffd73281c54  experiments/p4_logistic_uc_branch_mass_rate.py
+```
+
+### Claim boundary and next smallest task
+
+Established: the frozen cusp-adapted space, a complete local derivative
+certificate, the shared-coefficient mass ledger, and the displayed explicit
+adjacent-ratio rate for every physical branch $n\geq6$.
+
+Not established: an exact finite-order mass law, ordinary-`BV` spectral gap,
+arithmetic primitive-orbit law, determinant, global analytic structure,
+quantization, Route B, Hilbert--Polya, or RH.
+
+Next smallest task: freeze the existing polar map $G$ and its intrinsic
+positive roof $\tau=\log|G'|$, including phase space, branches, physical
+clock, analytic function space, and determinant convention. Before any target
+comparison, decide whether the roof is non-lattice and whether a same-object
+analytic Fredholm determinant is mathematically defined.
+
+Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped audit).
+
 ## Current status — validated sharp exact-$U_c$ polar cone
 
 Current clue: `CLUE-A1-004`

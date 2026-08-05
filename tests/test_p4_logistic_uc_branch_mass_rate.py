@@ -136,6 +136,43 @@ class LogisticUcBranchMassRateTests(unittest.TestCase):
             "No determinant is defined",
         )
 
+    def test_route_a_evaluation_has_complete_schema_and_source_commit(self) -> None:
+        evaluation_path = Path(
+            "evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/"
+            "20260805T035348Z.yaml"
+        )
+        evaluation = yaml.safe_load(
+            evaluation_path.read_text(encoding="utf-8")
+        )
+        self.assertEqual(evaluation["a1"]["verdict"], "A1_WEAK")
+        self.assertEqual(evaluation["a2"]["verdict"], "A2_FAIL")
+        self.assertEqual(evaluation["a3"]["verdict"], "A3_FAIL")
+        self.assertEqual(evaluation["a4"]["verdict"], "A4_FAIL")
+        self.assertFalse(evaluation["route_b_invocation_allowed"])
+        self.assertEqual(
+            evaluation["source_commit"],
+            "02727fceef6e7cde3fc4a4452ea409b2faa21f1f",
+        )
+        self.assertIn(
+            "root_count_discrepancy",
+            evaluation["a2"]["metrics"],
+        )
+        for layer in ("a1", "a2", "a3", "a4"):
+            self.assertIn("artifacts", evaluation[layer])
+
+        source_commit = evaluation["source_commit"]
+        for path in (
+            rate.SOURCE_LOCK,
+            rate.FORMAL_RESULT,
+            rate.GENERATOR,
+            "artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json",
+            "tests/test_p4_logistic_uc_branch_mass_rate.py",
+        ):
+            subprocess.run(
+                ["git", "cat-file", "-e", f"{source_commit}:{path}"],
+                check=True,
+            )
+
     def test_formal_result_states_the_rate_and_nonclaims(self) -> None:
         proof = Path(rate.FORMAL_RESULT).read_text(encoding="utf-8")
         self.assertIn("Quantitative physical branch-mass-ratio rate", proof)

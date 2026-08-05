@@ -298,9 +298,12 @@ asymptotic mass ratio
 certified enclosures of `h(0)`, the absolute endpoint coefficient, and finite
 physical masses for returns 12, 14, 16, and 18. The validated sharp audit uses
 a complete Arb cover to obtain `0.20655<h(0)<0.40008`. It does not supply a
-finite-rank/resolvent enclosure, an exponential error law, the modeled
-tower measure/coupling, an arithmetic primitive-orbit correspondence, or a
-determinant. The unaccelerated induced map remains blocked as an ordinary
+finite-rank/resolvent enclosure, the modeled tower measure/coupling, an
+arithmetic primitive-orbit correspondence, or a
+determinant. A later cusp-adapted audit now proves an explicit adjacent
+physical-mass-ratio rate from branch index 6 onward, but it does not restore
+the ordinary-`BV` spectral argument or give an exact finite-order mass law. The
+unaccelerated induced map remains blocked as an ordinary
 uniformly expanding `BV` map by `OBR-009`, and the unit lattice clock remains
 blocked by `OBR-008`. The audit remains
 `P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`, with Route-A tuple
@@ -309,13 +312,14 @@ blocked by `OBR-008`. The audit remains
 Latest evaluation:
 
 ```text
-evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml
+evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml
 ```
 
-Next smallest test: prove a quantitative convergence rate for the physical
-branch-mass ratio in one frozen analytic or cusp-adapted norm. Freeze all
-discretization, truncation, rounding, normalization, stopping, and tail errors;
-no non-lattice roof or target-zero comparison is authorized.
+Next smallest test: freeze the polar map with the intrinsic positive roof
+`tau=log|G'|`, then audit non-lattice behavior and a same-object analytic
+Fredholm determinant. Freeze all discretization, truncation, rounding,
+normalization, stopping, and roof conventions; no target-zero comparison is
+authorized.
 
 汇总表：
 

@@ -400,11 +400,12 @@ physical-density theorem independently proves the mass-ratio conclusion,
 
 without restoring the failed ordinary-`BV` proof. Thus `OBR-009` remains an
 operator obstruction, while its direct-density reopening has successfully
-closed the narrower neighboring-mass-ratio obligation. The stronger legacy
-exponential-remainder statement remains open. A later complete Arb cone audit
-certifies sharper absolute density and finite-mass intervals, but supplies no
-spectral gap or quantitative convergence rate and therefore does not remove
-this obstruction.
+closed the neighboring-mass-ratio limit. A later complete Arb cone audit
+certifies sharper absolute density and finite-mass intervals. The subsequent
+cusp-adapted audit also proves an explicit geometric rate for adjacent mass
+ratios, without supplying a spectral gap. Any stronger legacy finite-order
+mass formula not implied by this ratio rate remains open, and none of these
+direct density results removes this operator obstruction.
 
 Scope:
 The full negative-event first-return map on the exact physical core, with its
@@ -416,9 +417,10 @@ Reopening condition:
 Freeze one replacement domain and operator ledger, including its return
 convention, branch endpoints, function space, norm, distortion estimates, and
 action on the square-root singularity. Prove those properties before restoring
-any spectral-gap or Fredholm claim. The branch-weight ratio limit no longer
-needs this reopening because it has a separate direct proof; an exponential
-remainder still requires additional control.
+any spectral-gap or Fredholm claim. The branch-weight ratio limit and its
+explicit convergence rate no longer need this reopening because they have a
+separate cusp-adapted proof; an exact finite-order mass law or operator theorem
+still requires additional control.
 
 Artifacts:
 
@@ -429,12 +431,16 @@ Artifacts:
 - `formal/results/exact_uc_acip_endpoint_density.md`
 - `formal/results/exact_uc_acip_cone_enclosure.md`
 - `formal/results/exact_uc_acip_sharp_cone_enclosure.md`
+- `formal/results/exact_uc_branch_mass_rate.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json`
 - `artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json`
+- `artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
 - `tests/test_p4_logistic_uc_first_return_support.py`
 - `tests/test_p4_logistic_uc_acip_endpoint_density.py`
 - `tests/test_p4_logistic_uc_acip_sharp_cone_enclosure.py`
+- `tests/test_p4_logistic_uc_branch_mass_rate.py`

@@ -351,10 +351,23 @@ Consequently,
 =0.59574394197656\ldots.
 \]
 
-This is an asymptotic theorem, not an exact finite-$n$ geometric law. A later
-target-free, complete Arb polar-cone certificate proves
-$0.20655<h(0)<0.40008$ and tighter selected finite branch masses, but it does
-not give a closed form, a narrow high-accuracy value, or a quantitative rate.
+This is not an exact finite-$n$ geometric law. A later target-free, complete
+Arb polar-cone certificate proves $0.20655<h(0)<0.40008$ and tighter selected
+finite branch masses. The subsequent cusp-adapted audit strengthens the ratio
+limit to
+
+\[
+\left|
+\frac{\mu_{\rm ac}(C_{2n+2})}{\mu_{\rm ac}(C_{2n})}
+-\frac{U_c^2}{4}
+\right|
+<
+\frac{243}{625}\left(\frac35\right)^{n-6},
+\qquad n\geq6.
+\]
+
+This still gives neither a closed form, a narrow high-accuracy value, nor an
+exact finite-order mass law.
 
 The domain qualification is essential. On ambient `[-1,1]`, the transient
 interval `[-1,-rho)` supplies all odd return labels, so
@@ -742,8 +755,9 @@ not supply an A2 Riemann clock.
   existence of at least one full lift per primitive tower orbit.
 - The named physical acip has full support, every physical branch has positive
   mass, and the asymptotic mass ratio is proved. A validated sharp-cone
-  interval for $h(0)$ and selected finite branch masses is certified; no
-  closed form, quantitative rate, or exact finite-order weight law is known.
+  interval for $h(0)$ and selected finite branch masses is certified, and the
+  adjacent-mass ratio has an explicit geometric convergence rate; no closed
+  form or exact finite-order weight law is known.
 - No Fredholm, Ruelle, Koopman, or transfer-operator determinant is defined.
 - No analytic continuation, functional equation, Gamma factor, trivial-zero
   ledger, or completed-ξ divisor is established.
@@ -758,8 +772,9 @@ not supply an A2 Riemann clock.
   by a direct density theorem, not by restoring that proof.
 - A closed form or narrow high-accuracy enclosure for $h(0)$ remains open. The
   complete Arb sharp-cone audit certifies a substantially tighter safe interval
-  and four selected finite branch masses, but no quantitative branch-mass
-  convergence rate.
+  and four selected finite branch masses. The cusp-adapted theorem now gives a
+  quantitative adjacent-ratio rate, but not the legacy ordinary-BV spectral
+  mechanism or an exact finite-order mass formula.
 - Full fibre-root multiplicities, tangencies, and completeness remain open.
 - Logistic critical fibres are noninvertible and not uniformly expanding, so
   standard nuclear transfer-operator theorems do not apply automatically to

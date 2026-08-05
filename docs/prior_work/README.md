@@ -135,16 +135,28 @@ which gives
 \longrightarrow\frac1{2U_c(U_c-1)}.
 \]
 
-This does not prove the stronger Paper-2 formula with an exponentially bounded
-remainder. A later target-free sharp polar-cone theorem gives the validated
-interval $0.20655<h(0)<0.40008$ and tighter selected finite branch masses. A
-closed form, a narrow high-accuracy value, a quantitative rate, and an exact
-finite-order weight law remain open. See:
+This does not restore the stronger Paper-2 formula or its ordinary-BV
+spectral proof. A later target-free sharp polar-cone theorem gives the
+validated interval $0.20655<h(0)<0.40008$ and tighter selected finite branch
+masses. The subsequent cusp-adapted audit proves the adjacent-mass-ratio rate
+
+\[
+\left|
+\frac{\mu(C_{2n+2})}{\mu(C_{2n})}-\frac{U_c^2}{4}
+\right|
+<
+\frac{243}{625}\left(\frac35\right)^{n-6},
+\qquad n\geq6.
+\]
+
+A closed form, a narrow high-accuracy value, and an exact finite-order weight
+law remain open. See:
 
 - `formal/results/exact_uc_first_return_support.md`;
 - `formal/results/exact_uc_acip_endpoint_density.md`;
 - `formal/results/exact_uc_acip_cone_enclosure.md`;
 - `formal/results/exact_uc_acip_sharp_cone_enclosure.md`;
+- `formal/results/exact_uc_branch_mass_rate.md`;
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`.
 
 ---

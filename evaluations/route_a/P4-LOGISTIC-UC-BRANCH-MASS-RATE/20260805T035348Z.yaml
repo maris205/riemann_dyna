@@ -1,0 +1,169 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+audit_id: P4-LOGISTIC-UC-BRANCH-MASS-RATE
+parent_audit_id: P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE
+formal_candidate: false
+source_commit: 02727fceef6e7cde3fc4a4452ea409b2faa21f1f
+evaluation_date: "2026-08-05T03:53:48Z"
+
+source_lock:
+  object: >-
+    Exact-U_c Logistic map, exact physical first-return endpoints
+    delta_n=rho-r_n, full-acip branch masses M_n=mu_ac(C_(2n)), and the
+    local cusp space X_(1/200)={c*t^(-1/2)+b(t): b in L-infinity}.
+  data_type: >-
+    Exact calculus and Fraction inequalities, exact rational endpoint
+    enclosures, the parent endpoint remainder and sharp C_h lower bound, and
+    one complete Arb interval evaluation of psi' and psi''.
+  clock: >-
+    One f iterate is one physical tick; C_(2n) retains physical return label
+    2n and n is only a branch index.
+  normalization: >-
+    mu_ac(J)=1, h=d mu_ac/dx, and one common endpoint coefficient C_h is
+    retained across adjacent branch masses.
+  determinant_convention: >-
+    No determinant is defined; this is a local physical-measure theorem.
+  cutoff: >-
+    Cusp radius 1/200, all branch indices n>=6, derivative bounds
+    7/20<psi'<9/25 and 0<psi''<4/25, and rate constants 36/5,
+    243/625, and 3/5.
+  precision: >-
+    python-flint 0.9.0, FLINT 3.6.0, Arb 100 decimal digits, a certified
+    100-digit U_c root bracket, and exact rational rate gates.
+  training_data: "empty; no fitting and no target data"
+  validation_data: >-
+    Environment, root bracket, full local derivative interval, cusp norm,
+    shared-coefficient ledger, and exact rational rate inequalities.
+  test_data: >-
+    Sealed delta_5 endpoint interval, byte-identical artifact reproduction,
+    source-input hashes, and final local/exponential rate statements.
+  allowed_data:
+    - exact U_c algebra and exact first-return endpoint recursion
+    - parent endpoint remainder and sharp coefficient lower bound
+    - directed Arb intervals and exact Fraction arithmetic
+  forbidden_data:
+    - prime/zero tables, xi/zeta evaluations, USTC data, or target fitting
+    - different endpoint coefficients in adjacent mass bounds
+    - ordinary-BV spectral-gap restoration from the cusp norm
+    - determinant, quantization, Route-B, Hilbert-Polya, or RH claims
+  stopping_conditions:
+    - "NOT_TESTABLE if the cusp decomposition or common normalization is unavailable"
+    - "REVISE if a derivative, start-radius, or rational rate gate fails"
+    - "REJECTED if arithmetic target data enters"
+    - "STOP_SCOPED for spectral-gap, determinant, quantization, Route-B, or RH inference"
+  error_budget_categories:
+    discretization: "none; one Arb interval covers the local domain"
+    truncation: "none; every branch n>=6 is covered"
+    rounding: "100-digit Arb balls and exact Fraction gates"
+    normalization: "one common full-acip C_h is retained"
+    iteration_stopping: "none"
+    resolvent_tail: "none; the cusp remainder controls the tail directly"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: NUMERICALLY_CERTIFIED
+  strongest_evidence: >-
+    The frozen cusp space, full-interval derivative certificate, and exact
+    rational ledger prove for every n>=6 that
+    |M_(n+1)/M_n-U_c^2/4| <= (36/5)*sqrt(delta_(n-1))
+    < (243/625)*(3/5)^(n-6). This is target-free and preserves the common
+    physical endpoint coefficient.
+  strongest_failure: >-
+    Branch masses are invariant-measure observables, not primitive periodic
+    orbits, and their single geometric ratio carries no arithmetic
+    multiplicity, phase, repetition, or von-Mangoldt law.
+  metrics:
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    cusp_radius: "1/200"
+    minimum_branch_index: 6
+    target_ratio: "U_c^2/4"
+    local_rate_constant: "36/5"
+    exponential_rate_prefactor: "243/625"
+    exponential_rate_base: "3/5"
+    all_tail_gate_count: 19
+    exact_finite_mass_law: false
+  artifacts:
+    - configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml
+    - formal/results/exact_uc_branch_mass_rate.md
+    - artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The theorem keeps one physical clock, normalization, and shared cusp
+    coefficient across every adjacent ratio.
+  strongest_failure: >-
+    It defines no primitive-orbit trace, s-dependent transfer operator,
+    Fredholm determinant, root ledger, or completed-xi divisor. OBR-008 still
+    blocks every unit-lattice determinant built only from return labels 2n.
+  metrics:
+    zero_error_train: not_testable_no_target_data
+    zero_error_validation: not_testable_no_target_determinant
+    zero_error_test: not_testable_no_target_determinant
+    extra_zero_count: not_testable
+    missing_zero_count: not_testable
+    root_count_discrepancy: not_testable
+    cutoff_drift: no determinant cutoff exists
+    precision_drift: frozen 100-digit Arb certificate; no zeros evaluated
+    control_margin: "88447/12500 < 36/5"
+    fredholm_determinant_defined: false
+  artifacts: []
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The adjacent-ratio estimate is a genuine all-tail theorem rather than a
+    fixed-order numerical extrapolation.
+  strongest_failure: >-
+    No functional equation, Gamma/trivial-zero ledger, analytic continuation,
+    Riemann-von Mangoldt law, or divisor equality is defined.
+  metrics:
+    conjugation_symmetry: not_applicable_no_determinant
+    functional_equation: false
+    gamma_factor: false
+    analytic_continuation: false
+    target_counting_law: false
+    moving_order_control: "proved only for physical branch-mass ratios"
+  artifacts: []
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The exact Logistic map and its polar proof coordinate remain coherent
+    classical dynamical objects.
+  strongest_failure: >-
+    The cusp norm supplies no natural Hilbert space, operator domain,
+    self-adjointness, or same-clock quantization.
+  metrics:
+    natural_hilbert_space: null
+    operator_domain: null
+    route_b_ready: false
+  artifacts: []
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_audit_verdict: REVISE
+claim_boundary:
+  established:
+    - "frozen cusp-adapted density space and certified adjacent-mass-ratio rate"
+    - "explicit geometric convergence bound for every physical branch n>=6"
+  not_established:
+    - "exact finite-n mass law or ordinary-BV spectral gap"
+    - "arithmetic orbit law, determinant, global analytic structure, quantization, Route B, or RH"
+blocking_conditions:
+  - physical branch masses are not arithmetic primitive periodic orbits
+  - OBR-009 still blocks the unaccelerated ordinary-BV operator route
+  - OBR-008 still blocks every determinant using only the unit return clock
+  - no same-object non-lattice roof, s-dependent determinant, or quantization
+route_b_invocation_allowed: false
+next_smallest_test: >-
+  Freeze the existing polar map G with the intrinsic positive roof
+  tau=log|G'| and determine, before any target comparison, whether the roof is
+  non-lattice and whether one same-object analytic Fredholm determinant is
+  mathematically defined. If that object is not frozen, stop the Logistic
+  track rather than refine more density constants.
