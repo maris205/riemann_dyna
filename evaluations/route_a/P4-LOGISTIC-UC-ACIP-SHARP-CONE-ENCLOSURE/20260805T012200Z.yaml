@@ -1,0 +1,164 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+audit_id: P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE
+parent_audit_id: P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE
+formal_candidate: false
+source_commit: f34117824702404fe0837f5811a5465d33cc65de
+evaluation_date: "2026-08-05T01:22:00Z"
+
+source_lock:
+  object: >-
+    Exact-U_c Logistic map f(x)=1-U_c*x^2 on J=[-(U_c-1),1], with the
+    reflected polar proof map G=q^(-1)o(-f^2)o q and the exact inverse-weight
+    distortion R(t,U_c)=|d_eta log a|^2 on t in [0,1].
+  data_type: >-
+    Arb directed real-ball arithmetic over 262144 closed intervals, the
+    certified algebraic root bracket, the parent analytic cone theorem, and
+    exact rational endpoint intervals. Point samples and finite-rank residuals
+    are excluded as supremum or infinite-dimensional evidence.
+  clock: >-
+    One f iterate is one physical tick. f^2 and theta are proof coordinates;
+    physical return labels remain 2n.
+  normalization: >-
+    Integral w=1, g_A(0)=w(0)/rho=2h(0), and
+    C_h=h(0)/(sqrt(2)*U_c).
+  determinant_convention: >-
+    No determinant is defined; the density transfer operator is s-independent.
+  cutoff: >-
+    t-domain [0,1], 2^18 closed cells, lower witness
+    [0.75575,0.75576], D thresholds 0.17013 and 0.17014, returns
+    12,14,16,18, endpoint radius 1/200.
+  precision: >-
+    python-flint 0.9.0, FLINT 3.6.0, Arb 100 decimal digits, and a
+    certified 100-digit U_c root bracket.
+  training_data: "empty; no fitting and no target data"
+  validation_data: >-
+    Environment versions, root bracket, denominator positivity, full-cover
+    upper threshold, exact cone identity, and safe density intervals.
+  test_data: >-
+    Sealed lower witness, four finite branch masses, artifact hashes, and
+    byte-identical CLI reproduction.
+  allowed_data:
+    - exact U_c algebra and parent exact cone/endpoint theorems
+    - Arb directed intervals at the frozen version and precision
+    - exact rational branch endpoints
+  forbidden_data:
+    - prime or zero tables, xi/zeta evaluations, USTC data, or target fitting
+    - point samples used as a supremum certificate
+    - Ulam residuals used as resolvent or tail bounds
+    - determinant, quantization, Route-B, Hilbert-Polya, or RH claims
+  stopping_conditions:
+    - "NOT_TESTABLE if the frozen Arb/FLINT environment is unavailable"
+    - "REVISE if a denominator, cover threshold, or lower witness gate fails"
+    - "REJECTED if arithmetic target data enters"
+    - "STOP_SCOPED for determinant, quantization, Route-B, or RH inference"
+  error_budget_categories:
+    discretization: "2^18 closed cells cover the complete domain"
+    truncation: "not used"
+    rounding: "Arb directed balls at 100 decimal digits"
+    normalization: "w -> g_A -> h -> C_h is explicit"
+    iteration_stopping: "not used"
+    resolvent_tail: "not used; the analytic cone supplies the global density control"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: NUMERICALLY_CERTIFIED
+  strongest_evidence: >-
+    A complete Arb interval cover proves 0.17013<D<0.17014. Together with
+    kappa<0.595744 this validates the cone slope 42535/101064 and safe bounds
+    0.20655<h(0)<0.40008 and 0.09461<C_h<0.18327. The inherited explicit
+    endpoint remainder tightens certified positive masses for returns
+    12,14,16,18.
+  strongest_failure: >-
+    The interval is still broad and the finite masses are enclosures rather
+    than an exact weight law or exponential-remainder theorem. Return branches
+    remain observables, not arithmetic primitive periodic orbits.
+  metrics:
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    distortion_lower: "0.17013"
+    distortion_upper: "0.17014"
+    full_closed_cover_intervals: 262144
+    h_zero_enclosure: "[0.20655,0.40008]"
+    endpoint_coefficient_enclosure: "[0.09461,0.18327]"
+    certified_physical_returns: [12, 14, 16, 18]
+    finite_rank_resolvent_certified: false
+  artifacts:
+    - configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml
+    - formal/results/exact_uc_acip_sharp_cone_enclosure.md
+    - artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The validated transfer-operator distortion controls only the invariant
+    density and preserves all clock and normalization ledgers.
+  strongest_failure: >-
+    No primitive-orbit trace, s-dependent Fredholm determinant, completed-xi
+    divisor, or escape from OBR-008/OBR-009 is obtained.
+  metrics:
+    zero_error_train: not_testable_no_target_data
+    zero_error_validation: not_testable_no_target_determinant
+    zero_error_test: not_testable_no_target_determinant
+    extra_zero_count: not_testable
+    missing_zero_count: not_testable
+    root_count_discrepancy: not_testable
+    cutoff_drift: no determinant cutoff exists
+    precision_drift: frozen 100-digit Arb certificate; no zeros evaluated
+    control_margin: "D<0.17014 and kappa<0.595744"
+    fredholm_determinant_defined: false
+  artifacts: []
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The density statement is target-free and globally validated on its compact
+    distortion domain.
+  strongest_failure: >-
+    No functional equation, Gamma/trivial-zero ledger, continuation theorem,
+    Riemann-von Mangoldt law, or divisor equality is defined.
+  metrics:
+    conjugation_symmetry: not_applicable_no_determinant
+    functional_equation: false
+    gamma_factor: false
+    analytic_continuation: false
+    target_counting_law: false
+  artifacts: []
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The uniformly expanding polar map is a coherent analytic proof object.
+  strongest_failure: >-
+    It supplies no natural Hilbert space, operator domain, self-adjointness,
+    or same-clock quantization.
+  metrics:
+    natural_hilbert_space: null
+    operator_domain: null
+    route_b_ready: false
+  artifacts: []
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_audit_verdict: REVISE
+claim_boundary:
+  established:
+    - "complete validated distortion cover and sharp cone constant"
+    - "safe h(0), C_h, and four finite physical mass enclosures"
+  not_established:
+    - "closed form, narrow resolvent enclosure, or exponential finite-order remainder"
+    - "arithmetic orbit law, determinant, global analytic structure, quantization, Route B, or RH"
+blocking_conditions:
+  - first-return observables are not arithmetic primitive periodic orbits
+  - OBR-009 blocks the ordinary-BV unaccelerated first-return route
+  - OBR-008 blocks the unit-lattice determinant route
+  - no same-object s-dependent Fredholm determinant or natural quantization
+route_b_invocation_allowed: false
+next_smallest_test: >-
+  Derive a quantitative convergence rate for the physical branch-mass ratio
+  from an explicitly frozen analytic or cusp-adapted operator norm. Do not
+  compare zeros or introduce a determinant before that theorem is defined.

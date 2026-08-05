@@ -1717,7 +1717,7 @@ Normalization on `[-pi/2,pi/2]`, followed by the explicit `g_A=2h` ledger,
 gives the following coarse certified intervals:
 
 ```text
-w(0) in [0.1668010108790061, 0.5418010108790061]
+w(0) in [0.1668010108790061, 0.5418010108790062]
 h(0) in [0.1533974450330445, 0.4982637116356998]
 C_h=h(0)/(sqrt(2)*U_c) in [0.0702656899853137, 0.2282361579437252]
 ```
@@ -1774,3 +1774,158 @@ c0933c7a9df45f38fb403541aab7643e4e1f771bf7c277e4d144b80cb63f635d  artifacts/p4_l
 Next smallest task: prove a quantitative branch-mass remainder or a frozen
 cusp-adapted finite-rank/resolvent tail bound. Do not compare zeros or add a
 non-lattice roof before that object is defined.
+
+## 2026-08-05 — validated sharp exact-$U_c$ polar-cone enclosure
+
+### Stable checkpoint
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: no new formal candidate. Scoped audit:
+`P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE`, strengthening parent candidate
+`P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`.
+
+Source lock:
+`configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml`.
+It freezes the exact algebraic map, physical clock, `w -> g_A -> h -> C_h`
+normalization, absent determinant convention, $2^{18}$ closed-cell cover,
+100-digit Arb precision, `python-flint 0.9.0`, FLINT `3.6.0`, allowed and
+forbidden data, train/validation/test boundaries, and stopping conditions.
+
+Implementation source commit:
+`f34117824702404fe0837f5811a5465d33cc65de`.
+
+Route-A tuple:
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+overall: ROUTE_A_EXPLORATORY
+scoped audit verdict: GO_WITH_LIMITATIONS
+parent verdict: REVISE
+```
+
+Route-B tuple: not evaluated. Route B remains inactive and unauthorized.
+
+### Strongest evidence
+
+The independently derived distortion identity
+
+\[
+R(t,U_c)=
+\frac{U_c y(\rho^2-y)(U_c^2y-3U_c+2)^2}
+ {16(1-y)(2-U_cy)(1-U_cy)^4},
+\qquad y=\rho^2t,
+\]
+
+is evaluated by directed Arb balls on a complete cover of `t in [0,1]`.
+Every denominator is strictly positive, all $2^{18}$ cells lie below the
+upper threshold, and the sealed witness interval lies above the lower
+threshold. Therefore
+
+```text
+0.17013 < D=sup|d_eta log(a)| < 0.17014
+kappa=U_c^2/4 < 0.595744
+A=42535/101064
+0.17014 + 0.595744*A = A
+```
+
+The resulting target-free safe enclosures are
+
+```text
+w(0)   in [0.22460, 0.43504]
+g_A(0) in [0.41310, 0.80016]
+h(0)   in [0.20655, 0.40008]
+C_h    in [0.09461, 0.18327]
+```
+
+Together with the inherited explicit endpoint remainder, they give
+
+```text
+C_12: [0.0029623667412445, 0.0090289530684826]
+C_14: [0.0020334760261950, 0.0051059183301683]
+C_16: [0.0013068364718538, 0.0029454892619841]
+C_18: [0.0008124254452971, 0.0017206760060806]
+```
+
+### Strongest failure
+
+The safe density interval remains broad, and no quantitative convergence rate
+or exponential finite-order remainder is proved. The certified branches are
+first-return observables, not arithmetic primitive periodic orbits. There is
+no $s$-dependent Fredholm determinant, analytic completion, or quantization;
+`OBR-008` and `OBR-009` remain active.
+
+### New reusable knowledge
+
+A complete directed interval cover can sharpen an infinite-dimensional
+analytic cone bound without introducing Ulam truncation or pretending that a
+finite-rank residual is a resolvent theorem. Closed cells cover every
+between-grid point; interval dependency can only widen the enclosure. The
+finite-mass certificate must also seal endpoint-radius, interval-order, and
+physical-return-label gates.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `HP_HANDOFF.md`
+- `configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/prior_work/README.md`
+- `docs/prior_work/claims_matrix.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml`
+- `experiments/p4_logistic_uc_acip_sharp_cone_enclosure.py`
+- `formal/results/exact_uc_acip_sharp_cone_enclosure.md`
+- `tests/test_p4_logistic_uc_acip_sharp_cone_enclosure.py`
+- `artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests
+
+Focused sharp-cone audit: `12/12 passed`.
+
+Full repository: `123/123 passed`.
+
+Artifact SHA-256:
+
+```text
+dec8f8c1a6a7dc329d3338fc835ac34e538c0555283d2cc968c09c31e5e5e231  artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json
+```
+
+### Reproduction commands
+
+```bash
+python3 experiments/p4_logistic_uc_acip_sharp_cone_enclosure.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json
+python3 -m unittest -v tests/test_p4_logistic_uc_acip_sharp_cone_enclosure.py
+python3 -m unittest discover -v
+python3 -c 'import flint; print(flint.__version__, flint.__FLINT_VERSION__)'
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml","evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+sha256sum artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json
+git diff --check
+```
+
+### Claim boundary
+
+Established: the complete full-domain distortion certificate, the sharper
+safe density and endpoint-coefficient intervals, and tighter positive absolute
+masses for four sealed physical returns.
+
+Not established: a closed form, narrow high-accuracy density enclosure,
+quantitative or exponential branch-mass remainder, arithmetic primitive-orbit
+law, determinant, analytic completion, quantization, Route B, Hilbert--Polya,
+or RH.
+
+### Next smallest task
+
+Prove a quantitative convergence rate for the physical branch-mass ratio in
+one explicitly frozen analytic or cusp-adapted norm. Preserve the physical
+clock and normalization, and do not compare zeros or define a determinant
+before that theorem exists.
+
+Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped audit).

@@ -1,5 +1,132 @@
 # HP-Dynamics Handoff
 
+## Current status — validated sharp exact-$U_c$ polar cone
+
+Current clue: `CLUE-A1-004`
+
+Candidate ID: no new formal candidate. Scoped audit:
+`P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE`, strengthening parent candidate
+`P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`.
+
+- Formal candidate: `false`
+- Implementation source commit: `f34117824702404fe0837f5811a5465d33cc65de`
+- Route-A evaluation:
+  `evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Scoped verdict: `GO_WITH_LIMITATIONS`
+- Parent verdict: `REVISE`
+- Route-B tuple: not evaluated; Route B is inactive and not authorized
+
+### Source lock
+
+`configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml` fixes the
+exact distortion formula, the 100-digit $U_c$ bracket, `python-flint 0.9.0`,
+FLINT `3.6.0`, 100 decimal digits, a $2^{18}$ closed cover of `t in [0,1]`,
+the lower-witness interval, cone slope, normalizations, finite returns, allowed
+data, and stopping conditions.
+
+### Strongest evidence
+
+An Arb directed interval cover proves
+
+```text
+0.17013 < D=sup|d_eta log(a)| < 0.17014
+kappa=U_c^2/4 < 0.595744
+A=42535/101064
+0.17014 + 0.595744*A = A
+```
+
+The resulting target-free safe enclosures are
+
+```text
+w(0)   in [0.22460, 0.43504]
+g_A(0) in [0.41310, 0.80016]
+h(0)   in [0.20655, 0.40008]
+C_h    in [0.09461, 0.18327]
+```
+
+Using the inherited explicit endpoint remainder, the physical mass intervals
+are tightened to
+
+```text
+C_12: [0.0029623667412445, 0.0090289530684826]
+C_14: [0.0020334760261950, 0.0051059183301683]
+C_16: [0.0013068364718538, 0.0029454892619841]
+C_18: [0.0008124254452971, 0.0017206760060806]
+```
+
+### Strongest failure and reusable knowledge
+
+The interval is still broad and no exponential finite-order remainder is
+proved. The computation certifies an analytic cone constant; it is not a
+finite-rank resolvent theorem and does not create an arithmetic primitive-orbit
+law or determinant. `OBR-008` and `OBR-009` remain active.
+
+Reusable knowledge: a full directed interval cover can sharpen the analytic
+cone without introducing an operator truncation. Closed cells cover every
+between-grid point; interval dependency only widens the result. Finite-mass
+certification must also seal endpoint-radius, interval-order, and physical-label
+gates.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `HP_HANDOFF.md`
+- `configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/prior_work/README.md`
+- `docs/prior_work/claims_matrix.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml`
+- `experiments/p4_logistic_uc_acip_sharp_cone_enclosure.py`
+- `formal/results/exact_uc_acip_sharp_cone_enclosure.md`
+- `tests/test_p4_logistic_uc_acip_sharp_cone_enclosure.py`
+- `artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+Focused sharp-cone audit: `12/12 passed`.
+
+Full repository: `123/123 passed`.
+
+```bash
+python3 experiments/p4_logistic_uc_acip_sharp_cone_enclosure.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json
+python3 -m unittest -v tests/test_p4_logistic_uc_acip_sharp_cone_enclosure.py
+python3 -m unittest discover -v
+python3 -c 'import flint; print(flint.__version__, flint.__FLINT_VERSION__)'
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml","evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+sha256sum artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json
+git diff --check
+```
+
+Artifact SHA-256:
+
+```text
+dec8f8c1a6a7dc329d3338fc835ac34e538c0555283d2cc968c09c31e5e5e231  artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json
+```
+
+### Claim boundary and next smallest task
+
+Established: the full-domain distortion certificate, sharper safe density and
+endpoint-coefficient intervals, and four tighter physical branch masses.
+
+Not established: a closed form, narrow high-accuracy or resolvent enclosure,
+quantitative or exponential finite-order remainder, arithmetic orbit law,
+determinant, analytic completion, quantization, Route B, Hilbert--Pólya, or RH.
+
+Next smallest task: derive a quantitative convergence rate for the physical
+branch-mass ratio in an explicitly frozen analytic or cusp-adapted norm. Do not
+compare zeros or define a determinant before that theorem exists.
+
+Recommended verdict: `REVISE`.
+
 ## Current status — exact-$U_c$ polar-cone density enclosure
 
 Current clue: `CLUE-A1-004`
@@ -39,7 +166,7 @@ distortion is below `3/10`, and
 `3/10+(3/5)(3/4)=3/4`. Normalization then gives the coarse target-free bounds
 
 ```text
-w(0) in [0.1668010108790061, 0.5418010108790061]
+w(0) in [0.1668010108790061, 0.5418010108790062]
 h(0) in [0.1533974450330445, 0.4982637116356998]
 C_h in [0.0702656899853137, 0.2282361579437251]
 ```

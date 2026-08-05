@@ -294,10 +294,11 @@ finite-word alphabet provenance from a modeling choice to `PROVED`, but
 the subsequent endpoint-density theorem now also proves existence and full
 support of the physical acip, positivity of every physical branch, and the
 asymptotic mass ratio
-`1/(2*U_c*(U_c-1))`. The later polar-cone audit additionally gives a coarse
-target-free certified enclosure of `h(0)`, the absolute endpoint coefficient,
-and finite physical masses for returns 12, 14, 16, and 18. It does not supply a
-sharp finite-rank/resolvent enclosure, an exponential error law, the modeled
+`1/(2*U_c*(U_c-1))`. The later polar-cone audits additionally give target-free
+certified enclosures of `h(0)`, the absolute endpoint coefficient, and finite
+physical masses for returns 12, 14, 16, and 18. The validated sharp audit uses
+a complete Arb cover to obtain `0.20655<h(0)<0.40008`. It does not supply a
+finite-rank/resolvent enclosure, an exponential error law, the modeled
 tower measure/coupling, an arithmetic primitive-orbit correspondence, or a
 determinant. The unaccelerated induced map remains blocked as an ordinary
 uniformly expanding `BV` map by `OBR-009`, and the unit lattice clock remains
@@ -308,12 +309,12 @@ blocked by `OBR-008`. The audit remains
 Latest evaluation:
 
 ```text
-evaluations/route_a/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE/20260804T233200Z.yaml
+evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml
 ```
 
-Next smallest test: sharpen the coarse cone only with a validated finite-rank
-resolvent/tail theorem or prove a quantitative branch-mass remainder. Freeze
-all discretization, truncation, rounding, normalization, and stopping errors;
+Next smallest test: prove a quantitative convergence rate for the physical
+branch-mass ratio in one frozen analytic or cusp-adapted norm. Freeze all
+discretization, truncation, rounding, normalization, stopping, and tail errors;
 no non-lattice roof or target-zero comparison is authorized.
 
 汇总表：

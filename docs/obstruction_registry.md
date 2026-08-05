@@ -401,7 +401,10 @@ physical-density theorem independently proves the mass-ratio conclusion,
 without restoring the failed ordinary-`BV` proof. Thus `OBR-009` remains an
 operator obstruction, while its direct-density reopening has successfully
 closed the narrower neighboring-mass-ratio obligation. The stronger legacy
-exponential-remainder statement remains open.
+exponential-remainder statement remains open. A later complete Arb cone audit
+certifies sharper absolute density and finite-mass intervals, but supplies no
+spectral gap or quantitative convergence rate and therefore does not remove
+this obstruction.
 
 Scope:
 The full negative-event first-return map on the exact physical core, with its
@@ -425,9 +428,13 @@ Artifacts:
 - `formal/results/exact_uc_first_return_support.md`
 - `formal/results/exact_uc_acip_endpoint_density.md`
 - `formal/results/exact_uc_acip_cone_enclosure.md`
+- `formal/results/exact_uc_acip_sharp_cone_enclosure.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json`
+- `artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml`
 - `tests/test_p4_logistic_uc_first_return_support.py`
 - `tests/test_p4_logistic_uc_acip_endpoint_density.py`
+- `tests/test_p4_logistic_uc_acip_sharp_cone_enclosure.py`

@@ -454,11 +454,13 @@ and therefore
 \]
 
 This repairs the legacy mass-ratio conclusion without restoring the refuted
-ordinary-`BV` first-return proof. The later polar-cone audit gives a coarse
-certified enclosure of `h(0)` and four finite branch masses, but does not prove
-the stronger legacy exponential-remainder formula. The next smallest task is
-a quantitative remainder or a validated sharp tail/resolvent bound. Do not
-introduce a non-lattice roof or target-zero comparison as part of that task.
+ordinary-`BV` first-return proof. The validated sharp polar-cone audit uses a
+complete directed Arb cover to prove `0.20655<h(0)<0.40008`,
+`0.09461<C_h<0.18327`, and tighter intervals for four finite branch masses.
+It still does not prove the stronger legacy exponential-remainder formula.
+The next smallest task is a quantitative convergence rate for the physical
+branch-mass ratio in one frozen analytic or cusp-adapted norm. Do not introduce
+a non-lattice roof or target-zero comparison as part of that task.
 
 Artifacts:
 
@@ -466,23 +468,28 @@ Artifacts:
 - `configs/source_locks/P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml`
+- `configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE/20260804T233200Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json`
+- `artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json`
 - `experiments/p4_logistic_uc_acip_endpoint_density.py`
 - `docs/literature/exact_uc_acip_density_sources.md`
 - `formal/results/exact_uc_first_return_support.md`
 - `formal/results/exact_uc_acip_endpoint_density.md`
 - `formal/results/exact_uc_acip_cone_enclosure.md`
+- `formal/results/exact_uc_acip_sharp_cone_enclosure.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
 - `tests/test_p4_logistic_uc_first_return_support.py`
 - `tests/test_p4_logistic_uc_acip_endpoint_density.py`
+- `tests/test_p4_logistic_uc_acip_sharp_cone_enclosure.py`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
 
 ---
@@ -1371,4 +1378,16 @@ new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE target-free log-Lipschitz cone, explicit endpoint remainder, and certified masses for returns 12,14,16,18"
 commit: "8f270de6546928385b93e1dd0b8b78c7ffd40ea8"
 consequence: "A coarse absolute enclosure is now available: h(0) in [0.1533974450330445,0.4982637116356999] and C_h in [0.0702656899853137,0.2282361579437252]. Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL); next task is a validated sharp tail/resolvent bound or a quantitative remainder, not zero matching."
+```
+
+## Status update — CLUE-A1-004 validated sharp exact-$U_c$ polar cone
+
+```yaml
+date: 2026-08-05
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE complete directed Arb cover, sharp invariant cone, and tighter certified masses for returns 12,14,16,18"
+commit: "f34117824702404fe0837f5811a5465d33cc65de"
+consequence: "The target-free full-domain certificate proves 0.17013<D<0.17014, h(0) in (0.20655,0.40008), and C_h in (0.09461,0.18327). This sharpens the measure-theoretic evidence but does not create an arithmetic primitive-orbit law or determinant, so Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL). Next prove a quantitative physical branch-mass-ratio rate in one frozen analytic or cusp-adapted norm; do not compare zeros."
 ```

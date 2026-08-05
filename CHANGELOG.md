@@ -3,6 +3,25 @@
 Repository-backed research status changes are recorded here. Detailed evidence
 and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
+## 2026-08-05
+
+### Validated sharp exact-$U_c$ polar-cone enclosure
+
+- Replaced the coarse distortion bound by a complete directed Arb cover of
+  $2^{18}$ closed cells, proving `0.17013 < D < 0.17014` at the frozen
+  `python-flint 0.9.0` / FLINT `3.6.0` environment and 100-digit precision.
+- Proved the sharp invariant-cone identity with slope `42535/101064` and
+  certified `0.20655<h(0)<0.40008` and `0.09461<C_h<0.18327`.
+- Tightened the positive absolute-mass enclosures for physical returns
+  `12,14,16,18`, with sealed endpoint-radius, ordering, and label gates.
+- Added source-input hashes, byte-identical CLI reproduction, a six-category
+  error ledger, and a versioned Route-A evaluation.
+- Kept `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`, parent verdict `REVISE`, and
+  Route B closed. No arithmetic target data, determinant, or quantization was
+  introduced.
+
+Source state: `f34117824702404fe0837f5811a5465d33cc65de`.
+
 ## 2026-08-04
 
 ### Exact-$U_c$ polar-cone enclosure
