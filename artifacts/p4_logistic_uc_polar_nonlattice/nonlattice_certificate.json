@@ -1,0 +1,216 @@
+{
+  "artifact_schema_version": 1,
+  "audit_id": "P4-LOGISTIC-UC-POLAR-NONLATTICE",
+  "claim_boundary": {
+    "established": [
+      "exact minimal polynomials and norms for alpha and beta",
+      "multiplicative independence of the R and LR roof multipliers",
+      "irrational primitive-period ratio and non-lattice intrinsic roof"
+    ],
+    "not_established": [
+      "an arithmetic prime-orbit law or von-Mangoldt trace weights",
+      "frozen-radius complex branch inclusion or a common Log(a) theorem",
+      "nuclearity, a Fredholm determinant, completed-xi structure, or zeros",
+      "quantization, Route B, Hilbert-Polya, or RH"
+    ]
+  },
+  "computed_gates": {
+    "all_exact_algebra_gates_pass": true,
+    "diagnostic_positive_multipliers_exceed_one": true,
+    "diagnostic_signed_multipliers_are_negative": true,
+    "diagnostic_word_is_strict_LR": true,
+    "mpmath_version_is_frozen": true,
+    "sympy_version_is_frozen": true
+  },
+  "computed_gates_passed": true,
+  "error_budget": {
+    "discretization": "none; exact polynomial identities",
+    "iteration_stopping": "diagnostic only; excluded from the proof",
+    "normalization": "full primitive sums and positive magnitudes",
+    "resolvent_tail": "not applicable; no determinant is evaluated",
+    "rounding": "none in the theorem; diagnostics carry no proof weight",
+    "truncation": "none; the two sealed words are exact"
+  },
+  "exact_algebra_certificate": {
+    "alpha": "4*(u-1)",
+    "alpha_degree": 3,
+    "alpha_minimal_polynomial_descending": [
+      1,
+      4,
+      16,
+      -64
+    ],
+    "alpha_norm": "2^6",
+    "alpha_polynomial_mod_3_values_at_0_1_2": [
+      2,
+      2,
+      1
+    ],
+    "beta_degree": 9,
+    "beta_minimal_polynomial_descending": [
+      1,
+      144,
+      6656,
+      139264,
+      2621440,
+      -37748736,
+      -369098752,
+      2684354560,
+      12884901888,
+      -68719476736
+    ],
+    "beta_norm": "2^36",
+    "beta_rabin_certificate": {
+      "gcd_with_degree_three_frobenius": [
+        1
+      ],
+      "irreducible": true,
+      "polynomial_coefficients_ascending_mod_5": [
+        4,
+        3,
+        0,
+        3,
+        4,
+        0,
+        4,
+        1,
+        4,
+        1
+      ],
+      "prime": 5,
+      "x_to_5_cubed_minus_x_remainder": [
+        3,
+        0,
+        3,
+        4,
+        3,
+        3,
+        2,
+        1,
+        4
+      ],
+      "x_to_5_ninth_minus_x_remainder": [
+        0
+      ]
+    },
+    "common_field_norm_ledger": {
+      "Norm_K(alpha)": "2^(2*d)",
+      "Norm_K(beta)": "2^(4*d)",
+      "coprime_remaining_case": "a=2, b=1, beta=alpha^2",
+      "forced_exponent_relation": "a=2*b",
+      "hypothetical_relation": "beta^b=alpha^a"
+    },
+    "computed_gates": {
+      "H_alpha_squared_identity_zero_mod_P": true,
+      "H_alpha_squared_is_nonzero": true,
+      "alpha_cubic_is_irreducible_mod_3": true,
+      "alpha_norm_is_2_to_6": true,
+      "alpha_polynomial_identity_zero_mod_P": true,
+      "beta_degree_nine_is_irreducible_mod_5": true,
+      "beta_norm_is_2_to_36": true,
+      "beta_polynomial_coefficients_match": true,
+      "common_field_norm_forces_a_equals_2b": true,
+      "critical_polynomial_is_strictly_increasing": true,
+      "critical_root_is_strictly_between_3_over_2_and_2": true,
+      "dynatomic_degree_is_12": true,
+      "dynatomic_division_is_exact": true,
+      "fixed_point_factorization_zero_mod_P": true,
+      "intrinsic_roof_is_non_lattice": true,
+      "period_ratio_is_irrational": true,
+      "period_two_multiplier_identity_zero_mod_P": true,
+      "right_fixed_multiplier_is_minus_alpha": true,
+      "signed_multiplier_remainder_degree_is_10": true,
+      "u_squared_cubic_identity_zero_mod_P": true
+    },
+    "computed_gates_passed": true,
+    "critical_at_2": "2",
+    "critical_at_3_over_2": "-1/8",
+    "critical_derivative_discriminant": -8,
+    "critical_polynomial": "u^3-2*u^2+2*u-2",
+    "dynatomic_degree": 12,
+    "fixed_factor_reduced_coefficient_count": 1,
+    "fixed_point_factorization": "S(x)-x=(u*x^2-x-1)*(u^2*x^2+u*x-u+1) mod P(u)",
+    "multiplier_identity_reduced_coefficient_count": 11,
+    "relative_multiplier_polynomial": "H_u(m)=m^3+(48-16*u^2)*m^2+256*(1+u^2)*m-4096",
+    "remaining_case_exclusion": "H_u(alpha^2)=-8192*(u-2)*(2*u-3) != 0 for 3/2<u<2",
+    "right_multiplier_reduced_coefficient_count": 1,
+    "signed_multiplier_remainder_degree": 10,
+    "u_squared_minimal_relation": "(u^2)^3-4*u^2-4=0"
+  },
+  "formal_candidate": false,
+  "mathematical_object": {
+    "map": "G=q^(-1) o (-f^2) o q on doubled branches I_L and I_R",
+    "periods": [
+      "T_R=log(alpha)",
+      "T_LR=log(beta)"
+    ],
+    "roof": "tau=log|G'|",
+    "sealed_words": [
+      "R",
+      "LR"
+    ],
+    "signed_multipliers": [
+      "Lambda_R=-alpha",
+      "Lambda_LR=-beta"
+    ]
+  },
+  "next_smallest_test": "Audit only the frozen epsilon=1/1000 composite complex inverse branches, common Log(a) germ, and compact branch inclusion; defer nuclearity and all target zeros.",
+  "numerical_diagnostics": {
+    "T_LR": "1.483648312273033492130093174267697391698324131804550600222832735445096730767031140374",
+    "T_R": "0.776916497683884387297660871747954440722460989407656360465070782364272038819069854372",
+    "diagnostic_ratio_T_LR_over_T_R": "1.909662514177563040827616582613205896793271660882567843630589307536755453719103581179",
+    "itinerary_is_strict_LR": true,
+    "positive_multiplier_alpha": "2.174756050768305446283423887206991946100813190603935740963216151324674695711895465941",
+    "positive_multiplier_beta": "4.409001789601263125936918882731994414603726237306712792590659082809984611537742986231",
+    "positive_multipliers_exceed_one": true,
+    "proof_weight": "none; identification and reproduction diagnostic only",
+    "rho": "0.5436890126920763615708559718017479865252032976509839352408040378311686739279738664852",
+    "signed_multiplier_LR": "-4.409001789601263125936918882731994414603726237306712792590659082809984611537742986231",
+    "signed_multiplier_R": "-2.174756050768305446283423887206991946100813190603935740963216151324674695711895465941",
+    "signed_multipliers_are_negative": true,
+    "theta_L": "-0.3111539284404952017592443838375601181557856249531520532751210875011496892590195215374",
+    "theta_R": "0.8668830120298087165627037914650449521894591196794405530834474917021454339218498559698",
+    "u": "1.543689012692076361570855971801747986525203297650983935240804037831168673927973866485",
+    "x_L": "-0.1664543916397232571293777795752331439690915311855497468955354209285557290210631467918",
+    "x_R": "0.4144624586508662455215176625517415931217679750636529353709504569387700670642323496305"
+  },
+  "parent_audit_id": "P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF",
+  "proved_statement": {
+    "multiplicative_independence": "alpha and beta have no nontrivial positive integer relation",
+    "period_ratio": "T_LR/T_R is irrational",
+    "roof": "tau=log|G'| is non-lattice"
+  },
+  "provenance": {
+    "external_target_data_used": false,
+    "generator": "experiments/p4_logistic_uc_polar_nonlattice.py",
+    "generator_sha256": "51cc154fb3b2ccc3ba76db0b358974213fecd6a8cccbf65148026115b671d00e",
+    "reproduction_command": "python3 experiments/p4_logistic_uc_polar_nonlattice.py --quiet --output artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json",
+    "source_inputs_sha256": {
+      "configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml": "e0b8285478c49366fe1f36237d18c2f6fb40c49fa9dae2acbb97be01dad0c354",
+      "configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml": "b782753fe1d14014e42c75015f200a28ca3836fd2d35844c5cbc79a0fd0bc88f",
+      "configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml": "8a830367d7f880a01f10278ae98a3fb020b8e5996f30f6e4836bb6017ab9e5e3",
+      "formal/results/exact_uc_acip_endpoint_density.md": "750b63188bdae148376c40cebef5ba7670f152df2210eea2ea80816f3ca87487",
+      "formal/results/exact_uc_polar_nonlattice.md": "f5eab5047e313e1b5a88273e4b77e09e9ca87d92be8443d25a46b65f6a3b7faa"
+    }
+  },
+  "route_a_effect": {
+    "local_verdict": "GO_WITH_LIMITATIONS",
+    "new_structural_prior": "PROVED_NON_LATTICE_INTRINSIC_ROOF",
+    "parent_candidate_verdict": "REVISE",
+    "route_b_invocation_allowed": false,
+    "tuple_unchanged": [
+      "A1_WEAK",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ]
+  },
+  "source_lock": "configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml",
+  "status": "PROVED_INTRINSIC_ROOF_NON_LATTICE",
+  "validated_environment": {
+    "diagnostic_decimal_digits": 100,
+    "mpmath": "1.3.0",
+    "python": "3.12.3",
+    "sympy": "1.14.0"
+  }
+}

@@ -1,0 +1,136 @@
+audit_id: P4-LOGISTIC-UC-POLAR-NONLATTICE
+parent_audit_id: P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF
+lock_version: 1
+formal_candidate: false
+clue_id: CLUE-A1-004
+title: Exact non-lattice certificate for the intrinsic exact-U_c polar roof
+
+mathematical_object:
+  parent_map: >-
+    Inherit without modification the lock-v2 map
+    G=q^(-1) o (-f^2) o q on the doubled branches I_L and I_R, where
+    f(x)=1-U_c*x^2, rho=U_c-1, and U_c is the unique real root of
+    P(u)=u^3-2*u^2+2*u-2.
+  roof: >-
+    tau(theta)=log|G'(theta)| with primitive period
+    T_gamma=log|(G^n)'(theta)|. Use the full primitive period, never the
+    per-symbol mean T_gamma/n.
+  witness_R: >-
+    R is the forward itinerary R^infinity and the unique fixed point in the
+    open right branch. Its signed multiplier is Lambda_R<0, its positive roof
+    multiplier is alpha=-Lambda_R, and T_R=log(alpha).
+  witness_LR: >-
+    LR is the unique open-branch primitive two-cycle with theta_L in I_L,
+    G(theta_L)=theta_R in I_R, and G(theta_R)=theta_L. LR and RL are one
+    cyclic orbit. Its signed multiplier is Lambda_LR<0, its positive roof
+    multiplier is beta=-Lambda_LR, and T_LR=log(beta).
+  lattice_target: >-
+    Prove T_LR/T_R is irrational. This suffices to prove tau non-lattice.
+    A failed two-witness proof would be inconclusive and would not prove a
+    lattice relation for the full roof.
+
+data_type:
+  primary: >-
+    Exact polynomial factorization and reduction in Q[U_c], exact dynatomic
+    polynomial division over Q(U_c), exact finite-field Rabin irreducibility
+    gates, algebraic norms, and one common-field norm contradiction.
+  secondary: >-
+    Target-free high-precision orbit coordinates, multipliers, and period
+    ratio are recorded only as diagnostics and carry no proof weight.
+  excluded: >-
+    Prime/zero tables, xi/zeta evaluations, empirical transition matrices,
+    Ulam spectra, fitted roof scales, finite-precision irrationality tests,
+    and any Fredholm determinant or target-zero comparison.
+
+clock: >-
+  The only tested clock is the intrinsic roof sum tau=log|G'|. R uses one G
+  step and LR uses its full two-step primitive sum. One G step still represents
+  two physical Logistic iterates, but the physical tick count is not used in
+  the lattice proof.
+
+normalization: >-
+  Preserve the signed multipliers Lambda_R and Lambda_LR as orbit data, then
+  define alpha=-Lambda_R>1 and beta=-Lambda_LR>1 for the positive roof. No
+  multiplicative roof scale, additive offset, unfolding, or mean-period
+  normalization is allowed.
+
+determinant_convention: >-
+  No Fredholm determinant is established or evaluated. The parent notation
+  D_pol(s)=det_Fr(I-L_s) remains conditional. This audit removes only the
+  unit-lattice obstruction for the intrinsic roof.
+
+cutoff:
+  witness_words: [R, LR]
+  additional_words_allowed: false
+  primitive_period_convention: full_sum_not_symbol_average
+  polynomial_alpha: "z^3+4*z^2+16*z-64"
+  polynomial_beta: "z^9+144*z^8+6656*z^7+139264*z^6+2621440*z^5-37748736*z^4-369098752*z^3+2684354560*z^2+12884901888*z-68719476736"
+  irreducibility_primes:
+    alpha: 3
+    beta: 5
+
+precision:
+  symbolic_certificate: exact
+  diagnostic_decimal_digits: 100
+  u_root_bracket_digits: 100
+  sympy_version: "1.14.0"
+  mpmath_version: "1.3.0"
+
+allowed_data:
+  - the corrected parent polar-roof source lock and exact polar expansion theorem
+  - the exact U_c polynomial and certified root bracket
+  - exact forward periodic words R and LR and their signed multipliers
+  - exact rational, polynomial, finite-field, and algebraic-number operations
+  - target-free numerical diagnostics used only to identify the sealed real orbit
+
+forbidden_data:
+  - prime tables, primality predicates, prime-gap histograms, zero tables, xi/zeta evaluations, or USTC data
+  - adding witness words, changing the roof, rescaling periods, or replacing a full primitive sum by its mean
+  - inferring irrationality from decimal approximations or a bounded denominator search
+  - discarding the signed multipliers before recording their branch orientation
+  - claiming complex branch inclusion, nuclearity, a Fredholm determinant, completed-xi structure, quantization, Route B, Hilbert-Polya, or RH
+
+training_split: empty; no fitting, search, or arithmetic target data
+validation_split: >-
+  Exact R fixed-point factorization, exact dynatomic quotient, the multiplier
+  polynomial identity H_U_c(beta)=0, and exact construction of the degree-nine
+  rational polynomial F(beta)=0.
+test_split: >-
+  Sealed mod-3 and mod-5 irreducibility gates, norm exponents 6 and 36, the
+  common-field consequence a=2b, and the exact nonvanishing identity
+  H_U_c(alpha^2)=-8192*(U_c-2)*(2*U_c-3).
+
+stopping_conditions:
+  - NOT_TESTABLE if the parent full-branch expansion theorem or R/LR coding is unavailable
+  - REVISE if the exact dynatomic multiplier identity does not reduce to zero modulo P(U_c)
+  - REVISE if either finite-field irreducibility certificate fails
+  - REVISE if the common-field norm ledger does not reduce a rational period ratio to beta=alpha^2
+  - REVISE if H_U_c(alpha^2) cannot be proved nonzero on 3/2<U_c<2
+  - REJECTED if arithmetic target data enters or a frozen witness/clock convention changes
+  - STOP_SCOPED for Fredholm, target-divisor, quantization, Route-B, Hilbert-Polya, or RH inference
+
+success_conditions:
+  - prove alpha=4*(U_c-1) and its irreducible cubic with norm 2^6
+  - prove the LR multiplier satisfies H_U_c and an irreducible degree-nine polynomial with norm 2^36
+  - prove every hypothetical beta^b=alpha^a forces a=2*b
+  - rule out beta=alpha^2 exactly
+  - conclude T_LR/T_R is irrational and tau is non-lattice
+
+error_budget_categories:
+  discretization: "none; the proof is exact algebra"
+  truncation: "none; the two sealed primitive words are treated exactly"
+  rounding: "none in the theorem; decimal orbit data are diagnostics only"
+  normalization: "full primitive roof sums and positive multiplier magnitudes are frozen"
+  iteration_stopping: "none in the theorem; diagnostic inverse iteration is not proof input"
+  resolvent_tail: "not applicable; no operator resolvent or determinant is evaluated"
+
+route_status_at_lock:
+  route_a_tuple_inherited: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+  route_b_invocation_allowed: false
+  formal_candidate_created: false
+  recommended_verdict_if_successful: GO_WITH_LIMITATIONS
+
+next_smallest_test_if_successful: >-
+  Audit only the frozen epsilon=1/1000 complex composite inverse branches,
+  common Log(a) germ, and compact branch inclusion. Do not audit nuclearity or
+  determinant zeros in the same task.
