@@ -1,0 +1,185 @@
+{
+  "analytic_bound_certificate": {
+    "certified_root_ball": "[1.543689012692076361570855971801747986525203297650983935240804037831168673927973866485157914576059125 +/- 5.17e-100]",
+    "compact_margin_lower_ball": "[0.00040374961800791336108297467497389993393590785955866094893531220458155824828314289 +/- 2.41e-84]",
+    "complex_contraction_upper_ball": "[0.59625038199208663891702532502610006606409214044133905106468779541844175171685711 +/- 2.41e-81]",
+    "computed_gates": {
+      "compact_margin_above_safe_lower": true,
+      "complex_contraction_below_safe_upper": true,
+      "complex_contraction_is_strictly_below_one": true,
+      "critical_root_has_certified_sign_bracket": true,
+      "image_radius_below_safe_upper": true,
+      "image_radius_is_strictly_below_epsilon": true,
+      "log_variation_below_safe_upper": true,
+      "log_variation_keeps_a_in_the_right_half_plane": true,
+      "principal_t_real_part_above_safe_lower": true,
+      "radicand_real_part_above_safe_lower": true,
+      "relative_factor_below_safe_upper": true,
+      "root_ball_is_strictly_between_three_halves_and_two": true,
+      "t_perturbation_below_safe_upper": true,
+      "t_perturbation_is_smaller_than_rho": true
+    },
+    "computed_gates_passed": true,
+    "cosh_epsilon_ball": "[1.0000005000000416666680555555803571431327160514703917596402715928282232754204803 +/- 3.06e-80]",
+    "epsilon": "1/1000",
+    "four_branch_inclusions": {
+      "LL": "phi_L(closure(U_L)) compactly contained in U_L",
+      "LR": "phi_R(closure(U_L)) compactly contained in U_R",
+      "RL": "phi_L(closure(U_R)) compactly contained in U_L",
+      "RR": "phi_R(closure(U_R)) compactly contained in U_R",
+      "common_compact_margin_lower": "0.00040374",
+      "common_image_radius_upper": "0.00059626"
+    },
+    "image_radius_upper_ball": "[0.00059625038199208663891702532502610006606409214044133905106468779541844175171685711 +/- 2.41e-84]",
+    "log_derivative_absolute_upper_ball": "[2.6243092618002380368185198737113077108966932543263554234961039617371598447736763 +/- 1.12e-80]",
+    "log_variation_upper_ball": "[0.00085001284042075609003954564812393732792857699380570337135134107519831651263812716 +/- 1.28e-84]",
+    "principal_t_real_part_lower_ball": "[0.54368885074232093034796374463474928035749606512194875005764300932647538586103240 +/- 3.10e-81]",
+    "radicand_perturbation_upper_ball": "[0.00035220130483953665903582891646878185322952051536809787275618483128920034801221963 +/- 2.44e-84]",
+    "radicand_real_part_lower_ball": "[0.29559756642150572645466937995698745371996720885520628301279246949731692606477665 +/- 2.07e-81]",
+    "real_contraction_maximum_ball": "[0.59574394197655937353067713411375864673734551093714404550489066930884297400248507 +/- 3.06e-81]",
+    "relative_factor_upper_ball": "[1.0008500967946849758948537828087120737644117795426160585815903021859304991020940 +/- 3.65e-80]",
+    "rho_ball": "[0.543689012692076361570855971801747986525203297650983935240804037831168673927973866485157914576059125 +/- 5.17e-100]",
+    "safe_thresholds": {
+      "compact_margin_lower": "0.00040374",
+      "complex_contraction_upper": "0.59626",
+      "image_radius_upper": "0.00059626",
+      "log_variation_upper": "0.000851",
+      "principal_t_real_part_lower": "0.54368",
+      "radicand_real_part_lower": "0.29559",
+      "relative_factor_upper": "1.000851",
+      "t_perturbation_upper": "0.000324"
+    },
+    "t_perturbation_upper_ball": "[0.00032389964582057666005465255876417333857710220010975059244706312810968214547228896 +/- 9.02e-85]"
+  },
+  "analytic_proof_ledger": [
+    "U_L union U_R is the convex radius-1/1000 stadium of I",
+    "Re((1+rho*sin(z))/U_c)>0 on a neighborhood of closure(U)",
+    "principal t, sqrt(1+t), sqrt(rho+t), a, and ell are one common holomorphic germ",
+    "the primitive-defined phi_L and phi_R continue the real composite inverse branches",
+    "the q-level inverse identity follows on U by the identity theorem",
+    "the common logarithm varies by less than 0.000851 from the real interval, so Re(a)>0 and both branches are globally univalent",
+    "one certified |a| bound below one gives all four compact inclusions"
+  ],
+  "artifact_schema_version": 1,
+  "audit_id": "P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH",
+  "claim_boundary": {
+    "established": [
+      "one common holomorphic t, a, and Log(a) germ on the frozen complex domain",
+      "both composite inverse branches with preserved signed derivatives",
+      "positive real part of a and global univalence of both complex branches",
+      "all four compact branch inclusions with a positive explicit margin",
+      "well-defined matching-space weighted composition for each fixed s"
+    ],
+    "not_established": [
+      "partition-hit target-copy or trace multiplicity rules",
+      "nuclearity, a Fredholm determinant, or an orbit trace formula",
+      "a completed-xi divisor, functional equation, or target zeros",
+      "quantization, Route B, Hilbert-Polya, or RH"
+    ]
+  },
+  "computed_gates": {
+    "all_analytic_bound_gates_pass": true,
+    "all_exact_identity_gates_pass": true,
+    "flint_version_is_frozen": true,
+    "python_flint_version_is_frozen": true,
+    "sympy_version_is_frozen": true
+  },
+  "computed_gates_passed": true,
+  "error_budget": {
+    "discretization": "none; no complex grid enters the proof",
+    "iteration_stopping": "not applicable; no orbit solve is used",
+    "normalization": "one common a, signed derivatives, and unscaled roof",
+    "resolvent_tail": "not applicable; no resolvent is evaluated",
+    "rounding": "100-digit outward Arb scalar margins",
+    "truncation": "none; all four frozen branch pairs are covered"
+  },
+  "exact_identity_certificate": {
+    "computed_gates": {
+      "one_plus_S_equals_u_times_one_minus_u_x_squared_squared": true,
+      "real_a_maximum_endpoint_value_is_u_squared_over_four": true,
+      "real_log_a_derivative_formula_is_exact": true,
+      "u_cubed_rho_equals_two": true,
+      "u_rho_squared_equals_one_minus_rho": true
+    },
+    "computed_gates_passed": true,
+    "critical_polynomial": "u^3-2*u^2+2*u-2",
+    "identities": {
+      "1+S(x)": "u*(1-u*x^2)^2",
+      "d_dt_log_a_0": "-(u*t+2*rho)/(2*t*(1+t)*(rho+t))<0",
+      "max_real_a_0": "a_0(rho)=u^2/4",
+      "u*rho^2": "1-rho",
+      "u^3*rho": "2"
+    },
+    "rho": "u-1"
+  },
+  "formal_candidate": false,
+  "matching_space_corollary": {
+    "fredholm_determinant_claimed": false,
+    "matching_at_zero_is_preserved": true,
+    "nuclearity_claimed": false,
+    "two_output_components_are_restrictions_of_one_function_on_U": true,
+    "weighted_formula_is_well_defined_for_each_fixed_s": true
+  },
+  "mathematical_object": {
+    "branches": {
+      "phi_L": "+integral_(pi/2)^z a(w)dw",
+      "phi_R": "-integral_(pi/2)^z a(w)dw",
+      "signed_derivatives": [
+        "phi_L'=+a",
+        "phi_R'=-a"
+      ]
+    },
+    "common_a": "sqrt(1+t)*sqrt(rho+t)/(4*t)=exp(ell)",
+    "common_log": "ell=-log(4)+Log(1+t)/2+Log(rho+t)/2-Log(t)",
+    "common_t": "sqrt((1+rho*sin(z))/U_c) on the right half-plane",
+    "domains": "U_L and U_R are radius-1/1000 stadiums; U=U_L union U_R is the full convex stadium",
+    "inverse_identity": "S(rho*sin(phi_sigma(z)))=rho*sin(z)"
+  },
+  "next_smallest_test": "Freeze only the doubled-partition target-copy and multiplicity rule for partition-hit traces on the matching space; defer nuclearity, Fredholm zeros, target divisors, and Route B.",
+  "parent_audit_id": "P4-LOGISTIC-UC-POLAR-NONLATTICE",
+  "proved_statement": {
+    "all_four_compact_inclusions": true,
+    "common_Log_a": true,
+    "common_holomorphic_germ": true,
+    "compact_margin_safe_lower": "0.00040374",
+    "complex_contraction_safe_upper": "0.59626",
+    "composite_inverse_branches_on_frozen_stadiums": true,
+    "global_univalence_of_both_branches": true
+  },
+  "provenance": {
+    "external_target_data_used": false,
+    "generator": "experiments/p4_logistic_uc_polar_complex_branch.py",
+    "generator_sha256": "307cd1184f4ddd26489b3a1daed28fa7307b7de159329fbd4fb24a27b381694f",
+    "reproduction_command": "python3 experiments/p4_logistic_uc_polar_complex_branch.py --quiet --output artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json",
+    "source_inputs_sha256": {
+      "configs/source_locks/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH.yaml": "cb0827b74fc382adc760163137a884c6ee561c211a6af4960b845e07b26d2c7b",
+      "configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml": "b782753fe1d14014e42c75015f200a28ca3836fd2d35844c5cbc79a0fd0bc88f",
+      "configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml": "8a830367d7f880a01f10278ae98a3fb020b8e5996f30f6e4836bb6017ab9e5e3",
+      "experiments/p4_logistic_uc_first_return_support.py": "6165e62f5ac84f955e9474e8291d32e5213cea409760d6768b3ecec571da9b9e",
+      "formal/results/exact_uc_acip_endpoint_density.md": "750b63188bdae148376c40cebef5ba7670f152df2210eea2ea80816f3ca87487",
+      "formal/results/exact_uc_polar_complex_branch.md": "9fd3a90cd57c89c0b4467adf9841089c51168dab638f24fffac597d4e04d11ef",
+      "formal/results/exact_uc_polar_nonlattice.md": "410bc9aba7dadf48043e93ac4279b20ff10f8e0f3b99b23c3567608c4419468e"
+    }
+  },
+  "route_a_effect": {
+    "local_verdict": "GO_WITH_LIMITATIONS",
+    "new_structural_prior": "PROVED_FROZEN_COMPLEX_BRANCH_INCLUSION",
+    "parent_candidate_verdict": "REVISE",
+    "route_b_invocation_allowed": false,
+    "tuple_unchanged": [
+      "A1_WEAK",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ]
+  },
+  "source_lock": "configs/source_locks/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH.yaml",
+  "status": "PROVED_FROZEN_COMPLEX_BRANCH_INCLUSION",
+  "validated_environment": {
+    "arb_decimal_digits": 100,
+    "flint": "3.6.0",
+    "python": "3.12.3",
+    "python_flint": "0.9.0",
+    "sympy": "1.14.0"
+  }
+}

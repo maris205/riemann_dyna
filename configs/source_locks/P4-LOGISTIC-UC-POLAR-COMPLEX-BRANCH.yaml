@@ -1,0 +1,161 @@
+audit_id: P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH
+parent_audit_id: P4-LOGISTIC-UC-POLAR-NONLATTICE
+lock_version: 1
+formal_candidate: false
+clue_id: CLUE-A1-004
+title: Frozen-radius complex inverse branches for the exact-U_c polar roof
+
+mathematical_object:
+  inherited_real_map: >-
+    Inherit without modification the corrected lock-v2 polar map
+    G=q^(-1) o (-f^2) o q on I_L=[-pi/2,0] and I_R=[0,pi/2], where
+    f(x)=1-U_c*x^2, rho=U_c-1, q(theta)=rho*sin(theta), and U_c is the
+    unique real root of u^3-2*u^2+2*u-2.
+  frozen_complex_domains: >-
+    Keep epsilon=1/1000 exactly. Let U_L={z:dist(z,I_L)<epsilon},
+    U_R={z:dist(z,I_R)<epsilon}, and U=U_L union U_R
+    ={z:dist(z,[-pi/2,pi/2])<epsilon}. The union U is one convex stadium;
+    no radius shrink, branch-dependent radius, or disconnected germ is
+    allowed.
+  common_t_and_jacobian: >-
+    On U use the principal holomorphic square root
+    t(z)=sqrt((1+rho*sin(z))/U_c). Define
+    a(z)=(1/4)*sqrt(1+t(z))*sqrt(rho+t(z))/t(z), with all square roots
+    normalized positive on the real interval. The audit must prove these are
+    single-valued and nonzero on a neighborhood of closure(U).
+  composite_inverse_branches: >-
+    Define the composite branches from the common primitive, not from
+    separate scalar asin or endpoint sqrt branches:
+    phi_R(z)=-integral_(pi/2)^z a(w)dw and
+    phi_L(z)=+integral_(pi/2)^z a(w)dw. Hence phi_L'=+a,
+    phi_R'=-a, and phi_L=-phi_R. The required inverse identity is the
+    branch-independent q-level identity
+    S(rho*sin(phi_sigma(z)))=rho*sin(z), where
+    S(x)=rho-2*U_c^2*x^2+U_c^3*x^4.
+    The audit must also prove both primitive-defined branches are globally
+    univalent on U; it does not separately define a forward holomorphic G on
+    the noninjective endpoint caps of q.
+  common_log_germ: >-
+    The only allowed logarithm is
+    ell(z)=-log(4)+(1/2)*Log(1+t(z))+(1/2)*Log(rho+t(z))-Log(t(z)),
+    with principal logarithms on right-half-plane arguments. It must satisfy
+    exp(ell)=a and ell=log(a)<0 on the real interval; both output components
+    use restrictions of this one germ on U.
+  compact_inclusion_target: >-
+    Prove one explicit M<1 such that for every target component j in {L,R}
+    and source branch sigma in {L,R},
+    phi_sigma(closure(U_j)) is contained in
+    {w:dist(w,I_sigma)<=M*epsilon}, compactly inside U_sigma. The same M and
+    the same epsilon must be used for all four inclusions.
+
+data_type:
+  primary: >-
+    Exact analytic identities and inequalities on the full frozen stadium,
+    plus target-free Arb interval arithmetic for the scalar root and margin
+    bounds. No complex grid or finite sample carries theorem weight.
+  analytic_bound_ledger: >-
+    For z in closure(U), choose x in I with |z-x|<=epsilon. Use
+    |cos(w)|<=cosh(epsilon) along [x,z], a positive lower bound for
+    Re((1+rho*sin(z))/U_c), a certified perturbation bound |t(z)-t(x)|<=d,
+    and the exact real maximum max_I a=U_c^2/4 to prove |a(z)|<=M<1.
+  excluded: >-
+    Prime/zero tables, xi/zeta evaluations, USTC data, Ulam matrices,
+    sampled complex-domain validation presented as proof, a changed radius,
+    endpoint trace counting, nuclearity, and determinant zeros.
+
+clock: >-
+  Keep the intrinsic suspension clock tau=log|G'| exactly. On real inverse
+  images ell=-tau o phi_sigma. One G step still represents two physical
+  Logistic iterates, but that physical clock is not used in this audit.
+
+normalization: >-
+  Preserve phi_L'=+a and phi_R'=-a. The positive a and its common logarithm
+  determine exp(-s*tau)=exp(s*ell); no roof scale, offset, unfolding, or
+  branch-specific phase is allowed.
+
+determinant_convention: >-
+  No Fredholm determinant is established or evaluated. The parent notation
+  D_pol(s)=det_Fr(I-L_s) remains conditional. This audit may prove only that
+  the frozen weighted composition formula is holomorphic and well-defined on
+  the matching space; it may not claim nuclearity, a trace formula, or a
+  divisor.
+
+cutoff:
+  complex_neighborhood_radius: "1/1000"
+  target_components: [L, R]
+  source_branches: [L, R]
+  branch_pairs: [LL, LR, RL, RR]
+  complex_sampling_cutoff: none; theorem uses analytic bounds, not a grid
+  operator_orbit_cutoff: none
+
+precision:
+  symbolic_definition: exact
+  u_root_bracket_digits: 100
+  arb_decimal_digits: 100
+  python_flint_version: "0.9.0"
+  flint_version: "3.6.0"
+
+allowed_data:
+  - the corrected parent polar-roof lock and the exact real expansion theorem
+  - the proved exact non-lattice theorem without changing its roof or words
+  - the exact U_c polynomial and certified 100-digit root bracket
+  - elementary complex trigonometric bounds and holomorphic functional calculus
+  - target-free Arb interval arithmetic for scalar proof margins
+
+forbidden_data:
+  - prime tables, primality predicates, prime-gap data, zero tables, xi/zeta evaluations, or USTC data
+  - shrinking epsilon, using different branch radii, or changing the doubled Markov coding
+  - separately choosing sqrt, asin, or Log branches on U_L and U_R
+  - replacing the signed branch derivatives by an unsigned orbit ledger
+  - inferring a full-domain theorem from a complex grid or finite sample
+  - defining endpoint trace multiplicities, proving nuclearity, evaluating a Fredholm determinant, or comparing target zeros
+  - claiming quantization, Route B, Hilbert-Polya, or RH
+
+training_split: empty; no fitting, search, arithmetic data, or radius tuning
+validation_split: >-
+  Exact U_c identities, the convex-union stadium geometry, the principal
+  right-half-plane square-root and logarithm construction, the primitive
+  definition of phi_L and phi_R, and the analytic derivation of the global
+  complex contraction bound.
+test_split: >-
+  Sealed 100-digit Arb gates at epsilon=1/1000: positive real-part margin for
+  the t radicand, d<0.000324, logarithm variation below 0.000851 and hence
+  Re(a)>0, one common M<0.59626<1, image radius below 0.00059626, and
+  compact-inclusion margin above 0.00040374.
+
+stopping_conditions:
+  - NOT_TESTABLE if the corrected real branch formulas or U_c root bracket are unavailable
+  - REVISE if the t radicand is not confined to the open right half-plane on closure(U)
+  - REVISE if a, the common Log(a), or the primitive-defined branches are not single-valued on U
+  - REVISE if either primitive-defined branch is not globally univalent on U
+  - REVISE if the certified common derivative bound is not strictly below one
+  - REVISE if any of the four frozen branch inclusions lacks a positive compact margin
+  - REJECTED if epsilon, the clock, branch coding, normalization, or data firewall changes
+  - STOP_SCOPED for endpoint trace counting, nuclearity, determinant, target-divisor, quantization, Route-B, Hilbert-Polya, or RH inference
+
+success_conditions:
+  - construct one common holomorphic t, a, and ell on a neighborhood of closure(U)
+  - construct both composite inverse branches as primitives of the same a
+  - prove Re(a)>0 and global univalence of both branches on the convex stadium
+  - prove the exact q-level inverse identity by analytic continuation
+  - certify one M<1 and all four compact branch inclusions at epsilon=1/1000
+  - retain signed orientation and prove the matching output uses one common germ
+
+error_budget_categories:
+  discretization: "none; no complex grid is used in the theorem"
+  truncation: "none; the full frozen stadiums and all four branch pairs are covered"
+  rounding: "100-digit Arb outward intervals only for scalar margins"
+  normalization: "one common a, signed derivatives, and one unscaled roof"
+  iteration_stopping: "not applicable; no orbit solver is used"
+  resolvent_tail: "not applicable; no resolvent or determinant is evaluated"
+
+route_status_at_lock:
+  route_a_tuple_inherited: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+  route_b_invocation_allowed: false
+  formal_candidate_created: false
+  recommended_verdict_if_successful: GO_WITH_LIMITATIONS
+
+next_smallest_test_if_successful: >-
+  Freeze only the doubled-partition target-copy and multiplicity rule for
+  partition-hit traces on the matching space. Do not audit nuclearity,
+  Fredholm zeros, target divisors, or Route B in that same task.
