@@ -454,27 +454,31 @@ and therefore
 \]
 
 This repairs the legacy mass-ratio conclusion without restoring the refuted
-ordinary-`BV` first-return proof. It does not prove the stronger legacy
-exponential-remainder formula. The next smallest task is a rigorous numerical
-enclosure of `h(0)` and selected finite branch masses using the uniformly
-expanding polar coordinate. Do not introduce a non-lattice roof or target-zero
-comparison as part of that task.
+ordinary-`BV` first-return proof. The later polar-cone audit gives a coarse
+certified enclosure of `h(0)` and four finite branch masses, but does not prove
+the stronger legacy exponential-remainder formula. The next smallest task is
+a quantitative remainder or a validated sharp tail/resolvent bound. Do not
+introduce a non-lattice roof or target-zero comparison as part of that task.
 
 Artifacts:
 
 - `configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-FIRST-RETURN-SUPPORT.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY.yaml`
+- `configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE/20260804T233200Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
+- `artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json`
 - `experiments/p4_logistic_uc_acip_endpoint_density.py`
 - `docs/literature/exact_uc_acip_density_sources.md`
 - `formal/results/exact_uc_first_return_support.md`
 - `formal/results/exact_uc_acip_endpoint_density.md`
+- `formal/results/exact_uc_acip_cone_enclosure.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
 - `tests/test_p4_logistic_uc_first_return_support.py`
@@ -1355,4 +1359,16 @@ new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY direct polar-coordinate acip theorem, corrected published spike cross-check, and independently hardened structural audit"
 commit: "84111b3f436ed1e8111c871719e32b70a4def098"
 consequence: "The physical acip now exists uniquely with full support, h(-rho+t)=h(0)/(sqrt(2)*U_c)*t^(-1/2)+O(1), and the physical even-branch mass ratio tends to 1/(2*U_c*(U_c-1)). The old ordinary-BV proof remains refuted and Route A remains A1_WEAK/A2_FAIL. Next enclose h(0) and finite branch masses without target data."
+```
+
+## Status update — CLUE-A1-004 exact-$U_c$ polar-cone enclosure
+
+```yaml
+date: 2026-08-04
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE target-free log-Lipschitz cone, explicit endpoint remainder, and certified masses for returns 12,14,16,18"
+commit: "pending integration commit"
+consequence: "A coarse absolute enclosure is now available: h(0) in [0.1533974450330445,0.4982637116356999] and C_h in [0.0702656899853137,0.2282361579437252]. Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL); next task is a validated sharp tail/resolvent bound or a quantitative remainder, not zero matching."
 ```

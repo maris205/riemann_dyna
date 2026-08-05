@@ -1,5 +1,121 @@
 # HP-Dynamics Handoff
 
+## Current status — exact-$U_c$ polar-cone density enclosure
+
+Current clue: `CLUE-A1-004`
+
+Candidate ID: none. Parent and scoped audit IDs:
+
+```text
+P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY
+P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE
+```
+
+- Formal candidate: `false`
+- Route-A evaluation:
+  `evaluations/route_a/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE/20260804T233200Z.yaml`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Scoped cone verdict: `GO_WITH_LIMITATIONS`
+- Parent-candidate verdict: `REVISE`
+- Route B: inactive and not authorized
+- Formal candidate count: unchanged (`SS-0001`, `SS-0002` only)
+
+### Source lock
+
+`configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml` fixes the exact
+`U_c` Logistic map, the polar proof coordinate, the physical clock, the three
+density normalizations, the `61/100` local endpoint remainder, branches
+`C_12,C_14,C_16,C_18`, the 100-digit root and pi brackets, and the forbidden
+data. The pi bracket is independently checked by exact rational Machin-series
+intervals.
+
+### Strongest evidence
+
+The inverse-branch transfer operator preserves a positive log-Lipschitz cone
+with slope `3/4`: the exact contraction is below `3/5`, the logarithmic weight
+distortion is below `3/10`, and
+`3/10+(3/5)(3/4)=3/4`. Normalization then gives the coarse target-free bounds
+
+```text
+w(0) in [0.1668010108790061, 0.5418010108790061]
+h(0) in [0.1533974450330445, 0.4982637116356998]
+C_h in [0.0702656899853137, 0.2282361579437251]
+```
+
+The explicit endpoint estimate
+`|h(-rho+t)-C_h*t^(-1/2)| <= 61/100` for `0<t<=1/200` gives certified
+positive absolute masses for physical returns `12,14,16,18`.
+
+### Strongest failure
+
+The enclosure is intentionally coarse. It is not a sharp Ulam or finite-rank
+resolvent certificate and does not prove the legacy exponential remainder.
+There is still no arithmetic primitive-orbit law, non-lattice clock,
+s-dependent Fredholm determinant, global completed-xi structure, or natural
+quantization. `OBR-009` and `OBR-008` remain active.
+
+### New reusable knowledge
+
+A validated log-Lipschitz cone can replace a finite-rank spectral-tail argument
+for absolute local density and finite branch-mass bounds. This supplies a
+target-free numerical theorem edge while preserving the physical clock and
+the distinction between `w`, `g_A`, and `h`.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/prior_work/README.md`
+- `docs/prior_work/claims_matrix.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `formal/results/exact_uc_acip_cone_enclosure.md`
+- `experiments/p4_logistic_uc_acip_cone_enclosure.py`
+- `tests/test_p4_logistic_uc_acip_cone_enclosure.py`
+- `artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json`
+- `evaluations/route_a/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE/20260804T233200Z.yaml`
+
+### Tests and reproduction
+
+Focused cone audit: `12/12 passed`.
+
+Full repository: `111/111 passed`.
+
+Artifact SHA-256:
+
+```text
+c0933c7a9df45f38fb403541aab7643e4e1f771bf7c277e4d144b80cb63f635d  artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json
+```
+
+```bash
+python3 experiments/p4_logistic_uc_acip_cone_enclosure.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json
+python3 -m unittest -v tests/test_p4_logistic_uc_acip_cone_enclosure.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml","evaluations/route_a/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE/20260804T233200Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+sha256sum artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json
+git diff --check
+```
+
+### Claim boundary and next smallest task
+
+Established: a coarse certified enclosure of `h(0)`, the absolute endpoint
+coefficient, an explicit local remainder, and four finite physical branch
+masses. Not established: a sharp finite-rank/resolvent enclosure, an
+exponential remainder, any determinant or arithmetic interpretation, Route B,
+Hilbert–Pólya, or RH.
+
+Next smallest task: either prove a frozen cusp-adapted finite-rank/resolvent
+tail bound to sharpen the enclosure, or prove a quantitative remainder for the
+branch-mass asymptotic. Do not compare zeros or introduce a roof in this task.
+
+Recommended verdict: `REVISE`.
+
 ## Current status — exact-($U_c$) physical-acip endpoint theorem
 
 Current clue: `CLUE-A1-004`

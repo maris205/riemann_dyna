@@ -136,11 +136,13 @@ which gives
 \]
 
 This does not prove the stronger Paper-2 formula with an exponentially bounded
-remainder. That rate, a certified value of $h(0)$, and exact finite-order
-branch weights remain open. See:
+remainder. A later target-free polar-cone theorem gives a coarse certified
+interval for $h(0)$ and selected finite branch masses, but a sharp value, the
+rate, and an exact finite-order weight law remain open. See:
 
 - `formal/results/exact_uc_first_return_support.md`;
 - `formal/results/exact_uc_acip_endpoint_density.md`;
+- `formal/results/exact_uc_acip_cone_enclosure.md`;
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`.
 
 ---

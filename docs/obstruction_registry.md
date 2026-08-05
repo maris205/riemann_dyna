@@ -424,8 +424,10 @@ Artifacts:
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `formal/results/exact_uc_first_return_support.md`
 - `formal/results/exact_uc_acip_endpoint_density.md`
+- `formal/results/exact_uc_acip_cone_enclosure.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
+- `artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
 - `tests/test_p4_logistic_uc_first_return_support.py`
 - `tests/test_p4_logistic_uc_acip_endpoint_density.py`

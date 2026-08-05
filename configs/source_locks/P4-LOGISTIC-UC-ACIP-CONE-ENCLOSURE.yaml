@@ -1,0 +1,108 @@
+audit_id: P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE
+parent_audit_id: P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY
+lock_version: 1
+formal_candidate: false
+clue_id: CLUE-A1-004
+title: Exact-U_c polar-cone enclosure of the physical ACIP density
+
+mathematical_object:
+  map: >-
+    f(x)=1-U_c*x^2 on J=[-(U_c-1),1], where U_c is the unique
+    real root of u^3-2*u^2+2*u-2=0 and rho=U_c-1.
+  proof_map: >-
+    G=q^(-1) o (-f^2) o q on I=[-pi/2,pi/2], with
+    q(theta)=rho*sin(theta), using its two full inverse branches.
+  invariant_density: >-
+    w(theta)dtheta is the normalized invariant probability of G.
+    The conditional density on A=[-rho,rho] is g_A and the full physical
+    f-invariant density is h, with g_A(0)=w(0)/rho=2*h(0).
+  target: >-
+    Certify coarse intervals for w(0), g_A(0), h(0), the endpoint
+    coefficient C_h=h(0)/(sqrt(2)*U_c), and selected finite physical
+    first-return branch masses without prime or zero data.
+
+data_type:
+  primary: >-
+    Exact inverse-branch identities, exact rational inequalities based on a
+    100-digit sign bracket for U_c, a forward-invariant log-Lipschitz cone,
+    and the existing expanding-Markov RPF theorem.
+  secondary: >-
+    Outward-rounded decimal presentation of transcendental normalization
+    integrals and exact rational endpoint intervals from the first-return
+    support audit.
+  excluded: >-
+    Orbit histograms, fitted densities, a finite-rank residual used as a
+    theorem, prime/zero tables, and any s-dependent determinant claim.
+
+clock: >-
+  One iterate of f is one physical clock tick. The map f^2 and the polar
+  coordinate are proof objects only; return labels remain 2n.
+
+normalization: >-
+  Integral_I w(theta)dtheta=1, integral_A g_A(x)dx=1, and
+  integral_J h(x)dx=1. Since the two physical bands have mass 1/2,
+  g_A=2h on A. No conditional density may be reported as the full density.
+
+determinant_convention: >-
+  No determinant is defined. The invariant-density transfer operator is an
+  s-independent proof object, not a Riemann dynamical Zeta or Fredholm
+  determinant.
+
+cutoff:
+  cone_slope: "3/4"
+  endpoint_remainder_radius: "1/200"
+  local_density_radius: "1/20"
+  reported_physical_returns: [12, 14, 16, 18]
+  displayed_decimal_places: 40
+
+precision:
+  u_bracket_digits: 100
+  pi_bracket_digits: 100
+  decimal_working_digits: 180
+  endpoint_interval_sqrt_scale_digits: 130
+  pi_certificate: >-
+    Machin identity pi=16*atan(1/5)-4*atan(1/239), with 100 and 30 terms of
+    the alternating series and exact rational remainder intervals.
+
+allowed_data:
+  - the exact algebraic U_c equation and its certified sign bracket
+  - the existing polar expanding-map and endpoint-density theorems
+  - the exact physical first-return endpoint recursion
+  - deterministic exact rational and outward-rounded transcendental bounds
+
+forbidden_data:
+  - prime tables, primality predicates, prime-gap histograms, zero tables, xi/zeta evaluations, or USTC data
+  - fitting h(0), a cone slope, or a remainder constant to legacy target data
+  - treating a finite-rank stationary-vector residual as a rigorous infinite-dimensional error bound
+  - mixing w, g_A, and h normalizations
+  - inferring a dynamical determinant, quantization, Hilbert-Polya realization, or RH
+
+training_split: empty; no fitting and no target data
+validation_split: >-
+  Exact contraction and distortion inequalities, cone invariance, root and pi
+  brackets, and normalization identities.
+test_split: >-
+  Sealed finite physical branches C_12, C_14, C_16, and C_18 using exact
+  rational endpoint intervals and the explicit endpoint remainder.
+
+stopping_conditions:
+  - NOT_TESTABLE if the invariant density or conditional/full normalization is ambiguous
+  - REVISE if the inverse branches do not preserve the frozen cone
+  - REVISE if a reported finite branch lies outside the proved endpoint radius
+  - REJECTED if arithmetic target data enters
+  - STOP_SCOPED for any determinant, quantization, Route-B, or RH inference
+
+success_conditions:
+  - prove a forward-invariant positive cone containing the unique RPF density
+  - give outward bounds for w(0), g_A(0), h(0), and C_h
+  - replace the qualitative endpoint O(1) by an explicit constant on a fixed radius
+  - integrate that remainder to certify selected finite physical branch masses
+  - list all six numerical error-budget categories even when a category is avoided
+
+error_budget_categories:
+  - discretization
+  - truncation
+  - rounding
+  - normalization
+  - iteration_stopping
+  - resolvent_tail

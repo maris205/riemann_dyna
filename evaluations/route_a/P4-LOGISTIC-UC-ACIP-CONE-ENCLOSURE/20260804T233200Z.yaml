@@ -1,0 +1,166 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+audit_id: P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE
+parent_audit_id: P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY
+formal_candidate: false
+source_commit: 2105cfb93f970ac8d690c69fff5c8348a5c7e51e
+evaluation_date: "2026-08-04T23:32:00Z"
+
+source_lock:
+  object: >-
+    Exact-U_c Logistic map f(x)=1-U_c*x^2 on J=[-(U_c-1),1], with the
+    proof-coordinate reflected two-iterate map G=q^(-1)o(-f^2)o q on
+    I=[-pi/2,pi/2], q(theta)=(U_c-1)sin(theta). The named density w is the
+    normalized invariant density of G; g_A is the conditional f^2-acip on
+    A=[-(U_c-1),U_c-1], and h is the full physical f-acip density on J.
+  data_type: >-
+    Exact inverse-branch identities, the expanding-Markov RPF theorem already
+    locked for the parent audit, a forward-invariant log-Lipschitz cone, exact
+    rational endpoint intervals, and outward-rounded deterministic arithmetic.
+    No finite-rank residual is used as an infinite-dimensional error bound.
+  clock: >-
+    One iterate of f is one physical tick. f^2 and theta are proof coordinates;
+    return labels remain 2n.
+  normalization: >-
+    Integral_I w=1, integral_A g_A=1, integral_J h=1, g_A(0)=2h(0), and
+    C_h=h(0)/(sqrt(2)*U_c). These ledgers are kept separate.
+  determinant_convention: >-
+    No determinant is defined. The s-independent density transfer operator is
+    not a Riemann zeta, Fredholm determinant, reciprocal zeta, or xi divisor.
+  cutoff: >-
+    Cone slope 3/4; explicit endpoint remainder for 0<t<=1/200; finite
+    physical branches C_12,C_14,C_16,C_18; 100-digit U_c and pi brackets.
+  precision: >-
+    Exact Fraction algebra for structural gates and 180-digit Decimal working
+    arithmetic with 40-place outward presentation. The pi bracket is checked
+    independently by 100/30-term Machin alternating series.
+  training_data: "empty; no fitting and no target data"
+  validation_data: >-
+    Root sign bracket, inverse contraction, distortion bounds, cone
+    invariance, local remainder gates, and normalization conversions.
+  test_data: >-
+    Sealed exact endpoint intervals for returns 12,14,16,18 and byte-identical
+    CLI reproduction.
+  allowed_data:
+    - exact U_c polynomial and prior exact support/endpoint theorems
+    - classical expanding-Markov RPF theory
+    - deterministic target-free rational and decimal arithmetic
+  forbidden_data:
+    - prime or zero tables, primality predicates, xi/zeta evaluations, USTC data
+    - fitted densities, fitted coefficients, orbit histograms, or target matching
+    - finite-rank residuals presented as resolvent/tail certification
+    - determinant, quantization, Route-B, Hilbert-Polya, or RH claims
+  stopping_conditions:
+    - "REVISE if cone invariance or normalization cannot be verified"
+    - "REJECTED if arithmetic target data enters"
+    - "STOP_SCOPED for determinant, quantization, Route-B, or RH inference"
+  error_budget_categories:
+    discretization: "not used; full theta interval is covered analytically"
+    truncation: "not used"
+    rounding: "180-digit working arithmetic with outward 40-place presentation"
+    normalization: "w -> g_A -> h ledger is explicit"
+    iteration_stopping: "not used; no stationary-vector iteration"
+    resolvent_tail: "not used; direct cone bound replaces it"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: NUMERICALLY_CERTIFIED
+  strongest_evidence: >-
+    A target-free forward-invariant cone gives a rigorous coarse enclosure
+    0.1533974450330445 < h(0) < 0.4982637116356999 and
+    0.0702656899853137 < C_h < 0.2282361579437252. An explicit endpoint
+    remainder |h(-rho+t)-C_h t^(-1/2)|<=61/100 holds for 0<t<=1/200,
+    yielding certified positive absolute masses for C_12,C_14,C_16,C_18.
+  strongest_failure: >-
+    The intervals are deliberately coarse and do not identify a sharp density
+    value or a finite-order geometric law. Return branches remain observables,
+    not intrinsic arithmetic primitive periodic orbits.
+  metrics:
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    h_zero_enclosure: "[0.1533974450330445,0.4982637116356999]"
+    endpoint_coefficient_enclosure: "[0.0702656899853137,0.2282361579437252]"
+    explicit_endpoint_remainder: "61/100 on 0<t<=1/200"
+    certified_physical_returns: [12, 14, 16, 18]
+    finite_rank_resolvent_certified: false
+    asymptotic_mass_ratio: "1/(2*U_c*(U_c-1))=U_c^2/4"
+  artifacts:
+    - configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml
+    - formal/results/exact_uc_acip_cone_enclosure.md
+    - artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The cone certificate controls the physical density and selected branch
+    masses without introducing an s-dependent object.
+  strongest_failure: >-
+    No primitive-orbit trace, s-dependent Fredholm determinant, or completed-xi
+    divisor is defined. OBR-008 and OBR-009 remain active.
+  metrics:
+    zero_error_train: not_testable_no_target_data
+    zero_error_validation: not_testable_no_target_determinant
+    zero_error_test: not_testable_no_target_determinant
+    extra_zero_count: not_testable
+    missing_zero_count: not_testable
+    cutoff_drift: density theorem is all-scale; no determinant cutoff
+    precision_drift: high-precision reproducibility only; no zeros evaluated
+    control_margin: "cone invariance 3/10+(3/5)(3/4)=3/4"
+    fredholm_determinant_defined: false
+  artifacts:
+    - formal/obstructions/unit_lattice_clock_vertical_periodicity.md
+    - formal/obstructions/exact_uc_first_return_nonuniform_expansion.md
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The local density and finite-mass enclosure are independent of any target
+    zero data and preserve the physical normalization ledger.
+  strongest_failure: >-
+    No analytic continuation, functional equation, Gamma/trivial-zero ledger,
+    Riemann-von Mangoldt law, or divisor equality exists.
+  metrics:
+    conjugation_symmetry: not_applicable_no_determinant
+    functional_equation: false
+    gamma_factor: false
+    analytic_continuation: false
+    target_counting_law: false
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The proof coordinate is analytic and uniformly expanding, but it is only a
+    density proof object and does not define a quantum lift.
+  strongest_failure: >-
+    No natural Hilbert space, operator domain, self-adjoint realization,
+    symplectic/contact structure, or same-clock quantization is specified.
+  metrics:
+    natural_hilbert_space: null
+    operator_domain: null
+    route_b_ready: false
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_audit_verdict: REVISE
+claim_boundary:
+  established:
+    - target-free coarse h(0) and endpoint-coefficient enclosures
+    - explicit local endpoint remainder and four finite physical branch-mass intervals
+    - unchanged exact mass-ratio limit and normalization ledger
+  not_established:
+    - sharp validated Ulam/resolvent enclosure or exponential remainder
+    - arithmetic primitive-orbit law, determinant, analytic completion, quantization, Route B, or RH
+blocking_conditions:
+  - first-return observables are not arithmetic primitive periodic orbits
+  - ordinary-BV spectral-gap route remains refuted by OBR-009
+  - unit-lattice determinant route remains blocked by OBR-008
+  - no same-object s-dependent Fredholm determinant or global analytic structure
+route_b_invocation_allowed: false
+next_smallest_test: >-
+  Independently validate a sharper finite-rank or cone enclosure only if its
+  truncation/resolvent tail is proved; otherwise analyze the missing exponential
+  remainder on an explicitly frozen cusp-adapted operator. Do not compare zeros.

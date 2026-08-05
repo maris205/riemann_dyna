@@ -1697,3 +1697,80 @@ discretization, truncation, rounding, normalization, and stopping errors. Use
 no prime or zero data.
 
 Recommended verdict: `REVISE`.
+
+## 2026-08-04 — exact-$U_c$ polar-cone enclosure
+
+Current clue: `CLUE-A1-004`.
+
+The next smallest obligation after the endpoint theorem was to obtain an
+absolute, target-free enclosure rather than quote the approximate collocation
+value `h(0) ~= 0.2813`. The proof-coordinate Perron--Frobenius operator has
+inverse contraction below `3/5` and logarithmic weight distortion below `3/10`.
+Consequently the positive log-Lipschitz cone with slope `3/4` is invariant,
+because
+
+```text
+3/10 + (3/5)*(3/4) = 3/4.
+```
+
+Normalization on `[-pi/2,pi/2]`, followed by the explicit `g_A=2h` ledger,
+gives the following coarse certified intervals:
+
+```text
+w(0) in [0.1668010108790061, 0.5418010108790061]
+h(0) in [0.1533974450330445, 0.4982637116356998]
+C_h=h(0)/(sqrt(2)*U_c) in [0.0702656899853137, 0.2282361579437252]
+```
+
+The endpoint calculation is strengthened from an unspecified `O(1)` to
+
+```text
+|h(-rho+t)-C_h*t^(-1/2)| <= 61/100,  0 < t <= 1/200.
+```
+
+Integrating this bound over exact rational endpoint intervals certifies
+positive absolute masses for returns `12,14,16,18`. The pi bracket is checked
+by the exact rational Machin identity and alternating-series remainder bounds;
+the root bracket and branch endpoint recursion are inherited from the sealed
+support audit.
+
+The six required categories are explicit: discretization (not used),
+truncation (not used), rounding, normalization, iteration stopping (not used),
+and resolvent/tail (not used because the cone is a direct bound). Auxiliary
+rows separately record inverse-branch evaluation, the absent finite-rank
+projection and invariant-vector residual, and the integrated endpoint
+remainder. This is a local density theorem only. It does not certify a sharp
+Ulam value, a finite-rank resolvent, an exponential branch-mass remainder, a
+primitive-prime orbit law, or any determinant.
+
+Route-A result remains `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`, scoped verdict
+`GO_WITH_LIMITATIONS`, parent verdict `REVISE`; Route B remains inactive.
+
+Artifacts:
+
+- `configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml`
+- `formal/results/exact_uc_acip_cone_enclosure.md`
+- `experiments/p4_logistic_uc_acip_cone_enclosure.py`
+- `tests/test_p4_logistic_uc_acip_cone_enclosure.py`
+- `artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json`
+- `evaluations/route_a/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE/20260804T233200Z.yaml`
+
+Reproduction:
+
+```bash
+python3 experiments/p4_logistic_uc_acip_cone_enclosure.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json
+python3 -m unittest -v tests/test_p4_logistic_uc_acip_cone_enclosure.py
+```
+
+The focused audit passes `12/12`; the full repository passes `111/111`.
+Artifact SHA-256:
+
+```text
+c0933c7a9df45f38fb403541aab7643e4e1f771bf7c277e4d144b80cb63f635d  artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json
+```
+
+Next smallest task: prove a quantitative branch-mass remainder or a frozen
+cusp-adapted finite-rank/resolvent tail bound. Do not compare zeros or add a
+non-lattice roof before that object is defined.

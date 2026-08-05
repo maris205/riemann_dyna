@@ -1,0 +1,234 @@
+{
+  "artifact_schema_version": 1,
+  "audit_id": "P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE",
+  "certified_enclosures": {
+    "conditional_theta_density_w_0": {
+      "lower": "0.1668010108790061106921618740826205368113",
+      "upper": "0.5418010108790061106921618740826205368114"
+    },
+    "conditional_x_density_g_A_0": {
+      "lower": "0.3067948900660891403607990466572327008305",
+      "upper": "0.9965274232713995650677437584022151759896"
+    },
+    "endpoint_coefficient_C_h": {
+      "lower": "0.0702656899853137486747999788311013115940",
+      "upper": "0.2282361579437250862842429028151186601935"
+    },
+    "full_physical_density_h_0": {
+      "lower": "0.1533974450330445701803995233286163504152",
+      "upper": "0.4982637116356997825338718792011075879948"
+    },
+    "normalization_identity": "g_A(0)=2*h(0)"
+  },
+  "certified_root_bracket": {
+    "U_c_lower": "1.5436890126920763615708559718017479865252032976509839352408040378311686739279738664851579145760591254",
+    "U_c_upper": "1.5436890126920763615708559718017479865252032976509839352408040378311686739279738664851579145760591255",
+    "pi_certificate": {
+      "atan_1_over_239_terms": 30,
+      "atan_1_over_5_terms": 100,
+      "identity": "pi=16*atan(1/5)-4*atan(1/239)",
+      "series_interval_width_upper_decimal": "2.55836358149594918000440374641547134481501595637783896515604223170916180741071488226479081136586039515268153277462804440652122174292547215931471252181394882122543935833730477290657E-142"
+    },
+    "pi_lower": "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679",
+    "pi_upper": "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170680"
+  },
+  "claim_boundary": {
+    "established": [
+      "a coarse target-free certified enclosure of h(0)",
+      "an explicit endpoint O(1) constant on 0<t<=1/200",
+      "certified absolute-mass intervals for C_12, C_14, C_16, and C_18"
+    ],
+    "not_established": [
+      "a sharp validated Ulam enclosure or a validated finite-rank resolvent bound",
+      "an exact finite-order geometric mass law",
+      "a prime-orbit law, s-dependent determinant, quantization, Route B, or RH"
+    ]
+  },
+  "computed_gates": {
+    "E_rho_below_eleven_tenths": true,
+    "all_reported_branch_masses_inside_endpoint_radius": true,
+    "cone_is_forward_invariant": true,
+    "critical_root_has_certified_sign_bracket": true,
+    "endpoint_factor_derivative_below_1_1": true,
+    "endpoint_preimage_stays_inside_local_radius": true,
+    "endpoint_remainder_below_0_61": true,
+    "full_density_at_zero_below_one_half": true,
+    "global_theta_density_below_nine_fifths": true,
+    "inverse_contraction_below_three_fifths": true,
+    "local_coordinate_derivative_exceeds_0_54": true,
+    "local_h_lipschitz_bound_below_2_7": true,
+    "log_weight_distortion_below_three_tenths": true,
+    "pi_bracket_is_certified_by_machin_series": true,
+    "pi_has_100_digit_outward_bracket": true,
+    "sqrt_t_radius_below_0_071": true,
+    "t_speed_below_one_quarter": true
+  },
+  "computed_gates_passed": true,
+  "cone_ledger": {
+    "distortion_bound": "|d_eta log(a)| <= E(rho)*max|t'| < (11/10)*(1/4) < 3/10",
+    "distortion_parameter": "t=sqrt((1+rho*sin(eta))/U_c), a=(1/4)*sqrt((1+t)*(rho+t))/t",
+    "exact_inverse_contraction": "U_c^2/4",
+    "invariance_inequality": "3/10 + (3/5)*(3/4) = 3/4",
+    "inverse_branch_contraction_upper": "3/5",
+    "log_inverse_weight_derivative_upper": "3/10",
+    "log_lipschitz_cone_slope": "3/4"
+  },
+  "error_budget": {
+    "discretization": "not used; the cone proof covers the full closed theta interval",
+    "finite_branch_remainder": "the explicit 61/100 density remainder is integrated over each branch length",
+    "finite_rank_projection_or_quadrature": "not used by the certified enclosure; any Ulam value is numerical evidence only",
+    "interval_rounding": "all displayed bounds are widened outward to 40 decimal places; algebraic gates use exact Fraction arithmetic",
+    "invariant_vector_residual": "not used; the existing expanding-Markov RPF theorem supplies the unique fixed density",
+    "inverse_branch_evaluation": "closed-form inverse weights plus the certified 100-digit U_c bracket",
+    "iteration_stopping": "not used; no iterative stationary-vector solve enters the certificate",
+    "normalization": "w is normalized on I, then g_A(0)=w(0)/rho and h(0)=g_A(0)/2",
+    "normalization_conversion": "w(0) -> g_A(0)=w(0)/rho -> h(0)=g_A(0)/2; C_h=h(0)/(sqrt(2)*U_c)",
+    "resolvent_tail": "not used; the forward-invariant log-Lipschitz cone supplies the global bound",
+    "rounding": "algebraic gates use exact Fraction arithmetic; Decimal values are computed at 180 digits and widened outward at 40 places",
+    "truncation": "not used; no finite branch or operator truncation is used in the density bound",
+    "truncation_or_resolvent_tail": "not used; the forward-invariant log-Lipschitz cone gives direct global bounds"
+  },
+  "explicit_endpoint_remainder": {
+    "global_w_upper": "9/5",
+    "local_h_lipschitz_upper": "27/10",
+    "local_x_radius": "1/20",
+    "statement": "|h(-rho+t)-C_h*t^(-1/2)| <= 61/100",
+    "t_range": "0 < t <= 1/200"
+  },
+  "finite_branch_mass_enclosures": [
+    {
+      "branch_length": {
+        "lower": "0.0018366006386837518238052473682587534129",
+        "upper": "0.0018366006386837518238052473682587534130"
+      },
+      "certified_mass": {
+        "lower": "0.0019118398701734391054220686372536264936",
+        "upper": "0.0109693718842227853185930414838599192205"
+      },
+      "delta_n": {
+        "lower": "0.0010094674192227310310035191525322717054",
+        "upper": "0.0010094674192227310310035191525322717055"
+      },
+      "delta_n_minus_1": {
+        "lower": "0.0028460680579064828548087665207910251184",
+        "upper": "0.0028460680579064828548087665207910251185"
+      },
+      "endpoint_radius_gate_passed": true,
+      "n": 6,
+      "physical_return_label": 12,
+      "sqrt_delta_difference": {
+        "lower": "0.0215764355292339805366735903780736279252",
+        "upper": "0.0215764355292339805366735903780736279253"
+      }
+    },
+    {
+      "branch_length": {
+        "lower": "0.0006512764201581162729413875075017925200",
+        "upper": "0.0006512764201581162729413875075017925201"
+      },
+      "certified_mass": {
+        "lower": "0.0014080131302384736006344879711871429867",
+        "upper": "0.0062612052678780044582602206934705364051"
+      },
+      "delta_n": {
+        "lower": "0.0003581909990646147580621316450304791854",
+        "upper": "0.0003581909990646147580621316450304791855"
+      },
+      "delta_n_minus_1": {
+        "lower": "0.0010094674192227310310035191525322717054",
+        "upper": "0.0010094674192227310310035191525322717055"
+      },
+      "endpoint_radius_gate_passed": true,
+      "n": 7,
+      "physical_return_label": 14,
+      "sqrt_delta_difference": {
+        "lower": "0.0128461824463137631970924064067320806660",
+        "upper": "0.0128461824463137631970924064067320806661"
+      }
+    },
+    {
+      "branch_length": {
+        "lower": "0.0002310752068923039715536600511799179523",
+        "upper": "0.0002310752068923039715536600511799179524"
+      },
+      "certified_mass": {
+        "lower": "0.0009343017952021383353043098526629761395",
+        "upper": "0.0036335947412409530274395189043230521811"
+      },
+      "delta_n": {
+        "lower": "0.0001271157921723107865084715938505612331",
+        "upper": "0.0001271157921723107865084715938505612332"
+      },
+      "delta_n_minus_1": {
+        "lower": "0.0003581909990646147580621316450304791854",
+        "upper": "0.0003581909990646147580621316450304791855"
+      },
+      "endpoint_radius_gate_passed": true,
+      "n": 8,
+      "physical_return_label": 16,
+      "sqrt_delta_difference": {
+        "lower": "0.0076513706165212613842189996274200726341",
+        "upper": "0.0076513706165212613842189996274200726342"
+      }
+    },
+    {
+      "branch_length": {
+        "lower": "0.0000820022888502120957498260434670526256",
+        "upper": "0.0000820022888502120957498260434670526257"
+      },
+      "certified_mass": {
+        "lower": "0.0005905073258535269781259126719443368628",
+        "upper": "0.0021305789856045533153823035571703551682"
+      },
+      "delta_n": {
+        "lower": "0.0000451135033220986907586455503835086074",
+        "upper": "0.0000451135033220986907586455503835086075"
+      },
+      "delta_n_minus_1": {
+        "lower": "0.0001271157921723107865084715938505612331",
+        "upper": "0.0001271157921723107865084715938505612332"
+      },
+      "endpoint_radius_gate_passed": true,
+      "n": 9,
+      "physical_return_label": 18,
+      "sqrt_delta_difference": {
+        "lower": "0.0045579053033282206588705464123009488576",
+        "upper": "0.0045579053033282206588705464123009488577"
+      }
+    }
+  ],
+  "formal_candidate": false,
+  "mathematical_object": {
+    "invariant_density": "w(theta) dtheta is the conditional f^2-acip on A; g_A(0)=w(0)/rho and the full f-acip has h(0)=g_A(0)/2",
+    "map": "f(x)=1-U_c*x^2 on J=[-(U_c-1),1]",
+    "polar_map": "G=q^(-1) o (-f^2) o q, q(theta)=(U_c-1)*sin(theta)",
+    "target": "coarse certified bounds for w(0), g_A(0), h(0), the endpoint coefficient, and selected finite physical branch masses"
+  },
+  "parent_audit_id": "P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY",
+  "provenance": {
+    "external_target_data_used": false,
+    "generator": "/root/autodl-tmp/find_dyna/experiments/p4_logistic_uc_acip_cone_enclosure.py",
+    "generator_sha256": "41f57294d13fc55c61333c593150c8d27f414b3c93e0e8abf59c3f7a7eac9a97",
+    "python": "3.12.3",
+    "reproduction_command": "python3 experiments/p4_logistic_uc_acip_cone_enclosure.py --quiet --output artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json",
+    "source_inputs_sha256": {
+      "configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml": "ca5285a353701be1cbe805dfc8c6b26777bfe8604b199ba35ee4c46b91cef40c",
+      "experiments/p4_logistic_uc_first_return_support.py": "6165e62f5ac84f955e9474e8291d32e5213cea409760d6768b3ecec571da9b9e",
+      "formal/results/exact_uc_acip_cone_enclosure.md": "bcb46cdfb3959f068b8b416a33c409b18ce07c2391be43f906404372b3f5332a",
+      "formal/results/exact_uc_acip_endpoint_density.md": "750b63188bdae148376c40cebef5ba7670f152df2210eea2ea80816f3ca87487",
+      "formal/results/exact_uc_first_return_support.md": "ec21c0c2d9fae0b9f990f0d2bf4397462685ee52ac29144a4d607102441fb7cf"
+    }
+  },
+  "route_a_effect": {
+    "local_verdict": "GO_WITH_LIMITATIONS",
+    "parent_candidate_verdict": "REVISE",
+    "tuple_unchanged": [
+      "A1_WEAK",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ]
+  },
+  "source_lock": "configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml",
+  "status": "CERTIFIED_COARSE_ENCLOSURE"
+}

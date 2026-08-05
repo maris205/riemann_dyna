@@ -5,6 +5,21 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-04
 
+### Exact-$U_c$ polar-cone enclosure
+
+- Added a target-free forward-invariant log-Lipschitz cone certificate for the
+  polar proof-coordinate transfer operator.
+- Certified coarse intervals for `h(0)`, `C_h=h(0)/(sqrt(2)*U_c)`, and absolute
+  masses of physical returns `12,14,16,18`.
+- Replaced the qualitative local endpoint remainder by the explicit bound
+  `|h(-rho+t)-C_h*t^(-1/2)| <= 61/100` on `0<t<=1/200`.
+- Added an exact rational Machin-series check for the frozen 100-digit pi
+  bracket and retained a separate six-category error ledger.
+- Kept the parent Route-A tuple at
+  `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)` / `REVISE`; Route B remains closed.
+- Explicitly excluded sharp Ulam/resolvent certification, arithmetic orbit
+  matching, determinant claims, quantization, and RH conclusions.
+
 ### Exact-$U_c$ physical-acip endpoint theorem
 
 - Proved existence, uniqueness, full support, and physicality of the exact-$U_c$
