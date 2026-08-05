@@ -283,6 +283,12 @@ P4-LOGISTIC-UC-POLAR-NONLATTICE is the completed sealed-word audit. It proves
 the full primitive periods for `R` and `LR` have irrational ratio, so the
 intrinsic roof is non-lattice. This is a `PROVED` positive structural prior,
 not an A2 determinant pass or a new formal candidate.
+P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH is the completed frozen-radius complex
+audit. At the unchanged `epsilon=1/1000` it proves one common holomorphic
+`a`/`Log(a)`, two globally univalent signed composite inverse branches, all
+four compact inclusions, and matching-space invariance. It is a `PROVED`
+positive structural prior, not a nuclearity or determinant pass and not a new
+formal candidate.
 No candidate has entered Route B.
 ```
 
@@ -316,15 +322,18 @@ unaccelerated induced map remains blocked as an ordinary
 uniformly expanding `BV` map by `OBR-009`, and the old unit return-label clock
 remains blocked by `OBR-008`. The exact polar roof now escapes the hypothesis
 of `OBR-008`: its sealed `R` and `LR` periods are proved rationally
-independent. This does not supply a complex transfer-operator domain,
-Fredholm determinant, or divisor-count theorem. The audit remains
+independent. The frozen complex audit now also supplies the same-object
+radius-`1/1000` transfer-operator domain, common logarithm germ, compact
+branch inclusion, and matching-space invariance. It does not supply the
+doubled partition-hit trace ledger, nuclearity, a Fredholm determinant, or a
+divisor-count theorem. The audit remains
 `P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`, with Route-A tuple
 `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)` and verdict `REVISE`.
 
 Latest evaluation:
 
 ```text
-evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml
+evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml
 ```
 
 The polar suspension source lock is
@@ -337,9 +346,19 @@ The completed non-lattice theorem is recorded at source commit
 `36a38f0db16652bf0e0c1459be6c69f6bdafec12` with exact multiplier
 polynomials, finite-field irreducibility gates, and a common-field norm proof.
 
-Next smallest test: audit only the frozen `epsilon=1/1000` composite complex
-inverse branches, common `Log(a)` germ, and compact branch inclusion. Do not
-audit nuclearity, Fredholm zeros, or target divisors in that task.
+The completed complex-branch theorem is recorded at source commit
+`3ae5e23508e27129cfa5910473b944026b904ea3`. It keeps
+`epsilon=1/1000`, proves a common complex contraction below `0.59626`, and
+gives a compact margin above `0.00040374` for all four branch pairs.
+
+Next smallest test: freeze only the doubled-partition target-copy and
+multiplicity rule for partition-hit traces on the matching space. Do not
+audit nuclearity, Fredholm zeros, target divisors, or Route B in that task.
+
+Portfolio decision: under the RH breadth-first rule, this is the
+candidate-local resume task only. The project-level next task parks the
+Logistic branch and opens `CLUE-A4-001` to freeze one explicit target-free
+Twisted Hénon / kicked-symplectic object for a low-cost Route-A prefilter.
 
 汇总表：
 
@@ -727,7 +746,7 @@ numerical zero match. Do not allocate `SS-0003` before that object is explicit.
 ### Family A — Twisted Hénon / kicked symplectic maps
 
 ```text
-Status: clue only
+Status: clue activated for source-lock inspection; no explicit object or candidate ID yet
 Expected Route-A focus: A1, A4
 Main risk: generic GUE without arithmetic orbit structure
 ```

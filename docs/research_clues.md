@@ -1,7 +1,7 @@
 # HP-Dynamics 后续研究线索库
 
 **文件名：** `research_clues.md`  
-**版本：** v0.1  
+**版本：** v0.2
 **用途：** 保存可复用、可调用、可证伪的 Hilbert–Pólya 动力学研究线索。
 
 ---
@@ -43,6 +43,11 @@ HEURISTIC
 MODELING_CHOICE
 OPEN
 ```
+
+项目级调用采用 RH 广度优先：弱候选连续两个 checkpoint 不改变 Route-A
+tuple 或主阻塞时，保留其 candidate-local 恢复任务，但 project-level 下一步
+转向一个结构不同、数学定义明确的新对象做低成本筛选。严格深挖资源只给
+可能升级 Route-A 层级、形成候选族 obstruction，或出现稳定异常信号的路线。
 
 ---
 
@@ -463,9 +468,12 @@ adjacent-ratio rate from branch index 6 onward. The polar suspension source
 lock now freezes the map, doubled branches, intrinsic roof `tau=log|G'|`,
 separate clocks, analytic function space, and conditional determinant
 convention. The sealed `R`/`LR` audit now proves their full primitive roof
-periods have irrational ratio, so the intrinsic roof is non-lattice. The next
-smallest task is only the frozen-radius complex inverse-branch and compact-
-inclusion audit; nuclearity and Fredholm analysis remain deferred.
+periods have irrational ratio, so the intrinsic roof is non-lattice. The
+frozen radius-`1/1000` complex audit now proves one common logarithm germ,
+globally univalent composite inverse branches, all four compact inclusions,
+and matching-space invariance. The next smallest task is only the doubled
+partition-hit target-copy and multiplicity rule; nuclearity and Fredholm
+analysis remain deferred.
 
 Artifacts:
 
@@ -477,6 +485,7 @@ Artifacts:
 - `configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
@@ -485,6 +494,7 @@ Artifacts:
 - `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
@@ -492,6 +502,7 @@ Artifacts:
 - `artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json`
 - `artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json`
 - `artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json`
+- `artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json`
 - `experiments/p4_logistic_uc_acip_endpoint_density.py`
 - `docs/literature/exact_uc_acip_density_sources.md`
 - `formal/results/exact_uc_first_return_support.md`
@@ -500,6 +511,7 @@ Artifacts:
 - `formal/results/exact_uc_acip_sharp_cone_enclosure.md`
 - `formal/results/exact_uc_branch_mass_rate.md`
 - `formal/results/exact_uc_polar_nonlattice.md`
+- `formal/results/exact_uc_polar_complex_branch.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
 - `tests/test_p4_logistic_uc_first_return_support.py`
@@ -508,6 +520,7 @@ Artifacts:
 - `tests/test_p4_logistic_uc_branch_mass_rate.py`
 - `tests/test_p4_logistic_uc_polar_intrinsic_roof_lock.py`
 - `tests/test_p4_logistic_uc_polar_nonlattice.py`
+- `tests/test_p4_logistic_uc_polar_complex_branch.py`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
 
 ---
@@ -920,7 +933,7 @@ D_N(s)\to D_{N+1}(s),
 
 **来源：** Area-preserving Hénon 工作与时间反演讨论  
 **证据：** `HEURISTIC` + `MODELING_CHOICE`  
-**状态：** `PROMISING`  
+**状态：** `UNDER_TEST`
 **对应层：** `A1`, `A4`
 
 ### 内容
@@ -951,6 +964,16 @@ q' = q+\partial_pT(p').
 - primitive UPO；
 - Floquet quantization；
 - GUE 只作为次级指标。
+
+### 2026-08-05 portfolio activation
+
+The RH breadth-first rule selects this clue as the next project-level task
+after parking the exact-$U_c$ Logistic branch at a stable complex-domain
+checkpoint. No `TH-0001` candidate exists yet. First inspect the legacy Hénon
+parent and freeze exactly one explicit target-free autonomous map, parameter
+provenance, clock, normalization, and data firewall. The first prefilter is
+limited to symplecticity, antiunitary/time-reversal symmetry, and reproducible
+short primitive UPOs; no determinant or zero comparison is opened.
 
 ---
 
@@ -1444,4 +1467,28 @@ new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-POLAR-NONLATTICE exact R/LR multiplier polynomials, finite-field irreducibility certificates, algebraic norms, and multiplicative-independence theorem"
 commit: "36a38f0db16652bf0e0c1459be6c69f6bdafec12"
 consequence: "The intrinsic roof tau=log|G'| is now PROVED non-lattice because T_LR/T_R is irrational. This escapes the scope of the old unit-clock obstruction OBR-008 but does not establish complex branch inclusion, nuclearity, a Fredholm determinant, arithmetic orbit weights, or target zeros. Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL); next audit only the frozen epsilon=1/1000 complex inverse branches and compact inclusion."
+```
+
+## Status update — CLUE-A1-004 frozen polar complex branches
+
+```yaml
+date: 2026-08-05
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH exact common-germ construction, global univalence proof, and 100-digit Arb compact-inclusion margins at epsilon=1/1000"
+commit: "3ae5e23508e27129cfa5910473b944026b904ea3"
+consequence: "The unchanged frozen complex domain now has one holomorphic t, a, and Log(a), two globally univalent signed composite inverse branches, all four compact inclusions with M<0.59626, and matching-space invariance. This is a PROVED positive structural prior but not nuclearity or a determinant: Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL). Next freeze only the doubled partition-hit target-copy and multiplicity rule; defer nuclearity, Fredholm zeros, target divisors, and Route B."
+```
+
+## Status update — CLUE-A4-001 RH breadth-first portfolio activation
+
+```yaml
+date: 2026-08-05
+clue_id: CLUE-A4-001
+old_status: PROMISING
+new_status: UNDER_TEST
+evidence: "Project-level breadth pivot after the Logistic candidate accumulated a stable non-lattice roof and frozen complex branch domain without changing its Route-A tuple"
+commit: "3ae5e23508e27129cfa5910473b944026b904ea3"
+consequence: "No formal TH-0001 candidate is created. The next task is to inspect the legacy area-preserving Hénon parent and freeze exactly one explicit target-free autonomous Twisted Hénon or kicked-symplectic map. The first Route-A prefilter covers only symplecticity, antiunitary/time-reversal symmetry, and reproducible short primitive UPOs; no determinant or zero fitting is allowed."
 ```

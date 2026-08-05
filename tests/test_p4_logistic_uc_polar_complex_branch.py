@@ -241,6 +241,56 @@ class LogisticUcPolarComplexBranchTests(unittest.TestCase):
             ]
         )
 
+    def test_route_a_evaluation_keeps_a2_and_route_b_closed(self) -> None:
+        evaluation_path = Path(
+            "evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/"
+            "20260805T125236Z.yaml"
+        )
+        evaluation = yaml.safe_load(
+            evaluation_path.read_text(encoding="utf-8")
+        )
+        self.assertEqual(evaluation["a1"]["verdict"], "A1_WEAK")
+        self.assertEqual(evaluation["a2"]["verdict"], "A2_FAIL")
+        self.assertEqual(evaluation["a3"]["verdict"], "A3_FAIL")
+        self.assertEqual(evaluation["a4"]["verdict"], "A4_FAIL")
+        self.assertEqual(
+            evaluation["overall_verdict"],
+            "ROUTE_A_EXPLORATORY",
+        )
+        self.assertEqual(
+            evaluation["scoped_audit_verdict"],
+            "GO_WITH_LIMITATIONS",
+        )
+        self.assertFalse(evaluation["route_b_invocation_allowed"])
+        self.assertTrue(
+            evaluation["a2"]["metrics"][
+                "all_four_compact_inclusions_proved"
+            ]
+        )
+        self.assertFalse(
+            evaluation["a2"]["metrics"]["nuclearity_proved"]
+        )
+        self.assertFalse(
+            evaluation["a2"]["metrics"]["fredholm_determinant_defined"]
+        )
+
+        source_commit = evaluation["source_commit"]
+        self.assertEqual(
+            source_commit,
+            "3ae5e23508e27129cfa5910473b944026b904ea3",
+        )
+        for path in (
+            complex_branch.SOURCE_LOCK,
+            complex_branch.FORMAL_RESULT,
+            complex_branch.GENERATOR,
+            complex_branch.ARTIFACT,
+            "tests/test_p4_logistic_uc_polar_complex_branch.py",
+        ):
+            subprocess.run(
+                ["git", "cat-file", "-e", f"{source_commit}:{path}"],
+                check=True,
+            )
+
     def test_source_lock_preserves_data_firewall_and_scope(self) -> None:
         forbidden = " ".join(self.lock["forbidden_data"])
         self.assertIn("prime tables", forbidden)

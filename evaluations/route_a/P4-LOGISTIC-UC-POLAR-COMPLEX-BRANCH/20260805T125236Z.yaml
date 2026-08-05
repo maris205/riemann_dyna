@@ -1,0 +1,192 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+audit_id: P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH
+parent_audit_id: P4-LOGISTIC-UC-POLAR-NONLATTICE
+formal_candidate: false
+source_commit: 3ae5e23508e27129cfa5910473b944026b904ea3
+evaluation_date: "2026-08-05T12:52:36Z"
+
+source_lock:
+  object: >-
+    The corrected exact-U_c doubled polar map and intrinsic roof, with the
+    unchanged radius-1/1000 stadiums U_L and U_R, one common holomorphic t,
+    a, and ell=Log(a), and the primitive-defined composite inverse branches
+    phi_L and phi_R.
+  data_type: >-
+    Exact analytic identities and inequalities on the full complex stadium,
+    exact polynomial reductions for U_c identities, and 100-digit outward Arb
+    scalar margins. Complex samples are diagnostic only and carry no proof
+    weight.
+  clock: >-
+    The intrinsic roof clock tau=log|G'| is unchanged. On real inverse images
+    ell=-tau o phi_sigma. The physical two-Logistic-iterate base clock is not
+    substituted for this roof.
+  normalization: >-
+    Preserve phi_L'=+a and phi_R'=-a, with
+    a=sqrt(1+t)*sqrt(rho+t)/(4*t)>0 on the real interval and one common
+    holomorphic logarithm ell. No scale, offset, unfolding, or branch phase is
+    permitted.
+  determinant_convention: >-
+    No Fredholm determinant is established. The parent notation
+    det_Fr(I-L_s) remains conditional; this audit proves only the frozen
+    complex branch domain and well-defined matching-space composition family.
+  cutoff: >-
+    Epsilon is exactly 1/1000; all four pairs LL, LR, RL, and RR are covered
+    by one analytic bound. There is no complex grid, operator truncation, or
+    orbit cutoff.
+  precision: >-
+    Exact symbolic identities, python-flint 0.9.0 / FLINT 3.6.0 at 100 decimal
+    digits, SymPy 1.14.0, and the inherited certified 100-digit U_c bracket.
+  training_data: "empty; no fitting, search, radius tuning, or arithmetic target data"
+  validation_data: >-
+    Convex stadium topology, right-half-plane holomorphic construction,
+    primitive branch definition, exact q-coordinate inverse identity,
+    logarithm-variation derivation, and common contraction inequality.
+  test_data: >-
+    Sealed Arb gates B>0.29559, d<0.000324, log variation below 0.000851,
+    M<0.59626<1, image radius below 0.00059626, and compact margin above
+    0.00040374, together with artifact hashes and byte-identical reproduction.
+  allowed_data:
+    - corrected parent polar-roof and non-lattice source locks
+    - exact U_c identities and certified root bracket
+    - elementary complex analysis and target-free Arb interval arithmetic
+    - signed composite inverse branches of the frozen doubled Markov map
+  forbidden_data:
+    - prime/zero tables, xi/zeta evaluations, USTC data, or arithmetic fitting
+    - shrinking epsilon, changing branch coding, or choosing separate complex germs
+    - finite complex sampling presented as a full-domain theorem
+    - endpoint trace counting, nuclearity, Fredholm determinants, or target zeros
+    - quantization, Route B, Hilbert-Polya, or RH claims
+  stopping_conditions:
+    - "REVISE if the common t, a, ell, or either branch is not single-valued and univalent"
+    - "REVISE if the common complex contraction is not strictly below one"
+    - "REVISE if any frozen branch pair lacks a positive compact-inclusion margin"
+    - "REJECTED if epsilon, the roof, coding, normalization, or data firewall changes"
+    - "STOP_SCOPED for trace, nuclearity, determinant, target-divisor, Route-B, or RH inference"
+  error_budget_categories:
+    discretization: "none; no complex grid enters the theorem"
+    truncation: "none; all four frozen branch pairs are covered"
+    rounding: "100-digit outward Arb intervals for scalar margins"
+    normalization: "one common a and ell with signed branch derivatives"
+    iteration_stopping: "not applicable; no orbit solve is used"
+    resolvent_tail: "not applicable; no resolvent or determinant is evaluated"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The same exact target-free polar system now has intrinsic primitive words,
+    a proved non-lattice roof, and globally univalent frozen-radius composite
+    inverse branches with preserved signed orientations. This is a natural
+    analytic continuation of the exact dynamics rather than a fitted model.
+  strongest_failure: >-
+    There is still no prime-like labeling, log-p period law, von-Mangoldt
+    repetition weight, phase/multiplicity law, or completeness theorem for an
+    arithmetic primitive-orbit correspondence.
+  metrics:
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    intrinsic_roof_non_lattice: true
+    frozen_complex_branches_proved: true
+    global_univalence_proved: true
+    signed_branch_derivatives_preserved: true
+    arithmetic_orbit_law: false
+  artifacts:
+    - configs/source_locks/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH.yaml
+    - formal/results/exact_uc_polar_complex_branch.md
+    - artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    At the unchanged epsilon=1/1000, one common holomorphic a and Log(a), two
+    globally univalent branches, all four compact inclusions, and
+    matching-space invariance are proved. The common derivative bound is
+    M<0.59626 and the compact margin exceeds 0.00040374.
+  strongest_failure: >-
+    The doubled partition-hit target-copy and multiplicity rule is still
+    undefined. Nuclearity, trace identities, a Fredholm determinant, argument
+    counts, missing/extra zeros, cutoff stability, and a target divisor are
+    not established.
+  metrics:
+    zero_error_train: not_testable_no_target_data
+    zero_error_validation: not_testable_no_established_determinant
+    zero_error_test: not_testable_no_established_determinant
+    extra_zero_count: not_testable
+    missing_zero_count: not_testable
+    root_count_discrepancy: not_testable
+    cutoff_drift: no determinant cutoff exists
+    precision_drift: exact analytic theorem with 100-digit outward scalar margins
+    control_margin: "epsilon*(1-M)>0.00040374"
+    complex_contraction_upper: "0.59626"
+    common_log_germ_proved: true
+    all_four_compact_inclusions_proved: true
+    matching_space_invariance_proved: true
+    endpoint_trace_rule_defined: false
+    nuclearity_proved: false
+    fredholm_determinant_defined: false
+  artifacts:
+    - formal/results/exact_uc_polar_complex_branch.md
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The frozen weighted composition formula now has a rigorous common complex
+    domain, eliminating one prior analytic-definition ambiguity.
+  strongest_failure: >-
+    There is no established determinant, analytic continuation theorem,
+    conjugation/functional-equation ledger, Gamma or trivial-zero treatment,
+    Riemann-von Mangoldt law, moving-order bound, or completed-xi divisor.
+  metrics:
+    conjugation_symmetry: not_testable_no_determinant
+    functional_equation: false
+    gamma_factor: false
+    analytic_continuation: false
+    target_counting_law: false
+    moving_order_control: false
+  artifacts: []
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The complex branches and roof remain intrinsic to one exact classical map
+    and were not introduced after spectral fitting.
+  strongest_failure: >-
+    No symplectic/contact/scattering lift, Hilbert space and operator domain,
+    self-adjointness path, phase-preserving quantization, or same-clock quantum
+    object is defined.
+  metrics:
+    natural_hilbert_space: null
+    operator_domain: null
+    natural_quantization: false
+    route_b_ready: false
+  artifacts: []
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_audit_verdict: REVISE
+claim_boundary:
+  established:
+    - "one common holomorphic t, a, and Log(a) on the frozen radius-1/1000 domain"
+    - "globally univalent signed composite inverse branches"
+    - "all four compact branch inclusions with an explicit positive margin"
+    - "well-defined matching-space weighted composition for each fixed s"
+  not_established:
+    - "partition-hit target-copy and trace multiplicity rules"
+    - "nuclearity, a Fredholm determinant, or an orbit trace formula"
+    - "completed-xi global analytic structure or target zeros"
+    - "quantization, Route B, Hilbert-Polya, or RH"
+blocking_conditions:
+  - the doubled partition-hit trace ledger remains undefined
+  - nuclearity and a same-object Fredholm determinant remain unproved
+  - no arithmetic primitive-orbit law or von-Mangoldt weight exists
+  - no global completed-xi analytic structure exists
+route_b_invocation_allowed: false
+next_smallest_test: >-
+  Freeze only the doubled-partition target-copy and multiplicity rule for
+  partition-hit traces on the matching space. Do not audit nuclearity,
+  Fredholm zeros, target divisors, or Route B in that same task.

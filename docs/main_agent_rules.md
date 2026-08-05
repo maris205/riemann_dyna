@@ -1,7 +1,7 @@
 # HP-Dynamics 主 Agent 工作规则
 
 **文件名：** `main_agent_rules.md`  
-**版本：** v0.1  
+**版本：** v0.2
 **适用项目：** HP-Dynamics / Hilbert–Pólya Dynamics  
 **核心原则：** 主 Agent 只负责选择线索、调用两个 Skill、更新共享知识和决定下一步。
 
@@ -370,6 +370,20 @@ SELECT
 
 ## 5. 任务选择原则
 
+HP-Dynamics 的全局搜索默认采用 **RH 广度优先**，而不是把任一弱候选
+过早改造成单线“逐桥严格化”工程。标准搜索节奏是：
+
+```text
+大胆提出结构不同的新对象
+→ 低成本 Route-A 结构筛选
+→ 寻找非偶然异常或可迁移结构
+→ 只对幸存者做 determinant / operator 深挖
+```
+
+Route A/B 是淘汰和升级门，不是限制新对象生成的理由。大胆生成仍必须满足
+source lock、数据防火墙和 claim boundary；“大胆”不包括读取 prime/zero 表、
+事后调 clock 或隐藏失败控制。
+
 主 Agent 每次最多激活三个任务：
 
 ```text
@@ -378,7 +392,7 @@ SELECT
 3. 一个独立复现或解析任务
 ```
 
-优先级：
+候选内部的证据优先级：
 
 ```text
 独立复现
@@ -387,9 +401,11 @@ SELECT
 > orbit-weight 结构
 > determinant 收敛
 > 高位盲测
-> 新候选生成
 > 论文写作
 ```
+
+项目组合层的优先级不同：结构多样的新候选低成本筛选，优先于在一个
+`A1_WEAK/A2_FAIL` 对象上连续追加不改变 Route-A tuple 的局部引理。
 
 主 Agent 不应同时开放大量相似候选。
 
@@ -398,6 +414,38 @@ SELECT
 - 一个最强候选；
 - 一个结构多样的替代候选；
 - 一个专门证伪的对照候选。
+
+### 5.1 强制广度回转规则
+
+主 Agent 必须同时区分：
+
+```text
+candidate-local next task   候选内部若恢复时的最小任务
+project-level next task     当前整个 RH 搜索组合的下一任务
+```
+
+出现以下情形时，默认暂停当前候选并回到候选生成/筛选：
+
+```text
+1. 连续两个稳定 checkpoint 没有改变 Route-A tuple；
+2. 主阻塞条件没有变化；
+3. 下一个局部任务不能在一个有界测试内改变 A1/A2/A3/A4 层级，
+   也不能形成可迁移的严格 obstruction。
+```
+
+暂停不是拒绝。必须把候选的局部恢复任务写入 handoff，然后从结构不同的
+候选族中选择 **恰好一个** 显式对象做下一轮 source lock 和 Route-A 预筛。
+
+只有满足至少一项，才继续深挖同一候选：
+
+- 新证据有现实机会升级某个 Route-A 层；
+- 下一步可形成整个候选族的严格 obstruction；
+- 出现超出拟合区的稳定异常信号；
+- 对同一 determinant 的存在性、计数律或全局解析结构可在一个有界任务中闭合。
+
+这条规则防止 RH 搜索退化成 TPC 风格的单路线桥梁工程。TPC 可以先写完整
+条件通路再逐桥攻坚；RH 默认先扩展候选结构覆盖面，再把严格证明资源集中到
+真正幸存的少数对象。
 
 ---
 
@@ -573,6 +621,12 @@ After every evaluation:
 - update operator_obligations.md when relevant;
 - update research_clues.md with reusable knowledge;
 - choose only the next smallest verifiable task.
+
+For project-level selection, use breadth-first RH exploration. Preserve the
+candidate-local resume task, but pivot to one structurally different explicit
+candidate after two stable checkpoints leave the Route-A tuple and main
+blocker unchanged, unless the next bounded test can upgrade a Route-A layer
+or prove a reusable family obstruction.
 
 Your objective is not to produce the largest number of papers.
 Your objective is to discover a valid Route-A path and determine

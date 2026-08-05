@@ -788,7 +788,10 @@ unit-clock tower zeta. The tower ledger does not supply an A2 Riemann clock.
   branch space with a frozen conditional transfer family. The sealed `R` and
   `LR` multiplier audit now proves
   $T_{LR}/T_R\notin\mathbb Q$, so this intrinsic roof is non-lattice and
-  escapes the old unit-clock hypothesis. The frozen-radius composite complex
-  branches, common logarithm germ, compact inclusion, nuclearity, and
-  Fredholm determinant existence remain open; choosing or rescaling a roof
-  from prime or zero data would invalidate the object.
+  escapes the old unit-clock hypothesis. The frozen radius-$1/1000$ audit now
+  additionally constructs one common holomorphic logarithm germ, proves both
+  composite inverse branches globally univalent, and certifies all four
+  compact inclusions with common contraction below `0.59626`. The doubled
+  partition-hit trace ledger, nuclearity, and Fredholm determinant existence
+  remain open; choosing or rescaling a roof from prime or zero data would
+  invalidate the object.

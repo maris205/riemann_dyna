@@ -1,6 +1,199 @@
 # HP-Dynamics Handoff
 
-## Current status — exact-$U_c$ polar non-lattice theorem
+## Current status — frozen-radius exact-$U_c$ polar complex branches
+
+Current clue: `CLUE-A1-004`
+
+Candidate ID: no new formal candidate. Scoped audit:
+`P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH`, following
+`P4-LOGISTIC-UC-POLAR-NONLATTICE` under parent candidate
+`P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`.
+
+- Formal candidate: `false`
+- Implementation source commit: `3ae5e23508e27129cfa5910473b944026b904ea3`
+- Source lock:
+  `configs/source_locks/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH.yaml`
+- Route-A evaluation:
+  `evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall Route A: `ROUTE_A_EXPLORATORY`
+- Scoped verdict: `GO_WITH_LIMITATIONS`
+- Parent verdict: `REVISE`
+- Route-B tuple: not evaluated; Route B is inactive and not authorized
+
+### Source lock and theorem
+
+The radius is unchanged:
+
+\[
+\epsilon=\frac1{1000}.
+\]
+
+The two branch stadiums have one convex union $U$. On that single domain the
+audit constructs
+
+\[
+t(z)=\sqrt{\frac{1+\rho\sin z}{U_c}},
+\qquad
+a(z)=\frac{\sqrt{1+t(z)}\sqrt{\rho+t(z)}}{4t(z)},
+\]
+
+using separate right-half-plane principal roots, and the common logarithm
+
+\[
+\ell(z)=-\log4+\frac12\Log(1+t(z))
++\frac12\Log(\rho+t(z))-\Log t(z).
+\]
+
+The composite branches are primitives of this same $a$,
+
+\[
+\phi_L(z)=\int_{\pi/2}^{z}a(w)\,dw,
+\qquad
+\phi_R(z)=-\int_{\pi/2}^{z}a(w)\,dw,
+\]
+
+so the signed derivatives remain
+
+\[
+\phi_L'=+a,
+\qquad
+\phi_R'=-a.
+\]
+
+They obey the locked coordinate identity
+
+\[
+S(\rho\sin\phi_\sigma(z))=\rho\sin z.
+\]
+
+No independent holomorphic forward $G$ is asserted on the noninjective
+endpoint caps of $q=\rho\sin$.
+
+The exact analytic inequalities and 100-digit Arb margins give
+
+\[
+\begin{aligned}
+\operatorname{Re}\frac{1+\rho\sin z}{U_c}&>0.29559,\\
+|t(z)-t(x)|&<0.000324,\\
+|\ell(z)-\ell(x)|&<0.000851,\\
+\sup_{\overline U}|a|&<0.59626<1.
+\end{aligned}
+\]
+
+The logarithm bound gives $\operatorname{Re}a>0$, hence both primitive-defined
+branches are globally univalent on the convex stadium. For every target
+component $j$ and source branch $\sigma$,
+
+\[
+\phi_\sigma(\overline{U_j})
+\subset\{w:\operatorname{dist}(w,I_\sigma)<0.00059626\}
+\Subset U_\sigma,
+\]
+
+with compact margin greater than `0.00040374`.
+
+### Strongest evidence
+
+The proof covers the full frozen complex domains and all four `LL`, `LR`,
+`RL`, and `RR` pairs without a complex grid. It combines exact $U_c$
+identities, one common right-half-plane functional calculus, a primitive
+construction that removes the endpoint scalar branch points, a global
+univalence lemma, and outward Arb scalar margins. The saved certificate is
+byte reproducible and an independent adversarial review found no blocking
+mathematical issue.
+
+### Strongest failure
+
+The target copy and multiplicity for every orbit that hits the doubled
+partition point are still undefined. Therefore no trace ledger is frozen.
+Nuclearity, a Fredholm determinant, an exact orbit trace formula, root counts,
+target divisor, global completed-$\xi$ structure, and quantization remain
+absent. A2 therefore remains failed.
+
+### New reusable knowledge
+
+For a polar map with endpoint cancellations, the safest complex continuation
+is to construct the common inverse derivative and its logarithm first, then
+recover both branches as primitives. A strict complex contraction gives all
+four compact inclusions at once, while a small common-log variation bound
+upgrades local continuation to global univalence. This avoids incompatible
+endpoint `sqrt/asin` germs and preserves signed orientation.
+
+Portfolio rule: this candidate has accumulated a clean reusable theorem edge
+without changing `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`. Preserve its local
+trace-ledger continuation, but give the project-level slot to a structurally
+different candidate rather than extending the Logistic proof chain by
+default.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `HP_HANDOFF.md`
+- `artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH.yaml`
+- `docs/candidate_registry.md`
+- `docs/main_agent_rules.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml`
+- `experiments/p4_logistic_uc_polar_complex_branch.py`
+- `formal/results/exact_uc_polar_complex_branch.md`
+- `tests/test_p4_logistic_uc_polar_complex_branch.py`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+Focused complex-branch audit: `13/13 passed`.
+
+Full repository: `174/174 passed`.
+
+```bash
+python3 experiments/p4_logistic_uc_polar_complex_branch.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json
+python3 -m unittest -v tests/test_p4_logistic_uc_polar_complex_branch.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; p="evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["a1"]["verdict"], d["a2"]["verdict"], d["route_b_invocation_allowed"])'
+sha256sum artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json experiments/p4_logistic_uc_polar_complex_branch.py
+git diff --check
+```
+
+Artifact and generator SHA-256:
+
+```text
+8ab64528f5bfe2e84dc24b42ee6bd3bb93e07d668e849a6614eda9f01c495404  artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json
+307cd1184f4ddd26489b3a1daed28fa7307b7de159329fbd4fb24a27b381694f  experiments/p4_logistic_uc_polar_complex_branch.py
+```
+
+### Claim boundary and next smallest task
+
+Established: one common holomorphic $t$, $a$, and $\Log(a)$ on the frozen
+radius-`1/1000` domain; two globally univalent signed composite inverse
+branches; all four compact inclusions; and well-defined matching-space
+weighted composition for each fixed $s$.
+
+Not established: partition-hit trace multiplicity, nuclearity, a Fredholm
+determinant, arithmetic orbit weights, completed-$\xi$ structure,
+quantization, Route B, Hilbert--Polya, or RH.
+
+Candidate-local resume task: freeze only the doubled-partition target-copy
+and multiplicity rule for partition-hit traces on the matching space.
+
+Project-level next smallest task: apply the RH breadth-first rule and park the
+Logistic branch at this stable checkpoint. Open `CLUE-A4-001` and freeze
+exactly one explicit target-free Twisted Hénon / kicked-symplectic object from
+the legacy Hénon parent. Its first Route-A prefilter is limited to autonomous
+map definition, symplecticity, antiunitary/time-reversal audit, and
+reproducible short primitive UPOs. Do not fit zeros or define a determinant in
+that first task.
+
+Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped theorem).
+
+## Previous checkpoint — exact-$U_c$ polar non-lattice theorem
 
 Current clue: `CLUE-A1-004`
 

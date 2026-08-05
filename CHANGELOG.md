@@ -5,6 +5,41 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-05
 
+### RH breadth-first portfolio rule
+
+- Distinguished a candidate-local resume task from the project-level next
+  task so a weak Route-A branch can be parked without being discarded.
+- Added a mandatory breadth pivot after two stable checkpoints leave both the
+  Route-A tuple and main blocker unchanged, unless the next bounded test can
+  upgrade a layer or prove a reusable family obstruction.
+- Parked the Logistic branch after its non-lattice and frozen-complex-domain
+  theorem edges; retained partition-hit trace multiplicity as its local
+  resume task.
+- Activated `CLUE-A4-001` for the next project-level source lock: exactly one
+  explicit target-free Twisted Hénon / kicked-symplectic object, initially
+  screened only for autonomous definition, symplecticity, time-reversal, and
+  reproducible short UPOs.
+
+### Frozen-radius exact-$U_c$ polar complex branches
+
+- Kept `epsilon=1/1000` unchanged and constructed one common holomorphic
+  `t`, `a`, and `Log(a)` on the full union stadium rather than selecting
+  separate scalar `sqrt/asin/Log` branches.
+- Defined both composite inverse branches as primitives of the same `a`,
+  preserving `phi_L'=+a` and `phi_R'=-a`, and proved the exact locked
+  `q`-coordinate inverse identity.
+- Certified `|a|<0.59626`, logarithm variation below `0.000851`, positive
+  real part of `a`, and global univalence of both complex branches.
+- Proved all four frozen target/source inclusions with common image radius
+  below `0.00059626` and compact margin above `0.00040374`.
+- Proved the weighted composition formula is well-defined on the matching
+  space for each fixed `s`, but kept endpoint trace multiplicity, nuclearity,
+  a Fredholm determinant, target divisors, Route B, and RH open.
+- Kept `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)` / `REVISE`; this is a proved
+  complex-domain structural prior, not an A2 determinant pass.
+
+Source state: `3ae5e23508e27129cfa5910473b944026b904ea3`.
+
 ### Exact-$U_c$ polar-roof non-lattice theorem
 
 - Evaluated only the sealed primitive words `R` and `LR` with their full roof

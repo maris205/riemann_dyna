@@ -2325,3 +2325,178 @@ common `Log(a)` germ, and compact branch inclusion. Do not audit nuclearity,
 Fredholm zeros, target divisors, or Route B in that task.
 
 Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped theorem).
+
+## 2026-08-05 — frozen-radius exact-$U_c$ polar complex branches
+
+### Stable checkpoint
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: no new formal candidate. Scoped audit:
+`P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH`.
+
+Implementation source commit:
+`3ae5e23508e27129cfa5910473b944026b904ea3`.
+
+Source lock:
+`configs/source_locks/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH.yaml`.
+
+Route-A evaluation:
+`evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml`.
+
+The audit keeps `epsilon=1/1000` and works on the single convex union of the
+two frozen branch stadiums. It first constructs
+
+\[
+t(z)=\sqrt{\frac{1+\rho\sin z}{U_c}},
+\qquad
+\ell(z)=-\log4+\frac12\Log(1+t)
++\frac12\Log(\rho+t)-\Log t,
+\qquad
+a=e^\ell,
+\]
+
+with each principal root or logarithm applied separately to a
+right-half-plane function. The branches are then defined by
+
+\[
+\phi_L(z)=\int_{\pi/2}^{z}a(w)\,dw,
+\qquad
+\phi_R(z)=-\int_{\pi/2}^{z}a(w)\,dw.
+\]
+
+This preserves `phi_L'=+a` and `phi_R'=-a` and proves the locked coordinate
+identity
+
+\[
+S(\rho\sin\phi_\sigma(z))=\rho\sin z.
+\]
+
+No independently defined holomorphic forward $G$ is claimed on the
+noninjective endpoint caps.
+
+The exact analytic ledger and 100-digit outward Arb certificate prove
+
+\[
+\begin{aligned}
+\operatorname{Re}g&>0.29559,\\
+d&<0.000324,\\
+|\ell(z)-\ell(x)|&<0.000851,\\
+M:=\sup_{\overline U}|a|&<0.59626<1.
+\end{aligned}
+\]
+
+The logarithm variation forces $\operatorname{Re}a>0$, so both branches are
+globally univalent. For all four `LL`, `LR`, `RL`, and `RR` pairs, the common
+image radius is below `0.00059626` and the compact margin exceeds
+`0.00040374`.
+
+Route-A tuple:
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+overall: ROUTE_A_EXPLORATORY
+scoped audit verdict: GO_WITH_LIMITATIONS
+parent verdict: REVISE
+```
+
+Route-B tuple: not evaluated; Route B remains inactive and unauthorized.
+
+### Strongest evidence
+
+This is a full-domain analytic theorem, not a complex-grid observation. One
+common functional calculus handles the overlap and both endpoint
+cancellations; one contraction bound handles every target/source pair; and a
+separate logarithm-variation bound proves global univalence. Exact source
+identities, environment gates, source hashes, and byte-identical artifact
+reproduction all pass. Independent proof and interval audits found no
+blocking issue.
+
+### Strongest failure
+
+No target-copy or multiplicity rule is frozen for partition-hit orbits in the
+doubled matching space. Nuclearity, a Fredholm determinant, trace formula,
+root count, target divisor, functional equation, and quantization remain
+absent. A2 remains failed.
+
+### New reusable knowledge
+
+At polar endpoints, construct the common nonzero inverse derivative and its
+holomorphic logarithm before constructing inverse branches. Defining the
+branches as primitives avoids incompatible scalar `sqrt/asin` endpoint
+choices. A small complex logarithm variation can then prove positive real
+derivative and global univalence, while the same derivative bound supplies a
+uniform compact-inclusion margin.
+
+Portfolio knowledge: RH exploration should not turn every `A1_WEAK/A2_FAIL`
+object into an indefinite bridge-building program. After this stable theorem
+edge, the Logistic line keeps an explicit local resume task but yields the
+project-level slot to the structurally different Hénon family.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `HP_HANDOFF.md`
+- `artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH.yaml`
+- `docs/candidate_registry.md`
+- `docs/main_agent_rules.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml`
+- `experiments/p4_logistic_uc_polar_complex_branch.py`
+- `formal/results/exact_uc_polar_complex_branch.md`
+- `tests/test_p4_logistic_uc_polar_complex_branch.py`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+Focused complex-branch audit: `13/13 passed`.
+
+Full repository: `174/174 passed`.
+
+```bash
+python3 experiments/p4_logistic_uc_polar_complex_branch.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json
+python3 -m unittest -v tests/test_p4_logistic_uc_polar_complex_branch.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; p="evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["a1"]["verdict"], d["a2"]["verdict"], d["route_b_invocation_allowed"])'
+sha256sum artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json experiments/p4_logistic_uc_polar_complex_branch.py
+git diff --check
+```
+
+Artifact and generator SHA-256:
+
+```text
+8ab64528f5bfe2e84dc24b42ee6bd3bb93e07d668e849a6614eda9f01c495404  artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json
+307cd1184f4ddd26489b3a1daed28fa7307b7de159329fbd4fb24a27b381694f  experiments/p4_logistic_uc_polar_complex_branch.py
+```
+
+### Claim boundary
+
+Established: one common holomorphic $t$, $a$, and $\Log(a)$ on the frozen
+complex domain; two globally univalent signed composite inverse branches;
+all four compact inclusions; and matching-space invariance for each fixed
+$s$.
+
+Not established: partition-hit trace multiplicity, nuclearity, a Fredholm
+determinant, arithmetic orbit weights, completed-$\xi$ global structure,
+quantization, Route B, Hilbert--Polya, or RH.
+
+### Next smallest task
+
+Candidate-local resume task: freeze only the doubled-partition target-copy
+and multiplicity rule for partition-hit traces on the matching space.
+
+Project-level next task: park the Logistic branch and apply the RH
+breadth-first rule to `CLUE-A4-001`. Freeze exactly one explicit target-free
+Twisted Hénon / kicked-symplectic object, then prefilter only its autonomous
+definition, symplecticity, antiunitary/time-reversal symmetry, and
+reproducible short primitive UPOs. Do not fit zeros or define a determinant in
+that first task.
+
+Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped theorem).

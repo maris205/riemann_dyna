@@ -332,8 +332,11 @@ has an intrinsic roof $\tau=\log|G'|$ with two primitive periods satisfying
 $T_{LR}/T_R\notin\mathbb Q$. Therefore this new roof is outside the unit-
 lattice hypothesis of `OBR-008`; the obstruction remains fully active for the
 old return-label clock and every determinant that factors only through
-$e^{-s}$. The second reopening obligation is still open: no same-object
-Fredholm determinant or divisor-count regime has been proved for the
+$e^{-s}$. `P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH` subsequently proves the
+same-object frozen-radius complex branches, common logarithm germ, compact
+inclusion, and matching-space invariance. The second reopening obligation is
+still open: the partition-hit trace ledger, nuclearity, a same-object Fredholm
+determinant, and its divisor-count regime have not been proved for the
 non-lattice roof.
 
 Artifacts:
@@ -348,6 +351,11 @@ Artifacts:
 - `artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json`
 - `evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml`
 - `tests/test_p4_logistic_uc_polar_nonlattice.py`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH.yaml`
+- `formal/results/exact_uc_polar_complex_branch.md`
+- `artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml`
+- `tests/test_p4_logistic_uc_polar_complex_branch.py`
 
 ---
 
