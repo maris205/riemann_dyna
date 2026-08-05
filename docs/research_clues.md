@@ -459,9 +459,11 @@ complete directed Arb cover to prove `0.20655<h(0)<0.40008`,
 `0.09461<C_h<0.18327`, and tighter intervals for four finite branch masses.
 It still does not restore the legacy ordinary-BV spectral proof or an exact
 finite-order mass law. The cusp-adapted audit now proves an explicit
-adjacent-ratio rate from branch index 6 onward. The next smallest task is to
-freeze the polar map's intrinsic positive roof tau=log|G'| and audit its
-non-lattice behavior before any determinant or target comparison.
+adjacent-ratio rate from branch index 6 onward. The next smallest task is only
+to freeze the polar suspension source lock: map, branches, intrinsic roof
+tau=log|G'|, physical clock relation, analytic function space, determinant
+convention, data split, and stopping conditions. Non-lattice and determinant
+audits are deferred.
 
 Artifacts:
 

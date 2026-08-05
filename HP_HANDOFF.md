@@ -272,7 +272,7 @@ compare zeros or define a determinant before that theorem exists.
 
 Recommended verdict: `REVISE`.
 
-## Current status — exact-$U_c$ polar-cone density enclosure
+## Previous checkpoint — exact-$U_c$ polar-cone density enclosure
 
 Current clue: `CLUE-A1-004`
 
@@ -389,7 +389,7 @@ branch-mass asymptotic. Do not compare zeros or introduce a roof in this task.
 
 Recommended verdict: `REVISE`.
 
-## Current status — exact-($U_c$) physical-acip endpoint theorem
+## Previous checkpoint — exact-($U_c$) physical-acip endpoint theorem
 
 Current clue: `CLUE-A1-004`
 
