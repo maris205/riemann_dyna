@@ -1,6 +1,154 @@
 # HP-Dynamics Handoff
 
-## Current status — quantitative exact-$U_c$ branch-mass-ratio rate
+## Current status — exact-$U_c$ polar intrinsic-roof source lock
+
+Current clue: `CLUE-A1-004`
+
+Candidate ID: no new formal candidate. Lock-only audit ID:
+`P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF`, following
+`P4-LOGISTIC-UC-BRANCH-MASS-RATE` under parent candidate
+`P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`.
+
+- Formal candidate: `false`
+- Source commit: `4d5cd7e346445317d2ed19ef90a484cca09c3588`
+- Source lock:
+  `configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml`
+- Route-A tuple: inherited `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`; no new
+  Route-A evaluation has been performed
+- Checkpoint status: `DEFINED_NOT_EVALUATED`
+- Route-B tuple: not evaluated; Route B is inactive and not authorized
+
+### Source lock
+
+The frozen base is the two-full-branch polar Markov map
+
+\[
+S=-f^2|_{[-\rho,\rho]},
+\qquad
+q(\theta)=\rho\sin\theta,
+\qquad
+G=q^{-1}\circ S\circ q,
+\]
+
+on the doubled branch space
+$I_L\sqcup I_R=[-\pi/2,0_L]\sqcup[0_R,\pi/2]$. Its intrinsic roof is
+
+\[
+\tau(\theta)=\log|G'(\theta)|>0,
+\qquad
+T_\gamma=\sum_{k=0}^{n-1}\tau(G^k\theta)
+=\log|(G^n)'(\theta)|.
+\]
+
+One base step represents exactly two iterates of the original Logistic map,
+whereas the suspension/determinant clock is the positive roof time. These two
+clocks are frozen separately and may not be substituted for one another.
+
+The complex lock fixes `epsilon=1/1000`, two stadium neighborhoods, the
+matching branchwise analytic Banach space
+
+```text
+B_epsilon = {(v_L,v_R): v_sigma analytic on U_sigma,
+             continuous on closure(U_sigma), v_L(0)=v_R(0)}
+```
+
+and the conditional weighted family
+
+\[
+(\mathcal L_s v)_j(z)
+=a(z)^s\bigl[v_L(\phi_L(z))+v_R(\phi_R(z))\bigr].
+\]
+
+The sole intended determinant notation is
+$D_{\rm pol}(s)=\det_{\rm Fr}(I-\mathcal L_s)$, but only if a later audit
+proves the frozen operator nuclear. It is not an established determinant at
+this checkpoint.
+
+### Strongest evidence
+
+The exact branch formulas, orientations, endpoint extensions, and expansion
+theorem give
+
+```text
+phi_L' = +a
+phi_R' = -a
+inf |G'| = 4/U_c^2 > 1
+inf tau = log(4/U_c^2) > 0
+tau(0_L)=tau(0_R)=(1/2) log(8/U_c)
+```
+
+Thirteen executable lock gates verify the real inverse identities and signed
+derivatives, the exact reflected physical conjugacy, outward endpoint
+positivity bounds, doubled-versus-quotient ledger separation, frozen complex
+obligations, the one-way lattice logic, data firewall, and route status. No
+prime, zero, zeta, xi, USTC, or fitted data enters.
+
+### Strongest failure
+
+The composite complex branches and holomorphic `Log(a)` have not yet been
+certified on the `1/1000` neighborhoods. Compact branch inclusion, invariance
+of the analytic space, nuclearity, the partition-hit endpoint trace rule, and
+Fredholm determinant existence are all open. The roof has not yet passed a
+non-lattice theorem. Therefore A2 remains failed and no divisor, zero, or
+quantization claim is available.
+
+### New reusable knowledge
+
+The natural determinant data type for this polar object requires three
+separations: doubled Markov coding versus quotient interval, signed branch
+orientation versus positive roof magnitude, and two-iterate physical time
+versus intrinsic log-Jacobian suspension time. The notation
+`det_Fr(I-L_s)` must remain conditional until the same frozen complex-space
+operator is proved nuclear.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `HP_HANDOFF.md`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml`
+- `docs/candidate_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `tests/test_p4_logistic_uc_polar_intrinsic_roof_lock.py`
+
+`docs/obstruction_registry.md` is unchanged because no new obstruction is
+proved. `docs/operator_obligations.md` is unchanged because Route B remains
+closed.
+
+### Tests and reproduction
+
+Focused lock audit: `13/13 passed`.
+
+Full repository: `148/148 passed`.
+
+```bash
+python3 -m unittest -v tests/test_p4_logistic_uc_polar_intrinsic_roof_lock.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; p="configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["audit_id"], d["route_status_at_lock"]["checkpoint_status"], d["route_status_at_lock"]["recommended_verdict"])'
+git diff --check
+```
+
+### Claim boundary and next smallest task
+
+Established: one explicit target-free real polar Markov suspension object,
+doubled branch convention, intrinsic positive roof, separated clocks, exact
+interior inverse formulas, frozen intended analytic space and conditional
+transfer family, sole determinant convention, data split, and stopping rules.
+
+Not established: non-lattice behavior, complex-domain branch inclusion,
+nuclearity, an actual Fredholm determinant, arithmetic primitive-orbit law,
+global analytic structure, quantization, Route B, Hilbert--Polya, or RH.
+
+Next smallest task: audit only whether the sealed primitive words `R` and
+`LR` have multiplicatively independent positive multipliers and therefore
+prove the roof non-lattice. Failure to close that proof returns `REVISE` or
+`NOT_TESTABLE`; it does not prove lattice behavior. Do not audit Fredholm
+nuclearity or compare target zeros in that task.
+
+Recommended verdict: `REVISE`; checkpoint status `DEFINED_NOT_EVALUATED`.
+
+## Previous checkpoint — quantitative exact-$U_c$ branch-mass-ratio rate
 
 Current clue: `CLUE-A1-004`
 

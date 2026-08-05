@@ -274,6 +274,11 @@ Its physical exact-(U_c) first-return alphabet, asymptotic physical mass ratio,
 and explicit adjacent-ratio convergence rate are proved, while an exact
 finite-order mass law, the modeled tower coupling, and the arithmetic
 interpretation remain open.
+P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF is a lock-only continuation. It freezes a
+doubled polar Markov phase space, the intrinsic positive roof `tau=log|G'|`,
+separate physical and suspension clocks, one analytic Banach space, and one
+conditional Fredholm convention. It is `DEFINED_NOT_EVALUATED`, is not a
+formal candidate, and does not change the inherited Route-A tuple.
 No candidate has entered Route B.
 ```
 
@@ -315,11 +320,16 @@ Latest evaluation:
 evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml
 ```
 
-Next smallest test: freeze the polar suspension object only: the map, its two
-branches, intrinsic positive roof `tau=log|G'|`, physical clock relation,
-analytic function space, determinant convention, data split, and stopping
-conditions. Do not audit non-lattice behavior or Fredholm existence until this
-source lock is complete; no target-zero comparison is authorized.
+The polar suspension source lock is
+`configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml` at source
+commit `4d5cd7e346445317d2ed19ef90a484cca09c3588`. Lock v2 clarifies the
+composite complex branches, exact physical conjugacy, one-way witness logic,
+and deferred partition-hit trace ledger without changing the real map or roof.
+
+Next smallest test: audit only whether the sealed primitive words `R` and `LR`
+have multiplicatively independent positive multipliers and therefore prove
+the intrinsic roof non-lattice. A failed witness proof is inconclusive; do not
+audit Fredholm nuclearity or compare target zeros in that task.
 
 汇总表：
 

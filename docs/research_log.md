@@ -2072,3 +2072,108 @@ Defer the non-lattice and same-object Fredholm audits until this source lock is
 complete.
 
 Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped audit).
+
+## 2026-08-05 — exact-$U_c$ polar intrinsic-roof source lock
+
+### Stable checkpoint
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: no new formal candidate. Lock-only audit ID:
+`P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF`.
+
+Source commit: `4d5cd7e346445317d2ed19ef90a484cca09c3588`.
+
+Source lock:
+`configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml`.
+
+The exact object is the doubled two-full-branch polar Markov map
+
+\[
+G=q^{-1}\circ(-f^2)\circ q,
+\qquad
+q(\theta)=\rho\sin\theta,
+\]
+
+with intrinsic roof $\tau=\log|G'|$. One base step is exactly two Logistic
+iterates; the suspension clock is the roof sum
+$T_\gamma=\log|(G^n)'|$. These clocks are separate.
+
+The lock fixes `epsilon=1/1000`, two complex stadium neighborhoods, the
+matching two-component analytic Banach space, the weighted family with
+potential `-s*tau`, and the sole conditional notation
+$D_{\rm pol}(s)=\det_{\rm Fr}(I-\mathcal L_s)$.
+
+Route-A tuple: inherited `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`; no new
+Route-A evaluation was performed. Checkpoint status:
+`DEFINED_NOT_EVALUATED`.
+
+Route-B tuple: not evaluated; Route B remains inactive and unauthorized.
+
+### Strongest evidence
+
+The exact polar theorem gives `phi_L'=+a`, `phi_R'=-a`,
+`inf|G'|=4/U_c^2>1`, and hence the strictly positive endpoint roof values.
+Thirteen executable tests verify the real inverse identities and signs, exact
+reflected physical conjugacy, outward endpoint positivity, Markov ledger,
+frozen complex obligations, one-way witness logic, data firewall, and scoped
+status.
+
+### Strongest failure
+
+The frozen composite complex branch continuations, compact inclusion,
+analytic-space invariance, partition-hit trace rule, nuclearity, and
+determinant existence have not been proved. The roof is not yet certified
+non-lattice. No orbit-divisor or target comparison is open.
+
+### New reusable knowledge
+
+A same-object polar determinant audit must retain the doubled Markov ledger,
+signed branch orientation, and positive roof magnitude as separate fields. A
+conditional Fredholm notation is not an established determinant.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `HP_HANDOFF.md`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml`
+- `docs/candidate_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `tests/test_p4_logistic_uc_polar_intrinsic_roof_lock.py`
+
+`docs/obstruction_registry.md` and `docs/operator_obligations.md` are unchanged.
+
+### Tests and reproduction
+
+Focused lock audit: `13/13 passed`.
+
+Full repository: `148/148 passed`.
+
+```bash
+python3 -m unittest -v tests/test_p4_logistic_uc_polar_intrinsic_roof_lock.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; p="configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["audit_id"], d["route_status_at_lock"]["checkpoint_status"], d["route_status_at_lock"]["recommended_verdict"])'
+git diff --check
+```
+
+### Claim boundary
+
+Established: the exact real lock for the polar Markov base, intrinsic positive
+roof, two clocks, branch orientations, intended analytic space and conditional
+transfer family, determinant convention, data split, and stopping rules.
+
+Not established: non-lattice behavior, nuclearity, an actual Fredholm
+determinant, arithmetic orbit law, completed-$\xi$ structure, quantization,
+Route B, Hilbert--Polya, or RH.
+
+### Next smallest task
+
+Audit only whether the sealed primitive words `R` and `LR` have
+multiplicatively independent positive multipliers and therefore prove the
+roof non-lattice. Failure returns `REVISE` or `NOT_TESTABLE` and is not a
+lattice theorem. Do not audit Fredholm nuclearity or compare target zeros in
+that task.
+
+Recommended verdict: `REVISE`; checkpoint status `DEFINED_NOT_EVALUATED`.

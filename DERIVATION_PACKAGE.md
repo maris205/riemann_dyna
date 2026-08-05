@@ -780,5 +780,9 @@ and a non-lattice clock are absent. It does not supply an A2 Riemann clock.
   standard nuclear transfer-operator theorems do not apply automatically to
   the full skew product.
 - The unit lattice clock forces vertical periodicity after (z=e^{-s}).
-- A future non-lattice roof must be derived from the same dynamics; choosing it
-  from prime or zero data would invalidate the candidate.
+- The next source lock now derives the intrinsic roof
+  $\tau=\log|G'|$ from the same exact polar dynamics, on a doubled Markov
+  branch space with a frozen conditional transfer family. Its non-lattice
+  property, complex-space nuclearity, and Fredholm determinant existence are
+  still open; choosing or rescaling a roof from prime or zero data would
+  invalidate the object.

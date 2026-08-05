@@ -5,6 +5,26 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-05
 
+### Exact-$U_c$ polar intrinsic-roof source lock
+
+- Froze the doubled two-branch polar Markov map
+  `G=q^(-1) o (-f^2) o q` and the intrinsic positive roof
+  `tau=log|G'|` without using arithmetic target data.
+- Separated one `G` step (`2` physical Logistic iterates) from the suspension
+  period `sum tau=log|(G^n)'|`; neither clock may replace the other.
+- Froze `epsilon=1/1000`, a two-component matching analytic Banach space, the
+  weighted family with potential `-s*tau`, and the sole conditional convention
+  `D_pol(s)=det_Fr(I-L_s)`.
+- Kept the determinant explicitly conditional: complex branch inclusion,
+  nuclearity, non-lattice behavior, and all target comparisons remain open.
+- Sealed the next audit to primitive words `R` and `LR` only; Fredholm analysis
+  is deferred.
+- Clarified lock v2 so only the composite inverse branches are intended to be
+  holomorphic, froze the exact conjugacy `H o G=f^2 o H`, made the two-witness
+  lattice test one-way, and deferred the partition-hit trace ledger.
+
+Source state: `4d5cd7e346445317d2ed19ef90a484cca09c3588`.
+
 ### Quantitative exact-$U_c$ physical branch-mass-ratio rate
 
 - Froze the local cusp-adapted space

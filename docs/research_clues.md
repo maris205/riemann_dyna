@@ -459,11 +459,11 @@ complete directed Arb cover to prove `0.20655<h(0)<0.40008`,
 `0.09461<C_h<0.18327`, and tighter intervals for four finite branch masses.
 It still does not restore the legacy ordinary-BV spectral proof or an exact
 finite-order mass law. The cusp-adapted audit now proves an explicit
-adjacent-ratio rate from branch index 6 onward. The next smallest task is only
-to freeze the polar suspension source lock: map, branches, intrinsic roof
-tau=log|G'|, physical clock relation, analytic function space, determinant
-convention, data split, and stopping conditions. Non-lattice and determinant
-audits are deferred.
+adjacent-ratio rate from branch index 6 onward. The polar suspension source
+lock now freezes the map, doubled branches, intrinsic roof `tau=log|G'|`,
+separate clocks, analytic function space, and conditional determinant
+convention. The next smallest task is only the sealed `R`/`LR` non-lattice
+audit; Fredholm analysis remains deferred.
 
 Artifacts:
 
@@ -473,6 +473,7 @@ Artifacts:
 - `configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
@@ -499,6 +500,7 @@ Artifacts:
 - `tests/test_p4_logistic_uc_acip_endpoint_density.py`
 - `tests/test_p4_logistic_uc_acip_sharp_cone_enclosure.py`
 - `tests/test_p4_logistic_uc_branch_mass_rate.py`
+- `tests/test_p4_logistic_uc_polar_intrinsic_roof_lock.py`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
 
 ---
@@ -1411,4 +1413,16 @@ new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-BRANCH-MASS-RATE frozen cusp-adapted space, complete Arb derivative interval, exact Fraction rate ledger, and all-tail ratio theorem"
 commit: "02727fceef6e7cde3fc4a4452ea409b2faa21f1f"
 consequence: "For every n>=6, |mu(C_(2n+2))/mu(C_(2n))-U_c^2/4| <= (36/5)*sqrt(delta_(n-1)) < (243/625)*(3/5)^(n-6). This is a genuine measure-theoretic rate edge but does not create primitive arithmetic orbits or a determinant. Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL). Next freeze the polar suspension object (map, branches, roof, clock, function space, determinant convention, data split, and stopping conditions); defer non-lattice/Fredholm audits until that lock is complete."
+```
+
+## Status update — CLUE-A1-004 polar intrinsic-roof source lock
+
+```yaml
+date: 2026-08-05
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF exact lock for doubled polar branches, intrinsic positive roof, separated clocks, analytic space, and conditional Fredholm convention"
+commit: "4d5cd7e346445317d2ed19ef90a484cca09c3588"
+consequence: "The corrected lock-v2 object is DEFINED_NOT_EVALUATED and creates no formal candidate. The next task is only to prove multiplicative independence of the sealed R/LR roof multipliers; failure is inconclusive rather than a lattice theorem. Complex-space nuclearity, endpoint trace multiplicity, determinant existence, target comparison, and Route B remain closed."
 ```
