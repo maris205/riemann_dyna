@@ -6,10 +6,12 @@ NUMERICALLY_CERTIFIED.
 
 Source: CLUE-A1-004 / P4-LOGISTIC-UC-BRANCH-MASS-RATE.
 
-The only computer-assisted step is directed Arb interval evaluation of two
-explicit derivatives on one complete closed interval. Every subsequent
-constant comparison is exact rational arithmetic. No prime, zero, fitted
-weight, Ulam, resolvent, or determinant data enters.
+The only new computer-assisted gate in this audit is directed Arb interval
+evaluation of two explicit derivatives on one complete closed interval. The
+certified root bracket, endpoint interval, endpoint-coefficient lower bound,
+and cusp remainder are inherited inputs from the cited parent certificates.
+Every subsequent rate-constant comparison is exact rational arithmetic. No
+prime, zero, fitted weight, Ulam, resolvent, or determinant data enters.
 
 ## Theorem
 

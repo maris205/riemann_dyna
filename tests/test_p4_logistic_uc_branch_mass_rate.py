@@ -191,6 +191,11 @@ class LogisticUcBranchMassRateTests(unittest.TestCase):
         self.assertEqual(artifact.read_text(encoding="utf-8"), expected)
 
         provenance = self.report["provenance"]
+        self.assertIn(
+            "configs/source_locks/"
+            "P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml",
+            provenance["source_inputs_sha256"],
+        )
         self.assertEqual(
             provenance["generator_sha256"],
             rate.file_sha256(provenance["generator"]),

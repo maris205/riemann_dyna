@@ -127,15 +127,16 @@
   "provenance": {
     "external_target_data_used": false,
     "generator": "experiments/p4_logistic_uc_branch_mass_rate.py",
-    "generator_sha256": "7d03c4217208fa2628e372cc62a5aebe9d53dbbdca12fadab6653ffd73281c54",
+    "generator_sha256": "fd5ea988a5156b2ea9cb3798ba01d58bc328b8d99dda40856581a5b8378eab57",
     "reproduction_command": "python3 experiments/p4_logistic_uc_branch_mass_rate.py --quiet --output artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json",
     "source_inputs_sha256": {
       "artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json": "dec8f8c1a6a7dc329d3338fc835ac34e538c0555283d2cc968c09c31e5e5e231",
+      "configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml": "b27c661ae580bcff4827eeca7fd9f1d899b72beda01a5c2a5ca388e517da0eab",
       "configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml": "fd97a0ce4b4da4cf40f26bd700576d0d0586edf315b507cdafa84e46105355fe",
       "experiments/p4_logistic_uc_first_return_support.py": "6165e62f5ac84f955e9474e8291d32e5213cea409760d6768b3ecec571da9b9e",
       "formal/results/exact_uc_acip_cone_enclosure.md": "bcb46cdfb3959f068b8b416a33c409b18ce07c2391be43f906404372b3f5332a",
       "formal/results/exact_uc_acip_sharp_cone_enclosure.md": "5fb0bdc64497f02c0f2e2befdf2d4a528ea72d0b64c6bba7e78ff7fdb8019373",
-      "formal/results/exact_uc_branch_mass_rate.md": "a3e94f3a73f6fd175d249f0477d7d72f695194cbecc58abbf9ce4aa805152b0c",
+      "formal/results/exact_uc_branch_mass_rate.md": "9f078887c5f853b58b98e75961a842879f7136ed8eb9c4fc5d898b6da82e5244",
       "formal/results/exact_uc_first_return_support.md": "ec21c0c2d9fae0b9f990f0d2bf4397462685ee52ac29144a4d607102441fb7cf"
     }
   },

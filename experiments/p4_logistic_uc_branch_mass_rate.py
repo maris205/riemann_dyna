@@ -270,6 +270,7 @@ def build_report() -> dict[str, Any]:
         source_inputs = [
             SOURCE_LOCK,
             FORMAL_RESULT,
+            "configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml",
             "formal/results/exact_uc_acip_sharp_cone_enclosure.md",
             "formal/results/exact_uc_acip_cone_enclosure.md",
             "formal/results/exact_uc_first_return_support.md",
