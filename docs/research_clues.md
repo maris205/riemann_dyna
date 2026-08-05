@@ -1369,6 +1369,6 @@ clue_id: CLUE-A1-004
 old_status: ACTIVE
 new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE target-free log-Lipschitz cone, explicit endpoint remainder, and certified masses for returns 12,14,16,18"
-commit: "pending integration commit"
+commit: "8f270de6546928385b93e1dd0b8b78c7ffd40ea8"
 consequence: "A coarse absolute enclosure is now available: h(0) in [0.1533974450330445,0.4982637116356999] and C_h in [0.0702656899853137,0.2282361579437252]. Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL); next task is a validated sharp tail/resolvent bound or a quantitative remainder, not zero matching."
 ```

@@ -13,6 +13,7 @@ P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE
 ```
 
 - Formal candidate: `false`
+- Source commit: `8f270de6546928385b93e1dd0b8b78c7ffd40ea8`
 - Route-A evaluation:
   `evaluations/route_a/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE/20260804T233200Z.yaml`
 - Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`

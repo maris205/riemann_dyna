@@ -4,7 +4,7 @@ candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
 audit_id: P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE
 parent_audit_id: P4-LOGISTIC-UC-ACIP-ENDPOINT-DENSITY
 formal_candidate: false
-source_commit: 2105cfb93f970ac8d690c69fff5c8348a5c7e51e
+source_commit: 8f270de6546928385b93e1dd0b8b78c7ffd40ea8
 evaluation_date: "2026-08-04T23:32:00Z"
 
 source_lock:

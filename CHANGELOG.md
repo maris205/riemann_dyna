@@ -20,6 +20,8 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 - Explicitly excluded sharp Ulam/resolvent certification, arithmetic orbit
   matching, determinant claims, quantization, and RH conclusions.
 
+Source state: `8f270de6546928385b93e1dd0b8b78c7ffd40ea8`.
+
 ### Exact-$U_c$ physical-acip endpoint theorem
 
 - Proved existence, uniqueness, full support, and physicality of the exact-$U_c$
