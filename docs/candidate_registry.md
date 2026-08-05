@@ -279,6 +279,10 @@ doubled polar Markov phase space, the intrinsic positive roof `tau=log|G'|`,
 separate physical and suspension clocks, one analytic Banach space, and one
 conditional Fredholm convention. It is `DEFINED_NOT_EVALUATED`, is not a
 formal candidate, and does not change the inherited Route-A tuple.
+P4-LOGISTIC-UC-POLAR-NONLATTICE is the completed sealed-word audit. It proves
+the full primitive periods for `R` and `LR` have irrational ratio, so the
+intrinsic roof is non-lattice. This is a `PROVED` positive structural prior,
+not an A2 determinant pass or a new formal candidate.
 No candidate has entered Route B.
 ```
 
@@ -309,15 +313,18 @@ determinant. A later cusp-adapted audit now proves an explicit adjacent
 physical-mass-ratio rate from branch index 6 onward, but it does not restore
 the ordinary-`BV` spectral argument or give an exact finite-order mass law. The
 unaccelerated induced map remains blocked as an ordinary
-uniformly expanding `BV` map by `OBR-009`, and the unit lattice clock remains
-blocked by `OBR-008`. The audit remains
+uniformly expanding `BV` map by `OBR-009`, and the old unit return-label clock
+remains blocked by `OBR-008`. The exact polar roof now escapes the hypothesis
+of `OBR-008`: its sealed `R` and `LR` periods are proved rationally
+independent. This does not supply a complex transfer-operator domain,
+Fredholm determinant, or divisor-count theorem. The audit remains
 `P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`, with Route-A tuple
 `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)` and verdict `REVISE`.
 
 Latest evaluation:
 
 ```text
-evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml
+evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml
 ```
 
 The polar suspension source lock is
@@ -326,10 +333,13 @@ commit `4d5cd7e346445317d2ed19ef90a484cca09c3588`. Lock v2 clarifies the
 composite complex branches, exact physical conjugacy, one-way witness logic,
 and deferred partition-hit trace ledger without changing the real map or roof.
 
-Next smallest test: audit only whether the sealed primitive words `R` and `LR`
-have multiplicatively independent positive multipliers and therefore prove
-the intrinsic roof non-lattice. A failed witness proof is inconclusive; do not
-audit Fredholm nuclearity or compare target zeros in that task.
+The completed non-lattice theorem is recorded at source commit
+`36a38f0db16652bf0e0c1459be6c69f6bdafec12` with exact multiplier
+polynomials, finite-field irreducibility gates, and a common-field norm proof.
+
+Next smallest test: audit only the frozen `epsilon=1/1000` composite complex
+inverse branches, common `Log(a)` germ, and compact branch inclusion. Do not
+audit nuclearity, Fredholm zeros, or target divisors in that task.
 
 汇总表：
 

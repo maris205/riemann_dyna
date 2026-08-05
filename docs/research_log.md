@@ -2177,3 +2177,151 @@ lattice theorem. Do not audit Fredholm nuclearity or compare target zeros in
 that task.
 
 Recommended verdict: `REVISE`; checkpoint status `DEFINED_NOT_EVALUATED`.
+
+## 2026-08-05 — exact-$U_c$ polar-roof non-lattice theorem
+
+### Stable checkpoint
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: no new formal candidate. Scoped audit:
+`P4-LOGISTIC-UC-POLAR-NONLATTICE`.
+
+Implementation source commit:
+`36a38f0db16652bf0e0c1459be6c69f6bdafec12`.
+
+Route-A evaluation:
+`evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml`.
+
+Source lock:
+`configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml`.
+
+The audit opens only the sealed primitive words `R` and `LR` of the corrected
+polar-roof lock. It preserves the signed multipliers
+
+\[
+\Lambda_R=-\alpha<0,
+\qquad
+\Lambda_{LR}=-\beta<0,
+\]
+
+and uses the full primitive roof sums
+
+\[
+T_R=\log\alpha,
+\qquad
+T_{LR}=\log\beta.
+\]
+
+Exact factorization and polynomial reduction give an irreducible cubic for
+$\alpha$ with norm $2^6$ and an irreducible degree-nine polynomial for
+$\beta$ with norm $2^{36}$. A hypothetical rational period ratio implies
+$\beta^b=\alpha^a$; common-field norms force $a=2b$, leaving only
+$\beta=\alpha^2$. The identity
+
+\[
+H_{U_c}(\alpha^2)
+=-8192(U_c-2)(2U_c-3)\ne0,
+\qquad
+3/2<U_c<2,
+\]
+
+excludes that case. Therefore $T_{LR}/T_R$ is irrational and the intrinsic
+roof is non-lattice.
+
+Route-A tuple:
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+overall: ROUTE_A_EXPLORATORY
+scoped audit verdict: GO_WITH_LIMITATIONS
+parent verdict: REVISE
+```
+
+Route-B tuple: not evaluated; Route B remains inactive and unauthorized.
+
+### Strongest evidence
+
+This is an exact theorem, not a decimal-ratio observation. The certificate
+checks the exact fixed-point factorization, right-orbit multiplier, degree-12
+period-two dynatomic quotient, multiplier identity modulo the critical
+polynomial, mod-3 and mod-5 irreducibility, both norm ledgers, the common-field
+exponent reduction, and the final nonvanishing identity. Twenty exact algebra
+gates pass. High-precision orbit coordinates are explicitly diagnostic only.
+
+### Strongest failure
+
+The theorem removes the unit-lattice hypothesis for this roof but supplies no
+arithmetic primitive-orbit law or von-Mangoldt weights. The frozen
+`epsilon=1/1000` complex inverse branches, common `Log(a)` germ, compact
+inclusion, matching-space invariance, partition-hit trace rule, nuclearity,
+Fredholm determinant, global completed-$\xi$ structure, and quantization are
+still absent. A2 remains failed.
+
+### New reusable knowledge
+
+Two intrinsic primitive periods can prove a roof non-lattice when exact
+multiplier algebra establishes multiplicative independence. Algebraic norms
+can collapse an infinite rational-relation problem to one exact residual
+identity. `OBR-008` remains a proved obstruction for the old unit clock but is
+out of scope for this newly proved non-lattice roof; its divisor-count
+obligation remains open.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `HP_HANDOFF.md`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml`
+- `experiments/p4_logistic_uc_polar_nonlattice.py`
+- `formal/results/exact_uc_polar_nonlattice.md`
+- `artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json`
+- `tests/test_p4_logistic_uc_polar_nonlattice.py`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+Focused non-lattice audit: `13/13 passed`.
+
+Full repository: `161/161 passed`.
+
+```bash
+python3 experiments/p4_logistic_uc_polar_nonlattice.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json
+python3 -m unittest -v tests/test_p4_logistic_uc_polar_nonlattice.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; p="evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["a1"]["evidence_status"], d["a2"]["verdict"], d["route_b_invocation_allowed"])'
+sha256sum artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json experiments/p4_logistic_uc_polar_nonlattice.py
+git diff --check
+```
+
+Artifact SHA-256:
+
+```text
+a05bfa31316281345e3fe7d6645732beaff291298bc928fd8a6156f0f649b832  artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json
+```
+
+### Claim boundary
+
+Established: exact signed multipliers for `R` and `LR`, their minimal
+polynomials and norms, multiplicative independence, irrational full
+primitive-period ratio, and the non-lattice intrinsic roof.
+
+Not established: arithmetic orbit weights, complex branch inclusion,
+endpoint trace multiplicity, nuclearity, a Fredholm determinant, analytic
+completion, quantization, Route B, Hilbert--Polya, or RH.
+
+### Next smallest task
+
+Audit only the frozen `epsilon=1/1000` composite complex inverse branches,
+common `Log(a)` germ, and compact branch inclusion. Do not audit nuclearity,
+Fredholm zeros, target divisors, or Route B in that task.
+
+Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped theorem).

@@ -326,6 +326,16 @@ target-free dynamics, and prove its divisor-count regime. Adding a
 zero-producing correction by hand changes the ledger and does not reopen this
 case.
 
+Current reopening status (2026-08-05):
+`P4-LOGISTIC-UC-POLAR-NONLATTICE` proves that the same exact polar dynamics
+has an intrinsic roof $\tau=\log|G'|$ with two primitive periods satisfying
+$T_{LR}/T_R\notin\mathbb Q$. Therefore this new roof is outside the unit-
+lattice hypothesis of `OBR-008`; the obstruction remains fully active for the
+old return-label clock and every determinant that factors only through
+$e^{-s}$. The second reopening obligation is still open: no same-object
+Fredholm determinant or divisor-count regime has been proved for the
+non-lattice roof.
+
 Artifacts:
 
 - `configs/source_locks/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK.yaml`
@@ -333,6 +343,11 @@ Artifacts:
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml`
+- `formal/results/exact_uc_polar_nonlattice.md`
+- `artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml`
+- `tests/test_p4_logistic_uc_polar_nonlattice.py`
 
 ---
 

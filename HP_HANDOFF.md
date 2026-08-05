@@ -1,6 +1,164 @@
 # HP-Dynamics Handoff
 
-## Current status — exact-$U_c$ polar intrinsic-roof source lock
+## Current status — exact-$U_c$ polar non-lattice theorem
+
+Current clue: `CLUE-A1-004`
+
+Candidate ID: no new formal candidate. Scoped audit:
+`P4-LOGISTIC-UC-POLAR-NONLATTICE`, following the corrected
+`P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF` lock under parent candidate
+`P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`.
+
+- Formal candidate: `false`
+- Implementation source commit: `36a38f0db16652bf0e0c1459be6c69f6bdafec12`
+- Route-A evaluation:
+  `evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall Route A: `ROUTE_A_EXPLORATORY`
+- Scoped verdict: `GO_WITH_LIMITATIONS`
+- Parent verdict: `REVISE`
+- Route-B tuple: not evaluated; Route B is inactive and not authorized
+
+### Source lock and theorem
+
+The source lock keeps exactly the intrinsic roof
+
+\[
+\tau(\theta)=\log|G'(\theta)|
+\]
+
+and the sealed primitive words `R` and `LR`. Their signed multipliers are
+recorded first,
+
+\[
+\Lambda_R=-\alpha<0,
+\qquad
+\Lambda_{LR}=-\beta<0,
+\]
+
+and their full primitive roof periods are
+
+\[
+T_R=\log\alpha,
+\qquad
+T_{LR}=\log\beta.
+\]
+
+The period of `LR` is not divided by its symbolic length two. Exact reduction
+gives
+
+\[
+\alpha=4(U_c-1),
+\qquad
+\alpha^3+4\alpha^2+16\alpha-64=0,
+\]
+
+and an irreducible degree-nine polynomial for $\beta$. Their norms are
+
+\[
+N(\alpha)=2^6,
+\qquad
+N(\beta)=2^{36}.
+\]
+
+If $T_{LR}/T_R=a/b\in\mathbb Q$ in lowest terms, common-field norms force
+$a=2b$, hence the sole possible relation is $\beta=\alpha^2$. The exact
+identity
+
+\[
+H_{U_c}(\alpha^2)
+=-8192(U_c-2)(2U_c-3)\ne0
+\]
+
+for $3/2<U_c<2$ excludes it. Therefore
+
+\[
+\boxed{T_{LR}/T_R\notin\mathbb Q},
+\]
+
+so the intrinsic polar roof is non-lattice.
+
+### Strongest evidence
+
+The proof is exact rather than a finite-precision irrationality test. It uses
+an exact fixed-point factorization, the exact degree-12 period-two dynatomic
+quotient, a multiplier identity in
+$\mathbb Q[U_c,X]/(P(U_c),D_2(X))$, mod-3 and mod-5 irreducibility
+certificates, algebraic norms, and the final exact nonvanishing identity.
+Twenty exact algebra gates pass. Decimal orbit coordinates are retained only
+as target-free diagnostics and carry no proof weight.
+
+### Strongest failure
+
+Non-lattice behavior removes the old unit-clock vertical-periodicity
+obstruction for this roof, but it does not establish the frozen
+`epsilon=1/1000` complex branch continuations, common `Log(a)` germ, compact
+branch inclusion, matching-space invariance, partition-hit trace rule,
+nuclearity, or a Fredholm determinant. There is still no arithmetic
+prime-orbit law, target divisor, global analytic structure, or quantization.
+A2 therefore remains failed.
+
+### New reusable knowledge
+
+For a full-branch expanding roof, two intrinsic primitive periods suffice to
+prove non-lattice when their multiplier magnitudes are proved
+multiplicatively independent. Algebraic norms can collapse all possible
+logarithmic rational relations to a finite exact case, avoiding any bounded
+denominator or decimal-ratio argument. `OBR-008` remains valid for the old unit
+clock but no longer applies to this non-lattice roof by its stated scope.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `DERIVATION_PACKAGE.md`
+- `HP_HANDOFF.md`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml`
+- `experiments/p4_logistic_uc_polar_nonlattice.py`
+- `formal/results/exact_uc_polar_nonlattice.md`
+- `artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json`
+- `tests/test_p4_logistic_uc_polar_nonlattice.py`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+Focused non-lattice audit: `13/13 passed`.
+
+Full repository: `161/161 passed`.
+
+```bash
+python3 experiments/p4_logistic_uc_polar_nonlattice.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json
+python3 -m unittest -v tests/test_p4_logistic_uc_polar_nonlattice.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; p="evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["a1"]["evidence_status"], d["a2"]["verdict"], d["route_b_invocation_allowed"])'
+sha256sum artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json experiments/p4_logistic_uc_polar_nonlattice.py
+git diff --check
+```
+
+### Claim boundary and next smallest task
+
+Established: the exact signed `R` and `LR` multipliers, their irreducible
+minimal polynomials and norms, multiplicative independence, irrational full
+primitive-period ratio, and the non-lattice intrinsic roof.
+
+Not established: an arithmetic orbit law, the frozen-radius complex operator
+domain, endpoint trace multiplicity, nuclearity, a Fredholm determinant,
+completed-$\xi$ structure, quantization, Route B, Hilbert--Polya, or RH.
+
+Next smallest task: audit only the frozen `epsilon=1/1000` composite complex
+inverse branches, common `Log(a)` germ, and compact branch inclusion. Do not
+audit nuclearity, Fredholm zeros, or target divisors in that task.
+
+Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped theorem).
+
+## Previous checkpoint — exact-$U_c$ polar intrinsic-roof source lock
 
 Current clue: `CLUE-A1-004`
 

@@ -193,6 +193,52 @@ class LogisticUcPolarNonLatticeTests(unittest.TestCase):
         self.assertIn("full primitive sum", forbidden)
         self.assertIn("No Fredholm determinant", lock["determinant_convention"])
 
+    def test_route_a_evaluation_keeps_a2_and_route_b_closed(self) -> None:
+        evaluation_path = Path(
+            "evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/"
+            "20260805T110654Z.yaml"
+        )
+        evaluation = yaml.safe_load(
+            evaluation_path.read_text(encoding="utf-8")
+        )
+        self.assertEqual(evaluation["a1"]["verdict"], "A1_WEAK")
+        self.assertEqual(evaluation["a1"]["evidence_status"], "PROVED")
+        self.assertEqual(evaluation["a2"]["verdict"], "A2_FAIL")
+        self.assertEqual(evaluation["a3"]["verdict"], "A3_FAIL")
+        self.assertEqual(evaluation["a4"]["verdict"], "A4_FAIL")
+        self.assertEqual(
+            evaluation["overall_verdict"],
+            "ROUTE_A_EXPLORATORY",
+        )
+        self.assertEqual(
+            evaluation["scoped_audit_verdict"],
+            "GO_WITH_LIMITATIONS",
+        )
+        self.assertFalse(evaluation["route_b_invocation_allowed"])
+        self.assertTrue(
+            evaluation["a1"]["metrics"]["intrinsic_roof_non_lattice"]
+        )
+        self.assertFalse(
+            evaluation["a2"]["metrics"]["fredholm_determinant_defined"]
+        )
+
+        source_commit = evaluation["source_commit"]
+        self.assertEqual(
+            source_commit,
+            "36a38f0db16652bf0e0c1459be6c69f6bdafec12",
+        )
+        for path in (
+            nonlattice.SOURCE_LOCK,
+            nonlattice.FORMAL_RESULT,
+            nonlattice.GENERATOR,
+            nonlattice.ARTIFACT,
+            "tests/test_p4_logistic_uc_polar_nonlattice.py",
+        ):
+            subprocess.run(
+                ["git", "cat-file", "-e", f"{source_commit}:{path}"],
+                check=True,
+            )
+
     def test_formal_result_states_exact_norm_proof_and_nonclaims(self) -> None:
         proof = Path(nonlattice.FORMAL_RESULT).read_text(encoding="utf-8")
         self.assertIn("Exact non-lattice theorem", proof)

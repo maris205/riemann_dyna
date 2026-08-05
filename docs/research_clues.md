@@ -462,8 +462,10 @@ finite-order mass law. The cusp-adapted audit now proves an explicit
 adjacent-ratio rate from branch index 6 onward. The polar suspension source
 lock now freezes the map, doubled branches, intrinsic roof `tau=log|G'|`,
 separate clocks, analytic function space, and conditional determinant
-convention. The next smallest task is only the sealed `R`/`LR` non-lattice
-audit; Fredholm analysis remains deferred.
+convention. The sealed `R`/`LR` audit now proves their full primitive roof
+periods have irrational ratio, so the intrinsic roof is non-lattice. The next
+smallest task is only the frozen-radius complex inverse-branch and compact-
+inclusion audit; nuclearity and Fredholm analysis remain deferred.
 
 Artifacts:
 
@@ -474,6 +476,7 @@ Artifacts:
 - `configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
@@ -481,12 +484,14 @@ Artifacts:
 - `evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_cone_enclosure/certified_bounds.json`
 - `artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json`
 - `artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json`
+- `artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json`
 - `experiments/p4_logistic_uc_acip_endpoint_density.py`
 - `docs/literature/exact_uc_acip_density_sources.md`
 - `formal/results/exact_uc_first_return_support.md`
@@ -494,6 +499,7 @@ Artifacts:
 - `formal/results/exact_uc_acip_cone_enclosure.md`
 - `formal/results/exact_uc_acip_sharp_cone_enclosure.md`
 - `formal/results/exact_uc_branch_mass_rate.md`
+- `formal/results/exact_uc_polar_nonlattice.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
 - `tests/test_p4_logistic_uc_first_return_support.py`
@@ -501,6 +507,7 @@ Artifacts:
 - `tests/test_p4_logistic_uc_acip_sharp_cone_enclosure.py`
 - `tests/test_p4_logistic_uc_branch_mass_rate.py`
 - `tests/test_p4_logistic_uc_polar_intrinsic_roof_lock.py`
+- `tests/test_p4_logistic_uc_polar_nonlattice.py`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
 
 ---
@@ -1425,4 +1432,16 @@ new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF exact lock for doubled polar branches, intrinsic positive roof, separated clocks, analytic space, and conditional Fredholm convention"
 commit: "4d5cd7e346445317d2ed19ef90a484cca09c3588"
 consequence: "The corrected lock-v2 object is DEFINED_NOT_EVALUATED and creates no formal candidate. The next task is only to prove multiplicative independence of the sealed R/LR roof multipliers; failure is inconclusive rather than a lattice theorem. Complex-space nuclearity, endpoint trace multiplicity, determinant existence, target comparison, and Route B remain closed."
+```
+
+## Status update — CLUE-A1-004 exact polar-roof non-lattice theorem
+
+```yaml
+date: 2026-08-05
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "P4-LOGISTIC-UC-POLAR-NONLATTICE exact R/LR multiplier polynomials, finite-field irreducibility certificates, algebraic norms, and multiplicative-independence theorem"
+commit: "36a38f0db16652bf0e0c1459be6c69f6bdafec12"
+consequence: "The intrinsic roof tau=log|G'| is now PROVED non-lattice because T_LR/T_R is irrational. This escapes the scope of the old unit-clock obstruction OBR-008 but does not establish complex branch inclusion, nuclearity, a Fredholm determinant, arithmetic orbit weights, or target zeros. Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL); next audit only the frozen epsilon=1/1000 complex inverse branches and compact inclusion."
 ```

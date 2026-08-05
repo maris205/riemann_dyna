@@ -5,6 +5,24 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-05
 
+### Exact-$U_c$ polar-roof non-lattice theorem
+
+- Evaluated only the sealed primitive words `R` and `LR` with their full roof
+  sums and preserved signed multipliers.
+- Proved `alpha=4*(U_c-1)` has an irreducible cubic with norm `2^6`, while the
+  `LR` multiplier magnitude has an irreducible degree-nine polynomial with
+  norm `2^36`.
+- Used common-field norms to reduce every possible rational period relation
+  to `beta=alpha^2`, then excluded it exactly via
+  `H_U_c(alpha^2)=-8192*(U_c-2)*(2*U_c-3) != 0`.
+- Concluded `T_LR/T_R` is irrational and the intrinsic roof `tau=log|G'|` is
+  non-lattice; no decimal irrationality or arithmetic target data was used.
+- Kept `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`: complex branch inclusion,
+  endpoint trace multiplicity, nuclearity, a Fredholm determinant, target
+  divisor, quantization, Route B, and RH remain open.
+
+Source state: `36a38f0db16652bf0e0c1459be6c69f6bdafec12`.
+
 ### Exact-$U_c$ polar intrinsic-roof source lock
 
 - Froze the doubled two-branch polar Markov map

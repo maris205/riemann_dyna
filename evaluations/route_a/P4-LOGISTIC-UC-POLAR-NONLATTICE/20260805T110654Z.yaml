@@ -1,0 +1,185 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+audit_id: P4-LOGISTIC-UC-POLAR-NONLATTICE
+parent_audit_id: P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF
+formal_candidate: false
+source_commit: 36a38f0db16652bf0e0c1459be6c69f6bdafec12
+evaluation_date: "2026-08-05T11:06:54Z"
+
+source_lock:
+  object: >-
+    The corrected lock-v2 exact-U_c polar map G=q^(-1)o(-f^2)o q on the
+    doubled branches, the intrinsic roof tau=log|G'|, and exactly the sealed
+    primitive words R and LR with signed multipliers Lambda_R and Lambda_LR.
+  data_type: >-
+    Exact polynomial reduction over Q(U_c), exact dynatomic division,
+    finite-field Rabin irreducibility certificates, algebraic norms, and
+    target-free numerical orbit diagnostics carrying no proof weight.
+  clock: >-
+    Full primitive roof sums T_R=log(alpha) and T_LR=log(beta). The LR period
+    is not divided by two, and the physical Logistic tick count is not used.
+  normalization: >-
+    Preserve Lambda_R<0 and Lambda_LR<0, then use alpha=-Lambda_R>1 and
+    beta=-Lambda_LR>1. No roof rescaling, offset, unfolding, or mean-period
+    normalization is allowed.
+  determinant_convention: >-
+    No Fredholm determinant is established or evaluated. The parent notation
+    det_Fr(I-L_s) remains conditional; this audit proves only non-lattice roof
+    structure.
+  cutoff: >-
+    Exactly R and LR, no additional witness words, exact symbolic algebra,
+    mod-3 irreducibility for alpha and mod-5 Rabin irreducibility for beta.
+  precision: >-
+    Exact theorem; SymPy 1.14.0 for polynomial identities, mpmath 1.3.0 at
+    100 decimal digits for diagnostics only, and the inherited 100-digit U_c
+    bracket.
+  training_data: "empty; no fitting, search, or arithmetic target data"
+  validation_data: >-
+    R fixed-point factorization, exact period-two dynatomic quotient,
+    H_U_c(beta)=0, and construction of the rational degree-nine polynomial.
+  test_data: >-
+    Sealed finite-field irreducibility gates, norm exponents 6 and 36, the
+    common-field exponent ledger, exact exclusion of beta=alpha^2, artifact
+    hashes, and byte-identical CLI reproduction.
+  allowed_data:
+    - corrected parent polar-roof lock and proved real expansion theorem
+    - exact U_c polynomial and certified root bracket
+    - intrinsic R and LR words and signed multipliers
+    - exact rational, polynomial, finite-field, and algebraic-number operations
+  forbidden_data:
+    - prime/zero tables, xi/zeta evaluations, USTC data, or arithmetic fitting
+    - extra witness words or changes to the full primitive roof clock
+    - finite-precision irrationality or bounded-denominator inference
+    - complex-domain, determinant, quantization, Route-B, Hilbert-Polya, or RH claims
+  stopping_conditions:
+    - "NOT_TESTABLE if the parent full-branch expansion or coding is unavailable"
+    - "REVISE if an exact identity, irreducibility, norm, or nonvanishing gate fails"
+    - "REJECTED if target arithmetic data enters or a frozen convention changes"
+    - "STOP_SCOPED for Fredholm, target-divisor, quantization, Route-B, or RH inference"
+  error_budget_categories:
+    discretization: "none; exact polynomial algebra"
+    truncation: "none; both sealed words are exact"
+    rounding: "none in the theorem; decimal diagnostics are excluded from proof"
+    normalization: "full primitive roof sums and signed-to-positive multiplier ledger"
+    iteration_stopping: "diagnostic only and not proof input"
+    resolvent_tail: "not applicable; no determinant or resolvent"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The intrinsic primitive words R and LR are uniquely defined by the exact
+    expanding two-branch map. Their signed multipliers are preserved, and
+    exact minimal-polynomial and norm arguments prove
+    T_LR/T_R=log(beta)/log(alpha) is irrational. Hence the same-object roof is
+    non-lattice without reading any prime or zero data.
+  strongest_failure: >-
+    Only two structural witness orbits are audited. There is no prime-like
+    orbit labeling, log-p length law, von-Mangoldt repetition weight,
+    multiplicity law, phase law, or completeness theorem for an arithmetic
+    primitive-orbit correspondence.
+  metrics:
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    sealed_primitive_words: [R, LR]
+    signed_multiplier_R: "-alpha"
+    signed_multiplier_LR: "-beta"
+    alpha_minimal_polynomial_degree: 3
+    beta_minimal_polynomial_degree: 9
+    alpha_norm: "2^6"
+    beta_norm: "2^36"
+    period_ratio_irrational: true
+    intrinsic_roof_non_lattice: true
+    arithmetic_orbit_law: false
+  artifacts:
+    - configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml
+    - formal/results/exact_uc_polar_nonlattice.md
+    - artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The exact non-lattice theorem removes the vertical-periodicity obstruction
+    that applies to determinants depending only on one unit-lattice variable.
+    The same intrinsic roof and full primitive sums are retained.
+  strongest_failure: >-
+    The frozen epsilon=1/1000 composite complex branches, common Log(a) germ,
+    compact inclusion, matching-space invariance, partition-hit trace rule,
+    nuclearity, Fredholm determinant, root count, and target divisor are all
+    unproved or undefined.
+  metrics:
+    zero_error_train: not_testable_no_target_data
+    zero_error_validation: not_testable_no_established_determinant
+    zero_error_test: not_testable_no_established_determinant
+    extra_zero_count: not_testable
+    missing_zero_count: not_testable
+    root_count_discrepancy: not_testable
+    cutoff_drift: no determinant cutoff exists
+    precision_drift: exact theorem; numerical orbit coordinates are diagnostic only
+    control_margin: "H_U_c(alpha^2)=-8192*(U_c-2)*(2*U_c-3) != 0"
+    non_lattice_roof_proved: true
+    fredholm_determinant_defined: false
+  artifacts:
+    - formal/results/exact_uc_polar_nonlattice.md
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    Non-lattice behavior is a necessary structural improvement over the old
+    vertically periodic unit clock and is proved at all algebraic precision.
+  strongest_failure: >-
+    There is no established analytic determinant, functional equation,
+    Gamma/trivial-zero ledger, continuation theorem, Riemann-von Mangoldt
+    counting law, moving-order bound, or completed-xi divisor equality.
+  metrics:
+    conjugation_symmetry: not_testable_no_determinant
+    functional_equation: false
+    gamma_factor: false
+    analytic_continuation: false
+    target_counting_law: false
+    moving_order_control: false
+  artifacts: []
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The roof is intrinsic to one exact classical map and was not invented from
+    a spectral fit.
+  strongest_failure: >-
+    No symplectic or contact lift, Hilbert space, operator domain,
+    self-adjointness path, phase-preserving quantization, or same-clock quantum
+    object is defined.
+  metrics:
+    natural_hilbert_space: null
+    operator_domain: null
+    natural_quantization: false
+    route_b_ready: false
+  artifacts: []
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_audit_verdict: REVISE
+claim_boundary:
+  established:
+    - "exact signed multipliers and minimal polynomials for the sealed R and LR orbits"
+    - "multiplicative independence and irrational primitive-period ratio"
+    - "the intrinsic exact-U_c polar roof is non-lattice"
+  not_established:
+    - "an arithmetic primitive-orbit law or von-Mangoldt trace weights"
+    - "frozen-radius complex inclusion, matching-space invariance, or endpoint trace multiplicity"
+    - "nuclearity, a Fredholm determinant, completed-xi divisor, or target zeros"
+    - "quantization, Route B, Hilbert-Polya, or RH"
+blocking_conditions:
+  - the exact non-lattice roof still has no proved complex transfer-operator domain
+  - the partition-hit determinant trace convention remains undefined
+  - no arithmetic orbit law or repetition weight exists
+  - no Fredholm determinant or global analytic structure exists
+route_b_invocation_allowed: false
+next_smallest_test: >-
+  Audit only the frozen epsilon=1/1000 composite complex inverse branches,
+  common Log(a) germ, and compact branch inclusion. Do not audit nuclearity,
+  Fredholm zeros, target divisors, or Route B in that task.

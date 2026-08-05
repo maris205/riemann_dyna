@@ -718,7 +718,10 @@ genuine recurrent symbolic orbit grammar, but only `A1_WEAK`: its physical
 branch support, selected finite-mass enclosures, and explicit adjacent-mass
 ratio rate are certified, while a closed-form or exact finite-$n$ branch-mass
 law, the modeled tower coupling, an arithmetic primitive-orbit correspondence,
-and a non-lattice clock are absent. It does not supply an A2 Riemann clock.
+and a non-lattice clock **within this tower ledger** are absent. A later,
+distinct polar suspension of the same exact dynamics proves an intrinsic
+non-lattice log-Jacobian roof; that result does not retrofit or alter this
+unit-clock tower zeta. The tower ledger does not supply an A2 Riemann clock.
 
 ## Remarks and Interpretation
 
@@ -782,7 +785,10 @@ and a non-lattice clock are absent. It does not supply an A2 Riemann clock.
 - The unit lattice clock forces vertical periodicity after (z=e^{-s}).
 - The next source lock now derives the intrinsic roof
   $\tau=\log|G'|$ from the same exact polar dynamics, on a doubled Markov
-  branch space with a frozen conditional transfer family. Its non-lattice
-  property, complex-space nuclearity, and Fredholm determinant existence are
-  still open; choosing or rescaling a roof from prime or zero data would
-  invalidate the object.
+  branch space with a frozen conditional transfer family. The sealed `R` and
+  `LR` multiplier audit now proves
+  $T_{LR}/T_R\notin\mathbb Q$, so this intrinsic roof is non-lattice and
+  escapes the old unit-clock hypothesis. The frozen-radius composite complex
+  branches, common logarithm germ, compact inclusion, nuclearity, and
+  Fredholm determinant existence remain open; choosing or rescaling a roof
+  from prime or zero data would invalidate the object.
