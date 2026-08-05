@@ -4,7 +4,7 @@ candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
 audit_id: P4-LOGISTIC-UC-BRANCH-MASS-RATE
 parent_audit_id: P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE
 formal_candidate: false
-source_commit: 02727fceef6e7cde3fc4a4452ea409b2faa21f1f
+source_commit: dbcb58d21ff93ef842df869c177a3ec3e8c0a785
 evaluation_date: "2026-08-05T03:53:48Z"
 
 source_lock:
@@ -162,8 +162,8 @@ blocking_conditions:
   - no same-object non-lattice roof, s-dependent determinant, or quantization
 route_b_invocation_allowed: false
 next_smallest_test: >-
-  Freeze the existing polar map G with the intrinsic positive roof
-  tau=log|G'| and determine, before any target comparison, whether the roof is
-  non-lattice and whether one same-object analytic Fredholm determinant is
-  mathematically defined. If that object is not frozen, stop the Logistic
-  track rather than refine more density constants.
+  Freeze the polar suspension object only: the map G, its two branches,
+  intrinsic positive roof tau=log|G'|, physical clock relation, analytic
+  function space, determinant convention, data split, and stopping conditions.
+  Defer the non-lattice and same-object Fredholm audits until this source lock
+  is complete; no target comparison is authorized.

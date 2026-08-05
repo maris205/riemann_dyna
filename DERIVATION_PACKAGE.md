@@ -715,10 +715,10 @@ A discrete divisor with finitely many zeros in one fundamental strip then has
 only (O(T)) zeros up to height (T), not the completed-zeta
 (\Theta(T\log T)) count. The exact-(U_c)-anchored model therefore supplies a
 genuine recurrent symbolic orbit grammar, but only `A1_WEAK`: its physical
-branch support and asymptotic mass ratio are certified, while closed-form or
-certified finite-$n$ branch weights, the modeled tower coupling, an arithmetic
-primitive-orbit correspondence, and a non-lattice clock are absent. It does
-not supply an A2 Riemann clock.
+branch support, selected finite-mass enclosures, and explicit adjacent-mass
+ratio rate are certified, while a closed-form or exact finite-$n$ branch-mass
+law, the modeled tower coupling, an arithmetic primitive-orbit correspondence,
+and a non-lattice clock are absent. It does not supply an A2 Riemann clock.
 
 ## Remarks and Interpretation
 

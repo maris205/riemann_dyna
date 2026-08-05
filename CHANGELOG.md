@@ -26,7 +26,7 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
   no arithmetic primitive-orbit law, determinant, quantization, Route B, or
   RH consequence.
 
-Source state: 02727fceef6e7cde3fc4a4452ea409b2faa21f1f.
+Source state: `dbcb58d21ff93ef842df869c177a3ec3e8c0a785` (provenance correction).
 
 ### Validated sharp exact-$U_c$ polar-cone enclosure
 
@@ -79,8 +79,9 @@ Source state: `8f270de6546928385b93e1dd0b8b78c7ffd40ea8`.
   \longrightarrow\frac1{2U_c(U_c-1)}=\frac{U_c^2}{4}.
   \]
 - Upgraded the physical ratio-limit subclaim of P2-C12 to `PROVED` by a direct
-  density theorem. The stronger exponential-remainder statement remains
-  `OPEN`, and the legacy ordinary-`BV` proof remains `REFUTED` under
+  density theorem. The stronger legacy exact finite-order remainder statement
+  remains `OPEN`, while the later adjacent-ratio rate is certified separately;
+  the legacy ordinary-`BV` proof remains `REFUTED` under
   `OBR-009`.
 - Kept the parent Route-A audit at
   `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)` / `REVISE`; Route B remains closed.

@@ -1407,5 +1407,5 @@ old_status: ACTIVE
 new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-BRANCH-MASS-RATE frozen cusp-adapted space, complete Arb derivative interval, exact Fraction rate ledger, and all-tail ratio theorem"
 commit: "02727fceef6e7cde3fc4a4452ea409b2faa21f1f"
-consequence: "For every n>=6, |mu(C_(2n+2))/mu(C_(2n))-U_c^2/4| <= (36/5)*sqrt(delta_(n-1)) < (243/625)*(3/5)^(n-6). This is a genuine measure-theoretic rate edge but does not create primitive arithmetic orbits or a determinant. Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL). Next freeze the intrinsic positive roof tau=log|G'| on the polar map and audit non-lattice/Fredholm conditions before target comparison."
+consequence: "For every n>=6, |mu(C_(2n+2))/mu(C_(2n))-U_c^2/4| <= (36/5)*sqrt(delta_(n-1)) < (243/625)*(3/5)^(n-6). This is a genuine measure-theoretic rate edge but does not create primitive arithmetic orbits or a determinant. Route A remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL). Next freeze the polar suspension object (map, branches, roof, clock, function space, determinant convention, data split, and stopping conditions); defer non-lattice/Fredholm audits until that lock is complete."
 ```

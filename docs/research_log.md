@@ -1942,7 +1942,7 @@ Candidate ID: no new formal candidate. Scoped audit:
 `P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`.
 
 Implementation source commit:
-`02727fceef6e7cde3fc4a4452ea409b2faa21f1f`.
+`dbcb58d21ff93ef842df869c177a3ec3e8c0a785`.
 
 Source lock:
 `configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml`.
@@ -2046,7 +2046,7 @@ git diff --check
 Artifact SHA-256:
 
 ```text
-0f7af76d8214aab49a11ac3c4e6e577df2740d0cec8be64befc4e44052eda9a8  artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json
+a6baa8ae9603bd4cebe3a26a85ce537c020282b9a2ae0902e26d37c7e15cc9ae  artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json
 ```
 
 ### Claim boundary
@@ -2060,8 +2060,10 @@ Hilbert--Polya, or RH.
 
 ### Next smallest task
 
-Freeze the existing polar map $G$ with the intrinsic positive roof
-$\tau=\log|G'|$. Before any target comparison, audit whether the roof is
-non-lattice and whether a same-object analytic Fredholm determinant exists.
+Freeze the polar suspension object only: the map $G$, its two branches,
+intrinsic positive roof $\tau=\log|G'|$, physical clock relation, analytic
+function space, determinant convention, data split, and stopping conditions.
+Defer the non-lattice and same-object Fredholm audits until this source lock is
+complete.
 
 Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped audit).

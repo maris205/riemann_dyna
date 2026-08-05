@@ -10,7 +10,7 @@ Candidate ID: no new formal candidate. Scoped audit:
 `P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`.
 
 - Formal candidate: `false`
-- Implementation source commit: `02727fceef6e7cde3fc4a4452ea409b2faa21f1f`
+- Implementation source commit: `dbcb58d21ff93ef842df869c177a3ec3e8c0a785`
 - Route-A evaluation:
   `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
 - Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
@@ -39,18 +39,18 @@ independent marginal coefficient intervals may not be divided.
 
 ### Strongest evidence
 
-One directed Arb interval evaluation on the complete local domain proves
+The new computer-assisted gate is one directed Arb interval evaluation on the
+complete local domain, proving
 
 ```text
 7/20 < psi' < 9/25
 0 < psi'' < 4/25
-59/100 < q=U_c^2/4 < 3/5
-C_h > 9461/100000
-||b||_infinity <= 61/100
-sqrt(delta_5) < 27/500
 ```
 
-The remaining ledger is exact Fraction arithmetic. For every $n\geq6$,
+The root bracket, sharp coefficient lower bound, cusp remainder, and sealed
+`delta_5` endpoint interval are inherited certified inputs from the parent
+audits. Together with the exact Fraction ledger, they give, for every
+$n\geq6$,
 
 \[
 \boxed{
@@ -123,8 +123,8 @@ git diff --check
 Artifact and generator SHA-256:
 
 ```text
-0f7af76d8214aab49a11ac3c4e6e577df2740d0cec8be64befc4e44052eda9a8  artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json
-7d03c4217208fa2628e372cc62a5aebe9d53dbbdca12fadab6653ffd73281c54  experiments/p4_logistic_uc_branch_mass_rate.py
+a6baa8ae9603bd4cebe3a26a85ce537c020282b9a2ae0902e26d37c7e15cc9ae  artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json
+fd5ea988a5156b2ea9cb3798ba01d58bc328b8d99dda40856581a5b8378eab57  experiments/p4_logistic_uc_branch_mass_rate.py
 ```
 
 ### Claim boundary and next smallest task
@@ -137,15 +137,15 @@ Not established: an exact finite-order mass law, ordinary-`BV` spectral gap,
 arithmetic primitive-orbit law, determinant, global analytic structure,
 quantization, Route B, Hilbert--Polya, or RH.
 
-Next smallest task: freeze the existing polar map $G$ and its intrinsic
-positive roof $\tau=\log|G'|$, including phase space, branches, physical
-clock, analytic function space, and determinant convention. Before any target
-comparison, decide whether the roof is non-lattice and whether a same-object
-analytic Fredholm determinant is mathematically defined.
+Next smallest task: freeze the existing polar suspension object only: the map
+$G$, its two branches, intrinsic positive roof $\tau=\log|G'|$, physical
+clock relation, analytic function space, determinant convention, data split,
+and stopping conditions. Do not audit non-lattice behavior or Fredholm
+existence until that source lock is complete.
 
 Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped audit).
 
-## Current status — validated sharp exact-$U_c$ polar cone
+## Previous checkpoint — validated sharp exact-$U_c$ polar cone
 
 Current clue: `CLUE-A1-004`
 

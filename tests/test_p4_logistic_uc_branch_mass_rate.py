@@ -151,7 +151,7 @@ class LogisticUcBranchMassRateTests(unittest.TestCase):
         self.assertFalse(evaluation["route_b_invocation_allowed"])
         self.assertEqual(
             evaluation["source_commit"],
-            "02727fceef6e7cde3fc4a4452ea409b2faa21f1f",
+            "dbcb58d21ff93ef842df869c177a3ec3e8c0a785",
         )
         self.assertIn(
             "root_count_discrepancy",

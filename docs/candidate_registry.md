@@ -270,10 +270,10 @@ it is STOP_SCOPED under OBR-007 and does not change the formal-candidate count.
 P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK is a second non-candidate structural
 audit: it escapes OBR-007 with genuine recurrent tower orbits, but remains
 REVISE / ROUTE_A_EXPLORATORY and does not change the formal-candidate count.
-Its physical exact-(U_c) first-return alphabet and asymptotic physical mass
-ratio are proved, while certified finite-order weights, the modeled tower
-coupling, an exponential remainder/rate, and the arithmetic interpretation
-remain open.
+Its physical exact-(U_c) first-return alphabet, asymptotic physical mass ratio,
+and explicit adjacent-ratio convergence rate are proved, while an exact
+finite-order mass law, the modeled tower coupling, and the arithmetic
+interpretation remain open.
 No candidate has entered Route B.
 ```
 
@@ -315,11 +315,11 @@ Latest evaluation:
 evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml
 ```
 
-Next smallest test: freeze the polar map with the intrinsic positive roof
-`tau=log|G'|`, then audit non-lattice behavior and a same-object analytic
-Fredholm determinant. Freeze all discretization, truncation, rounding,
-normalization, stopping, and roof conventions; no target-zero comparison is
-authorized.
+Next smallest test: freeze the polar suspension object only: the map, its two
+branches, intrinsic positive roof `tau=log|G'|`, physical clock relation,
+analytic function space, determinant convention, data split, and stopping
+conditions. Do not audit non-lattice behavior or Fredholm existence until this
+source lock is complete; no target-zero comparison is authorized.
 
 汇总表：
 
