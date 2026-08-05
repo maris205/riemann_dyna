@@ -1,0 +1,170 @@
+audit_id: P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF
+parent_audit_id: P4-LOGISTIC-UC-BRANCH-MASS-RATE
+lock_version: 1
+formal_candidate: false
+clue_id: CLUE-A1-004
+title: Exact-U_c polar Markov suspension with intrinsic log-Jacobian roof
+
+mathematical_object:
+  parent_map: >-
+    f(x)=1-U_c*x^2 on J=[-(U_c-1),1], where U_c is the unique real root
+    of u^3-2*u^2+2*u-2=0 and rho=U_c-1.
+  parity_reduced_map: >-
+    On A=[-rho,rho], T=f^2 and S=-T=rho-2*U_c^2*x^2+U_c^3*x^4.
+  polar_coordinate: >-
+    I=[-pi/2,pi/2], q(theta)=rho*sin(theta), and
+    G=q^(-1) o S o q, branchwise on I_L=[-pi/2,0] and I_R=[0,pi/2].
+    The left branch is increasing, the right branch is decreasing, and each
+    closed branch maps onto all of I.
+  markov_phase_space: >-
+    Use the two-component Markov extension I_hat=I_L disjoint-union I_R.
+    The two copies 0_L and 0_R remain distinct for branch coding, while the
+    analytic function space below imposes matching values at the nonpolar
+    partition point. Quotient-interval and doubled-Markov orbit ledgers may
+    not be mixed.
+  inverse_branches: >-
+    For target eta set t(eta)=sqrt((1+rho*sin(eta))/U_c). The real inverse
+    branches are phi_L(eta)=-asin(sqrt((1-t(eta))/U_c)/rho) and
+    phi_R(eta)=+asin(sqrt((1-t(eta))/U_c)/rho), with
+    phi_L'=+a and phi_R'=-a, where
+    a(eta)=(1/4)*sqrt((1+t(eta))*(rho+t(eta)))/t(eta).
+  intrinsic_roof: >-
+    tau(theta)=log|G'(theta)| on branch interiors, extended analytically to
+    the closed branch copies. Equivalently,
+    tau(phi_sigma(eta))=-log(a(eta)) on the real target interval.
+  roof_endpoint_values: >-
+    inf tau=log(4/U_c^2)>0 at the polar outer endpoints, while the two
+    nonpolar branch copies over theta=0 have tau=(1/2)*log(8/U_c).
+  suspension_period: >-
+    For a primitive Markov orbit gamma of G with base period n,
+    T_gamma=sum_(k=0)^(n-1) tau(G^k theta)=log|(G^n)'(theta)|.
+    Its r-th repetition has time r*T_gamma.
+
+data_type:
+  primary: >-
+    Exact real-analytic two-branch Markov map, its doubled branch coding,
+    intrinsic positive roof, branch orientations, periodic multiplier sums,
+    and one conditionally defined analytic weighted transfer family.
+  complex_domain: >-
+    Freeze epsilon=1/1000 and U_L={z in C: dist(z,I_L)<epsilon},
+    U_R={z in C: dist(z,I_R)<epsilon}. All square roots, asin branches, and
+    logarithms are the holomorphic continuations anchored by the positive
+    real formulas above. No later shrinking of epsilon is allowed in lock v1.
+  analytic_function_space: >-
+    B_epsilon={(v_L,v_R): v_sigma is continuous on closure(U_sigma),
+    holomorphic on U_sigma, and v_L(0)=v_R(0)}, with the maximum sup norm.
+  weighted_transfer_family: >-
+    For j in {L,R} and z in U_j,
+    (L_s v)_j(z)=exp(s*Log(a(z)))*
+    [v_L(phi_L(z))+v_R(phi_R(z))]. This is the potential -s*tau.
+    Its boundedness, compact branch inclusion, nuclearity, and determinant
+    existence are not asserted by this source-lock checkpoint.
+  excluded: >-
+    Physical first-return masses, the unit return-label clock, empirical
+    matrices, Ulam truncations, prime/zero tables, and any separately glued
+    zeta, reciprocal, logarithmic derivative, or scattering ledger.
+
+clock:
+  physical_discrete_clock: >-
+    One G step represents exactly two iterates of f, with the reflection S=-f^2
+    part of the polar proof object. Physical return labels remain measured in
+    f iterates and are not determinant periods for this object.
+  intrinsic_suspension_clock: >-
+    The determinant clock is the roof time tau=log|G'|. No multiplicative
+    scale, additive offset, affine spectral map, or unfolding is permitted.
+  separation_rule: >-
+    The two-f-iterate base clock and the positive roof clock must be reported
+    separately. Neither may be substituted for the other in an orbit or
+    determinant claim.
+
+normalization:
+  coordinate: "q(theta)=rho*sin(theta) with no further rescaling"
+  roof: "tau=log|G'| exactly, with the real natural logarithm"
+  branch_orientation: >-
+    Preserve phi_L'=+a and phi_R'=-a. The roof uses the positive magnitude a,
+    but orientation remains a separate orbit datum and may not be discarded.
+  spectral_parameter: "s multiplies tau directly in exp(-s*tau)=a^s"
+
+determinant_convention:
+  sole_intended_object: >-
+    D_pol(s)=det_Fr(I-L_s) on B_epsilon, only if a later audit proves that the
+    frozen L_s is nuclear on the frozen space. Until then D_pol is a
+    conditional notation, not an established Fredholm determinant.
+  forbidden_ledgers:
+    - Artin-Mazur zeta of the earlier recurrent tower
+    - reciprocal zeta, logarithmic derivative, or unweighted orbit product
+    - Perron-Frobenius density operator on a different function space
+    - any modular scattering, Selberg, prime, or zero-derived factor
+  endpoint_multiplicity: >-
+    The determinant ledger uses the doubled two-component Markov extension
+    and the matching subspace B_epsilon. Any quotient-interval determinant is
+    a different object and requires a new source lock.
+
+cutoff:
+  definition_orbit_cutoff: "none"
+  definition_operator_cutoff: "none"
+  complex_neighborhood_radius: "1/1000"
+  sealed_non_lattice_witness_words: [R, LR]
+  current_checkpoint_scope: >-
+    Freeze the object only. Do not evaluate the witness words, non-lattice
+    property, complex branch inclusion, nuclearity, or determinant zeros in
+    this checkpoint.
+
+precision:
+  symbolic_definition: exact
+  implementation_root_bracket_digits: 100
+  future_interval_precision_digits: 100
+  python_flint_version: "0.9.0"
+  flint_version: "3.6.0"
+
+allowed_data:
+  - exact U_c polynomial identities and the existing certified root bracket
+  - the proved exact polar-map formulas, branch extension, and expansion bound
+  - exact symbolic differentiation and target-free Arb interval arithmetic
+  - intrinsic periodic words and multipliers of the frozen Markov extension
+
+forbidden_data:
+  - prime tables, primality predicates, prime-gap histograms, zero tables, xi/zeta evaluations, or USTC data
+  - changing epsilon, witness words, roof scale, branch coding, or determinant convention after validation begins
+  - using physical branch masses or return labels as periodic-orbit lengths for D_pol
+  - replacing signed branch orientation by an absolute-value orbit ledger
+  - claiming nuclearity, a Fredholm determinant, non-lattice behavior, quantization, Route B, Hilbert-Polya, or RH at this lock-only checkpoint
+
+training_split: empty; no fitting, parameter search, or target data
+validation_split: >-
+  Exact real branch formulas, full-branch coverage, endpoint extensions,
+  positivity of tau, two-clock separation, analytic-space definition, and
+  source-lock/code parity. No epsilon or witness-word adjustment is allowed.
+test_split: >-
+  Reserved and sealed for the next audit: the intrinsic primitive words R and
+  LR, their periodic roof sums and multiplier relation, at the frozen
+  precision. No Fredholm or target-zero test is opened yet.
+
+stopping_conditions:
+  - NOT_TESTABLE if the doubled Markov endpoint convention or roof clock is ambiguous
+  - REVISE if tau is not strictly positive on both closed branch copies
+  - REVISE if the frozen complex branches or Log(a) are not single-valued on U_L and U_R
+  - REVISE if the inverse branches do not map the frozen target closures compactly into the frozen source neighborhoods
+  - REVISE if B_epsilon is not invariant under the stated weighted family
+  - STOP_SCOPED for this roof if the sealed non-lattice audit proves a lattice relation
+  - REJECTED if arithmetic target data enters or any frozen convention is changed after validation begins
+  - STOP_SCOPED for determinant, quantization, Route-B, Hilbert-Polya, or RH inference before the corresponding theorem exists
+
+success_conditions:
+  - one explicit map, doubled phase space, branch convention, and positive roof
+  - one explicit separation of physical and suspension clocks
+  - one explicit analytic Banach space and weighted transfer family
+  - one sole conditional Fredholm determinant convention
+  - frozen allowed/forbidden data, data split, precision, and stopping rules
+
+route_status_at_lock:
+  route_a_tuple_inherited: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+  route_a_evaluation_performed: false
+  route_b_invocation_allowed: false
+  formal_candidate_created: false
+  checkpoint_verdict: DEFINED_NOT_EVALUATED
+
+next_smallest_test: >-
+  Audit only whether the sealed periodic roof sums for primitive words R and
+  LR prove or refute a lattice relation for tau. Do not audit Fredholm
+  nuclearity or compare any target zeros in that task.
