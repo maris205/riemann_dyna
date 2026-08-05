@@ -139,7 +139,7 @@ class LogisticUcBranchMassRateTests(unittest.TestCase):
     def test_route_a_evaluation_has_complete_schema_and_source_commit(self) -> None:
         evaluation_path = Path(
             "evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/"
-            "20260805T035348Z.yaml"
+            "20260805T083731Z.yaml"
         )
         evaluation = yaml.safe_load(
             evaluation_path.read_text(encoding="utf-8")
@@ -150,6 +150,11 @@ class LogisticUcBranchMassRateTests(unittest.TestCase):
         self.assertEqual(evaluation["a4"]["verdict"], "A4_FAIL")
         self.assertFalse(evaluation["route_b_invocation_allowed"])
         self.assertEqual(
+            evaluation["supersedes"],
+            "evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/"
+            "20260805T035348Z.yaml",
+        )
+        self.assertEqual(
             evaluation["source_commit"],
             "dbcb58d21ff93ef842df869c177a3ec3e8c0a785",
         )
@@ -159,6 +164,18 @@ class LogisticUcBranchMassRateTests(unittest.TestCase):
         )
         for layer in ("a1", "a2", "a3", "a4"):
             self.assertIn("artifacts", evaluation[layer])
+
+        historical = yaml.safe_load(
+            Path(evaluation["supersedes"]).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            historical["source_commit"],
+            "02727fceef6e7cde3fc4a4452ea409b2faa21f1f",
+        )
+        self.assertLess(
+            historical["evaluation_date"],
+            evaluation["evaluation_date"],
+        )
 
         source_commit = evaluation["source_commit"]
         for path in (

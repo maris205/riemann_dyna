@@ -4,8 +4,15 @@ candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
 audit_id: P4-LOGISTIC-UC-BRANCH-MASS-RATE
 parent_audit_id: P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE
 formal_candidate: false
-source_commit: 02727fceef6e7cde3fc4a4452ea409b2faa21f1f
-evaluation_date: "2026-08-05T03:53:48Z"
+source_commit: dbcb58d21ff93ef842df869c177a3ec3e8c0a785
+evaluation_date: "2026-08-05T08:37:31Z"
+supersedes: >-
+  evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml
+revision_reason: >-
+  Versioned provenance correction. This evaluation points to the later source
+  commit that directly hashes the parent sharp-cone source lock and clarifies
+  which certified inputs are inherited. The theorem, Route-A tuple, scoped
+  verdict, and claim boundary are unchanged.
 
 source_lock:
   object: >-
@@ -14,8 +21,8 @@ source_lock:
     local cusp space X_(1/200)={c*t^(-1/2)+b(t): b in L-infinity}.
   data_type: >-
     Exact calculus and Fraction inequalities, exact rational endpoint
-    enclosures, the parent endpoint remainder and sharp C_h lower bound, and
-    one complete Arb interval evaluation of psi' and psi''.
+    enclosures, inherited certified endpoint remainder and sharp C_h lower
+    bound, and one new complete Arb interval evaluation of psi' and psi''.
   clock: >-
     One f iterate is one physical tick; C_(2n) retains physical return label
     2n and n is only a branch index.
@@ -40,7 +47,7 @@ source_lock:
     source-input hashes, and final local/exponential rate statements.
   allowed_data:
     - exact U_c algebra and exact first-return endpoint recursion
-    - parent endpoint remainder and sharp coefficient lower bound
+    - inherited endpoint remainder and sharp coefficient lower bound
     - directed Arb intervals and exact Fraction arithmetic
   forbidden_data:
     - prime/zero tables, xi/zeta evaluations, USTC data, or target fitting
@@ -64,7 +71,8 @@ a1:
   verdict: A1_WEAK
   evidence_status: NUMERICALLY_CERTIFIED
   strongest_evidence: >-
-    The frozen cusp space, full-interval derivative certificate, and exact
+    The inherited certified root, endpoint, coefficient, and cusp-remainder
+    inputs, the new full-interval derivative certificate, and the exact
     rational ledger prove for every n>=6 that
     |M_(n+1)/M_n-U_c^2/4| <= (36/5)*sqrt(delta_(n-1))
     < (243/625)*(3/5)^(n-6). This is target-free and preserves the common
@@ -162,8 +170,8 @@ blocking_conditions:
   - no same-object non-lattice roof, s-dependent determinant, or quantization
 route_b_invocation_allowed: false
 next_smallest_test: >-
-  Freeze the existing polar map G with the intrinsic positive roof
-  tau=log|G'| and determine, before any target comparison, whether the roof is
-  non-lattice and whether one same-object analytic Fredholm determinant is
-  mathematically defined. If that object is not frozen, stop the Logistic
-  track rather than refine more density constants.
+  Freeze the polar suspension object only: the map G, its two branches,
+  intrinsic positive roof tau=log|G'|, physical clock relation, analytic
+  function space, determinant convention, data split, and stopping conditions.
+  Defer the non-lattice and same-object Fredholm audits until this source lock
+  is complete; no target comparison is authorized.

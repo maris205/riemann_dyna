@@ -1944,6 +1944,11 @@ Candidate ID: no new formal candidate. Scoped audit:
 Implementation source commit:
 `dbcb58d21ff93ef842df869c177a3ec3e8c0a785`.
 
+The latest evaluation is
+`evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml`.
+It supersedes, but does not overwrite, the preserved `03:53:48Z` evaluation;
+the change is provenance-only and leaves the theorem and tuple unchanged.
+
 Source lock:
 `configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml`.
 It freezes the exact map and endpoint recursion, physical clock, full-acip
@@ -2017,7 +2022,7 @@ cusp coefficient must remain common across the adjacent-mass ledger.
 - `docs/prior_work/claims_matrix.md`
 - `docs/research_clues.md`
 - `docs/research_log.md`
-- `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml`
 - `experiments/p4_logistic_uc_branch_mass_rate.py`
 - `formal/results/exact_uc_branch_mass_rate.md`
 - `tests/test_p4_logistic_uc_branch_mass_rate.py`
@@ -2038,7 +2043,7 @@ python3 experiments/p4_logistic_uc_branch_mass_rate.py \
 python3 -m unittest -v tests/test_p4_logistic_uc_branch_mass_rate.py
 python3 -m unittest discover -v
 python3 -c 'import flint; print(flint.__version__, flint.__FLINT_VERSION__)'
-python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml","evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml","evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml","evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
 sha256sum artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json experiments/p4_logistic_uc_branch_mass_rate.py
 git diff --check
 ```

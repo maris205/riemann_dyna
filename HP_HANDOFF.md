@@ -12,7 +12,9 @@ Candidate ID: no new formal candidate. Scoped audit:
 - Formal candidate: `false`
 - Implementation source commit: `dbcb58d21ff93ef842df869c177a3ec3e8c0a785`
 - Route-A evaluation:
-  `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
+  `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml`
+- Supersedes the preserved `20260805T035348Z` evaluation only for provenance
+  clarity; the theorem and Route-A tuple are unchanged.
 - Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
 - Overall Route A: `ROUTE_A_EXPLORATORY`
 - Scoped verdict: `GO_WITH_LIMITATIONS`
@@ -94,7 +96,7 @@ contraction can yield an all-tail ratio theorem without a spectral-gap claim.
 - `docs/prior_work/claims_matrix.md`
 - `docs/research_clues.md`
 - `docs/research_log.md`
-- `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml`
 - `experiments/p4_logistic_uc_branch_mass_rate.py`
 - `formal/results/exact_uc_branch_mass_rate.md`
 - `tests/test_p4_logistic_uc_branch_mass_rate.py`
@@ -115,7 +117,7 @@ python3 experiments/p4_logistic_uc_branch_mass_rate.py \
 python3 -m unittest -v tests/test_p4_logistic_uc_branch_mass_rate.py
 python3 -m unittest discover -v
 python3 -c 'import flint; print(flint.__version__, flint.__FLINT_VERSION__)'
-python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml","evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
+python3 -c 'import yaml; paths=["configs/source_locks/P4-LOGISTIC-UC-BRANCH-MASS-RATE.yaml","evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml","evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml"]; [yaml.safe_load(open(p,encoding="utf-8")) for p in paths]'
 sha256sum artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json experiments/p4_logistic_uc_branch_mass_rate.py
 git diff --check
 ```

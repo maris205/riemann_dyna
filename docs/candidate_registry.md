@@ -312,7 +312,7 @@ blocked by `OBR-008`. The audit remains
 Latest evaluation:
 
 ```text
-evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml
+evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml
 ```
 
 Next smallest test: freeze the polar suspension object only: the map, its two

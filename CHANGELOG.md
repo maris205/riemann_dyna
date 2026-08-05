@@ -22,6 +22,9 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
   marginal mass intervals were not divided.
 - Added an exact Fraction rate ledger, byte-identical artifact reproduction,
   source hashes, focused tests, and a versioned Route-A evaluation.
+- Preserved the original `03:53:48Z` evaluation at source commit `02727fc` and
+  added a later superseding evaluation for the direct parent-lock provenance
+  correction; the mathematical verdict is unchanged.
 - Kept (A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL) / REVISE; the theorem gives
   no arithmetic primitive-orbit law, determinant, quantization, Route B, or
   RH consequence.

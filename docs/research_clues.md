@@ -479,6 +479,7 @@ Artifacts:
 - `evaluations/route_a/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE/20260804T233200Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE/20260805T012200Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T035348Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
