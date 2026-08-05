@@ -1,0 +1,119 @@
+audit_id: P4-LOGISTIC-UC-BRANCH-MASS-RATE
+parent_audit_id: P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE
+lock_version: 1
+formal_candidate: false
+clue_id: CLUE-A1-004
+title: Quantitative exact-U_c physical branch-mass-ratio rate
+
+mathematical_object:
+  map: >-
+    f(x)=1-U_c*x^2 on J=[-(U_c-1),1], where U_c is the unique real root
+    of u^3-2*u^2+2*u-2=0 and rho=U_c-1.
+  endpoint_recursion: >-
+    psi(x)=sqrt((1-sqrt((1-x)/U_c))/U_c), r_0=0,
+    r_(n+1)=psi(r_n), delta_n=rho-r_n, and
+    C_(2n)=(-r_n,-r_(n-1)] for n>=2.
+  cusp_space: >-
+    X_epsilon consists of v(t)=c*t^(-1/2)+b(t) on 0<t<=epsilon, with
+    c real, b in L-infinity, and norm |c|+||b||_infinity. Freeze
+    epsilon=1/200.
+  physical_density: >-
+    v(t)=h(-rho+t), c=C_h=h(0)/(sqrt(2)*U_c), and
+    ||b||_infinity<=61/100, with the sharp safe lower bound C_h>0.09461.
+  target: >-
+    Prove an explicit all-tail rate for
+    mu_ac(C_(2n+2))/mu_ac(C_(2n)) -> U_c^2/4, starting at n=6.
+
+data_type:
+  primary: >-
+    Exact calculus in the frozen cusp space, exact rational inequalities,
+    exact rational endpoint enclosures, and Arb directed real-ball bounds for
+    psi' and psi'' on [rho-1/200,rho].
+  secondary: >-
+    A byte-reproducible JSON certificate recording every analytic constant and
+    source-input hash.
+  excluded: >-
+    Fitted branch weights, division of incompatible marginal mass intervals,
+    Ulam residuals, prime/zero data, and determinant claims.
+
+clock: >-
+  One iterate of f is one physical tick. C_(2n) denotes physical return time
+  2n; n is a branch index, not a replacement clock.
+
+normalization: >-
+  mu_ac(J)=1 and h=d mu_ac/dx. The common endpoint coefficient C_h is shared
+  by every branch; it may not be varied independently between numerator and
+  denominator mass bounds.
+
+determinant_convention: >-
+  No determinant is defined. This is a local physical-measure theorem, not a
+  Riemann zeta, Fredholm determinant, or completed-xi divisor.
+
+cutoff:
+  cusp_radius: "1/200"
+  minimum_branch_index: 6
+  first_physical_return_in_rate: 12
+  psi_derivative_lower: "7/20"
+  psi_derivative_upper: "9/25"
+  psi_second_derivative_upper: "4/25"
+  square_root_ratio_lower: "59/100"
+  square_root_ratio_upper: "3/5"
+  endpoint_coefficient_lower: "9461/100000"
+  endpoint_remainder_upper: "61/100"
+  sqrt_delta_5_upper: "27/500"
+  local_rate_constant: "36/5"
+  exponential_rate_prefactor: "243/625"
+  exponential_rate_base: "3/5"
+
+precision:
+  arb_decimal_digits: 100
+  u_bracket_digits: 100
+  endpoint_rational_sqrt_scale_digits: 130
+  python_flint_version: "0.9.0"
+  flint_version: "3.6.0"
+
+allowed_data:
+  - the exact U_c polynomial and certified sign bracket
+  - the exact first-return endpoint recursion and rational endpoint intervals
+  - the proved endpoint remainder on 0<t<=1/200
+  - the sharp safe lower bound C_h>0.09461
+  - python-flint Arb directed intervals at the frozen version and precision
+
+forbidden_data:
+  - prime tables, primality predicates, prime-gap histograms, zero tables, xi/zeta evaluations, or USTC data
+  - fitting the rate constant, start index, norm, or derivative bounds to arithmetic targets
+  - assigning different endpoint coefficients to adjacent masses
+  - inferring an ordinary-BV spectral gap for the unaccelerated first-return map
+  - determinant, quantization, Route-B, Hilbert-Polya, or RH inference
+
+training_split: empty; no fitting and no target data
+validation_split: >-
+  Frozen environment, root bracket, full-interval derivative gates, cusp norm,
+  exact rational constant ledger, and the n=6 start-radius gate.
+test_split: >-
+  Sealed exact delta_5 interval, byte-identical CLI reproduction, source-input
+  hashes, and the final local and exponential rate inequalities.
+
+stopping_conditions:
+  - NOT_TESTABLE if the parent endpoint remainder or sharp C_h lower bound is unavailable
+  - REVISE if psi' leaves (7/20,9/25) on the full cusp interval
+  - REVISE if |psi''| is not below 4/25 on the full cusp interval
+  - REVISE if sqrt(delta_5) is not below 27/500
+  - REVISE if any denominator or relative-error margin is nonpositive
+  - REJECTED if arithmetic target data enters
+  - STOP_SCOPED for spectral-gap, determinant, quantization, Route-B, or RH inference
+
+success_conditions:
+  - freeze and verify the cusp-adapted Banach decomposition
+  - certify the derivative and endpoint contraction bounds on the full interval
+  - preserve the common endpoint coefficient across adjacent masses
+  - prove the local ratio error bound (36/5)*sqrt(delta_(n-1)) for all n>=6
+  - prove the explicit exponential bound (243/625)*(3/5)^(n-6)
+
+error_budget_categories:
+  discretization: "none; one Arb interval covers the full local x-domain"
+  truncation: "none; the theorem covers every branch n>=6"
+  rounding: "Arb balls at 100 decimal digits plus exact Fraction gates"
+  normalization: "one common full-acip coefficient C_h is retained"
+  iteration_stopping: "none; no stationary iteration enters"
+  resolvent_tail: "none; the cusp remainder and analytic endpoint recursion give the tail rate directly"
