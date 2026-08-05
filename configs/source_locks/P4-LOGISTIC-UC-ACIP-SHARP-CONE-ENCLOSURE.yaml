@@ -1,0 +1,114 @@
+audit_id: P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE
+parent_audit_id: P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE
+lock_version: 1
+formal_candidate: false
+clue_id: CLUE-A1-004
+title: Validated sharp polar-cone enclosure of the exact-U_c physical ACIP
+
+mathematical_object:
+  map: >-
+    f(x)=1-U_c*x^2 on J=[-(U_c-1),1], where U_c is the unique real root
+    of u^3-2*u^2+2*u-2=0 and rho=U_c-1.
+  proof_map: >-
+    G=q^(-1) o (-f^2) o q on I=[-pi/2,pi/2], q(theta)=rho*sin(theta),
+    with inverse-branch weight a(eta)=|r'(eta)|.
+  certified_function: >-
+    With y=x^2=rho^2*t, t in [0,1], certify a global upper bound for
+    D=sup_eta |d_eta log(a)| from the exact rational function R(t,U_c)=D(t)^2.
+  invariant_density: >-
+    w(theta)dtheta is the normalized G-invariant probability; g_A is the
+    conditional f^2-acip density on A and h is the full f-acip density, with
+    g_A(0)=w(0)/rho=2*h(0).
+  target: >-
+    Use the validated distortion bound and the parent cone theorem to sharpen
+    w(0), h(0), C_h=h(0)/(sqrt(2)*U_c), and the four sealed finite branch masses.
+
+data_type:
+  primary: >-
+    Arb directed real-ball interval arithmetic over a complete closed cover of
+    t in [0,1], the certified 100-digit U_c root bracket, exact analytic
+    identities, and the already proved cone and endpoint-remainder theorems.
+  secondary: >-
+    Safe five-decimal rational enclosures checked against the Arb balls and
+    exact rational first-return endpoint intervals.
+  excluded: >-
+    Point sampling as a supremum proof, Ulam residuals as resolvent bounds,
+    fitted densities, orbit histograms, prime/zero data, and determinant claims.
+
+clock: >-
+  One f iterate is one physical tick. f^2 and theta are proof coordinates;
+  physical return labels remain 2n.
+
+normalization: >-
+  Integral_I w=1, integral_A g_A=1, integral_J h=1, g_A=2h on A, and
+  C_h=h(0)/(sqrt(2)*U_c). Conditional and full density ledgers may not be mixed.
+
+determinant_convention: >-
+  No determinant is defined. The s-independent Perron-Frobenius operator is a
+  density proof object, not a Riemann zeta, Fredholm determinant, or xi divisor.
+
+cutoff:
+  distortion_coordinate: "t=y/rho^2 in [0,1]"
+  closed_cover_intervals: 262144
+  distortion_lower_witness_interval: ["0.75575", "0.75576"]
+  distortion_safe_lower: "0.17013"
+  distortion_safe_upper: "0.17014"
+  inverse_contraction_safe_upper: "0.595744"
+  cone_slope: "42535/101064"
+  endpoint_remainder_radius: "1/200"
+  endpoint_remainder_constant: "61/100"
+  reported_physical_returns: [12, 14, 16, 18]
+
+precision:
+  arb_decimal_digits: 100
+  u_bracket_digits: 100
+  python_flint_version: "0.9.0"
+  flint_version: "3.6.0"
+  safe_output_decimal_places: 5
+
+allowed_data:
+  - the exact U_c polynomial and its certified sign bracket
+  - the parent exact polar-cone and endpoint-remainder theorems
+  - exact rational first-return endpoint intervals
+  - python-flint Arb directed interval arithmetic at the frozen version and precision
+
+forbidden_data:
+  - prime tables, primality predicates, prime-gap histograms, zero tables, xi/zeta evaluations, or USTC data
+  - choosing grid size, thresholds, or cone slope after inspecting arithmetic targets
+  - replacing the complete closed interval cover by point samples
+  - treating an Ulam or stationary-vector residual as a tail or resolvent proof
+  - mixing w, g_A, and h normalizations
+  - determinant, quantization, Route-B, Hilbert-Polya, or RH inference
+
+training_split: empty; no fitting and no target data
+validation_split: >-
+  Root bracket, Arb/FLINT versions, formula denominators, full closed-cover
+  threshold D<0.17014, cone invariance, and safe density intervals.
+test_split: >-
+  Sealed lower witness D>0.17013 on t in [0.75575,0.75576], finite physical
+  returns 12,14,16,18, and byte-identical CLI reproduction.
+
+stopping_conditions:
+  - NOT_TESTABLE if python-flint or the frozen Arb/FLINT version is unavailable
+  - REVISE if any cover denominator is not strictly positive
+  - REVISE if any closed cover cell fails R<(0.17014)^2
+  - REVISE if the lower witness fails R>(0.17013)^2
+  - REJECTED if arithmetic target data enters
+  - STOP_SCOPED for determinant, quantization, Route-B, or RH inference
+
+success_conditions:
+  - cover every t in [0,1] by frozen closed Arb intervals
+  - certify 0.17013<D<0.17014 and kappa<0.595744
+  - prove invariance of the cone with slope 42535/101064
+  - certify safe sharp intervals for w(0), g_A(0), h(0), and C_h
+  - tighten the four already sealed finite physical branch-mass intervals
+
+error_budget_categories:
+  discretization: >-
+    262144 closed cells cover the full domain; interval dependency widens balls
+    but no between-grid point is omitted.
+  truncation: "not used; no operator or orbit truncation enters"
+  rounding: "Arb directed balls at 100 decimal digits"
+  normalization: "w -> g_A -> h -> C_h ledger is explicit"
+  iteration_stopping: "not used; no stationary-vector iteration enters"
+  resolvent_tail: "not used; the analytic cone controls the infinite-dimensional density"

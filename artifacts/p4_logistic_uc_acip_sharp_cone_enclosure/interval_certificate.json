@@ -1,0 +1,251 @@
+{
+  "artifact_schema_version": 1,
+  "audit_id": "P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE",
+  "certified_enclosures": {
+    "conditional_theta_density_w_0": {
+      "safe_lower": "0.22460",
+      "safe_upper": "0.43504",
+      "validated_lower_formula_ball": "[0.22460166453683690240285715937366870109205983714423 +/- 2.98e-51]",
+      "validated_upper_formula_ball": "[0.43503762590784933017139986498595398566421213667720 +/- 3.77e-51]"
+    },
+    "conditional_x_density_g_A_0": {
+      "safe_lower": "0.41310",
+      "safe_upper": "0.80016",
+      "validated_lower_formula_ball": "[0.41310686678165827103504309871093292187816548563176 +/- 3.42e-51]",
+      "validated_upper_formula_ball": "[0.80015894335212027418697182129032590824839842201494 +/- 4.89e-51]"
+    },
+    "endpoint_coefficient_C_h": {
+      "safe_lower": "0.09461",
+      "safe_upper": "0.18327",
+      "validated_lower_formula_ball": "[0.094614480136325989102586677734453259608929233607729 +/- 2.72e-52]",
+      "validated_upper_formula_ball": "[0.18326159291781133495891078617610314381003417752012 +/- 3.69e-51]"
+    },
+    "full_physical_density_h_0": {
+      "safe_lower": "0.20655",
+      "safe_upper": "0.40008",
+      "validated_lower_formula_ball": "[0.20655343339082913551752154935546646093908274281588 +/- 1.71e-51]",
+      "validated_upper_formula_ball": "[0.40007947167606013709348591064516295412419921100747 +/- 2.45e-51]"
+    },
+    "normalization_identity": "g_A(0)=2*h(0)"
+  },
+  "certified_root_ball": "[1.543689012692076361570855971801747986525203297650983935240804037831168673927973866485157914576059125 +/- 5.17e-100]",
+  "claim_boundary": {
+    "established": [
+      "validated 0.17013<D<0.17014 on the full distortion domain",
+      "sharper target-free safe enclosures of w(0), g_A(0), h(0), and C_h",
+      "tighter certified masses for physical returns 12,14,16,18"
+    ],
+    "not_established": [
+      "a closed form or narrow interval-Ulam/resolvent enclosure",
+      "an exponential finite-order mass remainder",
+      "an arithmetic orbit law, determinant, quantization, Route B, or RH"
+    ]
+  },
+  "computed_gates": {
+    "all_cover_denominators_are_positive": true,
+    "all_four_endpoint_radius_gates_pass": true,
+    "all_four_finite_mass_intervals_are_positive": true,
+    "all_four_mass_intervals_have_strict_order": true,
+    "conditional_theta_density_w_0_inside_safe_interval": true,
+    "conditional_x_density_g_A_0_inside_safe_interval": true,
+    "critical_root_has_certified_sign_bracket": true,
+    "endpoint_coefficient_C_h_inside_safe_interval": true,
+    "flint_version_is_frozen": true,
+    "full_cover_proves_D_below_0_17014": true,
+    "full_physical_density_h_0_inside_safe_interval": true,
+    "inverse_contraction_below_0_595744": true,
+    "lower_witness_proves_D_above_0_17013": true,
+    "physical_return_labels_are_sealed": true,
+    "python_flint_version_is_frozen": true,
+    "root_ball_is_strictly_inside_1_5_and_2": true,
+    "sharp_cone_bound_identity_is_exact": true
+  },
+  "computed_gates_passed": true,
+  "cone_ledger": {
+    "distortion_safe_upper": "0.17014",
+    "invariance_identity": "0.17014 + 0.595744*(42535/101064) = 42535/101064",
+    "inverse_contraction_safe_upper": "0.595744",
+    "log_lipschitz_cone_slope": "42535/101064"
+  },
+  "distortion_certificate": {
+    "certified_statement": "0.17013 < D < 0.17014",
+    "global_cover": {
+      "D_upper_safe": "0.17014",
+      "all_cells_below_D_upper_squared": true,
+      "all_denominators_strictly_positive": true,
+      "closed_interval_count": 262144,
+      "coordinate": "t=y/rho^2",
+      "domain": [
+        "0",
+        "1"
+      ],
+      "maximum_interval_upper_cell_index": 198117,
+      "maximum_interval_upper_for_R": "0.02894618018763139843940734863281250000000",
+      "maximum_interval_upper_t_cell": [
+        "198117/262144",
+        "198118/262144"
+      ],
+      "minimum_denominator_lower": "[1.520207115191982640425296577286231358777 +/- 1.12e-40]"
+    },
+    "lower_witness": {
+      "D_lower_safe": "0.17013",
+      "R_ball": "[0.02895 +/- 5.73e-6]",
+      "all_points_above_D_lower_squared": true,
+      "closed_t_interval": [
+        "0.75575",
+        "0.75576"
+      ],
+      "denominator_strictly_positive": true
+    }
+  },
+  "error_budget": {
+    "discretization": "2^18 closed Arb cells cover [0,1]; interval dependency only widens enclosures",
+    "iteration_stopping": "not used; no stationary-vector solve enters",
+    "normalization": "w -> g_A -> h -> C_h is explicit",
+    "resolvent_tail": "not used; the parent analytic cone controls the invariant density",
+    "rounding": "Arb directed real balls at 100 decimal digits",
+    "truncation": "not used; no operator or orbit truncation enters"
+  },
+  "finite_branch_mass_enclosures": [
+    {
+      "branch_length": {
+        "lower": "0.0018366006386837518238052473682587534129",
+        "upper": "0.0018366006386837518238052473682587534130"
+      },
+      "certified_mass": {
+        "lower": "0.0029623667412445651846281758767012522940",
+        "upper": "0.0090289530684825118384335387118169471617"
+      },
+      "delta_n": {
+        "lower": "0.0010094674192227310310035191525322717054",
+        "upper": "0.0010094674192227310310035191525322717055"
+      },
+      "delta_n_minus_1": {
+        "lower": "0.0028460680579064828548087665207910251184",
+        "upper": "0.0028460680579064828548087665207910251185"
+      },
+      "endpoint_radius_gate_passed": true,
+      "n": 6,
+      "physical_return_label": 12,
+      "sqrt_delta_difference": {
+        "lower": "0.0215764355292339805366735903780736279252",
+        "upper": "0.0215764355292339805366735903780736279253"
+      }
+    },
+    {
+      "branch_length": {
+        "lower": "0.0006512764201581162729413875075017925200",
+        "upper": "0.0006512764201581162729413875075017925201"
+      },
+      "certified_mass": {
+        "lower": "0.0020334760261950393456595787607057508664",
+        "upper": "0.0051059183301682976887564970238996702846"
+      },
+      "delta_n": {
+        "lower": "0.0003581909990646147580621316450304791854",
+        "upper": "0.0003581909990646147580621316450304791855"
+      },
+      "delta_n_minus_1": {
+        "lower": "0.0010094674192227310310035191525322717054",
+        "upper": "0.0010094674192227310310035191525322717055"
+      },
+      "endpoint_radius_gate_passed": true,
+      "n": 7,
+      "physical_return_label": 14,
+      "sqrt_delta_difference": {
+        "lower": "0.0128461824463137631970924064067320806660",
+        "upper": "0.0128461824463137631970924064067320806661"
+      }
+    },
+    {
+      "branch_length": {
+        "lower": "0.0002310752068923039715536600511799179523",
+        "upper": "0.0002310752068923039715536600511799179524"
+      },
+      "certified_mass": {
+        "lower": "0.0013068364718538476564741864782806761929",
+        "upper": "0.0029454892619840085704193647546543033743"
+      },
+      "delta_n": {
+        "lower": "0.0001271157921723107865084715938505612331",
+        "upper": "0.0001271157921723107865084715938505612332"
+      },
+      "delta_n_minus_1": {
+        "lower": "0.0003581909990646147580621316450304791854",
+        "upper": "0.0003581909990646147580621316450304791855"
+      },
+      "endpoint_radius_gate_passed": true,
+      "n": 8,
+      "physical_return_label": 16,
+      "sqrt_delta_difference": {
+        "lower": "0.0076513706165212613842189996274200726341",
+        "upper": "0.0076513706165212613842189996274200726342"
+      }
+    },
+    {
+      "branch_length": {
+        "lower": "0.0000820022888502120957498260434670526256",
+        "upper": "0.0000820022888502120957498260434670526257"
+      },
+      "certified_mass": {
+        "lower": "0.0008124254452971365346640909056206834411",
+        "upper": "0.0017206760060805553787098039684796918960"
+      },
+      "delta_n": {
+        "lower": "0.0000451135033220986907586455503835086074",
+        "upper": "0.0000451135033220986907586455503835086075"
+      },
+      "delta_n_minus_1": {
+        "lower": "0.0001271157921723107865084715938505612331",
+        "upper": "0.0001271157921723107865084715938505612332"
+      },
+      "endpoint_radius_gate_passed": true,
+      "n": 9,
+      "physical_return_label": 18,
+      "sqrt_delta_difference": {
+        "lower": "0.0045579053033282206588705464123009488576",
+        "upper": "0.0045579053033282206588705464123009488577"
+      }
+    }
+  ],
+  "formal_candidate": false,
+  "mathematical_object": {
+    "distortion_function": "R=D^2=u*y*(rho^2-y)*(u^2*y-3*u+2)^2/(16*(1-y)*(2-u*y)*(1-u*y)^4), y=rho^2*t",
+    "map": "f(x)=1-U_c*x^2 on J=[-(U_c-1),1]",
+    "polar_map": "G=q^(-1) o (-f^2) o q, q(theta)=(U_c-1)*sin(theta)"
+  },
+  "parent_audit_id": "P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE",
+  "provenance": {
+    "external_target_data_used": false,
+    "generator": "experiments/p4_logistic_uc_acip_sharp_cone_enclosure.py",
+    "generator_sha256": "bdcea234a7ce2ef7733a8546a86564b236e7ef537844b236f34de94cc4b1c177",
+    "reproduction_command": "python3 experiments/p4_logistic_uc_acip_sharp_cone_enclosure.py --quiet --output artifacts/p4_logistic_uc_acip_sharp_cone_enclosure/interval_certificate.json",
+    "source_inputs_sha256": {
+      "configs/source_locks/P4-LOGISTIC-UC-ACIP-CONE-ENCLOSURE.yaml": "ca5285a353701be1cbe805dfc8c6b26777bfe8604b199ba35ee4c46b91cef40c",
+      "configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml": "b27c661ae580bcff4827eeca7fd9f1d899b72beda01a5c2a5ca388e517da0eab",
+      "experiments/p4_logistic_uc_acip_cone_enclosure.py": "41f57294d13fc55c61333c593150c8d27f414b3c93e0e8abf59c3f7a7eac9a97",
+      "experiments/p4_logistic_uc_first_return_support.py": "6165e62f5ac84f955e9474e8291d32e5213cea409760d6768b3ecec571da9b9e",
+      "formal/results/exact_uc_acip_cone_enclosure.md": "bcb46cdfb3959f068b8b416a33c409b18ce07c2391be43f906404372b3f5332a",
+      "formal/results/exact_uc_acip_sharp_cone_enclosure.md": "5fb0bdc64497f02c0f2e2befdf2d4a528ea72d0b64c6bba7e78ff7fdb8019373",
+      "formal/results/exact_uc_first_return_support.md": "ec21c0c2d9fae0b9f990f0d2bf4397462685ee52ac29144a4d607102441fb7cf"
+    }
+  },
+  "route_a_effect": {
+    "local_verdict": "GO_WITH_LIMITATIONS",
+    "parent_candidate_verdict": "REVISE",
+    "tuple_unchanged": [
+      "A1_WEAK",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ]
+  },
+  "source_lock": "configs/source_locks/P4-LOGISTIC-UC-ACIP-SHARP-CONE-ENCLOSURE.yaml",
+  "status": "NUMERICALLY_CERTIFIED_SHARP_CONE",
+  "validated_environment": {
+    "arb_decimal_digits": 100,
+    "flint": "3.6.0",
+    "python": "3.12.3",
+    "python_flint": "0.9.0"
+  }
+}
