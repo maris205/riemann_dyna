@@ -49,6 +49,14 @@ cutoff:
     Common-parent antiunitary A, its one-kick identities, and the inherited
     three-kick clock-reflection/cyclic-rotation test only.
   excluded: "all spectral, determinant, zero, GUE, USTC, and Route-B calculations"
+phase_ledger:
+  ordered_internal_phase: "S_(1/2)(q0,q1)+S_(3/2)(q1,q2)+S_(5/2)(q2,q3)"
+  internal_hessian: "[[3*q1,1],[1,5*q2]]"
+  internal_hessian_determinant: "15*q1*q2-1"
+  caustic_set: "15*q1*q2-1=0"
+  global_single_phase_reduction: false
+  ordered_oscillatory_integral: true
+  global_maslov_index: NOT_ASSIGNED
 precision:
   algebra: "exact rational polynomial and formal Hilbert identities"
   operator_theory: "Plancherel theorem and bounded multiplication; no numerical approximation"

@@ -1,0 +1,68 @@
+{
+  "audit_id": "TH-0001-A4-PHASE-CAUSTIC-001",
+  "candidate_id": "TH-0001",
+  "caustic_equation": "15*q1*q2-1=0",
+  "caustic_nonempty_witness": {
+    "q1": "1",
+    "q2": "1/15"
+  },
+  "claim_boundary": {
+    "established": [
+      "exact ordered three-kick phase",
+      "internal Hessian determinant 15*q1*q2-1",
+      "nonempty caustic set and failure of a global single-phase reduction",
+      "factorized unitary product remains unaffected"
+    ],
+    "not_established": [
+      "a global reduced generating function across caustics",
+      "any orbit Maslov assignment or signed-multiplier phase law",
+      "spectrum, determinant, trace formula, Route B, or RH"
+    ]
+  },
+  "factorized_unitarity_unaffected": true,
+  "global_single_phase_reduction": false,
+  "internal_hessian": [
+    [
+      "3*q1",
+      "1"
+    ],
+    [
+      "1",
+      "5*q2"
+    ]
+  ],
+  "internal_hessian_determinant": "15*q1*q2 - 1",
+  "internal_hessian_variables": [
+    "q1",
+    "q2"
+  ],
+  "ordered_oscillatory_integral_remains_defined": true,
+  "ordered_phase": "q0**3/6 + q0*q1 - q0 + q1**3/2 + q1*q2 - q1 + 5*q2**3/6 + q2*q3 - q2",
+  "parameter_order": [
+    "1/2",
+    "3/2",
+    "5/2"
+  ],
+  "phase_convention": {
+    "factor_amplitude": "positive real (2*pi)^(-1/2)",
+    "factor_phase": "exp(+i*S_a)",
+    "global_maslov_index": "NOT_ASSIGNED",
+    "reason": "single reduced phase is not globally nondegenerate"
+  },
+  "phase_variables": [
+    "q0",
+    "q1",
+    "q2",
+    "q3"
+  ],
+  "route_a_a4": {
+    "new_obstruction": "OBR-011",
+    "route_b_invocation_allowed": false,
+    "verdict": "A4_NATURAL_QUANTIZATION"
+  },
+  "source_lock": "configs/source_locks/TH-0001-FIO.yaml",
+  "stationary_equations": [
+    "q0 + 3*q1**2/2 + q2 - 1",
+    "q1 + 5*q2**2/2 + q3 - 1"
+  ]
+}
