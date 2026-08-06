@@ -1,0 +1,95 @@
+{
+  "bond_characteristic": {
+    "L0": "1 + sqrt(2) + sqrt(3) + sqrt(5)",
+    "component_n_dephasing_factor": "exp(-i*k*L0/n)",
+    "convention": "Delta_bond(k)=det(I_8-S*P(k))",
+    "dephasing_factor": "exp(-i*k*L0)",
+    "division_by_k2_allowed_only_after_identity": true,
+    "exact_relation": "Delta_bond(k)=-(4/3)*k^2*exp(i*k*L0)*C_phys(k)",
+    "first_nonconstant_coefficient_decimal": "0 + 6.38233234744176203873830873444684668095309549i",
+    "first_nonconstant_coefficient_exact": "i*(1 + sqrt(2) + sqrt(3) + sqrt(5))",
+    "leading_coefficient_decimal": "-28.2555178892499933574820517896443910465475068",
+    "leading_coefficient_exact": "-4*sqrt(10) - 4*sqrt(15)/3 - 4*sqrt(6)/3 - 4*sqrt(5)/3 - 4*sqrt(3)/3 - 4*sqrt(2)/3",
+    "raw_normalized_factor": "beta(k)=-(3/(4*A*k^2))*Delta_bond(k)=exp(i*k*L0)*chi_0(k)",
+    "raw_normalized_taylor": "beta(k)=1+i*L0*k+O(k^2)",
+    "scaled_small_k_error": "0.000000000699907340718108423160057991472949115694174927 + -0.000180336105816261183737468971272078005468788537i",
+    "scaled_small_k_value": "-28.2555178885500860167639433664843330550745577 + -0.000180336105816261183737468971272078005468788537i",
+    "zero_at_k0_order": 2,
+    "zero_is_physical": false
+  },
+  "candidate_id": "QG-0001",
+  "exact_parity_check": true,
+  "exact_zero_limit_check": true,
+  "max_abs_residual": "1.5286187017684258675305432374341527561179444e-80",
+  "parent_source_lock": "configs/source_locks/QG-0001.yaml",
+  "physical_characteristic": {
+    "compact_value_at_zero": "sqrt(2) + sqrt(3) + sqrt(6) + sqrt(5)*(1 + sqrt(3) + 3*sqrt(2))",
+    "entire": true,
+    "even": true,
+    "exact_value_at_zero": "sqrt(2) + sqrt(3) + sqrt(5) + sqrt(6) + sqrt(15) + 3*sqrt(10)",
+    "matrix_dimension": 6,
+    "normalized_characteristic": "chi_0(k)=C_phys(k)/A; chi_0(0)=1",
+    "normalized_quadratic_coefficient_decimal": "-4.40355970195371342217046863830492637844057289",
+    "normalized_quadratic_coefficient_exact": "(-45*sqrt(10) - 26*sqrt(15) - 18*sqrt(30) - 36*sqrt(5) - 23*sqrt(6) - 25*sqrt(3) - 27*sqrt(2))/(6*(sqrt(2) + sqrt(3) + sqrt(5) + sqrt(6) + sqrt(15) + 3*sqrt(10)))",
+    "normalized_taylor": "chi_0(k)=1+a2*k^2+O(k^4)",
+    "unknown_order": [
+      "u_L",
+      "u_R",
+      "q_0",
+      "q_1",
+      "q_2",
+      "q_3"
+    ],
+    "value_at_zero_decimal": "21.1916384169374950181115388422332932849106301",
+    "zero_mode": false,
+    "zero_mode_reason": "Dirichlet terminal D forces a covariantly constant zero-form to vanish"
+  },
+  "pole_free_formula": {
+    "formula": "F(k)=s3[-3*s0*s1*s2+2*sum_{i<j<3}s_l*(c_i*c_j-cos(alpha_i-alpha_j))]+c3*sum_i c_i*s_j*s_m",
+    "individual_sine_factors_are_not_independent_zeros": true,
+    "relation_to_physical": "F(k)=k^2*C_phys(k)"
+  },
+  "route_b_invoked": false,
+  "sample_checks": [
+    {
+      "bond_characteristic": "-0.247372957121059972602904517303590195225674641 + -0.209230537835263417645686484958007730406465138i",
+      "bond_identity_residual": "2.10843958864610464486971481025400380154199228e-81 + -7.90664845742289241826143053845251425578247104e-82i",
+      "edge_sine_zero_sample": false,
+      "k": "0.11",
+      "physical_characteristic": "20.0821470206995645730113773140077544352631609 + -5.49269825817951834772799798646072601450407794e-81i",
+      "pole_free_vs_sinc_residual": "2.63554948580763080608714351281750475192749035e-82 + 6.6461648923972172007508775636174784775499343e-83i"
+    },
+    {
+      "bond_characteristic": "-0.0723340100291344616575081582561087293353119708 + -1.54103924114210143729754945176932475069869457i",
+      "bond_identity_residual": "1.5286187017684258675305432374341527561179444e-80 + 0.0i",
+      "edge_sine_zero_sample": false,
+      "k": "0.731",
+      "physical_characteristic": "-2.16530013978257024632049721197612361271749303 + 1.0590130879603301026507783417487326374892129e-81i",
+      "pole_free_vs_sinc_residual": "2.10843958864610464486971481025400380154199228e-81 + -5.65895292695569953982572565475194520901373297e-82i"
+    },
+    {
+      "bond_characteristic": "0.351332879909932087678674911516075331468880662 + 1.77710320385464179210580009521391126934527055i",
+      "bond_identity_residual": "-1.15964177375535755467834314563970209084809575e-80 + 6.32531876593831393460914443076201140462597683e-81i",
+      "edge_sine_zero_sample": false,
+      "k": "1.2",
+      "physical_characteristic": "-0.943489344646475826402161133315235664380070031 + 1.09388133938727716485669826651004146620887211e-81i",
+      "pole_free_vs_sinc_residual": "-2.10843958864610464486971481025400380154199228e-81 + -1.57518912871767911739364550377445971134077584e-81i"
+    },
+    {
+      "bond_characteristic": "0.0376921653865278067611183915526611339387883017 + 0.0972760104099268847127039184964399796023940832i",
+      "bond_identity_residual": "3.16265938296915696730457221538100570231298841e-81 + -9.22442320032670782130500229486126663174621621e-82i",
+      "edge_sine_zero_sample": true,
+      "k": "pi",
+      "physical_characteristic": "-0.00792760947397414459301696194274834031643755269 + -1.13245773380383861329473404306863550151469599e-82i",
+      "pole_free_vs_sinc_residual": "6.58887371451907701521785878204376187981872586e-82 + 1.11769098335980469074485929097732278351905612e-81i"
+    }
+  ],
+  "source_lock": "configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml",
+  "structural_conclusion": "The physical n=1 matching characteristic is entire and nonzero at k=0. The directed-bond determinant has an exact double k=0 zero caused by the degenerate plane-wave parametrization, with leading coefficient -(4/3)A. Dividing by k^2 is justified only by the proved identity; this local repair does not define a tower determinant.",
+  "subaudit_id": "QG-0001-BASE-CHARACTERISTIC-001",
+  "target_data_used": {
+    "fitting": false,
+    "prime_table": false,
+    "zero_table": false
+  }
+}

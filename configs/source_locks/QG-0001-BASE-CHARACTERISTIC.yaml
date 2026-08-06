@@ -1,0 +1,69 @@
+candidate_id: QG-0001
+subaudit_id: QG-0001-BASE-CHARACTERISTIC-001
+parent_source_lock: configs/source_locks/QG-0001.yaml
+clue_id: CLUE-A4-003
+mathematical_object:
+  scope: >-
+    The frozen n=1 lollipop-theta component only. Three L--R edges have
+    lengths (1,sqrt(2),sqrt(3)) and L-outward magnetic line integrals
+    (0,pi/3,2*pi/3); the L--D pendant has length sqrt(5), line integral 0,
+    covariant Kirchhoff conditions at L (degree 4) and R (degree 3), and a
+    Dirichlet terminal D.
+  physical_matching_matrix: >-
+    The 6x6 sinc-matching matrix in formal/results/
+    qg_0001_base_characteristic_zero.md, with unknowns (u_L,u_R,q_0,q_1,q_2,q_3).
+  physical_characteristic: >-
+    C_phys(k)=det(M_phys(k)), an entire even function of the raw wavenumber k.
+  bond_characteristic: >-
+    Delta_bond(k)=det(I_8-S*P(k)) under the parent directed-bond convention;
+    it is audited only through the exact relation
+    Delta_bond(k)=-(4/3)*k^2*exp(i*k*L0)*C_phys(k).
+data_type:
+  primary: >-
+    Exact sinc-matching characteristic and its bond-secular comparison near
+    k=0, with no tower determinant or spectral-zero table.
+  symbolic: >-
+    SymPy exact radicals, sixth-root phases, determinant at k=0, parity, and
+    Taylor coefficient A.
+  numerical: >-
+    High-precision residuals for the bond identity at fixed non-fitted sample
+    wavenumbers, including an edge-Dirichlet point.
+clock: >-
+  Raw positive wavenumber k=sqrt(lambda) for the base component; metric edge
+  lengths are fixed and no tower index or nonlinear clock is used.
+normalization: >-
+  C_phys(0)=A is the canonical local normalization. The dimensionless local
+  characteristic is chi_0(k)=C_phys(k)/A, so chi_0(0)=1. The bond determinant
+  remains a separate convention and is divided by the proved k^2 factor only
+  after the identity is established. The raw normalized bond factor
+  beta(k)=-(3/(4*A*k^2))*Delta_bond(k)=exp(i*k*L0)*chi_0(k) retains a linear
+  phase; the dephasing exp(-i*k*L0) is recorded explicitly.
+determinant_convention: >-
+  BASE_PHYSICAL_MATCHING_ONLY. This subaudit does not open a global tower
+  Euler, Fredholm, relative, Weierstrass, heat-zeta, or completed-xi
+  determinant. Do not treat Delta_bond(0)=0 as a physical eigenvalue.
+cutoff:
+  symbolic: "all k through the exact pole-free 6x6 matching determinant"
+  local_series: "through k^2 for C_phys, k^4 for F=k^2*C_phys, and k^3 for Delta_bond"
+  validation_samples: "k=0.11, 0.731, 1.2, and k=pi"
+precision:
+  exact: "SymPy radicals and root-of-unity phases; Fraction scattering matrix"
+  numerical: "80 decimal-digit mpmath residuals; no fitted tolerances"
+allowed_data:
+  - "QG-0001 source lock and n=1 graph data"
+  - "exact vertex matching, sinc continuation, and finite bond scattering algebra"
+  - "standard zero-mode consequence of a Dirichlet terminal"
+forbidden_data:
+  - "prime tables, primality predicates, Riemann-zero tables, or target fitting"
+  - "tower component determinants or silent regularization"
+  - "individual sin(k*ell_e) factors treated as automatic eigenvalues"
+  - "dividing by k^2 before proving its exact bond-determinant order"
+  - "Route B, Hilbert-Polya, or RH claims"
+training_split: "symbolic matrix definition and k=0 exact determinant"
+validation_split: "pole-free parity and Taylor identities"
+test_split: "independent high-precision bond identity at fixed k, including k=pi"
+stopping_conditions:
+  - "NOT_TESTABLE if the physical matrix, phase convention, or wavenumber clock changes"
+  - "REVISE if the exact k=0 determinant is not positive or parity fails"
+  - "STOP_SCOPED if the bond relation cannot be proved without a convention change"
+  - "do not freeze a tower relative product until this base audit is complete"
