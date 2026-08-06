@@ -1,0 +1,92 @@
+candidate_id: QG-0001
+subaudit_id: QG-0001-RELATIVE-FREDHOLM-001
+parent_source_lock: configs/source_locks/QG-0001.yaml
+base_characteristic_lock: configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml
+clue_id: CLUE-A4-003
+mathematical_object:
+  operator: >-
+    H=direct_sum_{n>=1} H_n on the orthogonal direct sum of the component
+    L2 spaces. H_n is the frozen magnetic lollipop-theta Laplacian on the
+    exact 1/n metric scaling of the base graph, with the same covariant
+    Kirchhoff and Dirichlet conditions. Under metric dilation,
+    H_n is unitarily equivalent to n^2*H_1.
+  inverse: >-
+    R=H^{-1}=direct_sum_{n>=1} H_n^{-1}. The Dirichlet terminal makes H_1
+    strictly positive. The finite-graph Weyl law and exact scaling are used
+    to test and then prove that R is trace class.
+  base_factor: >-
+    chi_0(k)=C_phys(k)/C_phys(0), where C_phys is the exact even entire
+    sinc-matching characteristic fixed by the base-characteristic lock.
+  tower_factor: >-
+    chi_n(k)=chi_0(k/n). The separate repaired bond factor is
+    beta_n(k)=exp(i*k*L0/n)*chi_0(k/n), with
+    L0=1+sqrt(2)+sqrt(3)+sqrt(5).
+data_type:
+  primary: >-
+    Trace-class inverse operator, Fredholm determinant, normalized entire
+    component characteristics, and exact component-index scaling.
+  analytic: >-
+    Schatten-class sums, locally uniform product convergence, divisor with
+    multiplicity, entire-function order, and wavenumber counting asymptotic.
+  numerical: >-
+    High-precision finite-component products at frozen target-free sample
+    wavenumbers, used only as implementation and convergence controls.
+clock: >-
+  Raw wavenumber k=sqrt(lambda). Component n retains the exact metric clock
+  k/n inherited from 1/n length scaling. No unfolding, affine rescaling,
+  nonlinear reclocking, or target-dependent map is allowed.
+normalization: >-
+  chi_0(0)=1 and D_H(0)=1. The base bond zero k^2 and the zero-free phase
+  exp(i*k*L0) are removed only through the proved exact base identity. For
+  each component, exp(-i*k*L0/n) is paired inside the same factor with
+  beta_n(k); the divergent counterphases may not be multiplied separately.
+determinant_convention: >-
+  D_H(k)=det_F(I-k^2*H^{-1})=det_rel(H-k^2,H). The claimed component
+  identity is D_H(k)=product_{n>=1} chi_0(k/n)=product_{n>=1}
+  [exp(-i*k*L0/n)*beta_n(k)]. This is a trace-class inverse-spectral
+  Fredholm/relative determinant. It is not the ordinary primitive-orbit
+  Euler product, not det(I-direct_sum B_n), not a raw bond-secular product,
+  not the heat/spectral zeta, and not a completed-xi determinant.
+cutoff:
+  theorem: >-
+    All component labels n>=1 and the complete spectrum of every H_n; no
+    spectral or component cutoff occurs in the determinant definition.
+  finite_product_controls: "N in {8,16,32,64,128,256}"
+  sample_wavenumbers: "k in {0.11,0.25,0.5,0.731}"
+  local_series: "through k^2 for the tower determinant"
+precision:
+  exact: >-
+    Exact radicals and pi for the trace coefficient, exact H_n~n^2 H_1
+    scaling, and theorem-level trace-class/product identities.
+  numerical: "80 decimal-digit mpmath arithmetic; no fitted tolerances"
+allowed_data:
+  - "the two parent QG-0001 source locks and their exact graph/scaling data"
+  - "the proved base physical characteristic and bond/physical identity"
+  - "standard compact-metric-graph Weyl law and trace-class Fredholm theory"
+  - "the Riemann-von Mangoldt leading coefficient only as a structural target constraint"
+forbidden_data:
+  - "prime tables, primality predicates, Riemann-zero tables, or target-root fitting"
+  - "fitting any edge length, flux, component scale, clock, offset, or spectral map"
+  - "identifying the inverse-spectral trace expansion with a primitive-orbit trace formula"
+  - "using the failed direct-sum bond block as though it were H^{-1}"
+  - "multiplying the divergent counterphases as a standalone product"
+  - "calling spectral-zeta zeros, heat-zeta zeros, or raw bond zeros physical eigenvalues"
+  - "calling a finite component product an all-order determinant theorem"
+  - "Route B, Hilbert-Polya, completed-xi, or RH claims"
+training_split: >-
+  Exact operator definition, H_n~n^2 H_1 scaling, base normalization, and
+  derivation of the trace-class sum; no fitted parameters.
+validation_split: >-
+  Canonical-product equality for chi_0, Fredholm direct-sum multiplicativity,
+  locally uniform convergence, and the exact k^2 coefficient.
+test_split: >-
+  Frozen high-precision finite-product controls, the raw harmonic-phase
+  divergence witness, the complete divisor/counting theorem, and the fixed
+  leading-coefficient comparison with Riemann-von Mangoldt.
+stopping_conditions:
+  - "NOT_TESTABLE if H, its domain, the component scaling, or chi_0 changes"
+  - "REVISE if H^{-1} is not trace class or chi_0 differs by an unproved zero-free factor"
+  - "REJECTED if any arithmetic table or target zero enters the definition"
+  - "STOP_SCOPED for target matching if the frozen divisor has the wrong leading count"
+  - "keep the Fredholm determinant separate from the failed orbit and bond-block products"
+  - "do not invoke Route B"

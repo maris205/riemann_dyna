@@ -1,0 +1,332 @@
+{
+  "candidate_id": "QG-0001",
+  "counting": {
+    "candidate_leading_coefficient": "L0/pi",
+    "candidate_to_target_ratio_decimal": "12.764664694883524077476617468893693361906191",
+    "candidate_to_target_ratio_exact": "2 + 2*sqrt(2) + 2*sqrt(3) + 2*sqrt(5)",
+    "leading_coefficient_matches_target": false,
+    "positive_wavenumber_count": "N_H(K)=(L0/pi)*K*log(K)+O(K)",
+    "riemann_von_mangoldt_leading_coefficient": "1/(2*pi)",
+    "zero_free_prefactor_can_repair_count": false
+  },
+  "determinant": {
+    "base_factor_is_fredholm": "chi_0(k)=det_F(I-k^2*H_1^{-1})",
+    "bond_factor_identity": "chi_0(k/n)=exp(-i*k*L0/n)*beta_n(k)",
+    "canonical_genus_in_k": 1,
+    "coincident_pair_multiplicities_add": true,
+    "component_identity": "D_H(k)=product_{n>=1} chi_0(k/n)",
+    "convention": "D_H(k)=det_F(I-k^2*H^{-1})=det_rel(H-k^2,H)",
+    "entire_order_in_k": 1,
+    "entire_order_in_z_equals_k_squared": "1/2",
+    "entire_type_in_k": "infinite",
+    "finite_exponential_type_in_k": false,
+    "imaginary_axis_growth": "log(D_H(iR))=L0*R*log(R)+O(R)",
+    "is_completed_xi": false,
+    "is_direct_sum_bond_block_determinant": false,
+    "is_heat_or_spectral_zeta": false,
+    "is_naive_orbit_product": false,
+    "normal_convergence_on_compacts": true,
+    "paired_canonical_genus_in_z_equals_k_squared": 0,
+    "zero_at_origin": false,
+    "zero_divisor": "k=+/-n*sqrt(lambda_j(H_1)), with multiplicity"
+  },
+  "exact_coefficients": {
+    "L0": "1 + sqrt(2) + sqrt(3) + sqrt(5)",
+    "base_quadratic": "(-45*sqrt(10) - 26*sqrt(15) - 18*sqrt(30) - 36*sqrt(5) - 23*sqrt(6) - 25*sqrt(3) - 27*sqrt(2))/(6*(sqrt(2) + sqrt(3) + sqrt(5) + sqrt(6) + sqrt(15) + 3*sqrt(10)))",
+    "tower_quadratic": "pi**2*(-5*sqrt(10)/4 - 13*sqrt(15)/18 - sqrt(30)/2 - sqrt(5) - 23*sqrt(6)/36 - 25*sqrt(3)/36 - 3*sqrt(2)/4)/(sqrt(2) + sqrt(3) + sqrt(5) + sqrt(6) + sqrt(15) + 3*sqrt(10))",
+    "tower_quadratic_decimal": "-7.24356536914368571711137248581961043338074745",
+    "trace_H1_inverse": "(27*sqrt(2) + 25*sqrt(3) + 23*sqrt(6) + 36*sqrt(5) + 18*sqrt(30) + 26*sqrt(15) + 45*sqrt(10))/(6*(sqrt(2) + sqrt(3) + sqrt(5) + sqrt(6) + sqrt(15) + 3*sqrt(10)))",
+    "trace_H1_inverse_decimal": "4.40355970195371342217046863830492637844057289",
+    "trace_H_inverse": "pi**2*(3*sqrt(2)/4 + 25*sqrt(3)/36 + 23*sqrt(6)/36 + sqrt(5) + sqrt(30)/2 + 13*sqrt(15)/18 + 5*sqrt(10)/4)/(sqrt(2) + sqrt(3) + sqrt(5) + sqrt(6) + sqrt(15) + 3*sqrt(10))",
+    "trace_H_inverse_decimal": "7.24356536914368571711137248581961043338074745"
+  },
+  "finite_product_controls": {
+    "cutoffs": [
+      8,
+      16,
+      32,
+      64,
+      128,
+      256
+    ],
+    "max_raw_ratio_residual": "1.05421979432305232243485740512700190077099614e-81",
+    "max_tail_corrected_128_to_256_drift": "0.000000003176371394787685712076910890158902781",
+    "samples": [
+      {
+        "k": "0.11",
+        "partial_products": [
+          {
+            "components": 8,
+            "leading_tail_corrected_product": "0.915596766101833135345643777112234624128587862 - 9.52392598082659550301775961693916860886977912e-82i",
+            "physical_product": "0.921347670349658621067951991013371821365023083 - 9.58374618597247026959521659800888881980824132e-82i",
+            "raw_bond_product": "-0.304905210291362890125171706721377489649074194 + 0.869433345573956569345197371160593399944539586i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "1.90808943144410678665279937200194834165208437",
+            "sum_n_gt_N_inverse_square": "0.117512014694031425134546685920401606452509992"
+          },
+          {
+            "components": 16,
+            "leading_tail_corrected_product": "0.915596560329580265089162922761914787028809188 - 1.54474953217240542636989557254285800774295974e-81i",
+            "physical_product": "0.918557147729849506440474966755783504257201179 - 1.54974448977674066888449954548807180043169495e-81i",
+            "raw_bond_product": "-0.660636772457721938596186963650479537112240851 + 0.63820552216526667883560332236749223333521814i",
+            "raw_over_physical_ratio_residual": "0.0 + 1.05421979432305232243485740512700190077099614e-81i",
+            "raw_phase_argument_unwrapped": "2.37346296125615877157298150056396127931874136",
+            "sum_n_gt_N_inverse_square": "0.060587533403239361781710772311927225417356396"
+          },
+          {
+            "components": 32,
+            "leading_tail_corrected_product": "0.915596531851274590100938775038806409247604483 - 7.0248269564645007045055791537133680034109238e-82i",
+            "physical_product": "0.917098745875438531305398973035058432240329272 - 7.03635255011216211531617828960948640837923729e-82i",
+            "raw_bond_product": "-0.878198901850638883669019746219570061548274299 + 0.264266529236364163591423520549278266312130996i",
+            "raw_over_physical_ratio_residual": "1.05421979432305232243485740512700190077099614e-81 + 0.0i",
+            "raw_phase_argument_unwrapped": "2.84929316845486259635761017682455982357676669",
+            "sum_n_gt_N_inverse_square": "0.0307668040203020901265816804387414271413288641"
+          },
+          {
+            "components": 64,
+            "leading_tail_corrected_product": "0.915596528106556802156662314203249369253833213 - 2.08573146362927767315379971433436175625182141e-81i",
+            "physical_product": "0.916353194378254985804644230163086795437069636 - 2.08745515152225348683618245758739956148463172e-81i",
+            "raw_bond_product": "-0.900054766238873404661850075595464330090165204 - 0.172059857659824059817101277059417530843988417i",
+            "raw_over_physical_ratio_residual": "0.0 - 2.63554948580763080608714351281750475192749035e-82i",
+            "raw_phase_argument_unwrapped": "3.33047972042016690165973322535685428175030147",
+            "sum_n_gt_N_inverse_square": "0.015503565439338930155744003071350464507300507"
+          },
+          {
+            "components": 128,
+            "leading_tail_corrected_product": "0.915596527626508221809280074980577654394706542 + 2.51088961763629650983580304001891236182872969e-81i",
+            "physical_product": "0.915976260434096760652985891612121966113126271 + 2.51193097934451705879701958699434999043781942e-81i",
+            "raw_bond_product": "-0.716375755625939867869919777238054398266310237 - 0.570804946045666232311168673627341952902294934i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "3.81437654811851406766459440787195451162208568",
+            "sum_n_gt_N_inverse_square": "0.00778206189376461512953916576804465842807264387"
+          },
+          {
+            "components": 256,
+            "leading_tail_corrected_product": "0.915596527565742139407275889208066628529099671 + 7.90940322608035932856448820434402807615722856e-81i",
+            "physical_product": "0.915786745116522407087396129180058727607262396 + 7.91104642509269997589443916788289453687490433e-81i",
+            "raw_bond_product": "-0.367351487539093789172161407839932281759848689 - 0.838879161222836311650758848106678481738572137i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "4.29963654593888182521187000872531224465785793",
+            "sum_n_gt_N_inverse_square": "0.00389863053954589640546152992929337211479998322"
+          }
+        ]
+      },
+      {
+        "k": "0.25",
+        "partial_products": [
+          {
+            "components": 8,
+            "leading_tail_corrected_product": "0.626198001530239755953078555204263472497707824 - 1.34310639317608487959302707837321097975628343e-81i",
+            "physical_product": "0.646781526385058301528780436700091731171722835 - 1.38725515085184789503216400616247051166326777e-81i",
+            "raw_bond_product": "-0.237392988422601862888791295147063353535385277 - 0.601640184762264933072574043588133718931157842i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "4.3365668896456972423927258454589735037547372",
+            "sum_n_gt_N_inverse_square": "0.117512014694031425134546685920401606452509992"
+          },
+          {
+            "components": 16,
+            "leading_tail_corrected_product": "0.626194244101956551899990502900394551753328131 + 6.46864762610241317195407183769283057976552995e-82i",
+            "physical_product": "0.636723610115398520815950028036676572590922978 + 6.57741700414882822547725683204162775826629242e-82i",
+            "raw_bond_product": "0.401280150914862318923106228698977330495090556 - 0.494359379561196702058485574565718186770185129i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "5.39423400285490629902950341037263927117895764",
+            "sum_n_gt_N_inverse_square": "0.060587533403239361781710772311927225417356396"
+          },
+          {
+            "components": 32,
+            "leading_tail_corrected_product": "0.626193724357051879732335845263304404053975634 + 4.33827986322940228432640483339528824768528182e-81i",
+            "physical_product": "0.631518668306983321996573534600713713816977737 + 4.37517115774777517120952149970275530173590694e-81i",
+            "raw_bond_product": "0.619856196638221648680495838020619393606165295 + 0.120806141853069366971526064415898145919805894i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "6.47566629194286953717638676551036323540174247",
+            "sum_n_gt_N_inverse_square": "0.0307668040203020901265816804387414271413288641"
+          },
+          {
+            "components": 64,
+            "leading_tail_corrected_product": "0.626193656023486588277746970103104824128261153 + 2.96176962116573548328449343837012224284018404e-81i",
+            "physical_product": "0.628871288937042563878873953474032808798278962 + 2.97443428447510975882106677050328199017946276e-81i",
+            "raw_bond_product": "0.176636548934815356707815383386195931260519051 + 0.603554991388304113713752804500771796975476494i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "7.56927209186401568559030278490194154943250334",
+            "sum_n_gt_N_inverse_square": "0.015503565439338930155744003071350464507300507"
+          },
+          {
+            "components": 128,
+            "leading_tail_corrected_product": "0.626193647263884625388785877841393812879037638 + 4.47755842155287618533259351757745862072422797e-81i",
+            "physical_product": "0.627536265101145202760774521548180990610601939 + 4.48715872623565402642854588287464139360850354e-81i",
+            "raw_bond_product": "-0.45669829566230626249156418388742933463435982 + 0.430381726791739478705954628234495281278468449i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "8.66903760936025924469226001789080570823201292",
+            "sum_n_gt_N_inverse_square": "0.00778206189376461512953916576804465842807264387"
+          },
+          {
+            "components": 256,
+            "leading_tail_corrected_product": "0.626193646155076490473922134541935373519454889 + 1.31965633699655020827082814501432816867229835e-81i",
+            "physical_product": "0.626865906758502385196464911220488215391193335 + 1.32107307600511626422225336500177972345438376e-81i",
+            "raw_bond_product": "-0.589476643690635718801780964162101507940422502 - 0.213256070486592964387671914942481187126838121i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "9.77190124077018596639061365619389146513149529",
+            "sum_n_gt_N_inverse_square": "0.00389863053954589640546152992929337211479998322"
+          }
+        ]
+      },
+      {
+        "k": "0.5",
+        "partial_products": [
+          {
+            "components": 8,
+            "leading_tail_corrected_product": "0.11212616261704371802299382355996001924778544 - 2.5149552373682243579086888261663175926264663e-82i",
+            "physical_product": "0.127611753962587037063592193635106313062428103 - 2.86229227405281258307790852558843111645793839e-82i",
+            "raw_bond_product": "-0.0932289544489881888727853218484362610227192258 + 0.087138520768695251822526566723422276388281168i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "8.67313377929139448478545169091794700750947441",
+            "sum_n_gt_N_inverse_square": "0.117512014694031425134546685920401606452509992"
+          },
+          {
+            "components": 16,
+            "leading_tail_corrected_product": "0.112115369749647424632433813748015211840820223 + 2.85839856520083612930228564179396342071942852e-83i",
+            "physical_product": "0.119848522549043075976162633788025939742896145 + 3.05555648311726767341773024160509020560467849e-83i",
+            "raw_bond_product": "-0.0246443180859725438049869309787636242504529536 - 0.117287364806554901200106067247056444755020268i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "10.7884680057098125980590068207452785423579153",
+            "sum_n_gt_N_inverse_square": "0.060587533403239361781710772311927225417356396"
+          },
+          {
+            "components": 32,
+            "leading_tail_corrected_product": "0.112113879808622567864492798804483238741954859 + 7.48775073021959966442962716630673999121789887e-82i",
+            "physical_product": "0.115976316633788592588314843528289144361469739 + 7.74571133427176351624985753217196585776609692e-82i",
+            "raw_bond_product": "0.107488324859657415639873709221599656414583081 + 0.0435518775577533764092506757378073045393735203i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "12.9513325838857390743527735310207264708034849",
+            "sum_n_gt_N_inverse_square": "0.0307668040203020901265816804387414271413288641"
+          },
+          {
+            "components": 64,
+            "leading_tail_corrected_product": "0.112113684021982596038685467909785877154202315 + 1.12144368312536153330227352683629287504900826e-81i",
+            "physical_product": "0.114043631930982475598053791801458899514424096 + 1.14074844427195400673104176729646949257625086e-81i",
+            "raw_bond_product": "-0.0960491792170105624625432538100927169481365461 + 0.0614858126379410547924202627471394387210865131i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "15.1385441837280313711806055698038830988650067",
+            "sum_n_gt_N_inverse_square": "0.015503565439338930155744003071350464507300507"
+          },
+          {
+            "components": 128,
+            "leading_tail_corrected_product": "0.112113658927732036140209919684210480540950849 + 5.97950567606146089913066947722213345384243907e-82i",
+            "physical_product": "0.113078284509055573262227022763663926925709432 + 6.03095332475978938188808747135457221896339725e-82i",
+            "raw_bond_product": "0.00670337659314933727749501607765487016118293799 - 0.112879418716439779572745401848448592697449063i",
+            "raw_over_physical_ratio_residual": "6.58887371451907701521785878204376187981872586e-83 + 0.0i",
+            "raw_phase_argument_unwrapped": "17.3380752187205184893845200357816114164640258",
+            "sum_n_gt_N_inverse_square": "0.00778206189376461512953916576804465842807264387"
+          },
+          {
+            "components": 256,
+            "leading_tail_corrected_product": "0.112113655751360641352524207607299590382048068 + 5.92874964022349796802239841650404941281515154e-82i",
+            "physical_product": "0.112595877521849211091984157624202552213580245 + 5.95425029961357720733126070569031531537637945e-82i",
+            "raw_bond_product": "0.0865339825966516304659762515223355172261147446 + 0.0720395828061050141422351938872250541502759091i",
+            "raw_over_physical_ratio_residual": "1.05421979432305232243485740512700190077099614e-81 + 0.0i",
+            "raw_phase_argument_unwrapped": "19.5438024815403719327812273123877829302629906",
+            "sum_n_gt_N_inverse_square": "0.00389863053954589640546152992929337211479998322"
+          }
+        ]
+      },
+      {
+        "k": "0.731",
+        "partial_products": [
+          {
+            "components": 8,
+            "leading_tail_corrected_product": "-0.0203788506709533085256699302901540476029511085 + 1.30882399143269470859278068421569385749074844e-83i",
+            "physical_product": "-0.0268700973175265066604191852251504279435256156 + 1.72572185689728302352438731491452855955263892e-83i",
+            "raw_bond_product": "-0.0266964447816500119044636788216192313600009558 - 0.00304991243704749941889270991176546209948149207i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "12.6801215853240187367563303721220385249788516",
+            "sum_n_gt_N_inverse_square": "0.117512014694031425134546685920401606452509992"
+          },
+          {
+            "components": 16,
+            "leading_tail_corrected_product": "-0.0203698540747842969073041173459966825228191037 + 1.165031628884003641546849596492889666370244e-83i",
+            "physical_product": "-0.0234911562314491597762698629337148648585342249 + 1.34355110783893208598170364829045589511421865e-83i",
+            "raw_bond_product": "0.0234418883816331572982241729701221437610540077 + 0.00152062164702633499261887445395242163000225285i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "15.7727402243477460183622679719295972289272721",
+            "sum_n_gt_N_inverse_square": "0.060587533403239361781710772311927225417356396"
+          },
+          {
+            "components": 32,
+            "leading_tail_corrected_product": "-0.0203686160339522300476451008235541904890853096 - 1.39282801325834265334358869393772692880436805e-83i",
+            "physical_product": "-0.0218979354968110401843167373510816855474245256 - 1.49740453360417008676792048822834410647230401e-83i",
+            "raw_bond_product": "-0.0218183324495668652951509637816056572924164552 - 0.00186546191134381748603643810572713160579424908i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "18.934848237640950526703754902352302100314695",
+            "sum_n_gt_N_inverse_square": "0.0307668040203020901265816804387414271413288641"
+          },
+          {
+            "components": 64,
+            "leading_tail_corrected_product": "-0.0203684534818126414374073535613131588176745345 - 1.40479071526125893336776150920556080545589865e-82i",
+            "physical_product": "-0.0211252413824361130895559462481246802125730819 - 1.4569855771425107405246423242861930788839395e-82i",
+            "raw_bond_product": "0.0209143954115942704935485936680991803063553377 + 0.00297722824682216519674732253153978396326205123i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "22.1325515966103818646660453430532770905406398",
+            "sum_n_gt_N_inverse_square": "0.015503565439338930155744003071350464507300507"
+          },
+          {
+            "components": 128,
+            "leading_tail_corrected_product": "-0.0203684326516215642474994261394783685103425717 - 7.00100563799324465655142840824199789912238637e-83i",
+            "physical_product": "-0.0207448532496264415002161358438358091941171862 - 7.13038833395041895554383288379857162597759764e-83i",
+            "raw_bond_product": "-0.0202649067049530606417704165084986478367469159 - 0.00443649553004228962777213525269080367014063463i",
+            "raw_over_physical_ratio_residual": "0.0 + 0.0i",
+            "raw_phase_argument_unwrapped": "25.3482659697693980314801682923127158908704058",
+            "sum_n_gt_N_inverse_square": "0.00778206189376461512953916576804465842807264387"
+          },
+          {
+            "components": 256,
+            "leading_tail_corrected_product": "-0.0203684300151235190722643270381676216570419681 + 1.24758058241220477014891827646474290640918848e-82i",
+            "physical_product": "-0.020556146266630743324792285187258989626463103 + 1.25907833409015600535405889023556947509987086e-82i",
+            "raw_bond_product": "0.0196458848538928654735792111964000077275911088 + 0.00604932704048144107790893759925056211147385576i",
+            "raw_over_physical_ratio_residual": "1.05421979432305232243485740512700190077099614e-81 + 0.0i",
+            "raw_phase_argument_unwrapped": "28.5730392280120237657261543307109386440444922",
+            "sum_n_gt_N_inverse_square": "0.00389863053954589640546152992929337211479998322"
+          }
+        ]
+      }
+    ],
+    "tail_correction": "exp(a2*k^2*sum_{n>N}n^-2); diagnostic only"
+  },
+  "operator": {
+    "compact_resolvent": true,
+    "component_scaling": "H_n unitarily equivalent to n^2 H_1",
+    "definition": "H=direct_sum_{n>=1} H_n",
+    "domain": "{u=(u_n): u_n in Dom(H_n), sum_n ||H_n u_n||^2 < infinity}",
+    "inverse_class": "trace_class",
+    "schatten_H_inverse": "H^{-1} is in S_p exactly for p>1/2",
+    "schatten_H_minus_half": "H^{-1/2} is in S_p exactly for p>1",
+    "strictly_positive": true,
+    "trace_class_identity": "Tr(H^{-1})=zeta(2)*Tr(H_1^{-1})"
+  },
+  "parent_source_locks": [
+    "configs/source_locks/QG-0001.yaml",
+    "configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml"
+  ],
+  "raw_bond_product": {
+    "counterphase_must_remain_factorwise": true,
+    "partial_product_phase": "exp(i*k*L0*H_N)",
+    "reason": "H_N=log(N)+EulerGamma+o(1), so the unwrapped phase is unbounded away from zeros of the physical product",
+    "standalone_product_converges_away_from_the_divisor_for_nonzero_real_k": false,
+    "uncounterphased_factor": "beta_n(k)=exp(i*k*L0/n)*chi_0(k/n)"
+  },
+  "route_a": {
+    "a1_changed": false,
+    "a2_global_same_operator_determinant_now_defined": true,
+    "a2_target_match": false,
+    "a3_target_counting_match": false,
+    "a4_same_operator_compatibility": true,
+    "route_b_invoked": false
+  },
+  "source_lock": "configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml",
+  "structural_conclusion": "The frozen tower has a genuine same-operator trace-class relative Fredholm determinant. It is the normally convergent product of the dephased physical component characteristics, not the failed orbit or bond-block product. Its exact divisor has the wrong frozen leading counting coefficient, so determinant existence does not produce a Riemann Route-A match.",
+  "subaudit_id": "QG-0001-RELATIVE-FREDHOLM-001",
+  "target_data_used": {
+    "fitting": false,
+    "prime_table": false,
+    "zero_table": false
+  }
+}
