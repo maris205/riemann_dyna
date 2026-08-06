@@ -1,0 +1,90 @@
+candidate_id: TH-0001
+clue_id: CLUE-A4-001
+title: Target-free non-palindromic three-kick Henon ratchet
+family: Twisted Henon / kicked symplectic map
+mathematical_object:
+  phase_space: "R^2 with coordinates (q,p) and symplectic form dq wedge dp"
+  micro_map: "F_a(q,p)=(1-a*q^2-p,q)"
+  parameter_rule: "a_j=j+1/2 for j=0,1,2"
+  micro_kick_order: ["1/2", "3/2", "5/2"]
+  autonomous_map: "G=F_(5/2) o F_(3/2) o F_(1/2), repeated without any external schedule"
+  nested_form: >-
+    u=1-q^2/2-p, v=1-3*u^2/2-q,
+    G(q,p)=(1-5*v^2/2-u,v)
+parameter_provenance:
+  status: MODELING_CHOICE
+  rule: >-
+    The first three positive half-integers form a parameter-free directed
+    arithmetic ramp with three distinct entries and no palindromic clock
+    reflection. The rule was selected from a target-free low-description
+    structural screen; it is not claimed to be a natural arithmetic constant.
+  excluded_legacy_parameters:
+    - "a_c approximately 1.00561"
+    - "a approximately 1.02"
+    - "quartic coefficient 0.05"
+    - "zero-fitted hbar, schedules, smoothing scales, and spectral anchors"
+data_type:
+  primary: >-
+    Exact rational polynomial map, exact generating functions, exact
+    Groebner elimination over QQ, square-free and Sturm root counts, and
+    outward rational interval evaluation of orbit monodromy.
+  numerical: >-
+    Binary64 orbit coordinates and multipliers are display diagnostics only;
+    completeness and hyperbolicity use exact polynomials and rational bounds.
+clock:
+  candidate_clock: "one application of G, equal to the ordered three-kick superstep"
+  micro_kick_count_per_clock: 3
+  forbidden_substitution: >-
+    Individual micro-kicks are not primitive periods of the autonomous
+    candidate and may not be mixed with the G-clock orbit ledger.
+normalization: >-
+  Raw (q,p) coordinates and signed monodromy data; no scale, offset,
+  unfolding, modulus-only reduction, phase anchoring, or target matching.
+determinant_convention: >-
+  NOT_OPENED. No Z, 1/Z, Z'/Z, cycle product, transfer determinant, or
+  Fredholm determinant is defined in this structural prefilter.
+cutoff:
+  primitive_upo_period_supersteps: 2
+  micro_kick_horizon: 6
+  completeness_scope: >-
+    All real primitive G-period 1 and 2 phase points on the full plane,
+    with no search box and no random root seeds.
+  excluded: "G-period 3 and above"
+precision:
+  algebra: "SymPy exact QQ arithmetic"
+  root_isolation: "exact Sturm isolation refined below rational width 1e-28"
+  monodromy_certificate: "outward rational interval arithmetic"
+  displayed_coordinates: "binary64 rounded to 16 significant digits"
+allowed_data:
+  - "the target-free legacy parent F_a(q,p)=(1-a*q^2-p,q)"
+  - "exact rational algebra and elementary symplectic geometry"
+  - "the fixed half-integer ramp a_j=j+1/2 for j=0,1,2"
+  - "same-object primitive orbits and signed monodromy data"
+  - "the parent control F_1 and exact low-depth reversibility controls"
+forbidden_data:
+  - "prime tables, primality predicates, or prime-derived lengths"
+  - "Riemann-zero, zeta, xi, GUE, or USTC data"
+  - "legacy Hénon scripts or notebooks numbered 4 through 9 as candidate inputs"
+  - "legacy fitted a, hbar, quartic, smoothing, schedule, or anchor parameters"
+  - "changing the kick order or parameter rule after inspecting the UPO ledger"
+  - "taking absolute values of signed multipliers or det(I-M)"
+  - "calling negative multipliers a Maslov or magnetic phase"
+training_split: >-
+  Empty for arithmetic targets. Candidate generation used only exact
+  symplecticity, description length, non-palindromic order, and rejection of
+  one- and two-kick reversible traps.
+validation_split: >-
+  Exact generating-function check, det(DG)=1, explicit inverse, algebraic
+  degree eight, failure of the inherited swap reversor, and the affine
+  anti-symplectic leading-term obstruction.
+test_split: >-
+  Sealed exact period-1 and period-2 Groebner shapes, polynomial hashes,
+  square-free and Sturm counts, primitive quotient, orbit pairing, signed
+  monodromy, hyperbolicity margins, and byte-reproducible artifact.
+stopping_conditions:
+  - "REJECTED if exact symplecticity, invertibility, or the data firewall fails"
+  - "REJECTED if G is conjugate to one legacy F_a by the audited low-complexity transformations"
+  - "REVISE if the exact period-1 or period-2 polynomial hashes or real-root counts fail to reproduce"
+  - "REVISE if any certified short orbit is not hyperbolic or the two phase points of a period-2 orbit fail to pair"
+  - "STOP_SCOPED for a claim of absolute time-reversal breaking if any nonlinear anti-symplectic reversor is found"
+  - "STOP_SCOPED for determinant, target-zero, Route-B, Hilbert-Polya, or RH inference in this prefilter"
