@@ -1,6 +1,208 @@
 # HP-Dynamics Handoff
 
-## Current status — QG-0001 relative Fredholm closure
+## Current status — CLUE-A3-001 same-ledger annular residual audit
+
+Current clue: `CLUE-A3-001`.
+
+Candidate ID: none. Non-candidate audit ID:
+`LEGACY-ANNULAR-RESIDUAL-001`.
+
+- Formal candidate: `false`
+- Audit state: `DEFINED_NOT_TESTABLE`
+- HP source commit: `e1a2934f506c5d65a1649c0020511ca5e4442eb0`
+- Legacy source commit: `2d01633de0bcf0ecd1310291e2547cff417e13a0`
+  (RH-371)
+- Source lock:
+  `configs/source_locks/LEGACY-ANNULAR-RESIDUAL-001.yaml`
+- Route-A evaluation:
+  `evaluations/route_a/LEGACY-ANNULAR-RESIDUAL-001/20260806T140210Z.yaml`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall Route A: `ROUTE_A_EXPLORATORY` as a diagnostic only
+- Scoped verdict: `NOT_TESTABLE`
+- Standalone-candidate verdict: `STOP_SCOPED`
+- Route-B tuple:
+  `(NOT_INVOKED, NOT_INVOKED, NOT_INVOKED, NOT_INVOKED, NOT_INVOKED)`
+- Route B: inactive and not authorized
+
+### Source lock
+
+For the folded noisy quadratic-map operator `K_sigma`, set
+
+\[
+A_\sigma=K_\sigma/r_H,
+\qquad r_H=17/20.
+\]
+
+After removing the Perron and negative-parity algebraic eigenvalues, put the
+remaining eigenvalues of modulus at most `q=1/2`, with algebraic
+multiplicity, on the normal diagonal realization `C_sigma`. The frozen direct
+residual is
+
+\[
+g_\sigma(z)
+=\sum_{n\ge2}\frac{\tau_{\sigma,n}-a_n}{n}z^n,
+\qquad
+\tau_{\sigma,n}=\operatorname{Tr}(C_\sigma^n).
+\]
+
+The sole determinant convention is
+
+\[
+D_{\sigma,\mathrm{tail},2}(z)=\det_2(I-zC_\sigma),
+\qquad
+g_\sigma=\log G_H-\log D_{\sigma,\mathrm{tail},2},
+\]
+
+with both logarithms zero at `z=0`. Thus `g_sigma` is not a determinant and
+`exp(-g_sigma)=D_(sigma,tail,2)/G_H` is a ratio. `C_sigma` is an exact normal
+spectral realization of the complementary factor, not a proved physical
+invariant compression.
+
+The Hardy normalization is frozen at
+
+\[
+R=7/5,
+\qquad \rho=141/100,
+\qquad
+\rho_*=r_H\lambda=1.426787483864074\ldots.
+\]
+
+The definition uses all `n>=2`. RH-302's proof split alone uses
+`m_sigma=ceil(4 log(1/sigma))`; it is not the physical first-alias clock. A
+future numerical pre-audit, if actual compatible spectra become available,
+is frozen to the baseline physical sequence `sigma_k=lambda^(-2k)` without
+identifying `k`, `n`, or `m_sigma`.
+
+### Route-A result
+
+- `A1_WEAK`: the underlying noisy quadratic-map family is intrinsic and
+  target-free, but this audit supplies no arithmetic primitive-orbit law,
+  repetition weights, or complete orbit census.
+- `A2_FAIL`: the complementary `det_2` factor and the residual sign are exact,
+  but the residual is not a standalone determinant, the factor is not the full
+  physical determinant, and no target divisor comparison is licensed.
+- `A3_FAIL` / `NOT_TESTABLE`: RH-300 proves the conditional implication at
+  every fixed `R<rho<rho_star`; at `rho=1.41`, its `H-infinity` and `H2`
+  constants are `139.0070922` and `8.2924679`. RH-302 proves the tails vanish
+  and reduces the problem to the moving head. The actual moving signed/complex
+  coefficient stream and its annular norm are unavailable in the required
+  physical-clock data type.
+- `A4_FAIL`: `C_sigma` is an auxiliary normal realization, not a natural
+  quantization; no same-clock unitary/scattering lift or HP operator domain is
+  defined.
+
+The latest legacy endpoint RH-371 is an independent capacity obstruction and
+does not activate this route. The legacy handoff still labels RH-300 an
+inactive annular criterion and retains route coordinate
+`actual_same_clock_unnormalized_head_transport_open`. RH-354's normalized
+selected tail cannot replace the raw `p=tau-a` ledger.
+
+### Strongest evidence
+
+The exact identity
+
+\[
+g_\sigma=\log G_H-log\det_2(I-zC_\sigma)
+\]
+
+fixes the data type and sign without primes or Riemann zeros. On the strict
+radius `rho=1.41`, the certified annular criterion has positive margins on
+both sides, and the slope-four noisy and deterministic tails vanish. This
+reduces the entire A3 question to one explicit moving-head norm.
+
+### Strongest failure
+
+The repository contains earlier fixed-noise finite spectral snapshots, but
+not the `q=1/2`-selected complementary spectrum/trace stream on the frozen
+physical small-noise schedule with discretization, cutoff, precision, and
+stopping controls. Fixed-order convergence, finite boundary grids, RH-354's
+normalized tail, or substitution of full-trace/head/counterloop coefficients
+cannot pay the all-order obligation.
+
+### New reusable knowledge
+
+An annular residual is a diagnostic layer, not automatically a new candidate.
+Before any norm plot, freeze the physical complement, algebraic
+multiplicities, `det_2` sign, Hardy norm, noise schedule, trace order, and
+head/tail clock separately. A finite spectrum produced for another cutoff or
+clock is not reusable merely because it comes from the same map.
+
+### Updated files
+
+- `configs/source_locks/LEGACY-ANNULAR-RESIDUAL-001.yaml`
+- `evaluations/route_a/LEGACY-ANNULAR-RESIDUAL-001/20260806T140210Z.yaml`
+- `docs/research_clues.md`
+- `docs/candidate_registry.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+
+`docs/obstruction_registry.md` is unchanged because no new physical
+obstruction was proved. `docs/operator_obligations.md` is unchanged because
+Route B remains closed.
+
+The ongoing shareable mirror is maintained at
+`git@github.com:maris205/hilbert-polya-structure.git` under
+`logistic_dynamics/`. Each result-bearing stage gets one self-contained paper
+subproject; this audit does not open a manuscript because it adds no theorem
+edge.
+
+### Tests and reproduction
+
+- Legacy focused suites: `39/39 passed`:
+  RH-300 `4/4`, RH-302 `3/3`, RH-309 `5/5`, RH-311 `3/3`,
+  RH-361 `20/20`, and Volume IV `4/4`.
+- Outer full repository suite: `225/225 passed` (`63.548 s`).
+- All 43 outer YAML files parse successfully.
+- The nested legacy repository is clean at RH-371 commit `2d01633`.
+
+```bash
+python3 -m pytest -q -p no:cacheprovider \
+  docs/related_programs/prime_dynamics_theory/papers/RH-300-annular-analytic-prefix-criteria/tests
+python3 -m pytest -q -p no:cacheprovider \
+  docs/related_programs/prime_dynamics_theory/papers/RH-302-annular-tail-moving-head-reduction/tests
+python3 -m pytest -q -p no:cacheprovider \
+  docs/related_programs/prime_dynamics_theory/papers/RH-309-endpoint-hardy-mismatch-barrier/tests
+python3 -m pytest -q -p no:cacheprovider \
+  docs/related_programs/prime_dynamics_theory/papers/RH-311-ten-layer-annular-mass-frontier-review/tests
+python3 -m pytest -q -p no:cacheprovider \
+  docs/related_programs/prime_dynamics_theory/papers/RH-361-ten-layer-signed-completion-and-upper-counterloop-review/tests
+python3 -m pytest -q -p no:cacheprovider \
+  docs/related_programs/prime_dynamics_theory/papers/RH-VOL4-noisy-head-annulus-signed-completion-synthesis/tests
+python3 -m unittest discover -v
+python3 - <<'PY'
+from pathlib import Path
+import yaml
+files = list(Path('configs/source_locks').glob('*.yaml')) + list(Path('evaluations').rglob('*.yaml'))
+for path in files:
+    yaml.safe_load(path.read_text(encoding='utf-8'))
+print(len(files))
+PY
+git diff --check
+```
+
+### Claim boundary
+
+Established: the explicit target-free residual object, exact same-ledger
+`det_2` ratio identity, all clocks and Hardy normalizations, the strict-radius
+conditional theorem, vanishing-tail reduction, and precise data-availability
+boundary.
+
+Not established: actual moving-head or full annular convergence, a physical
+compression realizing `C_sigma`, a primitive arithmetic orbit law, a
+completed-xi determinant/divisor, a functional equation, target counting law,
+quantization, Route B, Hilbert--Polya, or RH.
+
+### Next smallest task
+
+Stop this clue under `NOT_TESTABLE`. Reopen only when the repository gains an
+actual same-ledger `q=1/2` complementary spectrum or `tau_(sigma_k,n)` stream
+on `sigma_k=lambda^(-2k)`, with frozen discretization, cutoff, precision, data
+split, and stopping controls, or when a proof of the `H2(1.41)` moving-head
+limit is supplied. Then test that one norm without refitting.
+
+Recommended verdict: `NOT_TESTABLE`.
+
+## Previous checkpoint — QG-0001 relative Fredholm closure
 
 Current clue: `CLUE-A4-003`.
 

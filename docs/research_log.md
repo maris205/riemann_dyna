@@ -1,5 +1,133 @@
 # HP-Dynamics Research Log
 
+## 2026-08-06 — CLUE-A3-001 same-ledger annular residual audit
+
+### Repository and provenance
+
+- The outer HP repository began this checkpoint clean at
+  `e1a2934f506c5d65a1649c0020511ca5e4442eb0`.
+- The relevant nested legacy repository was found to have a stale local
+  tracking ref at RH-345. It was fast-forwarded cleanly to the actual remote
+  endpoint RH-371, commit
+  `2d01633de0bcf0ecd1310291e2547cff417e13a0`.
+- RH-371 is an independent capacity obstruction. It does not activate the
+  direct annular branch; the latest handoff retains
+  `actual_same_clock_unnormalized_head_transport_open`.
+- Future shareable Logistic/HP work is mirrored through SSH to
+  `git@github.com:maris205/hilbert-polya-structure.git` under
+  `logistic_dynamics/`, using one self-contained subproject per stage and one
+  paper per genuine result edge.
+
+### Current clue and source lock
+
+The only active clue is `CLUE-A3-001`. No formal candidate was created. The
+audit ID is `LEGACY-ANNULAR-RESIDUAL-001`, with source lock
+`configs/source_locks/LEGACY-ANNULAR-RESIDUAL-001.yaml`.
+
+The object is
+
+\[
+g_\sigma(z)
+=\sum_{n\ge2}\frac{\tau_{\sigma,n}-a_n}{n}z^n
+=\log G_H(z)-\log\det_2(I-zC_\sigma),
+\]
+
+where `C_sigma` is the `q=1/2` normal realization of the complementary
+algebraic spectrum of `K_sigma/r_H` after Perron/parity removal. It is not a
+proved physical invariant compression. The residual is a logarithmic
+determinant ratio diagnostic, not a standalone determinant.
+
+The frozen normalization is
+
+```text
+r_H = 17/20
+q = 1/2
+R = 7/5
+rho = 141/100
+rho_star = 1.426787483864074...
+```
+
+The all-order residual uses every `n>=2`. RH-302 alone uses
+`m_sigma=ceil(4 log(1/sigma))`; this is not silently identified with the
+physical first-alias clock. Any future numerical pre-audit is frozen to
+`sigma_k=lambda^(-2k)`.
+
+### Route-A result
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+overall: ROUTE_A_EXPLORATORY as a diagnostic only
+scoped verdict: NOT_TESTABLE
+standalone candidate verdict: STOP_SCOPED
+Route B: not authorized
+```
+
+RH-300 proves the strict-radius conditional implication; at `rho=1.41`, the
+`H-infinity` and `H2` conversion constants are `139.0070922` and
+`8.2924679`. RH-302 proves the noisy and deterministic tails vanish, reducing
+the problem exactly to the moving head. RH-309 proves endpoint `H2`
+membership, endpoint `H-infinity` failure, and a logarithmic lower-rate
+barrier.
+
+### Strongest failure and reusable knowledge
+
+The legacy tree contains earlier fixed-noise finite spectra, but no compatible
+physical-clock `q=1/2` complementary spectrum/trace stream with frozen
+discretization, cutoff, precision, and stopping controls. Those snapshots,
+fixed-order convergence, finite boundary grids, and RH-354's normalized
+selected tail cannot activate the raw signed/complex `p=tau-a` theorem.
+
+Reusable rule: an annular residual must freeze the physical complement,
+algebraic multiplicity, determinant sign, Hardy norm, noise schedule, trace
+order, and proof cutoff separately before any norm plot. Same-map data from an
+incompatible clock or spectral selection are not interchangeable.
+
+### Updated files
+
+- `configs/source_locks/LEGACY-ANNULAR-RESIDUAL-001.yaml`
+- `evaluations/route_a/LEGACY-ANNULAR-RESIDUAL-001/20260806T140210Z.yaml`
+- `docs/research_clues.md`
+- `docs/candidate_registry.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+
+No obstruction-registry entry is added because no physical nonconvergence
+theorem was proved. `docs/operator_obligations.md` remains unchanged because
+Route B is closed.
+
+### Tests and reproduction
+
+Legacy focused suites passed `39/39`: RH-300 `4/4`, RH-302 `3/3`, RH-309
+`5/5`, RH-311 `3/3`, RH-361 `20/20`, and Volume IV `4/4`. The outer full
+suite passed `225/225` in `63.548 s`; all 43 YAML files parse.
+
+```bash
+python3 -m pytest -q -p no:cacheprovider docs/related_programs/prime_dynamics_theory/papers/RH-300-annular-analytic-prefix-criteria/tests
+python3 -m pytest -q -p no:cacheprovider docs/related_programs/prime_dynamics_theory/papers/RH-302-annular-tail-moving-head-reduction/tests
+python3 -m pytest -q -p no:cacheprovider docs/related_programs/prime_dynamics_theory/papers/RH-309-endpoint-hardy-mismatch-barrier/tests
+python3 -m pytest -q -p no:cacheprovider docs/related_programs/prime_dynamics_theory/papers/RH-311-ten-layer-annular-mass-frontier-review/tests
+python3 -m pytest -q -p no:cacheprovider docs/related_programs/prime_dynamics_theory/papers/RH-361-ten-layer-signed-completion-and-upper-counterloop-review/tests
+python3 -m pytest -q -p no:cacheprovider docs/related_programs/prime_dynamics_theory/papers/RH-VOL4-noisy-head-annulus-signed-completion-synthesis/tests
+python3 -m unittest discover -v
+python3 -c 'from pathlib import Path; import yaml; fs=list(Path("configs/source_locks").glob("*.yaml"))+list(Path("evaluations").rglob("*.yaml")); [yaml.safe_load(p.read_text(encoding="utf-8")) for p in fs]; print(len(fs))'
+git diff --check
+```
+
+### Claim boundary and next task
+
+Established: the exact residual data type and sign, clock/normalization
+separation, strict-radius conditional theorem, vanishing-tail reduction, and
+the precise availability boundary.
+
+Not established: actual annular convergence, a physical complement
+compression, arithmetic primitive-orbit weights, completed-xi structure,
+quantization, Route B, Hilbert--Polya, or RH.
+
+Stop `CLUE-A3-001` as `NOT_TESTABLE`. Reopen only with the compatible actual
+`tau_(sigma_k,n)` stream and a complete numerical source lock, or with a proof
+of the frozen `H2(1.41)` moving-head limit. Test only that norm first and do
+not refit the source lock.
+
 ## 2026-08-02 — First Route-A run
 
 ### Repository audit

@@ -1177,9 +1177,10 @@ Main risk: edge lengths chosen post hoc as log primes
 ### Family D — Legacy Hardy signed-completion route
 
 ```text
-Status: inherited analytic branch
+Status: LEGACY-ANNULAR-RESIDUAL-001 is source-locked as a non-candidate A3 diagnostic; no RH-LEG-001 has been allocated
 Expected Route-A focus: A2, A3
-Main risk: missing physical moving-order theorem
+Current verdict: NOT_TESTABLE; standalone residual promotion is STOP_SCOPED
+Main risk: missing physical-clock q-selected tau stream and moving-order theorem
 ```
 
 正式激活时必须分配具体 `candidate_id`，不能只用候选族名称进行状态升级。

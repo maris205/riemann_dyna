@@ -833,8 +833,8 @@ Artifacts:
 ## CLUE-A3-001 — 从逐零点拟合转向 annular norm
 
 **来源：** 旧 RH direct annular route  
-**证据：** `OPEN`，但已有明确闭合条件  
-**状态：** `PROMISING`
+**证据：** `CONDITIONAL_THEOREM`；实际 moving-order 数据不可用
+**状态：** `NOT_TESTABLE`
 **对应层：** `A3`
 
 ### 内容
@@ -850,20 +850,58 @@ g_\sigma(z)
 
 若能在认证环域上控制 \(H^\infty\) 或 \(H^2\) 范数，可能比逐零点拟合更接近整体解析闭合。
 
-### 最小测试
+### Source-locked data type
 
-对候选 determinant residual 构造：
+`LEGACY-ANNULAR-RESIDUAL-001` 冻结
+
+\[
+\tau_{\sigma,n}=\operatorname{Tr}C_\sigma^n,
+\qquad
+g_\sigma=\log G_H-\log\det_2(I-zC_\sigma),
+\]
+
+其中 `C_sigma` 是 `q=1/2` 的 complementary normal spectral realization，
+不是已证明的 physical invariant compression，`g_sigma` 也不是独立
+determinant。冻结 `R=1.4`、`rho=1.41`，并严格区分 noise clock、trace
+order `n`、RH-302 的 `m_sigma` 和 later first-alias clock。
+
+### 审计结论
+
+RH-300 的 (H^\infty/H^2) implication 与 RH-302 的 vanishing-tail
+reduction 都成立；最新 RH-371 不改变该结论。当前缺少物理小噪声时钟上
+`q=1/2`-selected complementary spectrum / `tau` stream 的 cutoff、precision
+和 stopping certificate。早期 fixed-noise finite spectra 与 RH-354 的
+normalized selected tail 都不能替代这个数据类型。
+
+Route-A tuple 为
 
 ```text
-annular H∞ residual
-annular H2 residual
-log-derivative residual
-argument-principle discrepancy
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
 ```
+
+本线索不是 formal candidate，verdict 为 `NOT_TESTABLE`；将 residual 本身
+升级为 candidate 则 `STOP_SCOPED`。Route B 不授权。
+
+### 重新开启后的最小测试
+
+先获得同一账本的 actual `tau_(sigma_k,n)`，冻结 baseline
+`sigma_k=lambda^(-2k)`、离散化、spectral cutoff、precision 和 data split，
+再且只先构造：
+
+```text
+annular H2 residual
+cutoff drift
+precision drift
+```
+
+`log-derivative` 与 argument-principle 检查只有在完整 same-object
+determinant 与 holomorphy certificate 存在后才开放。
 
 ### 风险
 
-有限网格上的小 norm 不能自动升级为全环域定理。
+有限网格上的小 norm 不能自动升级为全环域定理；固定阶数据不能升级为
+moving-order/all-order 结论；不得用 `q,h,s,E_off` 或 normalized tail
+替换 raw signed/complex `p=tau-a`。
 
 ---
 

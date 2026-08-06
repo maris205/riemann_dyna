@@ -1,0 +1,241 @@
+audit_id: LEGACY-ANNULAR-RESIDUAL-001
+candidate_id: LEGACY-ANNULAR-RESIDUAL-001
+formal_candidate: false
+clue_id: CLUE-A3-001
+lock_version: 1
+title: Same-ledger annular logarithmic residual for the legacy noisy quadratic-map family
+source_commit: e1a2934f506c5d65a1649c0020511ca5e4442eb0
+legacy_source_commit: 2d01633de0bcf0ecd1310291e2547cff417e13a0
+
+candidate_definition: >-
+  This is a source-locked Route-A A3 diagnostic for the pre-existing noisy
+  quadratic-map family, not a standalone dynamical system, determinant, or
+  formal HP-Dynamics candidate. The diagnostic compares the complementary
+  noisy det_2 factor with the deterministic numerator anchor in one Hardy
+  normalization.
+
+family: legacy Hardy signed-completion / direct annular route
+phase_space: >-
+  The folded backward-observable Markov operator K_sigma acts on L^2([0,1]).
+  The auxiliary normal realization C_sigma acts on
+  ell^2({j: |mu_j(sigma)|<=1/2}). C_sigma is a spectral realization of a
+  canonical-product factor and is not asserted to be a physical invariant
+  compression of K_sigma.
+dynamics: >-
+  Let U_c be the unique real root in (1,2) of
+  u^3-2*u^2+2*u-2=0 and f(x)=1-U_c*x^2. For sigma>0 set
+  phi_sigma(t)=exp(-t^2/(2*sigma^2))/(sqrt(2*pi)*sigma),
+  P_sigma(x,y)=[phi_sigma(y-f(x))+phi_sigma(y+f(x))]/Z_sigma(x),
+  Z_sigma(x)=integral_0^1[phi_sigma(y-f(x))+phi_sigma(y+f(x))]dy, and
+  (K_sigma v)(x)=integral_0^1 P_sigma(x,y)v(y)dy.
+
+parameters:
+  U_c: "unique root in (1,2) of u^3-2*u^2+2*u-2=0"
+  sigma: "positive noise parameter tending to zero"
+  r_H: "17/20"
+  q: "1/2"
+  R: "7/5"
+  rho: "141/100"
+  lambda: "1.678573510428322265..."
+  rho_star: "r_H*lambda=1.426787483864074..."
+parameter_provenance: >-
+  U_c and K_sigma are the frozen legacy quadratic-map family; r_H=17/20 is
+  the archived Hardy scaling; q=1/2 is the pre-existing design threshold of
+  RH-282; R=7/5 is the weighted coefficient radius; lambda is the archived
+  deterministic reduced-sector constant; rho=1.41 is the already frozen
+  strict interior diagnostic radius. No parameter is fitted in this audit.
+
+mathematical_object:
+  scaled_operator: >-
+    A_sigma=K_sigma/r_H. Remove its Perron and negative-parity algebraic
+    eigenvalues. Write the remaining algebraic eigenvalues, counted with
+    algebraic multiplicity, as mu_j(sigma).
+  complementary_normal_realization: >-
+    C_sigma=diag(mu_j(sigma): |mu_j(sigma)|<=q) on the corresponding ell^2
+    space, with q=1/2. This realizes exactly the complementary projection-free
+    det_2 factor but need not be similar to a bounded physical Riesz
+    compression of A_sigma.
+  noisy_coefficients: >-
+    tau_(sigma,n)=Tr(C_sigma^n)=sum_(|mu_j|<=q) mu_j^n for every n>=2,
+    preserving algebraic multiplicity and complex cancellation.
+  deterministic_anchor: >-
+    G_H(z)=G(z/r_H), with the logarithm branch normalized at zero and
+    log G_H(z)=-sum_(n>=1) a_n*z^n/n, a_1=0. For odd n>=3,
+    a_n=(r_H*lambda)^(-n)/(1+lambda^(-n)). For n=2k,
+    a_(2k)=r_H^(-2k)[2*Tr(T^k)+2*lambda^(-2k)/(1+lambda^(-k))
+    -lambda^(-2k)/(1-lambda^(-2k))], using the frozen deterministic reduced
+    operator T. The a_n ledger is comparison data from the same legacy
+    dynamics, not part of the noisy candidate definition and not xi data.
+  residual: >-
+    g_sigma(z)=sum_(n>=2)(tau_(sigma,n)-a_n)z^n/n.
+  exact_ratio_identity: >-
+    D_(sigma,tail,2)(z)=det_2(I-z*C_sigma)
+    =exp[-sum_(n>=2)tau_(sigma,n)z^n/n], and, with both logarithms normalized
+    at z=0, g_sigma=log(G_H)-log(D_(sigma,tail,2)). Thus g_sigma is not a
+    determinant; exp(-g_sigma)=D_(sigma,tail,2)/G_H is a determinant ratio.
+
+data_type:
+  primary: >-
+    All-order complex spectral power-sum residual for one complementary
+    Hilbert-Schmidt det_2 ledger versus one deterministic Hardy anchor.
+  physicality_boundary: >-
+    K_sigma is the physical folded noisy operator. C_sigma is only the exact
+    normal spectral realization of its selected complementary factor; no
+    physical invariant compression or Riesz-projector bound is claimed.
+  comparison_boundary: >-
+    G_H and a_n are deterministic same-family comparison data. Convergence
+    to G_H is not convergence to completed xi and supplies no target divisor.
+  unavailable_inputs: >-
+    The locked legacy commit has no actual q-selected complementary
+    mu_j(sigma_k)/tau_(sigma_k,n) stream on a physical small-noise schedule,
+    no certified discretization/cutoff/precision study for that stream, and
+    no all-order actual annular convergence theorem. Earlier RH-7 finite
+    spectra exist at four fixed noise values and one fixed snapshot dimension;
+    they are useful provenance diagnostics but do not instantiate this moving
+    complementary data type.
+
+clock:
+  physical_limit: "sigma tends to zero"
+  determinant_order: "n>=2 is trace/power order"
+  spectral_variable: "z is the Hardy-scaled determinant variable"
+  direct_all_order_clock: >-
+    The definition of g_sigma uses every n>=2 and has no moving cutoff.
+  certified_tail_clock: >-
+    Only for the RH-302 head/tail proof, m_sigma=ceil(4*log(1/sigma)) using
+    the natural logarithm; the moving head is 2<=n<m_sigma and the tail is
+    n>=m_sigma.
+  separate_first_alias_clock: >-
+    The later physical first-alias ledger uses
+    k=log(1/sigma)/(2*log(lambda))+O(1) and u=4k. It is not used as the cutoff
+    for this direct residual and may not be substituted for m_sigma.
+  frozen_future_numerical_subsequence: >-
+    If raw actual spectra later open a numerical pre-audit, use the baseline
+    bounded-phase sequence eta_k=0, sigma_k=lambda^(-2k), k a positive
+    integer. This fixes the physical noise schedule but does not replace the
+    all-order coefficient clock n or the RH-302 proof split m_sigma.
+
+normalization:
+  hardy_scaling: "A_sigma=K_sigma/r_H with r_H=17/20"
+  complement_threshold: "q=1/2, fixed before this audit"
+  target_radius: "R=7/5"
+  diagnostic_radius: "rho=141/100, satisfying R<rho<rho_star=r_H*lambda"
+  h_infinity: "supremum norm on the closed disk |z|<=rho"
+  h2: >-
+    For h(z)=sum c_n z^n, ||h||_(H2(rho))^2=sum |c_n|^2*rho^(2n),
+    equivalently normalized boundary L2 measure dt/(2*pi).
+  logarithms: "all logarithm branches are normalized to vanish at z=0"
+  cancellation: >-
+    Keep tau_(sigma,n)-a_n as one complex signed coefficient. Separate
+    absolute estimates for head, orbit, diffuse, or counterloop pieces may
+    not replace the required cancellation.
+
+determinant_convention:
+  noisy_factor: "D_(sigma,tail,2)(z)=det_2(I-z*C_sigma)"
+  deterministic_factor: "G_H(z)=exp[-sum_(n>=2)a_n*z^n/n] near z=0"
+  residual_sign: "g_sigma=log(G_H)-log(D_(sigma,tail,2))"
+  ratio: "exp(-g_sigma)=D_(sigma,tail,2)/G_H"
+  forbidden_identifications:
+    - g_sigma as a standalone determinant
+    - D_(sigma,tail,2) as the full noisy determinant
+    - C_sigma as a proved physical compression
+    - q_FT as tau_(sigma,n)-a_n without the head defect d=h-s
+    - G_H as completed xi
+    - Z, 1/Z, Z'/Z, and det_2(I-z*C_sigma) as interchangeable objects
+
+orbit_cutoff:
+  definition: "none; the residual uses all n>=2"
+  spectral_selection: "all complementary algebraic eigenvalues with |mu_j|<=1/2"
+  certified_tail_split: "m_sigma=ceil(4*log(1/sigma))"
+  finite_grid_role: >-
+    No coefficient cutoff, boundary grid, eigenvalue truncation, or finite
+    sigma list can certify annular convergence. Such calculations would be
+    diagnostics only and require a new numerical protocol with raw data.
+
+precision:
+  theorem_level: >-
+    Exact operator, algebraic-multiplicity, determinant, and Hardy-norm
+    identities. The frozen rho=141/100 is exact.
+  archived_numeric_constants: >-
+    Legacy result builders record rho_star and conversion constants at high
+    precision, but no actual noisy spectrum is present and no numerical norm
+    value is used as evidence in this audit.
+  actual_spectral_precision: unavailable
+
+training_data: >-
+  Empty. No fitting, parameter search, prime data, zero data, or noisy
+  spectral samples are used.
+validation_data: >-
+  The exact K_sigma/C_sigma definitions; det_2 sign identity; R<rho<rho_star;
+  RH-300 H-infinity/H2 implications; RH-302 tail reduction; RH-309 endpoint
+  membership/barrier; and the RH-334 correction tau-a=q_FT-d.
+test_data: >-
+  Sealed theorem obligation only: prove the actual H2(1.41) moving-head limit
+  as sigma tends to zero. No test zeros exist and no test-set tuning is
+  permitted. The repository currently supplies neither the theorem nor the
+  physical-clock q-selected spectra needed for a numerical pre-audit. The
+  fixed-noise RH-7 snapshot table is not the sealed test stream.
+
+allowed_data:
+  - exact legacy definitions of U_c, f, K_sigma, A_sigma, C_sigma, G_H, and a_n
+  - legacy commits and theorem ledgers RH-263, RH-282, RH-300 through RH-311, RH-334, RH-341 through RH-361, and RH-VOL4
+  - RH-7 finite spectra solely as a fixed-noise provenance diagnostic, never as a moving-order certificate
+  - target-free complex analysis, trace-ideal theory, and certified arithmetic
+  - R=7/5 and rho=141/100 fixed before evaluation
+forbidden_data:
+  - prime tables, primality predicates, prime-gap data, Riemann-zero tables, xi/zeta samples, or USTC data
+  - optimizing q, R, rho, r_H, lambda, a cutoff, a scale, or an offset after inspecting validation or test behavior
+  - replacing tau_(sigma,n) by a full-trace, head, graded counterloop, abstract completion, or another determinant data type
+  - mixing m_sigma with the physical first-alias clock k or u=4k
+  - discarding complex phase or replacing signed cancellation by separate absolute-value bounds
+  - promoting fixed-order convergence, finite boundary sampling, or a best seed to an all-order annular theorem
+  - completed-xi, functional-equation, Riemann-von Mangoldt, quantization, Route-B, Hilbert-Polya, RH, or formal-candidate claims
+
+artifact_paths:
+  - docs/related_programs/prime_dynamics_theory/papers/RH-263-parity-resolved-deterministic-numerator-tail/main.tex
+  - docs/related_programs/prime_dynamics_theory/papers/RH-282-modulus-complete-spectral-tail-certificate/main.tex
+  - docs/related_programs/prime_dynamics_theory/papers/RH-300-annular-analytic-prefix-criteria/main.tex
+  - docs/related_programs/prime_dynamics_theory/papers/RH-302-annular-tail-moving-head-reduction/main.tex
+  - docs/related_programs/prime_dynamics_theory/papers/RH-309-endpoint-hardy-mismatch-barrier/main.tex
+  - docs/related_programs/prime_dynamics_theory/papers/RH-311-ten-layer-annular-mass-frontier-review/main.tex
+  - docs/related_programs/prime_dynamics_theory/papers/RH-334-gauge-fixed-physical-first-alias-observation-map/main.tex
+  - docs/related_programs/prime_dynamics_theory/papers/RH-342-common-hardy-head-counterloop-rank-lock-obstruction/main.tex
+  - docs/related_programs/prime_dynamics_theory/papers/RH-345-double-alias-parity-phase-compensation-obstruction/main.tex
+  - docs/related_programs/prime_dynamics_theory/papers/RH-361-ten-layer-signed-completion-and-upper-counterloop-review/main.tex
+  - docs/related_programs/prime_dynamics_theory/papers/RH-VOL4-noisy-head-annulus-signed-completion-synthesis/main.tex
+code_commit: 2d01633de0bcf0ecd1310291e2547cff417e13a0
+
+stopping_conditions:
+  - NOT_TESTABLE while neither actual mu_j/tau data nor an all-order actual annular theorem is available
+  - REVISE if peripheral deflation, algebraic multiplicity, q selection, Hardy scaling, or the det_2 sign is ambiguous
+  - REJECTED if target arithmetic data enters the definition or any frozen parameter is tuned after evaluation begins
+  - STOP_SCOPED if g_sigma is promoted to a standalone HP candidate or C_sigma to a physical compression without a theorem
+  - STOP_SCOPED for cross-ledger gluing, separate-absolute cancellation, completed-xi, Route-B, Hilbert-Polya, or RH inference
+
+success_conditions:
+  - >-
+    For the frozen rho=1.41, prove
+    ||sum_(2<=n<m_sigma)(tau_(sigma,n)-a_n)z^n/n||_(H2(rho))->0.
+  - >-
+    Equivalently by RH-302, prove ||g_sigma||_(H2(rho))->0; RH-300 then yields
+    sum_(n>=2)|tau_(sigma,n)-a_n|R^n/n->0.
+  - preserve the same complement, Hardy normalization, determinant sign, and clocks throughout
+
+route_status_at_lock:
+  route_a_tuple:
+    - A1_WEAK
+    - A2_FAIL
+    - A3_FAIL
+    - A4_FAIL
+  formal_candidate_created: false
+  route_b_invocation_allowed: false
+  checkpoint_status: DEFINED_NOT_TESTABLE
+  standalone_candidate_verdict: STOP_SCOPED
+  recommended_verdict: NOT_TESTABLE
+
+next_smallest_test: >-
+  Reopen first with a repository-backed actual q-selected complementary
+  spectrum/tau stream on sigma_k=lambda^(-2k), including independently frozen
+  discretization, spectral cutoff, precision, and stopping controls, or with a
+  proof of the frozen H2(1.41) moving-head limit. Finite grids cannot replace
+  the theorem. Do not switch to the first-alias counterloop ledger in this
+  audit.

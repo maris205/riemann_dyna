@@ -1,0 +1,225 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: LEGACY-ANNULAR-RESIDUAL-001
+audit_id: LEGACY-ANNULAR-RESIDUAL-001
+formal_candidate: false
+source_commit: e1a2934f506c5d65a1649c0020511ca5e4442eb0
+legacy_source_commit: 2d01633de0bcf0ecd1310291e2547cff417e13a0
+evaluation_date: "2026-08-06T14:02:10Z"
+
+source_lock:
+  object: >-
+    The same-ledger logarithmic residual
+    g_sigma(z)=sum_(n>=2)(Tr(C_sigma^n)-a_n)z^n/n, where C_sigma is the
+    q=1/2 normal realization of the complementary spectrum of
+    A_sigma=K_sigma/r_H after peripheral deflation, and a_n is the fixed
+    deterministic Hardy-anchor ledger.
+  data_type: >-
+    Complex all-order spectral power sums for one complementary det_2 factor
+    compared with one deterministic same-family anchor. g_sigma is a
+    logarithmic residual, not a standalone determinant, and C_sigma is not a
+    proved physical invariant compression.
+  clock: >-
+    sigma tends to zero; n>=2 is determinant order; z is the Hardy variable.
+    The all-order object has no cutoff. RH-302 alone uses
+    m_sigma=ceil(4*log(1/sigma)); the later physical first-alias clock
+    k=log(1/sigma)/(2*log(lambda))+O(1), u=4k, is separate and unused here.
+    Any future numerical pre-audit is frozen to eta_k=0 and
+    sigma_k=lambda^(-2k), without identifying k, n, and m_sigma.
+  normalization: >-
+    r_H=17/20, q=1/2, R=7/5, rho=141/100, and
+    rho_star=r_H*lambda=1.426787483864074... . H2 uses normalized boundary
+    L2, equivalently coefficient norm sum |c_n|^2*rho^(2n). All logarithms
+    vanish at zero and complex cancellation is preserved.
+  determinant_convention: >-
+    D_(sigma,tail,2)=det_2(I-z*C_sigma)
+    =exp[-sum tau_(sigma,n)z^n/n],
+    g_sigma=log(G_H)-log(D_(sigma,tail,2)), and
+    exp(-g_sigma)=D_(sigma,tail,2)/G_H. No Z, reciprocal, logarithmic
+    derivative, full-trace, head, or counterloop ledger is substituted.
+  cutoff: >-
+    All n>=2 and every complementary algebraic eigenvalue with |mu_j|<=1/2.
+    The certified proof split is 2<=n<m_sigma versus n>=m_sigma. No finite
+    coefficient, spectrum, sigma, or boundary-grid cutoff is evidence for the
+    annular limit.
+  precision: >-
+    Exact theorem-level identities and exact rho=141/100. Earlier fixed-noise
+    finite spectra do not supply a physical-clock q-selected stream; no
+    numerical annular norm with the required cutoff/precision ledger is
+    present at the locked source commit.
+  allowed_data:
+    - exact legacy K_sigma, C_sigma, G_H, and a_n definitions
+    - RH-263, RH-282, RH-300 through RH-311, RH-334, RH-341 through RH-361, and RH-VOL4
+    - RH-7 fixed-noise spectra as provenance diagnostics only
+    - target-free trace-ideal and complex-analytic arguments
+  forbidden_data:
+    - prime tables, Riemann-zero tables, xi/zeta samples, USTC data, or target fitting
+    - changes to q, R, rho, r_H, determinant sign, or either clock
+    - q_FT substituted for tau-a without d=h-s
+    - cross-ledger gluing or separate absolute majorization of required signed cancellation
+    - fixed-order or finite-grid evidence promoted to moving-order/all-order convergence
+  training_split: "empty; no fitting, search, or target data"
+  validation_split: >-
+    Exact source definitions, det_2 ratio sign, radius inequalities, RH-300
+    norm implications, RH-302 tail reduction, RH-309 endpoint membership and
+    barrier, and RH-334 coefficient-type correction.
+  test_split: >-
+    Sealed theorem obligation: the actual H2(1.41) moving-head limit. It is
+    not evaluated because neither actual spectra nor the theorem is available.
+  stopping_conditions:
+    - stop NOT_TESTABLE when actual tau data and an all-order theorem are both unavailable
+    - revise if spectral selection, multiplicity, scaling, or determinant sign is ambiguous
+    - reject if arithmetic target data enters or frozen choices are tuned
+    - stop scoped if the residual is promoted to a standalone candidate or Route B
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The underlying target-free quadratic map and folded noisy Markov family
+    are explicit, and the complement coefficients inherit algebraic
+    multiplicity from one fixed operator family without reading primes or
+    Riemann zeros.
+  strongest_failure: >-
+    This residual audit supplies no primitive-orbit enumeration, intrinsic
+    log-prime period law, von-Mangoldt repetition weights, orbit phases, or
+    completeness theorem. The q=1/2 spectral split is a design choice rather
+    than a primitive-orbit construction.
+  metrics:
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    intrinsic_noisy_dynamics_defined: true
+    primitive_orbit_audit_performed: false
+    arithmetic_orbit_law: false
+    q_intrinsic_to_dynamics: false
+  artifacts:
+    - configs/source_locks/LEGACY-ANNULAR-RESIDUAL-001.yaml
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    C_sigma is Hilbert-Schmidt, so its complementary factor has the exact
+    genus-one determinant D_(sigma,tail,2)=det_2(I-z*C_sigma), and the
+    logarithm normalized at zero gives the exact same-ledger ratio identity
+    g_sigma=log(G_H)-log(D_(sigma,tail,2)). RH-282 proves the slope-four tail
+    bound without constructing a physical Riesz compression.
+  strongest_failure: >-
+    No physical-clock q-selected spectrum or tau stream with a frozen
+    discretization/cutoff/precision ledger is archived, no target divisor is
+    tested, and D_(sigma,tail,2) is only a complementary factor. Earlier
+    fixed-noise finite spectra do not pay the moving-order obligation.
+    Convergence to G_H would not identify completed xi. Treating g_sigma
+    itself as a determinant or mixing it with the head/counterloop determinant
+    is invalid.
+  metrics:
+    exact_det2_factor: true
+    exact_log_ratio_sign: "g=log(G_H)-log(D_tail_2)"
+    same_ledger: true
+    physical_invariant_compression_proved: false
+    zero_error_train: not_applicable_no_target_roots
+    zero_error_validation: not_testable_no_actual_spectrum
+    zero_error_test: not_testable_target_zeros_forbidden
+    extra_zero_count: not_testable
+    missing_zero_count: not_testable
+    root_count_discrepancy: not_testable
+    cutoff_drift: not_testable_no_actual_tau_data
+    precision_drift: not_testable_no_actual_tau_data
+    control_margin:
+      radius_left_margin: "rho-R=0.01"
+      radius_right_margin: "rho_star-rho=0.016787483864074..."
+      noisy_tail_power_at_rho_1_41: "0.3982299046794737"
+      deterministic_tail_power_at_rho_1_41: "0.04734279160561648"
+  artifacts:
+    - configs/source_locks/LEGACY-ANNULAR-RESIDUAL-001.yaml
+    - docs/related_programs/prime_dynamics_theory/papers/RH-282-modulus-complete-spectral-tail-certificate/results/result.json
+    - docs/related_programs/prime_dynamics_theory/papers/RH-302-annular-tail-moving-head-reduction/results/result.json
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    RH-300 proves that H-infinity or H2 convergence on any fixed
+    R<rho<rho_star closes the full R-weighted coefficient budget; at rho=1.41
+    the conversion constants are 139.0070922 and 8.2924679. RH-302 proves both
+    tails vanish and reduces the question exactly to the moving head. RH-309
+    proves endpoint H2 membership, H-infinity failure, and the logarithmic
+    lower-rate barrier.
+  strongest_failure: >-
+    Actual moving-head or endpoint H2 convergence remains open and cannot be
+    evaluated from the repository because no compatible physical-clock
+    complementary spectrum stream is archived.
+    There is no completed-xi functional equation, Gamma/trivial-zero ledger,
+    Riemann-von Mangoldt law, analytic divisor equality, or zero-free
+    prefactor theorem. Fixed-order convergence does not close the moving head.
+  metrics:
+    conjugation_symmetry: inherited_for_real_kernel_but_not_a_completed_target_identity
+    functional_equation: false
+    gamma_factor: false
+    trivial_zero_ledger: false
+    target_counting_law: false
+    strict_annular_domain: "R=1.4 < rho=1.41 < rho_star=1.426787483864074..."
+    h_infinity_conversion_constant: 139.0070922
+    h2_conversion_constant: 8.2924679
+    noisy_tail_vanishes: true
+    deterministic_tail_vanishes: true
+    moving_head_convergence: not_testable
+    endpoint_h2_membership_each_sigma: true
+    endpoint_h_infinity_membership_each_sigma: false
+    all_order_actual_annular_convergence: not_testable
+  artifacts:
+    - docs/related_programs/prime_dynamics_theory/papers/RH-300-annular-analytic-prefix-criteria/results/result.json
+    - docs/related_programs/prime_dynamics_theory/papers/RH-302-annular-tail-moving-head-reduction/results/result.json
+    - docs/related_programs/prime_dynamics_theory/papers/RH-309-endpoint-hardy-mismatch-barrier/results/result.json
+    - docs/related_programs/prime_dynamics_theory/papers/RH-311-ten-layer-annular-mass-frontier-review/results/result.json
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The noisy family K_sigma and deterministic anchor arise from one fixed
+    quadratic-map program and were not invented after fitting target zeros.
+  strongest_failure: >-
+    The normal diagonal C_sigma is an auxiliary spectral realization, not a
+    natural quantization. No same-clock unitary/scattering lift, Hilbert space
+    domain for an HP operator, phase-preserving quantization, self-adjointness
+    path, or completed-xi spectral map is defined.
+  metrics:
+    natural_hilbert_space_for_K_sigma: "L2([0,1])"
+    hp_operator_domain: null
+    natural_quantization: false
+    same_clock_quantum_lift: false
+    route_b_ready: false
+  artifacts: []
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: NOT_TESTABLE
+standalone_candidate_verdict: STOP_SCOPED
+recommended_verdict: NOT_TESTABLE
+claim_boundary:
+  established:
+    - exact target-free noisy operator family and complementary det_2 data type
+    - exact determinant-ratio sign and one common Hardy normalization
+    - strict-radius H-infinity/H2 conditional bridge
+    - exact vanishing-tail reduction to one moving-head obligation
+    - endpoint H2 membership, H-infinity exclusion, and lower-rate barrier
+  not_established:
+    - actual H2(1.41) moving-head or full annular convergence
+    - a physical-clock q-selected complementary spectrum/tau stream with cutoff and precision controls
+    - a physical invariant compression realizing C_sigma
+    - a primitive arithmetic orbit law or target determinant/divisor
+    - functional equation, Gamma factor, target counting law, quantization, Route B, Hilbert-Polya, or RH
+blocking_conditions:
+  - the actual moving-order q-selected spectral coefficients are unavailable in the required data type
+  - no all-order physical moving-head theorem is proved
+  - q=1/2 is a design split and C_sigma is not a proved physical compression
+  - G_H is a deterministic anchor rather than completed xi
+  - later first-alias head/counterloop data belong to a different decomposition and clock
+route_b_invocation_allowed: false
+next_smallest_test: >-
+  Reopen first with an actual q-selected complementary spectrum/tau stream on
+  sigma_k=lambda^(-2k), under frozen discretization, spectral cutoff,
+  precision, and stopping controls. Then test, at rho=1.41 and
+  m_sigma=ceil(4*log(1/sigma)), the moving-head H2 norm without refitting.
+  A proof that this norm tends to zero may reopen the route directly; finite
+  boundary grids alone are not an annular theorem.
