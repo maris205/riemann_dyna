@@ -2326,6 +2326,161 @@ Fredholm zeros, target divisors, or Route B in that task.
 
 Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped theorem).
 
+## 2026-08-06 — QG-0001 same-operator relative Fredholm closure
+
+### Stable checkpoint
+
+Current clue: `CLUE-A4-003`.
+
+Candidate ID: `QG-0001`; subaudit ID:
+`QG-0001-RELATIVE-FREDHOLM-001`.
+
+- Source commit: `b5ad4c9ce4305cf055a2e6a3ae957ba4fda7e90b`
+- Source lock: `configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml`
+- Evaluation: `evaluations/route_a/QG-0001/20260806T123946Z.yaml`
+- Analytic Route-A tuple:
+  `(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_UNITARY_OR_SCATTERING_CANDIDATE)`
+- Target interpretation:
+  `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)`
+- Overall: `ROUTE_A_REJECTED`
+- Candidate state / verdict: `STOP_SCOPED`
+- Route B: not invoked and not authorized
+
+### Exact determinant theorem
+
+For the frozen direct sum `H=direct_sum H_n`, exact metric dilation gives
+`H_n` unitarily equivalent to `n^2 H_1`. The Dirichlet terminal gives a
+positive base gap, and the base Weyl law gives
+
+\[
+H^{-1}\in\mathfrak S_1,
+\qquad
+\operatorname{Tr}(H^{-1})
+=\zeta(2)\operatorname{Tr}(H_1^{-1})
+=7.24356536914368571711\ldots.
+\]
+
+The complete base divisor, its multiplicities, and finite-exponential-type
+growth prove
+
+\[
+\chi_0(k)=\det_F(I-k^2H_1^{-1}).
+\]
+
+Trace-norm direct-sum convergence then proves, normally on compact sets,
+
+\[
+\boxed{
+D_H(k)=\det_F(I-k^2H^{-1})
+=\prod_{n\geq1}\chi_0(k/n).
+}
+\]
+
+The raw repaired component bond factor contains
+`exp(i*k*L0/n)`. Its factorwise genus-one counterphase
+`exp(-i*k*L0/n)` is forced; the standalone harmonic phase diverges away from
+the physical divisor. This relative determinant is not the naive orbit Euler
+product, direct-sum bond determinant, or heat/spectral zeta, so `OBR-012`
+remains valid for those ledgers.
+
+### Exact target obstruction
+
+The determinant zeros are `+/-n*sqrt(lambda_j(H_1))`, with all spectral and
+coincidence multiplicities. Its positive count is
+
+\[
+N_H(K)=\frac{L_0}{\pi}K\log K+O(K),
+\]
+
+so its leading-coefficient ratio to Riemann-von Mangoldt is
+
+\[
+2L_0=12.764664694883524\ldots.
+\]
+
+No zero-free factor changes a divisor count, and the source lock forbids
+post-hoc spectral rescaling. `OBR-013` therefore closes QG-0001 as a
+completed-xi divisor candidate under the frozen object.
+
+### New reusable knowledge
+
+An exact `1/n` tower over a positive compact graph of total length `L` has a
+valid inverse-spectral Fredholm determinant with leading divisor coefficient
+`L/pi`; the necessary target coefficient gate is `L=1/2`. Check this before
+orbit enumeration for future harmonic graph towers. Determinant existence and
+target determinant matching are separate Route-A facts.
+
+### Updated files
+
+- `CHANGELOG.md`
+- `HP_HANDOFF.md`
+- `artifacts/qg_0001/relative_fredholm.json`
+- `configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `evaluations/route_a/QG-0001/20260806T123946Z.yaml`
+- `experiments/qg_0001_relative_fredholm.py`
+- `formal/obstructions/harmonic_graph_tower_divisor_coefficient.md`
+- `formal/results/qg_0001_relative_fredholm.md`
+- `tests/test_qg_0001_relative_fredholm.py`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+- Relative-Fredholm focused suite: `8/8 passed` (`3.175 s`).
+- Parent QG focused suites: `16/16 passed` (`1.170 s`).
+- Full repository suite: `225/225 passed` (`63.813 s`).
+- All 41 YAML files parse; `git diff --check` passed.
+
+```bash
+python3 experiments/qg_0001_relative_fredholm.py \
+  --quiet \
+  --output artifacts/qg_0001/relative_fredholm.json
+python3 -m unittest -v tests/test_qg_0001_relative_fredholm.py
+python3 -m unittest -v \
+  tests/test_qg_0001_base_characteristic.py \
+  tests/test_qg_0001_harmonic_magnetic_tower.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; p="evaluations/route_a/QG-0001/20260806T123946Z.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["a2"]["verdict"], d["a3"]["verdict"], d["overall_verdict"], d["route_b_invocation_allowed"])'
+sha256sum artifacts/qg_0001/relative_fredholm.json \
+  experiments/qg_0001_relative_fredholm.py \
+  configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml \
+  formal/results/qg_0001_relative_fredholm.md \
+  formal/obstructions/harmonic_graph_tower_divisor_coefficient.md \
+  tests/test_qg_0001_relative_fredholm.py
+git diff --check
+```
+
+Hashes:
+
+```text
+86feb67502ed814f4cb44a99a04615950e762aca7bcdcf4552d70c925d9f5afc  artifacts/qg_0001/relative_fredholm.json
+9c20e150292765d92c304f2defedf2dccd6704480c5bdc04a9ad4bff54c99672  experiments/qg_0001_relative_fredholm.py
+1d36f5bbbfa4015a5e17ceff57bd28787b423bd84021d899afe837f7eb244b0c  configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml
+9dbeb4f45bda1a1656efd6454352482281e6ba16e2686997f28e39229f962caf  formal/results/qg_0001_relative_fredholm.md
+6758c9dda29b6c3c3287895952f56b328f237eaf092c913e2b260ca1fa39e531  formal/obstructions/harmonic_graph_tower_divisor_coefficient.md
+890637a85a4fe39647b47ec56748a83b4e6059e2d73328128237d3d344ae8531  tests/test_qg_0001_relative_fredholm.py
+550885625aefaf1f416374e61c484f1ad6eea99d53e1ef72bc5a8347fb866767  evaluations/route_a/QG-0001/20260806T123946Z.yaml
+```
+
+### Claim boundary and next smallest task
+
+Established: the genuine same-operator determinant, exact component product,
+forced counterphase, trace coefficient, divisor, growth, counting law, and
+strict coefficient obstruction.
+
+Not established: a primitive-orbit trace identity, arithmetic weights,
+completed-xi structure, Route B, Hilbert--Polya, or RH.
+
+QG-0001 is `STOP_SCOPED`. The project-level next task applies the breadth-first
+rule to `CLUE-A3-001`: inspect the legacy RH handoff and freeze exactly one
+explicit same-ledger annular residual object before creating a candidate.
+
+Recommended verdict: `STOP_SCOPED`.
+
 ## 2026-08-06 — QG-0001 base-component characteristic audit
 
 ### Stable checkpoint

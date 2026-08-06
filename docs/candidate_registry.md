@@ -307,9 +307,14 @@ coefficient is wrong. `OBR-012` proves that the naive unregularized Euler
 product has no finite nonzero value and that the standard direct-sum bond
 operator is not trace class. The base-component sinc audit now also proves
 that the bond zero at `k=0` is exactly double and spurious, and supplies an
-entire normalized physical characteristic. Its Route-A tuple remains
-`(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)` /
-`ROUTE_A_EXPLORATORY` with `GO_WITH_LIMITATIONS`; Route B remains closed.
+entire normalized physical characteristic. The final same-operator audit
+proves that `H^{-1}` is trace class and opens the exact relative determinant
+`det_F(I-k^2 H^{-1})=product_n chi_0(k/n)`. Its analytic audit tuple is
+`(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE,
+A4_UNITARY_OR_SCATTERING_CANDIDATE)`, but the target interpretation remains
+`(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)`: the exact
+divisor coefficient is wrong by the immutable factor `2*L_0`. QG-0001 is
+therefore `STOP_SCOPED` / `ROUTE_A_REJECTED`; Route B remains closed.
 No candidate has entered Route B.
 ```
 
@@ -385,7 +390,7 @@ Twisted Hénon / kicked-symplectic object for a low-cost Route-A prefilter.
 
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
-| QG-0001 | Harmonic magnetic lollipop-theta graph tower | `ANALYTIC_REVIEW` (orbit cutoff <=6; base characteristic exact) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)` / `ROUTE_A_EXPLORATORY` | Not invoked | Compact resolvent, intrinsic `Theta(K log K)` count, and exact entire base characteristic with spurious bond zero removed | Periods accumulate at zero; naive product fails; no global relative determinant; raw coefficient is wrong | Freeze one same-operator genus-one relative component product and prove convergence |
+| QG-0001 | Harmonic magnetic lollipop-theta graph tower | `STOP_SCOPED` (exact relative determinant and divisor) | Analytic `(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_UNITARY_OR_SCATTERING_CANDIDATE)`; target `A2/A3_FAIL` / `ROUTE_A_REJECTED` | Not invoked | `H^{-1}` trace class and exact `det_F(I-k^2 H^{-1})=product_n chi_0(k/n)` | Exact divisor coefficient is `2*L_0 ~= 12.7647` times target; no orbit trace law | Park; reopen only as a new lock with intrinsic normalization/tower law |
 | TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, unitary FIO lift, and exact internal-caustic obstruction | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear antiunitary audit | Stop phase sub-audit; reopen only with an explicit multi-chart phase/Maslov ledger |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
 | SS-0002 | Countable-state symbolic suspension / modular transfer operator | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_REJECTED` | Not invoked | Exact C6 holonomy, nuclear Fredholm determinant, Selberg identity, and natural Laplacian | Same determinant has at least `Omega(T^2)` Selberg spectral zeros, not `Theta(T log T)` | Define one explicit non-Selberg nuclear object and prove its own divisor-count regime before assigning SS-0003 |
@@ -405,10 +410,10 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Family:** Low-complexity magnetic quantum graph
 - **Parent clue:** `CLUE-A4-003`
 - **Created:** 2026-08-06
-- **Current status:** `ANALYTIC_REVIEW` (primitive directed-bond prefix complete only through topological period six)
+- **Current status:** `STOP_SCOPED` (exact same-operator determinant has the wrong frozen divisor count)
 - **Owner:** sole main research agent
 - **Branch:** `main`
-- **Latest source commit:** `af41439b609a5dfb863931ed1e56a0598de5f003`
+- **Latest source commit:** `b5ad4c9ce4305cf055a2e6a3ae957ba4fda7e90b`
 - **Uses prime table:** `false`
 - **Uses zero table:** `false`
 
@@ -435,22 +440,26 @@ metric length and its quantum spectral variable is positive wavenumber
 ```text
 configs/source_locks/QG-0001.yaml
 configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml
+configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml
 ```
 
-The determinant convention is `NOT_OPENED`. Prime/zero tables, fitted graph
-scales, nonlinear clock changes, silent product regularization, and promotion
-of the heat/spectral zeta to a characteristic determinant are forbidden.
+The current determinant convention is
+`D_H(k)=det_F(I-k^2 H^{-1})=det_rel(H-k^2,H)`. It equals the normally
+convergent component product `product_n chi_0(k/n)`. This determinant is kept
+separate from the failed primitive-orbit Euler product, the non-trace-class
+direct-sum bond blocks, and the heat/spectral zeta. Prime/zero tables, fitted
+graph scales, nonlinear clock changes, and ledger mixing remain forbidden.
 
 ### Route-A status
 
 ```yaml
 a1: A1_WEAK
-a2: A2_FAIL
-a3: A3_FAIL
+a2: A2_ANALYTIC_DETERMINANT (target interpretation A2_FAIL)
+a3: A3_PARTIAL_ANALYTIC_STRUCTURE (target interpretation A3_FAIL)
 a4: A4_UNITARY_OR_SCATTERING_CANDIDATE
-overall: ROUTE_A_EXPLORATORY
-scoped_verdict: GO_WITH_LIMITATIONS
-latest_evaluation: evaluations/route_a/QG-0001/20260806T111927Z.yaml
+overall: ROUTE_A_REJECTED
+scoped_verdict: STOP_SCOPED
+latest_evaluation: evaluations/route_a/QG-0001/20260806T123946Z.yaml
 ```
 
 ### Route-B status
@@ -490,6 +499,26 @@ latest_evaluation: null
 - Closed magnetic forms define self-adjoint component Laplacians with
   \(H_n\simeq n^2H_1\). The Dirichlet terminal gives a positive base gap;
   together with this exact scaling, it makes the direct-sum resolvent compact.
+- In fact, the inverse is trace class:
+
+  \[
+  \operatorname{Tr}(H^{-1})
+  =\zeta(2)\operatorname{Tr}(H_1^{-1})
+  =7.2435653691436857\ldots.
+  \]
+
+  Complete divisor and growth control prove
+
+  \[
+  \chi_0(k)=\det_F(I-k^2H_1^{-1}),
+  \qquad
+  D_H(k)=\prod_{n\geq1}\chi_0(k/n)
+  =\det_F(I-k^2H^{-1}).
+  \]
+
+  The factorwise `exp(-i*k*L_0/n)` counterphase is forced by the exact bond
+  identity. In `k`, the product has genus one, order one, and infinite type;
+  in `k^2`, it has genus zero and order one-half.
 - With `L_0=1+sqrt(2)+sqrt(3)+sqrt(5)`, the positive-wavenumber count is
 
   \[
@@ -506,15 +535,19 @@ latest_evaluation: null
   Therefore the naive Euler product has no finite nonzero value. For the
   standard component bond block, the trace norm tends to `8`, so its direct
   sum is not trace class and has no standard Fredholm determinant (`OBR-012`).
-- The raw counting coefficient is larger than the positive Riemann-zero
-  coefficient by the factor `2*L_0 ~= 12.7646646949`; no rescaling is permitted.
+- The genuine Fredholm divisor has positive roots `n*sqrt(lambda_j(H_1))`
+  and its exact counting coefficient is larger than the positive Riemann-zero
+  coefficient by the factor `2*L_0 ~= 12.7646646949`. No rescaling is
+  permitted and no zero-free factor can repair the divisor (`OBR-013`).
 - The identity `zeta_H(z)=zeta(2z)*zeta_H1(z)`
   is a heat/spectral-zeta identity in the exponent variable, not a secular
   divisor in `K`.
+- The Fredholm logarithm contains inverse spectral moments; no theorem
+  identifies them with the frozen primitive-orbit periods and signed weights.
 - An abstract spectral-basis conjugation necessarily exists for this
   self-adjoint compact-resolvent operator, but no local, geometric, or
-  orbit-reversal interpretation is asserted. A regularized determinant,
-  prime-power trace formula, completed-ξ structure, and Route B remain open.
+  orbit-reversal interpretation is asserted. A prime-power trace formula,
+  completed-ξ structure, and Route B remain absent.
 
 ### Reproduction
 
@@ -527,6 +560,10 @@ python3 experiments/qg_0001_base_characteristic.py \
   --quiet \
   --output artifacts/qg_0001/base_characteristic_zero.json
 python3 -m unittest -v tests/test_qg_0001_base_characteristic.py
+python3 experiments/qg_0001_relative_fredholm.py \
+  --quiet \
+  --output artifacts/qg_0001/relative_fredholm.json
+python3 -m unittest -v tests/test_qg_0001_relative_fredholm.py
 python3 -m unittest discover -v
 ```
 
@@ -535,17 +572,23 @@ python3 -m unittest discover -v
 ```text
 configs/source_locks/QG-0001.yaml
 configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml
+configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml
 evaluations/route_a/QG-0001/20260806T090351Z.yaml
 evaluations/route_a/QG-0001/20260806T111927Z.yaml
+evaluations/route_a/QG-0001/20260806T123946Z.yaml
 experiments/qg_0001_harmonic_magnetic_tower.py
 experiments/qg_0001_base_characteristic.py
+experiments/qg_0001_relative_fredholm.py
 artifacts/qg_0001/route_a_prefilter.json
 artifacts/qg_0001/base_characteristic_zero.json
+artifacts/qg_0001/relative_fredholm.json
 formal/results/qg_0001_harmonic_magnetic_tower.md
 formal/results/qg_0001_base_characteristic_zero.md
+formal/results/qg_0001_relative_fredholm.md
 formal/obstructions/harmonic_graph_tower_naive_determinant.md
 tests/test_qg_0001_harmonic_magnetic_tower.py
 tests/test_qg_0001_base_characteristic.py
+tests/test_qg_0001_relative_fredholm.py
 ```
 
 ### Claim boundary
@@ -555,25 +598,29 @@ signed/oriented primitive prefix, the local geometric antiunitary obstruction,
 a natural self-adjoint compact-resolvent operator, the all-order `K log K`
 counting exponent, failure of the naive Euler product, and failure of trace
 class for the standard direct-sum bond operator. The base physical
-characteristic, exact spurious bond-zero order, zero-free phase removal, and
-first normalized Taylor coefficients are also established.
+characteristic, exact spurious bond-zero order, trace-class inverse, exact
+same-operator relative determinant, complete divisor, genus/order ledger, and
+strict frozen coefficient obstruction are also established.
 
-**Not established:** an arithmetic orbit law, a regularized same-object
-determinant, the correct leading coefficient, a completed-ξ divisor, Route B,
-Hilbert–Pólya, or RH.
+**Not established:** an arithmetic orbit law, a primitive-orbit trace identity,
+the correct leading coefficient, a completed-ξ divisor, Route B,
+Hilbert–Pólya, or RH. The exact determinant proves that the correct leading
+coefficient cannot arise within this lock.
 
-### Next smallest test
+### Reopening condition and project next task
 
-Freeze one same-operator genus-one relative component product using
-`chi_n(k)=chi_0(k/n)` and the explicit local counterphase
-`exp(-i*k*L_0/n)`. Prove convergence and state its Fredholm/relative
-determinant convention before any divisor comparison. Do not reuse the naive
-orbit product or borrow heat/spectral-zeta zeros.
+QG-0001 has no further candidate-local task under the frozen normalization:
+the exact divisor obstruction is decisive. Reopen only with an intrinsically
+different graph normalization or component law fixed before target data; that
+is a new source lock. The project-level next task pivots to `CLUE-A3-001` and
+inspects the legacy RH handoff for one explicit same-ledger annular residual
+object before creating a formal candidate.
 
 ### Decision history
 
 | Date | Previous state | New state | Evidence | Commit | Reviewer |
 |---|---|---|---|---|---|
+| 2026-08-06 | `ANALYTIC_REVIEW` | `STOP_SCOPED` | Exact trace-class relative determinant and immutable divisor-count obstruction | `b5ad4c9ce4305cf055a2e6a3ae957ba4fda7e90b` | sole main research agent |
 | 2026-08-06 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Exact sinc-matching base characteristic; spurious bond zero removed with normalized Taylor ledger | `af41439b609a5dfb863931ed1e56a0598de5f003` | sole main research agent |
 | 2026-08-06 | `GENERATED` | `ANALYTIC_REVIEW` | Exact Route-A structural prefilter; intrinsic `K log K` count and `OBR-012` | `ce0d4424a95a9392c9e8755a4a11b1cfcabc0e77` | sole main research agent |
 
@@ -1122,7 +1169,7 @@ Main risk: hidden direct encoding of primes
 ### Family C — Low-complexity magnetic quantum graphs
 
 ```text
-Status: QG-0001 is active in analytic review
+Status: QG-0001 is STOP_SCOPED by OBR-013; the broader family remains open only for a new source-locked object
 Expected Route-A focus: A1, A2, A4
 Main risk: edge lengths chosen post hoc as log primes
 ```

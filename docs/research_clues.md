@@ -1021,7 +1021,7 @@ mechanism，而不能仅以“存在 Fredholm determinant”为成功标准。
 
 **来源：** exact trace formula 思路  
 **证据：** `HEURISTIC`  
-**状态：** `ACTIVE` — `QG-0001` harmonic magnetic tower in analytic review
+**状态：** `STOP_SCOPED` for `QG-0001`; broader magnetic-graph clue remains reusable
 **对应层：** `A1`, `A2`, `A4`, `B1`, `B4`
 
 ### 内容
@@ -1053,6 +1053,38 @@ product has no finite nonzero value and that the standard direct-sum bond
 operator is not trace class. The next test is only the physical base
 characteristic function at `k=0`; no determinant regularization or Route B is
 yet authorized.
+
+### 2026-08-06 relative-Fredholm closure
+
+The normalized base characteristic and exact component scaling do produce a
+genuine same-operator determinant:
+
+\[
+H^{-1}\in\mathfrak S_1,
+\qquad
+D_H(k)=\det_F(I-k^2H^{-1})
+=\prod_{n\geq1}\chi_0(k/n).
+\]
+
+The component-index genus-one counterphase `exp(-i*k*L0/n)` is forced by the
+proved bond identity and the product converges normally. This does not reopen
+the naive orbit product or direct-sum bond determinant in `OBR-012`; the local
+Fredholm logarithm contains inverse spectral moments, not a proved primitive
+orbit trace ledger.
+
+The exact divisor supplies the decisive obstruction
+
+\[
+N_H(K)=\frac{L_0}{\pi}K\log K+O(K),
+\qquad
+2L_0=12.764664694883524\ldots\neq1.
+\]
+
+Because the raw clock and normalization are frozen, a zero-free prefactor
+cannot repair the leading divisor count (`OBR-013`). `QG-0001` is therefore
+`STOP_SCOPED` / `ROUTE_A_REJECTED`, despite the analytic A2/A3 determinant
+progress. Reopen the family only with a new intrinsic graph normalization or
+component law fixed before target data. Route B remains closed.
 
 ---
 
@@ -1196,15 +1228,16 @@ e^{q(E)}
 1. `[STOP_SCOPED]` Logistic physical-epsilon medium-fidelity eigenbranch audit
 2. `[GO_WITH_LIMITATIONS_CONTROL]` Synthetic Fredholm/Euler-product positive control (`CTRL-0001`, `CLUE-A2-001`)
 3. `[STOP_SCOPED]` Strict-monotone autonomous Logistic clock lift (`P4-LOGISTIC-MONOTONE-CLOCK-LIFT`, `OBR-007`)
-4. `[NEXT]` Define an intrinsic recurrent base whose periodic orbits leave the static-limit slice, then freeze a nondegenerate same-object determinant before assigning a formal candidate ID
+4. `[PARKED_REVISE]` Logistic recurrent-base continuation; resume only from its frozen same-object determinant obligation
 5. Candidate-specific shuffled-period / random-weight / random-phase controls
 6. Candidate-specific signed cycle expansion and moving-cutoff drift
+7. `[NEXT]` Freeze one explicit same-ledger annular residual object from `CLUE-A3-001` after auditing the legacy RH handoff
 
 ## Priority 1 — 最值得并行的三条 Route-A 路线
 
 1. Twisted Hénon / kicked symplectic maps
 2. Higher-memory symbolic suspension
-3. Low-complexity magnetic quantum graphs (`QG-0001` active)
+3. Low-complexity magnetic quantum graphs (`QG-0001` STOP_SCOPED; a new object requires a new lock)
 
 ## Priority 2 — 旧 RH 解析纵深
 
@@ -1212,7 +1245,7 @@ e^{q(E)}
 2. Actual head/counterloop transport  
 3. Critical and lower-sideband compensation  
 4. Off-alias aggregate  
-5. Direct annular theorem  
+5. `[NEXT]` Direct annular theorem, beginning with one explicit same-ledger residual object
 
 ## Priority 3 — Route-B 入口
 
@@ -1583,4 +1616,21 @@ commit: "af41439b609a5dfb863931ed1e56a0598de5f003"
 source_lock: "configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml"
 evaluation: "evaluations/route_a/QG-0001/20260806T111927Z.yaml"
 consequence: "The k=0 bond zero has exact order two and is a plane-wave parametrization artifact, not a physical zero mode. After the explicit zero-free phase removal exp(-i*k*L0), chi_0(k)=1-4.4035597019537134*k^2+O(k^4). This local result does not open a tower determinant or Route B. The next task is one explicit same-operator genus-one relative product with a proved convergence convention."
+```
+
+## Status update — CLUE-A4-003 QG-0001 relative Fredholm closure
+
+```yaml
+date: 2026-08-06
+clue_id: CLUE-A4-003
+candidate_id: QG-0001
+subaudit_id: QG-0001-RELATIVE-FREDHOLM-001
+old_status: ACTIVE
+new_status: STOP_SCOPED
+evidence: "H^{-1} is trace class; chi_0(k)=det_F(I-k^2 H_1^{-1}); product_n chi_0(k/n)=det_F(I-k^2 H^{-1}) converges normally with exact divisor and multiplicity"
+commit: "b5ad4c9ce4305cf055a2e6a3ae957ba4fda7e90b"
+source_lock: "configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml"
+evaluation: "evaluations/route_a/QG-0001/20260806T123946Z.yaml"
+obstruction: "OBR-013"
+consequence: "The analytic audit reaches A2_ANALYTIC_DETERMINANT and A3_PARTIAL_ANALYTIC_STRUCTURE, but the target interpretation remains A2_FAIL/A3_FAIL. The exact positive divisor count has coefficient L0/pi, larger than the Riemann-von Mangoldt coefficient by 2*L0=12.764664694883524..., and no zero-free factor can repair it under the frozen raw clock. QG-0001 is ROUTE_A_REJECTED/STOP_SCOPED; Route B remains closed. The project pivots breadth-first to CLUE-A3-001."
 ```

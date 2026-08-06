@@ -1,5 +1,201 @@
 # HP-Dynamics Handoff
 
+## Current status — QG-0001 relative Fredholm closure
+
+Current clue: `CLUE-A4-003`.
+
+Candidate ID: `QG-0001`; subaudit ID:
+`QG-0001-RELATIVE-FREDHOLM-001`.
+
+- Formal candidate: `true`
+- Candidate state: `STOP_SCOPED`
+- Source commit: `b5ad4c9ce4305cf055a2e6a3ae957ba4fda7e90b`
+- Source lock: `configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml`
+- Route-A evaluation:
+  `evaluations/route_a/QG-0001/20260806T123946Z.yaml`
+- Analytic Route-A tuple:
+  `(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_UNITARY_OR_SCATTERING_CANDIDATE)`
+- Target interpretation:
+  `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)`
+- Overall Route A: `ROUTE_A_REJECTED`
+- Route-B tuple: `(NOT_INVOKED, NOT_INVOKED, NOT_INVOKED, NOT_INVOKED, NOT_INVOKED)`
+- Recommended verdict: `STOP_SCOPED`
+- Route B: inactive and not authorized
+
+### Source lock
+
+The object is the same frozen direct-sum magnetic Laplacian
+
+\[
+H=\bigoplus_{n\geq1}H_n,
+\qquad H_n\simeq n^2H_1,
+\]
+
+in raw wavenumber `k=sqrt(lambda)`. The only opened determinant is
+
+\[
+D_H(k)=\det_F(I-k^2H^{-1})
+=\det_{\rm rel}(H-k^2,H).
+\]
+
+It is normalized by `D_H(0)=1` and uses all components/eigenvalues. Numerical
+controls use frozen `N=8,16,32,64,128,256`, samples
+`k=0.11,0.25,0.5,0.731`, and 80 digits. Prime/zero tables, target fitting,
+spectral rescaling, clock changes, standalone counterphase products, and
+mixing with orbit Euler, bond-block, heat-zeta, or completed-xi ledgers are
+forbidden.
+
+### Route-A result
+
+- `A1_WEAK`: the prior signed primitive prefix remains exact through period
+  six, but no log-prime period law or primitive-orbit identity for the new
+  determinant exists.
+- `A2_ANALYTIC_DETERMINANT` analytically, but `A2_FAIL` as a Riemann target:
+
+  \[
+  H^{-1}\in\mathfrak S_1,
+  \qquad
+  \chi_0(k)=\det_F(I-k^2H_1^{-1}),
+  \]
+
+  \[
+  \boxed{
+  D_H(k)=\prod_{n\geq1}\chi_0(k/n)
+  =\det_F(I-k^2H^{-1}).
+  }
+  \]
+
+  The product converges normally. In `k` it has genus one, order one, and
+  infinite type; in `k^2` it has genus zero and order one-half.
+- `A3_PARTIAL_ANALYTIC_STRUCTURE` analytically, but `A3_FAIL` for the target:
+  the zeros are `+/-n*sqrt(lambda_j(H_1))`, with coincidence multiplicities
+  added, and
+
+  \[
+  N_H(K)=\frac{L_0}{\pi}K\log K+O(K).
+  \]
+
+  The leading coefficient is larger than the Riemann-von Mangoldt coefficient
+  by
+
+  \[
+  2L_0=2+2\sqrt2+2\sqrt3+2\sqrt5
+  =12.764664694883524\ldots.
+  \]
+
+  No zero-free factor can repair this divisor.
+- `A4_UNITARY_OR_SCATTERING_CANDIDATE`: the determinant belongs to the same
+  natural self-adjoint operator, clock, domain, and boundary conditions, but
+  this cannot rescue the failed target divisor. Route B remains closed.
+
+### Strongest evidence
+
+Trace-class scaling gives
+
+\[
+\operatorname{Tr}(H^{-1})
+=\zeta(2)\operatorname{Tr}(H_1^{-1})
+=7.24356536914368571711\ldots,
+\]
+
+and trace-norm block convergence proves the infinite determinant identity.
+The implementation reproduces the factorwise bond-phase identity below
+`1.06e-81`; the leading-tail-corrected `N=128 -> 256` product drift is below
+`3.18e-9` at every frozen sample.
+
+### Strongest failure
+
+`OBR-013` is decisive for the frozen object: its actual Fredholm divisor has
+the wrong immutable leading count. Separately, `OBR-012` still blocks the
+naive primitive-orbit and direct-sum bond products, and no von-Mangoldt trace
+identity exists.
+
+### New reusable knowledge
+
+For any positive compact metric-graph base of total length `L` with exact
+`1/n` scaling, the inverse-Laplacian relative determinant has
+`N(K)=(L/pi)K log K+O(K)`; completed-xi divisor matching therefore requires
+the necessary condition `L=1/2` before any target data are inspected. A valid
+inverse-spectral determinant does not repair a distinct divergent orbit
+product.
+
+### Updated files
+
+- `configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml`
+- `experiments/qg_0001_relative_fredholm.py`
+- `artifacts/qg_0001/relative_fredholm.json`
+- `formal/results/qg_0001_relative_fredholm.md`
+- `formal/obstructions/harmonic_graph_tower_divisor_coefficient.md`
+- `tests/test_qg_0001_relative_fredholm.py`
+- `evaluations/route_a/QG-0001/20260806T123946Z.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+- Relative-Fredholm focused suite: `8/8 passed` (`3.175 s`).
+- Parent QG focused suites: `16/16 passed` (`1.170 s`).
+- Full repository suite: `225/225 passed` (`63.813 s`).
+- All 41 YAML files parse; `git diff --check` passed.
+
+```bash
+python3 experiments/qg_0001_relative_fredholm.py \
+  --quiet \
+  --output artifacts/qg_0001/relative_fredholm.json
+python3 -m unittest -v tests/test_qg_0001_relative_fredholm.py
+python3 -m unittest -v \
+  tests/test_qg_0001_base_characteristic.py \
+  tests/test_qg_0001_harmonic_magnetic_tower.py
+python3 -c 'import yaml; p="evaluations/route_a/QG-0001/20260806T123946Z.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["a2"]["verdict"], d["a3"]["verdict"], d["overall_verdict"], d["route_b_invocation_allowed"])'
+sha256sum artifacts/qg_0001/relative_fredholm.json \
+  experiments/qg_0001_relative_fredholm.py \
+  configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml \
+  formal/results/qg_0001_relative_fredholm.md \
+  formal/obstructions/harmonic_graph_tower_divisor_coefficient.md \
+  tests/test_qg_0001_relative_fredholm.py
+python3 -m unittest discover -v
+git diff --check
+```
+
+Hashes:
+
+```text
+86feb67502ed814f4cb44a99a04615950e762aca7bcdcf4552d70c925d9f5afc  artifacts/qg_0001/relative_fredholm.json
+9c20e150292765d92c304f2defedf2dccd6704480c5bdc04a9ad4bff54c99672  experiments/qg_0001_relative_fredholm.py
+1d36f5bbbfa4015a5e17ceff57bd28787b423bd84021d899afe837f7eb244b0c  configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml
+9dbeb4f45bda1a1656efd6454352482281e6ba16e2686997f28e39229f962caf  formal/results/qg_0001_relative_fredholm.md
+6758c9dda29b6c3c3287895952f56b328f237eaf092c913e2b260ca1fa39e531  formal/obstructions/harmonic_graph_tower_divisor_coefficient.md
+890637a85a4fe39647b47ec56748a83b4e6059e2d73328128237d3d344ae8531  tests/test_qg_0001_relative_fredholm.py
+550885625aefaf1f416374e61c484f1ad6eea99d53e1ef72bc5a8347fb866767  evaluations/route_a/QG-0001/20260806T123946Z.yaml
+```
+
+### Claim boundary
+
+Established: a genuine same-operator trace-class Fredholm determinant, exact
+component product and counterphase, complete divisor/multiplicity ledger,
+trace coefficient, entire growth, counting law, and strict frozen
+divisor-coefficient obstruction.
+
+Not established: a primitive-orbit trace identity, log-prime/von-Mangoldt
+weights, completed-xi functional equation or divisor, Route B,
+Hilbert--Polya, or RH.
+
+### Next smallest task
+
+QG-0001 has no candidate-local continuation under its current lock. Apply the
+RH breadth-first rule: inspect the legacy RH handoff for `CLUE-A3-001` and
+freeze exactly one explicit same-ledger annular residual object before
+creating or evaluating a formal candidate. Do not import a prior zero fit or
+mix residual clocks.
+
+Recommended verdict: `STOP_SCOPED`.
+
 ## Current status — QG-0001 base-component characteristic audit
 
 Current clue: `CLUE-A4-003`.

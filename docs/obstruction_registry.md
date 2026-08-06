@@ -634,6 +634,14 @@ Freeze one explicit same-object regularization, its local counterterms,
 primitive/repetition trace identity, characteristic variable, and divisor.
 Prove normal convergence and compatibility with the natural graph operator.
 
+2026-08-06 resolution boundary:
+QG-0001 now has a valid same-operator inverse-spectral relative determinant,
+`det_F(I-k^2 H^{-1})`. This satisfies the convergence, counterterm, variable,
+and operator-compatibility parts, but it does not reopen the ordinary orbit or
+bond-block products: no primitive/repetition trace identity relates them to
+the inverse spectral moments. `OBR-012` therefore remains in force for its
+stated determinant types.
+
 Artifacts:
 
 - `configs/source_locks/QG-0001.yaml`
@@ -643,3 +651,83 @@ Artifacts:
 - `formal/obstructions/harmonic_graph_tower_naive_determinant.md`
 - `evaluations/route_a/QG-0001/20260806T090351Z.yaml`
 - `tests/test_qg_0001_harmonic_magnetic_tower.py`
+
+---
+
+## OBR-013 — A harmonic graph tower has an immutable total-length divisor coefficient
+
+Status:
+PROVED_OBSTRUCTION
+
+Source:
+`CLUE-A4-003` / `QG-0001` /
+`formal/results/qg_0001_relative_fredholm.md` /
+`formal/obstructions/harmonic_graph_tower_divisor_coefficient.md`
+
+Statement:
+Let a positive compact metric-graph Laplacian (H_1) have total metric
+length (L), and form the exact harmonic tower
+
+\[
+H=\bigoplus_{n\geq1}n^2H_1
+\]
+
+in the raw wavenumber clock. Then (H^{-1}) is trace class and
+
+\[
+D_H(k)=\det_F(I-k^2H^{-1})
+\]
+
+is a genuine entire relative determinant. Its positive divisor count is
+
+\[
+N_{D_H}(K)=\frac{L}{\pi}K\log K+O(K).
+\]
+
+Therefore equality with the completed-xi divisor up to a zero-free factor
+requires the necessary coefficient condition (L=1/2). A zero-free factor
+cannot alter this count.
+
+QG-0001 witness:
+
+\[
+L=L_0=1+\sqrt2+\sqrt3+\sqrt5,
+\]
+
+so the candidate-to-target leading ratio is
+
+\[
+2L_0=12.764664694883524\ldots\neq1.
+\]
+
+The source lock forbids a post-hoc spectral rescaling. Hence the exact
+QG-0001 relative determinant cannot be a completed-xi divisor up to a
+zero-free factor.
+
+Impact:
+Obtaining the (K\log K) exponent from a harmonic component tower is
+insufficient. The base total length fixes the leading coefficient before any
+zero comparison. This gate should be checked before orbit enumeration or
+determinant numerics for every exact (1/n) graph tower.
+
+Scope:
+Positive compact metric-graph bases, exact (1/n) metric scaling, and the raw
+wavenumber clock. The result does not exclude a different intrinsically
+normalized base, a non-harmonic component law, or another spectral clock that
+is fixed independently of target data.
+
+Reopening condition:
+Supply a new source-locked graph grammar or component scaling whose clock and
+normalization are intrinsic and whose divisor coefficient is proved before
+using prime or zero data. Merely rescaling QG-0001 after seeing the mismatch
+is forbidden.
+
+Artifacts:
+
+- `configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml`
+- `experiments/qg_0001_relative_fredholm.py`
+- `artifacts/qg_0001/relative_fredholm.json`
+- `formal/results/qg_0001_relative_fredholm.md`
+- `formal/obstructions/harmonic_graph_tower_divisor_coefficient.md`
+- `evaluations/route_a/QG-0001/20260806T123946Z.yaml`
+- `tests/test_qg_0001_relative_fredholm.py`

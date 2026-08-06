@@ -5,6 +5,26 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-06
 
+### QG-0001 same-operator relative Fredholm closure
+
+- Froze
+  `configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml` with the raw
+  wavenumber clock and one determinant convention:
+  `D_H(k)=det_F(I-k^2 H^{-1})=det_rel(H-k^2,H)`.
+- Proved `H^{-1}` is trace class and
+  `D_H(k)=product_{n>=1} chi_0(k/n)` normally on compact sets. The repaired
+  bond factor requires the forced factorwise counterphase
+  `exp(-i*k*L0/n)`; the failed orbit and bond-block products remain separate.
+- Certified the exact trace sum
+  `Tr(H^{-1})=7.2435653691436857...`, the complete divisor, genus/order/type,
+  and the all-order count `(L0/pi)*K*log(K)+O(K)`.
+- Added `OBR-013`: the frozen divisor coefficient exceeds the target by
+  `2*L0=12.764664694883524...`, which no zero-free factor can repair.
+- Recorded analytic A2/A3 progress but set QG-0001 to
+  `ROUTE_A_REJECTED` / `STOP_SCOPED`; Route B remains closed.
+
+Source state: `b5ad4c9ce4305cf055a2e6a3ae957ba4fda7e90b`.
+
 ### QG-0001 base-component characteristic at k=0
 
 - Added the local source lock

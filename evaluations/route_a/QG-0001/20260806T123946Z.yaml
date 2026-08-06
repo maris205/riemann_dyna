@@ -1,0 +1,230 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: QG-0001
+audit_id: QG-0001-RELATIVE-FREDHOLM-001
+formal_candidate: true
+source_commit: b5ad4c9ce4305cf055a2e6a3ae957ba4fda7e90b
+evaluation_date: "2026-08-06T12:39:46Z"
+supersedes: evaluations/route_a/QG-0001/20260806T111927Z.yaml
+
+source_lock:
+  object: >-
+    H=direct_sum_{n>=1} H_n for the frozen harmonic magnetic lollipop-theta
+    tower, together with R=H^{-1} and the normalized base physical
+    characteristic chi_0(k). Component scaling is H_n unitarily equivalent
+    to n^2 H_1.
+  data_type: >-
+    Trace-class inverse operator, Fredholm/relative determinant, exact
+    component product, divisor with multiplicity, entire growth, and frozen
+    target-free finite-product controls.
+  clock: >-
+    Raw wavenumber k=sqrt(lambda), with component clock k/n and no unfolding,
+    affine scale, offset, or nonlinear reclocking.
+  normalization: >-
+    chi_0(0)=D_H(0)=1. The factorwise bond repair is
+    exp(-i*k*L0/n)*beta_n(k)=chi_0(k/n); neither counterphases nor raw bond
+    factors are multiplied as standalone convergent products.
+  determinant_convention: >-
+    D_H(k)=det_F(I-k^2*H^{-1})=det_rel(H-k^2,H)
+    =product_{n>=1}chi_0(k/n). This inverse-spectral determinant remains
+    separate from the naive primitive-orbit Euler product, direct-sum bond
+    transfer determinant, heat/spectral zeta, and completed xi.
+  cutoff: >-
+    The theorem includes every component and every eigenvalue. Numerical
+    controls use N=8,16,32,64,128,256 and k=0.11,0.25,0.5,0.731.
+  precision: >-
+    Exact radicals/pi and theorem-level operator identities; 80-decimal-digit
+    mpmath only for frozen implementation controls.
+  allowed_data:
+    - configs/source_locks/QG-0001.yaml
+    - configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml
+    - configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml
+    - standard compact-graph Weyl and trace-class Fredholm theory
+    - Riemann-von Mangoldt leading coefficient as a structural target constraint
+  forbidden_data:
+    - prime tables, primality predicates, Riemann-zero tables, and target fitting
+    - changes to graph lengths, flux, tower scaling, clock, or spectral map
+    - identifying inverse spectral moments with primitive-orbit traces
+    - mixing the Fredholm, raw bond, orbit Euler, or heat-zeta ledgers
+    - Route B, Hilbert-Polya, completed-xi, or RH claims
+  training_split: >-
+    Exact operator definition, component scaling, base normalization, and
+    trace-class sum; no fitted parameters.
+  validation_split: >-
+    Base canonical product, Fredholm block multiplicativity, normal
+    convergence, divisor multiplicity, and exact Taylor coefficient.
+  test_split: >-
+    Frozen finite-product controls, raw harmonic-phase divergence, exact
+    all-order count, and target leading-coefficient obstruction.
+  stopping_conditions:
+    - stop if the operator, clock, component scaling, or base characteristic changes
+    - revise if trace class, complete divisor multiplicity, or growth control fails
+    - reject if target arithmetic data enters the definition
+    - stop scoped when the frozen divisor coefficient differs from the target
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The prior complete signed/oriented primitive and repetition ledger through
+    directed-bond period six remains valid, and the new determinant uses the
+    same graph and raw metric clock without arithmetic tables.
+  strongest_failure: >-
+    The inverse-spectral Fredholm product supplies no log-prime primitive
+    period law, no von-Mangoldt repetition weights, and no identity relating
+    inverse spectral moments to the frozen directed-bond orbit weights.
+  metrics:
+    primitive_prefix_unchanged: true
+    primitive_orbit_trace_identity_for_D_H: false
+    arithmetic_orbit_law: false
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+  artifacts:
+    - artifacts/qg_0001/route_a_prefilter.json
+    - artifacts/qg_0001/relative_fredholm.json
+    - formal/results/qg_0001_relative_fredholm.md
+
+a2:
+  verdict: A2_ANALYTIC_DETERMINANT
+  target_interpretation: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    H^{-1} is trace class with Tr(H^{-1})=zeta(2)Tr(H_1^{-1}). Complete
+    divisor multiplicity and order control prove
+    chi_0(k)=det_F(I-k^2H_1^{-1}); trace-norm block convergence then gives the
+    exact normally convergent same-operator identity
+    D_H(k)=product_{n>=1}chi_0(k/n)=det_F(I-k^2H^{-1}). The factorwise
+    exp(-i*k*L0/n) counterphase is forced by the exact bond identity.
+  strongest_failure: >-
+    This determinant is inverse-spectral rather than a proved primitive-orbit
+    determinant, and its exact divisor has leading count L0/pi instead of
+    1/(2*pi). It therefore fails the Riemann target independently of finite
+    zero fitting. The naive orbit and direct-sum bond products remain blocked.
+  metrics:
+    global_same_operator_determinant_defined: true
+    inverse_operator_trace_class: true
+    trace_H_inverse: 7.24356536914368571711137248581961043338074745
+    component_product_normal_convergence: true
+    exact_divisor: "k=+/-n*sqrt(lambda_j(H_1)); coincidence multiplicities add"
+    canonical_genus_in_k: 1
+    canonical_genus_in_k_squared: 0
+    zero_error_train: not_applicable_no_target_roots_used
+    zero_error_validation: not_applicable_exact_operator_divisor
+    zero_error_test: not_tested_target_zero_tables_forbidden
+    extra_zero_count: not_tested_target_zero_tables_forbidden
+    missing_zero_count: not_tested_target_zero_tables_forbidden
+    root_count_discrepancy: "leading coefficient ratio 2*L0=12.764664694883524..."
+    cutoff_drift:
+      finite_product_role: implementation_control_only
+      max_leading_tail_corrected_128_to_256_drift: 3.1763713947876857e-9
+    precision_drift:
+      arithmetic: 80_decimal_digits
+      max_raw_phase_identity_residual: 1.0542197943230523e-81
+    control_margin:
+      trace_class_tail: "sum_{n>N} ||H_n^{-1}||_1 = O(N^-1)"
+      normal_product_tail: "sum_{n>N} |chi_0(k/n)-1| = O_K(N^-1)"
+    raw_bond_product_converges_away_from_divisor: false
+    determinant_ledgers_mixed: false
+  artifacts:
+    - configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml
+    - experiments/qg_0001_relative_fredholm.py
+    - artifacts/qg_0001/relative_fredholm.json
+    - formal/results/qg_0001_relative_fredholm.md
+    - tests/test_qg_0001_relative_fredholm.py
+
+a3:
+  verdict: A3_PARTIAL_ANALYTIC_STRUCTURE
+  target_interpretation: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    D_H is an even entire function with exact divisor and multiplicities. It
+    has order one and infinite type in k, order one-half in k^2, and
+    log D_H(iR)=L0*R*log(R)+O(R). Its positive-root count is exactly
+    N_H(K)=(L0/pi)K log K+O(K).
+  strongest_failure: >-
+    The immutable leading coefficient exceeds the Riemann-von Mangoldt
+    coefficient by 2*L0=12.764664694883524..., so no zero-free prefactor can
+    repair the divisor. No completed-xi functional equation, Gamma factor,
+    trivial-zero ledger, or prime-power trace formula is present.
+  metrics:
+    entire: true
+    conjugation_symmetry: true
+    exact_divisor_formula: true
+    entire_order_in_k: 1
+    entire_type_in_k: infinite
+    entire_order_in_k_squared: "1/2"
+    candidate_counting_law: "(L0/pi)*K*log(K)+O(K)"
+    target_counting_law: "(1/(2*pi))*K*log(K)+O(K)"
+    candidate_to_target_leading_ratio: 12.7646646948835240774766174689
+    target_leading_coefficient_matches: false
+    functional_equation: false
+    gamma_and_trivial_zero_ledger: false
+    completed_xi_divisor: false
+    hidden_zero_producing_prefactor: false
+  artifacts:
+    - artifacts/qg_0001/relative_fredholm.json
+    - formal/results/qg_0001_relative_fredholm.md
+
+a4:
+  verdict: A4_UNITARY_OR_SCATTERING_CANDIDATE
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The Fredholm determinant is built from the inverse of exactly the same
+    natural self-adjoint direct-sum magnetic Laplacian, with the same domain,
+    boundary conditions, raw clock, component scaling, and scattering data.
+  strongest_failure: >-
+    Same-operator compatibility cannot rescue the wrong divisor or supply a
+    primitive-orbit trace law. The inherited local geometric antiunitary is
+    absent, but abstract spectral-basis conjugation remains unavoidable and
+    has no claimed orbit interpretation. Route B is not authorized.
+  metrics:
+    same_operator_determinant: true
+    same_clock_preserved: true
+    self_adjoint_direct_sum: true
+    compact_resolvent: true
+    inherited_local_geometric_antiunitary: false
+    route_b_ready: false
+  artifacts:
+    - configs/source_locks/QG-0001.yaml
+    - configs/source_locks/QG-0001-RELATIVE-FREDHOLM.yaml
+    - formal/results/qg_0001_relative_fredholm.md
+
+overall_verdict: ROUTE_A_REJECTED
+analytic_audit_tuple:
+  - A1_WEAK
+  - A2_ANALYTIC_DETERMINANT
+  - A3_PARTIAL_ANALYTIC_STRUCTURE
+  - A4_UNITARY_OR_SCATTERING_CANDIDATE
+target_interpretation_tuple:
+  - A1_WEAK
+  - A2_FAIL
+  - A3_FAIL
+  - A4_UNITARY_OR_SCATTERING_CANDIDATE
+recommended_candidate_state: STOP_SCOPED
+scoped_audit_verdict: STOP_SCOPED
+recommended_verdict: STOP_SCOPED
+claim_boundary:
+  established:
+    - genuine trace-class same-operator relative Fredholm determinant
+    - exact component product, forced counterphase, and complete divisor
+    - exact trace coefficient, genus/order/type, and all-order counting law
+    - strict frozen leading-coefficient obstruction to a completed-xi divisor
+  not_established:
+    - log-prime primitive periods or von-Mangoldt repetition weights
+    - primitive-orbit trace identity for the inverse-spectral determinant
+    - completed-xi functional equation, divisor, Route B, Hilbert-Polya, or RH
+  what_would_change_the_status: >-
+    Nothing within the frozen QG-0001 metric normalization and 1/n tower law.
+    A different base normalization, graph grammar, or component law is a new
+    source-locked candidate and must be chosen without target fitting.
+blocking_conditions:
+  - exact divisor count has the wrong immutable leading coefficient
+  - no primitive-orbit or von-Mangoldt trace identity exists
+  - no completed-xi global analytic ledger exists
+next_smallest_test: >-
+  Park QG-0001 under its local reopening condition and apply the project
+  breadth-first rule. Select CLUE-A3-001 as the next structurally different
+  direction: inspect the legacy RH handoff and freeze exactly one explicit
+  same-ledger annular residual object before creating or evaluating a formal
+  candidate. Do not import a precomputed zero match or mix residual clocks.
+route_b_invocation_allowed: false
