@@ -1,0 +1,128 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: TH-0001
+audit_id: TH-0001-A4-PHASE-CAUSTIC-001
+parent_audit_id: TH-0001-A4-FIO-001
+formal_candidate: true
+source_commit: a4cb10640c44559f0520386d9c84e65c9b873134
+evaluation_date: "2026-08-06T05:34:10Z"
+
+source_lock:
+  object: >-
+    The frozen same-order unitary FIO U=U_(5/2)U_(3/2)U_(1/2) together with
+    its ordered internal phase in two intermediate variables. The audit adds
+    no spectral object and does not alter the classical or quantum clock.
+  clock: "one G superstep; three factors in the fixed order"
+  normalization: >-
+    hbar=1, positive-real per-factor amplitude (2*pi)^(-1/2), phase exp(+i*S_a),
+    global Maslov index NOT_ASSIGNED.
+  determinant_convention: >-
+    NOT_OPENED. The caustic audit concerns only phase reduction and does not
+    define a determinant, trace formula, spectrum, or zero ledger.
+  cutoff: "exactly the three frozen factors and their two internal variables"
+  precision: "exact SymPy polynomial/Hessian arithmetic"
+  allowed_data:
+    - TH-0001-FIO source lock and exact generating functions
+    - elementary stationary-phase/Hessian algebra
+    - exact rational caustic witness
+  forbidden_data:
+    - prime/zero/GUE/USTC data, spectra, FFT grids, or determinant evaluations
+    - silently replacing the ordered oscillatory integral by a global reduced phase
+    - assigning signed classical multipliers a Maslov or magnetic meaning
+    - Route-B or self-adjointness inference
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The complete global real primitive-orbit prefix through G-period two and its
+    signed hyperbolicity certificate are inherited unchanged.
+  strongest_failure: >-
+    The phase caustic does not add an arithmetic orbit law, repetition weight,
+    or higher-period completeness.
+  metrics:
+    inherited_short_prefix_complete: true
+    arithmetic_orbit_law: false
+    higher_period_completeness: false
+  artifacts:
+    - evaluations/route_a/TH-0001/20260806T024238Z.yaml
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The audit explicitly preserves the ordered factorized unitary ledger and
+    keeps determinant data separate.
+  strongest_failure: >-
+    No determinant, trace formula, spectrum, or zero-count object is defined;
+    caustic control is not an A2 result.
+  metrics:
+    determinant_defined: false
+    zero_error_train: not_testable_no_determinant
+    zero_error_validation: not_testable_no_determinant
+    zero_error_test: not_testable_no_determinant
+    cutoff_drift: not_testable
+  artifacts:
+    - configs/source_locks/TH-0001-FIO.yaml
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: "Exact phase algebra supplies no hidden analytic continuation claim."
+  strongest_failure: >-
+    Functional equation, completed-xi divisor, counting law, and moving-order
+    control remain undefined.
+  metrics:
+    functional_equation: false
+    analytic_continuation: false
+    target_counting_law: false
+  artifacts: []
+
+a4:
+  verdict: A4_NATURAL_QUANTIZATION
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The exact ordered internal phase has Hessian [[3*q1,1],[1,5*q2]] and
+    determinant 15*q1*q2-1, with an exact nonempty caustic witness
+    (q1,q2)=(1,1/15). This proves why the product must remain an ordered
+    oscillatory integral while preserving the already certified factorized
+    L2-unitarity.
+  strongest_failure: >-
+    A global single reduced phase and global orbit Maslov index are not
+    available from this chart. The obstruction does not exclude a future
+    multi-chart phase calculus, and arbitrary antiunitaries remain open.
+  metrics:
+    factorized_unitarity_preserved: true
+    internal_hessian_exact: true
+    caustic_set_nonempty: true
+    global_single_phase_reduction: false
+    global_maslov_index_assigned: false
+    route_b_ready: false
+  artifacts:
+    - configs/source_locks/TH-0001-FIO.yaml
+    - experiments/th_0001_phase_caustic_audit.py
+    - artifacts/th_0001/phase_caustic_audit.json
+    - formal/obstructions/th_0001_single_phase_caustic.md
+    - tests/test_th_0001_phase_caustic_audit.py
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - exact ordered three-kick internal phase and Hessian determinant
+    - nonempty caustic set obstructing a global single-phase reduction
+    - ordered oscillatory-integral and factorized-unitarity scope preserved
+  not_established:
+    - global reduced generating function or orbit Maslov assignment
+    - arithmetic orbit weights, determinant, global analytic structure, spectrum, or RH
+    - Route B or arbitrary antiunitary exclusion
+blocking_conditions:
+  - the phase reduction is only chartwise across the exact caustic set
+  - no determinant or arithmetic trace ledger is defined
+  - any future orbit-phase assignment requires a new explicit multi-chart lock
+next_smallest_test: >-
+  Stop the phase sub-audit at this strict obstruction. Reopen only with an
+  explicit multi-chart phase/Maslov ledger; do not infer one from signed
+  multipliers or compute a spectrum/determinant.
+route_b_invocation_allowed: false

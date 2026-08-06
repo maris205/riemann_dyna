@@ -295,7 +295,9 @@ real primitive-orbit prefix through G-period two, and now has a proved
 same-order unitary Fourier-integral lift on L2(R). Its superseding Route-A
 tuple is `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` /
 `ROUTE_A_EXPLORATORY` with `GO_WITH_LIMITATIONS`; no arithmetic orbit law or
-determinant is supplied, and Route B remains closed.
+determinant is supplied. `OBR-011` now proves that the ordered three-kick
+kernel cannot be globally reduced to one nondegenerate phase chart; the
+factorized unitary remains valid and Route B remains closed.
 No candidate has entered Route B.
 ```
 
@@ -371,7 +373,7 @@ Twisted Hénon / kicked-symplectic object for a low-cost Route-A prefilter.
 
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
-| TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, and proved same-order unitary FIO lift | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear antiunitary audit | Preserve FIO ledger; only add an explicitly frozen phase/Maslov convention if needed |
+| TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, unitary FIO lift, and exact internal-caustic obstruction | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear antiunitary audit | Stop phase sub-audit; reopen only with an explicit multi-chart phase/Maslov ledger |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
 | SS-0002 | Countable-state symbolic suspension / modular transfer operator | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_REJECTED` | Not invoked | Exact C6 holonomy, nuclear Fredholm determinant, Selberg identity, and natural Laplacian | Same determinant has at least `Omega(T^2)` Selberg spectral zeros, not `Theta(T log T)` | Define one explicit non-Selberg nuclear object and prove its own divisor-count regime before assigning SS-0003 |
 
@@ -393,7 +395,7 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Current status:** `ANALYTIC_REVIEW` (UPO completeness remains strictly scoped to frozen `G`-period `<=2`)
 - **Owner:** sole main research agent
 - **Branch:** `main`
-- **Latest commit:** `836f5880fac6abfb29ee031e1136e24504e2b0a9`
+- **Latest commit:** `a4cb10640c44559f0520386d9c84e65c9b873134`
 - **Uses prime table:** `false`
 - **Uses zero table:** `false`
 
@@ -430,7 +432,7 @@ a3: A3_FAIL
 a4: A4_NATURAL_QUANTIZATION
 overall: ROUTE_A_EXPLORATORY
 scoped_verdict: GO_WITH_LIMITATIONS
-latest_evaluation: evaluations/route_a/TH-0001/20260806T045554Z.yaml
+latest_evaluation: evaluations/route_a/TH-0001/20260806T053410Z.yaml
 ```
 
 ### Route-B status
@@ -462,6 +464,9 @@ latest_evaluation: null
 - The natural parent-swap antiunitary \(A=\mathcal F_+C\) is an involution and
   reverses each kick, but its inverse word does not reverse the non-palindromic
   superstep. The inherited cyclic clock-reflection class is excluded.
+- The ordered three-kick phase has internal Hessian determinant
+  \(15q_1q_2-1\), with exact caustic witness \((1,1/15)\). This strictly
+  blocks a global single reduced phase while leaving factorized unitarity intact.
 
 ### Failed controls and known obstructions
 
@@ -474,6 +479,8 @@ latest_evaluation: null
   anti-symplectic reversors remain an open obligation.
 - The unitary FIO is a Floquet propagator, not a self-adjoint Hamiltonian;
   no logarithm branch, spectral type, determinant, or Route-B domain is frozen.
+- `OBR-011` forbids a global single-phase/Maslov ledger under the current chart.
+  Reopening requires an explicit multi-chart caustic-transition construction.
 
 ### Reproduction
 
@@ -490,15 +497,20 @@ python3 -m unittest discover -v
 ```text
 evaluations/route_a/TH-0001/20260806T024238Z.yaml
 evaluations/route_a/TH-0001/20260806T045554Z.yaml
+evaluations/route_a/TH-0001/20260806T053410Z.yaml
 artifacts/th_0001/route_a_prefilter.json
 artifacts/th_0001/fio_quantization_audit.json
+artifacts/th_0001/phase_caustic_audit.json
 formal/results/th_0001_three_kick_prefilter.md
 formal/results/th_0001_fio_quantization.md
 formal/obstructions/low_depth_henon_reversibility.md
+formal/obstructions/th_0001_single_phase_caustic.md
 configs/source_locks/TH-0001-FIO.yaml
 experiments/th_0001_fio_quantization.py
+experiments/th_0001_phase_caustic_audit.py
 tests/test_th_0001_three_kick_henon.py
 tests/test_th_0001_fio_quantization.py
+tests/test_th_0001_phase_caustic_audit.py
 ```
 
 ### Claim boundary
@@ -515,9 +527,9 @@ or RH.
 
 ### Next smallest test
 
-Preserve the frozen FIO and antiunitary ledger. If continuing this branch, add
-only an explicitly frozen orbit-phase/Maslov convention compatible with the
-positive-real kernel; do not compute a spectrum, determinant, or invoke Route B.
+Stop the phase sub-audit at `OBR-011`. Reopen it only with an explicit
+multi-chart phase/Maslov ledger and caustic transition rules; otherwise apply
+the breadth rule to a new candidate. Do not compute a spectrum or determinant.
 
 ### Decision history
 
@@ -525,6 +537,7 @@ positive-real kernel; do not compute a spectrum, determinant, or invoke Route B.
 |---|---|---|---|---|---|
 | 2026-08-06 | `GENERATED` | `UPO_PASSED` (cutoff-scoped) | Exact Route-A prefilter; `A1_WEAK/A2_FAIL/A3_FAIL/A4_FORMAL_HINT` | `fb69649afbda27006d56471c5680b590f90ba43b` | sole main research agent |
 | 2026-08-06 | `UPO_PASSED` (cutoff-scoped) | `ANALYTIC_REVIEW` | Same-order unitary FIO and inherited antiunitary audit; `A4_NATURAL_QUANTIZATION` | `836f5880fac6abfb29ee031e1136e24504e2b0a9` | sole main research agent |
+| 2026-08-06 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | `OBR-011`: exact internal caustic blocks global single-phase reduction; tuple unchanged | `a4cb10640c44559f0520386d9c84e65c9b873134` | sole main research agent |
 
 ---
 

@@ -525,3 +525,57 @@ Artifacts:
 - `formal/results/th_0001_three_kick_prefilter.md`
 - `evaluations/route_a/TH-0001/20260806T024238Z.yaml`
 - `tests/test_th_0001_three_kick_henon.py`
+
+---
+
+## OBR-011 — Three-kick FIO has an internal caustic for global single-phase reduction
+
+Status:
+PROVED_OBSTRUCTION
+
+Source:
+`CLUE-A4-001` / `formal/obstructions/th_0001_single_phase_caustic.md`
+
+Statement:
+For the ordered internal phase of the frozen three-kick FIO,
+
+\[
+\Phi=S_{1/2}(q_0,q_1)+S_{3/2}(q_1,q_2)+S_{5/2}(q_2,q_3),
+\]
+
+the Hessian in \((q_1,q_2)\) is
+
+\[
+\begin{pmatrix}3q_1&1\\1&5q_2\end{pmatrix},
+\qquad
+\det=15q_1q_2-1.
+\]
+
+The exact rational point \((q_1,q_2)=(1,1/15)\) lies on the nonempty caustic
+set. Hence the two internal variables cannot be globally eliminated into one
+nondegenerate type-I phase chart. The ordered oscillatory integral and the
+factorized `L^2(R)` unitary remain well-defined.
+
+Impact:
+Do not silently assign a global reduced generating function, global Hessian
+determinant, or global orbit Maslov index to this product. Keep the positive-
+real per-factor phase convention and preserve chart/caustic information.
+
+Scope:
+Only global single-phase reduction of the frozen three-kick kernel. This does
+not obstruct the unitary factorization, and it does not exclude a future
+explicit multi-chart phase calculus.
+
+Reopening condition:
+Freeze a multi-chart phase/Maslov ledger with caustic transition rules and
+prove its compatibility with the ordered FIO. Signed classical multipliers
+cannot be used as a substitute.
+
+Artifacts:
+
+- `configs/source_locks/TH-0001-FIO.yaml`
+- `experiments/th_0001_phase_caustic_audit.py`
+- `artifacts/th_0001/phase_caustic_audit.json`
+- `formal/obstructions/th_0001_single_phase_caustic.md`
+- `evaluations/route_a/TH-0001/20260806T053410Z.yaml`
+- `tests/test_th_0001_phase_caustic_audit.py`

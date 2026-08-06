@@ -8,9 +8,9 @@ Candidate ID: `TH-0001` — target-free non-palindromic three-kick Hénon ratche
 
 - Formal candidate: `true`
 - Candidate state: `ANALYTIC_REVIEW` (UPO prefix complete only through `G`-period `<=2`)
-- Source commit: `836f5880fac6abfb29ee031e1136e24504e2b0a9`
+- Source commit: `a4cb10640c44559f0520386d9c84e65c9b873134`
 - Source lock: `configs/source_locks/TH-0001-FIO.yaml`
-- Route-A evaluation: `evaluations/route_a/TH-0001/20260806T045554Z.yaml`
+- Route-A evaluation: `evaluations/route_a/TH-0001/20260806T053410Z.yaml`
 - Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)`
 - Overall Route A: `ROUTE_A_EXPLORATORY`
 - Scoped verdict: `GO_WITH_LIMITATIONS`
@@ -35,6 +35,17 @@ on `L^2(R)`. The product inverse has the reverse factor order. The triple
 kernel is retained as an iterated oscillatory integral; no global absolute
 convergence or single-phase reduction is claimed at caustics.
 
+The exact internal phase Hessian is
+
+\[
+\begin{pmatrix}3q_1&1\\1&5q_2\end{pmatrix},
+\qquad \det=15q_1q_2-1,
+\]
+
+and \((q_1,q_2)=(1,1/15)\) is a rational caustic witness. `OBR-011` therefore
+blocks a global single reduced phase/Maslov chart, but does not affect the
+factorized unitary.
+
 ### Antiunitary audit
 
 The natural parent-swap antiunitary is `A=F_+ C`, with `A^2=I` and
@@ -57,8 +68,10 @@ non-geometric antiunitaries remain `OPEN`.
 
 - Focused FIO suite: `12/12 passed`.
 - Full repository: `196/196 passed`.
-- Artifact SHA-256: `0eb583e54b69d3372b582a204c871f7b5f446143353cd6831fea3c27a893fc3e`.
-- Generator SHA-256: `9cff63faf27f56e48f89caf1eab45e07e092c61b6c78e3a9b07beb1836c77bfb`.
+- Focused phase-caustic suite: `5/5 passed`.
+- FIO artifact SHA-256: `0eb583e54b69d3372b582a204c871f7b5f446143353cd6831fea3c27a893fc3e`.
+- Phase artifact SHA-256: `a5b8ed95b6832ed47b2da7f1a4a00878c9e64bde0b513cc96a39049ef4a17912`.
+- FIO generator SHA-256: `9cff63faf27f56e48f89caf1eab45e07e092c61b6c78e3a9b07beb1836c77bfb`.
 
 Established: same-order unitary FIO, exact canonical graph, inherited
 antiunitary one-kick identities, and their non-palindromic three-kick failure.
@@ -66,9 +79,9 @@ antiunitary one-kick identities, and their non-palindromic three-kick failure.
 Not established: arbitrary antiunitary exclusion, self-adjoint Hamiltonian,
 spectral type, determinant, trace formula, Route B, Hilbert--Pólya, or RH.
 
-Next smallest task: preserve the FIO and antiunitary ledgers; only add a frozen
-orbit-phase/Maslov convention if needed, without computing spectra or a
-determinant.
+Next smallest task: stop the phase sub-audit at `OBR-011`. Reopen only with an
+explicit multi-chart phase/Maslov ledger and caustic transition rules; do not
+infer it from signed multipliers or compute spectra/determinants.
 
 Recommended verdict: `GO_WITH_LIMITATIONS` for the scoped A4 audit.
 

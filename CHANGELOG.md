@@ -5,6 +5,20 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-06
 
+### TH-0001 internal phase caustic obstruction
+
+- Added `OBR-011`: the ordered three-kick internal Hessian has determinant
+  `15*q1*q2-1` and a nonempty exact caustic at `(1,1/15)`, so no global
+  single reduced phase or global Maslov index is available in the current chart.
+- Preserved the ordered oscillatory-integral and factorized `L^2(R)` unitary
+  ledger; this is a phase-reduction obstruction, not a failure of the quantum
+  propagator and not a Route-B result.
+- Stopped the phase sub-audit; reopening requires an explicit multi-chart
+  caustic-transition convention. Signed classical multipliers remain separate
+  from Maslov or magnetic phases.
+
+Source state: `a4cb10640c44559f0520386d9c84e65c9b873134`.
+
 ### TH-0001 same-order unitary FIO lift
 
 - Froze `hbar=1`, positive-real Fourier normalization, Lebesgue `L^2(R)`,

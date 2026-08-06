@@ -2326,6 +2326,112 @@ Fredholm zeros, target divisors, or Route B in that task.
 
 Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped theorem).
 
+## 2026-08-06 — TH-0001 internal phase caustic obstruction
+
+### Stable checkpoint
+
+Current clue: `CLUE-A4-001`.
+
+Candidate ID: `TH-0001`.
+
+Source lock: `configs/source_locks/TH-0001-FIO.yaml` (phase ledger extension).
+
+Implementation/source commit:
+`a4cb10640c44559f0520386d9c84e65c9b873134`.
+
+Route-A evaluation:
+`evaluations/route_a/TH-0001/20260806T053410Z.yaml`.
+
+Route-A tuple remains:
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)
+overall: ROUTE_A_EXPLORATORY
+scoped verdict: GO_WITH_LIMITATIONS
+Route B: not invoked and not authorized
+```
+
+### Exact obstruction
+
+For the ordered three-kick phase
+
+\[
+\Phi=S_{1/2}(q_0,q_1)+S_{3/2}(q_1,q_2)+S_{5/2}(q_2,q_3),
+\]
+
+the internal Hessian is
+
+\[
+H_{\mathrm{int}}=\begin{pmatrix}3q_1&1\\1&5q_2\end{pmatrix},
+\qquad
+\det H_{\mathrm{int}}=15q_1q_2-1.
+\]
+
+The exact point \((q_1,q_2)=(1,1/15)\) lies on the nonempty caustic set.
+Thus a global single nondegenerate reduced phase chart and global Maslov index
+cannot be silently assigned. The ordered iterated oscillatory integral and the
+factorized `L^2(R)` unitary are unaffected.
+
+### New reusable knowledge and boundary
+
+This yields `OBR-011`: for composed kicked maps, factorized Plancherel
+unitarity can remain exact even when stationary-phase elimination crosses an
+internal caustic. Keep the positive-real per-factor convention and retain the
+ordered phase; signed classical multipliers are not a substitute for a Maslov
+ledger. A future reopening requires an explicit multi-chart transition calculus.
+
+No spectrum, determinant, trace formula, orbit phase law, Route B, or RH claim
+was made.
+
+### Updated files
+
+- `configs/source_locks/TH-0001-FIO.yaml`
+- `experiments/th_0001_phase_caustic_audit.py`
+- `artifacts/th_0001/phase_caustic_audit.json`
+- `formal/obstructions/th_0001_single_phase_caustic.md`
+- `evaluations/route_a/TH-0001/20260806T053410Z.yaml`
+- `docs/obstruction_registry.md`
+- `docs/candidate_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+- `tests/test_th_0001_phase_caustic_audit.py`
+
+### Tests and reproduction
+
+Focused phase-caustic suite: `5/5 passed`.
+
+```bash
+python3 experiments/th_0001_phase_caustic_audit.py \
+  --quiet \
+  --output artifacts/th_0001/phase_caustic_audit.json
+python3 -m unittest -v tests/test_th_0001_phase_caustic_audit.py
+sha256sum artifacts/th_0001/phase_caustic_audit.json \
+  experiments/th_0001_phase_caustic_audit.py \
+  configs/source_locks/TH-0001-FIO.yaml \
+  evaluations/route_a/TH-0001/20260806T053410Z.yaml
+git diff --check
+```
+
+Hashes:
+
+```text
+a5b8ed95b6832ed47b2da7f1a4a00878c9e64bde0b513cc96a39049ef4a17912  artifacts/th_0001/phase_caustic_audit.json
+37734c27d05b75c4f2f3c5aad0e6e7c1edfb17cfa838e96539eea8604c88c593  experiments/th_0001_phase_caustic_audit.py
+ac71bc10ed3066910b78a429e56beaf39db0378d10522f482ad6a7e60ba47605  configs/source_locks/TH-0001-FIO.yaml
+6ead339b8fb951ddb649fd05e92515b273f4e434b1779646caaf283f7e84d311  formal/obstructions/th_0001_single_phase_caustic.md
+737a133f2245a3d06e896218d4ada43ccdf0407de222fae7df7501d428372c2e  tests/test_th_0001_phase_caustic_audit.py
+```
+
+### Next smallest task
+
+Stop the phase sub-audit at `OBR-011`. Reopen only with an explicit multi-chart
+phase/Maslov ledger and caustic transition rules; do not infer one from signed
+multipliers or compute a spectrum/determinant.
+
+Recommended verdict: `GO_WITH_LIMITATIONS` for this scoped obstruction.
+
 ## 2026-08-06 — TH-0001 same-order unitary Fourier-integral lift
 
 ### Stable checkpoint

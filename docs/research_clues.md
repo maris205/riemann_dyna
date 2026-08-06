@@ -933,7 +933,7 @@ D_N(s)\to D_{N+1}(s),
 
 **来源：** Area-preserving Hénon 工作与时间反演讨论  
 **证据：** `HEURISTIC` + `MODELING_CHOICE`  
-**状态：** `ACTIVE` — `TH-0001` unitary FIO lift complete; phase ledger remains open
+**状态：** `ACTIVE` — `TH-0001` FIO lift complete; global single-phase ledger blocked by `OBR-011`
 **对应层：** `A1`, `A4`
 
 ### 内容
@@ -1519,4 +1519,19 @@ evidence: "TH-0001-A4-FIO-001 exact same-order Fourier-integral factors, Planche
 commit: "836f5880fac6abfb29ee031e1136e24504e2b0a9"
 evaluation: "evaluations/route_a/TH-0001/20260806T045554Z.yaml"
 consequence: "A4 upgrades from A4_FORMAL_HINT to A4_NATURAL_QUANTIZATION. The ordered U_(5/2)U_(3/2)U_(1/2) propagator is unitary on L2(R), while the natural parent-swap antiunitary reverses each kick but not the non-palindromic superstep. A1 remains weak, A2/A3 remain unopened/failed, arbitrary nonlinear antiunitaries remain OPEN, and Route B stays closed. Preserve the FIO ledger; do not compute spectra or determinants."
+```
+
+## Status update — CLUE-A4-001 TH-0001 internal phase caustic
+
+```yaml
+date: 2026-08-06
+clue_id: CLUE-A4-001
+old_status: ACTIVE
+new_status: ACTIVE
+candidate_id: TH-0001
+evidence: "TH-0001-A4-PHASE-CAUSTIC-001 exact ordered internal phase, Hessian determinant 15*q1*q2-1, and rational caustic witness (1,1/15)"
+commit: "a4cb10640c44559f0520386d9c84e65c9b873134"
+evaluation: "evaluations/route_a/TH-0001/20260806T053410Z.yaml"
+obstruction: "OBR-011"
+consequence: "A global single reduced phase and global Maslov index are blocked in the current chart, while the ordered oscillatory integral and factorized L2-unitarity remain valid. Do not infer an orbit phase from signed multipliers. Stop this sub-audit unless a multi-chart caustic-transition ledger is explicitly frozen; Route B remains closed."
 ```
