@@ -37,12 +37,16 @@ clock: >-
   wavenumber K=sqrt(lambda), with no unfolding or nonlinear clock change.
 normalization: >-
   Base lengths (1,sqrt(2),sqrt(3),sqrt(5)); exact 1/n component scaling;
-  fixed holonomies (0,pi/3,2*pi/3,0); standard covariant Kirchhoff scattering;
-  Dirichlet reflection -1 at D; no global scale, offset, anchoring, or fit.
+  fixed L-outward magnetic line integrals (0,pi/3,2*pi/3,0); standard
+  covariant Kirchhoff scattering; Dirichlet reflection -1 at D; no global
+  scale, offset, anchoring, or fit.
 determinant_convention: >-
   NOT_OPENED. In particular, neither the divergent ordinary orbit product,
   a componentwise bond-secular product, the heat/spectral zeta, nor a
   zeta-regularized characteristic determinant may be substituted for another.
+  The standard finite component block B_n(s)=S*diag_b(exp(-s*ell_b/n+i*alpha_b))
+  is named only to test trace-class eligibility of its direct sum; no global
+  determinant is thereby opened.
 cutoff:
   base_primitive_orbits: "complete directed-bond census through topological period 6"
   tower_components: "all n>=1 by exact scaling; displayed split checks use n<=16"
@@ -66,6 +70,7 @@ forbidden_data:
   - "calling the spectral-zeta factor zeta(2z) a secular or completed-xi divisor"
   - "silently regularizing the infinite orbit or component determinant product"
   - "discarding orientation, signed scattering amplitudes, or magnetic phases"
+  - "calling an abstract spectral-basis conjugation a local geometric time reversal"
   - "Route-B or Hilbert-Polya claims in this prefilter"
 training_split: >-
   base topological periods 1-2 and tower labels 1-4; exact convention and
@@ -81,4 +86,5 @@ stopping_conditions:
   - "REVISE if the exact trace/repetition ledger fails through period 6"
   - "REVISE if the geometric antiunitary audit finds a length-preserving flux-reversing automorphism"
   - "STOP_SCOPED for the naive determinant if short-orbit accumulation prevents a standard Euler/Fredholm product"
+  - "keep the unavoidable abstract spectral-basis conjugation separate from geometric or orbit-reversal symmetry"
   - "do not open Route B until one same-object determinant convention and trace ledger are frozen"

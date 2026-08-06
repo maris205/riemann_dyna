@@ -26,9 +26,26 @@ A necessary condition for convergence of an infinite product to a finite
 nonzero limit is that its factors tend to one. Therefore (P(s)) cannot
 define a finite nonzero ordinary Euler product on any domain.
 
-The same issue prevents the standard Fredholm determinant of a direct sum of
-finite bond-transfer blocks whenever those blocks fail to approach zero in
-trace norm.
+For the standard directed-bond block, let
+
+\[
+B_n(s)=S\,\operatorname{diag}_{b}
+\left(e^{-s\ell_b/n+i\alpha_b}\right),
+\]
+
+where (S) is the finite vertex-scattering matrix, (\ell_b) is the base metric
+length of bond (b), and (\alpha_b) is its oriented magnetic phase. For fixed
+(s),
+
+\[
+B_n(s)\longrightarrow
+B_\infty=S\,\operatorname{diag}_{b}(e^{i\alpha_b})
+\]
+
+in finite-dimensional trace norm. If (S) is unitary, then (B_\infty) is
+unitary and its trace norm equals the number of directed bonds. Consequently
+(\bigoplus_nB_n(s)) is not compact, hence not trace class, and the standard
+Fredholm determinant of this direct sum is unavailable.
 
 ## 2. QG-0001 witness
 
@@ -52,6 +69,15 @@ The frozen tower therefore contains the subproduct
 whose factors tend to (1/2). For real (s\geq0), the partial products tend
 to zero exponentially after a finite index. Thus no nonzero unregularized
 orbit determinant exists.
+
+Here there are eight directed bonds and the exact scattering matrix is
+orthogonal, so the block lemma gives
+
+\[
+\lVert B_n(s)\rVert_1\longrightarrow8.
+\]
+
+Thus the usual direct-sum bond operator is not compact or trace class.
 
 ## 3. Impact
 

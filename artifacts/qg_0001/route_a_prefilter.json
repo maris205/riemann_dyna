@@ -172,7 +172,8 @@
   ],
   "determinant_convention": "NOT_OPENED",
   "geometric_antiunitary_audit": {
-    "arbitrary_nonlocal_antiunitary_exclusion": "OPEN",
+    "abstract_conjugation_geometric_or_orbit_interpretation": false,
+    "abstract_spectral_basis_conjugation_exists": true,
     "doubled_flux_units_mod_6": [
       2,
       4
@@ -192,6 +193,10 @@
     ]
   },
   "naive_determinant_obstruction": {
+    "component_bond_block": "B_n(s)=S*diag_b(exp(-s*ell_b/n+i*alpha_b))",
+    "component_bond_trace_norm_limit": 8,
+    "direct_sum_bond_block_compact": false,
+    "direct_sum_bond_block_trace_class": false,
     "factor_limit_as_n_to_infinity": "1/2",
     "ordinary_nonzero_euler_product_exists": false,
     "reopening_requirement": "an explicit regularized same-object determinant and trace counterterm ledger",
@@ -11201,10 +11206,10 @@
   "title": "Harmonic magnetic lollipop-theta tower",
   "tower_rule": {
     "components": "n=1,2,...",
-    "magnetic_holonomy": "fixed in n",
     "metric_scaling": "ell_(n,e)=ell_e/n",
     "operator_scaling": "H_n is unitarily equivalent to n^2*H_1",
-    "orbit_scaling": "L_(p,n)=L_p/n; scattering amplitude and phase unchanged"
+    "orbit_scaling": "L_(p,n)=L_p/n; scattering amplitude and phase unchanged",
+    "oriented_magnetic_line_integrals": "fixed in n"
   },
   "trace_ledger_sha256": "80916335ba61515d8d2890116bfc34cf611929e19b4b3ceac18cd2fee3453ed8",
   "trace_ledgers": {

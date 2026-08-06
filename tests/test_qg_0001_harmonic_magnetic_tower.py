@@ -63,7 +63,8 @@ class QG0001HarmonicMagneticTowerTests(unittest.TestCase):
         self.assertEqual(audit["only_graph_automorphism"], "identity")
         self.assertFalse(audit["identity_gauge_equivalent_to_flux_reversal"])
         self.assertFalse(audit["inherited_local_geometric_antiunitary"])
-        self.assertEqual(audit["arbitrary_nonlocal_antiunitary_exclusion"], "OPEN")
+        self.assertTrue(audit["abstract_spectral_basis_conjugation_exists"])
+        self.assertFalse(audit["abstract_conjugation_geometric_or_orbit_interpretation"])
 
     def test_harmonic_scaling_has_the_target_counting_order_without_a_fit(self) -> None:
         theorem = self.report["operator_theorem"]
@@ -80,6 +81,9 @@ class QG0001HarmonicMagneticTowerTests(unittest.TestCase):
         obstruction = self.report["naive_determinant_obstruction"]
         self.assertEqual(obstruction["factor_limit_as_n_to_infinity"], "1/2")
         self.assertFalse(obstruction["ordinary_nonzero_euler_product_exists"])
+        self.assertEqual(obstruction["component_bond_trace_norm_limit"], 8)
+        self.assertFalse(obstruction["direct_sum_bond_block_compact"])
+        self.assertFalse(obstruction["direct_sum_bond_block_trace_class"])
         self.assertFalse(obstruction["standard_direct_sum_fredholm_determinant_exists"])
 
     def test_spectral_zeta_is_not_promoted_to_a_secular_divisor(self) -> None:

@@ -95,10 +95,13 @@ independent theta-cycle fluxes contain (pi/3) and (2pi/3); their doubles
 are not zero modulo (2pi). Hence the magnetic cohomology class is not gauge
 equivalent to its negative.
 
-Therefore the inherited local geometric class consisting of complex
-conjugation, graph isometries, and gauge transformations supplies no
-antiunitary symmetry for the frozen graph. This does not exclude an arbitrary
-nonlocal or spectral-basis antiunitary; that broader statement remains open.
+Therefore the inherited local geometric class consisting of edge-coordinate
+complex conjugation, graph isometries, and gauge transformations supplies no
+antiunitary symmetry for the frozen graph. This is only a geometric statement.
+The self-adjoint compact-resolvent operator proved below admits coefficientwise
+complex conjugation in any chosen orthonormal eigenbasis. That abstract
+antiunitary commutes with the operator and preserves its domain, but it has no
+asserted locality, graph-isometry origin, or primitive-orbit reversal meaning.
 
 ## 4. Natural operator theorem
 
@@ -210,9 +213,26 @@ Hence an ordinary orbit product would contain
 \]
 
 whose factors tend to (1/2), not (1). It cannot be a nonzero ordinary
-Euler product. A standard direct-sum Fredholm determinant likewise is not
-available because the component bond blocks do not approach zero in trace
-norm. This is recorded as `OBR-012`.
+Euler product. For the usual directed-bond convention, write
+
+\[
+B_n(s)=S\,\operatorname{diag}_{b}
+\left(e^{-s\ell_b/n+i\alpha_b}\right),
+\]
+
+where (S) is the exact eight-dimensional vertex-scattering matrix. At each
+fixed (s), finite-dimensional trace-norm convergence gives
+
+\[
+B_n(s)\longrightarrow
+B_\infty=S\,\operatorname{diag}_{b}(e^{i\alpha_b}),
+\qquad
+\lVert B_n(s)\rVert_1\longrightarrow\lVert B_\infty\rVert_1=8.
+\]
+
+Both factors in (B_\infty) are unitary. Hence (\bigoplus_nB_n(s)) is not
+compact and therefore is not trace class, so its standard Fredholm determinant
+is unavailable. This is recorded as `OBR-012`.
 
 There is a separate exact identity, initially for (Re z>1/2),
 
@@ -243,7 +263,8 @@ Not established:
 - a prime-like primitive-orbit law or von-Mangoldt repetition weight;
 - any regularized same-object dynamical/secular determinant;
 - a completed-ξ divisor, functional equation, or correct leading coefficient;
-- exclusion of arbitrary nonlocal antiunitaries;
+- a canonical local or orbit-reversal interpretation for the unavoidable
+  abstract spectral-basis conjugation;
 - Route B, Hilbert–Pólya, or RH.
 
 Reproduction:
