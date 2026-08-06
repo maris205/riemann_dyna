@@ -1,0 +1,210 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: QG-0001
+audit_id: QG-0001-STRUCTURAL-PREFILTER-001
+formal_candidate: true
+source_commit: ce0d4424a95a9392c9e8755a4a11b1cfcabc0e77
+evaluation_date: "2026-08-06T09:03:51Z"
+
+source_lock:
+  object: >-
+    The disjoint union over n>=1 of exact 1/n metric scalings of one frozen
+    magnetic lollipop-theta graph. The base has three L--R edges of lengths
+    1,sqrt(2),sqrt(3), one L--D pendant of length sqrt(5), Kirchhoff vertices
+    of degrees four and three, a Dirichlet terminal, and fixed L-outward
+    magnetic line integrals 0,pi/3,2*pi/3,0.
+  data_type: >-
+    Exact directed-bond orbit/scattering ledger, theorem-level magnetic
+    Laplacian scaling and wavenumber count, and no global determinant.
+  clock: >-
+    Raw metric length L_(p,n)=L_p/n and raw positive wavenumber K=sqrt(lambda).
+    The tower label is a component index, not a fitted time reparameterization.
+  normalization: >-
+    Squarefree base lengths, exact 1/n scaling, fixed sixth-root oriented edge
+    phases, covariant Kirchhoff scattering, Dirichlet reflection -1, and no
+    scale, offset, unfolding, zero anchoring, or affine spectral fit.
+  determinant_convention: >-
+    NOT_OPENED. Ordinary orbit product, component bond product, heat/spectral
+    zeta, and any regularized characteristic determinant remain separate data
+    types and may not be substituted for one another.
+  cutoff: >-
+    Complete base primitive directed-bond census through topological period
+    six; all tower components and the K*log(K) count handled by exact scaling.
+  precision: >-
+    Exact Fraction scattering and trace arithmetic, integer phase/length
+    ledgers, theorem-level operator algebra, and binary64 only for displays.
+  allowed_data:
+    - frozen graph grammar, vertex conditions, metric scaling, and magnetic line integrals
+    - exact finite graph scattering and cyclic-word enumeration
+    - standard compact metric-graph Weyl and direct-sum operator theorems
+    - Riemann-von Mangoldt asymptotic as a structural target constraint
+  forbidden_data:
+    - prime tables, primality predicates, Riemann-zero tables, or target fitting
+    - validation/test optimization or post-hoc graph/clock/scale changes
+    - silent determinant regularization or cross-ledger zeta promotion
+    - discarded orientation, signed scattering amplitude, or magnetic phase
+    - Route B, Hilbert-Polya, or RH claims in this prefilter
+  training_split: "base periods 1-2 and component labels 1-4; identity checks only"
+  validation_split: "base periods 3-4 and component labels 5-8"
+  test_split: >-
+    base periods 5-6, component labels 9-16, all-order count theorem, and the
+    pendant-bounce ordinary-product obstruction
+  stopping_conditions:
+    - stop if target data leaks into the candidate definition
+    - revise if exact trace/repetition or local antiunitary checks fail
+    - stop the naive determinant at short-orbit accumulation
+    - do not open Route B without one same-object determinant and trace ledger
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The graph intrinsically defines oriented primitive directed-bond orbits.
+    Exhaustive exact enumeration gives 10, 45, and 330 primitive orbits at
+    topological periods 2, 4, and 6, and every trace/repetition ledger through
+    period six agrees exactly. The 1/n rule then transports every orbit,
+    signed scattering amplitude, and magnetic phase to all tower components.
+  strongest_failure: >-
+    The metric periods L_p/n accumulate at zero and have no intrinsic log-prime
+    ordering or von-Mangoldt repetition law. Vertex scattering weights are not
+    arithmetic weights, and no higher-period arithmetic anomaly is established.
+  metrics:
+    primitive_orbits_period_2: 10
+    primitive_orbits_period_4: 45
+    primitive_orbits_period_6: 330
+    based_closed_words_period_6: 2000
+    exact_trace_repetition_checks: 6
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    periods_accumulate_at_zero: true
+    arithmetic_orbit_law: false
+  artifacts:
+    - configs/source_locks/QG-0001.yaml
+    - artifacts/qg_0001/route_a_prefilter.json
+    - formal/results/qg_0001_harmonic_magnetic_tower.md
+    - tests/test_qg_0001_harmonic_magnetic_tower.py
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The exact pendant bounce has weight 1/2 and component period 2*sqrt(5)/n,
+    so the naive Euler product contains factors tending to 1/2 rather than
+    one. This proves that the unregularized ordinary orbit product has no
+    finite nonzero value. For the explicit standard bond block B_n(s), the
+    trace norm tends to 8, so its direct sum is not compact or trace class.
+  strongest_failure: >-
+    No canonical relative, Weierstrass, Fredholm, secular, or zeta-regularized
+    same-object determinant has been frozen. Consequently no root ledger,
+    missing/extra-zero audit, or cutoff-stable target comparison exists.
+  metrics:
+    determinant_defined: false
+    naive_euler_product_nonzero: false
+    component_bond_trace_norm_limit: 8
+    direct_sum_bond_block_compact: false
+    direct_sum_bond_block_trace_class: false
+    standard_fredholm_determinant_defined: false
+    zero_error_train: not_testable_no_determinant
+    zero_error_validation: not_testable_no_determinant
+    zero_error_test: not_testable_no_determinant
+    extra_zero_count: not_testable_no_determinant
+    missing_zero_count: not_testable_no_determinant
+    root_count_discrepancy: not_testable_no_determinant
+    cutoff_drift: not_testable
+    precision_drift: none_in_exact_obstruction
+    control_margin: "factor limit is exactly 1/2 rather than 1"
+  artifacts:
+    - formal/obstructions/harmonic_graph_tower_naive_determinant.md
+    - artifacts/qg_0001/route_a_prefilter.json
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The natural operator has compact resolvent and the all-order positive
+    wavenumber count N(K)=(L0/pi)*K*log(K)+O(K), so the target T*log(T)
+    exponent emerges from a target-free low-complexity graph grammar.
+  strongest_failure: >-
+    This is an operator counting theorem, not a determinant theorem. The raw
+    coefficient is larger by the factor 2*L0=12.7646646948... and cannot be fitted.
+    No completed-xi functional equation, continuation, Gamma/trivial-zero
+    ledger, or zero-free prefactor is defined. The identity
+    zeta_H(z)=zeta(2z)*zeta_H1(z) concerns the spectral-zeta exponent variable,
+    not a wavenumber characteristic divisor.
+  metrics:
+    operator_counting_order: "Theta(K log K)"
+    operator_counting_leading_coefficient: "(1+sqrt(2)+sqrt(3)+sqrt(5))/pi"
+    target_positive_zero_leading_coefficient: "1/(2*pi)"
+    unfitted_coefficient_ratio: 12.764664694883523
+    determinant_analytic_continuation: false
+    functional_equation: false
+    completed_xi_divisor: false
+    spectral_zeta_cross_ledger_promotion_allowed: false
+  artifacts:
+    - formal/results/qg_0001_harmonic_magnetic_tower.md
+    - artifacts/qg_0001/route_a_prefilter.json
+
+a4:
+  verdict: A4_UNITARY_OR_SCATTERING_CANDIDATE
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Closed magnetic quadratic forms give self-adjoint component Laplacians,
+    H_n is unitarily equivalent to n^2 H_1, the Dirichlet terminal gives a
+    positive base gap, and the direct sum has compact resolvent. Distinct
+    decorated vertex degrees and non-half-integral fluxes exclude the inherited
+    graph-isometry/gauge antiunitary class while preserving the same metric clock.
+  strongest_failure: >-
+    The natural operator is not tied to any frozen Route-A determinant or
+    prime-power trace formula; its leading count coefficient is wrong. The
+    inherited local geometric antiunitary class is excluded, while the
+    self-adjoint compact-resolvent operator necessarily admits abstract
+    spectral-basis conjugations with no asserted local or orbit meaning.
+    These facts do not repair A2 or A3 and do not authorize Route B.
+  metrics:
+    natural_hilbert_space: true
+    explicit_boundary_conditions: true
+    component_self_adjointness: true
+    direct_sum_self_adjointness: true
+    compact_resolvent: true
+    same_clock_preserved: true
+    inherited_local_geometric_antiunitary: false
+    abstract_spectral_basis_conjugation_exists: true
+    abstract_conjugation_geometric_or_orbit_interpretation: false
+    exact_prime_power_trace: false
+    route_b_ready: false
+  artifacts:
+    - configs/source_locks/QG-0001.yaml
+    - formal/results/qg_0001_harmonic_magnetic_tower.md
+    - experiments/qg_0001_harmonic_magnetic_tower.py
+
+overall_verdict: ROUTE_A_EXPLORATORY
+recommended_candidate_state: ANALYTIC_REVIEW
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - explicit target-free harmonic magnetic graph tower
+    - exact signed oriented primitive/repetition prefix through period six
+    - local geometric antiunitary obstruction for the frozen decoration
+    - natural self-adjoint compact-resolvent magnetic Laplacian
+    - intrinsic all-order K*log(K) wavenumber-count exponent
+    - strict failure of the naive ordinary orbit product and standard direct-sum Fredholm determinant
+  not_established:
+    - log-prime primitive periods or von-Mangoldt weights
+    - regularized same-object determinant or trace formula
+    - correct leading coefficient, completed-xi divisor, or functional equation
+    - a canonical geometric interpretation of abstract spectral conjugation
+    - Route B, Hilbert-Polya, or RH
+blocking_conditions:
+  - primitive metric periods accumulate at zero
+  - ordinary Euler and standard direct-sum Fredholm determinants fail
+  - spectral zeta and wavenumber characteristic determinant are different data types
+  - the unfitted spectral-count coefficient does not match the target
+  - no prime-power trace or completed-xi analytic ledger exists
+next_smallest_test: >-
+  Freeze no tower determinant yet. First derive the entire physical base-component
+  characteristic function at k=0, remove and prove any spurious bond-secular
+  zero with its exact Taylor order, and identify the first nonzero normalized
+  coefficient. Only then test one explicit genus-one relative component product;
+  do not borrow zeros from zeta_H(z) or invoke Route B.
+route_b_invocation_allowed: false

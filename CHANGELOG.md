@@ -5,6 +5,31 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-06
 
+### QG-0001 harmonic magnetic graph-tower prefilter
+
+- Froze an asymmetric magnetic lollipop-theta base graph with squarefree
+  lengths and exact `1/n` metric tower, without prime/zero tables, fitting,
+  unfolding, or spectral rescaling.
+- Certified the exact signed primitive/repetition prefix through topological
+  period six: `10`, `45`, and `330` primitive oriented orbits at periods
+  `2`, `4`, and `6`.
+- Proved that the natural direct-sum magnetic Laplacian is self-adjoint with
+  compact resolvent and has
+  \(N_H(K)=(L_0/\pi)K\log K+O(K)\), while recording that its unfitted leading
+  coefficient is too large by the multiplicative factor `2*L_0`.
+- Added `OBR-012`: the pendant-bounce Euler factors tend to `1/2`, and the
+  explicit standard bond blocks have trace norm tending to `8`; hence the
+  naive product has no finite nonzero value and the direct-sum bond operator
+  is not trace class.
+- Kept the heat/spectral-zeta identity separate from a wavenumber secular
+  divisor. Narrowed the antiunitary claim to exclusion of the inherited local
+  geometric class; an abstract spectral-basis conjugation necessarily exists.
+- Registered Route-A tuple
+  `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)` /
+  `ROUTE_A_EXPLORATORY` with `GO_WITH_LIMITATIONS`. Route B remains closed.
+
+Source state: `ce0d4424a95a9392c9e8755a4a11b1cfcabc0e77`.
+
 ### TH-0001 internal phase caustic obstruction
 
 - Added `OBR-011`: the ordered three-kick internal Hessian has determinant

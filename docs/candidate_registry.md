@@ -259,7 +259,8 @@ latest_evaluation:
 当前状态：
 
 ```text
-Two formal Route-A baselines completed.
+Four formal Route-A candidates are registered: two symbolic baselines,
+`TH-0001`, and `QG-0001`.
 SS-0001 is STOP_SCOPED by the finite-state divisor-count obstruction.
 SS-0002 escapes that finite-state theorem but is STOP_SCOPED by the
 finite-area Selberg/Weyl divisor obstruction.
@@ -298,6 +299,15 @@ tuple is `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` /
 determinant is supplied. `OBR-011` now proves that the ordered three-kick
 kernel cannot be globally reduced to one nondegenerate phase chart; the
 factorized unitary remains valid and Route B remains closed.
+QG-0001 is the first formal magnetic-quantum-graph candidate. It freezes an
+asymmetric squarefree lollipop-theta graph and its exact harmonic `1/n` scale
+tower. The natural direct-sum magnetic Laplacian is self-adjoint with compact
+resolvent and has the target-free all-order count `Theta(K log K)`, but its raw
+coefficient is wrong. `OBR-012` proves that the naive unregularized Euler
+product has no finite nonzero value and that the standard direct-sum bond
+operator is not trace class. Its Route-A tuple is
+`(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)` /
+`ROUTE_A_EXPLORATORY` with `GO_WITH_LIMITATIONS`; Route B remains closed.
 No candidate has entered Route B.
 ```
 
@@ -373,6 +383,7 @@ Twisted Hénon / kicked-symplectic object for a low-cost Route-A prefilter.
 
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
+| QG-0001 | Harmonic magnetic lollipop-theta graph tower | `ANALYTIC_REVIEW` (orbit cutoff <=6) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)` / `ROUTE_A_EXPLORATORY` | Not invoked | Natural compact-resolvent magnetic Laplacian and intrinsic `Theta(K log K)` wavenumber count | Periods accumulate at zero; naive Euler product and direct-sum trace class fail; raw coefficient is wrong | Audit the physical base characteristic function at `k=0` before freezing any regularized tower product |
 | TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, unitary FIO lift, and exact internal-caustic obstruction | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear antiunitary audit | Stop phase sub-audit; reopen only with an explicit multi-chart phase/Maslov ledger |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
 | SS-0002 | Countable-state symbolic suspension / modular transfer operator | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_REJECTED` | Not invoked | Exact C6 holonomy, nuclear Fredholm determinant, Selberg identity, and natural Laplacian | Same determinant has at least `Omega(T^2)` Selberg spectral zeros, not `Theta(T log T)` | Define one explicit non-Selberg nuclear object and prove its own divisor-count regime before assigning SS-0003 |
@@ -382,6 +393,158 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 | Control ID | Role | Control verdict | Candidate scope | Strongest evidence | Main limitation |
 |---|---|---|---|---|---|
 | CTRL-0001 | Four-channel q-Pochhammer Fredholm A2 positive control | `GO_WITH_LIMITATIONS` | `STOP_SCOPED`; not a formal candidate | Independent direct-product winding and Fredholm-coefficient root discovery pass all frozen gates, including balanced corruption and executable ledger controls | Sampled winding is a numerical anti-alias diagnostic, not an interval proof; engineered factors have no natural prime orbit or completed-xi structure |
+
+---
+
+## QG-0001 — Harmonic magnetic lollipop-theta tower
+
+### Identity
+
+- **Family:** Low-complexity magnetic quantum graph
+- **Parent clue:** `CLUE-A4-003`
+- **Created:** 2026-08-06
+- **Current status:** `ANALYTIC_REVIEW` (primitive directed-bond prefix complete only through topological period six)
+- **Owner:** sole main research agent
+- **Branch:** `main`
+- **Latest source commit:** `ce0d4424a95a9392c9e8755a4a11b1cfcabc0e77`
+- **Uses prime table:** `false`
+- **Uses zero table:** `false`
+
+### Exact definition
+
+The base graph has three `L--R` edges and one `L--D` pendant:
+
+\[
+(\ell_0,\ell_1,\ell_2,\ell_3)=(1,\sqrt2,\sqrt3,\sqrt5),
+\qquad
+(\alpha_0,\alpha_1,\alpha_2,\alpha_3)
+=\left(0,\frac\pi3,\frac{2\pi}3,0\right).
+\]
+
+Vertices `L,R` have covariant Kirchhoff conditions of degrees four and
+three; `D` is Dirichlet. Component `n>=1` scales every metric length by
+`1/n` while keeping the listed L-outward magnetic line integrals fixed. The
+candidate is the disjoint union of all components. Its raw orbit clock is
+metric length and its quantum spectral variable is positive wavenumber
+`K=sqrt(lambda)`.
+
+### Source lock
+
+```text
+configs/source_locks/QG-0001.yaml
+```
+
+The determinant convention is `NOT_OPENED`. Prime/zero tables, fitted graph
+scales, nonlinear clock changes, silent product regularization, and promotion
+of the heat/spectral zeta to a characteristic determinant are forbidden.
+
+### Route-A status
+
+```yaml
+a1: A1_WEAK
+a2: A2_FAIL
+a3: A3_FAIL
+a4: A4_UNITARY_OR_SCATTERING_CANDIDATE
+overall: ROUTE_A_EXPLORATORY
+scoped_verdict: GO_WITH_LIMITATIONS
+latest_evaluation: evaluations/route_a/QG-0001/20260806T090351Z.yaml
+```
+
+### Route-B status
+
+```yaml
+b1: NOT_INVOKED
+b2: NOT_INVOKED
+b3: NOT_INVOKED
+b4: NOT_INVOKED
+b5: NOT_INVOKED
+overall: NOT_INVOKED
+latest_evaluation: null
+```
+
+### Positive evidence
+
+- Exact exhaustive enumeration gives 10, 45, and 330 primitive oriented
+  orbits at topological periods 2, 4, and 6. Direct based-word traces agree
+  with the primitive/repetition ledger at every period through six.
+- The asymmetric degree/boundary decoration has only the identity graph
+  automorphism, and the flux class is not gauge equivalent to its negative;
+  the inherited local geometric antiunitary class is excluded.
+- Closed magnetic forms define self-adjoint component Laplacians with
+  \(H_n\simeq n^2H_1\). The Dirichlet terminal gives a positive base gap;
+  together with this exact scaling, it makes the direct-sum resolvent compact.
+- With `L_0=1+sqrt(2)+sqrt(3)+sqrt(5)`, the positive-wavenumber count is
+
+  \[
+  N_H(K)=\frac{L_0}{\pi}K\log K+O(K).
+  \]
+
+  Thus the target `K log K` exponent arises without arithmetic target data.
+
+### Failed controls and known obstructions
+
+- Primitive metric periods `L_p/n` accumulate at zero and have no
+  log-prime or von-Mangoldt law.
+- The exact pendant bounce has weight `1/2` and period `2*sqrt(5)/n`.
+  Therefore the naive Euler product has no finite nonzero value. For the
+  standard component bond block, the trace norm tends to `8`, so its direct
+  sum is not trace class and has no standard Fredholm determinant (`OBR-012`).
+- The raw counting coefficient is larger than the positive Riemann-zero
+  coefficient by the factor `2*L_0 ~= 12.7646646949`; no rescaling is permitted.
+- The identity `zeta_H(z)=zeta(2z)*zeta_H1(z)`
+  is a heat/spectral-zeta identity in the exponent variable, not a secular
+  divisor in `K`.
+- An abstract spectral-basis conjugation necessarily exists for this
+  self-adjoint compact-resolvent operator, but no local, geometric, or
+  orbit-reversal interpretation is asserted. A regularized determinant,
+  prime-power trace formula, completed-ξ structure, and Route B remain open.
+
+### Reproduction
+
+```bash
+python3 experiments/qg_0001_harmonic_magnetic_tower.py \
+  --quiet \
+  --output artifacts/qg_0001/route_a_prefilter.json
+python3 -m unittest -v tests/test_qg_0001_harmonic_magnetic_tower.py
+python3 -m unittest discover -v
+```
+
+### Artifacts
+
+```text
+configs/source_locks/QG-0001.yaml
+evaluations/route_a/QG-0001/20260806T090351Z.yaml
+experiments/qg_0001_harmonic_magnetic_tower.py
+artifacts/qg_0001/route_a_prefilter.json
+formal/results/qg_0001_harmonic_magnetic_tower.md
+formal/obstructions/harmonic_graph_tower_naive_determinant.md
+tests/test_qg_0001_harmonic_magnetic_tower.py
+```
+
+### Claim boundary
+
+**Established:** one explicit target-free infinite magnetic graph, an exact
+signed/oriented primitive prefix, the local geometric antiunitary obstruction,
+a natural self-adjoint compact-resolvent operator, the all-order `K log K`
+counting exponent, failure of the naive Euler product, and failure of trace
+class for the standard direct-sum bond operator.
+
+**Not established:** an arithmetic orbit law, a regularized same-object
+determinant, the correct leading coefficient, a completed-ξ divisor, Route B,
+Hilbert–Pólya, or RH.
+
+### Next smallest test
+
+Derive the entire physical base-component characteristic function at `k=0`,
+prove the order and removal of any spurious bond-secular zero, and identify
+the first nonzero normalized Taylor coefficient. Only then test one explicit
+genus-one relative component product; do not borrow spectral-zeta zeros.
+
+### Decision history
+
+| Date | Previous state | New state | Evidence | Commit | Reviewer |
+|---|---|---|---|---|---|
+| 2026-08-06 | `GENERATED` | `ANALYTIC_REVIEW` | Exact Route-A structural prefilter; intrinsic `K log K` count and `OBR-012` | `ce0d4424a95a9392c9e8755a4a11b1cfcabc0e77` | sole main research agent |
 
 ---
 
@@ -912,7 +1075,7 @@ numerical zero match. Do not allocate `SS-0003` before that object is explicit.
 ### Family A — Twisted Hénon / kicked symplectic maps
 
 ```text
-Status: clue activated for source-lock inspection; no explicit object or candidate ID yet
+Status: TH-0001 is active in analytic review
 Expected Route-A focus: A1, A4
 Main risk: generic GUE without arithmetic orbit structure
 ```
@@ -920,7 +1083,7 @@ Main risk: generic GUE without arithmetic orbit structure
 ### Family B — Higher-memory symbolic suspension
 
 ```text
-Status: clue only
+Status: SS-0001 and SS-0002 are STOP_SCOPED under OBR-005 and OBR-006
 Expected Route-A focus: A1, A2, A3
 Main risk: hidden direct encoding of primes
 ```
@@ -928,7 +1091,7 @@ Main risk: hidden direct encoding of primes
 ### Family C — Low-complexity magnetic quantum graphs
 
 ```text
-Status: clue only
+Status: QG-0001 is active in analytic review
 Expected Route-A focus: A1, A2, A4
 Main risk: edge lengths chosen post hoc as log primes
 ```

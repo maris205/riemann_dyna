@@ -834,7 +834,7 @@ Artifacts:
 
 **来源：** 旧 RH direct annular route  
 **证据：** `OPEN`，但已有明确闭合条件  
-**状态：** `PROMISING`  
+**状态：** `PROMISING`
 **对应层：** `A3`
 
 ### 内容
@@ -1021,7 +1021,7 @@ mechanism，而不能仅以“存在 Fredholm determinant”为成功标准。
 
 **来源：** exact trace formula 思路  
 **证据：** `HEURISTIC`  
-**状态：** `PROMISING`  
+**状态：** `ACTIVE` — `QG-0001` harmonic magnetic tower in analytic review
 **对应层：** `A1`, `A2`, `A4`, `B1`, `B4`
 
 ### 内容
@@ -1035,6 +1035,24 @@ Quantum graph 的 primitive cycles、magnetic phases 和 secular determinant 使
 ### 最小测试
 
 搜索低复杂度 graph grammar，使边长或 cycle length 由生成规则产生，而不是逐个输入。
+
+### 2026-08-06 harmonic-tower activation
+
+`QG-0001` freezes one target-free escape from the already-known finite-graph
+`OBR-005` class. A fixed asymmetric magnetic lollipop-theta graph with
+squarefree lengths is replicated at exact metric scale `1/n`. Its natural
+direct-sum magnetic Laplacian has compact resolvent and
+
+\[
+N_H(K)=\frac{1+\sqrt2+\sqrt3+\sqrt5}{\pi}K\log K+O(K),
+\]
+
+so the target counting exponent arises without prime or zero lookup. The raw
+coefficient does not match. `OBR-012` proves that the naive unregularized Euler
+product has no finite nonzero value and that the standard direct-sum bond
+operator is not trace class. The next test is only the physical base
+characteristic function at `k=0`; no determinant regularization or Route B is
+yet authorized.
 
 ---
 
@@ -1184,9 +1202,9 @@ e^{q(E)}
 
 ## Priority 1 — 最值得并行的三条 Route-A 路线
 
-1. Twisted Hénon / kicked symplectic maps  
-2. Higher-memory symbolic suspension  
-3. Low-complexity magnetic quantum graphs  
+1. Twisted Hénon / kicked symplectic maps
+2. Higher-memory symbolic suspension
+3. Low-complexity magnetic quantum graphs (`QG-0001` active)
 
 ## Priority 2 — 旧 RH 解析纵深
 
@@ -1534,4 +1552,19 @@ commit: "a4cb10640c44559f0520386d9c84e65c9b873134"
 evaluation: "evaluations/route_a/TH-0001/20260806T053410Z.yaml"
 obstruction: "OBR-011"
 consequence: "A global single reduced phase and global Maslov index are blocked in the current chart, while the ordered oscillatory integral and factorized L2-unitarity remain valid. Do not infer an orbit phase from signed multipliers. Stop this sub-audit unless a multi-chart caustic-transition ledger is explicitly frozen; Route B remains closed."
+```
+
+## Status update — CLUE-A4-003 QG-0001 harmonic magnetic tower
+
+```yaml
+date: 2026-08-06
+clue_id: CLUE-A4-003
+old_status: PROMISING
+new_status: ACTIVE
+candidate_id: QG-0001
+evidence: "Exact signed primitive/repetition prefix, natural compact-resolvent magnetic Laplacian, and target-free N(K)=(L0/pi)K*log(K)+O(K) theorem"
+commit: "ce0d4424a95a9392c9e8755a4a11b1cfcabc0e77"
+evaluation: "evaluations/route_a/QG-0001/20260806T090351Z.yaml"
+obstruction: "OBR-012"
+consequence: "The harmonic scale tower escapes the fixed finite-graph O(T) count and naturally produces the target counting exponent, but its raw coefficient is wrong and its primitive periods accumulate at zero. The pendant bounce proves that the naive Euler product has no finite nonzero value, while the explicit standard bond blocks have trace norm tending to 8 and hence no trace-class direct sum. Keep heat/spectral zeta separate from a secular divisor; next audit only the physical base characteristic function at k=0. Route B remains closed."
 ```

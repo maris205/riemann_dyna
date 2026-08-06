@@ -1,6 +1,161 @@
 # HP-Dynamics Handoff
 
-## Current status — TH-0001 same-order unitary FIO lift
+## Current status — QG-0001 harmonic magnetic graph-tower prefilter
+
+Current clue: `CLUE-A4-003`.
+
+Candidate ID: `QG-0001` — harmonic magnetic lollipop-theta tower.
+
+- Formal candidate: `true`
+- Candidate state: `ANALYTIC_REVIEW` (primitive directed-bond cutoff `<=6`)
+- Source commit: `ce0d4424a95a9392c9e8755a4a11b1cfcabc0e77`
+- Source lock: `configs/source_locks/QG-0001.yaml`
+- Route-A evaluation:
+  `evaluations/route_a/QG-0001/20260806T090351Z.yaml`
+- Route-A tuple:
+  `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)`
+- Overall Route A: `ROUTE_A_EXPLORATORY`
+- Route-B tuple: `(NOT_INVOKED, NOT_INVOKED, NOT_INVOKED, NOT_INVOKED, NOT_INVOKED)`
+- Scoped verdict: `GO_WITH_LIMITATIONS`
+- Route B: inactive and not authorized
+
+### Source lock
+
+The base graph has three `L--R` edges and one `L--D` pendant with frozen
+lengths and `L`-outward magnetic line integrals
+
+\[
+(\ell_0,\ell_1,\ell_2,\ell_3)=(1,\sqrt2,\sqrt3,\sqrt5),
+\qquad
+(\alpha_0,\alpha_1,\alpha_2,\alpha_3)
+=\left(0,\frac\pi3,\frac{2\pi}3,0\right).
+\]
+
+`L,R` have covariant Kirchhoff conditions of degrees four and three, and `D`
+is Dirichlet. Component `n` is the exact `1/n` metric scaling with fixed edge
+phases. Raw metric length and positive wavenumber `K=sqrt(lambda)` are the only
+clocks. No arithmetic table, fit, scale, offset, unfolding, nonlinear clock,
+or determinant regularization is permitted. The determinant convention is
+`NOT_OPENED`.
+
+### Route-A result
+
+- `A1_WEAK`: exact signed/oriented primitive counts are `10`, `45`, and `330`
+  at topological periods `2`, `4`, and `6`; all trace/repetition identities
+  through period six pass exactly.
+- `A2_FAIL`: the pendant bounce gives Euler factors tending to `1/2`. For the
+  standard directed-bond block,
+
+  \[
+  B_n(s)=S\,\operatorname{diag}_b
+  \left(e^{-s\ell_b/n+i\alpha_b}\right),
+  \qquad \lVert B_n(s)\rVert_1\to8,
+  \]
+
+  so the naive product has no finite nonzero value and the direct sum is not
+  trace class (`OBR-012`).
+- `A3_FAIL`: the natural operator count is
+
+  \[
+  N_H(K)=\frac{1+\sqrt2+\sqrt3+\sqrt5}{\pi}K\log K+O(K),
+  \]
+
+  but its coefficient is wrong by the multiplicative factor
+  `12.764664694883523`, and no characteristic determinant or completed-ξ
+  analytic ledger exists.
+- `A4_UNITARY_OR_SCATTERING_CANDIDATE`: the component and direct-sum magnetic
+  Laplacians are self-adjoint; \(H_n\simeq n^2H_1\), the base gap is positive,
+  and the direct sum has compact resolvent. The inherited local geometric
+  antiunitary class is excluded.
+
+### Strongest evidence
+
+The target-free `1/n` grammar produces a genuine all-order `K log K`
+wavenumber count and compact resolvent, with exact signed primitive/repetition
+data and no use of prime or zero tables.
+
+### Strongest failure
+
+Periods accumulate at zero; no arithmetic orbit law or von-Mangoldt weights
+appear; the naive Euler product and standard direct-sum Fredholm construction
+fail; and the raw counting coefficient is wrong. The separate identity
+`zeta_H(z)=zeta(2z)*zeta_H1(z)` is a spectral-zeta identity, not a wavenumber
+secular divisor.
+
+### New reusable knowledge
+
+A harmonic graph tower can escape the fixed finite-graph `O(K)` count while
+failing determinant existence at the shortest orbit. Counting order,
+trace-class eligibility, and divisor type must be kept separate. An abstract
+spectral-basis conjugation exists for every self-adjoint compact-resolvent
+operator; the proved symmetry statement excludes only the inherited local
+geometric class and gives no abstract antiunitary exclusion.
+
+### Updated files
+
+- `configs/source_locks/QG-0001.yaml`
+- `experiments/qg_0001_harmonic_magnetic_tower.py`
+- `artifacts/qg_0001/route_a_prefilter.json`
+- `formal/results/qg_0001_harmonic_magnetic_tower.md`
+- `formal/obstructions/harmonic_graph_tower_naive_determinant.md`
+- `tests/test_qg_0001_harmonic_magnetic_tower.py`
+- `evaluations/route_a/QG-0001/20260806T090351Z.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests
+
+- Focused QG-0001 suite: `8/8 passed` (`0.234 s`).
+- Full repository suite: `209/209 passed` (`61.312 s`).
+- YAML parse, byte-reproduction gate, and `git diff --check`: passed.
+
+### Reproduction commands
+
+```bash
+git status --short --branch
+git pull --rebase origin main
+python3 experiments/qg_0001_harmonic_magnetic_tower.py \
+  --quiet \
+  --output artifacts/qg_0001/route_a_prefilter.json
+python3 -m unittest -v tests/test_qg_0001_harmonic_magnetic_tower.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; p="evaluations/route_a/QG-0001/20260806T090351Z.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["a1"]["verdict"], d["a2"]["verdict"], d["route_b_invocation_allowed"])'
+sha256sum artifacts/qg_0001/route_a_prefilter.json \
+  experiments/qg_0001_harmonic_magnetic_tower.py \
+  configs/source_locks/QG-0001.yaml \
+  formal/results/qg_0001_harmonic_magnetic_tower.md \
+  formal/obstructions/harmonic_graph_tower_naive_determinant.md \
+  tests/test_qg_0001_harmonic_magnetic_tower.py
+git diff --check
+```
+
+### Claim boundary
+
+Established: the frozen graph tower, exact primitive prefix, inherited local
+geometric antiunitary obstruction, self-adjoint compact-resolvent natural
+operator, intrinsic `K log K` counting exponent, and `OBR-012`.
+
+Not established: a log-prime orbit law, von-Mangoldt trace weights, a
+same-object regularized determinant, the correct coefficient, completed-ξ
+divisor, Route B, Hilbert–Pólya, or RH.
+
+### Next smallest task
+
+Derive the entire physical base-component characteristic function at `k=0`,
+prove the exact order and removal of every spurious bond-secular zero, and
+identify the first nonzero normalized Taylor coefficient. Only after that may
+one explicit genus-one relative component product be frozen. Do not borrow
+spectral-zeta zeros and do not invoke Route B.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`.
+
+## Previous checkpoint — TH-0001 same-order unitary FIO lift
 
 Current clue: `CLUE-A4-001`.
 

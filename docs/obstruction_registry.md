@@ -579,3 +579,67 @@ Artifacts:
 - `formal/obstructions/th_0001_single_phase_caustic.md`
 - `evaluations/route_a/TH-0001/20260806T053410Z.yaml`
 - `tests/test_th_0001_phase_caustic_audit.py`
+
+---
+
+## OBR-012 — Harmonic short-orbit towers have no naive ordinary determinant
+
+Status:
+PROVED_OBSTRUCTION
+
+Source:
+`CLUE-A4-003` / `QG-0001` /
+`formal/obstructions/harmonic_graph_tower_naive_determinant.md`
+
+Statement:
+Suppose a tower repeats a primitive orbit of fixed nonzero weight \(w\) with
+component-\(n\) period \(L/n\). Its ordinary Euler product contains
+
+\[
+\prod_{n\geq1}\left(1-we^{-sL/n}\right).
+\]
+
+The factors tend to \(1-w\ne1\), so the product cannot converge to a finite
+nonzero ordinary determinant. For the standard directed-bond convention,
+
+\[
+B_n(s)=S\,\operatorname{diag}_b
+\left(e^{-s\ell_b/n+i\alpha_b}\right)
+\longrightarrow
+S\,\operatorname{diag}_b(e^{i\alpha_b})
+\]
+
+in finite-dimensional trace norm. The limiting QG-0001 block is unitary on
+eight directed bonds, so \(\lVert B_n(s)\rVert_1\to8\). Its direct sum is not
+compact or trace class and therefore has no standard Fredholm determinant.
+
+QG-0001 witness:
+The pendant bounce has exact signed scattering weight \(w=1/2\), phase zero,
+and period \(2\sqrt5/n\). Therefore its subproduct factors tend exactly to
+\(1/2\).
+
+Impact:
+An intrinsic \(K\log K\) operator counting law does not by itself provide a
+Route-A determinant. Do not silently turn the divergent component product
+into a Weierstrass, relative, or zeta-regularized determinant, and do not
+promote the separate heat/spectral-zeta identity to a secular divisor.
+
+Scope:
+Naive unregularized Euler products and standard trace-class Fredholm
+determinants for towers with repeated nonzero orbit weights and periods
+scaling as \(L/n\).
+
+Reopening condition:
+Freeze one explicit same-object regularization, its local counterterms,
+primitive/repetition trace identity, characteristic variable, and divisor.
+Prove normal convergence and compatibility with the natural graph operator.
+
+Artifacts:
+
+- `configs/source_locks/QG-0001.yaml`
+- `experiments/qg_0001_harmonic_magnetic_tower.py`
+- `artifacts/qg_0001/route_a_prefilter.json`
+- `formal/results/qg_0001_harmonic_magnetic_tower.md`
+- `formal/obstructions/harmonic_graph_tower_naive_determinant.md`
+- `evaluations/route_a/QG-0001/20260806T090351Z.yaml`
+- `tests/test_qg_0001_harmonic_magnetic_tower.py`

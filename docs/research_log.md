@@ -2326,6 +2326,176 @@ Fredholm zeros, target divisors, or Route B in that task.
 
 Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped theorem).
 
+## 2026-08-06 — QG-0001 harmonic magnetic graph-tower prefilter
+
+### Stable checkpoint
+
+Current clue: `CLUE-A4-003`.
+
+Candidate ID: `QG-0001` — harmonic magnetic lollipop-theta tower.
+
+- Formal candidate: `true`
+- Candidate state: `ANALYTIC_REVIEW` (primitive directed-bond cutoff `<=6`)
+- Source commit: `ce0d4424a95a9392c9e8755a4a11b1cfcabc0e77`
+- Source lock: `configs/source_locks/QG-0001.yaml`
+- Route-A evaluation:
+  `evaluations/route_a/QG-0001/20260806T090351Z.yaml`
+- Route-A tuple:
+  `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)`
+- Overall Route A: `ROUTE_A_EXPLORATORY`
+- Scoped verdict: `GO_WITH_LIMITATIONS`
+- Route-B tuple: not evaluated; Route B is inactive and not authorized
+
+### Source lock
+
+The base graph has three `L--R` edges and one `L--D` pendant, with
+
+\[
+(\ell_0,\ell_1,\ell_2,\ell_3)=(1,\sqrt2,\sqrt3,\sqrt5),
+\qquad
+(\alpha_0,\alpha_1,\alpha_2,\alpha_3)
+=\left(0,\frac\pi3,\frac{2\pi}3,0\right),
+\]
+
+where the second tuple is the fixed `L`-outward magnetic line-integral
+representative. `L,R` carry covariant Kirchhoff conditions of degrees four
+and three, and `D` is Dirichlet. Component `n` scales all metric lengths by
+`1/n` without changing these line integrals. The only clocks are raw metric
+length and positive wavenumber `K=sqrt(lambda)`. No prime table, zero table,
+fit, rescaling, unfolding, or nonlinear clock is permitted.
+
+The determinant convention remains `NOT_OPENED`. The ordinary Euler product,
+standard directed-bond direct sum, heat/spectral zeta, and any future
+regularized characteristic determinant are distinct ledgers.
+
+### Route-A tuple and strongest evidence
+
+- `A1_WEAK`: exact enumeration gives `10`, `45`, and `330` primitive oriented
+  orbits at topological periods `2`, `4`, and `6`. Every exact based-word trace
+  agrees with the primitive/repetition ledger through period six, with signed
+  rational scattering amplitudes and magnetic phases retained.
+- `A2_FAIL`: the pendant bounce has weight `1/2` and period
+  `2*sqrt(5)/n`, so the naive Euler factors tend to `1/2`, not `1`. For the
+  standard block
+
+  \[
+  B_n(s)=S\,\operatorname{diag}_b
+  \left(e^{-s\ell_b/n+i\alpha_b}\right),
+  \qquad \lVert B_n(s)\rVert_1\longrightarrow8,
+  \]
+
+  so the direct sum is not compact or trace class. This is `OBR-012`.
+- `A3_FAIL`: the natural operator has the exact all-order count
+
+  \[
+  N_H(K)=\frac{L_0}{\pi}K\log K+O(K),
+  \qquad L_0=1+\sqrt2+\sqrt3+\sqrt5,
+  \]
+
+  but this is an operator count, not a determinant theorem. Its coefficient
+  is larger than the positive Riemann-zero coefficient by the unfitted factor
+  `2*L_0 = 12.764664694883523`.
+- `A4_UNITARY_OR_SCATTERING_CANDIDATE`: closed magnetic forms give
+  self-adjoint components with \(H_n\simeq n^2H_1\). The positive base gap
+  and exact scaling make the direct-sum resolvent compact. The asymmetric
+  decoration and flux class exclude the inherited local geometric
+  antiunitary class.
+
+### Strongest failure and reusable knowledge
+
+The primitive metric periods accumulate at zero, no log-prime or
+von-Mangoldt law is present, and neither a same-object regularized determinant
+nor a prime-power trace formula exists. The heat/spectral identity
+
+\[
+\zeta_H(z)=\zeta(2z)\zeta_{H_1}(z)
+\]
+
+is in the exponent variable and is not a wavenumber secular divisor.
+
+Reusable structural knowledge: a harmonic `1/n` graph tower can naturally
+produce compact resolvent and a `K log K` count, escaping the fixed finite-graph
+`O(K)` obstruction, while simultaneously destroying its naive short-orbit
+Euler/Fredholm construction. Counting order and determinant existence must be
+audited separately. Also, every self-adjoint compact-resolvent operator admits
+an abstract spectral-basis conjugation; excluding the local geometric class
+does not exclude that abstract antiunitary or give it an orbit interpretation.
+
+### Updated files
+
+- `configs/source_locks/QG-0001.yaml`
+- `experiments/qg_0001_harmonic_magnetic_tower.py`
+- `artifacts/qg_0001/route_a_prefilter.json`
+- `formal/results/qg_0001_harmonic_magnetic_tower.md`
+- `formal/obstructions/harmonic_graph_tower_naive_determinant.md`
+- `tests/test_qg_0001_harmonic_magnetic_tower.py`
+- `evaluations/route_a/QG-0001/20260806T090351Z.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+- Focused QG-0001 suite: `8/8 passed` (`0.234 s`).
+- Full repository suite: `209/209 passed` (`61.312 s`).
+- Source lock and evaluation YAML parse successfully.
+- Saved artifact is byte reproducible.
+
+```bash
+git status --short --branch
+git pull --rebase origin main
+python3 experiments/qg_0001_harmonic_magnetic_tower.py \
+  --quiet \
+  --output artifacts/qg_0001/route_a_prefilter.json
+python3 -m unittest -v tests/test_qg_0001_harmonic_magnetic_tower.py
+python3 -m unittest discover -v
+python3 -c 'import yaml; p="evaluations/route_a/QG-0001/20260806T090351Z.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["a1"]["verdict"], d["a2"]["verdict"], d["route_b_invocation_allowed"])'
+sha256sum artifacts/qg_0001/route_a_prefilter.json \
+  experiments/qg_0001_harmonic_magnetic_tower.py \
+  configs/source_locks/QG-0001.yaml \
+  formal/results/qg_0001_harmonic_magnetic_tower.md \
+  formal/obstructions/harmonic_graph_tower_naive_determinant.md \
+  tests/test_qg_0001_harmonic_magnetic_tower.py
+git diff --check
+```
+
+Hashes:
+
+```text
+ff0d55a1d42a3e0eeb6e1e9efa0b62bc09ab7aa864ee1d2d126c96d0d0650915  artifacts/qg_0001/route_a_prefilter.json
+dbc44342748104cf445d87c71340576a61a233b31b8cc754b01f316de7febd43  experiments/qg_0001_harmonic_magnetic_tower.py
+3d9593c0f69a958109460e51b2ea6d6e88e869fe05ec7bcc12912082258dab4a  configs/source_locks/QG-0001.yaml
+e57dab9366eb01fa2a642f46b71bf70d9b5717342514696bb30adab2ae850c43  formal/results/qg_0001_harmonic_magnetic_tower.md
+c94da645af34705d9393d8b34fd5a63fc0c541fba7441f77f1c0de027050687b  formal/obstructions/harmonic_graph_tower_naive_determinant.md
+9ce664235ee49c944b17b4ec542309f92171ad6b6b7cdda1714498f006e5d8bf  tests/test_qg_0001_harmonic_magnetic_tower.py
+```
+
+### Claim boundary and next smallest task
+
+Established: one explicit target-free harmonic magnetic graph tower; its exact
+signed primitive/repetition prefix through period six; exclusion of the
+inherited local geometric antiunitary class; a natural self-adjoint
+compact-resolvent operator; the intrinsic `K log K` counting exponent; and
+failure of both the naive unregularized Euler product and trace class for the
+standard direct-sum bond operator.
+
+Not established: an arithmetic orbit law, a same-object regularized
+determinant, the correct leading coefficient, a prime-power trace formula,
+completed-ξ structure, Route B, Hilbert–Pólya, or RH.
+
+Next smallest task: derive the entire physical base-component characteristic
+function at `k=0`, prove the order and removal of every spurious bond-secular
+zero, and identify the first nonzero normalized Taylor coefficient. Only then
+may one explicit genus-one relative component product be frozen. Do not borrow
+zeros from `zeta_H(z)` and do not invoke Route B.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`.
+
 ## 2026-08-06 — TH-0001 internal phase caustic obstruction
 
 ### Stable checkpoint
