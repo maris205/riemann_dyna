@@ -1,0 +1,81 @@
+candidate_id: TH-0001
+audit_id: TH-0001-A4-FIO-001
+clue_id: CLUE-A4-001
+title: Same-order Fourier-integral quantization and natural antiunitary audit
+parent_source_commit: 0fd46b22118043cb931ecfa3c091f93e42f50711
+mathematical_object:
+  phase_space: "R^2 with coordinates (q,p) and symplectic form dq wedge dp"
+  micro_map: "F_a(q,p)=(1-a*q^2-p,q)"
+  micro_generating_function: "S_a(q,Q)=q*Q-q+(a/3)*q^3"
+  micro_operator: >-
+    U_a=F_+ M_a on L^2(R), where (F_+ psi)(Q)=(2*pi)^(-1/2)
+    integral exp(+i*q*Q) psi(q)dq and (M_a psi)(q)=exp(i*V_a(q))psi(q),
+    V_a(q)=-q+(a/3)*q^3.
+  superoperator: "U=U_(5/2) U_(3/2) U_(1/2)"
+  antiunitary: "C psi=conjugate(psi), A=F_+ C"
+parameter_provenance:
+  status: INHERITED_MODELING_CHOICE
+  rule: >-
+    Reuse the already frozen target-free half-integer ramp and the same ordered
+    three-kick superstep. No new parameter is selected from a spectrum or target
+    table.
+data_type:
+  primary: >-
+    Exact operator identities on the Schwartz core, Plancherel unitarity of
+    F_+, modulus-one multiplication, exact generating-function relations,
+    polynomial word/order ledgers, and rational noncommutation witnesses.
+  numerical: "none; no discretized operator, eigenvalue, spectrum, or quadrature is used"
+clock:
+  candidate_clock: "one application of G, represented by U=U_(5/2)U_(3/2)U_(1/2)"
+  micro_kick_count_per_clock: 3
+  forbidden_substitution: >-
+    No individual micro-kick, product phase, finite FFT grid, or static-Hamiltonian
+    branch-unwrapping clock may replace the G superstep.
+normalization:
+  hbar: "1 (dimensionless target-free normalization; identities hold for every hbar>0)"
+  fourier_kernel: "(2*pi)^(-1/2) exp(+i*q*Q)"
+  fio_kernel: "K_a(Q,q)=(2*pi)^(-1/2) exp(i*S_a(q,Q))"
+  global_phase: "1"
+  hilbert_space: "L^2(R,dq)"
+  core: "Schwartz space S(R), with U_a extended by bounded unitarity"
+  boundary_conditions: "none beyond the Lebesgue L^2(R) realization"
+determinant_convention: >-
+  NOT_OPENED. The audit defines no spectral determinant, zeta, reciprocal zeta,
+  logarithmic derivative, trace formula, eigenphase list, or zero comparison.
+cutoff:
+  operator_factors: 3
+  clock_period: 1
+  symmetry_scope: >-
+    Common-parent antiunitary A, its one-kick identities, and the inherited
+    three-kick clock-reflection/cyclic-rotation test only.
+  excluded: "all spectral, determinant, zero, GUE, USTC, and Route-B calculations"
+precision:
+  algebra: "exact rational polynomial and formal Hilbert identities"
+  operator_theory: "Plancherel theorem and bounded multiplication; no numerical approximation"
+  noncommutation_witness: "exact rational parameter witness and polynomial Heisenberg action"
+allowed_data:
+  - "TH-0001 source lock and exact-symplectic generating functions"
+  - "elementary Fourier analysis and Plancherel theorem"
+  - "Schwartz-space q,p operator identities"
+  - "same-object factor order and exact rational word comparisons"
+forbidden_data:
+  - "prime tables, zero tables, xi/zeta values, GUE, or USTC data"
+  - "legacy fitted hbar, spectral anchors, FFT grids, boundary truncations, or eigenphases"
+  - "changing the factor order, hbar normalization, or global phase after the audit"
+  - "calling the formal A failure a proof that every antiunitary reversor is absent"
+  - "Route-B self-adjointness, trace formula, or Hilbert-Polya inference"
+training_split: >-
+  Empty. The operator and antiunitary definitions are inherited directly from
+  the frozen classical object; no target data or parameter fitting occurs.
+validation_split: >-
+  Exact generating-function derivative equations, Fourier normalization, modulus
+  one, A^2=I, A U_a A=U_a^-1, and the Heisenberg noncommutation witness.
+test_split: >-
+  Frozen operator word order, reverse-schedule/cyclic-rotation mismatch, exact
+  map witness, artifact byte reproducibility, and explicit non-claims.
+stopping_conditions:
+  - "REVISE if the kernel normalization, generating-function convention, or factor order is inconsistent"
+  - "REVISE if any multiplication factor is not modulus one on the frozen real potential"
+  - "REJECTED if a finite-grid spectrum, target table, fitted hbar, or hidden boundary enters"
+  - "STOP_SCOPED for a claim of absolute antiunitary breaking if an untested natural symmetry is found"
+  - "STOP_SCOPED for Route B, self-adjointness, trace formula, determinant, spectrum, or RH inference"

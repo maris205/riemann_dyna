@@ -1,0 +1,174 @@
+{
+  "antiunitary_audit": {
+    "A_conjugated_product_word": [
+      "U_(5/2)^(-1)",
+      "U_(3/2)^(-1)",
+      "U_(1/2)^(-1)"
+    ],
+    "A_p_A_inverse": "q",
+    "A_q_A_inverse": "p",
+    "A_squared": true,
+    "antiunitary": "A=F_+ C",
+    "arbitrary_antiunitary_reversor": "OPEN",
+    "classical_action": "swap R(q,p)=(p,q)",
+    "complex_conjugation": "C psi=conjugate(psi)",
+    "forward_cyclic_rotations": [
+      [
+        "1/2",
+        "3/2",
+        "5/2"
+      ],
+      [
+        "3/2",
+        "5/2",
+        "1/2"
+      ],
+      [
+        "5/2",
+        "1/2",
+        "3/2"
+      ]
+    ],
+    "forward_operator_word": [
+      "U_(5/2)",
+      "U_(3/2)",
+      "U_(1/2)"
+    ],
+    "forward_word": [
+      "1/2",
+      "3/2",
+      "5/2"
+    ],
+    "fourier_conjugation": "C F_+ C=F_+^(-1)",
+    "inherited_A_reversor_for_product": false,
+    "multiplication_conjugation": "C M_a C=M_a^(-1)",
+    "natural_clock_reflection_reversor": false,
+    "product_inverse_word": [
+      "U_(1/2)^(-1)",
+      "U_(3/2)^(-1)",
+      "U_(5/2)^(-1)"
+    ],
+    "reverse_word": [
+      "5/2",
+      "3/2",
+      "1/2"
+    ],
+    "reverse_word_is_cyclic_rotation": false,
+    "single_kick_reversor": true
+  },
+  "audit_id": "TH-0001-A4-FIO-001",
+  "candidate_id": "TH-0001",
+  "claim_boundary": {
+    "established": [
+      "same-order Fourier-integral factor U_a with frozen positive-real normalization",
+      "exact canonical graph matching each F_a",
+      "each factor and the three-kick product are unitary on L^2(R)",
+      "A=F_+ C is an involutive antiunitary implementing the parent swap",
+      "A reverses each kick but not the non-palindromic three-kick superstep",
+      "inherited cyclic clock-reflection antiunitaries fail"
+    ],
+    "next_smallest_task": "Freeze the next smallest same-object phase/branch convention only if needed; do not compute a spectrum or determinant.",
+    "not_established": [
+      "absence of arbitrary nonlinear or non-geometric antiunitaries",
+      "self-adjoint Hamiltonian, spectral type, or Route B obligations",
+      "any spectrum, determinant, trace formula, zero relation, or RH statement"
+    ]
+  },
+  "clue_id": "CLUE-A4-001",
+  "definition": {
+    "core": "Schwartz space S(R)",
+    "fourier_plus": "(F_+ psi)(Q)=(2*pi)^(-1/2) integral exp(+i*q*Q) psi(q)dq",
+    "global_phase": "1",
+    "hilbert_space": "L^2(R,dq)",
+    "kernel": "K_a(Q,q)=(2*pi)^(-1/2) exp(i*S_a(q,Q))",
+    "micro_operator": "U_a=F_+ M_a",
+    "multiplication": "(M_a psi)(q)=exp(i*V_a(q)) psi(q)",
+    "potential": "V_a(q)=-q+(a/3)*q^3",
+    "superoperator": "U=U_(5/2) U_(3/2) U_(1/2)"
+  },
+  "exact_order_controls": {
+    "G_inverse_origin": [
+      "-1/2",
+      "-1/8"
+    ],
+    "R_G_R_origin": [
+      "-1/2",
+      "-5/8"
+    ],
+    "forward_origin": [
+      "-5/8",
+      "-1/2"
+    ],
+    "noncommutation_pair": {
+      "Ad_U_a_U_b_on_q": "-p**2/2 - q + 1",
+      "Ad_U_b_U_a_on_q": "-3*p**2/2 - q + 1",
+      "difference": "-p**2",
+      "nonzero_for_frozen_a_b": true
+    },
+    "reverse_origin": [
+      "-1/8",
+      "-1/2"
+    ],
+    "swap_reversor_witness_differs": true
+  },
+  "generating_function_audit": {
+    "canonical_graph": "p=-d_q S_a, P=d_Q S_a gives Q=1-a*q^2-p, P=q",
+    "derivatives": {
+      "1/2": {
+        "dQ_S": "q",
+        "minus_dq_S": "-Q - q**2/2 + 1",
+        "mixed_hessian": "1",
+        "solved_P": "q",
+        "solved_Q": "-p - q**2/2 + 1"
+      },
+      "3/2": {
+        "dQ_S": "q",
+        "minus_dq_S": "-Q - 3*q**2/2 + 1",
+        "mixed_hessian": "1",
+        "solved_P": "q",
+        "solved_Q": "-p - 3*q**2/2 + 1"
+      },
+      "5/2": {
+        "dQ_S": "q",
+        "minus_dq_S": "-Q - 5*q**2/2 + 1",
+        "mixed_hessian": "1",
+        "solved_P": "q",
+        "solved_Q": "-p - 5*q**2/2 + 1"
+      }
+    },
+    "functions": {
+      "1/2": "Q*q + q**3/6 - q",
+      "3/2": "Q*q + q**3/2 - q",
+      "5/2": "Q*q + 5*q**3/6 - q"
+    },
+    "mixed_hessian_exact": true,
+    "mixed_hessian_value": "1"
+  },
+  "hbar": "1",
+  "route_a_a4": {
+    "evidence_status": "PROVED",
+    "natural_antiunitary_inherited_class_audited": true,
+    "operator_everywhere_defined": true,
+    "route_b_ready": false,
+    "same_clock": true,
+    "unitary_product": true,
+    "verdict": "A4_NATURAL_QUANTIZATION"
+  },
+  "source_lock": "configs/source_locks/TH-0001-FIO.yaml",
+  "unitarity_audit": {
+    "caustic_warning": "caustic: reduced intermediate Hessian can vanish; factorized operator remains unitary",
+    "each_factor_unitary_on_all_L2": true,
+    "fourier_normalization": "(2*pi)^(-1/2)",
+    "fourier_unitary_by_plancherel": true,
+    "inverse_word": [
+      "U_(1/2)^(-1)",
+      "U_(3/2)^(-1)",
+      "U_(5/2)^(-1)"
+    ],
+    "multiplication_modulus": "|exp(i*V_a(q))|=1",
+    "potential_real_for_frozen_parameters": true,
+    "product_unitary_on_all_L2": true,
+    "spectrum_computed": false,
+    "triple_kernel_status": "iterated oscillatory integral; no absolute-convergence or global single-phase claim"
+  }
+}
