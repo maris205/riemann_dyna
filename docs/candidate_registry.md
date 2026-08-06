@@ -290,11 +290,12 @@ four compact inclusions, and matching-space invariance. It is a `PROVED`
 positive structural prior, not a nuclearity or determinant pass and not a new
 formal candidate.
 TH-0001 is the first formal Hénon-family candidate. It freezes one target-free
-autonomous non-palindromic three-kick superstep and has a complete global
-signed real primitive-orbit prefix through G-period two. Its Route-A tuple is
-`(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_EXPLORATORY` with
-`GO_WITH_LIMITATIONS`; the short UPO result is cutoff-scoped and supplies no
-arithmetic orbit law or determinant. Route B remains closed.
+autonomous non-palindromic three-kick superstep, has a complete global signed
+real primitive-orbit prefix through G-period two, and now has a proved
+same-order unitary Fourier-integral lift on L2(R). Its superseding Route-A
+tuple is `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` /
+`ROUTE_A_EXPLORATORY` with `GO_WITH_LIMITATIONS`; no arithmetic orbit law or
+determinant is supplied, and Route B remains closed.
 No candidate has entered Route B.
 ```
 
@@ -370,7 +371,7 @@ Twisted Hénon / kicked-symplectic object for a low-cost Route-A prefilter.
 
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
-| TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `UPO_PASSED` (G-period <=2 scope) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, affine-reversor obstruction, and complete global signed UPO prefix | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear reversor audit | Freeze same-order Fourier-integral quantization and unitary/antiunitary audit |
+| TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, and proved same-order unitary FIO lift | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear antiunitary audit | Preserve FIO ledger; only add an explicitly frozen phase/Maslov convention if needed |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
 | SS-0002 | Countable-state symbolic suspension / modular transfer operator | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_REJECTED` | Not invoked | Exact C6 holonomy, nuclear Fredholm determinant, Selberg identity, and natural Laplacian | Same determinant has at least `Omega(T^2)` Selberg spectral zeros, not `Theta(T log T)` | Define one explicit non-Selberg nuclear object and prove its own divisor-count regime before assigning SS-0003 |
 
@@ -389,10 +390,10 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Family:** Twisted Hénon / kicked symplectic map
 - **Parent clue:** `CLUE-A4-001`
 - **Created:** 2026-08-06
-- **Current status:** `UPO_PASSED` (strictly scoped to the frozen `G`-period `<=2` prefix)
+- **Current status:** `ANALYTIC_REVIEW` (UPO completeness remains strictly scoped to frozen `G`-period `<=2`)
 - **Owner:** sole main research agent
 - **Branch:** `main`
-- **Latest commit:** `fb69649afbda27006d56471c5680b590f90ba43b`
+- **Latest commit:** `836f5880fac6abfb29ee031e1136e24504e2b0a9`
 - **Uses prime table:** `false`
 - **Uses zero table:** `false`
 
@@ -426,10 +427,10 @@ legacy fitted parameters are forbidden.
 a1: A1_WEAK
 a2: A2_FAIL
 a3: A3_FAIL
-a4: A4_FORMAL_HINT
+a4: A4_NATURAL_QUANTIZATION
 overall: ROUTE_A_EXPLORATORY
 scoped_verdict: GO_WITH_LIMITATIONS
-latest_evaluation: evaluations/route_a/TH-0001/20260806T024238Z.yaml
+latest_evaluation: evaluations/route_a/TH-0001/20260806T045554Z.yaml
 ```
 
 ### Route-B status
@@ -454,6 +455,13 @@ latest_evaluation: null
 - Exact Groebner/Sturm elimination gives four primitive real period-one
   orbits and eight primitive real period-two orbits, globally on \(\mathbb R^2\)
   with no search box or random seed. All 20 phase points are hyperbolic.
+- The same generating functions define
+  \(U_a=\mathcal F_+M_a\) on \(L^2(\mathbb R)\) with positive-real
+  normalization; Plancherel and modulus-one multiplication prove each factor
+  and the ordered three-kick product are everywhere-defined unitaries.
+- The natural parent-swap antiunitary \(A=\mathcal F_+C\) is an involution and
+  reverses each kick, but its inverse word does not reverse the non-palindromic
+  superstep. The inherited cyclic clock-reflection class is excluded.
 
 ### Failed controls and known obstructions
 
@@ -464,6 +472,8 @@ latest_evaluation: null
 - `OBR-010` excludes the audited low-depth legacy one-/two-kick reversible
   subclasses and affine reversors, but arbitrary nonlinear or non-polynomial
   anti-symplectic reversors remain an open obligation.
+- The unitary FIO is a Floquet propagator, not a self-adjoint Hamiltonian;
+  no logarithm branch, spectral type, determinant, or Route-B domain is frozen.
 
 ### Reproduction
 
@@ -479,34 +489,42 @@ python3 -m unittest discover -v
 
 ```text
 evaluations/route_a/TH-0001/20260806T024238Z.yaml
+evaluations/route_a/TH-0001/20260806T045554Z.yaml
 artifacts/th_0001/route_a_prefilter.json
+artifacts/th_0001/fio_quantization_audit.json
 formal/results/th_0001_three_kick_prefilter.md
+formal/results/th_0001_fio_quantization.md
 formal/obstructions/low_depth_henon_reversibility.md
+configs/source_locks/TH-0001-FIO.yaml
+experiments/th_0001_fio_quantization.py
 tests/test_th_0001_three_kick_henon.py
+tests/test_th_0001_fio_quantization.py
 ```
 
 ### Claim boundary
 
 **Established:** one frozen autonomous target-free map, exact symplecticity and
-inverse, low-complexity reversibility obstruction, and a complete signed real
-primitive-orbit prefix through `G`-period two.
+inverse, low-complexity reversibility obstruction, a complete signed real
+primitive-orbit prefix through `G`-period two, and a same-order unitary
+Fourier-integral lift on `L^2(R)` with the inherited antiunitary class audited.
 
-**Not established:** arbitrary nonlinear time-reversal breaking, arithmetic
-orbit correspondence, any Zeta/Fredholm determinant, global analytic structure,
-quantum operator/domain, Route B, Hilbert--Pólya, or RH.
+**Not established:** arbitrary nonlinear time-reversal breaking or antiunitary
+exclusion, arithmetic orbit correspondence, any Zeta/Fredholm determinant,
+global analytic structure, self-adjoint Hamiltonian, Route B, Hilbert--Pólya,
+or RH.
 
 ### Next smallest test
 
-Freeze the same-order Fourier-integral quantization
-`U=U_(5/2)U_(3/2)U_(1/2)` on `L^2(R)`, prove normalization and unitarity, and
-audit its natural antiunitary symmetry without computing a spectrum or opening
-Route B.
+Preserve the frozen FIO and antiunitary ledger. If continuing this branch, add
+only an explicitly frozen orbit-phase/Maslov convention compatible with the
+positive-real kernel; do not compute a spectrum, determinant, or invoke Route B.
 
 ### Decision history
 
 | Date | Previous state | New state | Evidence | Commit | Reviewer |
 |---|---|---|---|---|---|
 | 2026-08-06 | `GENERATED` | `UPO_PASSED` (cutoff-scoped) | Exact Route-A prefilter; `A1_WEAK/A2_FAIL/A3_FAIL/A4_FORMAL_HINT` | `fb69649afbda27006d56471c5680b590f90ba43b` | sole main research agent |
+| 2026-08-06 | `UPO_PASSED` (cutoff-scoped) | `ANALYTIC_REVIEW` | Same-order unitary FIO and inherited antiunitary audit; `A4_NATURAL_QUANTIZATION` | `836f5880fac6abfb29ee031e1136e24504e2b0a9` | sole main research agent |
 
 ---
 

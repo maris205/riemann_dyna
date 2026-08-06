@@ -933,7 +933,7 @@ D_N(s)\to D_{N+1}(s),
 
 **来源：** Area-preserving Hénon 工作与时间反演讨论  
 **证据：** `HEURISTIC` + `MODELING_CHOICE`  
-**状态：** `ACTIVE` — `TH-0001` prefilter complete; A4 quantization follow-up open
+**状态：** `ACTIVE` — `TH-0001` unitary FIO lift complete; phase ledger remains open
 **对应层：** `A1`, `A4`
 
 ### 内容
@@ -1505,4 +1505,18 @@ evidence: "Frozen target-free non-palindromic three-kick Hénon superstep, exact
 commit: "fb69649afbda27006d56471c5680b590f90ba43b"
 evaluation: "evaluations/route_a/TH-0001/20260806T024238Z.yaml"
 consequence: "TH-0001 is now a formal candidate with Route-A tuple (A1_WEAK,A2_FAIL,A3_FAIL,A4_FORMAL_HINT), ROUTE_A_EXPLORATORY, and GO_WITH_LIMITATIONS. The short orbit ledger is complete only for G-period <=2; arbitrary nonlinear reversors, higher periods, any determinant, and Route B remain closed. Next freeze same-order Fourier-integral quantization and audit normalization/unitarity plus natural antiunitary symmetry without computing spectra or fitting zeros."
+```
+
+## Status update — CLUE-A4-001 TH-0001 same-order unitary FIO lift
+
+```yaml
+date: 2026-08-06
+clue_id: CLUE-A4-001
+old_status: ACTIVE
+new_status: ACTIVE
+candidate_id: TH-0001
+evidence: "TH-0001-A4-FIO-001 exact same-order Fourier-integral factors, Plancherel/modulus-one unitarity on L2(R), exact canonical graph, and inherited antiunitary/cyclic clock-reflection audit"
+commit: "836f5880fac6abfb29ee031e1136e24504e2b0a9"
+evaluation: "evaluations/route_a/TH-0001/20260806T045554Z.yaml"
+consequence: "A4 upgrades from A4_FORMAL_HINT to A4_NATURAL_QUANTIZATION. The ordered U_(5/2)U_(3/2)U_(1/2) propagator is unitary on L2(R), while the natural parent-swap antiunitary reverses each kick but not the non-palindromic superstep. A1 remains weak, A2/A3 remain unopened/failed, arbitrary nonlinear antiunitaries remain OPEN, and Route B stays closed. Preserve the FIO ledger; do not compute spectra or determinants."
 ```

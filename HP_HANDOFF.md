@@ -1,6 +1,78 @@
 # HP-Dynamics Handoff
 
-## Current status — TH-0001 three-kick Hénon Route-A prefilter
+## Current status — TH-0001 same-order unitary FIO lift
+
+Current clue: `CLUE-A4-001`.
+
+Candidate ID: `TH-0001` — target-free non-palindromic three-kick Hénon ratchet.
+
+- Formal candidate: `true`
+- Candidate state: `ANALYTIC_REVIEW` (UPO prefix complete only through `G`-period `<=2`)
+- Source commit: `836f5880fac6abfb29ee031e1136e24504e2b0a9`
+- Source lock: `configs/source_locks/TH-0001-FIO.yaml`
+- Route-A evaluation: `evaluations/route_a/TH-0001/20260806T045554Z.yaml`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)`
+- Overall Route A: `ROUTE_A_EXPLORATORY`
+- Scoped verdict: `GO_WITH_LIMITATIONS`
+- Route B: not evaluated, inactive, and not authorized
+
+### A4 object and theorem
+
+With `hbar=1`, Lebesgue `L^2(R,dq)`, and the positive-real normalization,
+
+\[
+S_a(q,Q)=qQ-q+\frac a3q^3,
+\qquad
+U_a=\mathcal F_+M_a,
+\qquad
+U_G=U_{5/2}U_{3/2}U_{1/2}.
+\]
+
+The mixed Hessian is exactly one, so the canonical graph is the frozen kick.
+The multiplication phase is modulus one and `F_+` is unitary by Plancherel;
+therefore every factor and the ordered product are everywhere-defined unitaries
+on `L^2(R)`. The product inverse has the reverse factor order. The triple
+kernel is retained as an iterated oscillatory integral; no global absolute
+convergence or single-phase reduction is claimed at caustics.
+
+### Antiunitary audit
+
+The natural parent-swap antiunitary is `A=F_+ C`, with `A^2=I` and
+`A q A^{-1}=p`, `A p A^{-1}=q`. It reverses each individual kick exactly, but
+
+```text
+A U_(5/2) U_(3/2) U_(1/2) A^{-1}
+  = U_(5/2)^(-1) U_(3/2)^(-1) U_(1/2)^(-1)
+  != U_(1/2)^(-1) U_(3/2)^(-1) U_(5/2)^(-1)
+  = U_G^(-1).
+```
+
+The reverse word is not a cyclic rotation of the forward word. The exact
+classical witness remains
+`RGR(0,0)=(-1/2,-5/8) != G^(-1)(0,0)=(-1/2,-1/8)`. This excludes only the
+inherited affine/metaplectic clock-reflection class; arbitrary nonlinear or
+non-geometric antiunitaries remain `OPEN`.
+
+### Tests and claim boundary
+
+- Focused FIO suite: `12/12 passed`.
+- Full repository: `196/196 passed`.
+- Artifact SHA-256: `0eb583e54b69d3372b582a204c871f7b5f446143353cd6831fea3c27a893fc3e`.
+- Generator SHA-256: `9cff63faf27f56e48f89caf1eab45e07e092c61b6c78e3a9b07beb1836c77bfb`.
+
+Established: same-order unitary FIO, exact canonical graph, inherited
+antiunitary one-kick identities, and their non-palindromic three-kick failure.
+
+Not established: arbitrary antiunitary exclusion, self-adjoint Hamiltonian,
+spectral type, determinant, trace formula, Route B, Hilbert--Pólya, or RH.
+
+Next smallest task: preserve the FIO and antiunitary ledgers; only add a frozen
+orbit-phase/Maslov convention if needed, without computing spectra or a
+determinant.
+
+Recommended verdict: `GO_WITH_LIMITATIONS` for the scoped A4 audit.
+
+## Previous checkpoint — TH-0001 three-kick Hénon Route-A prefilter
 
 Current clue: `CLUE-A4-001`.
 

@@ -1,0 +1,174 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: TH-0001
+audit_id: TH-0001-A4-FIO-001
+parent_audit_id: TH-0001-PREFILTER-001
+formal_candidate: true
+source_commit: 836f5880fac6abfb29ee031e1136e24504e2b0a9
+evaluation_date: "2026-08-06T04:55:54Z"
+
+source_lock:
+  object: >-
+    The same target-free three-kick Hénon candidate together with its frozen
+    same-order Fourier-integral lift U=U_(5/2)U_(3/2)U_(1/2) on L^2(R), where
+    U_a=F_+ M_a and M_a is multiplication by exp(i V_a), V_a(q)=-q+(a/3)q^3.
+  clock: >-
+    One application of the classical G superstep and the same ordered quantum
+    product. Individual micro-kicks are not separate clocks.
+  normalization: >-
+    hbar=1, Lebesgue L^2(R,dq), positive-real Fourier amplitude (2*pi)^(-1/2),
+    phase exp(+i*S_a), global phase fixed to 1, Schwartz core followed by the
+    bounded unitary extension. No FFT grid, boundary truncation, or branch
+    unwrapping is introduced.
+  determinant_convention: >-
+    NOT_OPENED. No spectral determinant, zeta, reciprocal zeta, logarithmic
+    derivative, trace formula, eigenphase list, or zero comparison is defined.
+  cutoff: >-
+    Three exact factors, one G superstep, and the common-parent antiunitary plus
+    inherited cyclic clock-reflection class only. No spectrum or determinant.
+  precision: >-
+    Exact rational polynomial identities, formal Schwartz-space q/p identities,
+    Plancherel unitarity, and exact word/order witnesses; no numerical
+    approximation or discretization.
+  allowed_data:
+    - TH-0001 source lock and exact generating functions
+    - elementary Fourier analysis and Plancherel theorem
+    - same-object factor order and exact rational classical witnesses
+    - prior affine anti-symplectic obstruction
+  forbidden_data:
+    - prime/zero/xi/zeta/GUE/USTC data
+    - legacy fitted hbar, FFT grids, boundary conditions, eigenphases, or spectra
+    - changing factor order, hbar normalization, or global phase after audit
+    - claiming all nonlinear/non-geometric antiunitaries are excluded
+    - self-adjointness, determinant, Route B, Hilbert-Polya, or RH inference
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The superseding audit preserves the exact global primitive-orbit prefix
+    through G-period two from TH-0001-PREFILTER-001: four period-one and eight
+    primitive period-two real orbits, 20 phase points, signed monodromy, and
+    certified hyperbolicity.
+  strongest_failure: >-
+    No prime-like clock, arithmetic orbit law, von-Mangoldt repetition weight,
+    or higher-period completeness is supplied by the unitary lift.
+  metrics:
+    inherited_short_prefix_complete: true
+    arithmetic_orbit_law: false
+    higher_period_completeness: false
+    signed_data_preserved: true
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+  artifacts:
+    - artifacts/th_0001/route_a_prefilter.json
+    - formal/results/th_0001_three_kick_prefilter.md
+    - evaluations/route_a/TH-0001/20260806T024238Z.yaml
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The same-object unitary propagator is explicitly separated from any
+    determinant ledger; no hidden spectral data or zero-producing prefactor is
+    introduced.
+  strongest_failure: >-
+    No transfer determinant, trace formula, Fredholm class, spectral computation,
+    root count, missing/extra zero ledger, or cutoff comparison is defined.
+  metrics:
+    determinant_defined: false
+    zero_error_train: not_testable_no_determinant
+    zero_error_validation: not_testable_no_determinant
+    zero_error_test: not_testable_no_determinant
+    extra_zero_count: not_testable
+    missing_zero_count: not_testable
+    root_count_discrepancy: not_testable
+    cutoff_drift: not_testable_no_spectral_cutoff
+    precision_drift: not_applicable_exact_identities
+    signed_cancellation_preserved: true
+  artifacts:
+    - configs/source_locks/TH-0001-FIO.yaml
+    - formal/results/th_0001_fio_quantization.md
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The lift is target-free and has a fixed phase convention, but it makes no
+    global analytic claim about a determinant.
+  strongest_failure: >-
+    Functional equation, Gamma/trivial-zero ledger, analytic continuation,
+    completed-xi divisor, Riemann-von Mangoldt growth, and moving-order control
+    remain undefined because A2 is unopened.
+  metrics:
+    conjugation_symmetry_of_determinant: not_testable_no_determinant
+    functional_equation: false
+    gamma_factor: false
+    analytic_continuation: false
+    target_counting_law: false
+    moving_order_control: false
+  artifacts: []
+
+a4:
+  verdict: A4_NATURAL_QUANTIZATION
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Each exact generating function yields a same-order Fourier-integral factor
+    U_a=F_+ M_a with positive-real amplitude. Modulus-one multiplication and
+    Plancherel prove that every factor and U_(5/2)U_(3/2)U_(1/2) are everywhere-
+    defined unitaries on L^2(R), with the exact classical canonical graphs.
+    The involutive antiunitary A=F_+ C implements the parent swap and reverses
+    each individual kick.
+  strongest_failure: >-
+    A fails to reverse the non-palindromic three-kick product because its
+    inverse word has the opposite factor order; the inherited cyclic
+    clock-reflection class is excluded, but arbitrary nonlinear, non-geometric,
+    or non-polynomial antiunitaries remain open. The unitary propagator is not a
+    self-adjoint Hamiltonian and no Route-B object is defined.
+  metrics:
+    hilbert_space: L2(R,dq)
+    core_domain: Schwartz(R)
+    operator_everywhere_defined: true
+    factor_unitarity: true
+    product_unitarity: true
+    canonical_graph_exact: true
+    positive_real_normalization_fixed: true
+    antiunitary_A_involutive: true
+    single_kick_A_reversibility: true
+    product_A_reversibility: false
+    reverse_word_is_cyclic_rotation: false
+    arbitrary_antiunitary_excluded: false
+    self_adjoint_hamiltonian_defined: false
+    route_b_ready: false
+  artifacts:
+    - configs/source_locks/TH-0001-FIO.yaml
+    - experiments/th_0001_fio_quantization.py
+    - artifacts/th_0001/fio_quantization_audit.json
+    - formal/results/th_0001_fio_quantization.md
+    - tests/test_th_0001_fio_quantization.py
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - exact same-order Fourier-integral factor and fixed positive-real normalization
+    - exact canonical graph matching each frozen Hénon kick
+    - everywhere-defined unitary factors and three-kick product on L2(R)
+    - involutive parent-swap antiunitary and exact one-kick reversibility
+    - failure of inherited antiunitary and cyclic clock reflection for the non-palindromic superstep
+  not_established:
+    - arbitrary nonlinear or non-geometric antiunitary exclusion
+    - self-adjoint Hamiltonian, spectral type, determinant, trace formula, or completed-xi divisor
+    - any spectrum, zero comparison, Route B, Hilbert-Polya realization, or RH
+blocking_conditions:
+  - A1 remains only a short cutoff-scoped structural prefix with no arithmetic law
+  - determinant and global analytic structure are intentionally unopened
+  - arbitrary nonlinear/non-geometric antiunitary remains an open symmetry question
+  - unitary Floquet propagator is not a self-adjoint Route-B operator
+next_smallest_test: >-
+  Preserve the frozen FIO and antiunitary ledger. If continuing this branch,
+  freeze only an explicit orbit-phase/Maslov convention compatible with the
+  positive-real kernel, without computing a spectrum or determinant. Otherwise
+  apply the breadth rule to a new explicit candidate.
+route_b_invocation_allowed: false

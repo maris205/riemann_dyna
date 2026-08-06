@@ -5,6 +5,28 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-06
 
+### TH-0001 same-order unitary FIO lift
+
+- Froze `hbar=1`, positive-real Fourier normalization, Lebesgue `L^2(R)`,
+  Schwartz core, and the exact same-order factors
+  `U_a=F_+M_a`, `U=U_(5/2)U_(3/2)U_(1/2)`.
+- Proved exact canonical graphs and everywhere-defined unitarity by
+  Plancherel plus modulus-one multiplication; retained the multi-kick kernel as
+  an iterated oscillatory integral without a false global single-phase claim.
+- Audited `A=F_+C`: it is an involutive antiunitary reversing each kick, but
+  fails to reverse the non-palindromic superstep; inherited cyclic clock
+  reflections fail as well. Arbitrary nonlinear/non-geometric antiunitaries
+  remain open.
+- Upgraded only A4 to `A4_NATURAL_QUANTIZATION`; retained
+  `(A1_WEAK, A2_FAIL, A3_FAIL)` and `ROUTE_A_EXPLORATORY`/
+  `GO_WITH_LIMITATIONS`. Route B, self-adjointness, spectra, determinants, and
+  RH remain closed.
+- Added evaluation
+  `evaluations/route_a/TH-0001/20260806T045554Z.yaml`; focused FIO tests are
+  `12/12`, full repository tests `196/196`.
+
+Source state: `836f5880fac6abfb29ee031e1136e24504e2b0a9`.
+
 ### TH-0001 target-free three-kick Hénon Route-A prefilter
 
 - Promoted `TH-0001` to the first formal Hénon-family candidate after freezing
