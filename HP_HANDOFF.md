@@ -1,6 +1,86 @@
 # HP-Dynamics Handoff
 
-## Current status — frozen-radius exact-$U_c$ polar complex branches
+## Current status — TH-0001 three-kick Hénon Route-A prefilter
+
+Current clue: `CLUE-A4-001`.
+
+Candidate ID: `TH-0001` — target-free non-palindromic three-kick Hénon ratchet.
+
+- Formal candidate: `true`
+- Source commit: `fb69649afbda27006d56471c5680b590f90ba43b`
+- Source lock: `configs/source_locks/TH-0001.yaml`
+- Route-A evaluation: `evaluations/route_a/TH-0001/20260806T024238Z.yaml`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)`
+- Overall Route A: `ROUTE_A_EXPLORATORY`
+- Scoped verdict: `GO_WITH_LIMITATIONS`
+- Candidate state: `UPO_PASSED` only for the frozen `G`-period `<=2` cutoff
+- Route B: not evaluated, inactive, and not authorized
+
+### Source lock
+
+\[
+F_a(q,p)=(1-aq^2-p,q),
+\qquad
+G=F_{5/2}\circ F_{3/2}\circ F_{1/2}.
+\]
+
+The phase space is \((\mathbb R^2,dq\wedge dp)\). One application of `G` is
+the sole clock; the three micro-kicks are not separate primitive periods. The
+half-integer ramp is a target-free modeling choice. The determinant convention
+is explicitly `NOT_OPENED`; prime/zero/GUE/USTC data and all legacy fitted
+parameters are forbidden.
+
+### Route-A tuple and evidence
+
+- `A1_WEAK`: exact Groebner/Sturm elimination certifies a global real prefix of
+  4 primitive period-one and 8 primitive period-two orbits (20 phase points),
+  all hyperbolic; no arithmetic orbit law or higher-period completeness.
+- `A2_FAIL`: no transfer operator, cycle product, Fredholm determinant, or zero
+  ledger is defined.
+- `A3_FAIL`: no determinant means no functional equation, completed-xi divisor,
+  continuation, or moving-order count can be tested.
+- `A4_FORMAL_HINT`: exact generating functions give a same-order
+  Fourier-integral quantization hint; a Hilbert space, domain, unitary theorem,
+  and complete antiunitary audit are not yet frozen.
+
+The inherited swap reversor fails at an exact origin witness, and all affine
+anti-symplectic involutions are excluded. `OBR-010` records the reusable
+low-depth obstruction; arbitrary nonlinear/non-polynomial reversors remain
+open, so no absolute time-reversal-breaking claim is made.
+
+### Tests and reproducibility
+
+- Focused suite: `10/10 passed`.
+- Full repository: `184/184 passed`.
+- Artifact SHA-256: `f50e806512b45a49223dd1ee7fac2689858949a7172a02e73e82d1a03a5e104a`.
+- Generator SHA-256: `f3da9e8d1ce5690a0ae96350c0392c53bf7e42cf6bb71fc108dddbbc056745a4`.
+
+```bash
+python3 experiments/th_0001_three_kick_henon.py --quiet \
+  --output artifacts/th_0001/route_a_prefilter.json
+python3 -m unittest -v tests/test_th_0001_three_kick_henon.py
+python3 -m unittest discover -v
+git diff --check
+```
+
+### Claim boundary and next smallest task
+
+Established: one explicit autonomous exact-symplectic target-free map, the
+frozen clock/normalization, low-depth reversibility obstruction, and complete
+signed real primitive-orbit data through `G`-period two.
+
+Not established: arbitrary nonlinear reversor exclusion, arithmetic orbit law,
+any determinant or global analytic structure, quantum operator/domain,
+Route B, Hilbert--Pólya, or RH.
+
+Next smallest task: freeze same-order Fourier-integral quantization
+`U=U_(5/2)U_(3/2)U_(1/2)` on `L^2(R)`, prove normalization and unitarity, and
+audit natural antiunitary symmetry. Do not compute spectra, fit zeros, define a
+determinant, or invoke Route B.
+
+Recommended verdict: `GO_WITH_LIMITATIONS` for the scoped prefilter.
+
+## Previous checkpoint — frozen-radius exact-$U_c$ polar complex branches
 
 Current clue: `CLUE-A1-004`
 

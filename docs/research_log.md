@@ -2326,6 +2326,127 @@ Fredholm zeros, target divisors, or Route B in that task.
 
 Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped theorem).
 
+## 2026-08-06 — TH-0001 target-free non-palindromic three-kick Hénon prefilter
+
+### Stable checkpoint
+
+Current clue: `CLUE-A4-001`.
+
+Candidate ID: `TH-0001` — target-free non-palindromic three-kick Hénon ratchet.
+
+Source lock: `configs/source_locks/TH-0001.yaml`.
+
+Implementation/source commit:
+`fb69649afbda27006d56471c5680b590f90ba43b`.
+
+Route-A evaluation:
+`evaluations/route_a/TH-0001/20260806T024238Z.yaml`.
+
+Route-A tuple:
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)
+overall: ROUTE_A_EXPLORATORY
+scoped verdict: GO_WITH_LIMITATIONS
+Route B: not invoked and not authorized
+```
+
+### Source lock and strongest evidence
+
+The only clock is one complete autonomous superstep
+
+\[
+G=F_{5/2}\circ F_{3/2}\circ F_{1/2},
+\qquad F_a(q,p)=(1-aq^2-p,q).
+\]
+
+The half-integer ramp is a declared target-free modeling choice. Exact
+generating functions prove exact symplecticity and an explicit inverse. The
+inherited swap reversor fails at an exact origin witness; all affine
+anti-symplectic involutions are excluded by leading-term comparison. Exact
+Groebner/Sturm elimination gives four primitive real period-one orbits and
+eight primitive real period-two orbits, with 20 phase points total, globally on
+the full plane and without random seeds or a search box. Every certified short
+orbit is hyperbolic, with minimum margin
+`|tr(M)|-2 > 1.65120565439421041`.
+
+### Strongest failure and reusable knowledge
+
+The result stops at a complete short-orbit structural prefix. There is no
+prime-like period law, von-Mangoldt repetition weight, higher-period census,
+determinant convention, analytic continuation, or target-zero ledger. The
+three-kick order escapes the audited inherited one-/two-kick and affine
+reversor classes (`OBR-010`), but arbitrary nonlinear/non-polynomial
+anti-symplectic reversors remain open. Exact triangular elimination plus a
+primitive dynatomic quotient is a reusable pattern for global low-period UPO
+certificates; signed traces, multipliers, and `det(I-M)` must remain distinct
+data fields.
+
+### Updated files
+
+- `configs/source_locks/TH-0001.yaml`
+- `experiments/th_0001_three_kick_henon.py`
+- `tests/test_th_0001_three_kick_henon.py`
+- `artifacts/th_0001/route_a_prefilter.json`
+- `formal/results/th_0001_three_kick_prefilter.md`
+- `formal/obstructions/low_depth_henon_reversibility.md`
+- `evaluations/route_a/TH-0001/20260806T024238Z.yaml`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+Focused TH-0001 suite: `10/10 passed` (31.593 s).
+
+Full repository suite: `184/184 passed` (60.083 s).
+
+```bash
+python3 experiments/th_0001_three_kick_henon.py \
+  --quiet \
+  --output artifacts/th_0001/route_a_prefilter.json
+python3 -m unittest -v tests/test_th_0001_three_kick_henon.py
+python3 -m unittest discover -v
+tmpdir=$(mktemp -d)
+python3 experiments/th_0001_three_kick_henon.py --quiet --output "$tmpdir/route_a_prefilter.json"
+cmp "$tmpdir/route_a_prefilter.json" artifacts/th_0001/route_a_prefilter.json
+sha256sum "$tmpdir/route_a_prefilter.json" artifacts/th_0001/route_a_prefilter.json
+sha256sum experiments/th_0001_three_kick_henon.py configs/source_locks/TH-0001.yaml evaluations/route_a/TH-0001/20260806T024238Z.yaml
+git diff --check
+```
+
+Reproduced hashes:
+
+```text
+f50e806512b45a49223dd1ee7fac2689858949a7172a02e73e82d1a03a5e104a  artifacts/th_0001/route_a_prefilter.json
+f3da9e8d1ce5690a0ae96350c0392c53bf7e42cf6bb71fc108dddbbc056745a4  experiments/th_0001_three_kick_henon.py
+0b8606c3ec470d071465a8335293dc064b339bd9a0cce29a389fc00a44de1633  configs/source_locks/TH-0001.yaml
+f12660372b1b23317f8d8dec77bc793b995d8c9f7949104f43d219543d69e175  evaluations/route_a/TH-0001/20260806T024238Z.yaml
+```
+
+### Claim boundary and next smallest task
+
+Established: one explicit autonomous exact-symplectic target-free map, the
+frozen superstep clock and signed normalization, low-depth reversibility
+obstruction, and complete real primitive-orbit data through `G`-period two.
+
+Not established: arbitrary nonlinear time-reversal breaking, arithmetic orbit
+correspondence, any dynamical determinant or global analytic structure,
+quantization/operator domain, Route B, Hilbert--Pólya, or RH.
+
+Next smallest task: freeze the same-order Fourier-integral quantization on
+`L^2(R)`, prove normalization and unitarity, and audit natural antiunitary
+symmetry. Do not compute a spectrum, fit zeros, define a determinant, or invoke
+Route B.
+
+Recommended verdict: `GO_WITH_LIMITATIONS` for this scoped prefilter;
+candidate-level status remains `UPO_PASSED` only through the frozen cutoff.
+
 ## 2026-08-05 — frozen-radius exact-$U_c$ polar complex branches
 
 ### Stable checkpoint

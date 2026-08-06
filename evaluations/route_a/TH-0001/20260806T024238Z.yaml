@@ -1,0 +1,216 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: TH-0001
+audit_id: TH-0001-PREFILTER-001
+formal_candidate: true
+source_commit: fb69649afbda27006d56471c5680b590f90ba43b
+evaluation_date: "2026-08-06T02:42:38Z"
+
+source_lock:
+  object: >-
+    The target-free non-palindromic three-kick Hénon ratchet
+    G=F_(5/2) o F_(3/2) o F_(1/2), where
+    F_a(q,p)=(1-a*q^2-p,q), on (R^2,dq wedge dp). The fixed half-integer
+    ramp is a declared modeling choice and the three kicks are one autonomous
+    superstep, not three separate clocks.
+  data_type: >-
+    Exact rational polynomial identities, exact Groebner elimination over QQ,
+    square-free and Sturm real-root counts, and outward rational interval
+    propagation for signed orbit monodromy. Binary64 coordinates are display
+    diagnostics only.
+  clock: >-
+    One application of G, equal to the ordered three-kick superstep. Individual
+    micro-kicks are not primitive periods and may not be mixed into the orbit
+    ledger.
+  normalization: >-
+    Raw (q,p) coordinates with signed monodromy trace, multipliers, and
+    det(I-M)=2-tr(M); no scale, offset, unfolding, modulus-only reduction,
+    phase anchoring, or target matching.
+  determinant_convention: >-
+    NOT_OPENED. No Z, reciprocal Zeta, logarithmic derivative, cycle product,
+    transfer determinant, or Fredholm determinant is defined in this prefilter.
+  cutoff: >-
+    Complete real primitive G-period 1 and 2 phase-point census on the full
+    plane. The micro-kick horizon is six. G-period 3 and above are excluded.
+  precision: >-
+    SymPy exact QQ algebra; exact Sturm isolation refined below rational width
+    1e-28; outward rational interval monodromy bounds; binary64 only for
+    displayed coordinates.
+  allowed_data:
+    - target-free legacy parent F_a(q,p)=(1-a*q^2-p,q)
+    - exact rational algebra and elementary symplectic geometry
+    - fixed half-integer ramp a_j=j+1/2 for j=0,1,2
+    - same-object primitive orbits and signed monodromy data
+    - parent F_1 and low-depth reversibility controls
+  forbidden_data:
+    - prime tables, primality predicates, or prime-derived lengths
+    - Riemann-zero, zeta, xi, GUE, or USTC data
+    - legacy Hénon scripts/notebooks 4 through 9 as candidate inputs
+    - legacy fitted a, hbar, quartic, smoothing, schedule, or spectral anchors
+    - changing the kick order or parameter rule after inspecting the UPO ledger
+    - replacing signed multipliers or det(I-M) by absolute values
+    - calling negative multipliers a Maslov or magnetic phase
+  training_data: "empty; no arithmetic target data or fitted parameters"
+  validation_data: >-
+    Exact generating-function and determinant checks, explicit inverse, degree
+    eight, inherited swap failure, reverse-schedule test, and affine
+    anti-symplectic leading-term obstruction.
+  test_data: >-
+    Sealed period-1/2 Groebner shapes and polynomial hashes, square-free and
+    Sturm counts, primitive quotient, orbit pairing, signed monodromy,
+    hyperbolicity margins, and byte-reproducible artifact.
+  stopping_conditions:
+    - exact symplecticity, invertibility, or the data firewall fails
+    - G is shown conjugate to a legacy single-kick F_a by an audited low-complexity transformation
+    - polynomial hashes or real-root counts fail to reproduce
+    - a certified short orbit is non-hyperbolic or period-two pairing fails
+    - any nonlinear anti-symplectic reversor is found, stopping an absolute time-reversal-breaking claim
+    - any determinant, target-zero, Route-B, Hilbert-Polya, or RH inference is attempted in this prefilter
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Exact lexicographic Groebner elimination and Sturm isolation give a global,
+    no-search-box, no-random-seed real primitive-orbit census through G-period
+    two: four period-one orbits and eight primitive period-two orbits (20 phase
+    points total). All are paired, carry signed monodromy data, and are
+    hyperbolic with minimum certified |tr(M)|-2 margin above 1.65120565439421041.
+  strongest_failure: >-
+    The prefix has no prime-like clock law, arithmetic primitive-orbit labeling,
+    von-Mangoldt repetition weight, phase/multiplicity law, or completeness at
+    G-period three and above. Therefore it is an A1 structural prior, not an
+    arithmetic A1 pass.
+  metrics:
+    primitive_real_period_1_orbits: 4
+    primitive_real_period_1_phase_points: 4
+    primitive_real_period_2_orbits: 8
+    primitive_real_period_2_phase_points: 16
+    total_real_primitive_orbits: 12
+    total_real_phase_points: 20
+    completeness_scope: "global on R^2 for G-period <=2"
+    search_box: false
+    random_seed: false
+    signed_monodromy_recorded: true
+    all_short_orbits_hyperbolic: true
+    minimum_certified_abs_trace_minus_two: "1.65120565439421041..."
+    higher_period_completeness: false
+    arithmetic_orbit_law: false
+    polynomial_hashes:
+      R1: a0ed76ae20ec9a1300785e86109dd145039c50eb44879be7d9e2202a3acbbc7a
+      R2: eee0ae04452a9ff02da3c2eadbb8bba4b05787e0392978c029b2c131288d2d0a
+      D2: 60dd88608e229e19708948f239bc7e4f8f80f536a3c54a763dbe59ee924c46dc
+  artifacts:
+    - configs/source_locks/TH-0001.yaml
+    - experiments/th_0001_three_kick_henon.py
+    - formal/results/th_0001_three_kick_prefilter.md
+    - artifacts/th_0001/route_a_prefilter.json
+    - tests/test_th_0001_three_kick_henon.py
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The source lock explicitly keeps the determinant convention unopened and
+    prevents incompatible mixing of Z, 1/Z, Z'/Z, cycle products, and
+    det(I-L_s). This is a valid negative control for premature determinant
+    claims.
+  strongest_failure: >-
+    No transfer operator, weighted cycle product, Fredholm class, trace
+    formula, zero ledger, argument-principle count, or cutoff-stability test
+    exists. Target zero errors and missing/extra zero counts are therefore not
+    testable.
+  metrics:
+    determinant_defined: false
+    determinant_convention: NOT_OPENED
+    zero_error_train: not_testable_no_determinant
+    zero_error_validation: not_testable_no_determinant
+    zero_error_test: not_testable_no_determinant
+    extra_zero_count: not_testable
+    missing_zero_count: not_testable
+    root_count_discrepancy: not_testable
+    cutoff_drift: not_testable_no_determinant_cutoff
+    precision_drift: not_applicable
+    control_margin: "not_applicable"
+    signed_cancellation_preserved: true
+  artifacts:
+    - configs/source_locks/TH-0001.yaml
+    - formal/results/th_0001_three_kick_prefilter.md
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The polynomial map and exact short-orbit ledger are target-free and keep
+    signed data, so no hidden zero-producing prefactor or analytic claim is
+    being smuggled into the prefilter.
+  strongest_failure: >-
+    There is no determinant or continuation domain from which to assess
+    conjugation, functional equation, Gamma/trivial-zero terms, completed-xi
+    divisor, Riemann-von Mangoldt growth, or moving-order control.
+  metrics:
+    conjugation_symmetry: not_testable_no_determinant
+    functional_equation: false
+    gamma_factor: false
+    trivial_zero_ledger: false
+    analytic_continuation: false
+    target_counting_law: false
+    moving_order_control: false
+  artifacts: []
+
+a4:
+  verdict: A4_FORMAL_HINT
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Each kick is exact-symplectic with the target-free generating function
+    S_a(q,Q)=qQ-q+(a/3)q^3, so the ordered product has a natural same-order
+    Fourier-integral quantization hint. The inherited swap reversor fails for
+    G and all affine anti-symplectic involutions are excluded by exact
+    leading-term comparison.
+  strongest_failure: >-
+    No Fourier-integral kernel, Hilbert space domain, phase normalization,
+    essential self-adjointness statement, unitary product theorem, or complete
+    antiunitary audit is yet frozen. Arbitrary nonlinear or non-polynomial
+    reversors remain open, so absolute time-reversal breaking is not claimed.
+  metrics:
+    exact_symplecticity: true
+    generating_function: true
+    same_clock_quantization_defined: false
+    fourier_integral_quantization_hint: true
+    inherited_swap_reversor_for_G: false
+    affine_antisymplectic_reversor: false
+    arbitrary_nonlinear_reversor_excluded: false
+    hilbert_space_named: false
+    operator_domain_named: false
+    route_b_ready: false
+  artifacts:
+    - formal/results/th_0001_three_kick_prefilter.md
+    - formal/obstructions/low_depth_henon_reversibility.md
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - one explicit autonomous target-free exact-symplectic polynomial candidate
+    - one frozen G-clock and compatible signed normalization through G-period two
+    - failure of the inherited swap reversor and exclusion of affine anti-symplectic involutions
+    - complete global real primitive-orbit prefix through G-period two with signed monodromy and hyperbolicity certificate
+    - a formal same-order Fourier-integral quantization hint from exact generating functions
+  not_established:
+    - absence of arbitrary nonlinear or non-polynomial anti-symplectic reversors
+    - any prime-like clock, arithmetic orbit law, von-Mangoldt weight, or higher-period completeness
+    - a Zeta, reciprocal Zeta, logarithmic derivative, Fredholm determinant, or trace formula
+    - global analytic structure, completed-xi divisor, or target-zero relation
+    - a rigorously defined quantum operator, Route B, Hilbert-Polya realization, or RH
+blocking_conditions:
+  - higher-period primitive-orbit completeness and any arithmetic law are absent
+  - determinant convention is intentionally unopened; A2 and A3 remain unavailable
+  - arbitrary nonlinear anti-symplectic reversor audit remains open
+  - Hilbert space, operator domain, and unitary normalization are not yet defined
+next_smallest_test: >-
+  Freeze the same-order Fourier-integral quantization U=U_(5/2)U_(3/2)U_(1/2)
+  on L^2(R), prove each factor's normalization and unitarity, and audit its
+  natural antiunitary symmetry. Do not compute a spectrum, fit zeros, define a
+  determinant, or invoke Route B.
+route_b_invocation_allowed: false

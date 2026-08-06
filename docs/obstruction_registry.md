@@ -467,3 +467,61 @@ Artifacts:
 - `tests/test_p4_logistic_uc_acip_endpoint_density.py`
 - `tests/test_p4_logistic_uc_acip_sharp_cone_enclosure.py`
 - `tests/test_p4_logistic_uc_branch_mass_rate.py`
+
+---
+
+## OBR-010 — Low-depth Hénon reversibility classes do not supply a twist
+
+Status:
+PROVED_OBSTRUCTION
+
+Source:
+`CLUE-A4-001` / `formal/obstructions/low_depth_henon_reversibility.md`
+
+Statement:
+The target-free legacy Hénon parent
+
+\[
+F_a(q,p)=(1-aq^2-p,q)
+\]
+
+has the exact swap reversor \(R(q,p)=(p,q)\), and the audited one-kick
+quadratic shears, static generalized-Hénon deformations, and arbitrary
+two-kick products retain an explicit reversor (possibly after a coordinate
+conjugacy or clock-origin shift). Therefore those low-complexity subclasses
+cannot by themselves provide a time-reversal-breaking twisted candidate.
+
+For the frozen non-palindromic three-kick product
+
+\[
+G=F_{5/2}\circ F_{3/2}\circ F_{1/2},
+\]
+
+the inherited swap and all affine anti-symplectic involutions are excluded by
+exact witnesses and leading-term comparison. This is a positive escape from
+the audited low-depth classes, not a proof that every nonlinear or
+non-polynomial anti-symplectic reversor is absent.
+
+Impact:
+Do not promote the legacy one-/two-kick Hénon or quartic/schedule proxies to a
+Route-A twist on the basis of area preservation, PT language, or a finite real
+spectrum. Keep the three-kick candidate's residual nonlinear-reversor question
+explicitly open.
+
+Scope:
+Only the listed low-depth polynomial classes and the affine reversor class
+audited in the TH-0001 prefilter. Arbitrary nonlinear reversors, determinants,
+quantization, and spectral claims are outside this obstruction.
+
+Reopening condition:
+Provide one explicit frozen product outside the audited classes, then either
+certify a new reversor or prove a separate symmetry theorem. Changing the kick
+order, parameter rule, clock, or normalization reopens the source lock.
+
+Artifacts:
+
+- `configs/source_locks/TH-0001.yaml`
+- `formal/obstructions/low_depth_henon_reversibility.md`
+- `formal/results/th_0001_three_kick_prefilter.md`
+- `evaluations/route_a/TH-0001/20260806T024238Z.yaml`
+- `tests/test_th_0001_three_kick_henon.py`

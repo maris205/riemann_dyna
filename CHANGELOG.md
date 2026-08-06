@@ -3,6 +3,30 @@
 Repository-backed research status changes are recorded here. Detailed evidence
 and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
+## 2026-08-06
+
+### TH-0001 target-free three-kick Hénon Route-A prefilter
+
+- Promoted `TH-0001` to the first formal Hénon-family candidate after freezing
+  the autonomous superstep
+  `G=F_(5/2) o F_(3/2) o F_(1/2)` and its exact source lock.
+- Certified exact symplecticity, an explicit inverse and generating function,
+  failure of the inherited swap reversor, and exclusion of all affine
+  anti-symplectic involutions in the audited class.
+- Certified the complete global real primitive-orbit prefix through `G`-period
+  two: 4 primitive period-one and 8 primitive period-two orbits, 20 phase
+  points total, all hyperbolic; recorded `OBR-010` for the reusable low-depth
+  reversibility obstruction.
+- Kept the Route-A tuple at
+  `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_EXPLORATORY` with
+  `GO_WITH_LIMITATIONS`. The determinant convention is `NOT_OPENED`, arbitrary
+  nonlinear reversors remain open, and Route B is closed.
+- Added versioned evaluation
+  `evaluations/route_a/TH-0001/20260806T024238Z.yaml` and byte-reproducible
+  artifact/test gates (`10/10` focused, `184/184` full).
+
+Source state: `fb69649afbda27006d56471c5680b590f90ba43b`.
+
 ## 2026-08-05
 
 ### RH breadth-first portfolio rule

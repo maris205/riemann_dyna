@@ -933,7 +933,7 @@ D_N(s)\to D_{N+1}(s),
 
 **来源：** Area-preserving Hénon 工作与时间反演讨论  
 **证据：** `HEURISTIC` + `MODELING_CHOICE`  
-**状态：** `UNDER_TEST`
+**状态：** `ACTIVE` — `TH-0001` prefilter complete; A4 quantization follow-up open
 **对应层：** `A1`, `A4`
 
 ### 内容
@@ -1491,4 +1491,18 @@ new_status: UNDER_TEST
 evidence: "Project-level breadth pivot after the Logistic candidate accumulated a stable non-lattice roof and frozen complex branch domain without changing its Route-A tuple"
 commit: "3ae5e23508e27129cfa5910473b944026b904ea3"
 consequence: "No formal TH-0001 candidate is created. The next task is to inspect the legacy area-preserving Hénon parent and freeze exactly one explicit target-free autonomous Twisted Hénon or kicked-symplectic map. The first Route-A prefilter covers only symplecticity, antiunitary/time-reversal symmetry, and reproducible short primitive UPOs; no determinant or zero fitting is allowed."
+```
+
+## Status update — CLUE-A4-001 TH-0001 three-kick prefilter
+
+```yaml
+date: 2026-08-06
+clue_id: CLUE-A4-001
+old_status: UNDER_TEST
+new_status: ACTIVE
+candidate_id: TH-0001
+evidence: "Frozen target-free non-palindromic three-kick Hénon superstep, exact symplectic/generating-function audit, inherited and affine reversor obstructions, and complete global signed UPO prefix through G-period two"
+commit: "fb69649afbda27006d56471c5680b590f90ba43b"
+evaluation: "evaluations/route_a/TH-0001/20260806T024238Z.yaml"
+consequence: "TH-0001 is now a formal candidate with Route-A tuple (A1_WEAK,A2_FAIL,A3_FAIL,A4_FORMAL_HINT), ROUTE_A_EXPLORATORY, and GO_WITH_LIMITATIONS. The short orbit ledger is complete only for G-period <=2; arbitrary nonlinear reversors, higher periods, any determinant, and Route B remain closed. Next freeze same-order Fourier-integral quantization and audit normalization/unitarity plus natural antiunitary symmetry without computing spectra or fitting zeros."
 ```

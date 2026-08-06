@@ -289,6 +289,12 @@ audit. At the unchanged `epsilon=1/1000` it proves one common holomorphic
 four compact inclusions, and matching-space invariance. It is a `PROVED`
 positive structural prior, not a nuclearity or determinant pass and not a new
 formal candidate.
+TH-0001 is the first formal Hénon-family candidate. It freezes one target-free
+autonomous non-palindromic three-kick superstep and has a complete global
+signed real primitive-orbit prefix through G-period two. Its Route-A tuple is
+`(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_EXPLORATORY` with
+`GO_WITH_LIMITATIONS`; the short UPO result is cutoff-scoped and supplies no
+arithmetic orbit law or determinant. Route B remains closed.
 No candidate has entered Route B.
 ```
 
@@ -364,6 +370,7 @@ Twisted Hénon / kicked-symplectic object for a low-cost Route-A prefilter.
 
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
+| TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `UPO_PASSED` (G-period <=2 scope) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, affine-reversor obstruction, and complete global signed UPO prefix | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear reversor audit | Freeze same-order Fourier-integral quantization and unitary/antiunitary audit |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
 | SS-0002 | Countable-state symbolic suspension / modular transfer operator | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_REJECTED` | Not invoked | Exact C6 holonomy, nuclear Fredholm determinant, Selberg identity, and natural Laplacian | Same determinant has at least `Omega(T^2)` Selberg spectral zeros, not `Theta(T log T)` | Define one explicit non-Selberg nuclear object and prove its own divisor-count regime before assigning SS-0003 |
 
@@ -372,6 +379,134 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 | Control ID | Role | Control verdict | Candidate scope | Strongest evidence | Main limitation |
 |---|---|---|---|---|---|
 | CTRL-0001 | Four-channel q-Pochhammer Fredholm A2 positive control | `GO_WITH_LIMITATIONS` | `STOP_SCOPED`; not a formal candidate | Independent direct-product winding and Fredholm-coefficient root discovery pass all frozen gates, including balanced corruption and executable ledger controls | Sampled winding is a numerical anti-alias diagnostic, not an interval proof; engineered factors have no natural prime orbit or completed-xi structure |
+
+---
+
+## TH-0001 — Target-free non-palindromic three-kick Hénon ratchet
+
+### Identity
+
+- **Family:** Twisted Hénon / kicked symplectic map
+- **Parent clue:** `CLUE-A4-001`
+- **Created:** 2026-08-06
+- **Current status:** `UPO_PASSED` (strictly scoped to the frozen `G`-period `<=2` prefix)
+- **Owner:** sole main research agent
+- **Branch:** `main`
+- **Latest commit:** `fb69649afbda27006d56471c5680b590f90ba43b`
+- **Uses prime table:** `false`
+- **Uses zero table:** `false`
+
+### Exact definition
+
+On \((\mathbb R^2,dq\wedge dp)\), let
+
+\[
+F_a(q,p)=(1-aq^2-p,q),
+\qquad
+G=F_{5/2}\circ F_{3/2}\circ F_{1/2}.
+\]
+
+One application of `G` is the only clock unit. The half-integer ramp is a
+target-free `MODELING_CHOICE`; it is not a claimed natural arithmetic constant.
+
+### Source lock
+
+```text
+configs/source_locks/TH-0001.yaml
+```
+
+The lock fixes exact rational polynomial data, signed raw-coordinate
+normalization, `determinant_convention: NOT_OPENED`, and complete real primitive
+periods only through two `G`-supersteps. Prime/zero/GUE/USTC data and all
+legacy fitted parameters are forbidden.
+
+### Route-A status
+
+```yaml
+a1: A1_WEAK
+a2: A2_FAIL
+a3: A3_FAIL
+a4: A4_FORMAL_HINT
+overall: ROUTE_A_EXPLORATORY
+scoped_verdict: GO_WITH_LIMITATIONS
+latest_evaluation: evaluations/route_a/TH-0001/20260806T024238Z.yaml
+```
+
+### Route-B status
+
+```yaml
+b1: NOT_INVOKED
+b2: NOT_INVOKED
+b3: NOT_INVOKED
+b4: NOT_INVOKED
+b5: NOT_INVOKED
+overall: NOT_INVOKED
+latest_evaluation: null
+```
+
+### Positive evidence
+
+- Each kick is exact-symplectic and has the common generating function
+  \(S_a(q,Q)=qQ-q+(a/3)q^3\); `G` is an exact-symplectic polynomial
+  automorphism of algebraic dynamical degree eight.
+- The inherited swap reversor fails at an exact witness point, and all affine
+  anti-symplectic involutions are excluded by highest-degree comparison.
+- Exact Groebner/Sturm elimination gives four primitive real period-one
+  orbits and eight primitive real period-two orbits, globally on \(\mathbb R^2\)
+  with no search box or random seed. All 20 phase points are hyperbolic.
+
+### Failed controls and known obstructions
+
+- No prime-like period law, von-Mangoldt repetition weight, or higher-period
+  completeness is established; A1 remains `A1_WEAK`.
+- No determinant or analytic structure has been opened; A2 and A3 are
+  `FAIL`/`NOT_TESTABLE` by design.
+- `OBR-010` excludes the audited low-depth legacy one-/two-kick reversible
+  subclasses and affine reversors, but arbitrary nonlinear or non-polynomial
+  anti-symplectic reversors remain an open obligation.
+
+### Reproduction
+
+```bash
+python3 experiments/th_0001_three_kick_henon.py \
+  --quiet \
+  --output artifacts/th_0001/route_a_prefilter.json
+python3 -m unittest -v tests/test_th_0001_three_kick_henon.py
+python3 -m unittest discover -v
+```
+
+### Artifacts
+
+```text
+evaluations/route_a/TH-0001/20260806T024238Z.yaml
+artifacts/th_0001/route_a_prefilter.json
+formal/results/th_0001_three_kick_prefilter.md
+formal/obstructions/low_depth_henon_reversibility.md
+tests/test_th_0001_three_kick_henon.py
+```
+
+### Claim boundary
+
+**Established:** one frozen autonomous target-free map, exact symplecticity and
+inverse, low-complexity reversibility obstruction, and a complete signed real
+primitive-orbit prefix through `G`-period two.
+
+**Not established:** arbitrary nonlinear time-reversal breaking, arithmetic
+orbit correspondence, any Zeta/Fredholm determinant, global analytic structure,
+quantum operator/domain, Route B, Hilbert--Pólya, or RH.
+
+### Next smallest test
+
+Freeze the same-order Fourier-integral quantization
+`U=U_(5/2)U_(3/2)U_(1/2)` on `L^2(R)`, prove normalization and unitarity, and
+audit its natural antiunitary symmetry without computing a spectrum or opening
+Route B.
+
+### Decision history
+
+| Date | Previous state | New state | Evidence | Commit | Reviewer |
+|---|---|---|---|---|---|
+| 2026-08-06 | `GENERATED` | `UPO_PASSED` (cutoff-scoped) | Exact Route-A prefilter; `A1_WEAK/A2_FAIL/A3_FAIL/A4_FORMAL_HINT` | `fb69649afbda27006d56471c5680b590f90ba43b` | sole main research agent |
 
 ---
 
