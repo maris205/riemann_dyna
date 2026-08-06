@@ -305,7 +305,9 @@ tower. The natural direct-sum magnetic Laplacian is self-adjoint with compact
 resolvent and has the target-free all-order count `Theta(K log K)`, but its raw
 coefficient is wrong. `OBR-012` proves that the naive unregularized Euler
 product has no finite nonzero value and that the standard direct-sum bond
-operator is not trace class. Its Route-A tuple is
+operator is not trace class. The base-component sinc audit now also proves
+that the bond zero at `k=0` is exactly double and spurious, and supplies an
+entire normalized physical characteristic. Its Route-A tuple remains
 `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)` /
 `ROUTE_A_EXPLORATORY` with `GO_WITH_LIMITATIONS`; Route B remains closed.
 No candidate has entered Route B.
@@ -383,7 +385,7 @@ Twisted Hénon / kicked-symplectic object for a low-cost Route-A prefilter.
 
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
-| QG-0001 | Harmonic magnetic lollipop-theta graph tower | `ANALYTIC_REVIEW` (orbit cutoff <=6) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)` / `ROUTE_A_EXPLORATORY` | Not invoked | Natural compact-resolvent magnetic Laplacian and intrinsic `Theta(K log K)` wavenumber count | Periods accumulate at zero; naive Euler product and direct-sum trace class fail; raw coefficient is wrong | Audit the physical base characteristic function at `k=0` before freezing any regularized tower product |
+| QG-0001 | Harmonic magnetic lollipop-theta graph tower | `ANALYTIC_REVIEW` (orbit cutoff <=6; base characteristic exact) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)` / `ROUTE_A_EXPLORATORY` | Not invoked | Compact resolvent, intrinsic `Theta(K log K)` count, and exact entire base characteristic with spurious bond zero removed | Periods accumulate at zero; naive product fails; no global relative determinant; raw coefficient is wrong | Freeze one same-operator genus-one relative component product and prove convergence |
 | TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, unitary FIO lift, and exact internal-caustic obstruction | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear antiunitary audit | Stop phase sub-audit; reopen only with an explicit multi-chart phase/Maslov ledger |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
 | SS-0002 | Countable-state symbolic suspension / modular transfer operator | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_REJECTED` | Not invoked | Exact C6 holonomy, nuclear Fredholm determinant, Selberg identity, and natural Laplacian | Same determinant has at least `Omega(T^2)` Selberg spectral zeros, not `Theta(T log T)` | Define one explicit non-Selberg nuclear object and prove its own divisor-count regime before assigning SS-0003 |
@@ -406,7 +408,7 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Current status:** `ANALYTIC_REVIEW` (primitive directed-bond prefix complete only through topological period six)
 - **Owner:** sole main research agent
 - **Branch:** `main`
-- **Latest source commit:** `ce0d4424a95a9392c9e8755a4a11b1cfcabc0e77`
+- **Latest source commit:** `af41439b609a5dfb863931ed1e56a0598de5f003`
 - **Uses prime table:** `false`
 - **Uses zero table:** `false`
 
@@ -432,6 +434,7 @@ metric length and its quantum spectral variable is positive wavenumber
 
 ```text
 configs/source_locks/QG-0001.yaml
+configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml
 ```
 
 The determinant convention is `NOT_OPENED`. Prime/zero tables, fitted graph
@@ -447,7 +450,7 @@ a3: A3_FAIL
 a4: A4_UNITARY_OR_SCATTERING_CANDIDATE
 overall: ROUTE_A_EXPLORATORY
 scoped_verdict: GO_WITH_LIMITATIONS
-latest_evaluation: evaluations/route_a/QG-0001/20260806T090351Z.yaml
+latest_evaluation: evaluations/route_a/QG-0001/20260806T111927Z.yaml
 ```
 
 ### Route-B status
@@ -467,6 +470,20 @@ latest_evaluation: null
 - Exact exhaustive enumeration gives 10, 45, and 330 primitive oriented
   orbits at topological periods 2, 4, and 6. Direct based-word traces agree
   with the primitive/repetition ledger at every period through six.
+- The 6-by-6 sinc-matching matrix defines an even entire base characteristic
+  \(\mathcal C_{\rm phys}(k)\) at all wavenumbers, including `k=0` and
+  individual edge-Dirichlet points. Exact algebra gives
+
+  \[
+  \Delta_{\rm bond}(k)
+  =-\frac43 k^2e^{ikL_0}\mathcal C_{\rm phys}(k),
+  \qquad
+  \mathcal C_{\rm phys}(0)
+  =\sqrt2+\sqrt3+\sqrt5+\sqrt6+\sqrt{15}+3\sqrt{10}>0.
+  \]
+
+  Thus the bond zero at `k=0` is exactly double and spurious. After dephasing,
+  \(\chi_0(k)=1-4.4035597019537134\ldots k^2+O(k^4)\).
 - The asymmetric degree/boundary decoration has only the identity graph
   automorphism, and the flux class is not gauge equivalent to its negative;
   the inherited local geometric antiunitary class is excluded.
@@ -506,6 +523,10 @@ python3 experiments/qg_0001_harmonic_magnetic_tower.py \
   --quiet \
   --output artifacts/qg_0001/route_a_prefilter.json
 python3 -m unittest -v tests/test_qg_0001_harmonic_magnetic_tower.py
+python3 experiments/qg_0001_base_characteristic.py \
+  --quiet \
+  --output artifacts/qg_0001/base_characteristic_zero.json
+python3 -m unittest -v tests/test_qg_0001_base_characteristic.py
 python3 -m unittest discover -v
 ```
 
@@ -513,12 +534,18 @@ python3 -m unittest discover -v
 
 ```text
 configs/source_locks/QG-0001.yaml
+configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml
 evaluations/route_a/QG-0001/20260806T090351Z.yaml
+evaluations/route_a/QG-0001/20260806T111927Z.yaml
 experiments/qg_0001_harmonic_magnetic_tower.py
+experiments/qg_0001_base_characteristic.py
 artifacts/qg_0001/route_a_prefilter.json
+artifacts/qg_0001/base_characteristic_zero.json
 formal/results/qg_0001_harmonic_magnetic_tower.md
+formal/results/qg_0001_base_characteristic_zero.md
 formal/obstructions/harmonic_graph_tower_naive_determinant.md
 tests/test_qg_0001_harmonic_magnetic_tower.py
+tests/test_qg_0001_base_characteristic.py
 ```
 
 ### Claim boundary
@@ -527,7 +554,9 @@ tests/test_qg_0001_harmonic_magnetic_tower.py
 signed/oriented primitive prefix, the local geometric antiunitary obstruction,
 a natural self-adjoint compact-resolvent operator, the all-order `K log K`
 counting exponent, failure of the naive Euler product, and failure of trace
-class for the standard direct-sum bond operator.
+class for the standard direct-sum bond operator. The base physical
+characteristic, exact spurious bond-zero order, zero-free phase removal, and
+first normalized Taylor coefficients are also established.
 
 **Not established:** an arithmetic orbit law, a regularized same-object
 determinant, the correct leading coefficient, a completed-ξ divisor, Route B,
@@ -535,15 +564,17 @@ Hilbert–Pólya, or RH.
 
 ### Next smallest test
 
-Derive the entire physical base-component characteristic function at `k=0`,
-prove the order and removal of any spurious bond-secular zero, and identify
-the first nonzero normalized Taylor coefficient. Only then test one explicit
-genus-one relative component product; do not borrow spectral-zeta zeros.
+Freeze one same-operator genus-one relative component product using
+`chi_n(k)=chi_0(k/n)` and the explicit local counterphase
+`exp(-i*k*L_0/n)`. Prove convergence and state its Fredholm/relative
+determinant convention before any divisor comparison. Do not reuse the naive
+orbit product or borrow heat/spectral-zeta zeros.
 
 ### Decision history
 
 | Date | Previous state | New state | Evidence | Commit | Reviewer |
 |---|---|---|---|---|---|
+| 2026-08-06 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Exact sinc-matching base characteristic; spurious bond zero removed with normalized Taylor ledger | `af41439b609a5dfb863931ed1e56a0598de5f003` | sole main research agent |
 | 2026-08-06 | `GENERATED` | `ANALYTIC_REVIEW` | Exact Route-A structural prefilter; intrinsic `K log K` count and `OBR-012` | `ce0d4424a95a9392c9e8755a4a11b1cfcabc0e77` | sole main research agent |
 
 ---

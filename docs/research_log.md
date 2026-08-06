@@ -2326,6 +2326,154 @@ Fredholm zeros, target divisors, or Route B in that task.
 
 Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped theorem).
 
+## 2026-08-06 — QG-0001 base-component characteristic audit
+
+### Stable checkpoint
+
+Current clue: `CLUE-A4-003`.
+
+Candidate ID: `QG-0001`; subaudit ID:
+`QG-0001-BASE-CHARACTERISTIC-001`.
+
+- Formal candidate: `true`
+- Candidate state: `ANALYTIC_REVIEW`
+- Source commit: `af41439b609a5dfb863931ed1e56a0598de5f003`
+- Source lock: `configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml`
+- Route-A evaluation:
+  `evaluations/route_a/QG-0001/20260806T111927Z.yaml`
+- Route-A tuple:
+  `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)`
+- Overall Route A: `ROUTE_A_EXPLORATORY`
+- Scoped verdict: `GO_WITH_LIMITATIONS`
+- Route-B tuple: not evaluated; Route B remains inactive and unauthorized
+
+### Source lock and exact result
+
+Only the `n=1` component is audited. A 6-by-6 sinc-matching matrix uses the
+unknowns `(u_L,u_R,q_0,q_1,q_2,q_3)`, with `sin(k*ell)/k` interpreted as `ell`
+at `k=0`. Its determinant `C_phys(k)` is entire and even, including at
+individual edge-Dirichlet points. Exact evaluation gives
+
+\[
+A=C_{\rm phys}(0)
+=\sqrt2+\sqrt3+\sqrt5+\sqrt6+\sqrt{15}+3\sqrt{10}>0.
+\]
+
+For the parent directed-bond convention,
+
+\[
+\Delta_{\rm bond}(k)
+=-\frac43 k^2e^{ikL_0}C_{\rm phys}(k),
+\qquad
+L_0=1+\sqrt2+\sqrt3+\sqrt5.
+\]
+
+The identity is checked at 80-digit precision for `k=0.11`, `0.731`, `1.2`,
+and `pi` (the last sample has an edge sine zero). Consequently the bond
+secular zero at `k=0` has exact order two and is not a physical eigenvalue;
+the Dirichlet terminal independently rules out a zero mode.
+
+### Normalization ledger
+
+The first nonzero bond coefficient is
+
+\[
+[k^2]\Delta_{\rm bond}(k)=-\frac43A
+=-28.2555178892499933575\ldots.
+\]
+
+After removing the proved `k^2` and scalar, the raw factor is
+
+\[
+\beta(k)=e^{ikL_0}\chi_0(k)=1+iL_0k+O(k^2),
+\]
+
+where the zero-free phase removal gives
+
+\[
+\chi_0(k)=\frac{C_{\rm phys}(k)}A
+=1-4.40355970195371342217\ldots k^2+O(k^4).
+\]
+
+For component `n`, the local relation is `chi_n(k)=chi_0(k/n)` and the
+corresponding phase counterterm is `exp(-i*k*L_0/n)`. This is a local ledger,
+not yet an infinite product.
+
+### Strongest evidence and failure
+
+The physical matching characteristic is now defined without cotangent poles or
+automatic sine-factor zeros, and the bond/physical relation is exact under one
+frozen convention. This resolves the requested representation singularity.
+
+It does not define a global tower Euler, Fredholm, relative, Weierstrass, or
+heat-zeta determinant; it adds no arithmetic orbit law, completed-xi divisor,
+Route B result, or RH claim. The parent `OBR-012`, wrong raw `K log K`
+coefficient, and period accumulation at zero remain unchanged.
+
+### Updated files
+
+- `configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml`
+- `experiments/qg_0001_base_characteristic.py`
+- `artifacts/qg_0001/base_characteristic_zero.json`
+- `formal/results/qg_0001_base_characteristic_zero.md`
+- `tests/test_qg_0001_base_characteristic.py`
+- `evaluations/route_a/QG-0001/20260806T111927Z.yaml`
+- `docs/candidate_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/operator_obligations.md` remains unchanged because Route B is closed.
+
+### Tests and reproduction
+
+- Base-characteristic focused suite: `8/8 passed` (`0.899 s`).
+- Parent QG focused suite: `8/8 passed`.
+- Full repository suite after adding this subaudit: `217/217 passed` (`60.914 s`).
+- Exact YAML parse and `git diff --check`: passed.
+
+```bash
+python3 experiments/qg_0001_base_characteristic.py \
+  --quiet \
+  --output artifacts/qg_0001/base_characteristic_zero.json
+python3 -m unittest -v tests/test_qg_0001_base_characteristic.py
+python3 -m unittest -v tests/test_qg_0001_harmonic_magnetic_tower.py
+python3 -c 'import yaml; p="evaluations/route_a/QG-0001/20260806T111927Z.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["a2"]["verdict"], d["a2"]["metrics"]["bond_zero_order_at_k0"], d["route_b_invocation_allowed"])'
+sha256sum artifacts/qg_0001/base_characteristic_zero.json \
+  experiments/qg_0001_base_characteristic.py \
+  configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml \
+  formal/results/qg_0001_base_characteristic_zero.md \
+  tests/test_qg_0001_base_characteristic.py
+git diff --check
+```
+
+Hashes:
+
+```text
+3534a95c9940600760e79e72fdfe94c7b0538ece3f8ec04119cc1faccf7d0f88  artifacts/qg_0001/base_characteristic_zero.json
+f5c53c1b4104a88e2b49dfeb237f705479eeac47825a1094b511156ffcdd570e  experiments/qg_0001_base_characteristic.py
+e95f0184a757dc1754efd48904b101bbed6afadcd1d8530c8433f1785cc36d8b  configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml
+fcebae639a006d1d284923bba9464b27b7283b2472f50f25fbbeb598eb60de7e  formal/results/qg_0001_base_characteristic_zero.md
+50012f5386e3f30bcb3e9138a9f940b065c5b4ff40bc6e515da47e4d2d91ea1d  tests/test_qg_0001_base_characteristic.py
+```
+
+### Claim boundary and next smallest task
+
+Established: the exact entire base physical characteristic, positive value at
+zero, exact order-two spurious bond zero, its leading coefficient, and the raw
+and dephased normalized Taylor ledgers.
+
+Not established: any global tower determinant, convergence/divisor theorem,
+arithmetic trace formula, completed-xi identity, Route B, Hilbert--Polya, or RH.
+
+Next smallest task: freeze one explicit same-operator genus-one relative
+component product using `chi_0(k/n)` and `exp(-i*k*L_0/n)`, then prove its
+convergence and compatibility with the direct-sum operator. Keep it separate
+from the naive orbit product and heat/spectral zeta.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`.
+
 ## 2026-08-06 — QG-0001 harmonic magnetic graph-tower prefilter
 
 ### Stable checkpoint

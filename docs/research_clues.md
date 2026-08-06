@@ -1568,3 +1568,19 @@ evaluation: "evaluations/route_a/QG-0001/20260806T090351Z.yaml"
 obstruction: "OBR-012"
 consequence: "The harmonic scale tower escapes the fixed finite-graph O(T) count and naturally produces the target counting exponent, but its raw coefficient is wrong and its primitive periods accumulate at zero. The pendant bounce proves that the naive Euler product has no finite nonzero value, while the explicit standard bond blocks have trace norm tending to 8 and hence no trace-class direct sum. Keep heat/spectral zeta separate from a secular divisor; next audit only the physical base characteristic function at k=0. Route B remains closed."
 ```
+
+## Status update — CLUE-A4-003 QG-0001 base characteristic
+
+```yaml
+date: 2026-08-06
+clue_id: CLUE-A4-003
+candidate_id: QG-0001
+subaudit_id: QG-0001-BASE-CHARACTERISTIC-001
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "The 6x6 sinc-matching determinant is entire and even; C_phys(0)=sqrt(2)+sqrt(3)+sqrt(5)+sqrt(6)+sqrt(15)+3sqrt(10)>0; Delta_bond(k)=-(4/3)k^2*exp(i*k*L0)*C_phys(k) is verified at 80-digit precision, including k=pi"
+commit: "af41439b609a5dfb863931ed1e56a0598de5f003"
+source_lock: "configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml"
+evaluation: "evaluations/route_a/QG-0001/20260806T111927Z.yaml"
+consequence: "The k=0 bond zero has exact order two and is a plane-wave parametrization artifact, not a physical zero mode. After the explicit zero-free phase removal exp(-i*k*L0), chi_0(k)=1-4.4035597019537134*k^2+O(k^4). This local result does not open a tower determinant or Route B. The next task is one explicit same-operator genus-one relative product with a proved convergence convention."
+```

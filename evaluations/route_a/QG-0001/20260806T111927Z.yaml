@@ -1,0 +1,173 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: QG-0001
+audit_id: QG-0001-BASE-CHARACTERISTIC-001
+formal_candidate: true
+source_commit: af41439b609a5dfb863931ed1e56a0598de5f003
+evaluation_date: "2026-08-06T11:19:27Z"
+supersedes: evaluations/route_a/QG-0001/20260806T090351Z.yaml
+
+source_lock:
+  object: >-
+    The n=1 component of the frozen asymmetric magnetic lollipop-theta graph,
+    audited through its 6x6 sinc-matching matrix and its parent 8x8 directed
+    bond determinant. The infinite 1/n tower is outside this local determinant.
+  data_type: >-
+    Exact entire physical matching characteristic C_phys(k), exact pole-free
+    F(k)=k^2*C_phys(k), and high-precision comparison with Delta_bond(k).
+  clock: raw positive wavenumber k=sqrt(lambda) of the n=1 component
+  normalization: >-
+    A=C_phys(0)>0 and chi_0(k)=C_phys(k)/A with chi_0(0)=1. The separate raw
+    bond factor beta(k)=-(3/(4*A*k^2))*Delta_bond(k) retains exp(i*k*L0).
+  determinant_convention: >-
+    BASE_PHYSICAL_MATCHING_ONLY. No tower Euler, Fredholm, relative,
+    Weierstrass, heat-zeta, or completed-xi determinant is opened.
+  cutoff: >-
+    Exact all-k 6x6 matching formula; Taylor through C_phys k^2 and Delta_bond
+    k^3; fixed samples 0.11, 0.731, 1.2, and pi.
+  precision: >-
+    SymPy exact radicals/root-of-unity phases and 80-digit mpmath residuals.
+  allowed_data:
+    - configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml
+    - exact vertex matching and finite bond scattering algebra
+    - standard Dirichlet zero-mode argument
+  forbidden_data:
+    - prime tables, zero tables, fitting, and spectral anchoring
+    - tower determinant regularization or borrowed spectral-zeta zeros
+    - treating individual sin(k*ell_e)=0 factors as automatic eigenvalues
+    - Route B or Hilbert-Polya claims
+  training_split: exact matrix definition, k=0 determinant, and parity identity
+  validation_split: exact F=k^2*C_phys identity and Taylor coefficients
+  test_split: high-precision bond identity at all frozen sample wavenumbers,
+    including an edge-Dirichlet point k=pi
+  stopping_conditions:
+    - stop if the matching matrix, clock, phase convention, or normalization changes
+    - revise if the exact k=0 value, parity, or bond identity fails
+    - do not open the tower relative product until this local audit is recorded
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The prior exact signed primitive/repetition census through directed-bond
+    period six remains unchanged and is independent of this local analytic
+    repair.
+  strongest_failure: >-
+    The base characteristic does not create a log-prime primitive-period law or
+    von-Mangoldt orbit weights; tower periods still accumulate at zero.
+  metrics:
+    primitive_prefix_unchanged: true
+    arithmetic_orbit_law: false
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+  artifacts:
+    - artifacts/qg_0001/route_a_prefilter.json
+    - artifacts/qg_0001/base_characteristic_zero.json
+    - formal/results/qg_0001_base_characteristic_zero.md
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    A complete entire physical n=1 characteristic is now defined by the sinc
+    matching matrix. Exact row reduction proves
+    Delta_bond(k)=-(4/3)*k^2*exp(i*k*L0)*C_phys(k), with C_phys(0)=A>0.
+    Thus the bond determinant's k=0 zero has exact order two and is removed
+    only after the identity is proved. The raw normalized factor has linear
+    coefficient i*L0, while the dephased physical characteristic has
+    chi_0(k)=1+a2*k^2+O(k^4), a2=-4.4035597019537134...
+  strongest_failure: >-
+    This is only a single finite base component. It does not define a global
+    tower Euler/Fredholm/relative determinant, root ledger, divisor count, or
+    cutoff-stable comparison with xi. The prior pendant-bounce obstruction to
+    the naive tower product remains in force.
+  metrics:
+    base_physical_characteristic_defined: true
+    base_characteristic_entire: true
+    base_characteristic_even: true
+    physical_zero_mode: false
+    bond_zero_order_at_k0: 2
+    bond_zero_is_physical: false
+    bond_leading_coefficient: "-(4/3)*(sqrt(2)+sqrt(3)+sqrt(5)+sqrt(6)+sqrt(15)+3*sqrt(10))"
+    normalized_quadratic_coefficient: -4.4035597019537134221704686383
+    global_tower_determinant_defined: false
+    zero_error_train: not_testable_global_determinant_absent
+    zero_error_validation: not_testable_global_determinant_absent
+    zero_error_test: not_testable_global_determinant_absent
+    max_bond_identity_residual: "1.53e-80"
+    edge_dirichlet_sample_checked: true
+  artifacts:
+    - configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml
+    - experiments/qg_0001_base_characteristic.py
+    - artifacts/qg_0001/base_characteristic_zero.json
+    - formal/results/qg_0001_base_characteristic_zero.md
+    - tests/test_qg_0001_base_characteristic.py
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The local characteristic is entire and its normalization is explicit; the
+    earlier direct-sum operator count remains an intrinsic Theta(K log K)
+    theorem under the parent lock.
+  strongest_failure: >-
+    No global tower analytic continuation, completed-xi functional equation,
+    correct leading coefficient, or zero-free prefactor has been established.
+  metrics:
+    local_entire_characteristic: true
+    tower_analytic_continuation: false
+    functional_equation: false
+    completed_xi_divisor: false
+    spectral_zeta_cross_ledger_promotion_allowed: false
+  artifacts:
+    - formal/results/qg_0001_base_characteristic_zero.md
+    - artifacts/qg_0001/base_characteristic_zero.json
+
+a4:
+  verdict: A4_UNITARY_OR_SCATTERING_CANDIDATE
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The local characteristic uses exactly the parent metric clock and magnetic
+    scattering convention. The parent magnetic Laplacian remains self-adjoint
+    with compact resolvent and the inherited local geometric antiunitary class
+    remains excluded.
+  strongest_failure: >-
+    No natural operator determinant equality with the completed xi function is
+    present, and the local beta counterphase is only a base asymptotic ledger,
+    not a global quantization or Route-B result.
+  metrics:
+    same_clock_preserved: true
+    local_scattering_convention_preserved: true
+    inherited_local_geometric_antiunitary: false
+    route_b_ready: false
+  artifacts:
+    - configs/source_locks/QG-0001.yaml
+    - configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml
+    - formal/results/qg_0001_base_characteristic_zero.md
+
+overall_verdict: ROUTE_A_EXPLORATORY
+recommended_candidate_state: ANALYTIC_REVIEW
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - exact entire sinc-matching characteristic for the frozen n=1 component
+    - C_phys(0)=A>0 and absence of a physical zero mode
+    - exact order-two spurious zero of the parent bond determinant at k=0
+    - exact leading bond coefficient, raw linear phase i*L0, and dephased a2
+    - robust handling of individual edge-Dirichlet sine zeros
+  not_established:
+    - a global tower determinant or divisor identity
+    - arithmetic orbit weights, completed-xi structure, or correct target coefficient
+    - Route B, Hilbert-Polya, or RH
+blocking_conditions:
+  - naive tower short-orbit product and standard direct-sum bond Fredholm determinant fail
+  - primitive periods accumulate at zero and have no log-prime law
+  - parent unfitted K log K coefficient remains wrong
+  - no global prime-power trace or completed-xi analytic ledger exists
+next_smallest_test: >-
+  Freeze one explicit same-operator genus-one relative component product using
+  chi_n(k)=chi_0(k/n), with the local counterphase exp(-i*k*L0/n) and a fully
+  stated Fredholm/relative determinant convention. Prove convergence and keep
+  it separate from the naive orbit product and heat/spectral zeta.
+route_b_invocation_allowed: false

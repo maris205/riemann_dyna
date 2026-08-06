@@ -5,6 +5,25 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-06
 
+### QG-0001 base-component characteristic at k=0
+
+- Added the local source lock
+  `configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml` and a 6-by-6
+  sinc-matching characteristic for the frozen n=1 graph.
+- Proved the exact same-convention identity
+  \(\Delta_{\rm bond}(k)=-(4/3)k^2e^{ikL_0}C_{\rm phys}(k)\). The bond
+  determinant therefore has an exact double zero at `k=0`, while
+  \(C_{\rm phys}(0)=\sqrt2+\sqrt3+\sqrt5+\sqrt6+\sqrt{15}+3\sqrt{10}>0\),
+  so the zero is a plane-wave parametrization artifact.
+- Recorded both normalization ledgers: the raw post-`k^2` bond factor has
+  first nonconstant coefficient `i*L0`, and the dephased even characteristic
+  has \(\chi_0(k)=1-4.4035597019537134\,k^2+O(k^4)\).
+- Added exact symbolic and 80-digit numerical gates, including an
+  edge-Dirichlet sample. This is a local base prerequisite only; the tower
+  determinant and Route B remain closed.
+
+Source state: `af41439b609a5dfb863931ed1e56a0598de5f003`.
+
 ### QG-0001 harmonic magnetic graph-tower prefilter
 
 - Froze an asymmetric magnetic lollipop-theta base graph with squarefree

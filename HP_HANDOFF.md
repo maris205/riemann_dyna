@@ -1,6 +1,138 @@
 # HP-Dynamics Handoff
 
-## Current status — QG-0001 harmonic magnetic graph-tower prefilter
+## Current status — QG-0001 base-component characteristic audit
+
+Current clue: `CLUE-A4-003`.
+
+Candidate ID: `QG-0001`; subaudit ID:
+`QG-0001-BASE-CHARACTERISTIC-001`.
+
+- Formal candidate: `true`
+- Candidate state: `ANALYTIC_REVIEW`
+- Source commit: `af41439b609a5dfb863931ed1e56a0598de5f003`
+- Source lock: `configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml`
+- Route-A evaluation:
+  `evaluations/route_a/QG-0001/20260806T111927Z.yaml`
+- Route-A tuple:
+  `(A1_WEAK, A2_FAIL, A3_FAIL, A4_UNITARY_OR_SCATTERING_CANDIDATE)`
+- Overall Route A: `ROUTE_A_EXPLORATORY`
+- Route-B tuple: `(NOT_INVOKED, NOT_INVOKED, NOT_INVOKED, NOT_INVOKED, NOT_INVOKED)`
+- Scoped verdict: `GO_WITH_LIMITATIONS`
+- Route B: inactive and not authorized
+
+### Source lock
+
+Only the n=1 component is audited. The 6-by-6 sinc-matching matrix uses
+`(u_L,u_R,q_0,q_1,q_2,q_3)` and the raw wavenumber `k`; `sin(k*ell)/k` is
+defined as `ell` at zero. Its determinant `C_phys(k)` is entire and even.
+The parent bond convention is retained only for the exact comparison
+
+\[
+\Delta_{\rm bond}(k)=-\frac43 k^2e^{ikL_0}C_{\rm phys}(k),
+\qquad L_0=1+\sqrt2+\sqrt3+\sqrt5.
+\]
+
+No tower Euler/Fredholm/relative determinant, heat-zeta promotion, target fit,
+prime/zero table, or Route B step is authorized by this local lock.
+
+### Route-A tuple
+
+- `A1_WEAK`: the prior signed primitive/repetition ledger through period six
+  is unchanged; no arithmetic orbit law is supplied.
+- `A2_FAIL`: exact matching gives
+
+  \[
+  C_{\rm phys}(0)=A=\sqrt2+\sqrt3+\sqrt5+\sqrt6+\sqrt{15}+3\sqrt{10}>0.
+  \]
+
+  The bond zero at zero is exactly double and spurious. After removing the
+  scalar and phase,
+  \(\chi_0(k)=1-4.4035597019537134\ldots k^2+O(k^4)\); this is a base
+  prerequisite, not a global determinant.
+- `A3_FAIL`: no tower divisor, functional equation, correct coefficient, or
+  completed-xi identity exists.
+- `A4_UNITARY_OR_SCATTERING_CANDIDATE`: the same parent clock and magnetic
+  scattering convention are preserved; Route B remains closed.
+
+### Strongest evidence
+
+The sinc matrix is finite at `k=0` and at individual edge-Dirichlet points,
+while the exact bond identity is reproduced with maximum residual below
+`1.53e-80` at four frozen samples, including `k=pi`. The Dirichlet terminal
+proves the positive physical gap independently.
+
+### Strongest failure
+
+The result is local to one finite component. It neither supplies convergence
+of a tower product nor a prime-power trace formula, and the parent naive tower
+product remains blocked by `OBR-012`.
+
+### New reusable knowledge
+
+Use a sinc-matching determinant as the physical characteristic at zero; do not
+use cotangent/cosecant poles or individual sine factors as eigenvalue tests.
+The raw normalized bond factor has first nonconstant coefficient `i*L0`; the
+explicit counterphase `exp(-i*k*L0/n)` leaves the even component characteristic
+`chi_0(k/n)`. This is the precise local ledger for a possible genus-one
+relative product.
+
+### Updated files
+
+- `configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml`
+- `experiments/qg_0001_base_characteristic.py`
+- `artifacts/qg_0001/base_characteristic_zero.json`
+- `formal/results/qg_0001_base_characteristic_zero.md`
+- `tests/test_qg_0001_base_characteristic.py`
+- `evaluations/route_a/QG-0001/20260806T111927Z.yaml`
+- `docs/candidate_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/operator_obligations.md` is unchanged because Route B remains closed.
+
+### Tests and reproduction
+
+- Base-characteristic focused suite: `8/8 passed` (`0.899 s`).
+- Parent QG focused suite: `8/8 passed`.
+- Full repository suite after adding this subaudit: `217/217 passed` (`60.914 s`).
+- YAML parse and `git diff --check`: passed.
+
+```bash
+python3 experiments/qg_0001_base_characteristic.py \
+  --quiet \
+  --output artifacts/qg_0001/base_characteristic_zero.json
+python3 -m unittest -v tests/test_qg_0001_base_characteristic.py
+python3 -m unittest -v tests/test_qg_0001_harmonic_magnetic_tower.py
+python3 -c 'import yaml; p="evaluations/route_a/QG-0001/20260806T111927Z.yaml"; d=yaml.safe_load(open(p,encoding="utf-8")); print(d["a2"]["verdict"], d["a2"]["metrics"]["bond_zero_order_at_k0"], d["route_b_invocation_allowed"])'
+sha256sum artifacts/qg_0001/base_characteristic_zero.json \
+  experiments/qg_0001_base_characteristic.py \
+  configs/source_locks/QG-0001-BASE-CHARACTERISTIC.yaml \
+  formal/results/qg_0001_base_characteristic_zero.md \
+  tests/test_qg_0001_base_characteristic.py
+git diff --check
+```
+
+### Claim boundary
+
+Established: the exact entire base physical characteristic, positive value at
+zero, exact order-two spurious bond zero, leading coefficient, raw linear
+phase, and dephased normalized Taylor coefficient.
+
+Not established: a global tower determinant or convergence theorem, arithmetic
+trace weights, completed-xi divisor, Route B, Hilbert--Pólya, or RH.
+
+### Next smallest task
+
+Freeze one explicit same-operator genus-one relative component product using
+`chi_0(k/n)` and `exp(-i*k*L_0/n)`. Prove convergence and compatibility with
+the direct-sum operator before any divisor comparison; keep it separate from
+the naive orbit product and heat/spectral zeta.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`.
+
+## Previous checkpoint — QG-0001 harmonic magnetic graph-tower prefilter
 
 Current clue: `CLUE-A4-003`.
 
