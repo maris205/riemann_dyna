@@ -1684,3 +1684,15 @@ evidence: "P4-LOGISTIC-UC-POLAR-PARTITION-TRACE exact endpoint graph, half-open 
 commit: "pending current checkpoint"
 consequence: "The geometric target-copy ledger is now explicit: I_L=[-pi/2,0), I_R=[0,pi/2], with the partition point owned by R. The exact boundary graph is P->P, Q->P, Z->Q, so 0 is preperiodic rather than a boundary periodic orbit. Endpoint-copy and cyclic-rotation quotient tests pass, while the local analytic trace correction at P=-pi/2 remains OPEN. Route-A tuple stays (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL); no determinant or Route B is authorized."
 ```
+
+## Status update — CLUE-A1-004 exact-U_c local boundary trace
+
+```yaml
+date: 2026-08-07
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE exact weighted-composition trace theorem and 100-digit Taylor-tail certificate"
+commit: "pending current checkpoint"
+consequence: "For the unique boundary periodic point P=-pi/2, alpha_0=U_c^2/4 and the local LL trace is alpha_0^s/(1-alpha_0); the pure-L length-n trace is alpha_0^(n*s)/(1-alpha_0^n). P is interior to the complex stadium and has one left lift, so no half or doubled/matching factor appears. This closes the local endpoint trace obligation but not full matching-space nuclearity. Route-A tuple remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL), and Route B remains closed."
+```

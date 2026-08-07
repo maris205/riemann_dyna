@@ -365,10 +365,19 @@ in the matching kernel. This is a geometric ledger result only: the local
 analytic trace correction at the boundary fixed point remains `OPEN`, so no
 determinant or Route-B status changes.
 
+`P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE` now closes that local obligation. For
+`P=-pi/2`, the inverse multiplier is
+`alpha_0=U_c^2/4=0.595743941976559...`; the left weighted-composition branch is
+nuclear of order zero and has trace `alpha_0^s/(1-alpha_0)`. Its pure-left
+power trace is `alpha_0^(n*s)/(1-alpha_0^n)`. Because `P` is interior to the
+complex stadium and belongs only to the left component, there is no half,
+seam, or doubled-copy factor. Full two-component matching-space nuclearity is
+still open, so A2 remains failed.
+
 Latest evaluation:
 
 ```text
-evaluations/route_a/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE/20260807T032000Z.yaml
+evaluations/route_a/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE/20260807T071000Z.yaml
 ```
 
 The polar suspension source lock is
@@ -386,9 +395,9 @@ The completed complex-branch theorem is recorded at source commit
 `epsilon=1/1000`, proves a common complex contraction below `0.59626`, and
 gives a compact margin above `0.00040374` for all four branch pairs.
 
-Next smallest test: derive the local matching-space trace correction at the
-boundary fixed point `P=-pi/2` under the frozen half-open ledger. Do not audit
-nuclearity, Fredholm zeros, target divisors, or Route B before that identity.
+Next smallest test: prove nuclearity of the full two-component weighted family
+on the frozen matching space. Do not evaluate Fredholm zeros, target divisors,
+or Route B before that theorem.
 
 Portfolio decision: under the RH breadth-first rule, this is the
 candidate-local resume task only. The project-level next task parks the

@@ -1,0 +1,123 @@
+audit_id: P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE
+parent_audit_id: P4-LOGISTIC-UC-POLAR-PARTITION-TRACE
+lock_version: 1
+formal_candidate: false
+clue_id: CLUE-A1-004
+title: Exact local boundary trace for the exact-U_c polar weighted branch
+
+mathematical_object:
+  inherited_map: >-
+    Inherit without modification the exact-U_c polar map, common complex
+    inverse branches, radius-1/1000 stadiums, intrinsic roof tau=log|G'|,
+    half-open geometric coding, and boundary graph from the parent locks.
+    U_c is the unique real root of u^3-2*u^2+2*u-2=0.
+  audited_branch: >-
+    On A(U_L), the disk-algebra-type space of functions holomorphic on U_L
+    and continuous on its closure, audit only
+    T_(s,L)v(z)=exp(s*ell(z))*v(phi_L(z)). The common logarithm ell=Log(a)
+    and compact inclusion phi_L(closure(U_L)) compactly contained in U_L are
+    inherited exactly.
+  boundary_fixed_point: >-
+    P=-pi/2 is the only periodic state in the exact boundary graph. It is the
+    unique fixed point of phi_L in U_L. Q=pi/2 and Z=0 are preperiodic and do
+    not create periodic trace terms.
+  local_trace_formula: >-
+    Let alpha_0=a(P)=U_c^2/4. For every s in C, the weighted-composition
+    nuclear trace is Tr T_(s,L)=alpha_0^s/(1-alpha_0), using the inherited
+    common logarithm. More generally the pure-L word of length n contributes
+    alpha_0^(n*s)/(1-alpha_0^n). This is one local boundary contribution, not
+    the trace of the full two-component operator.
+  multiplicity_rule: >-
+    P belongs to the left half-open component and has one L lift. There is no
+    seam copy at P and no factor two. Matching at Z does not alter this local
+    contribution or halve source-branch cyclic multiplicities.
+
+data_type:
+  primary: >-
+    Exact algebraic endpoint identities, holomorphic weighted-composition
+    trace theorem on one Jordan stadium, and deterministic Taylor-trace
+    regression with explicit tails.
+  excluded: >-
+    Full-operator nuclearity, Fredholm determinant evaluation, target zeros,
+    prime data, physical return-label clocks, or any separately glued ledger.
+
+clock: >-
+  The only trace weight is exp(-s*tau(P))=alpha_0^s, where
+  tau(P)=log(4/U_c^2). The two-f-iterate physical clock is reported separately
+  and not substituted.
+
+normalization:
+  coordinate: q(theta)=rho*sin(theta), unscaled
+  inverse_derivative: alpha_0=phi_L'(P)=U_c^2/4
+  weight: exp(s*ell(P))=alpha_0^s with the inherited real-positive logarithm
+  denominator: 1-phi_L'(P)=1-alpha_0, without absolute-value replacement
+
+determinant_convention:
+  local_only: >-
+    The formula is the nuclear trace of one weighted composition branch. The
+    parent det_Fr(I-L_s) remains conditional and is not evaluated here.
+  future_log_determinant_role: >-
+    If full nuclearity is later proved, this local fixed point enters
+    Tr(L_s^n) with its actual cyclic word multiplicity; the present n=1 branch
+    contribution carries multiplicity one.
+
+cutoff:
+  theorem: none
+  taylor_regression_cutoffs: [4, 8, 16, 32, 64]
+  pure_L_word_powers: [1, 2, 3, 4]
+  diagnostic_s_values: ["0", "1/2", "1", "2+i"]
+  complex_radius: "1/1000 inherited"
+
+precision:
+  symbolic_definition: exact
+  decimal_diagnostics: 100
+  root_bracket_digits: 100
+  sympy_version: "1.14.0"
+  mpmath_version: "1.3.0"
+
+allowed_data:
+  - exact U_c polynomial and certified root bracket
+  - inherited common ell, phi_L, compact inclusion, and endpoint graph
+  - Riemann-map conjugacy and the standard nuclear weighted-composition trace theorem
+  - target-free Taylor coefficients and explicit geometric tails
+
+forbidden_data:
+  - prime/zero tables, xi/zeta evaluations, USTC data, or fitted parameters
+  - the rounded legacy literal U_c=1.543689
+  - changing epsilon, branch coding, roof, logarithm, or normalization
+  - treating this local term as a full Fredholm trace or determinant
+  - claiming Route B, Hilbert-Polya, or RH
+
+training_split: empty; no fitting, search, or arithmetic target data
+validation_split: >-
+  Exact endpoint graph, phi_L(P)=P, alpha_0=U_c^2/4 in (0,1), common-log
+  weight, and disk-coordinate diagonal coefficient formula.
+test_split: >-
+  Sealed 100-digit Taylor partial traces and exact geometric tail formula at
+  the four target-free s values and five cutoffs, plus source/artifact hashes.
+
+stopping_conditions:
+  - REVISE if P is not the unique left-branch fixed point
+  - REVISE if alpha_0 is not strictly between zero and one
+  - REVISE if the common logarithm does not give alpha_0^s
+  - REVISE if Taylor partial traces violate the exact tail formula
+  - REJECTED if target data, rounded U_c, or a changed convention enters
+  - STOP_SCOPED for full determinant, target divisor, quantization, Route B, or RH
+
+success_conditions:
+  - exact alpha_0 and endpoint graph
+  - one rigorous weighted-composition trace formula on A(U_L)
+  - one explicit no-extra-copy multiplicity statement
+  - reproducible target-free Taylor-tail certificate
+
+route_status_at_lock:
+  inherited_route_a_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+  route_a_evaluation_performed: false
+  route_b_invocation_allowed: false
+  checkpoint_status: DEFINED_NOT_EVALUATED
+  recommended_verdict: REVISE
+
+next_smallest_test: >-
+  Prove and certify only the local formula
+  alpha_0^s/(1-alpha_0). If successful, stop before the full two-component
+  nuclearity audit.

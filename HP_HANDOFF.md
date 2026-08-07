@@ -1,5 +1,63 @@
 # HP-Dynamics Handoff
 
+## Current status — CLUE-A1-004 exact-U_c local boundary trace
+
+Current clue: `CLUE-A1-004`.
+
+Audit ID: `P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE` (non-candidate).
+
+- Formal candidate: `false`
+- Source lock: `configs/source_locks/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE.yaml`
+- Route-A evaluation: `evaluations/route_a/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE/20260807T071000Z.yaml`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Scoped verdict: `REVISE` / `GO_WITH_LIMITATIONS`
+- Route B: inactive and not authorized
+
+For the unique boundary periodic point `P=-pi/2`, put
+
+\[
+\alpha_0=\phi_L'(P)=\frac{U_c^2}{4}
+=0.5957439419765593735\ldots.
+\]
+
+The exact local weighted-composition traces are
+
+\[
+\operatorname{Tr}T_{s,L}
+=\frac{\alpha_0^s}{1-\alpha_0},
+\qquad
+\operatorname{Tr}_P T_{s,L}^n
+=\frac{\alpha_0^{ns}}{1-\alpha_0^n}.
+\]
+
+There is no half-weight and no doubled/matching factor: `P` is interior to the
+complex stadium and belongs only to the left component. The right inverse germ
+at target `P` is not fixed.
+
+### Evidence and tests
+
+- Exact polynomial reduction proves the endpoint graph and
+  `alpha_0=U_c^2/4 in (0,1)`.
+- The frozen compact inclusion makes the single weighted composition nuclear
+  of order zero on `A(U_L)`.
+- Target-free Taylor traces were checked at powers 1--4,
+  `s=0,1/2,1,2+i`, and cutoffs 4,8,16,32,64; maximum exact-tail residual is
+  below `2e-101` at 100 digits.
+- Focused suite: `6/6 passed`.
+
+### Claim boundary
+
+Established: the unique local boundary trace and all pure-left powers.
+
+Not established: nuclearity of the full two-component matching-space family,
+a full Fredholm determinant, arithmetic orbit law, completed-xi structure,
+quantization, Route B, Hilbert--Polya, or RH.
+
+### Next smallest task
+
+Prove nuclearity of the full two-component weighted family on the frozen
+matching space. Do not evaluate Fredholm zeros first.
+
 ## Current status — CLUE-A1-004 exact-U_c polar partition trace ledger audit
 
 Current clue: `CLUE-A1-004`.

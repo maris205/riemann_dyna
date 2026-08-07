@@ -1,0 +1,166 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+audit_id: P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE
+parent_audit_id: P4-LOGISTIC-UC-POLAR-PARTITION-TRACE
+formal_candidate: false
+source_commit: 23977507311ae3d3a4e5c9ea15153d55bc46f026
+evaluation_date: "2026-08-07T07:10:00Z"
+
+source_lock:
+  object: >-
+    The exact left weighted-composition branch
+    T_(s,L)v=exp(s*ell)*v o phi_L on A(U_L), at the unique boundary periodic
+    point P=-pi/2 of the unchanged exact-U_c polar system.
+  data_type: >-
+    Exact algebraic endpoint identities, the nuclear weighted-composition
+    trace theorem on one frozen Jordan stadium, and 100-digit Taylor-tail
+    regression at four target-free s values and powers n=1..4.
+  clock: >-
+    Intrinsic tau(P)=log(4/U_c^2), so exp(-s*tau(P))=(U_c^2/4)^s. The physical
+    two-f-iterate clock remains separate.
+  normalization: >-
+    alpha_0=phi_L'(P)=U_c^2/4, common real-positive Log(a), denominator
+    1-alpha_0, signed orientation retained, and no half or doubled-copy factor.
+  determinant_convention: >-
+    This is the nuclear trace of one local weighted composition branch. The
+    full parent det_Fr(I-L_s) remains conditional and is not evaluated.
+  cutoff: >-
+    The theorem has no cutoff. Regression uses N=4,8,16,32,64, pure-L powers
+    n=1,2,3,4, and s=0,1/2,1,2+i.
+  precision: >-
+    Exact SymPy algebra and mpmath 1.3.0 at 100 digits. The maximum Taylor-tail
+    identity residual is below 2e-101.
+  training_data: "empty; no fitting, search, or arithmetic target data"
+  validation_data: >-
+    Exact endpoint graph, alpha_0 identity and contraction, complex-interior
+    status of P, common-log weight, and disk-coordinate trace derivation.
+  test_data: >-
+    Sealed Taylor partial traces and exact tails at every frozen power, s value,
+    and cutoff, plus source/artifact hashes.
+  allowed_data:
+    - exact U_c polynomial and certified bracket
+    - inherited complex branches, common log, compact inclusion, and endpoint graph
+    - standard nuclear weighted-composition trace theorem
+    - target-free Taylor coefficients and exact geometric tails
+  forbidden_data:
+    - prime/zero tables, xi/zeta evaluations, USTC data, or fitted parameters
+    - rounded U_c=1.543689 or changed epsilon/clock/normalization
+    - promotion of the local branch trace to a full determinant
+    - Route B, Hilbert-Polya, or RH claims
+  stopping_conditions:
+    - "REVISE if P is not the unique left fixed point or alpha_0 is not in (0,1)"
+    - "REVISE if the Taylor-tail identity fails"
+    - "REJECTED if target data or a changed convention enters"
+    - "STOP_SCOPED for full determinant, target divisor, quantization, Route-B, or RH"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The exact boundary orbit P is intrinsic, has one left lift, and carries the
+    full repetition ledger alpha_0^(n*s)/(1-alpha_0^n) without target data.
+  strongest_failure: >-
+    This is one boundary orbit only. No arithmetic primitive-orbit law,
+    log-prime period structure, von-Mangoldt weight, or complete all-orbit
+    census is supplied.
+  metrics:
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    unique_boundary_periodic_orbit: P
+    inverse_multiplier: "U_c^2/4"
+    local_multiplicity: 1
+    arithmetic_orbit_law: false
+  artifacts:
+    - formal/results/exact_uc_polar_boundary_trace.md
+    - artifacts/p4_logistic_uc_polar_boundary_trace/boundary_trace_certificate.json
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The local LL weighted composition is nuclear of order zero and has exact
+    trace alpha_0^s/(1-alpha_0); its pure-L powers have exact traces
+    alpha_0^(n*s)/(1-alpha_0^n). P lies inside the complex stadium, and there
+    is no half, seam, or doubled-copy factor.
+  strongest_failure: >-
+    Nuclearity and trace formulas for the full two-component matching-space
+    family remain unproved. No full Fredholm determinant, zero ledger,
+    cutoff-stable root count, or target divisor is opened.
+  metrics:
+    zero_error_train: not_testable_no_full_determinant
+    zero_error_validation: not_testable_no_full_determinant
+    zero_error_test: not_testable_no_full_determinant
+    extra_zero_count: not_testable
+    missing_zero_count: not_testable
+    root_count_discrepancy: not_testable
+    cutoff_drift: no_full_determinant_cutoff
+    precision_drift: "Taylor-tail residual <2e-101 at 100 digits"
+    alpha_0: "0.59574394197655937353..."
+    local_branch_nuclearity: PROVED
+    local_trace_formula: "alpha_0^s/(1-alpha_0)"
+    pure_L_power_trace: "alpha_0^(n*s)/(1-alpha_0^n)"
+    full_matching_family_nuclearity: false
+    fredholm_determinant_defined: false
+  artifacts:
+    - configs/source_locks/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE.yaml
+    - formal/results/exact_uc_polar_boundary_trace.md
+    - artifacts/p4_logistic_uc_polar_boundary_trace/boundary_trace_certificate.json
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    One exact all-power local trace term is now globally holomorphic in s and
+    uses the intrinsic non-lattice roof without a hidden endpoint factor.
+  strongest_failure: >-
+    There is no full determinant, analytic continuation ledger, functional
+    equation, Gamma/trivial-zero treatment, target counting law, or moving-order
+    completed-xi theorem.
+  metrics:
+    conjugation_symmetry: local_weight_only
+    functional_equation: false
+    gamma_factor: false
+    analytic_continuation: local_term_entire_only
+    target_counting_law: false
+    moving_order_control: false
+  artifacts: []
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The local trace is derived from the same exact classical map, complex
+    branch, and intrinsic roof.
+  strongest_failure: >-
+    No natural symplectic/contact/scattering lift, Hilbert space, operator
+    domain, or same-clock quantization is defined.
+  metrics:
+    natural_hilbert_space: null
+    operator_domain: null
+    natural_quantization: false
+    route_b_ready: false
+  artifacts: []
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_audit_verdict: REVISE
+claim_boundary:
+  established:
+    - exact unique boundary orbit and inverse multiplier alpha_0=U_c^2/4
+    - nuclear local left-branch trace alpha_0^s/(1-alpha_0)
+    - pure-L power trace alpha_0^(n*s)/(1-alpha_0^n)
+    - multiplicity one with no half or doubled/matching correction
+  not_established:
+    - nuclearity of the full two-component matching-space family
+    - a Fredholm determinant or complete orbit trace formula
+    - arithmetic orbit weights, completed-xi structure, or target zeros
+    - quantization, Route B, Hilbert-Polya, or RH
+blocking_conditions:
+  - full matching-space nuclearity remains open
+  - no complete primitive/repetition trace identity exists
+  - no arithmetic orbit law or global completed-xi structure exists
+route_b_invocation_allowed: false
+next_smallest_test: >-
+  Prove nuclearity of the full two-component weighted family on the frozen
+  matching space. Do not evaluate Fredholm zeros first.

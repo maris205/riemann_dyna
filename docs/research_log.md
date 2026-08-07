@@ -3574,3 +3574,59 @@ quantization, Route B, Hilbert--Polya, or RH.
 
 Next smallest task: derive the local matching-space trace correction at the
 boundary fixed point `P=-pi/2` under this lock, or stop the Logistic branch.
+
+## 2026-08-07 — exact-U_c local polar boundary trace
+
+### Stable checkpoint
+
+Audit ID: `P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE`.
+
+The audited operator is only the left weighted composition branch
+
+\[
+T_{s,L}v=e^{s\ell}\,v\circ\phi_L
+\]
+
+on the disk algebra of the frozen complex stadium `U_L`. At the unique
+boundary periodic point `P=-pi/2`, set
+
+\[
+\alpha_0=\phi_L'(P)=\frac{U_c^2}{4}.
+\]
+
+The exact endpoint identities and the inherited compact inclusion prove
+
+\[
+\operatorname{Tr}T_{s,L}
+=\frac{\alpha_0^s}{1-\alpha_0},
+\qquad
+\operatorname{Tr}_P T_{s,L}^n
+=\frac{\alpha_0^{ns}}{1-\alpha_0^n}.
+\]
+
+### Strongest evidence
+
+The point `P` is a real endpoint but an interior point of `U_L`. The right
+inverse branch maps target `P` to `+pi/2`, so it is not a diagonal fixed germ.
+The disk-coordinate weighted-composition matrix is triangular with diagonal
+`alpha_0^(n*s)*(alpha_0^n)^k`; its geometric sum gives the formula. A
+100-digit certificate checks every frozen Taylor tail for powers 1--4,
+`s=0,1/2,1,2+i`, and cutoffs 4--64, with maximum residual below `2e-101`.
+
+### Strongest failure
+
+This is a local branch theorem. Nuclearity of the full two-component operator
+on the matching space, the complete trace formula, and the Fredholm
+determinant remain unproved. No zero calculation is authorized.
+
+### New reusable knowledge
+
+An interval endpoint that lies in the interior of the complex transfer domain
+does not receive a half-trace weight. Endpoint topology, doubled symbolic
+coding, and analytic fixed-germ multiplicity must be audited separately.
+
+### Claim boundary
+
+Route-A remains `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `REVISE`. Route B is
+inactive. The next smallest task is the full matching-space nuclearity theorem,
+not Fredholm-zero evaluation.

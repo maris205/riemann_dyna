@@ -3,6 +3,32 @@
 Repository-backed research status changes are recorded here. Detailed evidence
 and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
+## 2026-08-07
+
+### Exact-U_c polar boundary trace
+
+- Proved that `P=-pi/2` is the unique boundary periodic point and that its
+  inverse multiplier is `alpha_0=U_c^2/4`.
+- Proved the local nuclear weighted-composition traces
+  `alpha_0^s/(1-alpha_0)` and
+  `alpha_0^(n*s)/(1-alpha_0^n)` for pure-left powers.
+- Certified target-free Taylor tails at 100 digits; no half-weight, seam, or
+  doubled-copy factor occurs because `P` lies inside the complex stadium and
+  belongs only to the left component.
+- Kept full matching-space nuclearity, Fredholm determinant existence, target
+  zeros, and Route B closed. Route-A remains
+  `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `REVISE`.
+
+### Exact-U_c half-open partition ledger
+
+- Froze `I_L=[-pi/2,0)` and `I_R=[0,pi/2]` for geometric coding while retaining
+  doubled labels for analytic branch bookkeeping.
+- Proved the exact boundary graph `P->P`, `Q->P`, `Z->Q`; the partition point
+  is preperiodic rather than a boundary periodic orbit.
+- Separated geometric quotient multiplicity, doubled cyclic trace words, and
+  matching-space analytic traces; matching at zero does not justify dividing
+  source-branch contributions by two.
+
 ## 2026-08-06
 
 ### QG-0001 same-operator relative Fredholm closure
