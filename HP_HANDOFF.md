@@ -1,5 +1,102 @@
 # HP-Dynamics Handoff
 
+## Current status — CLUE-A1-004 exact-U_c polar partition trace ledger audit
+
+Current clue: `CLUE-A1-004`.
+
+Audit ID: `P4-LOGISTIC-UC-POLAR-PARTITION-TRACE` (non-candidate).
+
+- Formal candidate: `false`
+- Audit state: `PROVED_HALF_OPEN_GEOMETRIC_LEDGER_REVISE_TRACE`
+- HP source commit before this checkpoint: `0e6152d8b477cb7c75cc3648e62ce18ed094031c`
+- Source lock: `configs/source_locks/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE.yaml`
+- Route-A evaluation: `evaluations/route_a/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE/20260807T032000Z.yaml`
+- Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Scoped verdict: `REVISE` / `GO_WITH_LIMITATIONS`
+- Route B: inactive and not authorized
+
+### Frozen ledger
+
+The exact parameter is the unique real root
+
+\[
+U_c^3-2U_c^2+2U_c-2=0,
+\]
+
+with no use of the rounded legacy literal. The geometric half-open partition is
+
+\[
+I_L^{\rm ho}=[-\pi/2,0),
+\qquad
+I_R^{\rm ho}=[0,\pi/2].
+\]
+
+The doubled labels `0_L` and `0_R` remain distinct for branch coding, but the
+geometric projection identifies them and assigns the partition point to `R`.
+The exact boundary graph is
+
+\[
+P=-\pi/2\mapsto P,
+\qquad Q=\pi/2\mapsto P,
+\qquad Z=0\mapsto Q.
+\]
+
+Thus `0` is preperiodic, not a boundary periodic orbit. The target-free
+certificate passes half-open disjointness, cyclic rotation, endpoint-copy swap,
+signed orientation, and matching-range checks through symbolic word length 8.
+
+### Important trace boundary
+
+The geometric quotient rule counts one canonical half-open cyclic lift per
+geometric partition-hit orbit. This is not yet an analytic trace identity.
+Matching at zero only proves that the weighted-family range lies in the
+matching kernel. Conditionally, if a later nuclear extension exists, the block
+form `[[L_B,*],[0,0]]` gives `Tr_X(L^n)=Tr_B(L_B^n)`; it does not halve the
+source-branch cyclic sum. A toy rank-one matrix confirms this. No universal
+`2^h` endpoint factor is allowed.
+
+### Strongest evidence
+
+The endpoint graph is exact from the critical polynomial identities, and the
+partition point has no periodic boundary cycle. The half-open ledger is now
+explicit and reproducible without prime/zero data.
+
+### Strongest failure
+
+The local analytic trace correction at the boundary fixed point `P=-pi/2`
+remains open. Nuclearity, Fredholm determinant existence, divisor comparison,
+quantization, Route B, and RH claims remain closed.
+
+### Updated files
+
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE.yaml`
+- `experiments/p4_logistic_uc_polar_partition_trace.py`
+- `artifacts/p4_logistic_uc_polar_partition_trace/partition_trace_certificate.json`
+- `formal/results/exact_uc_polar_partition_trace.md`
+- `tests/test_p4_logistic_uc_polar_partition_trace.py`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE/20260807T032000Z.yaml`
+- `docs/research_clues.md`
+- `docs/candidate_registry.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+
+### Tests and reproduction
+
+```bash
+python3 experiments/p4_logistic_uc_polar_partition_trace.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_polar_partition_trace/partition_trace_certificate.json
+python3 -m unittest -v tests/test_p4_logistic_uc_polar_partition_trace.py
+```
+
+### Next smallest task
+
+Derive the local matching-space trace correction at `P=-pi/2` under this lock,
+or stop the Logistic branch. Do not open nuclearity or Fredholm zeros before
+that identity. The project-level breadth rule still keeps the structurally
+different Hénon/QG branches separate; this is a candidate-local Logistic
+resume task only.
+
 ## Current status — CLUE-A3-001 same-ledger annular residual audit
 
 Current clue: `CLUE-A3-001`.

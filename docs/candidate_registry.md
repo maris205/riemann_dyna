@@ -356,10 +356,19 @@ divisor-count theorem. The audit remains
 `P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`, with Route-A tuple
 `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)` and verdict `REVISE`.
 
+The follow-up `P4-LOGISTIC-UC-POLAR-PARTITION-TRACE` audit freezes the
+geometric half-open convention `I_L=[-pi/2,0)`, `I_R=[0,pi/2]`, proves the
+exact boundary graph `P->P`, `Q->P`, `Z->Q`, and shows that the partition point
+is preperiodic. It also certifies cyclic-word and endpoint-copy quotient
+bookkeeping through length eight and proves that the weighted-family range lies
+in the matching kernel. This is a geometric ledger result only: the local
+analytic trace correction at the boundary fixed point remains `OPEN`, so no
+determinant or Route-B status changes.
+
 Latest evaluation:
 
 ```text
-evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml
+evaluations/route_a/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE/20260807T032000Z.yaml
 ```
 
 The polar suspension source lock is
@@ -377,9 +386,9 @@ The completed complex-branch theorem is recorded at source commit
 `epsilon=1/1000`, proves a common complex contraction below `0.59626`, and
 gives a compact margin above `0.00040374` for all four branch pairs.
 
-Next smallest test: freeze only the doubled-partition target-copy and
-multiplicity rule for partition-hit traces on the matching space. Do not
-audit nuclearity, Fredholm zeros, target divisors, or Route B in that task.
+Next smallest test: derive the local matching-space trace correction at the
+boundary fixed point `P=-pi/2` under the frozen half-open ledger. Do not audit
+nuclearity, Fredholm zeros, target divisors, or Route B before that identity.
 
 Portfolio decision: under the RH breadth-first rule, this is the
 candidate-local resume task only. The project-level next task parks the

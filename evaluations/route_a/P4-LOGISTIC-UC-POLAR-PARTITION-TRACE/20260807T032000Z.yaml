@@ -1,0 +1,172 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
+audit_id: P4-LOGISTIC-UC-POLAR-PARTITION-TRACE
+parent_audit_id: P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH
+formal_candidate: false
+source_commit: 0e6152d8b477cb7c75cc3648e62ce18ed094031c
+evaluation_date: "2026-08-07T03:20:00Z"
+
+source_lock:
+  object: >-
+    Exact-U_c polar map G=q^(-1)o(-f^2)o q on the doubled two-branch space,
+    with half-open geometric partition I_L^ho=[-pi/2,0),
+    I_R^ho=[0,pi/2], canonical target copy 0_R, exact boundary graph, and
+    matching-space range convention.
+  data_type: >-
+    Exact polynomial endpoint identities, target-free half-open quotient
+    coding, cyclic-word canonicalization through regression length 8, signed
+    one-sided branch orientation, and the common-output matching lemma.
+  clock: >-
+    Intrinsic tau=log|G'| and physical two-f-iterate clock remain separate;
+    endpoint ownership never rescales or relabels either clock.
+  normalization: >-
+    q(theta)=rho*sin(theta), exact U_c root, phi_L'=+a, phi_R'=-a, and
+    left-closed/right-open endpoint ownership. No rounded U_c literal is used.
+  determinant_convention: >-
+    Parent det_Fr(I-L_s) notation remains conditional. This audit freezes the
+    geometric quotient ledger only and does not assert an analytic trace.
+  cutoff: >-
+    Exact finite boundary graph; symbolic word checks through N<=8 are
+    regression-only and are not promoted to an all-period theorem.
+  precision: >-
+    Exact SymPy identities plus inherited 100-digit root bracket; no target
+    fitting or complex grid is used.
+  training_data: "empty; no fitting, search, or arithmetic target data"
+  validation_data: >-
+    Half-open disjointness/exhaustiveness, exact endpoint graph, cyclic
+    rotation and endpoint-copy quotient rules, signed orientation, and common
+    matching output.
+  test_data: >-
+    Sealed target-free checks through word length 8, endpoint preperiodicity,
+    endpoint-copy swap invariance, and source/artifact hashes.
+  allowed_data:
+    - exact U_c polynomial and certified bracket
+    - inherited exact real/complex branch identities
+    - quotient, cyclic-word, endpoint, and matching-space algebra
+    - target-free symbolic checks
+  forbidden_data:
+    - prime/zero tables, xi/zeta evaluations, USTC data, or fitted parameters
+    - rounded U_c=1.543689
+    - changed endpoint ownership, branch coding, epsilon, roof, or normalization
+    - any nuclearity, Fredholm, determinant, target-zero, Route-B, or RH claim
+  stopping_conditions:
+    - "REVISE if half-open ownership or endpoint graph is ambiguous"
+    - "NOT_TESTABLE for analytic trace multiplicity until a local matching-space calculation exists"
+    - "REJECTED if arithmetic target data or rounded U_c enters"
+    - "STOP_SCOPED for nuclearity, determinant, zeros, quantization, Route-B, or RH"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The exact endpoint graph is P->P, Q->P, Z->Q, so the partition point is
+    preperiodic rather than a boundary periodic orbit. The half-open quotient
+    gives one canonical cyclic itinerary, preserves signed orientation, and
+    removes endpoint-copy duplication at the geometric coding level.
+  strongest_failure: >-
+    No arithmetic primitive-orbit correspondence, log-prime period law,
+    von-Mangoldt repetition weight, or all-period orbit completeness is
+    supplied. The finite word cutoff is regression-only.
+  metrics:
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    exact_u_c_endpoint_graph: true
+    partition_point_periodic: false
+    half_open_itinerary_unique_through_length_8: true
+    endpoint_copy_swap_invariant: true
+    signed_orientation_retained: true
+    arithmetic_orbit_law: false
+  artifacts:
+    - configs/source_locks/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE.yaml
+    - formal/results/exact_uc_polar_partition_trace.md
+    - artifacts/p4_logistic_uc_polar_partition_trace/partition_trace_certificate.json
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The matching-space weighted family has a common output expression, so its
+    range lies in the evaluation-matching kernel. A conditional block-form
+    calculation shows that, if nuclearity is later proved, passing from the
+    direct sum to the matching kernel does not automatically halve the
+    source-branch cyclic trace.
+  strongest_failure: >-
+    Matching at zero does not prove the local analytic trace correction at the
+    boundary fixed point P=-pi/2. Nuclearity, a Fredholm determinant, an exact
+    trace formula, cutoff stability, and any zero ledger remain unopened.
+  metrics:
+    zero_error_train: not_testable_no_determinant
+    zero_error_validation: not_testable_no_determinant
+    zero_error_test: not_testable_no_determinant
+    extra_zero_count: not_testable
+    missing_zero_count: not_testable
+    root_count_discrepancy: not_testable
+    cutoff_drift: no_determinant_cutoff
+    precision_drift: exact_symbolic_endpoint_audit
+    endpoint_geometric_multiplicity: 1
+    local_matching_trace_identity: OPEN
+    conditional_block_trace_identity: PROVED_ALGEBRAICALLY
+    source_branch_multiplicity_halving: FORBIDDEN
+    nuclearity_proved: false
+    fredholm_determinant_defined: false
+  artifacts:
+    - formal/results/exact_uc_polar_partition_trace.md
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The endpoint/partition ledger is now explicit and does not introduce a
+    hidden target-dependent correction.
+  strongest_failure: >-
+    No analytic continuation, functional equation, Gamma/trivial-zero ledger,
+    counting law, moving-order theorem, or completed-xi divisor exists.
+  metrics:
+    conjugation_symmetry: not_testable_no_determinant
+    functional_equation: false
+    gamma_factor: false
+    analytic_continuation: false
+    target_counting_law: false
+    moving_order_control: false
+  artifacts: []
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The ledger is inherited from one exact autonomous classical map and keeps
+    its intrinsic roof and branch orientation.
+  strongest_failure: >-
+    No natural symplectic/contact/scattering lift, Hilbert space, operator
+    domain, or same-clock quantization is defined.
+  metrics:
+    natural_hilbert_space: null
+    operator_domain: null
+    natural_quantization: false
+    route_b_ready: false
+  artifacts: []
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_audit_verdict: REVISE
+claim_boundary:
+  established:
+    - exact-U_c endpoint graph and partition preperiodicity
+    - half-open geometric quotient convention and cyclic-word canonicalization
+    - signed orientation retention and endpoint-copy swap invariance through length 8
+    - common-output matching-range lemma
+  not_established:
+    - local analytic trace multiplicity on the matching space
+    - nuclearity, a Fredholm determinant, or an orbit trace formula
+    - arithmetic orbit weights, completed-xi structure, or target zeros
+    - quantization, Route B, Hilbert-Polya, or RH
+blocking_conditions:
+  - local matching-space trace correction at the boundary fixed point remains open
+  - no nuclearity or same-object Fredholm determinant exists
+  - no arithmetic primitive-orbit law or von-Mangoldt trace exists
+route_b_invocation_allowed: false
+next_smallest_test: >-
+  Derive the local matching-space trace correction at P=-pi/2 under this
+  frozen lock, or stop the Logistic branch. Do not open nuclearity or Fredholm
+  zeros first.

@@ -1672,3 +1672,15 @@ evaluation: "evaluations/route_a/QG-0001/20260806T123946Z.yaml"
 obstruction: "OBR-013"
 consequence: "The analytic audit reaches A2_ANALYTIC_DETERMINANT and A3_PARTIAL_ANALYTIC_STRUCTURE, but the target interpretation remains A2_FAIL/A3_FAIL. The exact positive divisor count has coefficient L0/pi, larger than the Riemann-von Mangoldt coefficient by 2*L0=12.764664694883524..., and no zero-free factor can repair it under the frozen raw clock. QG-0001 is ROUTE_A_REJECTED/STOP_SCOPED; Route B remains closed. The project pivots breadth-first to CLUE-A3-001."
 ```
+
+## Status update — CLUE-A1-004 exact-U_c polar partition trace ledger
+
+```yaml
+date: 2026-08-07
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+evidence: "P4-LOGISTIC-UC-POLAR-PARTITION-TRACE exact endpoint graph, half-open quotient convention, cyclic-word audit through length 8, and matching-range lemma"
+commit: "pending current checkpoint"
+consequence: "The geometric target-copy ledger is now explicit: I_L=[-pi/2,0), I_R=[0,pi/2], with the partition point owned by R. The exact boundary graph is P->P, Q->P, Z->Q, so 0 is preperiodic rather than a boundary periodic orbit. Endpoint-copy and cyclic-rotation quotient tests pass, while the local analytic trace correction at P=-pi/2 remains OPEN. Route-A tuple stays (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL); no determinant or Route B is authorized."
+```

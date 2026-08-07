@@ -1,0 +1,374 @@
+{
+  "artifact_schema_version": 1,
+  "audit_id": "P4-LOGISTIC-UC-POLAR-PARTITION-TRACE",
+  "claim_boundary": {
+    "established": [
+      "exact endpoint orbit graph P->P, Q->P, Z->Q",
+      "the partition point is preperiodic, not a boundary periodic orbit",
+      "half-open geometric itinerary uniqueness through word length 8",
+      "cyclic rotation and endpoint-copy swap preserve the quotient ledger",
+      "signed branch orientation is retained",
+      "weighted-composition range lies in the matching kernel"
+    ],
+    "not_established": [
+      "the local analytic trace contribution of any boundary fixed point",
+      "nuclearity or a Fredholm determinant",
+      "a divisor, functional equation, prime orbit law, or target zeros",
+      "quantization, Route B, Hilbert-Polya, or RH"
+    ]
+  },
+  "computed_gates": {
+    "S_at_minus_rho_is_minus_rho": true,
+    "S_at_plus_rho_is_minus_rho": true,
+    "S_at_zero_is_plus_rho": true,
+    "conditional_block_trace_gate": true,
+    "endpoint_copy_swap_gate": true,
+    "endpoint_graph_is_exact": true,
+    "half_open_partition_is_disjoint": true,
+    "half_open_partition_is_exhaustive": true,
+    "half_open_word_rotation_gate": true,
+    "matching_range_gate": true,
+    "partition_hit_is_not_periodic_in_boundary_graph": true,
+    "repetition_gate": true,
+    "u_rho_squared_is_one_minus_rho": true
+  },
+  "computed_gates_passed": true,
+  "conditional_block_trace": {
+    "conditional_block_form_trace_identity": true,
+    "nuclearity_is_not_claimed": true,
+    "toy_matching_does_not_halve_source_sum": true,
+    "toy_matching_restriction_trace": "2*w",
+    "toy_matrix_trace": "2*w"
+  },
+  "endpoint_orbit_graph": {
+    "boundary_periodic_orbit_count": 1,
+    "forward_edges": {
+      "P": "P",
+      "Q": "P",
+      "Z": "Q"
+    },
+    "partition_point_is_periodic": false,
+    "periodic_boundary_states": [
+      "P"
+    ],
+    "preperiodic_boundary_states": [
+      "Q",
+      "Z"
+    ],
+    "state_names": {
+      "P": "-pi/2",
+      "Q": "+pi/2",
+      "Z": "0"
+    }
+  },
+  "exact_endpoint_identities": {
+    "S_at_minus_rho_is_minus_rho": true,
+    "S_at_plus_rho_is_minus_rho": true,
+    "S_at_zero_is_plus_rho": true,
+    "u_rho_squared_is_one_minus_rho": true
+  },
+  "formal_candidate": false,
+  "half_open_convention": {
+    "left": "[-pi/2,0)",
+    "partition_owner": "R",
+    "projection": "0_L and 0_R -> 0",
+    "right": "[0,pi/2]"
+  },
+  "ledger_rule": {
+    "canonical_target_copy": "0_R in half-open geometric coding",
+    "conditional_block_trace_identity": "Tr_X(L^n)=Tr_B(L_B^n) if a nuclear block extension is later proved",
+    "doubled_copy_action": "project and quotient the audited lift fibre",
+    "geometric_partition_hit_multiplicity": 1,
+    "local_matching_space_trace_identity": "OPEN",
+    "raw_doubled_trace": "not a certificate",
+    "source_branch_multiplicity_halving": "forbidden"
+  },
+  "matching_range": {
+    "common_output_expression": true,
+    "evaluation_difference_is_zero": true,
+    "local_trace_identity_is_not_claimed": true,
+    "matching_range_is_proved": true
+  },
+  "next_smallest_test": "Derive the local matching-space trace correction at the boundary fixed point -pi/2, or stop this branch; do not open nuclearity or Fredholm zeros before that identity.",
+  "parent_audit_id": "P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH",
+  "provenance": {
+    "external_target_data_used": false,
+    "generator": "experiments/p4_logistic_uc_polar_partition_trace.py",
+    "generator_sha256": "6cf0f9644bf8640d4998e6ce38ba25af2a4b0d77b66d72be4016a8c0e88de1e3",
+    "python": "3.12.3",
+    "reproduction_command": "python3 experiments/p4_logistic_uc_polar_partition_trace.py --quiet --output artifacts/p4_logistic_uc_polar_partition_trace/partition_trace_certificate.json",
+    "source_inputs_sha256": {
+      "configs/source_locks/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH.yaml": "cb0827b74fc382adc760163137a884c6ee561c211a6af4960b845e07b26d2c7b",
+      "configs/source_locks/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE.yaml": "9f794c267e3f437c6aea80adc36f4f1cedc25ccd84f8518c542716d0be2f59a1",
+      "formal/results/exact_uc_polar_partition_trace.md": "bbbe09546d14bea282dc7b93234be6979b1bf5c9a11d7041e434efa1bc3ab971"
+    }
+  },
+  "route_a_effect": {
+    "local_verdict": "GO_WITH_LIMITATIONS",
+    "recommended_verdict": "REVISE",
+    "route_b_invocation_allowed": false,
+    "tuple_unchanged": [
+      "A1_WEAK",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ]
+  },
+  "source_lock": "configs/source_locks/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE.yaml",
+  "status": "PROVED_HALF_OPEN_GEOMETRIC_LEDGER_REVISE_TRACE",
+  "word_ledger": {
+    "checked_word_rows": 526,
+    "endpoint_copy_swap_invariance": true,
+    "max_word_length": 8,
+    "repetition_is_separate_from_endpoint_coding": true,
+    "rotation_invariance": true,
+    "sample_rows": [
+      {
+        "canonical_quotient_word": [
+          "R"
+        ],
+        "length": 1,
+        "signed_orientation": [
+          "-"
+        ],
+        "word": [
+          "R"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "L"
+        ],
+        "length": 1,
+        "signed_orientation": [
+          "+"
+        ],
+        "word": [
+          "L"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "*"
+        ],
+        "length": 1,
+        "signed_orientation": [
+          "+"
+        ],
+        "word": [
+          "0_L"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "*"
+        ],
+        "length": 1,
+        "signed_orientation": [
+          "-"
+        ],
+        "word": [
+          "0_R"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "R",
+          "R"
+        ],
+        "length": 2,
+        "signed_orientation": [
+          "-",
+          "-"
+        ],
+        "word": [
+          "R",
+          "R"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "L",
+          "R"
+        ],
+        "length": 2,
+        "signed_orientation": [
+          "+",
+          "-"
+        ],
+        "word": [
+          "L",
+          "R"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "L",
+          "R"
+        ],
+        "length": 2,
+        "signed_orientation": [
+          "-",
+          "+"
+        ],
+        "word": [
+          "R",
+          "L"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "L",
+          "L"
+        ],
+        "length": 2,
+        "signed_orientation": [
+          "+",
+          "+"
+        ],
+        "word": [
+          "L",
+          "L"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "*",
+          "L"
+        ],
+        "length": 2,
+        "signed_orientation": [
+          "+",
+          "+"
+        ],
+        "word": [
+          "0_L",
+          "L"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "*",
+          "L"
+        ],
+        "length": 2,
+        "signed_orientation": [
+          "-",
+          "+"
+        ],
+        "word": [
+          "0_R",
+          "L"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "R",
+          "R",
+          "R"
+        ],
+        "length": 3,
+        "signed_orientation": [
+          "-",
+          "-",
+          "-"
+        ],
+        "word": [
+          "R",
+          "R",
+          "R"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "L",
+          "R",
+          "R"
+        ],
+        "length": 3,
+        "signed_orientation": [
+          "+",
+          "-",
+          "-"
+        ],
+        "word": [
+          "L",
+          "R",
+          "R"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "L",
+          "R",
+          "R"
+        ],
+        "length": 3,
+        "signed_orientation": [
+          "-",
+          "+",
+          "-"
+        ],
+        "word": [
+          "R",
+          "L",
+          "R"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "L",
+          "L",
+          "R"
+        ],
+        "length": 3,
+        "signed_orientation": [
+          "+",
+          "+",
+          "-"
+        ],
+        "word": [
+          "L",
+          "L",
+          "R"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "L",
+          "R",
+          "R"
+        ],
+        "length": 3,
+        "signed_orientation": [
+          "-",
+          "-",
+          "+"
+        ],
+        "word": [
+          "R",
+          "R",
+          "L"
+        ]
+      },
+      {
+        "canonical_quotient_word": [
+          "L",
+          "L",
+          "R"
+        ],
+        "length": 3,
+        "signed_orientation": [
+          "+",
+          "-",
+          "+"
+        ],
+        "word": [
+          "L",
+          "R",
+          "L"
+        ]
+      }
+    ]
+  }
+}

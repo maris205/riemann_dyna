@@ -3468,3 +3468,109 @@ reproducible short primitive UPOs. Do not fit zeros or define a determinant in
 that first task.
 
 Recommended verdict: `REVISE` (`GO_WITH_LIMITATIONS` for this scoped theorem).
+## 2026-08-07 — exact-U_c polar half-open partition trace ledger
+
+### Stable checkpoint
+
+Current clue: `CLUE-A1-004`.
+
+Audit ID: `P4-LOGISTIC-UC-POLAR-PARTITION-TRACE`.
+
+Source lock:
+`configs/source_locks/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE.yaml`.
+
+Route-A evaluation:
+`evaluations/route_a/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE/20260807T032000Z.yaml`.
+
+The exact root is the unique real solution of
+
+\[
+U_c^3-2U_c^2+2U_c-2=0,
+\]
+
+and no rounded legacy literal is used. The geometric coding is frozen as
+
+\[
+I_L^{\rm ho}=[-\pi/2,0),
+\qquad
+I_R^{\rm ho}=[0,\pi/2].
+\]
+
+The exact endpoint graph is
+
+\[
+P=-\pi/2\mapsto P,
+\qquad
+Q=\pi/2\mapsto P,
+\qquad
+Z=0\mapsto Q.
+\]
+
+Thus the partition point is preperiodic, not a boundary periodic orbit. The
+finite symbolic certificate through word length eight confirms cyclic-rotation
+canonicalization, endpoint-copy swap invariance, signed branch orientation,
+and separation of repetitions from endpoint coding.
+
+### Strongest evidence
+
+The boundary graph follows exactly from the critical identities
+`S(+rho)=S(-rho)=-rho` and `S(0)=rho`; no numerical orbit search is needed.
+The matching-space family has a common output expression, so its range lies in
+the kernel of `delta(v)=v_L(0)-v_R(0)`.
+
+### Strongest failure
+
+The geometric half-open quotient convention is not yet an analytic trace
+identity. Even when a doubled operator has common output at zero, the raw
+branch-source sum can retain its cyclic multiplicity; a local trace calculation
+at the boundary fixed point `P` is still required. No nuclearity or Fredholm
+determinant is opened.
+
+### New reusable knowledge
+
+Keep three ledgers separate:
+
+1. geometric half-open orbit coding (one canonical lift per geometric orbit);
+2. doubled branch-source/cyclic trace words (which may retain source
+   multiplicity); and
+3. matching-space analytic traces (requiring a local endpoint calculation).
+
+Matching at a partition point alone cannot be used to divide a trace by two.
+No universal `2^h` endpoint factor is allowed without a transition census.
+
+### Updated files
+
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE.yaml`
+- `experiments/p4_logistic_uc_polar_partition_trace.py`
+- `artifacts/p4_logistic_uc_polar_partition_trace/partition_trace_certificate.json`
+- `formal/results/exact_uc_polar_partition_trace.md`
+- `tests/test_p4_logistic_uc_polar_partition_trace.py`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE/20260807T032000Z.yaml`
+- `docs/research_clues.md`
+- `docs/candidate_registry.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+
+`docs/obstruction_registry.md` and `docs/operator_obligations.md` remain
+unchanged; this is a scoped ledger audit and Route B is not authorized.
+
+### Tests and reproduction
+
+```bash
+python3 experiments/p4_logistic_uc_polar_partition_trace.py \
+  --quiet \
+  --output artifacts/p4_logistic_uc_polar_partition_trace/partition_trace_certificate.json
+python3 -m unittest -v tests/test_p4_logistic_uc_polar_partition_trace.py
+```
+
+### Claim boundary and next smallest task
+
+Established: exact-U_c endpoint graph, half-open quotient coding, finite cyclic
+word regression, signed orientation bookkeeping, and matching-range inclusion.
+
+Not established: local matching-space trace multiplicity, nuclearity, a
+Fredholm determinant, arithmetic orbit weights, completed-xi structure,
+quantization, Route B, Hilbert--Polya, or RH.
+
+Next smallest task: derive the local matching-space trace correction at the
+boundary fixed point `P=-pi/2` under this lock, or stop the Logistic branch.
