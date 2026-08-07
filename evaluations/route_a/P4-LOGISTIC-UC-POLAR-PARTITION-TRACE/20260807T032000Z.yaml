@@ -4,7 +4,7 @@ candidate_id: P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK
 audit_id: P4-LOGISTIC-UC-POLAR-PARTITION-TRACE
 parent_audit_id: P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH
 formal_candidate: false
-source_commit: 0e6152d8b477cb7c75cc3648e62ce18ed094031c
+source_commit: 5f055d4f5784528125efbe277c76420cd30a4d32
 evaluation_date: "2026-08-07T03:20:00Z"
 
 source_lock:
