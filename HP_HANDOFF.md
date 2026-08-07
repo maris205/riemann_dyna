@@ -9,6 +9,8 @@ Audit ID: `P4-LOGISTIC-UC-POLAR-PARTITION-TRACE` (non-candidate).
 - Formal candidate: `false`
 - Audit state: `PROVED_HALF_OPEN_GEOMETRIC_LEDGER_REVISE_TRACE`
 - HP source commit before this checkpoint: `0e6152d8b477cb7c75cc3648e62ce18ed094031c`
+- Current HP commit: `1f236c404e3a549dc639cf4d616cc8dfae846c67`
+- Shared mirror commit: `15da669` on `git@github.com:maris205/hilbert-polya-structure.git`
 - Source lock: `configs/source_locks/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE.yaml`
 - Route-A evaluation: `evaluations/route_a/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE/20260807T032000Z.yaml`
 - Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
