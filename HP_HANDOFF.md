@@ -7,6 +7,8 @@ Current clue: `CLUE-A1-004`.
 Audit ID: `P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE` (non-candidate).
 
 - Formal candidate: `false`
+- Current HP commit: `5642bd7`
+- Shared mirror commit: `99b5713` on `git@github.com:maris205/hilbert-polya-structure.git`
 - Source lock: `configs/source_locks/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE.yaml`
 - Route-A evaluation: `evaluations/route_a/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE/20260807T071000Z.yaml`
 - Route-A tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
