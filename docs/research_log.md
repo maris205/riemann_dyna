@@ -3642,6 +3642,10 @@ Candidate ID: `LOG-0001` (formal candidate).
 Source lock:
 `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`.
 
+Provenance: HP-Dynamics research commit
+`e3358c3a90ec67c2f1cf8b883107ad0fcf3cc64a`; shared standalone paper-stage
+mirror commit `e6cf4f21b5d82adaec40cb542d952cf491a0b909`.
+
 The frozen Banach spaces are
 
 \[

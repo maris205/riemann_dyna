@@ -7,6 +7,8 @@ Current clue: `CLUE-A1-004`.
 Candidate ID: `LOG-0001` (formal candidate).
 
 - Evaluation source commit: `b80900c60044795d2e163edc16de7ed1389e0cd9`
+- HP-Dynamics research commit: `e3358c3a90ec67c2f1cf8b883107ad0fcf3cc64a`
+- Shared mirror commit: `e6cf4f21b5d82adaec40cb542d952cf491a0b909`
 - Source lock: `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`
 - Route-A evaluation: `evaluations/route_a/LOG-0001/20260808T051519Z.yaml`
 - Analytic Route-A tuple:

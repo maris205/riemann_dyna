@@ -29,6 +29,9 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 - Selected only the intrinsic growth-order or high-imaginary-height
   divisor-count theorem as the next task.
 
+Source state: `e3358c3a90ec67c2f1cf8b883107ad0fcf3cc64a`; shared paper-stage mirror:
+`e6cf4f21b5d82adaec40cb542d952cf491a0b909`.
+
 ## 2026-08-07
 
 ### Exact-U_c polar boundary trace

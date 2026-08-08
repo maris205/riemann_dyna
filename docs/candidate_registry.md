@@ -464,6 +464,8 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Owner:** Main Agent
 - **Branch:** `main`
 - **Evaluation source:** `b80900c60044795d2e163edc16de7ed1389e0cd9`
+- **Research commit:** `e3358c3a90ec67c2f1cf8b883107ad0fcf3cc64a`
+- **Shared mirror commit:** `e6cf4f21b5d82adaec40cb542d952cf491a0b909`
 - **Uses prime table:** `false`
 - **Uses zero table:** `false`
 
@@ -639,6 +641,7 @@ growth-order bound for $D_{\rm pol}(s)$ before any target-zero comparison.
 | Date | Previous state | New state | Evidence | Source commit | Reviewer |
 |---|---|---|---|---|---|
 | 2026-08-08 | Not registered | `ANALYTIC_REVIEW` | Full nuclearity, entire Fredholm determinant, and exact signed trace | `b80900c` | Main Agent + adversarial nuclearity review |
+| 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Research and standalone paper-stage mirrors pushed over SSH | `e3358c3` / mirror `e6cf4f2` | Main Agent |
 
 ---
 
