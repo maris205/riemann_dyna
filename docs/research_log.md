@@ -3630,3 +3630,188 @@ coding, and analytic fixed-germ multiplicity must be audited separately.
 Route-A remains `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `REVISE`. Route B is
 inactive. The next smallest task is the full matching-space nuclearity theorem,
 not Fredholm-zero evaluation.
+
+## 2026-08-08 — LOG-0001 full matching-space nuclear Fredholm theorem
+
+### Stable checkpoint
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: `LOG-0001` (formal candidate).
+
+Source lock:
+`configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`.
+
+The frozen Banach spaces are
+
+\[
+X=A(U_L)\oplus A(U_R),
+\qquad
+B=\ker[v_L(0)-v_R(0)],
+\]
+
+where the unchanged outer stadiums have radius `1/1000`. The radius
+`3/5000` stadiums are proof-only intermediate domains. Every weighted block
+factors as
+
+\[
+A(U_\sigma)\xrightarrow{R_\sigma}A(V_\sigma)
+\xrightarrow{Q_{j\sigma}(s)}A(U_j).
+\]
+
+A Riemann-map Taylor expansion of $R_\sigma$ has coefficient norms bounded
+by $r_\sigma^m$ for one $r_\sigma<1$. Hence every restriction, weighted
+block, the finite block family $\mathcal L_s$ on $X$, and its restriction to
+$B$ are $p$-nuclear for every $0<p\le1$. The same expansion and
+$\partial_s^k e^{s\ell}=\ell^ke^{s\ell}$ prove locally bounded entire
+dependence in each $p$-nuclear ideal.
+
+With $e=(1,0)$, $X=B\oplus\mathbb Ce$ and the common-output identity gives
+
+\[
+\mathcal L_s=
+\begin{pmatrix}\mathcal L_{s,B}&b_s\\0&0\end{pmatrix}.
+\]
+
+Therefore matching preserves, rather than halves, the ambient traces and
+determinant. The canonical Grothendieck determinant
+
+\[
+\Delta(\lambda,s)=\det_{\rm Fr}(I-\lambda\mathcal L_{s,B})
+\]
+
+is jointly entire, and $D_{\rm pol}(s)=\Delta(1,s)$ is entire. For every
+$n\ge1$,
+
+\[
+\operatorname{Tr}\mathcal L_s^n
+=\sum_{\omega\in\{L,R\}^n}
+\frac{e^{-sT_\omega}}
+     {1-\varepsilon_\omega e^{-T_\omega}},
+\qquad
+\varepsilon_\omega=(-1)^{\#R(\omega)}.
+\]
+
+The word index is the explicit reverse-order relabelling of the diagonal
+block path. Distinct cyclic rotations remain when distinct; a least-period
+$d$ orbit repeated to $n=rd$ contributes $d$ based points, and the `1/n`
+log-determinant factor supplies `1/r`. The pure-left term remains
+$\alpha_0^{ns}/(1-\alpha_0^n)$ with no seam or doubled factor.
+
+### Route evaluation
+
+Route-A analytic tuple:
+
+```text
+(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+ A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)
+```
+
+Riemann-target tuple:
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+```
+
+Route-B tuple: `(NOT_INVOKED, NOT_INVOKED, NOT_INVOKED, NOT_INVOKED,
+NOT_INVOKED)`; invocation is not authorized.
+
+### Strongest evidence
+
+The order-zero expansion is explicit rather than inferred from compactness;
+the complemented matching identity is exact; and the same frozen operator now
+has a canonical jointly entire Fredholm determinant and exact signed all-power
+trace. An adversarial functional-analysis review passed after correcting the
+block-word indexing. The target-free 100-digit implementation enumerates all
+`2^1+...+2^8=510` based words and passes fixed-point residual, strict itinerary,
+contraction, cyclic transport, orientation, signed denominator, and pure-left
+boundary gates.
+
+### Strongest failure
+
+No primitive orbit is related to a prime or von-Mangoldt prime-power weight.
+No growth-order or high-height divisor theorem, functional equation,
+Gamma/trivial-zero ledger, target zero count, completed-$\xi$ equality, or
+natural quantization is known. Determinant and Riemann zeros were not
+computed under this lock.
+
+### New reusable knowledge
+
+1. A fixed compact inclusion between Jordan-domain disk algebras becomes an
+   order-zero nuclear map by an explicit Riemann-map/Taylor expansion.
+2. A codimension-one matching condition does not alter a determinant when the
+   ambient nuclear operator maps into the matching kernel; the block identity
+   decides the multiplicity.
+3. A genuine analytic Fredholm determinant is only an A2/A3 structural gate.
+   Arithmetic orbit weights and the determinant's own divisor regime must be
+   established separately before any target interpretation.
+
+### Updated files
+
+- `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`
+- `evaluations/route_a/LOG-0001/20260808T051519Z.yaml`
+- `formal/results/log_0001_nuclear_fredholm.md`
+- `experiments/log_0001_nuclear_fredholm.py`
+- `artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json`
+- `tests/test_log_0001_nuclear_fredholm.py`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/operator_obligations.md` remains unchanged because A4 fails and Route B
+is not authorized.
+
+### Tests
+
+- LOG-0001 focused suite: `6/6 passed` (`29.359 s`).
+- Full repository suite: `244/244 passed` (`93.940 s`).
+- `git diff --check`: passed.
+
+### Reproduction commands
+
+```bash
+python3 experiments/log_0001_nuclear_fredholm.py \
+  --quiet \
+  --output artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json
+python3 -m unittest -v tests/test_log_0001_nuclear_fredholm.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+git diff --check
+sha256sum \
+  artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json \
+  experiments/log_0001_nuclear_fredholm.py \
+  formal/results/log_0001_nuclear_fredholm.md \
+  configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml \
+  evaluations/route_a/LOG-0001/20260808T051519Z.yaml \
+  tests/test_log_0001_nuclear_fredholm.py
+```
+
+The hashes at this checkpoint are:
+
+```text
+1ca6a3fa7c8c1367a3560e1ad6441980822ce9e0ae3105f9c0edcf220f714c74  artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json
+df9dd590dea0334d5fa110992ae013a042539264777898dc6b863de733304e3f  experiments/log_0001_nuclear_fredholm.py
+0645972215211d95c191c9f2e166e6592e21b6db625e69a07a06ea3209ab0c7d  formal/results/log_0001_nuclear_fredholm.md
+3c67edbcb0eca1ccbb786b7c3321b4af307a35e07c7e2f7467a29f029d27b6e3  configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml
+5bfa1502fb430fbd146a865add904cd91111667d643ef42e647aac427f3a4dfa  evaluations/route_a/LOG-0001/20260808T051519Z.yaml
+5b2396e235ac6b34ef2eaae88db5783cb9991c75b1f4937d047a86055f59b35e  tests/test_log_0001_nuclear_fredholm.py
+```
+
+### Claim boundary and next task
+
+Established: full matching-space order-zero nuclearity, locally entire
+$p$-nuclear dependence, the canonical jointly entire same-object determinant,
+conjugation symmetry, and the exact signed all-power trace ledger.
+
+Not established: log-prime/von-Mangoldt orbit data, determinant divisor growth,
+functional equation, completed-$\xi$, target zeros, quantization, Route B,
+Hilbert--Pólya, or RH.
+
+Next smallest task: prove an intrinsic high-imaginary-height divisor-count
+regime or a strict growth-order bound for $D_{\rm pol}(s)$ without computing or
+comparing target zeros.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`; overall
+`ROUTE_A_EXPLORATORY`.

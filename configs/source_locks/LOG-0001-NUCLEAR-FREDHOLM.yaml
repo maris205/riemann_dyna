@@ -1,0 +1,173 @@
+candidate_id: LOG-0001
+audit_id: LOG-0001-NUCLEAR-FREDHOLM
+parent_audit_id: P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE
+lock_version: 1
+formal_candidate: true
+clue_id: CLUE-A1-004
+title: Exact-U_c polar nuclear transfer family and Fredholm determinant
+
+candidate_definition:
+  parameter: >-
+    U_c is the unique real root of u^3-2*u^2+2*u-2=0 and rho=U_c-1.
+    The rounded legacy literal 1.543689 is forbidden.
+  real_dynamics: >-
+    On I=[-pi/2,pi/2], use the two-full-branch expanding polar map
+    G=q^(-1) o (-f^2) o q, where f(x)=1-U_c*x^2 and
+    q(theta)=rho*sin(theta). Keep the doubled branch components
+    I_L=[-pi/2,0] and I_R=[0,pi/2], with the previously frozen half-open
+    geometric orbit ledger.
+  roof: >-
+    tau(theta)=log|G'(theta)| with its exact analytic endpoint extensions.
+    On inverse images, exp(-s*tau)=exp(s*ell), where ell=Log(a) is the common
+    holomorphic logarithm proved on the frozen complex stadium.
+  complex_domains: >-
+    U_sigma={z:dist(z,I_sigma)<1/1000}. Freeze inner stadiums
+    V_sigma={z:dist(z,I_sigma)<3/5000}. The proved bound M<0.59626<3/5 gives
+    phi_sigma(closure(U_j)) contained in V_sigma compactly contained in U_sigma
+    for all j,sigma in {L,R}. The U_sigma remain the unchanged operator input
+    and output domains; V_sigma are proof-only intermediate domains used to
+    factor the four blocks and do not shrink the frozen operator domain.
+  ambient_space: >-
+    X=A(U_L) direct-sum A(U_R), where A(U) consists of functions holomorphic
+    on U and continuous on closure(U), with the maximum sup norm.
+  matching_space: >-
+    B=ker(delta), delta(v)=v_L(0)-v_R(0). This is a closed complemented
+    codimension-one subspace. Freeze e=(1,0) and
+    P_B(v)=v-delta(v)*e.
+  transfer_family: >-
+    For j in {L,R},
+    (L_s v)_j(z)=exp(s*ell(z))*
+    [v_L(phi_L(z))+v_R(phi_R(z))], z in U_j.
+    The two outputs are restrictions of one common holomorphic function, so
+    L_s(X) is contained in B and L_s restricts to B.
+  branch_orientation: >-
+    Preserve phi_L'=+a and phi_R'=-a. For a word omega, the signed inverse
+    derivative is epsilon_omega*exp(-T_omega), where
+    epsilon_omega=(-1)^(number of R letters).
+
+data_type:
+  primary: >-
+    Exact holomorphic Banach-space factorization, order-zero nuclear
+    restriction maps between fixed Jordan stadiums with an explicit
+    Riemann-map/Taylor expansion, finite block nuclearity, complemented
+    matching-space algebra, and the resulting canonical Grothendieck Fredholm
+    determinant and based-fixed-point trace theorem.
+  regression: >-
+    Target-free 100-digit fixed-point and trace diagnostics for every based
+    word through length eight. These checks validate implementation and signs;
+    the theorem is not inferred from the finite prefix.
+  excluded: >-
+    Prime/zero tables, xi/zeta evaluations, USTC data, Ulam matrices, empirical
+    eigenphase fits, physical return-label clocks, and separately glued
+    determinant ledgers.
+
+clock:
+  determinant_clock: >-
+    The only determinant time is T_gamma=sum tau=log|(G^n)'|. No scale,
+    offset, affine spectral map, or unfolding is permitted.
+  physical_clock: >-
+    One G step equals two f iterates. This clock is reported separately and
+    cannot replace the roof time in the determinant.
+
+normalization:
+  coordinate: q(theta)=rho*sin(theta), unscaled
+  weight: exp(s*ell)=exp(-s*tau) using the common Log(a)
+  orientation: signed inverse derivatives retained in trace denominators
+  matching_projection: P_B(v)=v-[v_L(0)-v_R(0)]*(1,0)
+
+determinant_convention:
+  two_variable_fredholm: >-
+    Delta(lambda,s)=det_Fr(I-lambda*L_s|_B), jointly entire in the auxiliary
+    Fredholm variable lambda and the roof spectral parameter s. Here det_Fr is
+    the canonical Grothendieck determinant sum over exterior powers for an
+    order-zero nuclear operator; it is neither a regularized determinant nor
+    a spectral-zeta determinant.
+  candidate_determinant: >-
+    D_pol(s)=Delta(1,s)=det_Fr(I-L_s|_B). This is the sole candidate
+    determinant. It is not an Artin-Mazur zeta, reciprocal, logarithmic
+    derivative, Perron density determinant, or physical-return determinant.
+  local_log_series: >-
+    Near lambda=0 only,
+    log Delta(lambda,s)=-sum_(n>=1) lambda^n Tr(L_s^n)/n.
+    No convergence of that raw logarithmic series at lambda=1 is asserted.
+  matching_identity: >-
+    The ambient and matching determinants and power traces agree because the
+    ambient block form relative to X=B direct-sum C e is [[L_B,*],[0,0]].
+  based_word_trace: >-
+    Tr(L_s^n)=sum_(omega in {L,R}^n)
+    exp(-s*T_omega)/(1-epsilon_omega*exp(-T_omega)), where omega indexes the
+    diagonal block cycles / based fixed points. Distinct cyclic rotations are
+    retained when they are distinct. A primitive orbit of least period d,
+    repeated to length n=r*d, contributes its d based points to the trace;
+    the 1/n determinant logarithm supplies the 1/r repetition coefficient.
+
+cutoff:
+  theorem_word_cutoff: none
+  theorem_operator_cutoff: none
+  regression_max_word_length: 8
+  complex_outer_radius: "1/1000"
+  complex_inner_radius: "3/5000"
+  contraction_safe_upper: "0.59626"
+
+precision:
+  analytic_theorem: exact
+  symbolic_definition: exact
+  regression_decimal_digits: 100
+  python_flint_version: "0.9.0"
+  flint_version: "3.6.0"
+  sympy_version: "1.14.0"
+  mpmath_version: "1.3.0"
+
+allowed_data:
+  - exact U_c polynomial and inherited certified root bracket
+  - inherited real map, non-lattice roof, common complex branches, and compact-inclusion theorem
+  - standard Riemann mapping, Cauchy coefficient, nuclear-ideal, trace, and Fredholm determinant theorems
+  - exact and target-free finite-word regression diagnostics
+
+forbidden_data:
+  - prime tables, primality predicates, zero tables, xi/zeta evaluations, or USTC data
+  - rounded U_c=1.543689 or any changed radius, roof, clock, logarithm, or endpoint coding
+  - replacing epsilon_omega by absolute values in a trace denominator
+  - identifying lambda with the complex phase coordinate or the roof parameter s
+  - evaluating or fitting Fredholm zeros in this nuclearity checkpoint
+  - claiming a completed-xi divisor, Route B, Hilbert-Polya, or RH
+
+training_split: empty; no fitting, parameter search, or arithmetic target data
+validation_split: >-
+  Prove order-zero nuclearity of each fixed restriction A(U_sigma)->A(V_sigma),
+  boundedness of the four weighted pullbacks, finite block nuclearity, matching
+  range/invariance, locally bounded entire dependence in every p-nuclear
+  ideal for 0<p<=1, and the ambient/matching block identity.
+test_split: >-
+  Sealed target-free word prefix through length eight: unique fixed point,
+  strict itinerary, cyclic rotation agreement, signed derivative denominator,
+  boundary L^n contribution, contraction margins, and byte reproduction.
+
+stopping_conditions:
+  - REVISE if any inner stadium is not compactly contained or misses an inverse image
+  - REVISE if restriction is only shown compact rather than order-zero nuclear
+  - REVISE if B is not closed, complemented, invariant, or determinant-compatible
+  - REVISE if s-dependence is not locally bounded and entire in each frozen
+    p-nuclear ideal for every 0<p<=1
+  - REVISE if any word lacks a unique isolated fixed point or loses signed orientation
+  - REJECTED if target data, rounded U_c, or a changed convention enters
+  - STOP_SCOPED for zero matching, completed-xi, quantization, Route B, Hilbert-Polya, or RH
+
+success_conditions:
+  - full L_s|_B is nuclear of order zero for every s
+  - s->L_s is an entire nuclear family
+  - Delta(lambda,s) is a jointly entire Fredholm determinant
+  - D_pol(s)=Delta(1,s) is an actual same-object determinant
+  - exact all-word trace formula with signed orientation and matching identity
+  - target-free prefix certificate through length eight
+
+route_status_at_lock:
+  inherited_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+  formal_candidate_id: LOG-0001
+  route_b_invocation_allowed: false
+  checkpoint_status: DEFINED_NOT_EVALUATED
+  recommended_verdict_if_successful: GO_WITH_LIMITATIONS
+
+next_smallest_test_if_successful: >-
+  Derive the intrinsic high-imaginary-height divisor-count regime or a strict
+  growth-order bound for D_pol(s) before any target-zero comparison.

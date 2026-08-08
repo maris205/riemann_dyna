@@ -1,6 +1,139 @@
 # HP-Dynamics Handoff
 
-## Current status — CLUE-A1-004 exact-U_c local boundary trace
+## Current status — LOG-0001 nuclear Fredholm determinant
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: `LOG-0001` (formal candidate).
+
+- Evaluation source commit: `b80900c60044795d2e163edc16de7ed1389e0cd9`
+- Source lock: `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`
+- Route-A evaluation: `evaluations/route_a/LOG-0001/20260808T051519Z.yaml`
+- Analytic Route-A tuple:
+  `(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+  A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)`
+- Riemann-target tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall/scoped verdict: `ROUTE_A_EXPLORATORY / GO_WITH_LIMITATIONS`
+- Route-B tuple: all `NOT_INVOKED`; invocation is not authorized
+- Shared mirror target:
+  `hilbert-polya-structure/logistic_dynamics/projects/exact_uc_polar_nuclear_fredholm/`
+
+The frozen object is the exact-$U_c$ polar transfer family on
+
+\[
+X=A(U_L)\oplus A(U_R),
+\qquad
+B=\ker[v_L(0)-v_R(0)].
+\]
+
+The radius-`3/5000` stadiums are proof-only intermediate domains inside the
+unchanged radius-`1/1000` operator domains. An explicit Riemann-map/Taylor
+expansion proves that every block, the full ambient family, and its matching
+restriction are nuclear of order zero. The family is locally bounded and
+entire in every $p$-nuclear ideal for `0<p<=1`.
+
+Because $\mathcal L_s(X)\subset B$, relative to
+$X=B\oplus\mathbb Ce$,
+
+\[
+\mathcal L_s=
+\begin{pmatrix}\mathcal L_{s,B}&b_s\\0&0\end{pmatrix}.
+\]
+
+Hence matching introduces no half or doubled factor, and
+
+\[
+\Delta(\lambda,s)
+=\det_{\rm Fr}(I-\lambda\mathcal L_{s,B})
+\]
+
+is a canonical jointly entire Grothendieck Fredholm determinant. In
+particular, $D_{\rm pol}(s)=\Delta(1,s)$ is entire. For every $n\ge1$,
+
+\[
+\operatorname{Tr}\mathcal L_s^n
+=\sum_{\omega\in\{L,R\}^n}
+\frac{e^{-sT_\omega}}
+     {1-\varepsilon_\omega e^{-T_\omega}},
+\qquad
+\varepsilon_\omega=(-1)^{\#R(\omega)}.
+\]
+
+The block paths use an explicit reverse-order bijection to these based words.
+Distinct rotations are retained when distinct, and the `1/n` trace-log factor
+gives the correct repetition coefficient.
+
+### Strongest evidence
+
+- The nuclear expansion is explicit; compactness is not substituted for
+  nuclearity.
+- The complemented matching identity exactly equates ambient and matching
+  traces/determinants.
+- An adversarial proof review passed after the block-word index was corrected.
+- A target-free 100-digit regression passes all 510 based words of lengths
+  one through eight: fixed point, strict itinerary, contraction, cyclic
+  transport, signed denominator, and pure-left boundary checks all pass.
+- Focused suite: `6/6 passed`; full suite: `244/244 passed`.
+
+### Strongest failure
+
+No log-prime/von-Mangoldt primitive-orbit law, growth-order or high-height
+divisor theorem, functional equation, Gamma/trivial-zero ledger,
+completed-$\xi$ divisor, natural quantization, or target-zero result exists.
+Fredholm and Riemann zeros were not computed.
+
+### New reusable knowledge
+
+Compact inclusion between the frozen disk algebras admits an order-zero
+Taylor nuclear factorization. A complemented matching kernel preserves an
+ambient nuclear determinant when the operator range lies in that kernel.
+Neither fact supplies arithmetic orbit weights or a target divisor.
+
+### Updated files
+
+- `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`
+- `evaluations/route_a/LOG-0001/20260808T051519Z.yaml`
+- `formal/results/log_0001_nuclear_fredholm.md`
+- `experiments/log_0001_nuclear_fredholm.py`
+- `artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json`
+- `tests/test_log_0001_nuclear_fredholm.py`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/operator_obligations.md` is unchanged because A4 fails and Route B is
+closed.
+
+### Reproduction commands
+
+```bash
+python3 experiments/log_0001_nuclear_fredholm.py \
+  --quiet \
+  --output artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json
+python3 -m unittest -v tests/test_log_0001_nuclear_fredholm.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+git diff --check
+```
+
+### Claim boundary and next task
+
+Established: full matching-space order-zero nuclearity, the canonical jointly
+entire same-object determinant, conjugation symmetry, and the exact signed
+all-power based-fixed-point trace.
+
+Not established: arithmetic orbit weights, determinant growth/divisor count,
+completed-$\xi$, target zeros, quantization, Route B, Hilbert--Pólya, or RH.
+
+Next smallest task: prove an intrinsic high-imaginary-height divisor-count
+regime or strict growth-order bound for $D_{\rm pol}(s)$ without target-zero
+comparison.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`.
+
+## Previous checkpoint — CLUE-A1-004 exact-U_c local boundary trace
 
 Current clue: `CLUE-A1-004`.
 
@@ -60,7 +193,7 @@ quantization, Route B, Hilbert--Polya, or RH.
 Prove nuclearity of the full two-component weighted family on the frozen
 matching space. Do not evaluate Fredholm zeros first.
 
-## Current status — CLUE-A1-004 exact-U_c polar partition trace ledger audit
+## Previous checkpoint — CLUE-A1-004 exact-U_c polar partition trace ledger audit
 
 Current clue: `CLUE-A1-004`.
 
@@ -159,7 +292,7 @@ that identity. The project-level breadth rule still keeps the structurally
 different Hénon/QG branches separate; this is a candidate-local Logistic
 resume task only.
 
-## Current status — CLUE-A3-001 same-ledger annular residual audit
+## Previous checkpoint — CLUE-A3-001 same-ledger annular residual audit
 
 Current clue: `CLUE-A3-001`.
 
@@ -557,7 +690,7 @@ mix residual clocks.
 
 Recommended verdict: `STOP_SCOPED`.
 
-## Current status — QG-0001 base-component characteristic audit
+## Previous checkpoint — QG-0001 base-component characteristic audit
 
 Current clue: `CLUE-A4-003`.
 

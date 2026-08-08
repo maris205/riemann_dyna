@@ -259,8 +259,8 @@ latest_evaluation:
 当前状态：
 
 ```text
-Four formal Route-A candidates are registered: two symbolic baselines,
-`TH-0001`, and `QG-0001`.
+Five formal Route-A candidates are registered: two symbolic baselines,
+`TH-0001`, `QG-0001`, and `LOG-0001`.
 SS-0001 is STOP_SCOPED by the finite-state divisor-count obstruction.
 SS-0002 escapes that finite-state theorem but is STOP_SCOPED by the
 finite-area Selberg/Weyl divisor obstruction.
@@ -290,6 +290,15 @@ audit. At the unchanged `epsilon=1/1000` it proves one common holomorphic
 four compact inclusions, and matching-space invariance. It is a `PROVED`
 positive structural prior, not a nuclearity or determinant pass and not a new
 formal candidate.
+LOG-0001 is the formal exact-`U_c` polar transfer candidate promoted only
+after the full matching-space theorem. Every block has an explicit
+Riemann-map/Taylor order-zero nuclear factorization, the matching restriction
+preserves ambient traces and determinants, and
+`Delta(lambda,s)=det_Fr(I-lambda*L_s|_B)` is jointly entire. Its analytic
+tuple is `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,
+A4_FAIL)`, but its Riemann-target tuple remains
+`(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)`: no arithmetic orbit law, divisor-count
+regime, completed-xi structure, or quantization is known.
 TH-0001 is the first formal Hénon-family candidate. It freezes one target-free
 autonomous non-palindromic three-kick superstep, has a complete global signed
 real primitive-orbit prefix through G-period two, and now has a proved
@@ -348,11 +357,13 @@ unaccelerated induced map remains blocked as an ordinary
 uniformly expanding `BV` map by `OBR-009`, and the old unit return-label clock
 remains blocked by `OBR-008`. The exact polar roof now escapes the hypothesis
 of `OBR-008`: its sealed `R` and `LR` periods are proved rationally
-independent. The frozen complex audit now also supplies the same-object
+independent. The frozen complex audit supplies the same-object
 radius-`1/1000` transfer-operator domain, common logarithm germ, compact
-branch inclusion, and matching-space invariance. It does not supply the
-doubled partition-hit trace ledger, nuclearity, a Fredholm determinant, or a
-divisor-count theorem. The audit remains
+branch inclusion, and matching-space invariance. The later partition and
+boundary audits close the target-copy and local endpoint multiplicities.
+LOG-0001 then proves full matching-space order-zero nuclearity and the
+same-object Fredholm determinant. No arithmetic orbit law or divisor-count
+theorem follows. The earlier recurrent-clock audit remains
 `P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK`, with Route-A tuple
 `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)` and verdict `REVISE`.
 
@@ -372,12 +383,28 @@ nuclear of order zero and has trace `alpha_0^s/(1-alpha_0)`. Its pure-left
 power trace is `alpha_0^(n*s)/(1-alpha_0^n)`. Because `P` is interior to the
 complex stadium and belongs only to the left component, there is no half,
 seam, or doubled-copy factor. Full two-component matching-space nuclearity is
-still open, so A2 remains failed.
+proved by the subsequent formal candidate `LOG-0001`.
+
+For LOG-0001, let `X=A(U_L) direct-sum A(U_R)` and
+`B=ker[v_L(0)-v_R(0)]`. Factoring every weighted pullback through the
+proof-only inner stadium gives a `p`-nuclear expansion for every `0<p<=1`.
+The family is entire in each such ideal, its range lies in `B`, and
+
+```text
+Delta(lambda,s)=det_Fr(I-lambda*L_s|_B)
+D_pol(s)=Delta(1,s)
+Tr(L_s^n)=sum_omega exp(-s*T_omega)/
+          (1-epsilon_omega*exp(-T_omega)).
+```
+
+The signed denominator and based-fixed-point multiplicities are exact. A
+100-digit sealed regression passes all 510 words of lengths one through eight
+without evaluating determinant or target zeros.
 
 Latest evaluation:
 
 ```text
-evaluations/route_a/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE/20260807T071000Z.yaml
+evaluations/route_a/LOG-0001/20260808T051519Z.yaml
 ```
 
 The polar suspension source lock is
@@ -395,19 +422,20 @@ The completed complex-branch theorem is recorded at source commit
 `epsilon=1/1000`, proves a common complex contraction below `0.59626`, and
 gives a compact margin above `0.00040374` for all four branch pairs.
 
-Next smallest test: prove nuclearity of the full two-component weighted family
-on the frozen matching space. Do not evaluate Fredholm zeros, target divisors,
-or Route B before that theorem.
+Next smallest test: prove an intrinsic growth-order bound or high-imaginary-
+height divisor-count regime for `D_pol(s)`. Do not evaluate target zeros or
+invoke Route B first.
 
-Portfolio decision: under the RH breadth-first rule, this is the
-candidate-local resume task only. The project-level next task parks the
-Logistic branch and opens `CLUE-A4-001` to freeze one explicit target-free
-Twisted Hénon / kicked-symplectic object for a low-cost Route-A prefilter.
+Portfolio decision: LOG-0001 has crossed a genuine theorem edge, so the one
+active candidate-local and project-level task is the lowest-cost intrinsic
+growth/divisor audit. The Logistic branch is not authorized for target-zero
+matching, completed-xi claims, or Route B.
 
 汇总表：
 
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
+| LOG-0001 | Exact-`U_c` polar nuclear transfer family | `ANALYTIC_REVIEW` | Analytic `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`; target `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `ROUTE_A_EXPLORATORY` | Not invoked | Full order-zero nuclearity, jointly entire same-object Fredholm determinant, and exact signed all-power trace | No log-prime/von-Mangoldt law, growth/divisor count, completed-xi structure, or quantization | Prove an intrinsic growth-order bound or high-height divisor-count regime without target zeros |
 | QG-0001 | Harmonic magnetic lollipop-theta graph tower | `STOP_SCOPED` (exact relative determinant and divisor) | Analytic `(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_UNITARY_OR_SCATTERING_CANDIDATE)`; target `A2/A3_FAIL` / `ROUTE_A_REJECTED` | Not invoked | `H^{-1}` trace class and exact `det_F(I-k^2 H^{-1})=product_n chi_0(k/n)` | Exact divisor coefficient is `2*L_0 ~= 12.7647` times target; no orbit trace law | Park; reopen only as a new lock with intrinsic normalization/tower law |
 | TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, unitary FIO lift, and exact internal-caustic obstruction | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear antiunitary audit | Stop phase sub-audit; reopen only with an explicit multi-chart phase/Maslov ledger |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
@@ -418,6 +446,199 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 | Control ID | Role | Control verdict | Candidate scope | Strongest evidence | Main limitation |
 |---|---|---|---|---|---|
 | CTRL-0001 | Four-channel q-Pochhammer Fredholm A2 positive control | `GO_WITH_LIMITATIONS` | `STOP_SCOPED`; not a formal candidate | Independent direct-product winding and Fredholm-coefficient root discovery pass all frozen gates, including balanced corruption and executable ledger controls | Sampled winding is a numerical anti-alias diagnostic, not an interval proof; engineered factors have no natural prime orbit or completed-xi structure |
+
+---
+
+## LOG-0001 — Exact-$U_c$ polar nuclear transfer family
+
+### Identity
+
+- **Family:** Analytic two-full-branch polar transfer operator
+- **Parent clue:** `CLUE-A1-004`
+- **Parent audits:** `P4-LOGISTIC-UC-POLAR-NONLATTICE`,
+  `P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH`,
+  `P4-LOGISTIC-UC-POLAR-PARTITION-TRACE`, and
+  `P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE`
+- **Created:** 2026-08-08
+- **Current status:** `ANALYTIC_REVIEW`
+- **Owner:** Main Agent
+- **Branch:** `main`
+- **Evaluation source:** `b80900c60044795d2e163edc16de7ed1389e0cd9`
+- **Uses prime table:** `false`
+- **Uses zero table:** `false`
+
+### Exact definition
+
+Let $U_c$ be the unique real root of
+
+\[
+u^3-2u^2+2u-2=0,
+\qquad \rho=U_c-1.
+\]
+
+On $I=[-\pi/2,\pi/2]$, retain the exact two-full-branch polar map
+$G=q^{-1}\circ(-f^2)\circ q$, where
+$q(\theta)=\rho\sin\theta$ and $f(x)=1-U_cx^2$.  On the unchanged stadiums
+$U_L,U_R$ of radius $1/1000$, define
+
+\[
+X=A(U_L)\oplus A(U_R),
+\qquad
+B=\ker[v_L(0)-v_R(0)],
+\]
+
+and
+
+\[
+(\mathcal L_s v)_j(z)
+=e^{s\ell(z)}
+ \left[v_L(\phi_L(z))+v_R(\phi_R(z))\right].
+\]
+
+Here $\ell=\operatorname{Log}a$, $\phi_L'=+a$, and $\phi_R'=-a$.  The
+radius-$3/5000$ stadiums $V_\sigma$ are proof-only intermediate domains;
+they do not change the operator space.
+
+### Source lock
+
+```yaml
+data_type: exact order-zero nuclear theorem plus target-free word regression
+clock: T_gamma=sum log|G'|; physical two-iterate clock reported separately
+normalization: q(theta)=rho*sin(theta), exp(s*ell), signed inverse derivative
+determinant_convention: Delta(lambda,s)=det_Fr(I-lambda*L_s|_B)
+orbit_cutoff: none in theorem; regression lengths 1..8
+precision: exact theorem; 100 decimal digits in regression
+allowed_data: exact U_c and inherited same-object complex/roof theorems
+forbidden_data: prime/zero tables, xi/zeta values, fitting, zero evaluation
+training_split: empty
+validation_split: nuclear factorization, matching identity, entire determinant
+test_split: all 510 target-free based words through length eight
+stopping_conditions: revise on any convention, nuclearity, sign, or matching failure
+```
+
+The complete lock is
+`configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`.
+
+### Route-A status
+
+```yaml
+analytic_tuple:
+  - A1_WEAK
+  - A2_ANALYTIC_DETERMINANT
+  - A3_PARTIAL_ANALYTIC_STRUCTURE
+  - A4_FAIL
+riemann_target_tuple:
+  - A1_WEAK
+  - A2_FAIL
+  - A3_FAIL
+  - A4_FAIL
+overall: ROUTE_A_EXPLORATORY
+verdict: GO_WITH_LIMITATIONS
+latest_evaluation: evaluations/route_a/LOG-0001/20260808T051519Z.yaml
+```
+
+The analytic A2/A3 labels certify only the existence and partial analytic
+structure of this same frozen dynamical determinant.  They are not a target
+divisor pass.
+
+### Route-B status
+
+```yaml
+b1: NOT_INVOKED
+b2: NOT_INVOKED
+b3: NOT_INVOKED
+b4: NOT_INVOKED
+b5: NOT_INVOKED
+overall: ROUTE_B_NOT_TESTABLE
+authorized: false
+```
+
+### Positive evidence
+
+- Every restriction $A(U_\sigma)\to A(V_\sigma)$ has an explicit Taylor
+  nuclear expansion with geometric coefficient norms, so it is $p$-nuclear
+  for every $0<p\le1$.
+- All four weighted pullback blocks, their finite block sum, and the
+  restriction to $B$ are nuclear of order zero.
+- The family is locally bounded and entire in every frozen $p$-nuclear ideal.
+- The complemented block form $X=B\oplus\mathbb Ce$ proves equality of
+  ambient and matching traces and Fredholm determinants.
+- The canonical determinant
+  $\Delta(\lambda,s)=\det_{\rm Fr}(I-\lambda\mathcal L_s|_B)$ is jointly
+  entire, and $D_{\rm pol}(s)=\Delta(1,s)$ is entire.
+- For every $n\ge1$,
+
+  \[
+  \operatorname{Tr}\mathcal L_s^n
+  =\sum_{\omega\in\{L,R\}^n}
+   \frac{e^{-sT_\omega}}
+        {1-\varepsilon_\omega e^{-T_\omega}}.
+  \]
+
+- The sealed 100-digit regression passes all 510 based words of lengths
+  one through eight, including strict itinerary, contraction, rotation,
+  signed denominator, and the pure-left endpoint trace.
+
+### Failed or unopened controls
+
+- No primitive period or amplitude has been matched to a prime or prime power.
+- The source lock forbids Fredholm-zero evaluation at this checkpoint, so
+  missing, extra, and target root counts are not opened.
+- No growth order or high-imaginary-height divisor-count theorem is known.
+- No functional equation, Gamma factor, trivial-zero ledger, or completed-$\xi$
+  equality is known.
+- No natural quantization or Hilbert--Pólya operator is defined.
+
+### Known obstructions
+
+- `OBR-008` still blocks the older constant integer return-label clock, but
+  does not apply to LOG-0001's proved non-lattice intrinsic roof.
+- `OBR-009` concerns the unaccelerated first-return `BV` model, not the polar
+  analytic transfer family.
+- No strict obstruction has yet classified the divisor regime of
+  $D_{\rm pol}$; that is the active theorem gate.
+
+### Reproduction
+
+```bash
+python3 experiments/log_0001_nuclear_fredholm.py \
+  --quiet \
+  --output artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json
+python3 -m unittest -v tests/test_log_0001_nuclear_fredholm.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+```
+
+### Artifacts
+
+```text
+configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml
+evaluations/route_a/LOG-0001/20260808T051519Z.yaml
+formal/results/log_0001_nuclear_fredholm.md
+experiments/log_0001_nuclear_fredholm.py
+artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json
+tests/test_log_0001_nuclear_fredholm.py
+```
+
+### Claim boundary
+
+**Established:** the full matching-space order-zero nuclear family, its
+canonical jointly entire Fredholm determinant, conjugation symmetry, and the
+exact signed all-power based-fixed-point trace ledger.
+
+**Not established:** a log-prime/von-Mangoldt orbit law, target zeros, growth
+order or divisor count, functional equation, completed-$\xi$ structure,
+quantization, Route B, Hilbert--Pólya, or RH.
+
+### Next smallest test
+
+Prove an intrinsic high-imaginary-height divisor-count regime or a strict
+growth-order bound for $D_{\rm pol}(s)$ before any target-zero comparison.
+
+### Decision history
+
+| Date | Previous state | New state | Evidence | Source commit | Reviewer |
+|---|---|---|---|---|---|
+| 2026-08-08 | Not registered | `ANALYTIC_REVIEW` | Full nuclearity, entire Fredholm determinant, and exact signed trace | `b80900c` | Main Agent + adversarial nuclearity review |
 
 ---
 

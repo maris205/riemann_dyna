@@ -471,9 +471,16 @@ convention. The sealed `R`/`LR` audit now proves their full primitive roof
 periods have irrational ratio, so the intrinsic roof is non-lattice. The
 frozen radius-`1/1000` complex audit now proves one common logarithm germ,
 globally univalent composite inverse branches, all four compact inclusions,
-and matching-space invariance. The next smallest task is only the doubled
-partition-hit target-copy and multiplicity rule; nuclearity and Fredholm
-analysis remain deferred.
+and matching-space invariance. The half-open partition audit then proves the
+exact boundary graph and target-copy ledger, while the local boundary theorem
+fixes the pure-left trace with no half or doubled factor. The formal candidate
+`LOG-0001` now proves order-zero nuclearity of the full matching-space family,
+joint entireness of
+`Delta(lambda,s)=det_Fr(I-lambda*L_s|_B)`, and the exact signed all-power
+based-fixed-point trace formula. This is a genuine analytic determinant but
+not an arithmetic or completed-xi determinant. The next smallest task is an
+intrinsic growth-order or high-imaginary-height divisor-count theorem for
+`D_pol(s)=Delta(1,s)`, with target zeros still sealed.
 
 Artifacts:
 
@@ -486,6 +493,9 @@ Artifacts:
 - `configs/source_locks/P4-LOGISTIC-UC-POLAR-INTRINSIC-ROOF.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-POLAR-NONLATTICE.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH.yaml`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE.yaml`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE.yaml`
+- `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
@@ -495,6 +505,9 @@ Artifacts:
 - `evaluations/route_a/P4-LOGISTIC-UC-BRANCH-MASS-RATE/20260805T083731Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-POLAR-NONLATTICE/20260805T110654Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE/20260807T032000Z.yaml`
+- `evaluations/route_a/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE/20260807T071000Z.yaml`
+- `evaluations/route_a/LOG-0001/20260808T051519Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
@@ -503,7 +516,13 @@ Artifacts:
 - `artifacts/p4_logistic_uc_branch_mass_rate/rate_certificate.json`
 - `artifacts/p4_logistic_uc_polar_nonlattice/nonlattice_certificate.json`
 - `artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json`
+- `artifacts/p4_logistic_uc_polar_partition_trace/partition_trace_certificate.json`
+- `artifacts/p4_logistic_uc_polar_boundary_trace/boundary_trace_certificate.json`
+- `artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json`
 - `experiments/p4_logistic_uc_acip_endpoint_density.py`
+- `experiments/p4_logistic_uc_polar_partition_trace.py`
+- `experiments/p4_logistic_uc_polar_boundary_trace.py`
+- `experiments/log_0001_nuclear_fredholm.py`
 - `docs/literature/exact_uc_acip_density_sources.md`
 - `formal/results/exact_uc_first_return_support.md`
 - `formal/results/exact_uc_acip_endpoint_density.md`
@@ -512,6 +531,9 @@ Artifacts:
 - `formal/results/exact_uc_branch_mass_rate.md`
 - `formal/results/exact_uc_polar_nonlattice.md`
 - `formal/results/exact_uc_polar_complex_branch.md`
+- `formal/results/exact_uc_polar_partition_trace.md`
+- `formal/results/exact_uc_polar_boundary_trace.md`
+- `formal/results/log_0001_nuclear_fredholm.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
 - `tests/test_p4_logistic_uc_first_return_support.py`
@@ -521,6 +543,9 @@ Artifacts:
 - `tests/test_p4_logistic_uc_polar_intrinsic_roof_lock.py`
 - `tests/test_p4_logistic_uc_polar_nonlattice.py`
 - `tests/test_p4_logistic_uc_polar_complex_branch.py`
+- `tests/test_p4_logistic_uc_polar_partition_trace.py`
+- `tests/test_p4_logistic_uc_polar_boundary_trace.py`
+- `tests/test_log_0001_nuclear_fredholm.py`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
 
 ---
@@ -1266,10 +1291,10 @@ e^{q(E)}
 1. `[STOP_SCOPED]` Logistic physical-epsilon medium-fidelity eigenbranch audit
 2. `[GO_WITH_LIMITATIONS_CONTROL]` Synthetic Fredholm/Euler-product positive control (`CTRL-0001`, `CLUE-A2-001`)
 3. `[STOP_SCOPED]` Strict-monotone autonomous Logistic clock lift (`P4-LOGISTIC-MONOTONE-CLOCK-LIFT`, `OBR-007`)
-4. `[PARKED_REVISE]` Logistic recurrent-base continuation; resume only from its frozen same-object determinant obligation
+4. `[NEXT]` `LOG-0001` intrinsic growth-order or high-imaginary-height divisor-count theorem, with target zeros sealed
 5. Candidate-specific shuffled-period / random-weight / random-phase controls
 6. Candidate-specific signed cycle expansion and moving-cutoff drift
-7. `[NEXT]` Freeze one explicit same-ledger annular residual object from `CLUE-A3-001` after auditing the legacy RH handoff
+7. `[QUEUED]` Freeze one explicit same-ledger annular residual object from `CLUE-A3-001` after auditing the legacy RH handoff
 
 ## Priority 1 — 最值得并行的三条 Route-A 路线
 
@@ -1283,7 +1308,7 @@ e^{q(E)}
 2. Actual head/counterloop transport  
 3. Critical and lower-sideband compensation  
 4. Off-alias aggregate  
-5. `[NEXT]` Direct annular theorem, beginning with one explicit same-ledger residual object
+5. `[QUEUED]` Direct annular theorem, beginning with one explicit same-ledger residual object
 
 ## Priority 3 — Route-B 入口
 
@@ -1681,7 +1706,7 @@ clue_id: CLUE-A1-004
 old_status: ACTIVE
 new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-POLAR-PARTITION-TRACE exact endpoint graph, half-open quotient convention, cyclic-word audit through length 8, and matching-range lemma"
-commit: "pending current checkpoint"
+commit: "5f055d4f5784528125efbe277c76420cd30a4d32"
 consequence: "The geometric target-copy ledger is now explicit: I_L=[-pi/2,0), I_R=[0,pi/2], with the partition point owned by R. The exact boundary graph is P->P, Q->P, Z->Q, so 0 is preperiodic rather than a boundary periodic orbit. Endpoint-copy and cyclic-rotation quotient tests pass, while the local analytic trace correction at P=-pi/2 remains OPEN. Route-A tuple stays (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL); no determinant or Route B is authorized."
 ```
 
@@ -1693,6 +1718,25 @@ clue_id: CLUE-A1-004
 old_status: ACTIVE
 new_status: ACTIVE
 evidence: "P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE exact weighted-composition trace theorem and 100-digit Taylor-tail certificate"
-commit: "pending current checkpoint"
+commit: "fb3fed9355fc1ae0188d4d080f40fadfe6d9ec41"
 consequence: "For the unique boundary periodic point P=-pi/2, alpha_0=U_c^2/4 and the local LL trace is alpha_0^s/(1-alpha_0); the pure-L length-n trace is alpha_0^(n*s)/(1-alpha_0^n). P is interior to the complex stadium and has one left lift, so no half or doubled/matching factor appears. This closes the local endpoint trace obligation but not full matching-space nuclearity. Route-A tuple remains (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL), and Route B remains closed."
+```
+
+## Status update — CLUE-A1-004 LOG-0001 nuclear Fredholm closure
+
+```yaml
+date: 2026-08-08
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+candidate_id: LOG-0001
+evidence: "Explicit Riemann-map/Taylor order-zero nuclear factorization for every block, complemented matching-space determinant identity, jointly entire canonical Fredholm determinant, exact signed all-power trace theorem, and sealed 510-word regression at 100 digits"
+source_commit: "b80900c60044795d2e163edc16de7ed1389e0cd9"
+source_lock: "configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml"
+evaluation: "evaluations/route_a/LOG-0001/20260808T051519Z.yaml"
+analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+overall: ROUTE_A_EXPLORATORY
+verdict: GO_WITH_LIMITATIONS
+consequence: "LOG-0001 is now a formal analytic candidate: Delta(lambda,s)=det_Fr(I-lambda*L_s|_B) is a genuine jointly entire same-object determinant and D_pol(s)=Delta(1,s) is entire. This does not supply a log-prime/von-Mangoldt orbit law, divisor count, functional equation, completed-xi structure, quantization, or Route B. Next prove only an intrinsic growth-order bound or high-imaginary-height divisor-count regime; do not compare target zeros first."
 ```

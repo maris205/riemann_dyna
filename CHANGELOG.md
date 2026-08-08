@@ -3,6 +3,32 @@
 Repository-backed research status changes are recorded here. Detailed evidence
 and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
+## 2026-08-08
+
+### LOG-0001 full matching-space nuclear Fredholm determinant
+
+- Promoted the exact-$U_c$ polar transfer family to formal candidate
+  `LOG-0001` only after proving full order-zero nuclearity on the frozen
+  matching space.
+- Factored every weighted pullback through a proof-only inner stadium by an
+  explicit Riemann-map/Taylor expansion; the family is locally bounded and
+  entire in every $p$-nuclear ideal for `0<p<=1`.
+- Proved that matching preserves the ambient traces and determinant, and that
+  `Delta(lambda,s)=det_Fr(I-lambda*L_s|_B)` is jointly entire with
+  `D_pol(s)=Delta(1,s)` entire.
+- Proved the exact all-power based-fixed-point trace with denominator
+  `1-epsilon_omega*exp(-T_omega)`, retaining signed orientation and the
+  correct primitive/repetition ledger.
+- Passed a target-free 100-digit regression over all 510 based words of
+  lengths one through eight; no Fredholm or Riemann zeros were computed.
+- Recorded analytic tuple
+  `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`
+  but kept the Riemann-target tuple at
+  `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)`, overall
+  `ROUTE_A_EXPLORATORY / GO_WITH_LIMITATIONS`, with Route B closed.
+- Selected only the intrinsic growth-order or high-imaginary-height
+  divisor-count theorem as the next task.
+
 ## 2026-08-07
 
 ### Exact-U_c polar boundary trace

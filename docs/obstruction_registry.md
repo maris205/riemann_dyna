@@ -326,7 +326,7 @@ target-free dynamics, and prove its divisor-count regime. Adding a
 zero-producing correction by hand changes the ledger and does not reopen this
 case.
 
-Current reopening status (2026-08-05):
+Current reopening status (2026-08-08):
 `P4-LOGISTIC-UC-POLAR-NONLATTICE` proves that the same exact polar dynamics
 has an intrinsic roof $\tau=\log|G'|$ with two primitive periods satisfying
 $T_{LR}/T_R\notin\mathbb Q$. Therefore this new roof is outside the unit-
@@ -334,10 +334,22 @@ lattice hypothesis of `OBR-008`; the obstruction remains fully active for the
 old return-label clock and every determinant that factors only through
 $e^{-s}$. `P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH` subsequently proves the
 same-object frozen-radius complex branches, common logarithm germ, compact
-inclusion, and matching-space invariance. The second reopening obligation is
-still open: the partition-hit trace ledger, nuclearity, a same-object Fredholm
-determinant, and its divisor-count regime have not been proved for the
-non-lattice roof.
+inclusion, and matching-space invariance. The partition and boundary audits
+then close the target-copy and endpoint-trace ledgers. Finally, formal
+candidate `LOG-0001` proves full matching-space order-zero nuclearity and the
+genuine same-object determinant
+
+\[
+\Delta(\lambda,s)=\det_{\rm Fr}(I-\lambda\mathcal L_s|_B),
+\qquad
+D_{\rm pol}(s)=\Delta(1,s),
+\]
+
+with nonperiodic $s$-dependence and an exact signed trace formula. Thus
+LOG-0001 lies completely outside the hypothesis of `OBR-008`; this does not
+refute or weaken the obstruction for the old unit-clock object. The remaining
+reopening obligation is now only to prove the intrinsic high-height divisor
+count or growth regime of $D_{\rm pol}$.
 
 Artifacts:
 
@@ -356,6 +368,15 @@ Artifacts:
 - `artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json`
 - `evaluations/route_a/P4-LOGISTIC-UC-POLAR-COMPLEX-BRANCH/20260805T125236Z.yaml`
 - `tests/test_p4_logistic_uc_polar_complex_branch.py`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE.yaml`
+- `formal/results/exact_uc_polar_partition_trace.md`
+- `configs/source_locks/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE.yaml`
+- `formal/results/exact_uc_polar_boundary_trace.md`
+- `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`
+- `formal/results/log_0001_nuclear_fredholm.md`
+- `artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json`
+- `evaluations/route_a/LOG-0001/20260808T051519Z.yaml`
+- `tests/test_log_0001_nuclear_fredholm.py`
 
 ---
 

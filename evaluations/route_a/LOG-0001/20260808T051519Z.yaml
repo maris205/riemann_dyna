@@ -1,0 +1,209 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: LOG-0001
+audit_id: LOG-0001-NUCLEAR-FREDHOLM
+parent_audit_id: P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE
+formal_candidate: true
+source_commit: b80900c60044795d2e163edc16de7ed1389e0cd9
+evaluation_date: "2026-08-08T05:15:19Z"
+
+source_lock:
+  object: >-
+    The exact-U_c two-full-branch polar map G with intrinsic roof
+    tau=log|G'|, its common holomorphic inverse branches on the frozen
+    radius-1/1000 stadiums, and the weighted transfer family L_s restricted
+    to B=ker[v_L(0)-v_R(0)] in A(U_L) direct-sum A(U_R).
+  data_type: >-
+    An exact order-zero nuclear Banach-space factorization, canonical
+    Grothendieck Fredholm determinant, all-power based-fixed-point trace
+    theorem, and a sealed target-free 100-digit regression over all 510 based
+    words of lengths one through eight.
+  clock: >-
+    T_gamma=sum tau=log|(G^n)'| is the sole determinant time. One G step is
+    two Logistic iterates only in the separately reported physical clock.
+  normalization: >-
+    q(theta)=(U_c-1)sin(theta), w_s=exp(s*Log(a))=exp(-s*tau) on inverse
+    cycles, phi_L'=+a, phi_R'=-a, and no scale, offset, unfolding, half-trace,
+    seam, or doubled-copy factor.
+  determinant_convention: >-
+    Delta(lambda,s)=det_Fr(I-lambda*L_s|_B) is the canonical Grothendieck
+    determinant of the order-zero nuclear family, and
+    D_pol(s)=Delta(1,s). It is not Z, 1/Z, Z'/Z, a regularized determinant,
+    a spectral-zeta determinant, or a physical-return determinant.
+  cutoff: >-
+    The theorem has no word or operator cutoff. The sealed implementation
+    regression enumerates all 510 based words through length eight.
+  precision: >-
+    Exact analytic theorem plus mpmath 1.3.0 at 100 decimal digits using the
+    inherited certified U_c bracket. The complex inclusion bound is the
+    inherited theorem M<0.59626.
+  training_data: "empty; no fitting, parameter search, or target data"
+  validation_data: >-
+    Explicit Riemann-map/Taylor p-nuclear expansion, bounded four-block
+    pullbacks, matching-space complement and range identity, ideal-valued
+    entire dependence, canonical determinant theorem, and exact word trace.
+  test_data: >-
+    Sealed target-free prefix: every based word of lengths 1..8, fixed-point
+    residual, strict itinerary, contraction, orientation sign, cyclic
+    transport, signed denominator, and pure-L boundary ledger.
+  allowed_data:
+    - exact U_c polynomial and inherited certified root bracket
+    - inherited polar map, non-lattice roof, common complex branches, and compact inclusion
+    - standard Riemann mapping, Cauchy coefficient, nuclear ideal, trace, and Fredholm theorems
+    - target-free finite-word regression
+  forbidden_data:
+    - prime tables, zero tables, xi/zeta evaluations, USTC data, or fitting
+    - rounded U_c=1.543689 or changed domains, roof, clock, log, or endpoint coding
+    - absolute-value replacement of the signed trace denominator
+    - Fredholm-zero evaluation or target divisor comparison at this checkpoint
+    - Route B, Hilbert-Polya, or RH claims
+  stopping_conditions:
+    - REVISE if any block is only compact rather than order-zero nuclear
+    - REVISE if matching changes the ambient trace or determinant
+    - REVISE if ideal-valued s-dependence or the signed word trace fails
+    - REJECTED if target data or a changed convention enters
+    - STOP_SCOPED for zero matching, completed-xi, quantization, Route B, or RH
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The two-full-branch map has an intrinsic complete binary periodic ledger,
+    unique fixed points for all inverse words, exact repetition/orientation
+    data, and a proved non-lattice roof; it reads no prime or zero table.
+  strongest_failure: >-
+    No theorem or stable numerical law identifies primitive roof periods with
+    log primes or produces von-Mangoldt prime-power amplitudes. A complete
+    dynamical orbit census is not an arithmetic orbit correspondence.
+  metrics:
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    intrinsic_binary_primitive_ledger: PROVED
+    unique_word_fixed_points_all_orders: PROVED
+    non_lattice_roof: PROVED
+    signed_orientation: "epsilon_omega=(-1)^(#R)"
+    sealed_based_words_checked: 510
+    arithmetic_orbit_law: false
+    von_mangoldt_weights: false
+  artifacts:
+    - formal/results/exact_uc_polar_nonlattice.md
+    - formal/results/exact_uc_polar_partition_trace.md
+    - formal/results/exact_uc_polar_boundary_trace.md
+    - formal/results/log_0001_nuclear_fredholm.md
+    - artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json
+
+a2:
+  verdict: A2_ANALYTIC_DETERMINANT
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Each block factors through an explicit order-zero nuclear restriction;
+    the finite block family and its matching-space restriction are therefore
+    order-zero nuclear for every s. The canonical same-object determinant
+    Delta(lambda,s) is jointly entire, and every power has the exact signed
+    based-fixed-point trace formula.
+  strongest_failure: >-
+    This establishes determinant existence, not a Riemann divisor. The source
+    lock forbids root computation here, so target root counts, missing/extra
+    zeros, cutoff stability against a target, and any completed-xi equality
+    remain unopened.
+  metrics:
+    zero_error_train: not_opened_by_source_lock
+    zero_error_validation: not_opened_by_source_lock
+    zero_error_test: not_opened_by_source_lock
+    extra_zero_count: not_testable_no_target_comparison
+    missing_zero_count: not_testable_no_target_comparison
+    root_count_discrepancy: not_testable_no_target_comparison
+    cutoff_drift: theorem_has_no_cutoff
+    precision_drift: target_free_regression_passed_at_100_digits
+    control_margin: "complex derivative M<0.59626<3/5"
+    full_matching_family_order_zero_nuclear: true
+    same_object_fredholm_determinant: true
+    determinant_jointly_entire: true
+    ambient_matching_determinants_equal: true
+    signed_all_power_trace_formula: PROVED
+    riemann_target_a2: A2_FAIL
+  artifacts:
+    - configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml
+    - formal/results/log_0001_nuclear_fredholm.md
+    - artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json
+    - tests/test_log_0001_nuclear_fredholm.py
+
+a3:
+  verdict: A3_PARTIAL_ANALYTIC_STRUCTURE
+  evidence_status: PROVED
+  strongest_evidence: >-
+    D_pol is entire in s, Delta is jointly entire, the real structure gives
+    Delta(lambda,conj(s))=conj(Delta(conj(lambda),s)), and the exact trace
+    formula preserves signed orientation at every repetition.
+  strongest_failure: >-
+    No functional equation, Gamma factor, trivial-zero/pole ledger,
+    Riemann-von Mangoldt law, finite growth-order bound, high-height divisor
+    regime, moving-order comparison, or completed-xi divisor is known.
+  metrics:
+    conjugation_symmetry: PROVED
+    analytic_continuation: entire_in_lambda_and_s
+    exact_trace_identity: PROVED
+    functional_equation: false
+    gamma_factor: false
+    trivial_zero_ledger: false
+    target_counting_law: false
+    growth_order_bound: OPEN
+    high_height_divisor_count: OPEN
+    completed_xi_divisor: false
+    riemann_target_a3: A3_FAIL
+  artifacts:
+    - formal/results/log_0001_nuclear_fredholm.md
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The transfer family is natural for the same exact classical polar map and
+    uses its intrinsic unstable-Jacobian roof without post-hoc spectral data.
+  strongest_failure: >-
+    No symplectic/contact/scattering lift, quantum Hilbert space, dense
+    domain, self-adjoint operator, antiunitary audit, or same-clock
+    quantization is defined.
+  metrics:
+    natural_hilbert_space: null
+    operator_domain: null
+    natural_quantization: false
+    route_b_ready: false
+  artifacts: []
+
+analytic_route_tuple:
+  - A1_WEAK
+  - A2_ANALYTIC_DETERMINANT
+  - A3_PARTIAL_ANALYTIC_STRUCTURE
+  - A4_FAIL
+riemann_target_tuple:
+  - A1_WEAK
+  - A2_FAIL
+  - A3_FAIL
+  - A4_FAIL
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - full matching-space order-zero nuclearity for the frozen transfer family
+    - locally bounded entire dependence in every p-nuclear ideal for 0<p<=1
+    - canonical jointly entire Fredholm determinant Delta(lambda,s)
+    - entire same-object candidate determinant D_pol(s)=Delta(1,s)
+    - exact all-power signed based-fixed-point trace formula
+    - ambient/matching trace and determinant identity with no extra factor
+  not_established:
+    - log-prime primitive periods or von-Mangoldt prime-power weights
+    - any Fredholm-zero or completed-xi divisor comparison
+    - growth order, high-height divisor count, or Riemann-von Mangoldt law
+    - functional equation, Gamma factor, trivial-zero or pole-removal ledger
+    - quantization, Route B, Hilbert-Polya, or RH
+blocking_conditions:
+  - no arithmetic primitive-orbit law
+  - no intrinsic growth-order or high-height divisor-count theorem
+  - no completed-xi analytic ledger
+  - no natural quantization
+next_smallest_test: >-
+  Prove an intrinsic high-imaginary-height divisor-count regime or a strict
+  growth-order bound for D_pol(s), without computing or comparing target zeros.
+route_b_invocation_allowed: false
