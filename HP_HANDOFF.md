@@ -7,6 +7,9 @@ Current clue: `CLUE-A1-004`.
 Candidate ID: `LOG-0001` (formal candidate).
 
 - Evaluation source commit: `dbb78f10bb3299415e022ecadb20d65e0aac5436`
+- HP-Dynamics research commit: `80107bc8ec2bcb4b5d0dd7a30447c5bc2d075320`
+- Shared standalone paper-stage mirror commit:
+  `fb0ea28aa8b975bfcb4a2d073ca8771cad51e397`
 - Source lock: `configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml`
 - Route-A evaluation: `evaluations/route_a/LOG-0001/20260808T151232Z.yaml`
 - Formal theorem: `formal/results/log_0001_conformal_ratio.md`

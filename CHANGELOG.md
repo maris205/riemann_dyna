@@ -30,7 +30,9 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
   exact ratios, sharp type, target roots, and lower divisor asymptotics remain
   outside this checkpoint.
 
-Evaluation source state: `dbb78f10bb3299415e022ecadb20d65e0aac5436`.
+Evaluation source state: `dbb78f10bb3299415e022ecadb20d65e0aac5436`;
+research commit: `80107bc8ec2bcb4b5d0dd7a30447c5bc2d075320`;
+shared paper-stage mirror: `fb0ea28aa8b975bfcb4a2d073ca8771cad51e397`.
 
 ### LOG-0001 quadratic growth and zero-free half-plane
 

@@ -3835,6 +3835,10 @@ Evaluation:
 `evaluations/route_a/LOG-0001/20260808T151232Z.yaml` at source state
 `dbb78f10bb3299415e022ecadb20d65e0aac5436`.
 
+Provenance: HP-Dynamics research commit
+`80107bc8ec2bcb4b5d0dd7a30447c5bc2d075320`; shared standalone paper-stage
+mirror commit `fb0ea28aa8b975bfcb4a2d073ca8771cad51e397`.
+
 The frozen map, intrinsic roof, radius-`1/1000` operator stadiums,
 radius-`3/5000` proof stadiums, matching space, two-stream expansion, and
 canonical determinant remain unchanged.  Normalize

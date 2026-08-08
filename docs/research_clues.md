@@ -1792,6 +1792,8 @@ new_status: ACTIVE
 candidate_id: LOG-0001
 evidence: "Exact hyperbolic path bound D_*=500*pi+log(4), translation equality r_L=r_R, 4096-bit outward intervals for 1-r_* and -log(r_*), and certified numerical constants in the same determinant's quadratic exponential envelope"
 source_commit: "dbb78f10bb3299415e022ecadb20d65e0aac5436"
+research_commit: "80107bc8ec2bcb4b5d0dd7a30447c5bc2d075320"
+shared_mirror_commit: "fb0ea28aa8b975bfcb4a2d073ca8771cad51e397"
 source_lock: "configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml"
 evaluation: "evaluations/route_a/LOG-0001/20260808T151232Z.yaml"
 analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
