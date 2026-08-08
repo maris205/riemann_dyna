@@ -3831,6 +3831,9 @@ Candidate ID: `LOG-0001` (formal candidate).
 Source lock:
 `configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`.
 
+Provenance: HP-Dynamics research commit `ec00bcb`; shared standalone
+paper-stage mirror commit `d5ab4b42e66b357859f3b4de560ea5d02bdcf86d`.
+
 The frozen determinant remains
 
 \[

@@ -1758,6 +1758,8 @@ new_status: ACTIVE
 candidate_id: LOG-0001
 evidence: "Two matching-space geometric rank-one streams, an all-order principal-minor majorant with exponent q^2/4-q/2, a global quadratic exponential determinant bound, Jensen divisor upper bounds, and an exact trace-log zero-free half-plane; target-free constants and q<=24 allocations pass at 100 digits"
 source_commit: "33986f9633b7f03f2fcc1f6ab914e5e0d69f7050"
+research_commit: "ec00bcb"
+shared_mirror_commit: "d5ab4b42e66b357859f3b4de560ea5d02bdcf86d"
 source_lock: "configs/source_locks/LOG-0001-GROWTH-ORDER.yaml"
 evaluation: "evaluations/route_a/LOG-0001/20260808T104049Z.yaml"
 analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]

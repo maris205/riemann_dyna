@@ -465,6 +465,8 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Branch:** `main`
 - **Evaluation source:** `b80900c60044795d2e163edc16de7ed1389e0cd9`
 - **Growth evaluation source:** `33986f9633b7f03f2fcc1f6ab914e5e0d69f7050`
+- **Growth research commit:** `ec00bcb`
+- **Growth shared mirror commit:** `d5ab4b42e66b357859f3b4de560ea5d02bdcf86d`
 - **Research commit:** `e3358c3a90ec67c2f1cf8b883107ad0fcf3cc64a`
 - **Shared mirror commit:** `e6cf4f21b5d82adaec40cb542d952cf491a0b909`
 - **Uses prime table:** `false`
@@ -677,7 +679,7 @@ computing determinant roots.
 |---|---|---|---|---|---|
 | 2026-08-08 | Not registered | `ANALYTIC_REVIEW` | Full nuclearity, entire Fredholm determinant, and exact signed trace | `b80900c` | Main Agent + adversarial nuclearity review |
 | 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Research and standalone paper-stage mirrors pushed over SSH | `e3358c3` / mirror `e6cf4f2` | Main Agent |
-| 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Order at most two, `O(T^2)` divisor upper bound, and zero-free right half-plane | `33986f9` source | Main Agent + adversarial growth review |
+| 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Order at most two, `O(T^2)` divisor upper bound, zero-free right half-plane, and standalone paper mirror | `ec00bcb` / mirror `d5ab4b4` | Main Agent + adversarial growth review |
 
 ---
 

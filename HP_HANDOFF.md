@@ -7,6 +7,8 @@ Current clue: `CLUE-A1-004`.
 Candidate ID: `LOG-0001` (formal candidate).
 
 - Evaluation source commit: `33986f9633b7f03f2fcc1f6ab914e5e0d69f7050`
+- HP-Dynamics research commit: `ec00bcb`
+- Shared standalone paper-stage mirror commit: `d5ab4b42e66b357859f3b4de560ea5d02bdcf86d`
 - Source lock: `configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`
 - Route-A evaluation: `evaluations/route_a/LOG-0001/20260808T104049Z.yaml`
 - Formal theorem: `formal/results/log_0001_growth_order.md`

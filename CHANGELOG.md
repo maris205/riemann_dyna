@@ -30,7 +30,8 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
   remain open.
 
 Evaluation source state:
-`33986f9633b7f03f2fcc1f6ab914e5e0d69f7050`.
+`33986f9633b7f03f2fcc1f6ab914e5e0d69f7050`; research commit: `ec00bcb`;
+shared paper-stage mirror: `d5ab4b42e66b357859f3b4de560ea5d02bdcf86d`.
 
 ### LOG-0001 full matching-space nuclear Fredholm determinant
 
