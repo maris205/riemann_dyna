@@ -469,7 +469,7 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Growth evaluation source:** `33986f9633b7f03f2fcc1f6ab914e5e0d69f7050`
 - **Conformal-ratio evaluation source:** `dbb78f10bb3299415e022ecadb20d65e0aac5436`
 - **Conformal-ratio research commit:** `80107bc8ec2bcb4b5d0dd7a30447c5bc2d075320`
-- **Conformal-ratio shared mirror commit:** `fb0ea28aa8b975bfcb4a2d073ca8771cad51e397`
+- **Conformal-ratio shared mirror commit:** `ce0e3c88a3daa32ccf79f7fdeb9c0b22695bc6f5`
 - **Growth research commit:** `ec00bcb`
 - **Growth shared mirror commit:** `d5ab4b42e66b357859f3b4de560ea5d02bdcf86d`
 - **Research commit:** `e3358c3a90ec67c2f1cf8b883107ad0fcf3cc64a`
@@ -721,7 +721,7 @@ cancellation.
 | 2026-08-08 | Not registered | `ANALYTIC_REVIEW` | Full nuclearity, entire Fredholm determinant, and exact signed trace | `b80900c` | Main Agent + adversarial nuclearity review |
 | 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Research and standalone paper-stage mirrors pushed over SSH | `e3358c3` / mirror `e6cf4f2` | Main Agent |
 | 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Order at most two, `O(T^2)` divisor upper bound, zero-free right half-plane, and standalone paper mirror | `ec00bcb` / mirror `d5ab4b4` | Main Agent + adversarial growth review |
-| 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Explicit normalized conformal-ratio bound, 4096-bit gap certificate, fully numerical quadratic envelope, and standalone paper mirror | `80107bc` / mirror `fb0ea28` | Main Agent + independent hyperbolic/constant audit |
+| 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Explicit normalized conformal-ratio bound, 4096-bit gap certificate, fully numerical quadratic envelope, and standalone paper mirror | `80107bc` / mirror `ce0e3c8` | Main Agent + independent hyperbolic/constant audit |
 
 ---
 

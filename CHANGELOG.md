@@ -32,7 +32,7 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 Evaluation source state: `dbb78f10bb3299415e022ecadb20d65e0aac5436`;
 research commit: `80107bc8ec2bcb4b5d0dd7a30447c5bc2d075320`;
-shared paper-stage mirror: `fb0ea28aa8b975bfcb4a2d073ca8771cad51e397`.
+shared paper-stage mirror: `ce0e3c88a3daa32ccf79f7fdeb9c0b22695bc6f5`.
 
 ### LOG-0001 quadratic growth and zero-free half-plane
 

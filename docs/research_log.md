@@ -3837,7 +3837,7 @@ Evaluation:
 
 Provenance: HP-Dynamics research commit
 `80107bc8ec2bcb4b5d0dd7a30447c5bc2d075320`; shared standalone paper-stage
-mirror commit `fb0ea28aa8b975bfcb4a2d073ca8771cad51e397`.
+mirror commit `ce0e3c88a3daa32ccf79f7fdeb9c0b22695bc6f5`.
 
 The frozen map, intrinsic roof, radius-`1/1000` operator stadiums,
 radius-`3/5000` proof stadiums, matching space, two-stream expansion, and
