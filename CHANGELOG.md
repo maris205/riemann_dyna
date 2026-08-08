@@ -5,6 +5,33 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-08
 
+### LOG-0001 quadratic growth and zero-free half-plane
+
+- Reused the same frozen matching-space determinant and grouped its Taylor
+  expansion into exactly two geometric rank-one streams, one per input branch.
+- Proved an all-order principal-minor majorant with negative quadratic rank
+  exponent `q^2/4-q/2`, yielding
+  `|D_pol(s)| <= exp(C0+C1*(1+|s|)^2)` and classical order at most two.
+- Applied Jensen with a proved zero-free anchor to obtain `O(R^2)` disk and
+  `O(T^2)` fixed-real-strip divisor upper bounds.
+- Proved absolute convergence of the actual `lambda=1` trace logarithm and a
+  zero-free half-plane
+  `Re(s)>log(2)/log(4/U_c^2)=1.3382657903899534...`; each closed
+  sub-half-plane has uniform upper and lower determinant bounds.
+- Added a target-free 100-digit constant certificate and exact two-stream
+  allocation checks through `q=24`; no determinant or Riemann roots were
+  computed.
+- Kept
+  `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`
+  analytically and `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` against the Riemann
+  target. Route B remains closed.
+- Selected only an explicit conformal-ratio certificate for `r_L,r_R` as the
+  next smallest task; exact order, lower growth, and sharp divisor asymptotics
+  remain open.
+
+Evaluation source state:
+`33986f9633b7f03f2fcc1f6ab914e5e0d69f7050`.
+
 ### LOG-0001 full matching-space nuclear Fredholm determinant
 
 - Promoted the exact-$U_c$ polar transfer family to formal candidate

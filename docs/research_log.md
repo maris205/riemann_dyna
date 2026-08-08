@@ -3819,3 +3819,181 @@ comparing target zeros.
 
 Recommended verdict: `GO_WITH_LIMITATIONS`; overall
 `ROUTE_A_EXPLORATORY`.
+
+## 2026-08-08 — LOG-0001 quadratic growth and zero-free half-plane
+
+### Stable checkpoint
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: `LOG-0001` (formal candidate).
+
+Source lock:
+`configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`.
+
+The frozen determinant remains
+
+\[
+D_{\rm pol}(s)=\det_{\rm Fr}(I-\mathcal L_s|_B).
+\]
+
+Normalized Riemann-map Taylor expansions group directly on the matching space
+into two geometric rank-one streams. If
+`r=max(r_L,r_R)<1`, `W(s)<=exp(0.824*|s|)`, and
+`C_r=product_(h>=1)(1-r^h)^(-1)`, then the order-`q` determinant coefficient
+is bounded by
+
+\[
+q^{q/2}C_r^2(q+1)W(s)^q r^{q^2/4-q/2}.
+\]
+
+The negative quadratic rank exponent dominates the `q log q` minor factor.
+Continuity of the canonical Grothendieck determinant under the inherited
+`p`-nuclear convergence for any `p<2/3` proves
+
+\[
+|D_{\rm pol}(s)|
+\leq\exp\!\bigl(C_0+C_1(1+|s|)^2\bigr).
+\]
+
+Thus the classical entire-function order is at most two. Jensen's formula on
+an outer circle of radius `2R` gives `O(R^2)` zeros in the inner radius-`R`
+disk and hence `O(T^2)` zeros in every fixed real strip through height `T`.
+
+With
+
+\[
+\alpha_0=\frac{U_c^2}{4},
+\qquad
+\tau_*=\log\frac4{U_c^2},
+\]
+
+the exact signed trace ledger gives an absolutely convergent `lambda=1`
+trace logarithm for
+
+\[
+\Re s>
+\frac{\log2}{\log(4/U_c^2)}
+=1.3382657903899534315\ldots.
+\]
+
+The determinant is zero-free in this open half-plane. Every closed
+sub-half-plane above the threshold has uniform upper and lower modulus bounds;
+there is no single uniform bound asserted all the way down to the open
+boundary.
+
+### Route evaluation
+
+Analytic Route-A tuple:
+
+```text
+(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+ A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)
+```
+
+Riemann-target tuple:
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+```
+
+Route-B tuple: `(NOT_INVOKED, NOT_INVOKED, NOT_INVOKED, NOT_INVOKED,
+NOT_INVOKED)`; invocation is not authorized.
+
+### Strongest evidence
+
+The proof stays on the same determinant and preserves the signed trace
+ledger. An adversarial audit verified the two-stream count, the
+`q^2/4-q/2` exponent, Hadamard minor factor, `p<2/3` determinant limit,
+`lambda`-disk continuation, nonnegative-real-part trace bound, closed
+sub-half-plane wording, and Jensen outer radius. The target-free 100-digit
+certificate checks `alpha_0`, `tau_*`, the zero-free threshold, the safe line
+`Re(s)=2`, `||ell||<0.824`, and all two-stream allocations through `q=24`.
+
+### Strongest failure
+
+No exact order, lower growth bound, sharp fixed-strip asymptotic, or
+`T log T` theorem is known. The `O(T^2)` upper bound neither establishes nor
+excludes Riemann--von Mangoldt growth. No log-prime/von-Mangoldt orbit law,
+functional equation, completed-`xi` identity, quantization, Route B, or root
+comparison exists.
+
+### New reusable knowledge
+
+1. Two geometric nuclear streams with `exp(O(|s|))` parameter weights yield
+   Gaussian determinant-coefficient decay and an `exp(O(|s|^2))` envelope.
+2. A positive roof lower bound can push the exact signed trace logarithm to
+   `lambda=1` in a right half-plane and prove zero-freeness there.
+3. Finite order and an upper zero-count bound do not supply a sharp divisor
+   law; a lower/asymptotic theorem is a separate obligation.
+
+### Updated files
+
+- `configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`
+- `evaluations/route_a/LOG-0001/20260808T104049Z.yaml`
+- `formal/results/log_0001_growth_order.md`
+- `experiments/log_0001_growth_order.py`
+- `artifacts/log_0001_growth_order/growth_order_certificate.json`
+- `tests/test_log_0001_growth_order.py`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/operator_obligations.md` is unchanged because A4 fails and Route B is
+not authorized.
+
+### Tests
+
+- LOG-0001 growth focused suite: `7/7 passed` (`0.099 s`).
+- Full repository suite: `251/251 passed` (`93.385 s`).
+- YAML load and `git diff --check`: passed.
+
+### Reproduction commands
+
+```bash
+python3 experiments/log_0001_growth_order.py \
+  --quiet \
+  --output artifacts/log_0001_growth_order/growth_order_certificate.json
+python3 -m unittest -v tests/test_log_0001_growth_order.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+git diff --check
+sha256sum \
+  artifacts/log_0001_growth_order/growth_order_certificate.json \
+  experiments/log_0001_growth_order.py \
+  formal/results/log_0001_growth_order.md \
+  configs/source_locks/LOG-0001-GROWTH-ORDER.yaml \
+  evaluations/route_a/LOG-0001/20260808T104049Z.yaml \
+  tests/test_log_0001_growth_order.py
+```
+
+The hashes at this checkpoint are:
+
+```text
+9e28833c0b68aabc5e9fc2d771d7e7d2c7a6ffca8e2cd6abdbb3a7dd430120ec  artifacts/log_0001_growth_order/growth_order_certificate.json
+5e2a9ef910371a7992734b70fd4f4465696932403361d53992c89f1f72bd0620  experiments/log_0001_growth_order.py
+b005e0d0c43f31af638c9ae91c12db03a0ab450d0cb25616682a234931cc3efc  formal/results/log_0001_growth_order.md
+4a2493ae51ebce6812e05f48330ab71b161c8cad68d540f9bd3416f63b29181e  configs/source_locks/LOG-0001-GROWTH-ORDER.yaml
+3101db5692fffe06eed65abc7cce0adf47f72b49bce5a5a61257aaa68bf4848c  evaluations/route_a/LOG-0001/20260808T104049Z.yaml
+350b70508baf8362422b95944908ec3a2dcf0f7d8faee43ad2d2f33b273e437c  tests/test_log_0001_growth_order.py
+```
+
+### Claim boundary and next task
+
+Established: same-object classical order at most two, `O(T^2)` disk and
+fixed-strip divisor upper bounds, and a zero-free right half-plane with
+uniform bounds on every closed sub-half-plane above its threshold.
+
+Not established: arithmetic orbit weights, determinant roots, exact order,
+lower or sharp divisor asymptotics, functional equation, completed-`xi`,
+target zeros, quantization, Route B, Hilbert--P\'olya, or RH.
+
+Next smallest task: certify explicit numerical upper bounds for the normalized
+conformal restriction ratios `r_L,r_R` of the frozen stadium pair, turning the
+parameterized quadratic-type constant into a numerical certificate without
+computing determinant roots.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`; overall
+`ROUTE_A_EXPLORATORY`.

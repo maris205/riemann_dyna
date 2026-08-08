@@ -1,0 +1,337 @@
+{
+  "artifact_schema_version": 1,
+  "audit_id": "LOG-0001-GROWTH-ORDER",
+  "candidate_id": "LOG-0001",
+  "claim_boundary": {
+    "analytic_tuple": [
+      "A1_WEAK",
+      "A2_ANALYTIC_DETERMINANT",
+      "A3_PARTIAL_ANALYTIC_STRUCTURE",
+      "A4_FAIL"
+    ],
+    "riemann_target_tuple": [
+      "A1_WEAK",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ],
+    "route_a_effect": "A3 strengthened but remains A3_PARTIAL_ANALYTIC_STRUCTURE",
+    "route_b_invocation_allowed": false
+  },
+  "complex_log_envelope": {
+    "ell_norm_envelope": "0.82348426350725937396684226674950230819591029926153131419819180655410562843953969",
+    "ell_norm_safe_upper": "0.824",
+    "inherited_complex_variation_safe_upper": "0.000851",
+    "real_a_max": "0.59574394197655937353067713411375864673734551093714404550489066930884297400248507",
+    "real_a_max_exact": "U_c^2/4",
+    "real_a_min": "0.43927340755673970708451956782198501087336448827814012107278975214803067563401744",
+    "real_a_min_exact": "sqrt(2*U_c)/4",
+    "real_log_max": "-0.5179443317892562581984405811653029604816406596051042403100471882428480258793799",
+    "real_log_min": "-0.82263326350725937396684226674950230819591029926153131419819180655410562843953969"
+  },
+  "computed_gates": {
+    "all_two_stream_allocation_exponents_pass": true,
+    "complex_log_norm_envelope_is_below_safe_upper": true,
+    "critical_root_inside_sealed_bracket": true,
+    "intrinsic_roof_lower_bound_is_positive": true,
+    "real_inverse_derivative_maximum_is_strictly_below_one": true,
+    "safe_vertical_determinant_bounds_are_positive_and_ordered": true,
+    "safe_vertical_trace_ratio_is_strictly_below_one": true,
+    "zero_free_threshold_is_below_safe_vertical_line": true
+  },
+  "computed_gates_passed": true,
+  "data_firewall": {
+    "Fredholm_determinant_evaluated": false,
+    "Fredholm_roots_searched": false,
+    "Riemann_zero_tables_used": false,
+    "USTC_data_used": false,
+    "fitting_or_parameter_search_used": false,
+    "primality_predicates_used": false,
+    "prime_tables_used": false,
+    "xi_or_zeta_evaluated": false
+  },
+  "exact_growth_ledger": {
+    "conformal_ratio_numeric_value": "not certified in this audit",
+    "determinant_majorant": "1+C_r^2*sum_(q>=1) q^(q/2)*(q+1)*W(s)^q*r^(q^2/4-q/2)",
+    "elementary_symmetric_bound": "e_q <= C_r^2*(q+1)*W(s)^q*r^(q^2/4-q/2)",
+    "global_consequence": "log^+|D_pol(s)| <= C0+C1*(1+|s|)^2",
+    "minor_bound": "q^(q/2)*product_i(||u_i||*||x_i||)",
+    "rank_one_stream_count": 2,
+    "stream_index": "(input branch sigma, Taylor index m)",
+    "stream_norm_bound": "||u_sigma_m||*||x_sigma_m(s)|| <= exp(L_ell*|s|)*r_sigma^m"
+  },
+  "exact_real_constants": {
+    "U_c": "1.5436890126920763615708559718017479865252032976509839352408040378311686739279739",
+    "alpha_0": "0.59574394197655937353067713411375864673734551093714404550489066930884297400248507",
+    "alpha_0_exact": "U_c^2/4",
+    "rho": "0.54368901269207636157085597180174798652520329765098393524080403783116867392797387",
+    "sigma_star": "1.3382657903899534315379520469925704774295653084034506483303261495060525793006399",
+    "sigma_star_exact": "log(2)/log(4/U_c^2)",
+    "tau_min": "0.5179443317892562581984405811653029604816406596051042403100471882428480258793799",
+    "tau_min_exact": "log(4/U_c^2)"
+  },
+  "formal_candidate": true,
+  "frozen_object": {
+    "auxiliary_fredholm_variable_kept_separate": true,
+    "clock": "T_gamma=sum log|G'|",
+    "determinant": "D_pol(s)=det_Fr(I-L_s|_B)",
+    "operator": "same LOG-0001 matching-space family L_s|_B",
+    "outer_stadium_radius": "1/1000",
+    "proof_only_inner_stadium_radius": "3/5000",
+    "signed_trace_denominator": "1-epsilon_omega*exp(-T_omega)"
+  },
+  "next_smallest_test": "Certify explicit upper bounds r_L,r_R<1 for the normalized Riemann-map restriction ratios; do not compute determinant roots.",
+  "provenance": {
+    "external_target_data_used": false,
+    "formal_result": "formal/results/log_0001_growth_order.md",
+    "generator": "experiments/log_0001_growth_order.py",
+    "generator_sha256": "5e2a9ef910371a7992734b70fd4f4465696932403361d53992c89f1f72bd0620",
+    "parent_lock": "configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml",
+    "reproduction_command": "python3 experiments/log_0001_growth_order.py --quiet --output artifacts/log_0001_growth_order/growth_order_certificate.json",
+    "route_a_evaluation": "evaluations/route_a/LOG-0001/20260808T104049Z.yaml",
+    "source_inputs_sha256": {
+      "artifacts/p4_logistic_uc_polar_complex_branch/complex_branch_certificate.json": "8ab64528f5bfe2e84dc24b42ee6bd3bb93e07d668e849a6614eda9f01c495404",
+      "configs/source_locks/LOG-0001-GROWTH-ORDER.yaml": "4a2493ae51ebce6812e05f48330ab71b161c8cad68d540f9bd3416f63b29181e",
+      "configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml": "3c67edbcb0eca1ccbb786b7c3321b4af307a35e07c7e2f7467a29f029d27b6e3",
+      "experiments/p4_logistic_uc_first_return_support.py": "6165e62f5ac84f955e9474e8291d32e5213cea409760d6768b3ecec571da9b9e",
+      "formal/results/log_0001_growth_order.md": "b005e0d0c43f31af638c9ae91c12db03a0ab450d0cb25616682a234931cc3efc",
+      "formal/results/log_0001_nuclear_fredholm.md": "0645972215211d95c191c9f2e166e6592e21b6db625e69a07a06ea3209ab0c7d"
+    },
+    "source_lock": "configs/source_locks/LOG-0001-GROWTH-ORDER.yaml"
+  },
+  "safe_vertical_line": {
+    "Fredholm_roots_evaluated": false,
+    "absolute_trace_log_upper": "3.0605841377099549248959130619545786202514826776845834697286633162066954715882979",
+    "determinant_modulus_lower": "0.046860314346956423082532496278984574212049788372298472332500231218048454535982047",
+    "determinant_modulus_upper": "21.340019031796144776469942173897489920480902178013138449950478560514188526166471",
+    "q_sigma": "0.70982168880354028313796314116332165010604468652439806169468965985105080552049161",
+    "q_sigma_exact": "2*(U_c^2/4)^sigma",
+    "sigma": "2",
+    "uniform_in_imaginary_height": true
+  },
+  "scope": {
+    "established": [
+      "companion exact theorem: |D_pol(s)| <= exp(C0+C1*(1+|s|)^2)",
+      "classical entire-function order at most two",
+      "Jensen disk and fixed-real-strip zero-count upper bounds O(R^2) and O(T^2)",
+      "zero-free half-plane Re(s)>log(2)/log(4/U_c^2) with uniform bounds on each closed sub-half-plane"
+    ],
+    "not_established": [
+      "exact order or any lower growth bound",
+      "sharp critical-strip divisor asymptotic or T*log(T) law",
+      "Fredholm or Riemann zero locations",
+      "completed-xi identity, quantization, Route B, Hilbert-Polya, or RH"
+    ]
+  },
+  "status": "TARGET_FREE_GROWTH_ORDER_CERTIFICATE_PASSED",
+  "two_stream_combinatorial_ledger": {
+    "q_max": 24,
+    "rows": [
+      {
+        "allocation_count": 1,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "0",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "0",
+        "q": 0
+      },
+      {
+        "allocation_count": 2,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "0",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "-1/4",
+        "q": 1
+      },
+      {
+        "allocation_count": 3,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "0",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "0",
+        "q": 2
+      },
+      {
+        "allocation_count": 4,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "1",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "3/4",
+        "q": 3
+      },
+      {
+        "allocation_count": 5,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "2",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "2",
+        "q": 4
+      },
+      {
+        "allocation_count": 6,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "4",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "15/4",
+        "q": 5
+      },
+      {
+        "allocation_count": 7,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "6",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "6",
+        "q": 6
+      },
+      {
+        "allocation_count": 8,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "9",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "35/4",
+        "q": 7
+      },
+      {
+        "allocation_count": 9,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "12",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "12",
+        "q": 8
+      },
+      {
+        "allocation_count": 10,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "16",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "63/4",
+        "q": 9
+      },
+      {
+        "allocation_count": 11,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "20",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "20",
+        "q": 10
+      },
+      {
+        "allocation_count": 12,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "25",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "99/4",
+        "q": 11
+      },
+      {
+        "allocation_count": 13,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "30",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "30",
+        "q": 12
+      },
+      {
+        "allocation_count": 14,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "36",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "143/4",
+        "q": 13
+      },
+      {
+        "allocation_count": 15,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "42",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "42",
+        "q": 14
+      },
+      {
+        "allocation_count": 16,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "49",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "195/4",
+        "q": 15
+      },
+      {
+        "allocation_count": 17,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "56",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "56",
+        "q": 16
+      },
+      {
+        "allocation_count": 18,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "64",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "255/4",
+        "q": 17
+      },
+      {
+        "allocation_count": 19,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "72",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "72",
+        "q": 18
+      },
+      {
+        "allocation_count": 20,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "81",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "323/4",
+        "q": 19
+      },
+      {
+        "allocation_count": 21,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "90",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "90",
+        "q": 20
+      },
+      {
+        "allocation_count": 22,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "100",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "399/4",
+        "q": 21
+      },
+      {
+        "allocation_count": 23,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "110",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "110",
+        "q": 22
+      },
+      {
+        "allocation_count": 24,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "121",
+        "minimum_minus_lower": "1/4",
+        "proved_quadratic_lower_exponent": "483/4",
+        "q": 23
+      },
+      {
+        "allocation_count": 25,
+        "gate_minimum_is_at_least_quadratic_lower": true,
+        "minimum_exact_exponent": "132",
+        "minimum_minus_lower": "0",
+        "proved_quadratic_lower_exponent": "132",
+        "q": 24
+      }
+    ]
+  },
+  "validated_environment": {
+    "diagnostic_decimal_digits": 100,
+    "mpmath": "1.3.0",
+    "python": "3.12.3"
+  }
+}

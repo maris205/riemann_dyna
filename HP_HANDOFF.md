@@ -1,6 +1,155 @@
 # HP-Dynamics Handoff
 
-## Current status — LOG-0001 nuclear Fredholm determinant
+## Current status — LOG-0001 quadratic growth and zero-free half-plane
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: `LOG-0001` (formal candidate).
+
+- Evaluation source commit: `33986f9633b7f03f2fcc1f6ab914e5e0d69f7050`
+- Source lock: `configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`
+- Route-A evaluation: `evaluations/route_a/LOG-0001/20260808T104049Z.yaml`
+- Formal theorem: `formal/results/log_0001_growth_order.md`
+- Analytic Route-A tuple:
+  `(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+  A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)`
+- Riemann-target tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall/scoped verdict: `ROUTE_A_EXPLORATORY / GO_WITH_LIMITATIONS`
+- Route-B tuple: all `NOT_INVOKED`; invocation is not authorized
+- Shared mirror target:
+  `hilbert-polya-structure/logistic_dynamics/projects/exact_uc_polar_growth_order/`
+
+The determinant is unchanged:
+
+\[
+D_{\rm pol}(s)=\det_{\rm Fr}(I-\mathcal L_s|_B),
+\qquad
+B=\ker[v_L(0)-v_R(0)].
+\]
+
+Normalize Riemann maps from the unit disk to the two frozen outer stadiums and
+write `r=max(r_L,r_R)<1` for the proof-only inner-domain ratios. The Taylor
+factorization groups directly on `B` into two geometric rank-one streams,
+one for each input branch. A principal minor of order `q` is bounded by
+`q^(q/2)` times the product of its rank-one norms, while the two-stream
+elementary symmetric sum has the quadratic decay
+
+\[
+C_r^2(q+1)W(s)^q r^{q^2/4-q/2},
+\qquad
+W(s)\leq e^{0.824|s|}.
+\]
+
+Continuity of the canonical Grothendieck determinant in any frozen
+`p`-nuclear ideal with `p<2/3` therefore gives
+
+\[
+|D_{\rm pol}(s)|
+\leq \exp\!\bigl(C_0+C_1(1+|s|)^2\bigr).
+\]
+
+Hence the classical entire-function order is at most two. Jensen's formula,
+applied with an outer circle of twice the counted radius and the zero-free
+anchor below, gives `O(R^2)` zeros in disks and `O(T^2)` zeros in every fixed
+real strip through height `T`.
+
+The exact real inverse-derivative maximum is
+
+\[
+\alpha_0=\frac{U_c^2}{4},
+\qquad
+\tau_*=\log\frac4{U_c^2}.
+\]
+
+The signed all-word trace ledger implies absolute convergence of the actual
+`lambda=1` trace logarithm whenever
+
+\[
+\Re s>
+\frac{\log2}{\log(4/U_c^2)}
+=1.3382657903899534315\ldots.
+\]
+
+Thus `D_pol` has no zeros in that open half-plane. Every closed
+sub-half-plane above the threshold has uniform upper and lower modulus bounds,
+and `D_pol(s)->1` uniformly in imaginary height as `Re(s)->+infinity`.
+
+### Strongest evidence
+
+- The growth proof uses the same matching-space determinant, not a finite
+  matrix, reciprocal zeta, or separately glued ledger.
+- The direct matching-space expansion has exactly two streams and the sharper
+  exponent `q^2/4-q/2`; an adversarial review checked the stream count,
+  determinant limit, sign convention, trace-log disk, and Jensen radius.
+- The target-free 100-digit certificate validates `alpha_0`, `tau_*`, the
+  zero-free threshold, the safe line `Re(s)=2`, `||ell||<0.824`, and every
+  two-stream allocation through `q=24`.
+- Focused suite: `7/7 passed`.
+- Full repository suite: `251/251 passed`.
+
+### Strongest failure
+
+The theorem supplies only upper bounds. It does not prove exact order two, a
+lower growth bound, a sharp fixed-strip divisor asymptotic, or a `T log T`
+law. It neither establishes nor excludes the Riemann--von Mangoldt regime.
+There is still no log-prime/von-Mangoldt orbit law, functional equation,
+completed-`xi` divisor, natural quantization, or Route-B object. No Fredholm
+or Riemann roots were computed.
+
+### New reusable knowledge
+
+For a finite number of geometric nuclear streams with parameter weights
+`exp(O(|s|))`, the determinant coefficients acquire Gaussian decay in rank,
+which yields an `exp(O(|s|^2))` global envelope. A positive roof lower bound
+separately yields a bounded zero-free closed sub-half-plane through the exact
+signed trace ledger. Neither theorem alone gives a sharp divisor asymptotic.
+
+### Updated files
+
+- `configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`
+- `evaluations/route_a/LOG-0001/20260808T104049Z.yaml`
+- `formal/results/log_0001_growth_order.md`
+- `experiments/log_0001_growth_order.py`
+- `artifacts/log_0001_growth_order/growth_order_certificate.json`
+- `tests/test_log_0001_growth_order.py`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/operator_obligations.md` remains unchanged because A4 fails and Route B
+is not authorized.
+
+### Reproduction commands
+
+```bash
+python3 experiments/log_0001_growth_order.py \
+  --quiet \
+  --output artifacts/log_0001_growth_order/growth_order_certificate.json
+python3 -m unittest -v tests/test_log_0001_growth_order.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+git diff --check
+```
+
+### Claim boundary and next task
+
+Established: same-object order at most two, `O(T^2)` disk/fixed-strip divisor
+upper bounds, an explicit zero-free right half-plane, and uniform modulus
+bounds on every closed sub-half-plane above the threshold.
+
+Not established: arithmetic orbit weights, determinant roots, exact order,
+lower or sharp divisor asymptotics, completed-`xi`, target zeros, quantization,
+Route B, Hilbert--P\'olya, or RH.
+
+Next smallest task: certify explicit numerical upper bounds for the normalized
+conformal restriction ratios `r_L,r_R` of the frozen stadium pair. Do not
+compute determinant roots.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`.
+
+## Previous checkpoint — LOG-0001 nuclear Fredholm determinant
 
 Current clue: `CLUE-A1-004`.
 

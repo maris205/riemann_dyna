@@ -422,20 +422,20 @@ The completed complex-branch theorem is recorded at source commit
 `epsilon=1/1000`, proves a common complex contraction below `0.59626`, and
 gives a compact margin above `0.00040374` for all four branch pairs.
 
-Next smallest test: prove an intrinsic growth-order bound or high-imaginary-
-height divisor-count regime for `D_pol(s)`. Do not evaluate target zeros or
-invoke Route B first.
+The growth checkpoint now proves order at most two, an `O(T^2)` fixed-strip
+divisor upper bound, and a zero-free right half-plane. The next smallest test
+is an explicit numerical certificate for the normalized conformal restriction
+ratios `r_L,r_R`; determinant roots and Route B remain closed.
 
-Portfolio decision: LOG-0001 has crossed a genuine theorem edge, so the one
-active candidate-local and project-level task is the lowest-cost intrinsic
-growth/divisor audit. The Logistic branch is not authorized for target-zero
-matching, completed-xi claims, or Route B.
+Portfolio decision: LOG-0001 remains the active analytic candidate. Its next
+task is the lowest-cost proof-constant audit, not target-zero matching,
+completed-xi work, or Route B.
 
 汇总表：
 
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
-| LOG-0001 | Exact-`U_c` polar nuclear transfer family | `ANALYTIC_REVIEW` | Analytic `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`; target `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `ROUTE_A_EXPLORATORY` | Not invoked | Full order-zero nuclearity, jointly entire same-object Fredholm determinant, and exact signed all-power trace | No log-prime/von-Mangoldt law, growth/divisor count, completed-xi structure, or quantization | Prove an intrinsic growth-order bound or high-height divisor-count regime without target zeros |
+| LOG-0001 | Exact-`U_c` polar nuclear transfer family | `ANALYTIC_REVIEW` | Analytic `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`; target `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `ROUTE_A_EXPLORATORY` | Not invoked | Same-object determinant has order at most two, an `O(T^2)` fixed-strip divisor upper bound, and an explicit zero-free right half-plane | No log-prime/von-Mangoldt law, sharp/lower divisor asymptotic, completed-xi structure, or quantization | Numerically certify the frozen conformal restriction ratios `r_L,r_R`; do not compute determinant roots |
 | QG-0001 | Harmonic magnetic lollipop-theta graph tower | `STOP_SCOPED` (exact relative determinant and divisor) | Analytic `(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_UNITARY_OR_SCATTERING_CANDIDATE)`; target `A2/A3_FAIL` / `ROUTE_A_REJECTED` | Not invoked | `H^{-1}` trace class and exact `det_F(I-k^2 H^{-1})=product_n chi_0(k/n)` | Exact divisor coefficient is `2*L_0 ~= 12.7647` times target; no orbit trace law | Park; reopen only as a new lock with intrinsic normalization/tower law |
 | TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, unitary FIO lift, and exact internal-caustic obstruction | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear antiunitary audit | Stop phase sub-audit; reopen only with an explicit multi-chart phase/Maslov ledger |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
@@ -464,6 +464,7 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Owner:** Main Agent
 - **Branch:** `main`
 - **Evaluation source:** `b80900c60044795d2e163edc16de7ed1389e0cd9`
+- **Growth evaluation source:** `33986f9633b7f03f2fcc1f6ab914e5e0d69f7050`
 - **Research commit:** `e3358c3a90ec67c2f1cf8b883107ad0fcf3cc64a`
 - **Shared mirror commit:** `e6cf4f21b5d82adaec40cb542d952cf491a0b909`
 - **Uses prime table:** `false`
@@ -504,7 +505,7 @@ they do not change the operator space.
 ### Source lock
 
 ```yaml
-data_type: exact order-zero nuclear theorem plus target-free word regression
+data_type: exact nuclear determinant plus same-object growth/divisor upper theorem
 clock: T_gamma=sum log|G'|; physical two-iterate clock reported separately
 normalization: q(theta)=rho*sin(theta), exp(s*ell), signed inverse derivative
 determinant_convention: Delta(lambda,s)=det_Fr(I-lambda*L_s|_B)
@@ -513,12 +514,13 @@ precision: exact theorem; 100 decimal digits in regression
 allowed_data: exact U_c and inherited same-object complex/roof theorems
 forbidden_data: prime/zero tables, xi/zeta values, fitting, zero evaluation
 training_split: empty
-validation_split: nuclear factorization, matching identity, entire determinant
-test_split: all 510 target-free based words through length eight
-stopping_conditions: revise on any convention, nuclearity, sign, or matching failure
+validation_split: two-stream minor bound, order<=2, Jensen count, zero-free half-plane
+test_split: target-free constants, q<=24 allocation ledger, and byte reproduction
+stopping_conditions: revise on any convention, determinant-limit, growth, or trace-log failure
 ```
 
-The complete lock is
+The current growth lock is
+`configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`; the parent nuclear lock is
 `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`.
 
 ### Route-A status
@@ -536,7 +538,7 @@ riemann_target_tuple:
   - A4_FAIL
 overall: ROUTE_A_EXPLORATORY
 verdict: GO_WITH_LIMITATIONS
-latest_evaluation: evaluations/route_a/LOG-0001/20260808T051519Z.yaml
+latest_evaluation: evaluations/route_a/LOG-0001/20260808T104049Z.yaml
 ```
 
 The analytic A2/A3 labels certify only the existence and partial analytic
@@ -580,13 +582,32 @@ authorized: false
 - The sealed 100-digit regression passes all 510 based words of lengths
   one through eight, including strict itinerary, contraction, rotation,
   signed denominator, and the pure-left endpoint trace.
+- Grouping the two output components into one matching-space vector leaves
+  exactly two geometric rank-one streams. Their principal minors have the
+  negative quadratic-rank majorant
+  `q^(q/2) C_r^2 (q+1) W(s)^q r^(q^2/4-q/2)`.
+- Consequently
+
+  \[
+  |D_{\rm pol}(s)|\leq
+  \exp\!\bigl(C_0+C_1(1+|s|)^2\bigr),
+  \]
+
+  so the classical order is at most two and Jensen gives `O(T^2)` zeros in
+  every fixed real strip through height `T`.
+- With `alpha_0=U_c^2/4`, the exact trace ledger converges at `lambda=1` for
+  `Re(s)>log(2)/log(4/U_c^2)=1.3382657903899534...`; the determinant is
+  zero-free there, with uniform upper and lower bounds on every closed
+  sub-half-plane above the threshold.
 
 ### Failed or unopened controls
 
 - No primitive period or amplitude has been matched to a prime or prime power.
 - The source lock forbids Fredholm-zero evaluation at this checkpoint, so
   missing, extra, and target root counts are not opened.
-- No growth order or high-imaginary-height divisor-count theorem is known.
+- No exact order, lower growth bound, or sharp high-imaginary-height divisor
+  asymptotic is known. The proved `O(T^2)` upper bound neither establishes nor
+  excludes a `T log T` law.
 - No functional equation, Gamma factor, trivial-zero ledger, or completed-$\xi$
   equality is known.
 - No natural quantization or Hilbert--Pólya operator is defined.
@@ -597,8 +618,8 @@ authorized: false
   does not apply to LOG-0001's proved non-lattice intrinsic roof.
 - `OBR-009` concerns the unaccelerated first-return `BV` model, not the polar
   analytic transfer family.
-- No strict obstruction has yet classified the divisor regime of
-  $D_{\rm pol}$; that is the active theorem gate.
+- The order-at-most-two and `O(T^2)` upper theorem does not create a target
+  obstruction: it is compatible with several smaller counting regimes.
 
 ### Reproduction
 
@@ -606,7 +627,11 @@ authorized: false
 python3 experiments/log_0001_nuclear_fredholm.py \
   --quiet \
   --output artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json
+python3 experiments/log_0001_growth_order.py \
+  --quiet \
+  --output artifacts/log_0001_growth_order/growth_order_certificate.json
 python3 -m unittest -v tests/test_log_0001_nuclear_fredholm.py
+python3 -m unittest -v tests/test_log_0001_growth_order.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
@@ -614,27 +639,37 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 
 ```text
 configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml
+configs/source_locks/LOG-0001-GROWTH-ORDER.yaml
 evaluations/route_a/LOG-0001/20260808T051519Z.yaml
+evaluations/route_a/LOG-0001/20260808T104049Z.yaml
 formal/results/log_0001_nuclear_fredholm.md
+formal/results/log_0001_growth_order.md
 experiments/log_0001_nuclear_fredholm.py
+experiments/log_0001_growth_order.py
 artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json
+artifacts/log_0001_growth_order/growth_order_certificate.json
 tests/test_log_0001_nuclear_fredholm.py
+tests/test_log_0001_growth_order.py
 ```
 
 ### Claim boundary
 
 **Established:** the full matching-space order-zero nuclear family, its
-canonical jointly entire Fredholm determinant, conjugation symmetry, and the
-exact signed all-power based-fixed-point trace ledger.
+canonical jointly entire Fredholm determinant, conjugation symmetry, the
+exact signed all-power based-fixed-point trace ledger, global order at most
+two, an `O(T^2)` fixed-strip divisor upper bound, and an explicit zero-free
+right half-plane.
 
-**Not established:** a log-prime/von-Mangoldt orbit law, target zeros, growth
-order or divisor count, functional equation, completed-$\xi$ structure,
-quantization, Route B, Hilbert--Pólya, or RH.
+**Not established:** a log-prime/von-Mangoldt orbit law, target zeros, exact
+order, lower or sharp divisor asymptotics, functional equation,
+completed-$\xi$ structure, quantization, Route B, Hilbert--Pólya, or RH.
 
 ### Next smallest test
 
-Prove an intrinsic high-imaginary-height divisor-count regime or a strict
-growth-order bound for $D_{\rm pol}(s)$ before any target-zero comparison.
+Certify explicit numerical upper bounds for the normalized conformal
+restriction ratios $r_L,r_R$ of the frozen stadium pair, turning the
+parameterized quadratic-type constant into a numerical certificate without
+computing determinant roots.
 
 ### Decision history
 
@@ -642,6 +677,7 @@ growth-order bound for $D_{\rm pol}(s)$ before any target-zero comparison.
 |---|---|---|---|---|---|
 | 2026-08-08 | Not registered | `ANALYTIC_REVIEW` | Full nuclearity, entire Fredholm determinant, and exact signed trace | `b80900c` | Main Agent + adversarial nuclearity review |
 | 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Research and standalone paper-stage mirrors pushed over SSH | `e3358c3` / mirror `e6cf4f2` | Main Agent |
+| 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Order at most two, `O(T^2)` divisor upper bound, and zero-free right half-plane | `33986f9` source | Main Agent + adversarial growth review |
 
 ---
 

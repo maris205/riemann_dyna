@@ -1,0 +1,143 @@
+candidate_id: LOG-0001
+audit_id: LOG-0001-GROWTH-ORDER
+parent_audit_id: LOG-0001-NUCLEAR-FREDHOLM
+lock_version: 1
+formal_candidate: true
+clue_id: CLUE-A1-004
+title: Exact-U_c polar Fredholm growth order and zero-free half-plane
+
+candidate_definition:
+  parameter: >-
+    U_c is the unique real root of u^3-2*u^2+2*u-2=0 and rho=U_c-1.
+    The rounded legacy literal 1.543689 is forbidden.
+  real_dynamics: >-
+    Keep the exact two-full-branch polar map G=q^(-1) o (-f^2) o q on
+    I=[-pi/2,pi/2], q(theta)=rho*sin(theta), f(x)=1-U_c*x^2, with the
+    inherited doubled branch and half-open geometric ledgers unchanged.
+  complex_domains: >-
+    Keep U_sigma={z:dist(z,I_sigma)<1/1000} as the operator domains and
+    V_sigma={z:dist(z,I_sigma)<3/5000} as proof-only intermediate domains.
+    Normalize the Riemann maps h_L:D->U_L and h_R:D->U_R by sending zero to
+    -pi/4 and pi/4 respectively and requiring h_sigma'(0)>0. Define
+    r_sigma=max_(closure(V_sigma)) |h_sigma^(-1)|, r=max(r_L,r_R)<1, and
+    beta=-log(r). These are proof constants, not fitted candidate parameters.
+  spaces: >-
+    X=A(U_L) direct-sum A(U_R) with the maximum norm and
+    B=ker[v_L(0)-v_R(0)].
+  transfer_family: >-
+    (L_s v)_j(z)=exp(s*ell(z))*[v_L(phi_L(z))+v_R(phi_R(z))], where
+    ell=Log(a), phi_L'=+a, and phi_R'=-a. Keep L_s restricted to B and keep
+    lambda as a separate auxiliary Fredholm variable.
+
+data_type:
+  primary: >-
+    Exact determinant-coefficient majorization from the same two-stream
+    Riemann-map/Taylor nuclear expansion, a classical entire-function growth
+    theorem for D_pol(s), Jensen divisor upper bounds, and an exact
+    trace-ledger proof of a zero-free right half-plane with uniform bounds on
+    every closed sub-half-plane.
+  regression: >-
+    Target-free 100-digit evaluation of the exact real contraction endpoint,
+    roof lower bound, zero-free threshold, a safe vertical-line bound, the
+    inherited complex Log(a) norm envelope, and finite combinatorial checks
+    of the two-stream quadratic exponent.
+  excluded: >-
+    Fredholm-root searches, Riemann zeros, prime tables, xi/zeta evaluations,
+    USTC data, Ulam matrices, fitted spectral maps, and any different
+    determinant or clock.
+
+clock:
+  determinant_clock: >-
+    T_gamma=sum tau=log|(G^n)'| with tau=log|G'|. Its exact one-step lower
+    bound is tau_*=log(4/U_c^2)=-log(alpha_0), alpha_0=U_c^2/4.
+  physical_clock: >-
+    One G step equals two f iterates only in the separately reported physical
+    clock. It cannot replace the roof time.
+
+normalization:
+  coordinate: q(theta)=rho*sin(theta), unscaled
+  weight: exp(s*ell)=exp(-s*tau) on inverse cycles
+  orientation: epsilon_omega=(-1)^(number of R letters) remains in every exact trace denominator
+  matching: B=ker[v_L(0)-v_R(0)] with no half, seam, or doubled-copy factor
+  spectral_parameter: s is the roof parameter; lambda is auxiliary and never identified with s
+
+determinant_convention:
+  two_variable_fredholm: >-
+    Delta(lambda,s)=det_Fr(I-lambda*L_s|_B), the same canonical Grothendieck
+    determinant proved in the parent audit. No regularized, spectral-zeta,
+    reciprocal, logarithmic-derivative, or separately glued determinant is
+    admitted.
+  candidate_determinant: D_pol(s)=Delta(1,s)
+  trace_log: >-
+    The lambda-series log Delta=-sum lambda^n Tr(L_s^n)/n may be evaluated at
+    lambda=1 only where this audit proves absolute convergence on a lambda
+    disk of radius strictly larger than one.
+
+cutoff:
+  theorem_word_cutoff: none
+  theorem_operator_cutoff: none
+  regression_combinatorial_q_max: 24
+  safe_vertical_line_sigma: 2
+  complex_outer_radius: "1/1000"
+  complex_inner_radius: "3/5000"
+
+precision:
+  analytic_theorem: exact
+  regression_decimal_digits: 100
+  inherited_log_variation_safe_upper: "0.000851"
+  log_norm_safe_upper: "0.824"
+  python_flint_version: "0.9.0"
+  flint_version: "3.6.0"
+  mpmath_version: "1.3.0"
+
+allowed_data:
+  - exact U_c polynomial and inherited certified root bracket
+  - inherited exact real roof lower bound and full signed trace theorem
+  - inherited frozen complex domains, common Log(a), and compact inclusions
+  - standard Riemann mapping, q-binomial, finite-rank Sylvester, Grothendieck determinant continuity, and Jensen theorems
+  - target-free arithmetic and combinatorial regression checks
+
+forbidden_data:
+  - prime tables, primality predicates, zero tables, xi/zeta evaluations, or USTC data
+  - Fredholm-zero computation or any target divisor comparison
+  - changing U_c, the domains, roof, clock, branch signs, matching condition, or determinant convention
+  - identifying lambda with s or using a zero-producing prefactor
+  - claiming exact order two, a lower growth bound, a T*log(T) law, completed-xi, Route B, Hilbert-Polya, or RH
+
+training_split: empty; no fitting, parameter search, arithmetic target, or determinant roots
+validation_split: >-
+  Prove the two-stream rank-one expansion on B, its all-order principal-minor
+  bound, the global exp(C*(1+|s|)^2) determinant envelope, classical order at
+  most two, the Jensen O(R^2) divisor upper bound, and the absolutely
+  convergent lambda=1 trace-log in an explicit right half-plane.
+test_split: >-
+  Sealed target-free 100-digit constants and finite q<=24 combinatorial
+  exponent checks, plus byte-identical artifact reproduction and source hashes.
+
+stopping_conditions:
+  - REVISE if the two output components cannot be grouped into one B-valued rank-one vector for each source branch and Taylor index
+  - REVISE if finite truncations do not converge in a p-nuclear ideal with p<2/3 or determinant continuity is not justified
+  - REVISE if the determinant coefficient majorant loses its negative quadratic q exponent
+  - REVISE if the lambda=1 trace-log is used outside a proved convergence disk
+  - REJECTED if target data, determinant roots, a changed clock, or a changed convention enters
+  - STOP_SCOPED for exact order, lower growth, critical-strip asymptotics, completed-xi, Route B, Hilbert-Polya, or RH
+
+success_conditions:
+  - D_pol obeys |D_pol(s)|<=exp(C_0+C_1*(1+|s|)^2) for frozen constants
+  - the classical entire-function order of D_pol is at most two
+  - disk and fixed-real-strip divisor counts are O(R^2) and O(T^2)
+  - D_pol has no zeros for Re(s)>log(2)/log(4/U_c^2), with uniform upper and lower bounds on every Re(s)>=sigma_0 above that threshold
+  - every conclusion remains target-free and same-object
+
+route_status_at_lock:
+  inherited_analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+  inherited_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+  route_b_invocation_allowed: false
+  checkpoint_status: DEFINED_NOT_EVALUATED
+  recommended_verdict_if_successful: GO_WITH_LIMITATIONS
+
+next_smallest_test_if_successful: >-
+  Certify explicit numerical upper bounds for the normalized conformal
+  restriction ratios r_L and r_R, turning the parameterized quadratic type
+  constant into a fully numerical same-object certificate without computing
+  determinant roots.

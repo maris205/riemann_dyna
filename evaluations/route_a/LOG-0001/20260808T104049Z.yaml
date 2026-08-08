@@ -1,0 +1,211 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: LOG-0001
+audit_id: LOG-0001-GROWTH-ORDER
+parent_audit_id: LOG-0001-NUCLEAR-FREDHOLM
+formal_candidate: true
+source_commit: 33986f9633b7f03f2fcc1f6ab914e5e0d69f7050
+evaluation_date: "2026-08-08T10:40:49Z"
+
+source_lock:
+  object: >-
+    The unchanged exact-U_c two-full-branch polar map, intrinsic roof
+    tau=log|G'|, frozen radius-1/1000 stadium transfer family L_s on
+    B=ker[v_L(0)-v_R(0)], and its canonical same-object determinant
+    D_pol(s)=det_Fr(I-L_s|_B). Normalized Riemann maps and their inner-domain
+    ratios are proof coordinates only.
+  data_type: >-
+    An exact determinant-coefficient growth theorem, Jensen zero-count upper
+    bound, exact trace-log zero-free half-plane, and a sealed target-free
+    100-digit constant/combinatorial regression.
+  clock: >-
+    T_gamma=sum tau=log|(G^n)'| is the sole determinant time, with
+    tau_*=log(4/U_c^2). The two-Logistic-iterate physical clock remains
+    separate.
+  normalization: >-
+    q(theta)=(U_c-1)sin(theta), exp(s*Log(a))=exp(-s*tau) on inverse cycles,
+    phi_L'=+a, phi_R'=-a, signed epsilon_omega retained, and no scale,
+    offset, unfolding, or matching factor.
+  determinant_convention: >-
+    Delta(lambda,s)=det_Fr(I-lambda*L_s|_B) is the canonical Grothendieck
+    determinant and D_pol(s)=Delta(1,s). Lambda remains distinct from s.
+  cutoff: >-
+    No word or operator cutoff in the theorem. The target-free regression
+    checks the two-stream allocation exponent through q=24 and the safe line
+    Re(s)=2.
+  precision: >-
+    Exact analytic theorem plus mpmath 1.3.0 at 100 decimal digits. The
+    inherited complex Log(a) variation is bounded by 0.000851 and gives the
+    safe norm envelope ||ell||<0.824.
+  training_data: "empty; no fitting, parameter search, target data, determinant values, or roots"
+  validation_data: >-
+    Two B-valued geometric rank-one streams, principal-minor majorization,
+    p-nuclear determinant continuity for p<2/3, quadratic exponential growth,
+    Jensen counting, and a lambda-disk trace-log argument reaching lambda=1.
+  test_data: >-
+    Exact U_c bracket, alpha_0, tau_*, sigma_*, safe-line trace-log bound,
+    complex-log envelope, all q<=24 allocation exponents, source hashes, and
+    byte-identical artifact reproduction.
+  allowed_data:
+    - exact U_c polynomial and inherited certified root bracket
+    - inherited exact roof lower bound, complex branches, nuclear determinant, and signed trace theorem
+    - standard Riemann mapping, Sylvester, Hadamard, q-binomial, Grothendieck determinant continuity, and Jensen theorems
+    - target-free numerical and combinatorial regression
+  forbidden_data:
+    - prime tables, zero tables, xi/zeta evaluations, USTC data, or fitting
+    - Fredholm determinant values or root searches
+    - changed domains, roof, clock, signs, matching, or determinant convention
+    - exact-order, lower-bound, T-log-T, completed-xi, Route B, Hilbert-Polya, or RH claims
+  stopping_conditions:
+    - REVISE if the two-stream expansion or negative quadratic rank exponent fails
+    - REVISE if determinant continuity or the lambda=1 trace-log is unjustified
+    - REJECTED if target data, roots, or changed conventions enter
+    - STOP_SCOPED for exact-order, lower-growth, target-divisor, Route B, Hilbert-Polya, or RH work
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The intrinsic complete binary periodic ledger, unique word fixed points,
+    exact repetition/orientation convention, and non-lattice roof remain
+    unchanged and use no arithmetic target table.
+  strongest_failure: >-
+    No primitive roof period is related to log primes and no orbit amplitude
+    produces von-Mangoldt prime-power weights.
+  metrics:
+    intrinsic_binary_primitive_ledger: PROVED
+    unique_word_fixed_points_all_orders: PROVED
+    non_lattice_roof: PROVED
+    signed_orientation: "epsilon_omega=(-1)^(#R)"
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    arithmetic_orbit_law: false
+    von_mangoldt_weights: false
+  artifacts:
+    - formal/results/exact_uc_polar_nonlattice.md
+    - formal/results/log_0001_nuclear_fredholm.md
+
+a2:
+  verdict: A2_ANALYTIC_DETERMINANT
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The same canonical determinant is retained. Its two source-branch Taylor
+    streams now give an all-order principal-minor majorant with a negative
+    quadratic rank exponent; no finite matrix or different determinant is
+    substituted.
+  strongest_failure: >-
+    The source lock still forbids determinant evaluation and roots. Missing,
+    extra, target, precision-drift, and cutoff-drift zero ledgers therefore
+    remain unopened rather than passed.
+  metrics:
+    zero_error_train: not_opened_by_source_lock
+    zero_error_validation: not_opened_by_source_lock
+    zero_error_test: not_opened_by_source_lock
+    extra_zero_count: not_testable_no_root_computation
+    missing_zero_count: not_testable_no_target_comparison
+    root_count_discrepancy: not_testable_no_target_comparison
+    cutoff_drift: theorem_has_no_cutoff
+    precision_drift: target_free_constant_regression_passed_at_100_digits
+    control_margin: "two-stream exponent q^2/4-q/2"
+    same_object_fredholm_determinant: true
+    determinant_jointly_entire: true
+    determinant_convention_changed: false
+    signed_all_power_trace_formula: PROVED
+    riemann_target_a2: A2_FAIL
+  artifacts:
+    - configs/source_locks/LOG-0001-GROWTH-ORDER.yaml
+    - formal/results/log_0001_growth_order.md
+    - artifacts/log_0001_growth_order/growth_order_certificate.json
+    - tests/test_log_0001_growth_order.py
+
+a3:
+  verdict: A3_PARTIAL_ANALYTIC_STRUCTURE
+  evidence_status: PROVED
+  strongest_evidence: >-
+    D_pol obeys a global exp(C0+C1*(1+|s|)^2) bound, so its classical order is
+    at most two. Jensen gives O(R^2) disk and O(T^2) fixed-real-strip divisor
+    upper bounds. The exact signed trace ledger also proves D_pol zero-free
+    for Re(s)>log(2)/log(4/U_c^2), with uniform upper and lower modulus bounds
+    on every closed sub-half-plane above that threshold.
+  strongest_failure: >-
+    The upper bounds are not sharp: no exact order, lower growth estimate,
+    critical-strip asymptotic, T*log(T) law, functional equation, Gamma/trivial
+    zero ledger, or completed-xi divisor is proved. O(T^2) neither establishes
+    nor excludes Riemann-von Mangoldt growth.
+  metrics:
+    conjugation_symmetry: PROVED
+    analytic_continuation: entire_in_lambda_and_s
+    exact_trace_identity: PROVED
+    global_growth_bound: "log^+|D_pol(s)|<=C0+C1*(1+|s|)^2"
+    classical_order_upper: 2
+    exact_order: OPEN
+    growth_lower_bound: OPEN
+    disk_divisor_count_upper: O(R^2)
+    fixed_real_strip_divisor_count_upper: O(T^2)
+    zero_free_half_plane: "Re(s)>log(2)/log(4/U_c^2)"
+    zero_free_threshold_decimal: "1.3382657903899534315379520469925704774..."
+    uniform_vertical_bound_on_closed_right_half_planes: PROVED
+    functional_equation: false
+    gamma_factor: false
+    trivial_zero_ledger: false
+    target_counting_law: false
+    completed_xi_divisor: false
+    riemann_target_a3: A3_FAIL
+  artifacts:
+    - formal/results/log_0001_growth_order.md
+    - artifacts/log_0001_growth_order/growth_order_certificate.json
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The transfer family remains natural for the same exact classical polar
+    map and intrinsic unstable-Jacobian roof.
+  strongest_failure: >-
+    No natural quantum Hilbert space, dense operator domain,
+    self-adjointness theorem, scattering lift, or same-clock quantization is
+    defined. A growth theorem does not authorize Route B.
+  metrics:
+    natural_hilbert_space: null
+    operator_domain: null
+    natural_quantization: false
+    route_b_ready: false
+  artifacts: []
+
+analytic_route_tuple:
+  - A1_WEAK
+  - A2_ANALYTIC_DETERMINANT
+  - A3_PARTIAL_ANALYTIC_STRUCTURE
+  - A4_FAIL
+riemann_target_tuple:
+  - A1_WEAK
+  - A2_FAIL
+  - A3_FAIL
+  - A4_FAIL
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - same-object two-stream determinant coefficient majorant
+    - global quadratic exponential bound and classical order at most two
+    - Jensen O(R^2) disk and O(T^2) fixed-real-strip zero-count upper bounds
+    - explicit zero-free right half-plane and uniform bounds on each closed sub-half-plane
+    - target-free 100-digit constants and q<=24 combinatorial regression
+  not_established:
+    - log-prime primitive periods or von-Mangoldt prime-power weights
+    - determinant roots, target roots, or a completed-xi divisor comparison
+    - exact order, lower growth, or a sharp high-height divisor asymptotic
+    - functional equation, Gamma factor, trivial-zero or pole-removal ledger
+    - quantization, Route B, Hilbert-Polya, or RH
+blocking_conditions:
+  - no arithmetic primitive-orbit law
+  - no lower or sharp fixed-strip divisor-count theorem
+  - no completed-xi analytic ledger
+  - no natural quantization
+next_smallest_test: >-
+  Certify explicit numerical upper bounds for the normalized conformal
+  restriction ratios r_L and r_R of the frozen stadium pair, turning the
+  parameterized quadratic-type constant into a fully numerical certificate
+  without computing determinant roots.
+route_b_invocation_allowed: false

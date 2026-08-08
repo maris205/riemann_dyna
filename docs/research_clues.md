@@ -478,9 +478,12 @@ fixes the pure-left trace with no half or doubled factor. The formal candidate
 joint entireness of
 `Delta(lambda,s)=det_Fr(I-lambda*L_s|_B)`, and the exact signed all-power
 based-fixed-point trace formula. This is a genuine analytic determinant but
-not an arithmetic or completed-xi determinant. The next smallest task is an
-intrinsic growth-order or high-imaginary-height divisor-count theorem for
-`D_pol(s)=Delta(1,s)`, with target zeros still sealed.
+not an arithmetic or completed-xi determinant. The growth audit now proves
+classical order at most two, an `O(T^2)` fixed-real-strip divisor upper bound,
+and a zero-free half-plane
+`Re(s)>log(2)/log(4/U_c^2)`. These are upper/continuation results, not a sharp
+counting law. The next smallest task is to certify explicit conformal
+restriction ratios `r_L,r_R`, with target zeros still sealed.
 
 Artifacts:
 
@@ -496,6 +499,7 @@ Artifacts:
 - `configs/source_locks/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE.yaml`
 - `configs/source_locks/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE.yaml`
 - `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`
+- `configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
@@ -508,6 +512,7 @@ Artifacts:
 - `evaluations/route_a/P4-LOGISTIC-UC-POLAR-PARTITION-TRACE/20260807T032000Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE/20260807T071000Z.yaml`
 - `evaluations/route_a/LOG-0001/20260808T051519Z.yaml`
+- `evaluations/route_a/LOG-0001/20260808T104049Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
@@ -519,6 +524,7 @@ Artifacts:
 - `artifacts/p4_logistic_uc_polar_partition_trace/partition_trace_certificate.json`
 - `artifacts/p4_logistic_uc_polar_boundary_trace/boundary_trace_certificate.json`
 - `artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json`
+- `artifacts/log_0001_growth_order/growth_order_certificate.json`
 - `experiments/p4_logistic_uc_acip_endpoint_density.py`
 - `experiments/p4_logistic_uc_polar_partition_trace.py`
 - `experiments/p4_logistic_uc_polar_boundary_trace.py`
@@ -1291,10 +1297,11 @@ e^{q(E)}
 1. `[STOP_SCOPED]` Logistic physical-epsilon medium-fidelity eigenbranch audit
 2. `[GO_WITH_LIMITATIONS_CONTROL]` Synthetic Fredholm/Euler-product positive control (`CTRL-0001`, `CLUE-A2-001`)
 3. `[STOP_SCOPED]` Strict-monotone autonomous Logistic clock lift (`P4-LOGISTIC-MONOTONE-CLOCK-LIFT`, `OBR-007`)
-4. `[NEXT]` `LOG-0001` intrinsic growth-order or high-imaginary-height divisor-count theorem, with target zeros sealed
-5. Candidate-specific shuffled-period / random-weight / random-phase controls
-6. Candidate-specific signed cycle expansion and moving-cutoff drift
-7. `[QUEUED]` Freeze one explicit same-ledger annular residual object from `CLUE-A3-001` after auditing the legacy RH handoff
+4. `[DONE]` `LOG-0001` order-at-most-two, `O(T^2)` divisor upper bound, and zero-free right-half-plane theorem
+5. `[NEXT]` Explicit normalized conformal restriction ratios `r_L,r_R` for the frozen LOG-0001 stadium pair, with determinant roots sealed
+6. Candidate-specific shuffled-period / random-weight / random-phase controls
+7. Candidate-specific signed cycle expansion and moving-cutoff drift
+8. `[QUEUED]` Freeze one explicit same-ledger annular residual object from `CLUE-A3-001` after auditing the legacy RH handoff
 
 ## Priority 1 — 最值得并行的三条 Route-A 路线
 
@@ -1739,4 +1746,23 @@ riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
 overall: ROUTE_A_EXPLORATORY
 verdict: GO_WITH_LIMITATIONS
 consequence: "LOG-0001 is now a formal analytic candidate: Delta(lambda,s)=det_Fr(I-lambda*L_s|_B) is a genuine jointly entire same-object determinant and D_pol(s)=Delta(1,s) is entire. This does not supply a log-prime/von-Mangoldt orbit law, divisor count, functional equation, completed-xi structure, quantization, or Route B. Next prove only an intrinsic growth-order bound or high-imaginary-height divisor-count regime; do not compare target zeros first."
+```
+
+## Status update — CLUE-A1-004 LOG-0001 growth-order closure
+
+```yaml
+date: 2026-08-08
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+candidate_id: LOG-0001
+evidence: "Two matching-space geometric rank-one streams, an all-order principal-minor majorant with exponent q^2/4-q/2, a global quadratic exponential determinant bound, Jensen divisor upper bounds, and an exact trace-log zero-free half-plane; target-free constants and q<=24 allocations pass at 100 digits"
+source_commit: "33986f9633b7f03f2fcc1f6ab914e5e0d69f7050"
+source_lock: "configs/source_locks/LOG-0001-GROWTH-ORDER.yaml"
+evaluation: "evaluations/route_a/LOG-0001/20260808T104049Z.yaml"
+analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+overall: ROUTE_A_EXPLORATORY
+verdict: GO_WITH_LIMITATIONS
+consequence: "The same determinant has classical order at most two, O(T^2) zeros in every fixed real strip, and no zeros for Re(s)>log(2)/log(4/U_c^2), with uniform modulus bounds on each closed sub-half-plane. No exact order, lower growth bound, sharp T log T law, target divisor, quantization, or Route B follows. Next certify explicit conformal restriction ratios r_L,r_R without computing determinant roots."
 ```

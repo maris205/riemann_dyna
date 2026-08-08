@@ -348,8 +348,23 @@ D_{\rm pol}(s)=\Delta(1,s),
 with nonperiodic $s$-dependence and an exact signed trace formula. Thus
 LOG-0001 lies completely outside the hypothesis of `OBR-008`; this does not
 refute or weaken the obstruction for the old unit-clock object. The remaining
-reopening obligation is now only to prove the intrinsic high-height divisor
-count or growth regime of $D_{\rm pol}$.
+reopening obligation was to prove the intrinsic high-height divisor count or
+growth regime of $D_{\rm pol}$.
+
+Growth update (2026-08-08): `LOG-0001-GROWTH-ORDER` proves
+
+\[
+|D_{\rm pol}(s)|\leq
+\exp\!\bigl(C_0+C_1(1+|s|)^2\bigr),
+\]
+
+so the same-object determinant has classical order at most two and at most
+`O(T^2)` zeros in every fixed real strip. It is also zero-free for
+`Re(s)>log(2)/log(4/U_c^2)`, with uniform upper and lower modulus bounds on
+each closed sub-half-plane above that threshold. This upper theorem neither
+extends `OBR-008` to the non-lattice determinant nor proves a divisor mismatch:
+`O(T^2)` is compatible with a smaller `T log T` regime. The remaining open
+obligation is a sharp/lower same-object divisor theorem.
 
 Artifacts:
 
@@ -373,10 +388,15 @@ Artifacts:
 - `configs/source_locks/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE.yaml`
 - `formal/results/exact_uc_polar_boundary_trace.md`
 - `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`
+- `configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`
 - `formal/results/log_0001_nuclear_fredholm.md`
+- `formal/results/log_0001_growth_order.md`
 - `artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json`
+- `artifacts/log_0001_growth_order/growth_order_certificate.json`
 - `evaluations/route_a/LOG-0001/20260808T051519Z.yaml`
+- `evaluations/route_a/LOG-0001/20260808T104049Z.yaml`
 - `tests/test_log_0001_nuclear_fredholm.py`
+- `tests/test_log_0001_growth_order.py`
 
 ---
 
