@@ -1,0 +1,177 @@
+{
+  "analytic_proof_ledger": [
+    "every disk B(x,1/1000), x in I_sigma, lies in U_sigma",
+    "the midpoint-to-projection path costs at most 500*pi",
+    "the projection-to-z disk path costs at most log(4)",
+    "normalized Riemann maps are hyperbolic isometries",
+    "translation by pi/2 identifies the left and right normalized stadium pairs",
+    "stable t=exp(-D_*) formulas preserve the 10^(-683) gap",
+    "the inherited two-stream coefficient theorem is unchanged",
+    "a shifted-Gaussian sum converts the explicit coefficient bound into a numerical quadratic envelope"
+  ],
+  "arb_interval_certificate": {
+    "C0_formula_ball": "[3.439961028862647220703691477703442125678988026266163712362067230537994289877018898349149220197227348e+689 +/- 2.55e+589]",
+    "C0_safe_ceiling": "3.45e689",
+    "C1_formula_ball": "[4.190862820283973539772868833997313570750326549358676447523084816017009538326153913074280979622016149e+682 +/- 4.59e+581]",
+    "C1_safe_ceiling": "4.20e682",
+    "D_star_ball": "[1572.182621156016509850156155882667795234735699956273420995713656172894990387043888745229139325051371 +/- 3.67e-97]",
+    "approximate_decimal_digits": 1233,
+    "arb_bits": 4096,
+    "b_theta_ball": "[2361.586241227104463977029010492021663976518800673391535391234224311556150501399154053675957286057360 +/- 1.70e-97]",
+    "beta_star_ball": "[3.241851248013624979837585300528735128470971359731225276190176766789098630281588059484295510104867171e-683 +/- 4.00e-783]",
+    "beta_star_relative_accuracy_bits": 1825,
+    "center_path_ball": "[1570.79632679489661923132169163975144209858469968755291048747229615390820314310449931401741 +/- 2.68e-87]",
+    "computed_gates": {
+      "b_theta_is_positive": true,
+      "beta_star_has_at_least_one_thousand_relative_bits": true,
+      "beta_star_has_positive_lower_bound": true,
+      "c0_is_below_frozen_safe_ceiling": true,
+      "c0_is_positive": true,
+      "c1_is_below_frozen_safe_ceiling": true,
+      "c1_is_positive": true,
+      "d_star_is_strictly_positive": true,
+      "delta_star_has_at_least_one_thousand_relative_bits": true,
+      "delta_star_has_positive_lower_bound": true,
+      "disk_path_ball_overlaps_log_four": true,
+      "r_star_is_strictly_between_zero_and_one": true,
+      "stable_beta_overlaps_negative_log_r_star": true,
+      "stable_delta_overlaps_one_minus_r_star": true,
+      "t_star_is_strictly_between_zero_and_one": true
+    },
+    "computed_gates_passed": true,
+    "delta_star_ball": "[3.241851248013624979837585300528735128470971359731225276190176766789098630281588059484295510104867171e-683 +/- 4.00e-783]",
+    "delta_star_relative_accuracy_bits": 4082,
+    "disk_path_ball": "[1.38629436111989061883446424291635313615100026872051050824136001898678724393938943121172665 +/- 4.00e-90]",
+    "gaussian_prefactor_log_ball": "[787.0104933114619821040909001595194637127209778397692002552850532017584522409003984338188289375907074 +/- 1.66e-98]",
+    "one_minus_two_theta_ball": "0.9995117187500000000000000000000000000000",
+    "r_star_ball": "[0.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999967581487519863750201624146994712648715 +/- 2.91e-721]",
+    "t_star_ball": "[1.620925624006812489918792650264367564235485679865612638095088383394549315140794029742147755052433586e-683 +/- 3.01e-783]",
+    "theta_ball": "0.000244140625000000000000000000000"
+  },
+  "artifact_schema_version": 1,
+  "audit_id": "LOG-0001-CONFORMAL-RATIO",
+  "candidate_id": "LOG-0001",
+  "claim_boundary": {
+    "analytic_tuple": [
+      "A1_WEAK",
+      "A2_ANALYTIC_DETERMINANT",
+      "A3_PARTIAL_ANALYTIC_STRUCTURE",
+      "A4_FAIL"
+    ],
+    "not_established": [
+      "exact conformal ratios or sharp growth type",
+      "exact order or any lower growth bound",
+      "Fredholm or Riemann zeros and a T*log(T) divisor law",
+      "completed-xi, quantization, Route B, Hilbert-Polya, or RH"
+    ],
+    "riemann_target_tuple": [
+      "A1_WEAK",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ],
+    "route_a_effect": "A3 proof constants become fully explicit; tuple unchanged",
+    "route_b_invocation_allowed": false
+  },
+  "computed_gates": {
+    "all_arb_interval_gates_pass": true,
+    "all_exact_geometry_gates_pass": true,
+    "flint_version_is_frozen": true,
+    "python_flint_version_is_frozen": true
+  },
+  "computed_gates_passed": true,
+  "data_firewall": {
+    "Fredholm_determinant_evaluated": false,
+    "Fredholm_roots_searched": false,
+    "Riemann_zero_tables_used": false,
+    "USTC_data_used": false,
+    "fitting_or_parameter_search_used": false,
+    "numerical_conformal_map_computed": false,
+    "primality_predicates_used": false,
+    "prime_tables_used": false,
+    "xi_or_zeta_evaluated": false
+  },
+  "error_budget": {
+    "cancellation": "absolute values used only for convergence and upper growth",
+    "geometric_discretization": "none; no conformal grid or boundary solver",
+    "normalization": "one frozen Poincare convention and normalized Riemann maps",
+    "operator_truncation": "none in the theorem",
+    "root_finding": "none; no Fredholm or target root is evaluated",
+    "rounding": "4096-bit outward Arb scalar intervals"
+  },
+  "exact_geometry_certificate": {
+    "Poincare_disk_center_density": "2/R",
+    "branch_interval_length": "pi/2",
+    "branch_midpoint_to_projection_maximum": "pi/4",
+    "center_path_pi_coefficient": "500",
+    "computed_gates": {
+      "center_path_coefficient_is_five_hundred_pi": true,
+      "disk_distance_cross_ratio_is_four": true,
+      "ell_norm_upper_is_exactly_103_over_125": true,
+      "gaussian_theta_is_between_zero_and_one_half": true,
+      "inner_radius_is_strictly_smaller_than_outer_radius": true,
+      "inner_to_outer_radius_ratio_is_three_fifths": true,
+      "one_minus_two_theta_is_2047_over_2048": true
+    },
+    "computed_gates_passed": true,
+    "disk_distance_cross_ratio": "4",
+    "ell_norm_safe_upper": "103/125",
+    "inner_radius": "3/5000",
+    "inner_to_outer_radius_ratio": "3/5",
+    "one_minus_two_theta": "2047/2048",
+    "outer_radius": "1/1000",
+    "theta": "1/4096"
+  },
+  "explicit_growth_ledger": {
+    "coefficient_bound": "|a_q(s)|<=q^(q/2)*(q+1)*(exp((103/125)*|s|)/delta_*)^q*r_*^(q^2/4-q/2)",
+    "ell_norm_safe_upper": "103/125",
+    "gaussian_theta": "1/4096",
+    "master_bound": "|D_pol(s)|<=(1+sqrt(4*pi/(beta_*(1-2*theta))))*exp(((103/125)*|s|+b_theta)^2/(beta_*(1-2*theta)))",
+    "published_quadratic_envelope": "|D_pol(s)|<=exp(3.45e689+4.20e682*(1+|s|)^2)",
+    "rank_one_stream_count": 2,
+    "same_object_determinant": true,
+    "signed_trace_identity_replaced": false
+  },
+  "formal_candidate": true,
+  "frozen_object": {
+    "auxiliary_fredholm_variable_kept_separate": true,
+    "clock": "T_gamma=sum log|G'|",
+    "determinant": "D_pol(s)=det_Fr(I-L_s|_B)",
+    "normalized_Riemann_maps": "h_L(0)=-pi/4, h_R(0)=pi/4, h_sigma'(0)>0",
+    "operator": "same LOG-0001 matching-space family L_s|_B",
+    "outer_stadium_radius": "1/1000",
+    "proof_only_inner_stadium_radius": "3/5000"
+  },
+  "next_smallest_test": "Audit whether one explicit nonzero coefficient or signed trace term can yield a theorem-level lower maximum-modulus bound without determinant roots or target data.",
+  "parent_audit_id": "LOG-0001-GROWTH-ORDER",
+  "proved_statement": {
+    "Poincare_metric_convention": "lambda_D(w)=2/(1-|w|^2)",
+    "beta_star_exact": "log((1+exp(-D_*))/(1-exp(-D_*)))",
+    "common_ratio_bound": "r_L=r_R<=r_*=tanh(D_*/2)<1",
+    "delta_star_exact": "2*exp(-D_*)/(1+exp(-D_*))",
+    "hyperbolic_path_bound": "D_*=500*pi+log(4)",
+    "r_star_exact": "(4*exp(500*pi)-1)/(4*exp(500*pi)+1)"
+  },
+  "provenance": {
+    "external_target_data_used": false,
+    "generator": "experiments/log_0001_conformal_ratio.py",
+    "generator_sha256": "d88b6de1691f529eeac82cb51ce67de7a1fe11d9f0adc3daad32b6399470e096",
+    "reproduction_command": "python3 experiments/log_0001_conformal_ratio.py --quiet --output artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json",
+    "route_a_evaluation": "evaluations/route_a/LOG-0001/20260808T151232Z.yaml",
+    "source_inputs_sha256": {
+      "artifacts/log_0001_growth_order/growth_order_certificate.json": "9e28833c0b68aabc5e9fc2d771d7e7d2c7a6ffca8e2cd6abdbb3a7dd430120ec",
+      "configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml": "50a615cb60911df144b33804ca4c935aacbeafb6c6541474f3eb39a9fa4cbdcd",
+      "configs/source_locks/LOG-0001-GROWTH-ORDER.yaml": "4a2493ae51ebce6812e05f48330ab71b161c8cad68d540f9bd3416f63b29181e",
+      "formal/results/log_0001_conformal_ratio.md": "a731f53d154526befa2b22f1cec6945e4d2c779e80258241a1a216c656d19c75",
+      "formal/results/log_0001_growth_order.md": "b005e0d0c43f31af638c9ae91c12db03a0ab450d0cb25616682a234931cc3efc"
+    }
+  },
+  "source_lock": "configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml",
+  "status": "TARGET_FREE_EXPLICIT_CONFORMAL_RATIO_PASSED",
+  "validated_environment": {
+    "arb_bits": 4096,
+    "flint": "3.6.0",
+    "python": "3.12.3",
+    "python_flint": "0.9.0"
+  }
+}

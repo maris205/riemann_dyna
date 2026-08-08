@@ -5,6 +5,33 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-08
 
+### LOG-0001 explicit conformal restriction ratios
+
+- Kept the exact map, roof, stadiums, matching space, two-stream expansion,
+  and canonical Fredholm determinant unchanged.
+- Used the curvature-`-1` Poincare metric and a center--projection--point path
+  inside each frozen stadium to prove
+  `r_L=r_R<=tanh((500*pi+log(4))/2)=r_*<1`.
+- Evaluated the stable quantities `delta_*=1-r_*` and
+  `beta_*=-log(r_*)` at 4096-bit outward Arb precision; both begin
+  `3.2418512480136249798...e-683`, while ordinary precision would round
+  `r_*` to one.
+- Replaced the parameterized geometric-product constant by an explicit
+  two-stream coefficient bound and certified
+  `|D_pol(s)|<=exp(3.45e689+4.20e682*(1+|s|)^2)` for the same determinant.
+- Passed an independent hyperbolic-distance and Gaussian-constant audit and a
+  target-free `7/7` focused regression. No numerical conformal map,
+  determinant value, prime table, or zero table was used.
+- Kept the analytic Route-A tuple at
+  `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`
+  and the Riemann-target tuple at
+  `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)`. Route B remains closed.
+- Selected only a cancellation-safe lower-growth precheck as the next task;
+  exact ratios, sharp type, target roots, and lower divisor asymptotics remain
+  outside this checkpoint.
+
+Evaluation source state: `dbb78f10bb3299415e022ecadb20d65e0aac5436`.
+
 ### LOG-0001 quadratic growth and zero-free half-plane
 
 - Reused the same frozen matching-space determinant and grouped its Taylor

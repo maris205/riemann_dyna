@@ -1,0 +1,150 @@
+candidate_id: LOG-0001
+audit_id: LOG-0001-CONFORMAL-RATIO
+parent_audit_id: LOG-0001-GROWTH-ORDER
+lock_version: 1
+formal_candidate: true
+clue_id: CLUE-A1-004
+title: Explicit conformal restriction ratios and quadratic-type constants
+
+candidate_definition:
+  parameter: >-
+    U_c is the unique real root of u^3-2*u^2+2*u-2=0 and rho=U_c-1.
+    The rounded legacy literal 1.543689 remains forbidden.
+  real_dynamics: >-
+    Keep the exact two-full-branch polar map G=q^(-1) o (-f^2) o q on
+    I=[-pi/2,pi/2], q(theta)=rho*sin(theta), f(x)=1-U_c*x^2, together with
+    the inherited doubled branch and half-open geometric ledgers.
+  complex_domains: >-
+    Keep I_L=[-pi/2,0], I_R=[0,pi/2], outer stadiums
+    U_sigma={z:dist(z,I_sigma)<1/1000}, and proof-only inner stadiums
+    V_sigma={z:dist(z,I_sigma)<3/5000}. Normalize h_sigma:D->U_sigma by
+    h_L(0)=-pi/4, h_R(0)=pi/4, and h_sigma'(0)>0. Define
+    r_sigma=max_(closure(V_sigma)) |h_sigma^(-1)|. The Riemann maps and
+    ratios are proof coordinates only and do not change the operator.
+  spaces: >-
+    X=A(U_L) direct-sum A(U_R) with the maximum norm and
+    B=ker[v_L(0)-v_R(0)].
+  transfer_family: >-
+    (L_s v)_j(z)=exp(s*ell(z))*[v_L(phi_L(z))+v_R(phi_R(z))], where
+    ell=Log(a), phi_L'=+a, and phi_R'=-a. Keep L_s restricted to B and keep
+    lambda as a separate auxiliary Fredholm variable.
+
+data_type:
+  primary: >-
+    An exact hyperbolic-distance upper bound for the normalized conformal
+    restriction ratios of the same frozen stadium pair, followed by an
+    explicit same-object determinant-coefficient majorant and fully numerical
+    constants in an exp(C0+C1*(1+|s|)^2) envelope.
+  regression: >-
+    Target-free 4096-bit outward Arb enclosures for D_*=500*pi+log(4),
+    delta_*=1-r_*, beta_*=-log(r_*), the coefficient constant b_*, and safe
+    rational ceilings for C0 and C1, plus exact symbolic formula gates and
+    byte-identical artifact reproduction.
+  excluded: >-
+    Numerical conformal mapping, Fredholm-root searches, Riemann zeros, prime
+    tables, xi/zeta evaluations, USTC data, fitted spectral maps, and any
+    different determinant, clock, operator domain, or normalization.
+
+clock:
+  determinant_clock: >-
+    T_gamma=sum tau=log|(G^n)'| with tau=log|G'|. No geometric Poincare
+    distance used in this audit may replace the dynamical roof clock.
+  physical_clock: >-
+    One G step equals two f iterates only in the separately reported physical
+    clock. It cannot replace the roof time.
+  proof_metric: >-
+    The Poincare metric is normalized by lambda_D(w)=2/(1-|w|^2), so
+    d_D(0,w)=2*atanh(|w|). This is a proof metric, not a dynamical clock.
+
+normalization:
+  coordinate: q(theta)=rho*sin(theta), unscaled
+  weight: exp(s*ell)=exp(-s*tau) on inverse cycles
+  orientation: epsilon_omega=(-1)^(number of R letters) remains in every exact trace denominator
+  matching: B=ker[v_L(0)-v_R(0)] with no half, seam, or doubled-copy factor
+  riemann_maps: h_L(0)=-pi/4, h_R(0)=pi/4, and h_sigma'(0)>0
+  spectral_parameter: s is the roof parameter; lambda is auxiliary and never identified with s
+
+determinant_convention:
+  two_variable_fredholm: >-
+    Delta(lambda,s)=det_Fr(I-lambda*L_s|_B), the same canonical Grothendieck
+    determinant proved in the nuclear audit. No regularized, spectral-zeta,
+    reciprocal, logarithmic-derivative, or separately glued determinant is
+    admitted.
+  candidate_determinant: D_pol(s)=Delta(1,s)
+  coefficient_majorant: >-
+    Preserve the same two matching-space Taylor streams. Absolute coefficient
+    bounds are allowed only for convergence and upper growth; they do not
+    replace the signed trace identity or imply a target divisor statement.
+
+cutoff:
+  theorem_word_cutoff: none
+  theorem_operator_cutoff: none
+  conformal_grid_cutoff: none
+  outer_stadium_radius: "1/1000"
+  inner_stadium_radius: "3/5000"
+  branch_interval_length: "pi/2"
+
+precision:
+  analytic_theorem: exact
+  arb_bits: 4096
+  arb_decimal_digits_floor: 1200
+  ell_norm_safe_upper: "103/125"
+  gaussian_theta: "1/4096"
+  c0_safe_ceiling: "3.45e689"
+  c1_safe_ceiling: "4.20e682"
+  python_flint_version: "0.9.0"
+  flint_version: "3.6.0"
+
+allowed_data:
+  - exact frozen stadium definitions and normalized Riemann maps
+  - inherited same-object nuclear determinant and two-stream coefficient theorem
+  - inherited safe bound ||ell||<103/125
+  - standard Poincare metric monotonicity, disk distance, and Riemann-map isometry theorems
+  - exact elementary inequalities and shifted-Gaussian lattice bounds
+  - target-free outward Arb scalar arithmetic
+
+forbidden_data:
+  - prime tables, primality predicates, zero tables, xi/zeta evaluations, or USTC data
+  - numerical conformal-map fitting, boundary collocation, or fitted proof constants
+  - Fredholm determinant values, Fredholm roots, or any target divisor comparison
+  - changing U_c, the stadiums, roof, clock, branch signs, matching condition, or determinant convention
+  - identifying lambda with s or inserting a zero-producing prefactor
+  - claiming exact order two, a lower growth bound, a T*log(T) law, completed-xi, Route B, Hilbert-Polya, or RH
+
+training_split: empty; no fitting, parameter search, arithmetic target, conformal solver, or determinant roots
+validation_split: >-
+  Prove the stadium path bound D_*=500*pi+log(4), deduce
+  r_L,r_R<=r_*=tanh(D_*/2)<1, replace the parameterized geometric-stream
+  constants by the explicit gap delta_*=1-r_* and beta_*=-log(r_*), and
+  derive numerical C0,C1 ceilings for the same determinant.
+test_split: >-
+  Sealed target-free 4096-bit Arb enclosures for D_*, delta_*, beta_*, b_*,
+  C0, and C1; exact formula and safe-ceiling gates; frozen environment;
+  source hashes; and byte-identical artifact reproduction.
+
+stopping_conditions:
+  - REVISE if the Poincare metric convention or branch interval length introduces an unresolved factor of two
+  - REVISE if any path used for the distance bound leaves the frozen outer stadium
+  - REVISE if ordinary precision rounds r_* to one or loses positivity of delta_* or beta_*
+  - REVISE if the explicit coefficient majorant changes the determinant, matching space, stream count, or p-nuclear limit
+  - REJECTED if target data, determinant roots, fitted conformal data, a changed clock, or a changed convention enters
+  - STOP_SCOPED for exact conformal ratios, sharp growth type, lower growth, target-divisor, Route B, Hilbert-Polya, or RH work
+
+success_conditions:
+  - r_L and r_R are bounded above by one explicit r_*<1 for the frozen stadiums
+  - delta_*=1-r_* and beta_*=-log(r_*) have positive 4096-bit Arb lower bounds
+  - the same determinant obeys an explicit coefficient majorant using only r_*, delta_*, and ||ell||<103/125
+  - rational ceilings C0=3.45e689 and C1=4.20e682 are certified in |D_pol(s)|<=exp(C0+C1*(1+|s|)^2)
+  - every conclusion remains target-free and same-object
+
+route_status_at_lock:
+  inherited_analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+  inherited_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+  route_b_invocation_allowed: false
+  checkpoint_status: DEFINED_NOT_EVALUATED
+  recommended_verdict_if_successful: GO_WITH_LIMITATIONS
+
+next_smallest_test_if_successful: >-
+  Audit whether any theorem-level lower bound on the same determinant's
+  maximum modulus can be extracted from one explicit nonzero coefficient or
+  signed trace term, without computing determinant roots or using target data.

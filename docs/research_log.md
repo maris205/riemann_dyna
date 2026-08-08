@@ -3820,6 +3820,192 @@ comparing target zeros.
 Recommended verdict: `GO_WITH_LIMITATIONS`; overall
 `ROUTE_A_EXPLORATORY`.
 
+## 2026-08-08 — LOG-0001 explicit conformal restriction ratios
+
+### Stable checkpoint
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: `LOG-0001` (formal candidate).
+
+Source lock:
+`configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml`.
+
+Evaluation:
+`evaluations/route_a/LOG-0001/20260808T151232Z.yaml` at source state
+`dbb78f10bb3299415e022ecadb20d65e0aac5436`.
+
+The frozen map, intrinsic roof, radius-`1/1000` operator stadiums,
+radius-`3/5000` proof stadiums, matching space, two-stream expansion, and
+canonical determinant remain unchanged.  Normalize
+`h_sigma:D->U_sigma` at the branch midpoint with positive derivative and set
+
+\[
+r_\sigma=
+\max_{z\in\overline V_\sigma}|h_\sigma^{-1}(z)|.
+\]
+
+With the curvature-`-1` Poincare convention, a midpoint-to-projection path
+costs at most `500*pi`, and the projection-to-point disk path costs at most
+`log(4)`.  Hence
+
+\[
+r_L=r_R\le
+\tanh\!\left(\frac{500\pi+\log4}{2}\right)=:r_*<1.
+\]
+
+The stable formulas through `t=exp(-(500*pi+log(4)))` give
+
+\[
+\delta_*=1-r_*,\qquad \beta_*=-\log r_*.
+\]
+
+At 4096-bit outward Arb precision, both begin
+`3.2418512480136249798375853005287351e-683`; the certificate retains
+positive lower bounds and does not round `r_*` to one.
+
+Using `delta_*` in the inherited two-stream elementary-symmetric bound,
+keeping `||ell||<103/125`, choosing `theta=1/4096`, and summing a shifted
+Gaussian gives the same determinant the fully numerical envelope
+
+\[
+|D_{\rm pol}(s)|\le
+\exp\!\left(3.45\times10^{689}
++4.20\times10^{682}(1+|s|)^2\right).
+\]
+
+### Route evaluation
+
+Analytic Route-A tuple:
+
+```text
+(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+ A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)
+```
+
+Riemann-target tuple:
+
+```text
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+```
+
+Overall/scoped verdict:
+`ROUTE_A_EXPLORATORY / GO_WITH_LIMITATIONS`.
+
+Route-B tuple: `(NOT_INVOKED, NOT_INVOKED, NOT_INVOKED, NOT_INVOKED,
+NOT_INVOKED)`; invocation remains unauthorized.
+
+### Strongest evidence
+
+- The proof uses only domain monotonicity, exact disk distance, and normalized
+  Riemann-map isometry on the frozen stadium pair.
+- Translation by `pi/2` proves `r_L=r_R`; the theorem correctly retains the
+  non-strict upper comparison `r_sigma<=r_*`.
+- An independent adversarial audit verified the Poincare factor, branch
+  interval length, boundary path containment, translation normalization,
+  shifted-Gaussian constant, and claim boundary.
+- The target-free Arb certificate resolves the exponentially small gap with
+  more than 1000 relative accuracy bits and certifies both decimal ceilings.
+
+### Strongest failure
+
+The stadium path bound is extremely coarse as a conformal estimate.  It gives
+finite proof constants, not the exact ratios or the true determinant type.
+There is still no lower growth theorem, sharp divisor asymptotic, arithmetic
+orbit law, functional equation, completed-`xi` identity, quantization, or
+Route-B object.  No determinant or Riemann roots were computed.
+
+### New reusable knowledge
+
+1. A compact restriction between explicit planar domains can be quantified
+   without a numerical conformal solver by bounding hyperbolic distance in the
+   outer domain and transporting the result through a normalized Riemann map.
+2. For extremely thin domains, compute `1-r` and `-log(r)` through
+   `t=exp(-D)`, not by subtracting an ordinary-precision value of
+   `tanh(D/2)` from one.
+3. The product constant in a geometric elementary-symmetric bound can be
+   replaced by the cruder but fully explicit factor `(1-r_*)^(-q)`, which is
+   enough for a numerical quadratic envelope.
+
+No obstruction-registry entry is added because no impossibility theorem was
+proved. `docs/operator_obligations.md` remains unchanged because A4 fails and
+Route B is closed.
+
+### Updated files
+
+- `configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml`
+- `evaluations/route_a/LOG-0001/20260808T151232Z.yaml`
+- `formal/results/log_0001_conformal_ratio.md`
+- `experiments/log_0001_conformal_ratio.py`
+- `artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json`
+- `tests/test_log_0001_conformal_ratio.py`
+- `docs/candidate_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+The standalone paper stage is mirrored under
+`logistic_dynamics/projects/exact_uc_polar_conformal_ratio/` in the shared
+Hilbert--Polya structure repository.
+
+### Tests
+
+- Focused conformal-ratio suite: `7/7 passed` (`0.123 s`).
+- Full repository suite: `258/258 passed` (`93.355 s`).
+- Standalone mirror suite: `7/7 passed` (`0.111 s`).
+- Standalone manuscript: 5 pages, two clean `pdflatex` passes, zero undefined
+  references/citations, zero overfull/underfull boxes, and all fonts embedded.
+
+### Reproduction commands
+
+```bash
+python3 experiments/log_0001_conformal_ratio.py \
+  --quiet \
+  --output artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json
+python3 -m unittest -v tests/test_log_0001_conformal_ratio.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 -c 'from pathlib import Path; import yaml; fs=list(Path("configs/source_locks").glob("*.yaml"))+list(Path("evaluations").rglob("*.yaml")); [yaml.safe_load(p.read_text(encoding="utf-8")) for p in fs]; print(len(fs))'
+git diff --check
+sha256sum \
+  artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json \
+  experiments/log_0001_conformal_ratio.py \
+  formal/results/log_0001_conformal_ratio.md \
+  configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml \
+  evaluations/route_a/LOG-0001/20260808T151232Z.yaml \
+  tests/test_log_0001_conformal_ratio.py
+```
+
+The hashes at this checkpoint are:
+
+```text
+005fedd097a054adba0ea303341dee3007e3ad2bdcaf417b7786fc45854babf3  artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json
+d88b6de1691f529eeac82cb51ce67de7a1fe11d9f0adc3daad32b6399470e096  experiments/log_0001_conformal_ratio.py
+a731f53d154526befa2b22f1cec6945e4d2c779e80258241a1a216c656d19c75  formal/results/log_0001_conformal_ratio.md
+50a615cb60911df144b33804ca4c935aacbeafb6c6541474f3eb39a9fa4cbdcd  configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml
+529a9f2a921180427b8af9642328497461dd409ce8fe05b33fe2802f9310a6d4  evaluations/route_a/LOG-0001/20260808T151232Z.yaml
+6d7a8c435de6772845c9e3a3a93302881d7be198fc45e3382ca01cdbc37de984  tests/test_log_0001_conformal_ratio.py
+```
+
+### Claim boundary and next task
+
+Established: explicit common conformal-ratio upper bound, positive 4096-bit
+gap and logarithmic-rate certificates, and fully numerical constants in the
+same determinant's quadratic exponential upper envelope.
+
+Not established: exact conformal ratios, true growth type, lower growth,
+sharp divisor asymptotics, arithmetic orbit weights, determinant roots,
+functional equation, completed-`xi`, quantization, Route B,
+Hilbert--P\'olya, or RH.
+
+Next smallest task: audit whether one explicit nonzero coefficient or signed
+trace term supports a cancellation-safe theorem-level lower bound on the same
+determinant's maximum modulus.  If no such mechanism is mathematically
+explicit, return `NOT_TESTABLE` rather than computing or fitting roots.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`; overall
+`ROUTE_A_EXPLORATORY`.
+
 ## 2026-08-08 — LOG-0001 quadratic growth and zero-free half-plane
 
 ### Stable checkpoint

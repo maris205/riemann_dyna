@@ -482,8 +482,11 @@ not an arithmetic or completed-xi determinant. The growth audit now proves
 classical order at most two, an `O(T^2)` fixed-real-strip divisor upper bound,
 and a zero-free half-plane
 `Re(s)>log(2)/log(4/U_c^2)`. These are upper/continuation results, not a sharp
-counting law. The next smallest task is to certify explicit conformal
-restriction ratios `r_L,r_R`, with target zeros still sealed.
+counting law. The conformal-ratio audit now proves
+`r_L=r_R<=tanh((500*pi+log(4))/2)<1`, resolves the gap below one at 4096 bits,
+and certifies the fully numerical same-determinant envelope
+`exp(3.45e689+4.20e682*(1+|s|)^2)`.  The next smallest task is only a
+cancellation-safe lower-growth precheck; target zeros remain sealed.
 
 Artifacts:
 
@@ -500,6 +503,7 @@ Artifacts:
 - `configs/source_locks/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE.yaml`
 - `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`
 - `configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`
+- `configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
@@ -513,6 +517,7 @@ Artifacts:
 - `evaluations/route_a/P4-LOGISTIC-UC-POLAR-BOUNDARY-TRACE/20260807T071000Z.yaml`
 - `evaluations/route_a/LOG-0001/20260808T051519Z.yaml`
 - `evaluations/route_a/LOG-0001/20260808T104049Z.yaml`
+- `evaluations/route_a/LOG-0001/20260808T151232Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
@@ -525,10 +530,13 @@ Artifacts:
 - `artifacts/p4_logistic_uc_polar_boundary_trace/boundary_trace_certificate.json`
 - `artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json`
 - `artifacts/log_0001_growth_order/growth_order_certificate.json`
+- `artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json`
 - `experiments/p4_logistic_uc_acip_endpoint_density.py`
 - `experiments/p4_logistic_uc_polar_partition_trace.py`
 - `experiments/p4_logistic_uc_polar_boundary_trace.py`
 - `experiments/log_0001_nuclear_fredholm.py`
+- `experiments/log_0001_growth_order.py`
+- `experiments/log_0001_conformal_ratio.py`
 - `docs/literature/exact_uc_acip_density_sources.md`
 - `formal/results/exact_uc_first_return_support.md`
 - `formal/results/exact_uc_acip_endpoint_density.md`
@@ -540,6 +548,8 @@ Artifacts:
 - `formal/results/exact_uc_polar_partition_trace.md`
 - `formal/results/exact_uc_polar_boundary_trace.md`
 - `formal/results/log_0001_nuclear_fredholm.md`
+- `formal/results/log_0001_growth_order.md`
+- `formal/results/log_0001_conformal_ratio.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
 - `tests/test_p4_logistic_uc_first_return_support.py`
@@ -552,6 +562,8 @@ Artifacts:
 - `tests/test_p4_logistic_uc_polar_partition_trace.py`
 - `tests/test_p4_logistic_uc_polar_boundary_trace.py`
 - `tests/test_log_0001_nuclear_fredholm.py`
+- `tests/test_log_0001_growth_order.py`
+- `tests/test_log_0001_conformal_ratio.py`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
 
 ---
@@ -1298,10 +1310,11 @@ e^{q(E)}
 2. `[GO_WITH_LIMITATIONS_CONTROL]` Synthetic Fredholm/Euler-product positive control (`CTRL-0001`, `CLUE-A2-001`)
 3. `[STOP_SCOPED]` Strict-monotone autonomous Logistic clock lift (`P4-LOGISTIC-MONOTONE-CLOCK-LIFT`, `OBR-007`)
 4. `[DONE]` `LOG-0001` order-at-most-two, `O(T^2)` divisor upper bound, and zero-free right-half-plane theorem
-5. `[NEXT]` Explicit normalized conformal restriction ratios `r_L,r_R` for the frozen LOG-0001 stadium pair, with determinant roots sealed
-6. Candidate-specific shuffled-period / random-weight / random-phase controls
-7. Candidate-specific signed cycle expansion and moving-cutoff drift
-8. `[QUEUED]` Freeze one explicit same-ledger annular residual object from `CLUE-A3-001` after auditing the legacy RH handoff
+5. `[DONE]` Explicit normalized conformal restriction ratios and fully numerical same-determinant quadratic envelope
+6. `[NEXT]` Cancellation-safe lower-growth precheck from one explicit coefficient or signed trace term; return `NOT_TESTABLE` if no mechanism survives cancellation
+7. Candidate-specific shuffled-period / random-weight / random-phase controls
+8. Candidate-specific signed cycle expansion and moving-cutoff drift
+9. `[QUEUED]` Freeze one explicit same-ledger annular residual object from `CLUE-A3-001` after auditing the legacy RH handoff
 
 ## Priority 1 — 最值得并行的三条 Route-A 路线
 
@@ -1767,4 +1780,23 @@ riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
 overall: ROUTE_A_EXPLORATORY
 verdict: GO_WITH_LIMITATIONS
 consequence: "The same determinant has classical order at most two, O(T^2) zeros in every fixed real strip, and no zeros for Re(s)>log(2)/log(4/U_c^2), with uniform modulus bounds on each closed sub-half-plane. No exact order, lower growth bound, sharp T log T law, target divisor, quantization, or Route B follows. Next certify explicit conformal restriction ratios r_L,r_R without computing determinant roots."
+```
+
+## Status update — CLUE-A1-004 LOG-0001 explicit conformal-ratio closure
+
+```yaml
+date: 2026-08-08
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+candidate_id: LOG-0001
+evidence: "Exact hyperbolic path bound D_*=500*pi+log(4), translation equality r_L=r_R, 4096-bit outward intervals for 1-r_* and -log(r_*), and certified numerical constants in the same determinant's quadratic exponential envelope"
+source_commit: "dbb78f10bb3299415e022ecadb20d65e0aac5436"
+source_lock: "configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml"
+evaluation: "evaluations/route_a/LOG-0001/20260808T151232Z.yaml"
+analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+overall: ROUTE_A_EXPLORATORY
+verdict: GO_WITH_LIMITATIONS
+consequence: "The proof constants in the existing order-at-most-two theorem are now explicit: r_L=r_R<=tanh((500*pi+log(4))/2)<1 and |D_pol(s)|<=exp(3.45e689+4.20e682*(1+|s|)^2). The constants are coarse upper bounds and give no exact ratio, lower growth, target divisor, quantization, or Route B. Next audit only one cancellation-safe lower-growth mechanism and stop as NOT_TESTABLE if it is not explicit."
 ```

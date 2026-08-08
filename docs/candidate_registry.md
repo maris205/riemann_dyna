@@ -422,20 +422,22 @@ The completed complex-branch theorem is recorded at source commit
 `epsilon=1/1000`, proves a common complex contraction below `0.59626`, and
 gives a compact margin above `0.00040374` for all four branch pairs.
 
-The growth checkpoint now proves order at most two, an `O(T^2)` fixed-strip
-divisor upper bound, and a zero-free right half-plane. The next smallest test
-is an explicit numerical certificate for the normalized conformal restriction
-ratios `r_L,r_R`; determinant roots and Route B remain closed.
+The conformal-ratio checkpoint now proves
+`r_L=r_R<=tanh((500*pi+log(4))/2)<1` and turns the preceding parameterized
+growth theorem into the fully numerical same-object bound
+`|D_pol(s)|<=exp(3.45e689+4.20e682*(1+|s|)^2)`.  The next smallest test is a
+cancellation-safe lower-growth precheck using one explicit coefficient or
+signed trace term; determinant roots and Route B remain closed.
 
 Portfolio decision: LOG-0001 remains the active analytic candidate. Its next
-task is the lowest-cost proof-constant audit, not target-zero matching,
-completed-xi work, or Route B.
+task is the lowest-cost cancellation-safe lower-growth precheck, not
+target-zero matching, completed-xi work, or Route B.
 
 汇总表：
 
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
-| LOG-0001 | Exact-`U_c` polar nuclear transfer family | `ANALYTIC_REVIEW` | Analytic `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`; target `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `ROUTE_A_EXPLORATORY` | Not invoked | Same-object determinant has order at most two, an `O(T^2)` fixed-strip divisor upper bound, and an explicit zero-free right half-plane | No log-prime/von-Mangoldt law, sharp/lower divisor asymptotic, completed-xi structure, or quantization | Numerically certify the frozen conformal restriction ratios `r_L,r_R`; do not compute determinant roots |
+| LOG-0001 | Exact-`U_c` polar nuclear transfer family | `ANALYTIC_REVIEW` | Analytic `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`; target `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `ROUTE_A_EXPLORATORY` | Not invoked | Explicit common conformal-ratio bound and a fully numerical same-determinant quadratic envelope, in addition to order at most two and the zero-free half-plane | No log-prime/von-Mangoldt law, lower/sharp divisor asymptotic, completed-xi structure, or quantization | Audit one cancellation-safe lower-growth mechanism; stop as `NOT_TESTABLE` if no explicit mechanism exists |
 | QG-0001 | Harmonic magnetic lollipop-theta graph tower | `STOP_SCOPED` (exact relative determinant and divisor) | Analytic `(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_UNITARY_OR_SCATTERING_CANDIDATE)`; target `A2/A3_FAIL` / `ROUTE_A_REJECTED` | Not invoked | `H^{-1}` trace class and exact `det_F(I-k^2 H^{-1})=product_n chi_0(k/n)` | Exact divisor coefficient is `2*L_0 ~= 12.7647` times target; no orbit trace law | Park; reopen only as a new lock with intrinsic normalization/tower law |
 | TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, unitary FIO lift, and exact internal-caustic obstruction | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear antiunitary audit | Stop phase sub-audit; reopen only with an explicit multi-chart phase/Maslov ledger |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
@@ -465,6 +467,7 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Branch:** `main`
 - **Evaluation source:** `b80900c60044795d2e163edc16de7ed1389e0cd9`
 - **Growth evaluation source:** `33986f9633b7f03f2fcc1f6ab914e5e0d69f7050`
+- **Conformal-ratio evaluation source:** `dbb78f10bb3299415e022ecadb20d65e0aac5436`
 - **Growth research commit:** `ec00bcb`
 - **Growth shared mirror commit:** `d5ab4b42e66b357859f3b4de560ea5d02bdcf86d`
 - **Research commit:** `e3358c3a90ec67c2f1cf8b883107ad0fcf3cc64a`
@@ -507,22 +510,23 @@ they do not change the operator space.
 ### Source lock
 
 ```yaml
-data_type: exact nuclear determinant plus same-object growth/divisor upper theorem
-clock: T_gamma=sum log|G'|; physical two-iterate clock reported separately
-normalization: q(theta)=rho*sin(theta), exp(s*ell), signed inverse derivative
+data_type: exact conformal-ratio theorem plus numerical same-object growth constants
+clock: T_gamma=sum log|G'|; Poincare distance is a proof metric only
+normalization: q(theta)=rho*sin(theta), exp(s*ell), signed inverse derivative, normalized Riemann maps
 determinant_convention: Delta(lambda,s)=det_Fr(I-lambda*L_s|_B)
-orbit_cutoff: none in theorem; regression lengths 1..8
-precision: exact theorem; 100 decimal digits in regression
+orbit_cutoff: none in theorem; no conformal grid
+precision: exact theorem; 4096-bit outward Arb constants
 allowed_data: exact U_c and inherited same-object complex/roof theorems
-forbidden_data: prime/zero tables, xi/zeta values, fitting, zero evaluation
+forbidden_data: prime/zero tables, xi/zeta values, fitting, conformal solver, zero evaluation
 training_split: empty
-validation_split: two-stream minor bound, order<=2, Jensen count, zero-free half-plane
-test_split: target-free constants, q<=24 allocation ledger, and byte reproduction
-stopping_conditions: revise on any convention, determinant-limit, growth, or trace-log failure
+validation_split: hyperbolic stadium bound and explicit two-stream growth constants
+test_split: target-free 4096-bit intervals, formula gates, hashes, and byte reproduction
+stopping_conditions: revise on any metric, path, precision, or same-object failure
 ```
 
-The current growth lock is
-`configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`; the parent nuclear lock is
+The current conformal-ratio lock is
+`configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml`; its growth and nuclear
+parents are `configs/source_locks/LOG-0001-GROWTH-ORDER.yaml` and
 `configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml`.
 
 ### Route-A status
@@ -540,7 +544,7 @@ riemann_target_tuple:
   - A4_FAIL
 overall: ROUTE_A_EXPLORATORY
 verdict: GO_WITH_LIMITATIONS
-latest_evaluation: evaluations/route_a/LOG-0001/20260808T104049Z.yaml
+latest_evaluation: evaluations/route_a/LOG-0001/20260808T151232Z.yaml
 ```
 
 The analytic A2/A3 labels certify only the existence and partial analytic
@@ -601,6 +605,25 @@ authorized: false
   `Re(s)>log(2)/log(4/U_c^2)=1.3382657903899534...`; the determinant is
   zero-free there, with uniform upper and lower bounds on every closed
   sub-half-plane above the threshold.
+- For the normalized Riemann maps of the frozen stadium pair,
+
+  \[
+  r_L=r_R\le
+  \tanh\!\left(\frac{500\pi+\log4}{2}\right)=:r_*<1.
+  \]
+
+  A 4096-bit Arb certificate resolves
+  `1-r_*=3.2418512480136249798...e-683` and
+  `-log(r_*)=3.2418512480136249798...e-683` without rounding `r_*` to one.
+- Replacing the abstract geometric-product constant by
+  `delta_*=1-r_*`, using `||ell||<103/125`, and summing the explicit shifted
+  Gaussian majorant proves the fully numerical same-object bound
+
+  \[
+  |D_{\rm pol}(s)|\le
+  \exp\!\left(3.45\times10^{689}
+  +4.20\times10^{682}(1+|s|)^2\right).
+  \]
 
 ### Failed or unopened controls
 
@@ -610,6 +633,9 @@ authorized: false
 - No exact order, lower growth bound, or sharp high-imaginary-height divisor
   asymptotic is known. The proved `O(T^2)` upper bound neither establishes nor
   excludes a `T log T` law.
+- The explicit conformal bound is deliberately coarse because the stadium is
+  long and thin.  It gives finite proof constants, not the exact conformal
+  ratios or the true determinant type.
 - No functional equation, Gamma factor, trivial-zero ledger, or completed-$\xi$
   equality is known.
 - No natural quantization or Hilbert--Pólya operator is defined.
@@ -632,8 +658,12 @@ python3 experiments/log_0001_nuclear_fredholm.py \
 python3 experiments/log_0001_growth_order.py \
   --quiet \
   --output artifacts/log_0001_growth_order/growth_order_certificate.json
+python3 experiments/log_0001_conformal_ratio.py \
+  --quiet \
+  --output artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json
 python3 -m unittest -v tests/test_log_0001_nuclear_fredholm.py
 python3 -m unittest -v tests/test_log_0001_growth_order.py
+python3 -m unittest -v tests/test_log_0001_conformal_ratio.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
@@ -642,16 +672,22 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 ```text
 configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml
 configs/source_locks/LOG-0001-GROWTH-ORDER.yaml
+configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml
 evaluations/route_a/LOG-0001/20260808T051519Z.yaml
 evaluations/route_a/LOG-0001/20260808T104049Z.yaml
+evaluations/route_a/LOG-0001/20260808T151232Z.yaml
 formal/results/log_0001_nuclear_fredholm.md
 formal/results/log_0001_growth_order.md
+formal/results/log_0001_conformal_ratio.md
 experiments/log_0001_nuclear_fredholm.py
 experiments/log_0001_growth_order.py
+experiments/log_0001_conformal_ratio.py
 artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json
 artifacts/log_0001_growth_order/growth_order_certificate.json
+artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json
 tests/test_log_0001_nuclear_fredholm.py
 tests/test_log_0001_growth_order.py
+tests/test_log_0001_conformal_ratio.py
 ```
 
 ### Claim boundary
@@ -660,7 +696,9 @@ tests/test_log_0001_growth_order.py
 canonical jointly entire Fredholm determinant, conjugation symmetry, the
 exact signed all-power based-fixed-point trace ledger, global order at most
 two, an `O(T^2)` fixed-strip divisor upper bound, and an explicit zero-free
-right half-plane.
+right half-plane.  The proof-only conformal ratios now have one exact common
+upper bound, and the global quadratic envelope has certified numerical
+constants.
 
 **Not established:** a log-prime/von-Mangoldt orbit law, target zeros, exact
 order, lower or sharp divisor asymptotics, functional equation,
@@ -668,10 +706,11 @@ completed-$\xi$ structure, quantization, Route B, Hilbert--Pólya, or RH.
 
 ### Next smallest test
 
-Certify explicit numerical upper bounds for the normalized conformal
-restriction ratios $r_L,r_R$ of the frozen stadium pair, turning the
-parameterized quadratic-type constant into a numerical certificate without
-computing determinant roots.
+Audit whether one explicit nonzero coefficient or signed trace term can give
+a cancellation-safe theorem-level lower bound on the same determinant's
+maximum modulus without computing determinant roots or using target data.
+Return `NOT_TESTABLE` if no explicit lower-bound mechanism survives possible
+cancellation.
 
 ### Decision history
 
@@ -680,6 +719,7 @@ computing determinant roots.
 | 2026-08-08 | Not registered | `ANALYTIC_REVIEW` | Full nuclearity, entire Fredholm determinant, and exact signed trace | `b80900c` | Main Agent + adversarial nuclearity review |
 | 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Research and standalone paper-stage mirrors pushed over SSH | `e3358c3` / mirror `e6cf4f2` | Main Agent |
 | 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Order at most two, `O(T^2)` divisor upper bound, zero-free right half-plane, and standalone paper mirror | `ec00bcb` / mirror `d5ab4b4` | Main Agent + adversarial growth review |
+| 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Explicit normalized conformal-ratio bound, 4096-bit gap certificate, and fully numerical quadratic envelope | `dbb78f1` (evaluation source) | Main Agent + independent hyperbolic/constant audit |
 
 ---
 

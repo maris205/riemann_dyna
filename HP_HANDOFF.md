@@ -1,5 +1,165 @@
 # HP-Dynamics Handoff
 
+## Current status — LOG-0001 explicit conformal restriction ratios
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: `LOG-0001` (formal candidate).
+
+- Evaluation source commit: `dbb78f10bb3299415e022ecadb20d65e0aac5436`
+- Source lock: `configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml`
+- Route-A evaluation: `evaluations/route_a/LOG-0001/20260808T151232Z.yaml`
+- Formal theorem: `formal/results/log_0001_conformal_ratio.md`
+- Analytic Route-A tuple:
+  `(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+  A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)`
+- Riemann-target tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall/scoped verdict: `ROUTE_A_EXPLORATORY / GO_WITH_LIMITATIONS`
+- Route-B tuple: all `NOT_INVOKED`; invocation is not authorized
+- Shared mirror target:
+  `hilbert-polya-structure/logistic_dynamics/projects/exact_uc_polar_conformal_ratio/`
+
+The determinant is unchanged:
+
+\[
+D_{\rm pol}(s)=\det_{\rm Fr}(I-\mathcal L_s|_B),
+\qquad B=\ker[v_L(0)-v_R(0)].
+\]
+
+Let the frozen outer stadium radius be `R=1/1000`, the proof-only inner
+radius be `r_0=3/5000`, and normalize
+
+\[
+h_L(0)=-\pi/4,
+\qquad h_R(0)=\pi/4,
+\qquad h_\sigma'(0)>0.
+\]
+
+With the curvature-`-1` Poincare metric, a midpoint-to-projection path costs
+at most `500*pi`, while the projection-to-point disk path costs at most
+`log(4)`.  Therefore
+
+\[
+r_L=r_R\le
+\tanh\!\left(\frac{500\pi+\log4}{2}\right)=:r_*<1.
+\]
+
+Writing `t=exp(-(500*pi+log(4)))`, the stable formulas
+
+\[
+\delta_*=1-r_*=\frac{2t}{1+t},
+\qquad
+\beta_*=-\log r_*=\log\frac{1+t}{1-t}
+\]
+
+give positive 4096-bit outward intervals. Both quantities begin
+
+```text
+3.2418512480136249798375853005287351e-683.
+```
+
+The inherited two matching-space streams then satisfy the explicit
+coefficient majorant
+
+\[
+|a_q(s)|\le q^{q/2}(q+1)
+\left(\frac{e^{(103/125)|s|}}{\delta_*}\right)^q
+r_*^{q^2/4-q/2}.
+\]
+
+Choosing `theta=1/4096` and summing the resulting shifted Gaussian proves
+
+\[
+|D_{\rm pol}(s)|\le
+\exp\!\left(3.45\times10^{689}
++4.20\times10^{682}(1+|s|)^2\right).
+\]
+
+### Strongest evidence
+
+- The proof stays on the same normalized stadium pair and same canonical
+  matching-space determinant; no conformal grid, finite matrix, or reciprocal
+  zeta is substituted.
+- An independent adversarial audit verified the Poincare factor, branch
+  interval length, path containment including boundary points, translation
+  identity `r_L=r_R`, non-strict comparison `r_sigma<=r_*`, coefficient
+  constants, and claim boundary.
+- The target-free 4096-bit Arb certificate keeps more than 1000 relative bits
+  on both small positive quantities and certifies the published decimal
+  ceilings.
+- Focused suite: `7/7 passed`; full repository suite: `258/258 passed`;
+  standalone mirror suite: `7/7 passed`.
+- The standalone 5-page paper compiled twice without warnings, undefined
+  references, overfull boxes, or unembedded fonts.
+
+### Strongest failure
+
+The explicit path bound is intentionally coarse for a long, thin stadium.
+It proves finite constants but not the exact conformal ratios or true
+determinant type. There is no lower growth theorem, sharp divisor asymptotic,
+log-prime/von-Mangoldt orbit law, functional equation, completed-`xi`
+identity, natural quantization, or Route-B object. No Fredholm or Riemann
+roots were computed.
+
+### New reusable knowledge
+
+1. A compact planar restriction ratio can be made explicit by bounding
+   hyperbolic distance in the outer domain and transporting through a
+   normalized Riemann map; a numerical conformal solver is not always needed.
+2. When `r` is exponentially close to one, compute `1-r` and `-log(r)` from
+   `t=exp(-D)` rather than from ordinary-precision `tanh(D/2)`.
+3. Replacing `product_h(1-r^h)^(-1)` by `(1-r_*)^(-q)` is crude but turns a
+   parameterized geometric-stream theorem into a reproducible numerical
+   bound.
+
+### Updated files
+
+- `configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml`
+- `evaluations/route_a/LOG-0001/20260808T151232Z.yaml`
+- `formal/results/log_0001_conformal_ratio.md`
+- `experiments/log_0001_conformal_ratio.py`
+- `artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json`
+- `tests/test_log_0001_conformal_ratio.py`
+- `docs/candidate_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/obstruction_registry.md` is unchanged because no impossibility theorem
+was proved. `docs/operator_obligations.md` is unchanged because A4 fails and
+Route B is not authorized.
+
+### Reproduction commands
+
+```bash
+python3 experiments/log_0001_conformal_ratio.py \
+  --quiet \
+  --output artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json
+python3 -m unittest -v tests/test_log_0001_conformal_ratio.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 -c 'from pathlib import Path; import yaml; fs=list(Path("configs/source_locks").glob("*.yaml"))+list(Path("evaluations").rglob("*.yaml")); [yaml.safe_load(p.read_text(encoding="utf-8")) for p in fs]; print(len(fs))'
+git diff --check
+```
+
+### Claim boundary and next task
+
+Established: explicit common conformal-ratio upper bound, positive 4096-bit
+gap and logarithmic-rate certificates, and fully numerical constants in the
+same determinant's global quadratic exponential upper envelope.
+
+Not established: exact conformal ratios, true growth type, lower growth,
+sharp divisor asymptotics, arithmetic orbit weights, determinant roots,
+functional equation, completed-`xi`, quantization, Route B,
+Hilbert--P\'olya, or RH.
+
+Next smallest task: audit whether one explicit nonzero coefficient or signed
+trace term supports a cancellation-safe theorem-level lower bound on the same
+determinant's maximum modulus. Return `NOT_TESTABLE` if no such mechanism is
+mathematically explicit; do not compute determinant roots.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`.
+
 ## Current status — LOG-0001 quadratic growth and zero-free half-plane
 
 Current clue: `CLUE-A1-004`.

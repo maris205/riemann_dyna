@@ -1,0 +1,215 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: LOG-0001
+audit_id: LOG-0001-CONFORMAL-RATIO
+parent_audit_id: LOG-0001-GROWTH-ORDER
+formal_candidate: true
+source_commit: dbb78f10bb3299415e022ecadb20d65e0aac5436
+evaluation_date: "2026-08-08T15:12:32Z"
+
+source_lock:
+  object: >-
+    The unchanged exact-U_c two-full-branch polar map, intrinsic roof
+    tau=log|G'|, frozen radius-1/1000 stadium transfer family L_s on
+    B=ker[v_L(0)-v_R(0)], canonical determinant
+    D_pol(s)=det_Fr(I-L_s|_B), and normalized Riemann maps from the disk to
+    the same two operator stadiums. The radius-3/5000 stadiums and conformal
+    ratios remain proof coordinates only.
+  data_type: >-
+    An exact hyperbolic-distance theorem for r_L,r_R, a 4096-bit outward Arb
+    enclosure of the resulting small gap and logarithmic rate, and a fully
+    numerical same-determinant quadratic exponential upper bound.
+  clock: >-
+    T_gamma=sum tau=log|(G^n)'| is the sole determinant time. The Poincare
+    distance is only a proof metric, normalized by
+    lambda_D(w)=2/(1-|w|^2), and cannot replace the roof clock.
+  normalization: >-
+    q(theta)=(U_c-1)sin(theta), exp(s*Log(a))=exp(-s*tau) on inverse cycles,
+    phi_L'=+a, phi_R'=-a, signed epsilon_omega retained, matching condition
+    unchanged, and h_L(0)=-pi/4, h_R(0)=pi/4, h_sigma'(0)>0.
+  determinant_convention: >-
+    Delta(lambda,s)=det_Fr(I-lambda*L_s|_B) remains the canonical
+    Grothendieck determinant and D_pol(s)=Delta(1,s). Lambda remains distinct
+    from s; no reciprocal, logarithmic derivative, or glued determinant is
+    admitted.
+  cutoff: >-
+    No word, operator, or conformal-grid cutoff enters the theorem. The outer
+    and inner stadium radii remain 1/1000 and 3/5000.
+  precision: >-
+    Exact analytic geometry plus python-flint 0.9.0 / FLINT 3.6.0 at 4096
+    bits. The coefficient calculation uses ||ell||<103/125 and
+    theta=1/4096.
+  training_data: "empty; no fitting, parameter search, target data, conformal solver, determinant values, or roots"
+  validation_data: >-
+    Stadium path bound, hyperbolic isometry, common r_* bound, explicit
+    two-stream coefficient majorant, shifted-Gaussian summation, and numerical
+    C0,C1 ceilings for the same determinant.
+  test_data: >-
+    Exact rational geometry identities, 4096-bit Arb intervals for D_*,
+    delta_*, beta_*, b_theta, C0, and C1, safe-ceiling comparisons, frozen
+    versions, source hashes, and byte-identical artifact reproduction.
+  allowed_data:
+    - frozen stadium definitions and normalized Riemann maps
+    - inherited same-object nuclear determinant and two-stream growth theorem
+    - standard hyperbolic metric, elementary inequality, and Gaussian lattice theorems
+    - target-free outward Arb scalar arithmetic
+  forbidden_data:
+    - prime tables, zero tables, xi/zeta evaluations, USTC data, or fitting
+    - numerical conformal mapping, determinant evaluation, or root searches
+    - changed domains, roof, clock, signs, matching, or determinant convention
+    - exact-order, lower-bound, T-log-T, completed-xi, Route B, Hilbert-Polya, or RH claims
+  stopping_conditions:
+    - REVISE on any unresolved Poincare factor, path-containment, precision, or same-object failure
+    - REJECTED if target data, roots, fitted conformal data, or changed conventions enter
+    - STOP_SCOPED for exact ratios, sharp growth type, target divisor, Route B, Hilbert-Polya, or RH work
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The intrinsic complete binary periodic ledger, exact repetition and
+    orientation convention, and non-lattice roof remain unchanged and use no
+    arithmetic target table.
+  strongest_failure: >-
+    The explicit conformal constants do not relate any primitive roof period
+    to log primes and do not create von-Mangoldt prime-power amplitudes.
+  metrics:
+    intrinsic_binary_primitive_ledger: PROVED
+    unique_word_fixed_points_all_orders: PROVED
+    non_lattice_roof: PROVED
+    signed_orientation: "epsilon_omega=(-1)^(#R)"
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    arithmetic_orbit_law: false
+    von_mangoldt_weights: false
+  artifacts:
+    - formal/results/exact_uc_polar_nonlattice.md
+    - formal/results/log_0001_nuclear_fredholm.md
+
+a2:
+  verdict: A2_ANALYTIC_DETERMINANT
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The same canonical matching-space determinant is retained. The two
+    geometric Taylor streams now have a completely explicit coefficient
+    majorant using r_*, delta_*, beta_*, and ||ell||<103/125; no numerical
+    matrix or different determinant is substituted.
+  strongest_failure: >-
+    The source lock still forbids determinant values and roots. Missing,
+    extra, target, precision-drift, and cutoff-drift zero ledgers remain
+    unopened rather than passed.
+  metrics:
+    zero_error_train: not_opened_by_source_lock
+    zero_error_validation: not_opened_by_source_lock
+    zero_error_test: not_opened_by_source_lock
+    extra_zero_count: not_testable_no_root_computation
+    missing_zero_count: not_testable_no_target_comparison
+    root_count_discrepancy: not_testable_no_target_comparison
+    cutoff_drift: theorem_has_no_cutoff
+    precision_drift: 4096_bit_outward_interval_certificate
+    common_ratio_bound: "r_L=r_R<=tanh((500*pi+log(4))/2)<1"
+    coefficient_majorant: "q^(q/2)*(q+1)*(exp((103/125)*|s|)/delta_*)^q*r_*^(q^2/4-q/2)"
+    same_object_fredholm_determinant: true
+    determinant_convention_changed: false
+    signed_all_power_trace_formula: PROVED
+    riemann_target_a2: A2_FAIL
+  artifacts:
+    - configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml
+    - formal/results/log_0001_conformal_ratio.md
+    - artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json
+    - tests/test_log_0001_conformal_ratio.py
+
+a3:
+  verdict: A3_PARTIAL_ANALYTIC_STRUCTURE
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The proof-only conformal ratios now satisfy the exact common upper bound
+    r_*=tanh((500*pi+log(4))/2)<1. Arb certifies
+    delta_*=1-r_*>3.24e-683 and beta_*=-log(r_*)>3.24e-683 at the displayed
+    scale, and the same determinant obeys the fully numerical envelope
+    |D_pol(s)|<=exp(3.45e689+4.20e682*(1+|s|)^2).
+  strongest_failure: >-
+    The constants are deliberately coarse upper bounds. They give neither an
+    exact conformal modulus nor exact order, lower growth, sharp type,
+    critical-strip asymptotics, T*log(T), a functional equation, Gamma/trivial
+    zero ledger, or a completed-xi divisor.
+  metrics:
+    conjugation_symmetry: PROVED
+    analytic_continuation: entire_in_lambda_and_s
+    exact_trace_identity: PROVED
+    normalized_conformal_ratio_bound: "r_L=r_R<=r_*<1"
+    D_star_exact: "500*pi+log(4)"
+    delta_star_ball: "3.2418512480136249798375853005287351e-683 with outward Arb error"
+    beta_star_ball: "3.2418512480136249798375853005287351e-683 with outward Arb error"
+    numerical_global_growth_bound: "|D_pol(s)|<=exp(3.45e689+4.20e682*(1+|s|)^2)"
+    classical_order_upper: 2
+    exact_order: OPEN
+    growth_lower_bound: OPEN
+    disk_divisor_count_upper: O(R^2)
+    fixed_real_strip_divisor_count_upper: O(T^2)
+    zero_free_half_plane: "Re(s)>log(2)/log(4/U_c^2)"
+    functional_equation: false
+    gamma_factor: false
+    trivial_zero_ledger: false
+    target_counting_law: false
+    completed_xi_divisor: false
+    riemann_target_a3: A3_FAIL
+  artifacts:
+    - formal/results/log_0001_conformal_ratio.md
+    - artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The transfer family remains natural for the same exact classical polar map
+    and intrinsic unstable-Jacobian roof.
+  strongest_failure: >-
+    An explicit conformal proof constant does not define a quantum Hilbert
+    space, dense domain, self-adjoint operator, scattering lift, or same-clock
+    quantization. Route B remains unauthorized.
+  metrics:
+    natural_hilbert_space: null
+    operator_domain: null
+    natural_quantization: false
+    route_b_ready: false
+  artifacts: []
+
+analytic_route_tuple:
+  - A1_WEAK
+  - A2_ANALYTIC_DETERMINANT
+  - A3_PARTIAL_ANALYTIC_STRUCTURE
+  - A4_FAIL
+riemann_target_tuple:
+  - A1_WEAK
+  - A2_FAIL
+  - A3_FAIL
+  - A4_FAIL
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - explicit common upper bound for the two normalized conformal restriction ratios
+    - positive 4096-bit enclosures for delta_*=1-r_* and beta_*=-log(r_*)
+    - fully explicit same-determinant two-stream coefficient majorant
+    - numerical constants in a global quadratic exponential envelope
+    - target-free exact formulas, source hashes, and byte-identical reproduction
+  not_established:
+    - exact conformal ratios, sharp conformal modulus, or true growth type
+    - log-prime primitive periods or von-Mangoldt prime-power weights
+    - determinant roots, target roots, or a completed-xi divisor comparison
+    - exact order, lower growth, or a sharp high-height divisor asymptotic
+    - functional equation, Gamma factor, trivial-zero or pole-removal ledger
+    - quantization, Route B, Hilbert-Polya, or RH
+blocking_conditions:
+  - no arithmetic primitive-orbit law
+  - no theorem-level lower growth estimate or sharp divisor asymptotic
+  - no completed-xi analytic ledger
+  - no natural quantization
+next_smallest_test: >-
+  Audit whether one explicit nonzero coefficient or signed trace term can
+  yield a theorem-level lower bound on the same determinant's maximum modulus
+  without computing determinant roots or using target data. Stop as
+  NOT_TESTABLE if no cancellation-safe lower-bound mechanism is explicit.
+route_b_invocation_allowed: false
