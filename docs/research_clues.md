@@ -495,10 +495,14 @@ every real summand is positive.  The exact pure-left term gives
 `M_D(R)>0.0213*(R-2)` for `R>2` and `M_D(R)>0.01065*R` for `R>=4`.
 Together with `D_pol(sigma)->1`, this proves that the same determinant is
 transcendental entire and has qualitative super-polynomial maximum-modulus
-growth.  It does not prove positive or exact order, a zero-count lower bound,
-or a target divisor.  The next bounded task is a separately locked
-Phragmen--Lindelof audit for a possible `ord(D_pol)>=1` consequence; after
-that, apply the breadth pivot.
+growth.
+
+The separate `LOG-0001-ORDER-LOWER` audit now uses the uniform full-line bound
+on `Re(s)>=2`.  A half-plane Phragmen--Lindelof contradiction rules out order
+below one, and the inherited upper theorem closes the interval
+`1<=ord(D_pol)<=2`.  This does not identify order one versus two or establish
+a target divisor.  The next task is the breadth pivot to a newly defined
+intrinsic recurrent candidate or a reusable obstruction.
 
 Artifacts:
 
@@ -517,6 +521,7 @@ Artifacts:
 - `configs/source_locks/LOG-0001-GROWTH-ORDER.yaml`
 - `configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml`
 - `configs/source_locks/LOG-0001-LOWER-GROWTH.yaml`
+- `configs/source_locks/LOG-0001-ORDER-LOWER.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T080528Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T105010Z.yaml`
 - `evaluations/route_a/P4-LOGISTIC-RECURRENT-UC-ANCHORED-CLOCK/20260804T162511Z.yaml`
@@ -531,6 +536,8 @@ Artifacts:
 - `evaluations/route_a/LOG-0001/20260808T051519Z.yaml`
 - `evaluations/route_a/LOG-0001/20260808T104049Z.yaml`
 - `evaluations/route_a/LOG-0001/20260808T151232Z.yaml`
+- `evaluations/route_a/LOG-0001/20260809T073000Z.yaml`
+- `evaluations/route_a/LOG-0001/20260809T110000Z.yaml`
 - `artifacts/p4_logistic_recurrent_uc_anchored_clock/structural_audit.json`
 - `artifacts/p4_logistic_uc_first_return_support/structural_audit.json`
 - `artifacts/p4_logistic_uc_acip_endpoint_density/structural_audit.json`
@@ -545,6 +552,7 @@ Artifacts:
 - `artifacts/log_0001_growth_order/growth_order_certificate.json`
 - `artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json`
 - `artifacts/log_0001_lower_growth/lower_growth_certificate.json`
+- `artifacts/log_0001_order_lower/order_lower_certificate.json`
 - `experiments/p4_logistic_uc_acip_endpoint_density.py`
 - `experiments/p4_logistic_uc_polar_partition_trace.py`
 - `experiments/p4_logistic_uc_polar_boundary_trace.py`
@@ -552,6 +560,7 @@ Artifacts:
 - `experiments/log_0001_growth_order.py`
 - `experiments/log_0001_conformal_ratio.py`
 - `experiments/log_0001_lower_growth.py`
+- `experiments/log_0001_order_lower.py`
 - `docs/literature/exact_uc_acip_density_sources.md`
 - `formal/results/exact_uc_first_return_support.md`
 - `formal/results/exact_uc_acip_endpoint_density.md`
@@ -566,6 +575,7 @@ Artifacts:
 - `formal/results/log_0001_growth_order.md`
 - `formal/results/log_0001_conformal_ratio.md`
 - `formal/results/log_0001_lower_growth.md`
+- `formal/results/log_0001_order_lower.md`
 - `formal/obstructions/exact_uc_first_return_nonuniform_expansion.md`
 - `formal/obstructions/unit_lattice_clock_vertical_periodicity.md`
 - `tests/test_p4_logistic_uc_first_return_support.py`
@@ -581,6 +591,7 @@ Artifacts:
 - `tests/test_log_0001_growth_order.py`
 - `tests/test_log_0001_conformal_ratio.py`
 - `tests/test_log_0001_lower_growth.py`
+- `tests/test_log_0001_order_lower.py`
 - `tests/test_p4_logistic_recurrent_uc_anchored_clock.py`
 
 ---
@@ -1329,10 +1340,11 @@ e^{q(E)}
 4. `[DONE]` `LOG-0001` order-at-most-two, `O(T^2)` divisor upper bound, and zero-free right-half-plane theorem
 5. `[DONE]` Explicit normalized conformal restriction ratios and fully numerical same-determinant quadratic envelope
 6. `[DONE]` Cancellation-safe lower-growth theorem for `D_pol'(2)` and explicit linear maximum-modulus lower bounds
-7. `[NEXT]` Separate Phragmen--Lindelof audit for a possible `ord(D_pol)>=1`; then apply the breadth pivot
-8. Candidate-specific shuffled-period / random-weight / random-phase controls
-9. Candidate-specific signed cycle expansion and moving-cutoff drift
-10. `[QUEUED]` Freeze one explicit same-ledger annular residual object from `CLUE-A3-001` after auditing the legacy RH handoff
+7. `[DONE]` Phragmen--Lindelof audit proving `1<=ord(D_pol)<=2` under the inherited same-object half-plane bound
+8. `[NEXT]` Breadth pivot: define one new intrinsic recurrent candidate with an explicit arithmetic-orbit hypothesis, or register a reusable obstruction
+9. Candidate-specific shuffled-period / random-weight / random-phase controls only for a newly defined candidate
+10. Candidate-specific signed cycle expansion and moving-cutoff drift only for a newly defined candidate
+11. `[QUEUED]` Freeze one explicit same-ledger annular residual object from `CLUE-A3-001` after auditing the legacy RH handoff
 
 ## Priority 1 — 最值得并行的三条 Route-A 路线
 
@@ -1841,3 +1853,23 @@ overall: ROUTE_A_EXPLORATORY
 verdict: GO_WITH_LIMITATIONS
 consequence: "D_pol'(2)>0.0213; M_D(R)>0.0213*(R-2) for R>2 and >0.01065*R for R>=4. The determinant is nonconstant and transcendental entire with qualitative super-polynomial maximum-modulus growth. Positive/exact order, zero-count lower bounds, T log T, completed-xi, and Route B remain open. Next: separate Phragmen--Lindelof order-lower audit, then breadth pivot."
 ```
+
+
+## Status update — CLUE-A1-004 LOG-0001 Phragmen--Lindelof order lower
+
+~~~yaml
+date: 2026-08-09
+clue_id: CLUE-A1-004
+old_status: ACTIVE
+new_status: ACTIVE
+candidate_id: LOG-0001
+evidence: "Uniform same-object bound on Re(s)>=2, half-plane Phragmen--Lindelof contradiction to ord(D_pol)<1, inherited D_pol'(2)>0.0213 nonconstancy witness, and 1024-bit K_2 certificate"
+source_commit: "9b0b09e305579d9ed0ae755b2e499a3bd05a261b"
+source_lock: "configs/source_locks/LOG-0001-ORDER-LOWER.yaml"
+evaluation: "evaluations/route_a/LOG-0001/20260809T110000Z.yaml"
+analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+overall: ROUTE_A_EXPLORATORY
+verdict: GO_WITH_LIMITATIONS
+consequence: "The same determinant now has 1<=ord(D_pol)<=2. Exact order, type, divisor asymptotics, target matching, quantization, Route B, and RH remain open. Apply the breadth pivot next."
+~~~

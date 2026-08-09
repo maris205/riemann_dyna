@@ -3819,6 +3819,115 @@ comparing target zeros.
 
 Recommended verdict: `GO_WITH_LIMITATIONS`; overall
 `ROUTE_A_EXPLORATORY`.
+## 2026-08-09 — LOG-0001 Phragmen--Lindelof order lower bound
+
+### Stable checkpoint
+
+Current clue: CLUE-A1-004.
+
+Candidate ID: LOG-0001 (formal candidate).
+
+Source lock:
+configs/source_locks/LOG-0001-ORDER-LOWER.yaml.
+
+Evaluation:
+evaluations/route_a/LOG-0001/20260809T110000Z.yaml at source state
+9b0b09e305579d9ed0ae755b2e499a3bd05a261b.
+
+The unchanged determinant is entire, has the inherited uniform bound
+|D_pol(s)|<=K_2=exp(B_2) on Re(s)>=2, and has the inherited
+nonconstancy witness D_pol'(2)>0.0213. Suppose its order were rho<1 and
+choose rho<eta<mu<1. With g(z)=D_pol(2-z) on Re(z)>0, the principal branch
+satisfies Re(z^mu)>=cos(mu*pi/2)|z|^mu. The damped function
+g(z)exp(-epsilon*z^mu) vanishes on large semicircles because eta<mu.
+The half-disk maximum principle, epsilon->0, and Liouville then contradict
+the derivative witness. Therefore
+
+\[
+1\le\operatorname{ord}(D_{\rm pol})\le2.
+\]
+
+### Route evaluation
+
+Analytic Route-A tuple:
+
+~~~
+(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+ A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)
+~~~
+
+Riemann-target tuple:
+
+~~~
+(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+~~~
+
+Overall/scoped verdict: ROUTE_A_EXPLORATORY / GO_WITH_LIMITATIONS.
+Route B remains unauthorized.
+
+### Strongest evidence
+
+- The half-plane bound is uniform in imaginary height on the full line
+  Re(s)=2; a real-axis limit alone is not substituted.
+- The translated half-plane orientation, principal branch, damping exponent,
+  and Liouville contradiction were independently audited.
+- Focused PL suite: 7/7 passed; the 1024-bit scalar certificate is
+  byte-reproducible and target-free.
+
+### Strongest failure
+
+The theorem does not decide order one versus two, type, divisor asymptotics,
+a T log T law, arithmetic orbit weights, completed-xi, quantization, Route B,
+Hilbert--Polya, or RH.
+
+### New reusable knowledge
+
+A nonconstant entire function bounded on one closed half-plane has order at
+least one. The threshold is sharp: an order-one exponential perturbation is
+bounded on such a half-plane. Uniform vertical control and entire-ness are
+essential hypotheses.
+
+### Updated files
+
+- configs/source_locks/LOG-0001-ORDER-LOWER.yaml
+- evaluations/route_a/LOG-0001/20260809T110000Z.yaml
+- formal/results/log_0001_order_lower.md
+- experiments/log_0001_order_lower.py
+- artifacts/log_0001_order_lower/order_lower_certificate.json
+- tests/test_log_0001_order_lower.py
+- docs/candidate_registry.md
+- docs/research_clues.md
+- docs/research_log.md
+- HP_HANDOFF.md
+- CHANGELOG.md
+
+No obstruction-registry or operator-obligation entry is added; Route B remains
+closed.
+
+### Tests and reproduction
+
+~~~
+python3 experiments/log_0001_order_lower.py --quiet \
+  --output artifacts/log_0001_order_lower/order_lower_certificate.json
+python3 -m unittest -v tests/test_log_0001_order_lower.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+git diff --check
+~~~
+
+### Claim boundary and next task
+
+Established: 1<=ord(D_pol)<=2 for the same frozen determinant.
+
+Not established: exact order, type, sharp divisor counts, target zeros,
+arithmetic orbit law, completed-xi, quantization, Route B, Hilbert--Polya, or
+RH.
+
+Next smallest task: apply the breadth pivot and define one new intrinsic
+recurrent candidate with an explicit phase space, clock, determinant
+convention, and plausible arithmetic orbit law, or register a reusable
+structural obstruction.
+
+Recommended verdict: GO_WITH_LIMITATIONS; overall ROUTE_A_EXPLORATORY.
 ## 2026-08-09 — LOG-0001 cancellation-safe lower-growth theorem
 
 ### Stable checkpoint

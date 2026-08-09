@@ -451,7 +451,7 @@ remain closed.
 
 | Candidate ID | Family | Current state | Route A | Route B | Strongest evidence | Main blocker | Next task |
 |---|---|---|---|---|---|---|---|
-| LOG-0001 | Exact-`U_c` polar nuclear transfer family | `ANALYTIC_REVIEW` | Analytic `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`; target `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `ROUTE_A_EXPLORATORY` | Not invoked | Same-object entire determinant with order at most two, zero-free half-plane, explicit quadratic upper envelope, and certified `D_pol'(2)>0.0213` / linear maximum-modulus lower bound | No log-prime/von-Mangoldt law, positive/exact order, sharp divisor asymptotic, completed-xi structure, or quantization | Audit `ord(D_pol)>=1` by Phragmen--Lindelof under a separate lock; then apply the breadth pivot |
+| LOG-0001 | Exact-`U_c` polar nuclear transfer family | `ANALYTIC_REVIEW` | Analytic `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`; target `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `ROUTE_A_EXPLORATORY` | Not invoked | Same-object entire determinant with `1<=ord(D_pol)<=2`, zero-free half-plane, explicit quadratic upper envelope, and certified `D_pol'(2)>0.0213` / linear maximum-modulus lower bound | No log-prime/von-Mangoldt law, exact order, sharp divisor asymptotic, completed-xi structure, or quantization | Breadth pivot: define a new intrinsic recurrent candidate or register a reusable obstruction |
 | QG-0001 | Harmonic magnetic lollipop-theta graph tower | `STOP_SCOPED` (exact relative determinant and divisor) | Analytic `(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_UNITARY_OR_SCATTERING_CANDIDATE)`; target `A2/A3_FAIL` / `ROUTE_A_REJECTED` | Not invoked | `H^{-1}` trace class and exact `det_F(I-k^2 H^{-1})=product_n chi_0(k/n)` | Exact divisor coefficient is `2*L_0 ~= 12.7647` times target; no orbit trace law | Park; reopen only as a new lock with intrinsic normalization/tower law |
 | TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, unitary FIO lift, and exact internal-caustic obstruction | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear antiunitary audit | Stop phase sub-audit; reopen only with an explicit multi-chart phase/Maslov ledger |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
@@ -485,6 +485,7 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Lower-growth evaluation source:** `8cabec587cf0a796f4f004bf5b1b0611de3305f3`
 - **Lower-growth research commit:** `726e42a93a9fabcf07c4c543c1c5962aa0fa1569`
 - **Lower-growth shared mirror commit:** `8fbe914cf4438a5a792f7e87e0c87e3a88292201`
+- **Order-lower evaluation source:** `9b0b09e305579d9ed0ae755b2e499a3bd05a261b`
 - **Conformal-ratio research commit:** `80107bc8ec2bcb4b5d0dd7a30447c5bc2d075320`
 - **Conformal-ratio shared mirror commit:** `ce0e3c88a3daa32ccf79f7fdeb9c0b22695bc6f5`
 - **Growth research commit:** `ec00bcb`
@@ -529,22 +530,30 @@ they do not change the operator space.
 ### Source lock
 
 ```yaml
-data_type: exact same-determinant derivative and maximum-modulus lower-growth theorem
-clock: T_gamma=sum log|G'|; safe real point s=2
+data_type: same-determinant Phragmen--Lindelof order-lower theorem
+clock: T_gamma=sum log|G'|; full-line boundary Re(s)=2
 normalization: q(theta)=rho*sin(theta), exp(s*ell), signed orientation and matching unchanged
-determinant_convention: Delta(lambda,s)=det_Fr(I-lambda*L_s|_B)
-orbit_cutoff: none; pure-left term is a proof lower bound after full-ledger positivity
-precision: exact theorem; 1024-bit outward Arb scalar certificate
-allowed_data: exact U_c and inherited same-object trace-log/boundary theorems
-forbidden_data: target data, determinant values/roots, lambda-coefficient substitution, ledger changes
+determinant_convention: Delta(lambda,s)=det_Fr(I-lambda*L_s|_B), D_pol(s)=Delta(1,s)
+orbit_cutoff: none; half-disks are only a proof device
+precision: exact theorem; 1024-bit outward Arb scalar certificate for K_2
+allowed_data: inherited entire/order upper/half-plane/nonconstancy theorems
+forbidden_data: target data, determinant values/roots, fitting, convention changes
 training_split: empty
-validation_split: differentiated trace-log convergence, positivity, pure-left term, Cauchy disk
-test_split: target-free 1024-bit intervals, formula gates, hashes, and byte reproduction
-stopping_conditions: NOT_TESTABLE on convergence/sign failure; STOP_SCOPED for stronger divisor claims
+validation_split: translated half-plane geometry, damping sector, maximum principle, Liouville contradiction
+test_split: target-free 1024-bit scalar interval, logical gates, hashes, and byte reproduction
+stopping_conditions: NOT_TESTABLE without a uniform full-line bound or entire/order input; STOP_SCOPED for exact order and target work
 ```
 
-The current lock is `configs/source_locks/LOG-0001-LOWER-GROWTH.yaml`; its
-conformal-ratio, growth, and nuclear parents remain versioned separately.
+The current lock is `configs/source_locks/LOG-0001-ORDER-LOWER.yaml`; its
+lower-growth, conformal-ratio, growth, and nuclear parents remain versioned
+separately.
+
+The order-lower lock freezes the full-line bound
+`|D_pol(s)|<=exp(B_2)` for `Re(s)>=2`, translates with `g(z)=D_pol(2-z)`,
+and uses only the standard half-plane Phragmen--Lindelof argument under the
+contradiction hypothesis `ord(D_pol)<1`.  It proves the reusable interval
+`1<=ord(D_pol)<=2`; it does not decide which endpoint or establish a divisor
+law.
 
 ### Route-A status
 
@@ -561,7 +570,7 @@ riemann_target_tuple:
   - A4_FAIL
 overall: ROUTE_A_EXPLORATORY
 verdict: GO_WITH_LIMITATIONS
-latest_evaluation: evaluations/route_a/LOG-0001/20260809T073000Z.yaml
+latest_evaluation: evaluations/route_a/LOG-0001/20260809T110000Z.yaml
 ```
 
 The analytic A2/A3 labels certify only the existence and partial analytic
@@ -657,13 +666,17 @@ authorized: false
 - Since `D_pol'(2)>0` while `D_pol(sigma)->1` as `sigma->+infinity`, the
   determinant is transcendental entire and qualitatively grows faster in
   maximum modulus than every fixed power.
+- The separate full-line half-plane audit at `Re(s)>=2` applies a
+  Phragmen--Lindelof damping argument to the same entire determinant.  It
+  rules out `ord(D_pol)<1`; combined with the inherited upper theorem,
+  `1<=ord(D_pol)<=2`.
 
 ### Failed or unopened controls
 
 - No primitive period or amplitude has been matched to a prime or prime power.
 - The source lock forbids Fredholm-zero evaluation at this checkpoint, so
   missing, extra, and target root counts are not opened.
-- No positive or exact order, exponential lower growth, zero-count lower
+- No exact order, exponential lower growth, zero-count lower
   bound, or sharp high-imaginary-height divisor asymptotic is known. The
   proved linear maximum-modulus lower bound and `O(T^2)` upper count neither
   establish nor exclude a `T log T` law.
@@ -698,10 +711,14 @@ python3 experiments/log_0001_conformal_ratio.py \
 python3 experiments/log_0001_lower_growth.py \
   --quiet \
   --output artifacts/log_0001_lower_growth/lower_growth_certificate.json
+python3 experiments/log_0001_order_lower.py \
+  --quiet \
+  --output artifacts/log_0001_order_lower/order_lower_certificate.json
 python3 -m unittest -v tests/test_log_0001_nuclear_fredholm.py
 python3 -m unittest -v tests/test_log_0001_growth_order.py
 python3 -m unittest -v tests/test_log_0001_conformal_ratio.py
 python3 -m unittest -v tests/test_log_0001_lower_growth.py
+python3 -m unittest -v tests/test_log_0001_order_lower.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
@@ -712,26 +729,32 @@ configs/source_locks/LOG-0001-NUCLEAR-FREDHOLM.yaml
 configs/source_locks/LOG-0001-GROWTH-ORDER.yaml
 configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml
 configs/source_locks/LOG-0001-LOWER-GROWTH.yaml
+configs/source_locks/LOG-0001-ORDER-LOWER.yaml
 evaluations/route_a/LOG-0001/20260808T051519Z.yaml
 evaluations/route_a/LOG-0001/20260808T104049Z.yaml
 evaluations/route_a/LOG-0001/20260808T151232Z.yaml
 evaluations/route_a/LOG-0001/20260809T073000Z.yaml
+evaluations/route_a/LOG-0001/20260809T110000Z.yaml
 formal/results/log_0001_nuclear_fredholm.md
 formal/results/log_0001_growth_order.md
 formal/results/log_0001_conformal_ratio.md
 formal/results/log_0001_lower_growth.md
+formal/results/log_0001_order_lower.md
 experiments/log_0001_nuclear_fredholm.py
 experiments/log_0001_growth_order.py
 experiments/log_0001_conformal_ratio.py
 experiments/log_0001_lower_growth.py
+experiments/log_0001_order_lower.py
 artifacts/log_0001_nuclear_fredholm/nuclear_fredholm_certificate.json
 artifacts/log_0001_growth_order/growth_order_certificate.json
 artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json
 artifacts/log_0001_lower_growth/lower_growth_certificate.json
+artifacts/log_0001_order_lower/order_lower_certificate.json
 tests/test_log_0001_nuclear_fredholm.py
 tests/test_log_0001_growth_order.py
 tests/test_log_0001_conformal_ratio.py
 tests/test_log_0001_lower_growth.py
+tests/test_log_0001_order_lower.py
 ```
 
 ### Claim boundary
@@ -743,19 +766,21 @@ two, an `O(T^2)` fixed-strip divisor upper bound, and an explicit zero-free
 right half-plane.  The proof-only conformal ratios now have one exact common
 upper bound, and the global quadratic envelope has certified numerical
 constants. The same determinant also satisfies `D_pol'(2)>0.0213`, the
-displayed linear maximum-modulus lower bounds, and is transcendental entire.
+  displayed linear maximum-modulus lower bounds, and is transcendental entire.
+  The Phragmen--Lindelof audit further gives `1<=ord(D_pol)<=2`.
 
 **Not established:** a log-prime/von-Mangoldt orbit law, target zeros, exact
-or positive order, exponential lower growth, zero-count lower or sharp divisor
+order, exponential lower growth, zero-count lower or sharp divisor
 asymptotics, functional equation, completed-$\xi$ structure, quantization,
 Route B, Hilbert--Pólya, or RH.
 
 ### Next smallest test
 
-Under a separate source lock, prove or refute whether the bounded right
-half-plane, nonconstancy, and finite-order upper theorem force
-`ord(D_pol)>=1` by Phragmen--Lindelof. Do not compute determinant roots or use
-target data. Apply the breadth-first pivot after this bounded audit.
+Apply the breadth pivot: define one new intrinsic recurrent candidate with a
+frozen phase space, clock, normalization, determinant convention, and a
+plausible arithmetic orbit law, or register a reusable structural obstruction.
+Do not compute determinant roots or append another fixed-point estimate to
+LOG-0001.
 
 ### Decision history
 
@@ -766,6 +791,7 @@ target data. Apply the breadth-first pivot after this bounded audit.
 | 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Order at most two, `O(T^2)` divisor upper bound, zero-free right half-plane, and standalone paper mirror | `ec00bcb` / mirror `d5ab4b4` | Main Agent + adversarial growth review |
 | 2026-08-08 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Explicit normalized conformal-ratio bound, 4096-bit gap certificate, fully numerical quadratic envelope, and standalone paper mirror | `80107bc` / mirror `ce0e3c8` | Main Agent + independent hyperbolic/constant audit |
 | 2026-08-09 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Cancellation-safe `D_pol'(2)>0.0213`, linear maximum-modulus lower bound, and transcendental-entire theorem; tuple unchanged | source `8cabec5` | Main Agent + independent lower-growth adversarial audit |
+| 2026-08-09 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | Half-plane Phragmen--Lindelof audit proves `1<=ord(D_pol)<=2`; tuple unchanged and breadth pivot selected | source `9b0b09e` | Main Agent + independent PL audit |
 
 ---
 

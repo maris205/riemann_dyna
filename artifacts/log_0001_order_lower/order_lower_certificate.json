@@ -1,0 +1,151 @@
+{
+  "artifact_schema_version": 1,
+  "audit_id": "LOG-0001-ORDER-LOWER",
+  "candidate_id": "LOG-0001",
+  "claim_boundary": {
+    "established": [
+      "uniform same-object bound on Re(s)>=2 is sufficient for PL",
+      "nonconstant entire D_pol has ord(D_pol)>=1",
+      "inherited upper theorem combines to 1<=ord(D_pol)<=2"
+    ],
+    "not_established": [
+      "exact order or whether it is one or two",
+      "exponential type or divisor-count asymptotic",
+      "target zeros, completed-xi, quantization, Route B, or RH"
+    ]
+  },
+  "computed_gates": {
+    "flint_version_is_frozen": true,
+    "inherited_nonconstancy_gate_passed": true,
+    "pl_proof_ledger_passed": true,
+    "python_flint_version_is_frozen": true,
+    "python_version_is_frozen": true,
+    "scalar_certificate_passed": true
+  },
+  "computed_gates_passed": true,
+  "data_firewall": {
+    "Fredholm_determinant_evaluated": false,
+    "Fredholm_roots_searched": false,
+    "Riemann_zero_tables_used": false,
+    "changed_object_or_clock_used": false,
+    "fitting_or_parameter_search_used": false,
+    "prime_tables_used": false,
+    "xi_or_zeta_evaluated": false
+  },
+  "formal_candidate": true,
+  "frozen_object": {
+    "auxiliary_lambda_kept_separate": true,
+    "clock": "T_gamma=sum log|G'|",
+    "determinant": "D_pol(s)=det_Fr(I-L_s|_B)",
+    "matching_space": "B=ker[v_L(0)-v_R(0)]",
+    "pl_boundary": "Re(s)=2",
+    "pl_translation": "g(z)=D_pol(2-z)"
+  },
+  "inherited_nonconstancy_gate": {
+    "c_2_interval": "[0.0213084085497861154550144929964632935814277432466026376964708485913821701232448597630702443895313432 +/- 5.25e-101]",
+    "computed_gates": {
+      "inherited_derivative_witness_above_floor": true,
+      "inherited_lower_growth_certificate_passed": true,
+      "inherited_transcendental_entire_claim": true
+    },
+    "computed_gates_passed": true,
+    "safe_floor": "0.0213"
+  },
+  "next_smallest_test": "Apply the breadth pivot: define a new intrinsic recurrent object with a plausible arithmetic orbit law, or register a reusable obstruction; do not add another fixed-point estimate to LOG-0001.",
+  "parent_audit_id": "LOG-0001-LOWER-GROWTH",
+  "pl_proof_ledger": {
+    "assumption_for_contradiction": "ord(D_pol)=rho<1",
+    "auxiliary_exponents": "rho<eta<mu<1",
+    "boundary_line": "g(it)=D_pol(2-it), |g(it)|<=K_2",
+    "computed_gates": {
+      "choose_rho_lt_eta_lt_mu_lt_one_under_contradiction": true,
+      "cos_mu_pi_over_two_is_positive": true,
+      "epsilon_decreases_to_zero": true,
+      "half_disk_maximum_principle_applied": true,
+      "liouville_contradicts_D_prime_at_2_nonzero": true,
+      "no_uniform_real_axis_only_substitution": true,
+      "principal_branch_on_right_half_plane": true,
+      "same_entire_object_retained": true,
+      "semicircle_damping_dominates_order_eta": true,
+      "translated_function_is_g_of_z_equals_D_2_minus_z": true,
+      "uniform_closed_half_plane_bound_at_re_ge_2": true
+    },
+    "computed_gates_passed": true,
+    "damping": "h_epsilon(z)=g(z)*exp(-epsilon*z^mu)",
+    "global_consequence": "D_pol bounded on Re(s)<2, then on C",
+    "liouville_consequence": "D_pol constant, contradicting D_pol'(2)>0.0213",
+    "sector_lower_bound": "Re(z^mu)>=cos(mu*pi/2)*|z|^mu",
+    "translated_variable": "g(z)=D_pol(2-z), Re(z)>0"
+  },
+  "provenance": {
+    "external_target_data_used": false,
+    "generator": "experiments/log_0001_order_lower.py",
+    "generator_sha256": "2595fae21c5eb4c71c814c3e030d674bd907d3fd28ffb437ab3ea73a0bc5e23f",
+    "reproduction_command": "python3 experiments/log_0001_order_lower.py --quiet --output artifacts/log_0001_order_lower/order_lower_certificate.json",
+    "route_a_evaluation": "evaluations/route_a/LOG-0001/20260809T110000Z.yaml",
+    "source_inputs_sha256": {
+      "artifacts/log_0001_growth_order/growth_order_certificate.json": "9e28833c0b68aabc5e9fc2d771d7e7d2c7a6ffca8e2cd6abdbb3a7dd430120ec",
+      "artifacts/log_0001_lower_growth/lower_growth_certificate.json": "c11878ebdf6b44c241dcfdbe3dffb663bdc47dea2f47aa553c8f6c2c79aafbbc",
+      "configs/source_locks/LOG-0001-GROWTH-ORDER.yaml": "4a2493ae51ebce6812e05f48330ab71b161c8cad68d540f9bd3416f63b29181e",
+      "configs/source_locks/LOG-0001-LOWER-GROWTH.yaml": "f209fd14d2fa4f90f8a8cd840520f300967be2ee123f87fa72ad187aa93b27b9",
+      "configs/source_locks/LOG-0001-ORDER-LOWER.yaml": "aac9829fb404533ce7a0e44831867a3f1a2fc93eeb07fc06cd9f5e087acb303f",
+      "evaluations/route_a/LOG-0001/20260809T073000Z.yaml": "299252af08dcea038e1399287203268aff05f0a3bdea7656d525352836e7ebde",
+      "evaluations/route_a/LOG-0001/20260809T110000Z.yaml": "e586da1cde78a7a285be5980c649ee95d7998df12ed37f0283d0e412bbc32692",
+      "experiments/p4_logistic_uc_first_return_support.py": "6165e62f5ac84f955e9474e8291d32e5213cea409760d6768b3ecec571da9b9e",
+      "formal/results/log_0001_growth_order.md": "b005e0d0c43f31af638c9ae91c12db03a0ab450d0cb25616682a234931cc3efc",
+      "formal/results/log_0001_lower_growth.md": "769900b52ec05e2abdea038c1f19c9285e04ad847bdb45b0177cb3904a57a3cc",
+      "formal/results/log_0001_order_lower.md": "97d9121f0a6c6f982305ed6e9cfe6ba84afa50d8fc6318a9821062351be62fd5"
+    }
+  },
+  "route_a_effect": {
+    "analytic_tuple": [
+      "A1_WEAK",
+      "A2_ANALYTIC_DETERMINANT",
+      "A3_PARTIAL_ANALYTIC_STRUCTURE",
+      "A4_FAIL"
+    ],
+    "order_lower_bound": "1<=ord(D_pol)<=2",
+    "riemann_target_tuple": [
+      "A1_WEAK",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ],
+    "route_b_invocation_allowed": false
+  },
+  "scalar_certificate": {
+    "B_2_ball": "[3.06058413770995492489591306195457862025148267768458346972866331620669547158829787514643333544750191 +/- 3.31e-99]",
+    "K_2_ball": "[21.3400190317961447764699421738974899204809021780131384499504785605141885261664712094387807895470210 +/- 5.21e-98]",
+    "K_2_definition": "exp(B_2)",
+    "U_c_ball": "[1.543689012692076361570855971801747986525203297650983935240804037831168673927973866485157914576059125 +/- 5.01e-100]",
+    "alpha_0_ball": "[0.5957439419765593735306771341137586467373455109371440455048906693088429740024850730558983335010915349 +/- 4.70e-101]",
+    "arb_bits": 1024,
+    "computed_gates": {
+      "B_2_strictly_positive": true,
+      "K_2_strictly_above_one": true,
+      "alpha_0_strictly_between_zero_and_one": true,
+      "anchor_is_above_inherited_threshold": true,
+      "anchor_is_two": true,
+      "critical_polynomial_ball_contains_zero": true,
+      "mu_can_be_chosen_strictly_below_threshold": true,
+      "pl_opening_is_pi": true,
+      "pl_threshold_is_one": true,
+      "q_2_strictly_below_one": true
+    },
+    "computed_gates_passed": true,
+    "critical_polynomial_ball": "[+/- 8.03e-100]",
+    "inherited_root_bracket_decimal_digits": 100,
+    "q_2_ball": "[0.709821688803540283137963141163321650106044686524398061694689659851050805520491606434608854857076754 +/- 5.79e-100]",
+    "sigma_star_ball": "[1.338265790389953431537952046992570477429565308403450648330326149506052579300639891594750084620863928 +/- 2.85e-100]",
+    "tau_star_ball": "[0.5179443317892562581984405811653029604816406596051042403100471882428480258793799029146806311005858836 +/- 7.64e-101]",
+    "working_decimal_digits_floor": 300
+  },
+  "source_lock": "configs/source_locks/LOG-0001-ORDER-LOWER.yaml",
+  "status": "TARGET_FREE_ORDER_LOWER_CERTIFICATE_PASSED",
+  "validated_environment": {
+    "arb_bits": 1024,
+    "flint": "3.6.0",
+    "python": "3.12.3",
+    "python_flint": "0.9.0"
+  }
+}

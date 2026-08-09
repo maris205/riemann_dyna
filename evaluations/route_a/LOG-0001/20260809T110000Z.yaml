@@ -1,0 +1,168 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: LOG-0001
+audit_id: LOG-0001-ORDER-LOWER
+parent_audit_id: LOG-0001-LOWER-GROWTH
+source_commit: 9b0b09e305579d9ed0ae755b2e499a3bd05a261b
+evaluation_date: "2026-08-09T11:00:00Z"
+
+source_lock:
+  object: >-
+    The unchanged exact-U_c two-full-branch polar transfer family L_s on
+    B=ker[v_L(0)-v_R(0)] with intrinsic roof tau=log|G'| and canonical
+    determinant D_pol(s)=det_Fr(I-L_s|_B); only the Phragmen-Lindelof order
+    lower implication at the safe boundary Re(s)=2 is opened.
+  data_type: >-
+    A target-free theorem that the inherited same determinant has
+    1<=ord(D_pol)<=2, with a 1024-bit scalar certificate for the uniform
+    half-plane majorant K_2=exp(B_2).
+  clock: >-
+    T_gamma=sum log|(G^n)'| is the sole determinant clock; no physical-clock
+    substitution occurs.
+  normalization: >-
+    q(theta)=(U_c-1)sin(theta), signed orientation denominator retained,
+    matching condition unchanged, and the original complex s-plane used.
+  determinant_convention: >-
+    Delta(lambda,s)=det_Fr(I-lambda*L_s|_B), D_pol(s)=Delta(1,s), with lambda
+    distinct from s and no reciprocal or glued determinant.
+  cutoff: >-
+    No theorem or operator cutoff; half-disks are only a Phragmen-Lindelof
+    proof device and the boundary is the full line Re(s)=2.
+  precision: >-
+    Exact analytic implication plus 1024-bit outward Arb scalar arithmetic;
+    inherited U_c bracket and same-object theorems are frozen.
+  allowed_data:
+    - exact U_c polynomial and inherited certified root bracket
+    - inherited entire determinant and order-at-most-two theorem
+    - inherited uniform bound on Re(s)>=2 and D_pol'(2)>0.0213 witness
+    - standard entire-order, Phragmen-Lindelof, maximum-principle, and Liouville theorems
+    - target-free outward Arb arithmetic and source hashes
+  forbidden_data:
+    - prime, primality, Riemann-zero, xi, zeta, or USTC tables/evaluations
+    - Fredholm determinant values, roots, target matching, or fitting
+    - any changed object, clock, normalization, branch ledger, or determinant convention
+    - real-axis-only or non-uniform half-plane bounds substituted for the full boundary line
+    - claims of exact order, exponential type, divisor law, completed-xi, Route B, Hilbert-Polya, or RH
+  training_split: empty
+  validation_split: >-
+    Verify the uniform bound at Re(s)>=2, translated half-plane geometry,
+    damping sector inequality, half-disk maximum principle, epsilon->0 limit,
+    Liouville contradiction, and inherited nonconstancy/order upper witnesses.
+  test_split: >-
+    Sealed 1024-bit B_2/K_2 intervals, exact logical gates, source hashes,
+    frozen versions, and byte-identical artifact reproduction.
+  stopping_conditions:
+    - NOT_TESTABLE if entire-ness or a uniform full-line half-plane bound is missing
+    - NOT_TESTABLE if the order<1 growth estimate cannot be inserted into PL
+    - REVISE if the translated boundary or principal branch is wrong
+    - REVISE if K_2 is obtained from determinant evaluation
+    - STOP_SCOPED for exact order, target divisor, Route B, Hilbert-Polya, or RH
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The inherited intrinsic binary periodic ledger, exact repetition, signed
+    orientation, and non-lattice roof remain unchanged.
+  strongest_failure: >-
+    No primitive period is related to log primes and no von-Mangoldt weight is
+    produced.
+  metrics:
+    arithmetic_orbit_law: false
+    signed_orientation_preserved: true
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+  artifacts:
+    - formal/results/log_0001_growth_order.md
+    - formal/results/log_0001_lower_growth.md
+
+a2:
+  verdict: A2_ANALYTIC_DETERMINANT
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The canonical same-object Grothendieck determinant remains entire and its
+    signed trace logarithm supplies the uniform half-plane majorant.
+  strongest_failure: >-
+    Determinant values, roots, missing/extra zeros, and target comparisons are
+    unopened by the source lock.
+  metrics:
+    same_object_fredholm_determinant: true
+    determinant_jointly_entire: true
+    uniform_bound_Re_ge_2: PROVED
+    Fredholm_determinant_evaluated: false
+    Fredholm_roots_searched: false
+    riemann_target_a2: A2_FAIL
+  artifacts:
+    - configs/source_locks/LOG-0001-ORDER-LOWER.yaml
+    - formal/results/log_0001_order_lower.md
+    - artifacts/log_0001_order_lower/order_lower_certificate.json
+
+a3:
+  verdict: A3_PARTIAL_ANALYTIC_STRUCTURE
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Phragmen-Lindelof rules out order below one for the nonconstant same
+    determinant; combined with the inherited upper theorem this yields
+    1<=ord(D_pol)<=2.
+  strongest_failure: >-
+    Exact order, type, divisor-count asymptotics, functional equation,
+    Gamma/trivial-zero ledger, and completed-xi structure remain open.
+  metrics:
+    conjugation_symmetry: PROVED
+    analytic_continuation: entire_in_lambda_and_s
+    classical_order_lower: ">=1"
+    classical_order_upper: "<=2"
+    exact_order: OPEN
+    pl_boundary: "Re(s)=2"
+    uniform_half_plane_constant: "K_2=exp(B_2)"
+    target_counting_law: false
+    completed_xi_divisor: false
+    riemann_target_a3: A3_FAIL
+  artifacts:
+    - formal/results/log_0001_order_lower.md
+    - artifacts/log_0001_order_lower/order_lower_certificate.json
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The classical transfer family remains natural for the same polar map and
+    roof, but the order theorem supplies no Hilbert-space lift.
+  strongest_failure: >-
+    No Hilbert space, operator domain, self-adjoint generator, or same-clock
+    quantization is defined.
+  metrics:
+    natural_quantization: false
+    route_b_ready: false
+  artifacts: []
+
+analytic_route_tuple:
+  - A1_WEAK
+  - A2_ANALYTIC_DETERMINANT
+  - A3_PARTIAL_ANALYTIC_STRUCTURE
+  - A4_FAIL
+riemann_target_tuple:
+  - A1_WEAK
+  - A2_FAIL
+  - A3_FAIL
+  - A4_FAIL
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - uniform same-object bound on Re(s)>=2
+    - Phragmen-Lindelof contradiction to ord(D_pol)<1
+    - combined order interval 1<=ord(D_pol)<=2
+  not_established:
+    - exact order, type, divisor asymptotics, or target divisor
+    - arithmetic orbit law, completed-xi, quantization, Route B, Hilbert-Polya, or RH
+blocking_conditions:
+  - no arithmetic primitive-orbit law
+  - no exact order or sharp divisor theorem
+  - no natural quantization
+next_smallest_test: >-
+  Apply the breadth pivot: define one new intrinsic recurrent object with a
+  plausible arithmetic orbit law, or register a reusable obstruction; do not
+  add another fixed-point estimate to LOG-0001.
+route_b_invocation_allowed: false

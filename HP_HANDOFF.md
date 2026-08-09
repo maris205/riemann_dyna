@@ -1,4 +1,120 @@
 # HP-Dynamics Handoff
+## Current status — LOG-0001 Phragmen--Lindelof order lower bound
+
+Current clue: CLUE-A1-004.
+
+Candidate ID: LOG-0001 (formal candidate).
+
+- Evaluation source commit: 9b0b09e305579d9ed0ae755b2e499a3bd05a261b
+- HP-Dynamics research commit: to be recorded after this audit commit
+- Shared standalone paper-stage mirror commit: to be recorded if the theorem is mirrored
+- Source lock: configs/source_locks/LOG-0001-ORDER-LOWER.yaml
+- Route-A evaluation: evaluations/route_a/LOG-0001/20260809T110000Z.yaml
+- Formal theorem: formal/results/log_0001_order_lower.md
+- Analytic Route-A tuple:
+  (A1_WEAK, A2_ANALYTIC_DETERMINANT,
+   A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)
+- Riemann-target tuple: (A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+- Overall/scoped verdict: ROUTE_A_EXPLORATORY / GO_WITH_LIMITATIONS
+- Route-B tuple: all NOT_INVOKED; invocation is not authorized
+
+The frozen determinant remains
+
+\[
+D_{\rm pol}(s)=\det_{\rm Fr}(I-\mathcal L_s|_B),
+\qquad B=\ker[v_L(0)-v_R(0)].
+\]
+
+The inherited signed trace theorem gives a uniform bound
+
+\[
+|D_{\rm pol}(s)|\le K_2=e^{B_2}
+\quad\text{for }\Re(s)\ge2,
+\qquad
+B_2=\frac{-\log(1-2\alpha_0^2)}{1-\alpha_0},
+\quad \alpha_0=U_c^2/4.
+\]
+
+Assume for contradiction that the classical order is \rho<1. Choose
+\(\rho<\eta<\mu<1\), set \(g(z)=D_{\rm pol}(2-z)\) on \(\Re z>0\), and use
+the principal \(z^\mu\) branch. Since
+
+\[
+\Re(z^\mu)\ge\cos(\mu\pi/2)|z|^\mu
+\]
+
+in that half-plane, the damped function
+\(g(z)e^{-\varepsilon z^\mu}\) is bounded on the large semicircle when
+\(\eta<\mu\). The half-disk maximum principle and
+\(\varepsilon\downarrow0\) bound the complementary half-plane by \(K_2\).
+Liouville then contradicts the inherited witness \(D_{\rm pol}'(2)>0.0213\).
+
+Thus the same determinant satisfies
+
+\[
+\boxed{1\le\operatorname{ord}(D_{\rm pol})\le2.}
+\]
+
+Order one is sharp under these hypotheses; \(1+e^{-(s-2)}\) is a bounded
+order-one example on the corresponding half-plane.
+
+### Strongest evidence
+
+- The bound is uniform in imaginary height on the full line Re(s)=2, not
+  merely a real-axis limit.
+- The PL damping, half-plane orientation, principal branch, and Liouville
+  contradiction were independently audited.
+- The 1024-bit scalar certificate verifies B_2, K_2, the inherited
+  nonconstancy witness, source hashes, and all logical gates.
+
+### Strongest failure
+
+This does not identify order one versus two, type, divisor asymptotics, a
+T log T law, arithmetic orbit weights, a completed-xi divisor, quantization,
+Route B, Hilbert--Pólya, or RH. The result is an analytic closure of one
+LOG-0001 obligation, not a target-divisor result.
+
+### New reusable knowledge
+
+1. A nonconstant entire function bounded on one closed half-plane has order at
+   least one; the strict threshold comes from the half-plane opening \pi.
+2. A real-axis limit to one is not enough for this implication; uniform
+   vertical-height control on a full boundary line is essential.
+3. The order interval 1<=ord<=2 is a reusable structural fact for the frozen
+   determinant, but it does not imply a Riemann--von Mangoldt law.
+
+### Updated files
+
+- configs/source_locks/LOG-0001-ORDER-LOWER.yaml
+- evaluations/route_a/LOG-0001/20260809T110000Z.yaml
+- formal/results/log_0001_order_lower.md
+- experiments/log_0001_order_lower.py
+- artifacts/log_0001_order_lower/order_lower_certificate.json
+- tests/test_log_0001_order_lower.py
+- docs/candidate_registry.md
+- docs/research_clues.md
+- docs/research_log.md
+- HP_HANDOFF.md
+- CHANGELOG.md
+
+Route B remains closed; no obstruction-registry or operator-obligation entry is
+added.
+
+### Claim boundary and next task
+
+Established: 1<=ord(D_pol)<=2 for the same determinant under the inherited
+source lock.
+
+Not established: exact order, type, target zeros, divisor asymptotics,
+arithmetic orbit law, completed-xi, quantization, Route B, Hilbert--Pólya, or
+RH.
+
+Next smallest task: apply the breadth pivot. Define one new intrinsic recurrent
+candidate with an explicit phase space, clock, determinant convention, and a
+plausible arithmetic orbit law, or register a reusable structural obstruction.
+Do not append another fixed-point estimate to LOG-0001.
+
+Recommended verdict: GO_WITH_LIMITATIONS; overall ROUTE_A_EXPLORATORY.
 
 ## Current status — LOG-0001 cancellation-safe lower growth
 

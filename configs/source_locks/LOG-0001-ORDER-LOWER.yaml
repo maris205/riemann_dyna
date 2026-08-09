@@ -1,0 +1,130 @@
+candidate_id: LOG-0001
+audit_id: LOG-0001-ORDER-LOWER
+parent_audit_id: LOG-0001-LOWER-GROWTH
+lock_version: 1
+formal_candidate: true
+clue_id: CLUE-A1-004
+title: Phragmen-Lindelof lower bound for the same determinant order
+
+candidate_definition:
+  object: >-
+    Keep the exact-U_c two-full-branch polar transfer family L_s on
+    B=ker[v_L(0)-v_R(0)] and the canonical same-object determinant
+    D_pol(s)=det_Fr(I-L_s|_B) exactly as frozen by LOG-0001.
+  order_witness: >-
+    Use the inherited exact nonconstancy witness D_pol'(2)>0.0213 and the
+    inherited entire-function upper-order theorem ord(D_pol)<=2.
+  half_plane_anchor: >-
+    Freeze the vertical boundary a=2. The inherited signed trace-log bound
+    gives |D_pol(s)|<=K_2=exp(B_2) for every Re(s)>=2, where
+    B_2=-log(1-2*alpha_0^2)/(1-alpha_0), alpha_0=U_c^2/4.
+  pl_object: >-
+    For a contradiction hypothesis ord(D_pol)<1, translate
+    g(z)=D_pol(2-z) to the right half-plane and damp it by exp(-epsilon*z^mu)
+    with ord(D_pol)<eta<mu<1. Apply the half-plane Phragmen-Lindelof theorem
+    and then let epsilon decrease to zero.
+
+data_type:
+  primary: >-
+    A target-free theorem that a nonconstant entire D_pol bounded on one
+    closed half-plane cannot have classical order below one; combined with
+    the inherited upper bound this gives 1<=ord(D_pol)<=2.
+  regression: >-
+    1024-bit outward Arb enclosure of B_2 and K_2, exact source-hash gates,
+    and symbolic gates for the translated half-plane, damping exponent,
+    strict Phragmen-Lindelof opening threshold, Liouville contradiction, and
+    inherited nonconstancy/order bounds.
+  excluded: >-
+    Any determinant value or root, prime or zero table, xi/zeta evaluation,
+    target fitting, changed dynamical object, changed clock, changed
+    normalization, or exact-order/exponential-type claim.
+
+clock:
+  determinant_clock: >-
+    T_gamma=sum tau=log|(G^n)'| with tau=log|G'|; this audit changes no clock.
+  physical_clock: >-
+    One G step equals two Logistic iterates only in the separately reported
+    physical clock and is not used in the order theorem.
+
+normalization:
+  coordinate: q(theta)=(U_c-1)sin(theta), unscaled
+  weight: exp(s*ell)=exp(-s*tau) on inverse cycles
+  orientation: epsilon_omega=(-1)^(number of R letters) retained
+  matching: B=ker[v_L(0)-v_R(0)] with no seam or half factor
+  determinant_plane: original complex s-plane; no unfolding or rescaling
+  pl_translation: g(z)=D_pol(2-z), principal z^mu on Re(z)>0
+
+determinant_convention:
+  two_variable_fredholm: >-
+    Delta(lambda,s)=det_Fr(I-lambda*L_s|_B), the canonical Grothendieck
+    determinant from the nuclear audit.
+  candidate_determinant: D_pol(s)=Delta(1,s)
+  half_plane_bound: >-
+    |D_pol(s)|<=exp(B_2) on Re(s)>=2, inherited from the complete signed
+    lambda=1 trace logarithm; no determinant value is evaluated.
+
+cutoff:
+  theorem_cutoff: none
+  pl_half_plane_boundary: Re(s)=2
+  damping_order: choose ord(D_pol)<eta<mu<1 under contradiction
+  truncation: none; half-disks are only a proof device
+
+precision:
+  analytic_theorem: exact modulo inherited theorems and standard PL/Liouville
+  arb_bits: 1024
+  inherited_root_bracket_decimal_digits: 100
+  scalar_quantity: K_2=exp(B_2)
+  python_version: "3.12.3"
+  python_flint_version: "0.9.0"
+  flint_version: "3.6.0"
+
+allowed_data:
+  - exact U_c polynomial and inherited certified root bracket
+  - LOG-0001 nuclear Fredholm, growth-order, and lower-growth theorems
+  - the uniform closed-half-plane bound at Re(s)>=2
+  - the nonconstancy witness D_pol'(2)>0.0213
+  - standard definitions of classical entire order, half-plane Phragmen-Lindelof, and Liouville
+  - target-free outward Arb scalar arithmetic and source hashes
+
+forbidden_data:
+  - prime tables, primality predicates, Riemann-zero tables, xi/zeta values, or USTC data
+  - Fredholm determinant values, determinant roots, target roots, or fitting
+  - any change to U_c, domains, roof, clock, branch signs, matching, or determinant convention
+  - replacing a full-plane order theorem by a real-axis limit or non-uniform vertical statement
+  - claiming ord(D_pol)>1, exact order, exponential type, a divisor law, completed-xi, Route B, Hilbert-Polya, or RH
+
+training_split: empty; no fitting, parameter search, roots, or target data
+validation_split: >-
+  Verify the inherited bound is uniform for all Im(s) on Re(s)>=2, translate
+  to g(z)=D_pol(2-z), choose eta<mu<1, prove Re(z^mu)>=cos(mu*pi/2)|z|^mu
+  on the right half-plane, apply the half-disk maximum principle, let epsilon
+  decrease to zero, and invoke Liouville against D_pol'(2)>0.
+test_split: >-
+  Sealed target-free 1024-bit scalar interval, exact logical gates, inherited
+  source hashes, frozen environment, and byte-identical artifact reproduction.
+
+stopping_conditions:
+  - NOT_TESTABLE if the inherited bound is not uniform on the full line Re(s)=2 or if D_pol is not known entire
+  - NOT_TESTABLE if the order definition cannot supply a global exp(C*(1+|s|)^eta) bound for some eta<mu<1
+  - REVISE if the PL branch, half-plane orientation, or boundary mapping is inconsistent
+  - REVISE if K_2 is inferred from determinant evaluation rather than the signed trace majorant
+  - REJECTED if target data, roots, fitting, or a changed object/clock/normalization enters
+  - STOP_SCOPED for exact order, ord>1, exponential type, divisor asymptotics, target matching, Route B, Hilbert-Polya, or RH
+
+success_conditions:
+  - the PL contradiction proves a nonconstant entire function with the inherited bound has ord(D_pol)>=1
+  - the inherited growth theorem retains ord(D_pol)<=2, yielding 1<=ord(D_pol)<=2
+  - all scalar and logical gates pass without target data
+  - Route-A tuple remains [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+
+route_status_at_lock:
+  inherited_analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+  inherited_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+  route_b_invocation_allowed: false
+  checkpoint_status: DEFINED_NOT_EVALUATED
+  recommended_verdict_if_successful: GO_WITH_LIMITATIONS
+
+next_smallest_test_if_successful: >-
+  Apply the breadth pivot: freeze a new mathematically explicit intrinsic
+  recurrent candidate with a plausible arithmetic orbit law, or record a
+  reusable obstruction if no smallest defined object survives screening.

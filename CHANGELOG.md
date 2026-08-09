@@ -4,6 +4,27 @@ Repository-backed research status changes are recorded here. Detailed evidence
 and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 ## 2026-08-09
 
+### LOG-0001 Phragmen--Lindelof order lower bound
+
+- Froze a separate source lock at the same determinant, clock, normalization,
+  and matching space. Used only the inherited uniform bound on Re(s)>=2,
+  entire-ness, order-at-most-two theorem, and D_pol'(2)>0.0213.
+- Proved by a half-plane Phragmen--Lindelof argument that order below one
+  would make the translated determinant bounded on the complementary half-plane;
+  Liouville then contradicts nonconstancy.
+- Certified the target-free scalar majorant K_2=exp(B_2) at 1024-bit Arb and
+  passed a focused 7/7 logical/scalar regression.
+- Established 1<=ord(D_pol)<=2 while keeping
+  (A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)
+  and the target tuple (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL). Route B remains
+  closed.
+- Applied the breadth rule: the next task must be a new explicit recurrent
+  candidate or a reusable obstruction, not another fixed-point estimate for
+  LOG-0001.
+
+Evaluation source state:
+9b0b09e305579d9ed0ae755b2e499a3bd05a261b. Research and any paper-mirror
+commit will be recorded after the audit files are pushed.
 ### LOG-0001 cancellation-safe lower growth
 
 - Kept the exact-U_c polar map, intrinsic roof, signed orientation ledger,
