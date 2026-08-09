@@ -1540,6 +1540,121 @@ numerical zero match. Do not allocate `SS-0003` before that object is explicit.
 
 ---
 
+## COPRIME-0001 — Coprime renewal suspension
+
+### Identity
+
+- **Family:** Countable-state coprime symbolic suspension
+- **Parent candidate:** Breadth pivot after the frozen Logistic order audit
+- **Created:** 2026-08-09
+- **Current status:** `ANALYTIC_REVIEW`
+- **Owner:** sole main research agent
+- **Branch:** `main`
+- **Latest evaluation:** `evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml`
+- **Uses prime table:** `false`
+- **Uses zero table:** `false`
+
+### Exact definition
+
+\[
+\Sigma_{\rm cop}=\{(n_k)_{k\in\mathbb Z}: n_k\ge2,
+\gcd(n_k,n_{k+1})=1\},
+\qquad \tau(n_k)=\log n_0.
+\]
+
+On \(\ell^2(\{2,3,\ldots\})\), the frozen symmetric transfer kernel is
+
+\[
+(L_s)_{mn}=\mathbf 1_{\gcd(m,n)=1}(mn)^{-s/2},
+\qquad \Re s>1,
+\]
+
+and the sole determinant convention is
+\(D_{\rm cop}(s)=\det_F(I-L_s)\).
+
+### Source lock
+
+```text
+configs/source_locks/COPRIME-0001-COUNTABLE-TRACE.yaml
+```
+
+### Route-A status
+
+```yaml
+a1: A1_WEAK
+a2: A2_ANALYTIC_DETERMINANT
+a3: A3_PARTIAL_ANALYTIC_STRUCTURE
+a4: A4_FAIL
+overall: ROUTE_A_EXPLORATORY
+latest_evaluation: evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml
+```
+
+### Route-B status
+
+```yaml
+b1: NOT_INVOKED
+b2: NOT_INVOKED
+b3: NOT_INVOKED
+b4: NOT_INVOKED
+b5: NOT_INVOKED
+overall: NOT_INVOKED
+latest_evaluation: null
+```
+
+### Positive evidence
+
+- Möbius rank-one decomposition proves trace class and local holomorphicity on
+  `Re(s)>1`.
+- The same matrix is not a bounded `ell^2` operator for `Re(s)<=1`, witnessed
+  by the nonsquare-summable `e_2` column; the defining operator domain is exact.
+- The cyclic edge factors telescope exactly to `prod_i n_i^(-s)`.
+- Period-one absence, period-two and period-three primitive ledgers, and the
+  general repetition identity pass with exact rational arithmetic through
+  `k=6` on the sealed control cutoff.
+- Validation and sealed-test label blocks are disjoint, and the generator uses
+  no prime/zero data or floating-point determinant calculation.
+
+### Strongest failure and open obligations
+
+- The gcd transition rule has no proved correspondence to rational primes and
+  supplies no von-Mangoldt repetition amplitude.
+- The determinant is only defined here on `Re(s)>1`; continuation, global
+  growth, divisor counting, and functional-equation structure are open.
+- `OBR-014` records that the frozen counting-measure `ell^2` matrix is not
+  bounded for `Re(s)<=1`; any scalar continuation must be a separate theorem.
+- No natural quantization or operator domain is defined; Route B is closed.
+
+### Claim boundary
+
+**Established:** an explicit recurrent countable object, a trace-class
+Fredholm determinant on its defining half-plane, and an exact primitive-cycle
+ledger for periods 1--3 with repetition controls.
+
+**Not established:** prime-orbit law, completed-xi identity, a `T log T`
+divisor law, quantization, Route B, Hilbert--Pólya, or RH.
+
+### Reproduction
+
+```bash
+python3 experiments/coprime_0001_countable_trace.py --quiet \\
+  --output artifacts/coprime_0001/countable_trace_certificate.json
+python3 -m unittest -v tests/test_coprime_0001_countable_trace.py
+```
+
+### Next smallest test
+
+Audit whether the scalar `D_cop(s)` continues across `Re(s)=1` despite the
+exact `ell^2` operator boundary, or prove an intrinsic barrier. Do not search
+roots or compare Riemann zeros.
+
+### Decision history
+
+| Date | Previous state | New state | Evidence | Commit | Reviewer |
+|---|---|---|---|---|---|
+| 2026-08-09 | `GENERATED` | `ANALYTIC_REVIEW` | Trace-class theorem, exact operator boundary, and exact cycle ledger | pending | sole main research agent |
+
+---
+
 ## 6. 初始候选族占位
 
 以下是候选族，不是已经通过评估的候选。

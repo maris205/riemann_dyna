@@ -1,0 +1,596 @@
+{
+  "artifact_schema_version": 1,
+  "audit_id": "COPRIME-0001-COUNTABLE-TRACE",
+  "candidate_id": "COPRIME-0001",
+  "claim_boundary": {
+    "established": [
+      "L_s is trace class and holomorphic as a trace-class family on Re(s)>1",
+      "the same matrix is not a bounded ell^2 operator for Re(s)<=1",
+      "trace powers have the exact cyclic coprime ledger",
+      "periods 1-3 primitive cycles are enumerated target-free",
+      "finite s=2 inclusion-exclusion and repetition identities pass exactly"
+    ],
+    "not_established": [
+      "any prime-to-orbit correspondence or von-Mangoldt weighting",
+      "analytic continuation beyond Re(s)>1 or a global determinant divisor",
+      "Riemann-von Mangoldt counting law, functional equation, or completed-xi identity",
+      "natural quantization, Route B, Hilbert-Polya, or RH"
+    ]
+  },
+  "closed_form_ledgers": {
+    "C1": "0",
+    "C2": "zeta(s)^2/zeta(2s)-2*zeta(s)+1",
+    "C3": "prod_p(1+2*p^(-s))/(1-p^(-s))-3*zeta(s)^2/zeta(2s)+3*zeta(s)-1",
+    "cycle_weight": "w_gamma=prod_i n_i^(-s)",
+    "repetition_identity": "Tr(L_s^k)=sum_{gamma primitive, |gamma||k} |gamma| w_gamma^(k/|gamma|)"
+  },
+  "clue_id": "CLUE-A1-009",
+  "computed_gates": {
+    "finite_inclusion_exclusion_c2_passed": true,
+    "finite_inclusion_exclusion_c3_passed": true,
+    "period_1_absent": true,
+    "period_2_orientation_ledger_passed": true,
+    "period_3_orientation_ledger_passed": true,
+    "repetition_ledger_k1_to_k6_passed": true,
+    "sealed_test_trace_cycle_ledger_passed": true,
+    "trace_class_proof_ledger_complete": true,
+    "validation_test_label_blocks_disjoint": true,
+    "validation_trace_cycle_ledger_passed": true
+  },
+  "computed_gates_passed": true,
+  "data_firewall": {
+    "Fredholm_determinant_values_evaluated": false,
+    "Fredholm_roots_searched": false,
+    "Riemann_zero_tables_used": false,
+    "absolute_value_replacement_of_cycle_ledger": false,
+    "mixed_clock_or_determinant_convention": false,
+    "parameter_fitting_or_target_optimization": false,
+    "primality_predicates_used": false,
+    "prime_tables_used": false,
+    "xi_or_zeta_values_evaluated": false
+  },
+  "formal_candidate": true,
+  "frozen_object": {
+    "hilbert_space": "ell^2({2,3,...}) with counting measure",
+    "kernel": "K_s(m,n)=1_{gcd(m,n)=1}(mn)^(-s/2)",
+    "operator_domain": "Re(s)>1",
+    "phase_space": "Sigma_cop={(n_k)_{k in Z}: n_k>=2, gcd(n_k,n_{k+1})=1}",
+    "roof": "tau(n_k)=log(n_0)"
+  },
+  "inclusion_exclusion_checks": {
+    "c2_direct": "7591/52920",
+    "c2_equal": true,
+    "c2_inclusion_exclusion": "7591/52920",
+    "c3_direct": "3637/211680",
+    "c3_equal": true,
+    "c3_inclusion_exclusion": "3637/211680",
+    "finite_full_label_block": [
+      1,
+      10
+    ],
+    "s": 2
+  },
+  "next_smallest_test": "Audit whether the scalar Fredholm determinant has a target-free continuation across Re(s)=1 despite the exact ell^2 operator boundary, or prove a barrier; do not search roots or compare zeros.",
+  "primitive_low_period_ledger": {
+    "label_block": [
+      2,
+      10
+    ],
+    "period_1": {
+      "primitive_count": 0,
+      "reason": "gcd(n,n)=n>1 on the frozen label set",
+      "trace_power_zero": true
+    },
+    "period_2": {
+      "canonical_a_lt_b": true,
+      "canonical_words": [
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          9,
+          10
+        ]
+      ],
+      "orientation_factor": 2,
+      "primitive_count": 22,
+      "trace_equals_two_times_primitive": true
+    },
+    "period_3": {
+      "canonical_words": [
+        [
+          2,
+          3,
+          5
+        ],
+        [
+          2,
+          3,
+          7
+        ],
+        [
+          2,
+          5,
+          3
+        ],
+        [
+          2,
+          5,
+          7
+        ],
+        [
+          2,
+          5,
+          9
+        ],
+        [
+          2,
+          7,
+          3
+        ],
+        [
+          2,
+          7,
+          5
+        ],
+        [
+          2,
+          7,
+          9
+        ],
+        [
+          2,
+          9,
+          5
+        ],
+        [
+          2,
+          9,
+          7
+        ],
+        [
+          3,
+          4,
+          5
+        ],
+        [
+          3,
+          4,
+          7
+        ],
+        [
+          3,
+          5,
+          4
+        ],
+        [
+          3,
+          5,
+          7
+        ],
+        [
+          3,
+          5,
+          8
+        ],
+        [
+          3,
+          7,
+          4
+        ],
+        [
+          3,
+          7,
+          5
+        ],
+        [
+          3,
+          7,
+          8
+        ],
+        [
+          3,
+          7,
+          10
+        ],
+        [
+          3,
+          8,
+          5
+        ],
+        [
+          3,
+          8,
+          7
+        ],
+        [
+          3,
+          10,
+          7
+        ],
+        [
+          4,
+          5,
+          7
+        ],
+        [
+          4,
+          5,
+          9
+        ],
+        [
+          4,
+          7,
+          5
+        ],
+        [
+          4,
+          7,
+          9
+        ],
+        [
+          4,
+          9,
+          5
+        ],
+        [
+          4,
+          9,
+          7
+        ],
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          5,
+          7,
+          6
+        ],
+        [
+          5,
+          7,
+          8
+        ],
+        [
+          5,
+          7,
+          9
+        ],
+        [
+          5,
+          8,
+          7
+        ],
+        [
+          5,
+          8,
+          9
+        ],
+        [
+          5,
+          9,
+          7
+        ],
+        [
+          5,
+          9,
+          8
+        ],
+        [
+          7,
+          8,
+          9
+        ],
+        [
+          7,
+          9,
+          8
+        ],
+        [
+          7,
+          9,
+          10
+        ],
+        [
+          7,
+          10,
+          9
+        ]
+      ],
+      "orientation_factor": 2,
+      "pairwise_distinct": true,
+      "primitive_count": 40,
+      "trace_equals_three_times_primitive": true
+    }
+  },
+  "provenance": {
+    "external_target_data_used": false,
+    "generator": "experiments/coprime_0001_countable_trace.py",
+    "generator_sha256": "68e5784bcacb9730f8fa2214a49efea0536b75094122627d1a7423a6e82cf6b0",
+    "reproduction_command": "python3 experiments/coprime_0001_countable_trace.py --quiet --output artifacts/coprime_0001/countable_trace_certificate.json",
+    "source_inputs_sha256": {
+      "configs/source_locks/COPRIME-0001-COUNTABLE-TRACE.yaml": "e4812eb1033af097ecdfe23cdc0e022c96a34f579c66146fb2484288bea1d264",
+      "evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml": "7fff5e84878e6d5ee3511cbb53d05801396a4ebdf93675618d6da05c7623949b",
+      "formal/results/coprime_0001_countable_trace.md": "2a82834c5c5578d3d8128bcc1ccfceecbf62e5fa6874e8eb338dbb9e8cc86f20"
+    }
+  },
+  "repetition_control": {
+    "all_equal": true,
+    "label_block": [
+      2,
+      8
+    ],
+    "rows": [
+      {
+        "cyclic_word_count": 0,
+        "equal": true,
+        "k": 1,
+        "primitive_cycle_counts_by_period": {
+          "1": 0
+        },
+        "primitive_repetition_ledger_s2": "0/1",
+        "trace_power_s2": "0/1"
+      },
+      {
+        "cyclic_word_count": 28,
+        "equal": true,
+        "k": 2,
+        "primitive_cycle_counts_by_period": {
+          "1": 0,
+          "2": 14
+        },
+        "primitive_repetition_ledger_s2": "943/7200",
+        "trace_power_s2": "943/7200"
+      },
+      {
+        "cyclic_word_count": 66,
+        "equal": true,
+        "k": 3,
+        "primitive_cycle_counts_by_period": {
+          "1": 0,
+          "3": 22
+        },
+        "primitive_repetition_ledger_s2": "1823/117600",
+        "trace_power_s2": "1823/117600"
+      },
+      {
+        "cyclic_word_count": 404,
+        "equal": true,
+        "k": 4,
+        "primitive_cycle_counts_by_period": {
+          "1": 0,
+          "2": 14,
+          "4": 94
+        },
+        "primitive_repetition_ledger_s2": "6306343/725760000",
+        "trace_power_s2": "6306343/725760000"
+      },
+      {
+        "cyclic_word_count": 1510,
+        "equal": true,
+        "k": 5,
+        "primitive_cycle_counts_by_period": {
+          "1": 0,
+          "5": 302
+        },
+        "primitive_repetition_ledger_s2": "1710689/1016064000",
+        "trace_power_s2": "1710689/1016064000"
+      },
+      {
+        "cyclic_word_count": 7192,
+        "equal": true,
+        "k": 6,
+        "primitive_cycle_counts_by_period": {
+          "1": 0,
+          "2": 14,
+          "3": 22,
+          "6": 1183
+        },
+        "primitive_repetition_ledger_s2": "2340112681807/3584673792000000",
+        "trace_power_s2": "2340112681807/3584673792000000"
+      }
+    ],
+    "s": 2
+  },
+  "route_a_effect": {
+    "overall_verdict": "ROUTE_A_EXPLORATORY",
+    "recommended_verdict": "GO_WITH_LIMITATIONS",
+    "route_b_invocation_allowed": false,
+    "tuple": [
+      "A1_WEAK",
+      "A2_ANALYTIC_DETERMINANT",
+      "A3_PARTIAL_ANALYTIC_STRUCTURE",
+      "A4_FAIL"
+    ]
+  },
+  "sealed_test_cycle_ledger": {
+    "all_equal": true,
+    "label_block": [
+      11,
+      18
+    ],
+    "rows": [
+      {
+        "cyclic_word_count": 0,
+        "equal": true,
+        "k": 1,
+        "primitive_cycle_counts_by_period": {
+          "1": 0
+        },
+        "primitive_repetition_ledger_s2": "0/1",
+        "trace_power_s2": "0/1"
+      },
+      {
+        "cyclic_word_count": 40,
+        "equal": true,
+        "k": 2,
+        "primitive_cycle_counts_by_period": {
+          "1": 0,
+          "2": 20
+        },
+        "primitive_repetition_ledger_s2": "6909203023/6254891042400",
+        "trace_power_s2": "6909203023/6254891042400"
+      },
+      {
+        "cyclic_word_count": 132,
+        "equal": true,
+        "k": 3,
+        "primitive_cycle_counts_by_period": {
+          "1": 0,
+          "3": 44
+        },
+        "primitive_repetition_ledger_s2": "79469777/4169927361600",
+        "trace_power_s2": "79469777/4169927361600"
+      }
+    ],
+    "s": 2
+  },
+  "status": "TRACE_CLASS_AND_CYCLE_LEDGER_CERTIFICATE_PASSED",
+  "trace_class_proof": {
+    "S_d": "sum_{m>=2,d|m} m^{-Re(s)}",
+    "a_d(m)": "1_{d|m} m^{-s/2}",
+    "c_d(m)": "1_{d|m} m^{-bar(s)/2}",
+    "cycle_trace_absolute_bound": "sum_cycle |weight| <= (zeta(sigma)-1)^k for every k>=1",
+    "determinant_convention": "D_cop(s)=det_F(I-L_s), never its reciprocal",
+    "ell2_boundary_witness": "||L_s e_2||_2^2=2^(-sigma) sum_{m>=3,m odd} m^(-sigma)=infinity for sigma<=1",
+    "half_plane": "Re(s)>1",
+    "holomorphic_trace_class_family": true,
+    "index_set": "I={2,3,...}",
+    "local_uniform_trace_norm_convergence": true,
+    "mobius_identity": "1_{gcd(m,n)=1}=sum_{d|m,n} mu(d)",
+    "nuclear_norm_bound": "sum_d |mu(d)| S_d = zeta(sigma)^2/zeta(2 sigma)-1 < infinity",
+    "operator_domain_exact_for_frozen_ell2_kernel": true,
+    "proof_status": "PROVED for Re(s)>1",
+    "rank_one_term": "mu(d) a_d c_d^*",
+    "trace_expansion_fubini_justified": true
+  },
+  "validated_environment": {
+    "arithmetic": "integer + fractions.Fraction; no floating-point evidence",
+    "python": "3.12.3"
+  },
+  "validation_cycle_ledger": {
+    "all_equal": true,
+    "label_block": [
+      2,
+      10
+    ],
+    "rows": [
+      {
+        "cyclic_word_count": 0,
+        "equal": true,
+        "k": 1,
+        "primitive_cycle_counts_by_period": {
+          "1": 0
+        },
+        "primitive_repetition_ledger_s2": "0/1",
+        "trace_power_s2": "0/1"
+      },
+      {
+        "cyclic_word_count": 44,
+        "equal": true,
+        "k": 2,
+        "primitive_cycle_counts_by_period": {
+          "1": 0,
+          "2": 22
+        },
+        "primitive_repetition_ledger_s2": "7591/52920",
+        "trace_power_s2": "7591/52920"
+      },
+      {
+        "cyclic_word_count": 120,
+        "equal": true,
+        "k": 3,
+        "primitive_cycle_counts_by_period": {
+          "1": 0,
+          "3": 40
+        },
+        "primitive_repetition_ledger_s2": "3637/211680",
+        "trace_power_s2": "3637/211680"
+      }
+    ],
+    "s": 2
+  }
+}

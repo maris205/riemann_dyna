@@ -1,0 +1,151 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: COPRIME-0001
+audit_id: COPRIME-0001-COUNTABLE-TRACE
+source_commit: 3890e0aa1f5acd8228c22f4ed24db2cdde4c88dd
+evaluation_date: "2026-08-09T13:49:33Z"
+
+source_lock:
+  object: >-
+    Countable coprime renewal suspension Sigma_cop with labels n>=2,
+    roof tau(n)=log(n), and symmetric kernel
+    K_s(m,n)=1_{gcd(m,n)=1}(mn)^(-s/2) on ell^2({2,3,...}).
+  data_type: "exact trace-class theorem and target-free primitive-cycle ledger"
+  clock: "sum_i log(n_i)=log(prod_i n_i) on a cyclic word"
+  normalization: "label 1 excluded; symmetric half-roof factors; directed cycles"
+  determinant_convention: "D_cop(s)=det_F(I-L_s), defining domain Re(s)>1"
+  cutoff: "validation labels 2..10; sealed test labels 11..18; repetition control 2..8 through k=6"
+  precision: "exact integer arithmetic and Fraction weights at s=2"
+  allowed_data:
+    - "frozen coprime shift, roof, and transfer kernel"
+    - "gcd arithmetic and exact finite cyclic enumeration"
+    - "standard Mobius rank-one decomposition and Dirichlet-series bounds"
+    - "symbolic Euler-product identities without prime-table evaluation"
+  forbidden_data:
+    - "prime tables, primality predicates, or prime enumeration"
+    - "Riemann-zero tables, xi/zeta numerical values, or USTC data"
+    - "Fredholm determinant values, roots, fitting, or target optimization"
+    - "mixed determinant conventions, clocks, or absolute-value ledgers"
+  training_split: "empty; parameter-free"
+  validation_split: "labels 2..10, full cyclic words of periods 1..3"
+  test_split: "disjoint labels 11..18, periods 1..3; repetition control labels 2..8, k<=6"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The coprime shift is an explicit genuinely recurrent countable symbolic
+    system.  Cyclic words, primitive periods, rotations, repetitions, and
+    weights are enumerated exactly without target data; period-one absence and
+    the period-two/three orientation factors are certified.
+  strongest_failure: >-
+    The local gcd rule has not produced a natural correspondence between
+    primitive cycles and rational primes, nor the von-Mangoldt amplitudes
+    log(p)/p^(r/2).  Coprimality alone is not a prime-orbit law.
+  metrics:
+    intrinsic_recurrent_base: true
+    countable_state_space: true
+    period_1_cycles: 0
+    primitive_periods_certified: [2, 3]
+    repetition_identity_through_k: 6
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    orbit_completeness_basis: "exact finite label-block enumeration plus all-order cyclic trace theorem"
+  artifacts:
+    - artifacts/coprime_0001/countable_trace_certificate.json
+    - formal/results/coprime_0001_countable_trace.md
+
+a2:
+  verdict: A2_ANALYTIC_DETERMINANT
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Möbius rank-one decomposition gives a locally uniformly trace-norm
+    convergent holomorphic family for Re(s)>1, hence the same-object Fredholm
+    determinant D_cop(s)=det_F(I-L_s) exists on that half-plane.  The e_2
+    column proves that the same matrix is not bounded on ell^2 for Re(s)<=1.
+    Trace powers have an exact cyclic coprime ledger.
+  strongest_failure: >-
+    No analytic continuation, global determinant order, root count, missing or
+    extra-zero audit, or completed-xi comparison is attempted under this lock.
+  metrics:
+    trace_class_domain: "Re(s)>1"
+    frozen_ell2_operator_domain_exact: true
+    unboundedness_witness: "||L_s e_2||_2=infinity for Re(s)<=1"
+    same_object_determinant: true
+    determinant_values_evaluated: false
+    Fredholm_roots_searched: false
+    zero_error_train: "not_applicable_no_fitting"
+    zero_error_validation: "not_applicable_exact_cycle_ledger"
+    zero_error_test: "not_applicable_exact_cycle_ledger"
+    cutoff_drift: "not_applicable_to_theorem; finite ledgers are sealed diagnostics"
+    precision_drift: "none; Fraction arithmetic"
+  artifacts:
+    - artifacts/coprime_0001/countable_trace_certificate.json
+
+a3:
+  verdict: A3_PARTIAL_ANALYTIC_STRUCTURE
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The determinant has a certified holomorphic trace-class definition on an
+    open half-plane and exact low-period Dirichlet-series identities, including
+    C2 and C3 inclusion-exclusion formulas.
+  strongest_failure: >-
+    Continuation beyond Re(s)>1, functional equation, Gamma/trivial-zero
+    ledger, intrinsic T log T counting law, and global divisor equality remain
+    completely open.
+  metrics:
+    holomorphic_domain: "Re(s)>1"
+    analytic_continuation: false
+    functional_equation: false
+    target_counting_law: false
+    completed_xi_divisor: false
+    exact_low_period_ledgers: true
+  artifacts:
+    - formal/results/coprime_0001_countable_trace.md
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The symbolic suspension has a coherent classical roof, but no natural
+    unitary, scattering, or Hamiltonian lift has been defined.
+  strongest_failure: >-
+    No Hilbert space operator domain, self-adjoint generator, or same-clock
+    quantization is supplied; Route B cannot be opened.
+  metrics:
+    natural_quantization: false
+    route_b_ready: false
+  artifacts: []
+
+analytic_route_tuple:
+  - A1_WEAK
+  - A2_ANALYTIC_DETERMINANT
+  - A3_PARTIAL_ANALYTIC_STRUCTURE
+  - A4_FAIL
+riemann_target_tuple:
+  - A1_WEAK
+  - A2_FAIL
+  - A3_FAIL
+  - A4_FAIL
+overall_verdict: ROUTE_A_EXPLORATORY
+recommended_candidate_state: ANALYTIC_REVIEW
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - "L_s is a holomorphic trace-class family on Re(s)>1"
+    - "Tr(L_s^k) has the exact cyclic coprime and primitive-repetition ledger"
+    - "periods 1..3 are enumerated target-free and reproduced on disjoint finite blocks"
+  not_established:
+    - "prime-to-orbit correspondence or von-Mangoldt trace amplitudes"
+    - "analytic continuation, functional equation, or T log T divisor law"
+    - "completed-xi equality, natural quantization, Route B, Hilbert-Polya, or RH"
+blocking_conditions:
+  - "no arithmetic prime-orbit law"
+  - "no global continuation or divisor-growth theorem"
+  - "no natural quantization"
+next_smallest_test: >-
+  Audit whether the scalar D_cop(s) continues across Re(s)=1 despite the exact
+  ell^2 operator boundary, or prove a same-object barrier; do not evaluate
+  roots or compare Riemann zeros.
+route_b_invocation_allowed: false

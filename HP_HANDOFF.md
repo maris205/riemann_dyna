@@ -1,5 +1,98 @@
 # HP-Dynamics Handoff
 
+## Current status — COPRIME-0001 countable trace and primitive-cycle ledger
+
+Current clue: `CLUE-A1-009`.
+
+Candidate ID: `COPRIME-0001` (formal candidate; first theorem-edge audit).
+
+- Source lock: `configs/source_locks/COPRIME-0001-COUNTABLE-TRACE.yaml`
+- Route-A evaluation: `evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml`
+- Formal result: `formal/results/coprime_0001_countable_trace.md`
+- Generator: `experiments/coprime_0001_countable_trace.py`
+- Artifact: `artifacts/coprime_0001/countable_trace_certificate.json`
+- Focused tests: `tests/test_coprime_0001_countable_trace.py`
+- Scoped obstruction: `OBR-014` / `formal/obstructions/coprime_ell2_operator_boundary.md`
+- Route-A tuple: `(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)`
+- Overall/scoped verdict: `ROUTE_A_EXPLORATORY / GO_WITH_LIMITATIONS`
+- Route B: not invoked and not authorized
+
+### Frozen object
+
+The countable shift is
+
+```text
+Sigma_cop={(n_k)_{k in Z}: n_k>=2, gcd(n_k,n_{k+1})=1}
+tau(n_k)=log(n_0)
+```
+
+and the symmetric transfer kernel on `ell^2({2,3,...})` is
+
+```text
+(L_s)_{mn}=1_{gcd(m,n)=1}(mn)^(-s/2),  Re(s)>1.
+```
+
+The only determinant ledger is `D_cop(s)=det_F(I-L_s)`. The label one is
+excluded, and the cyclic half-roof factors telescope to
+`prod_i n_i^(-s)`. No reciprocal, logarithmic derivative, scattering
+quotient, xi factor, prime table, or zero table is admitted.
+
+### Strongest evidence
+
+For `sigma=Re(s)>1`, the Mobius rank-one expansion has trace-norm sum
+
+```text
+sum_d |mu(d)| S_d = zeta(sigma)^2/zeta(2 sigma)-1 < infinity.
+```
+
+Thus `L_s` is a locally uniformly holomorphic trace-class family. Absolute
+cycle summability justifies the exact trace-power identity and the primitive
+repetition ledger. There are no period-one cycles; period-two and period-three
+orientation factors and inclusion-exclusion formulas pass exactly. The exact
+Fraction certificate reproduces the ledger through `k=6`.
+
+The operator boundary is exact: `||L_s e_2||_2^2 = 2^(-sigma) sum_{m>=3,m odd}
+m^(-sigma)` diverges for `sigma<=1`. A continuation across `Re(s)=1`, if it
+exists, must therefore be a separate scalar determinant theorem beyond the
+original bounded `ell^2` operator; it cannot be a silent extension of the same
+operator.
+
+### Strongest failure
+
+The coprimality rule has no proved prime-orbit correspondence or
+von-Mangoldt weighting. Analytic continuation, global divisor growth,
+functional equation, completed-xi equality, and quantization are open. This
+is an A2 theorem edge, not a Riemann determinant result.
+
+### Verification
+
+```text
+Focused suite: 10/10 passed
+Full repository suite after integration: 283/283 passed
+```
+
+```bash
+python3 experiments/coprime_0001_countable_trace.py --quiet \
+  --output artifacts/coprime_0001/countable_trace_certificate.json
+python3 -m unittest -v tests/test_coprime_0001_countable_trace.py
+git diff --check
+```
+
+### Claim boundary and next smallest task
+
+Established: exact trace class on `Re(s)>1`, holomorphic same-object Fredholm
+determinant on that half-plane, exact trace powers, and primitive cycles for
+periods 1--3.
+
+Not established: prime correspondence, von-Mangoldt trace, continuation,
+`T log T` divisor law, completed xi, Route B, Hilbert--Pólya, or RH.
+
+Next smallest task: audit whether the scalar `D_cop(s)` continues across
+`Re(s)=1` despite the exact `ell^2` operator boundary, or prove an intrinsic
+barrier, preserving the source lock and never searching roots.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`; overall `ROUTE_A_EXPLORATORY`.
+
 ## Current status — LOG-0001 Phragmen--Lindelof order lower bound
 
 Current clue: CLUE-A1-004.

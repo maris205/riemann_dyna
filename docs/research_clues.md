@@ -1197,6 +1197,63 @@ component law fixed before target data. Route B remains closed.
 
 ---
 
+# CLUE-A1-009 — Coprime renewal suspension
+
+**来源：** 2026-08-09 breadth pivot after the frozen Logistic order audit
+**证据：** `MODELING_CHOICE` at creation; upgraded to `PROVED` for the first
+trace-class and cycle-ledger theorem edge
+**状态：** `ACTIVE`
+**对应层：** `A1`, `A2`, `A3`
+
+### 内容
+
+Use the explicit countable recurrent shift
+
+```text
+Sigma_cop={(n_k)_{k in Z}: n_k>=2, gcd(n_k,n_{k+1})=1}
+tau(n_k)=log(n_0)
+```
+
+with symmetric kernel
+
+```text
+(L_s)_{mn}=1_{gcd(m,n)=1}(mn)^(-s/2),  Re(s)>1.
+```
+
+The cyclic half-roof factors telescope to `prod_i n_i^(-s)`.  The transition
+rule is intrinsic and is not a prime table.  A Mobius rank-one decomposition
+gives a trace-class holomorphic family on `Re(s)>1`, and exact trace powers
+give the coprime cyclic/primitive repetition ledger.
+
+### Strongest reusable evidence
+
+- `||L_s||_1 <= zeta(sigma)^2/zeta(2 sigma)-1` for `sigma=Re(s)>1`;
+- the same matrix is unbounded on `ell^2` for `Re(s)<=1`, already on the
+  `e_2` column;
+- `Tr(L_s)=0` because label one is excluded;
+- exact period-two and period-three inclusion-exclusion formulas;
+- exact finite rational reproduction through repetition power six.
+
+### Failure boundary
+
+No prime-to-orbit correspondence, von-Mangoldt weight, analytic continuation,
+functional equation, `T log T` divisor law, completed-xi equality, or natural
+quantization has been shown.  Do not infer arithmetic meaning from the gcd
+constraint alone.
+
+### Source lock and first test
+
+```text
+configs/source_locks/COPRIME-0001-COUNTABLE-TRACE.yaml
+evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml
+```
+
+The next smallest test is whether the scalar determinant continues across the
+exact `ell^2` operator boundary at `Re(s)=1`, or whether a same-object barrier
+can be proved. Root searches and zero comparisons remain forbidden.
+
+---
+
 # 3. Route-B 线索
 
 ## CLUE-B1-001 — 自然 Hilbert 空间必须从候选结构中出现
@@ -1874,3 +1931,21 @@ overall: ROUTE_A_EXPLORATORY
 verdict: GO_WITH_LIMITATIONS
 consequence: "The same determinant now has 1<=ord(D_pol)<=2. Exact order, type, divisor asymptotics, target matching, quantization, Route B, and RH remain open. Apply the breadth pivot next."
 ~~~
+
+## Status update — CLUE-A1-009 COPRIME-0001 countable trace closure
+
+```yaml
+date: 2026-08-09
+clue_id: CLUE-A1-009
+old_status: ACTIVE
+new_status: ACTIVE
+candidate_id: COPRIME-0001
+evidence: "Mobius rank-one trace-class proof on Re(s)>1, exact cyclic trace-power expansion, period 1--3 primitive census, and Fraction repetition ledger through k=6"
+source_lock: "configs/source_locks/COPRIME-0001-COUNTABLE-TRACE.yaml"
+evaluation: "evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml"
+analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+overall: ROUTE_A_EXPLORATORY
+verdict: GO_WITH_LIMITATIONS
+consequence: "The first countable recurrent object survives as a target-free theorem edge. The frozen ell^2 matrix is trace class exactly on Re(s)>1 and unbounded on Re(s)<=1. It has no proved prime-orbit law or global divisor mechanism. Next audit only scalar continuation across this boundary or a barrier; keep Route B closed."
+```

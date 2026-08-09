@@ -5,6 +5,30 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 
 ## 2026-08-09
 
+### COPRIME-0001 countable trace and primitive-cycle ledger
+
+- Applied the breadth pivot after the frozen Logistic order interval and
+  selected one explicit recurrent countable shift with the intrinsic rule
+  `gcd(n_k,n_{k+1})=1`, roof `log(n)`, and symmetric half-roof kernel.
+- Added a source lock, exact theorem note, deterministic certificate generator,
+  artifact, focused tests, and a versioned Route-A evaluation.
+- Proved the target-free trace-class bound on `Re(s)>1` through the Mobius
+  rank-one decomposition, and recorded the exact cyclic trace-power and
+  primitive-repetition ledger. Periods 1--3 and the sealed Fraction control
+  through `k=6` pass without prime/zero data. The focused suite has 10 tests;
+  the full repository suite has 283 passing tests.
+- Added the exact operator-domain boundary: the frozen matrix is not even
+  bounded on `ell^2` for `Re(s)<=1`, as shown by its `e_2` column. Any scalar
+  continuation across the line must be proved separately.
+- Kept `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`
+  and `ROUTE_A_EXPLORATORY / GO_WITH_LIMITATIONS`. Route B remains closed.
+- The gcd grammar is not promoted to a prime-orbit or von-Mangoldt law. The
+  next task is only a target-free scalar continuation or barrier audit across
+  the exact operator boundary.
+
+Evaluation source state: `3890e0aa1f5acd8228c22f4ed24db2cdde4c88dd` at lock;
+the final research commit will freeze the added artifact and documentation.
+
 ### LOG-0001 Phragmen--Lindelof order lower bound
 
 - Froze a separate source lock at the same determinant, clock, normalization,

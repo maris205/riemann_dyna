@@ -772,3 +772,52 @@ Artifacts:
 - `formal/obstructions/harmonic_graph_tower_divisor_coefficient.md`
 - `evaluations/route_a/QG-0001/20260806T123946Z.yaml`
 - `tests/test_qg_0001_relative_fredholm.py`
+
+---
+
+## OBR-014 — Frozen COPRIME ell² kernel stops being bounded at Re(s)=1
+
+Status:
+PROVED_OBSTRUCTION (candidate-local, scope-limited)
+
+Source:
+`COPRIME-0001` / `formal/obstructions/coprime_ell2_operator_boundary.md`
+
+Statement:
+For
+
+```text
+(L_s)_{mn}=1_{gcd(m,n)=1}(mn)^(-s/2)
+```
+
+on `ell²({2,3,...})`, the Mobius trace-class proof works for
+`sigma=Re(s)>1`. The same matrix is not even a bounded operator for
+`sigma<=1`, because
+
+```text
+||L_s e_2||² = 2^(-sigma) sum_{m>=3, m odd} m^(-sigma) = infinity.
+```
+
+Impact:
+The original Fredholm determinant is source-locked to its defining half-plane.
+Any scalar continuation across `Re(s)=1` requires a separate theorem or a
+different function-space/regularization construction. It cannot be called a
+silent extension of the same bounded `ell²` operator.
+
+Scope:
+Only the frozen coprime kernel on counting-measure `ell²`; this does not rule
+out scalar continuation, another Banach space, or a different determinant.
+
+Reopening condition:
+Freeze the alternate object and prove its operator/determinant identity while
+keeping its clock and determinant ledger separate from `D_cop`.
+
+Artifacts:
+
+- `configs/source_locks/COPRIME-0001-COUNTABLE-TRACE.yaml`
+- `formal/results/coprime_0001_countable_trace.md`
+- `formal/obstructions/coprime_ell2_operator_boundary.md`
+- `experiments/coprime_0001_countable_trace.py`
+- `artifacts/coprime_0001/countable_trace_certificate.json`
+- `evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml`
+- `tests/test_coprime_0001_countable_trace.py`

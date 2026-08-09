@@ -3820,6 +3820,115 @@ comparing target zeros.
 Recommended verdict: `GO_WITH_LIMITATIONS`; overall
 `ROUTE_A_EXPLORATORY`.
 
+## 2026-08-09 — COPRIME-0001 countable trace and primitive-cycle ledger
+
+### Stable checkpoint
+
+The breadth pivot selected exactly one new mathematically explicit object:
+
+```text
+Candidate: COPRIME-0001
+Clue: CLUE-A1-009
+Source lock: configs/source_locks/COPRIME-0001-COUNTABLE-TRACE.yaml
+Evaluation: evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml
+```
+
+The phase space is the coprime countable shift on labels `n>=2`, with roof
+`tau(n)=log(n)`, and the symmetric kernel
+`K_s(m,n)=1_{gcd(m,n)=1}(mn)^(-s/2)` on `ell^2({2,3,...})`.
+The sole determinant convention is `D_cop(s)=det_F(I-L_s)` on `Re(s)>1`.
+
+### Route-A result
+
+```text
+(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+ A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)
+overall: ROUTE_A_EXPLORATORY
+scoped verdict: GO_WITH_LIMITATIONS
+Route B: not authorized
+```
+
+For `sigma=Re(s)>1`, the Mobius rank-one decomposition has trace-norm sum
+
+```text
+sum_d |mu(d)| S_d = zeta(sigma)^2/zeta(2 sigma)-1 < infinity.
+```
+
+Hence `L_s` is a locally uniformly holomorphic trace-class family. Absolute
+cycle summability gives
+
+```text
+Tr(L_s^k) = sum over cyclic coprime words (prod_i n_i)^(-s),
+```
+
+and the exact primitive/repetition ledger
+`Tr(L_s^k)=sum_{|gamma||k}|gamma| w_gamma^(k/|gamma|)`.
+There are no period-one cycles. Period-two and period-three orientation
+factors and finite inclusion-exclusion formulas pass exactly; the sealed
+Fraction ledger reproduces powers `k=1..6`.
+
+The operator boundary is exact: for the coordinate vector `e_2`,
+`||L_s e_2||_2^2 = 2^(-sigma) sum_{m>=3,m odd} m^(-sigma)`, which diverges
+for `sigma<=1`. Any continuation across `Re(s)=1` would therefore be a
+scalar determinant theorem beyond the original bounded ell-squared operator,
+not a silent extension of the same transfer operator.
+
+### Strongest failure
+
+The gcd rule has not produced a prime-to-orbit correspondence or
+von-Mangoldt amplitudes. No continuation, global divisor-count theorem,
+functional equation, completed-xi identity, or quantization is established.
+The determinant was not evaluated and no roots were searched.
+
+### New reusable knowledge
+
+1. A genuinely recurrent countable shift can be screened by an exact nuclear
+   decomposition before any target comparison.
+2. Symmetric half-roof kernels telescope to a single, unambiguous cycle clock;
+   period and repetition factors can be audited independently with exact
+   rational arithmetic.
+3. Trace class alone is an A2 theorem edge, not evidence of a prime-orbit law
+   or a completed-xi divisor.
+
+### Updated files
+
+- `IDEA_REPORT.md`
+- `configs/source_locks/COPRIME-0001-COUNTABLE-TRACE.yaml`
+- `experiments/coprime_0001_countable_trace.py`
+- `artifacts/coprime_0001/countable_trace_certificate.json`
+- `tests/test_coprime_0001_countable_trace.py`
+- `formal/results/coprime_0001_countable_trace.md`
+- `formal/obstructions/coprime_ell2_operator_boundary.md` (`OBR-014`)
+- `evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml`
+- `docs/candidate_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+### Tests and reproduction
+
+Focused suite: `10/10 passed`; full repository suite after integration:
+`283/283 passed`.
+
+```bash
+python3 experiments/coprime_0001_countable_trace.py --quiet \
+  --output artifacts/coprime_0001/countable_trace_certificate.json
+python3 -m unittest -v tests/test_coprime_0001_countable_trace.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+git diff --check
+```
+
+### Claim boundary and next task
+
+Established: exact trace class, holomorphic half-plane determinant, and exact
+period/repetition ledger. Not established: prime correspondence, global
+divisor law, completed xi, Route B, Hilbert--Pólya, or RH.
+
+Next smallest task: audit whether the scalar `D_cop(s)` continues across
+`Re(s)=1` despite the exact ell-squared operator boundary, or prove an
+intrinsic barrier, preserving this source lock and determinant convention.
+
 ## 2026-08-09 — LOG-0001 Phragmen--Lindelof order lower bound
 
 ### Stable checkpoint

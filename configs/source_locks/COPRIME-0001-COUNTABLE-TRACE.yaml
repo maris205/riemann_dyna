@@ -1,0 +1,119 @@
+candidate_id: COPRIME-0001
+audit_id: COPRIME-0001-COUNTABLE-TRACE
+lock_version: 1
+formal_candidate: true
+clue_id: CLUE-A1-009
+title: "Coprime renewal suspension: exact countable trace and cycle ledger"
+
+candidate_definition:
+  phase_space: >-
+    Sigma_cop={(n_k)_{k in Z}: n_k in {2,3,...}, gcd(n_k,n_{k+1})=1 for every k}.
+  shift: >-
+    The left shift on Sigma_cop; the local transition rule is the intrinsic
+    coprimality constraint and is not a table of primes.
+  roof: "tau((n_k))=log(n_0)"
+  hilbert_space: "ell^2(I) with counting measure, I={2,3,...}"
+  transfer_operator: >-
+    (L_s)_{mn}=1_{gcd(m,n)=1}(mn)^(-s/2), with the symmetric half-roof
+    convention and complex powers defined by the real logarithm of m,n.
+  initial_domain: >-
+    Re(s)>1, and this is exact for the frozen ell^2 matrix: for Re(s)<=1
+    the column L_s e_2 is not square summable.
+  cycle_weight: "prod_i (n_i n_{i+1})^(-s/2)=prod_i n_i^(-s)"
+  intrinsic_constraint: >-
+    gcd is evaluated arithmetically from the labels at runtime; no prime list,
+    primality predicate, zero list, or fitted transition is consulted.
+
+data_type:
+  primary: "countable-state transfer operator and exact Fredholm trace-power ledger"
+  finite_diagnostic: "exact integer cycle census and Fraction weights at s=2"
+  theorem: >-
+    trace-class holomorphic family on Re(s)>1 and exact failure of boundedness
+    for the same ell^2 matrix on Re(s)<=1
+
+clock: >-
+  The sole suspension clock is the roof tau(n)=log(n).  A k-cycle has total
+  clock sum sum_i log(n_i)=log(prod_i n_i); no alternative clock is introduced.
+
+normalization:
+  label_set: "n>=2; label 1 is excluded from the phase space"
+  kernel_split: "one half-roof factor on each endpoint: (mn)^(-s/2)"
+  weight: "w_gamma=exp(-s*sum_i tau(n_i))=prod_i n_i^(-s)"
+  orientation: "directed cyclic shift; reversal is a distinct orbit unless it is a rotation"
+  multiplicity: "Tr(L_s^k)=sum_{primitive gamma, |gamma| divides k} |gamma| w_gamma^(k/|gamma|)"
+
+determinant_convention:
+  frozen_object: "D_cop(s)=det_F(I-L_s)"
+  defining_domain: "Re(s)>1"
+  excluded_ledgers:
+    - "1/D_cop(s)"
+    - "D_cop'(s)/D_cop(s)"
+    - "any determinant assembled from a separate operator or scattering quotient"
+    - "completed Riemann xi or a fitted zero product"
+  log_determinant_status: >-
+    The Fredholm determinant is defined by trace class.  No lambda=1
+    trace-log expansion is asserted unless a separate norm bound is proved.
+
+cutoff:
+  mathematical_object: "none; labels and periods are infinite/all-order"
+  validation_label_block: "2..10, periods 1..3"
+  sealed_test_label_block: "11..18, periods 1..3"
+  repetition_control: "labels 2..8, powers k=1..6"
+  finite_weight_point: "s=2, exact rational weights 1/(prod labels)^2"
+
+precision:
+  theorem: "exact symbolic inequalities and standard Dirichlet-series convergence"
+  finite_census: "exact integer arithmetic"
+  finite_weights: "fractions.Fraction at s=2"
+  floating_point_evidence: "forbidden; no numerical determinant or root calculation"
+  python_version: "3.12.3"
+
+allowed_data:
+  - "the frozen coprime shift, roof, and symmetric transfer kernel"
+  - "gcd arithmetic, cyclic-word enumeration, and exact rational arithmetic"
+  - "the standard Möbius identity and absolutely convergent Dirichlet-series bounds"
+  - "the p-series divergence of the odd-label e_2 column for Re(s)<=1"
+  - "formal Euler-product identities stated symbolically, without prime-table evaluation"
+  - "Route-A evaluator rules and prior obstruction registry"
+
+forbidden_data:
+  - "prime tables, prime enumeration, or primality predicates"
+  - "Riemann-zero tables, xi/zeta numerical values, or USTC data"
+  - "any parameter fitting, target optimization, or post-hoc roof/weight choice"
+  - "Fredholm determinant values, determinant roots, or zero matching"
+  - "mixing Z, 1/Z, Z'/Z, det(I-L_s), or a separate scattering determinant"
+  - "replacing signed/complex traces by separate absolute-value ledgers"
+  - "claiming a von-Mangoldt law from the coprimality constraint alone"
+
+training_split: "empty; parameter-free object and no target optimization"
+validation_split: >-
+  Exact full cyclic-word census on labels 2..10 for periods 1..3, including
+  primitive/repetition factors and finite inclusion-exclusion checks.
+test_split: >-
+  Disjoint sealed label block 11..18 for periods 1..3, plus the independent
+  labels 2..8 repetition ledger through k=6 and theorem-level trace-class audit.
+
+stopping_conditions:
+  - "NOT_TESTABLE if the transfer operator, domain, or determinant convention is not explicit"
+  - "REVISE if the trace-class decomposition or cyclic trace ledger fails"
+  - "REJECTED if any prime/zero table, primality predicate, fitting, or ledger mixing appears"
+  - "STOP_SCOPED if a same-object analytic continuation or divisor-growth obstruction is proved"
+  - "do not call a scalar continuation the same bounded ell^2 operator on Re(s)<=1"
+  - "do not invoke Route B unless a later Route-A evaluation explicitly reaches A4_ROUTE_B_READY"
+
+success_conditions:
+  - "trace-class proof closes on Re(s)>1"
+  - "trace powers equal the exact coprime cyclic ledger"
+  - "periods 1..3 and the repetition identity are independently reproduced"
+  - "all data-firewall and source-lock gates pass"
+
+route_status_at_lock:
+  route_a_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+  route_b_invocation_allowed: false
+  checkpoint_status: DEFINED_NOT_EVALUATED
+  recommended_verdict_if_successful: GO_WITH_LIMITATIONS
+
+next_smallest_test_if_successful: >-
+  Determine whether the scalar D_cop has a target-free analytic continuation
+  across Re(s)=1 despite the exact ell^2 operator boundary, or prove a sharp
+  barrier, without evaluating determinant roots or comparing Riemann zeros.
