@@ -2,6 +2,37 @@
 
 Repository-backed research status changes are recorded here. Detailed evidence
 and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
+## 2026-08-09
+
+### LOG-0001 cancellation-safe lower growth
+
+- Kept the exact-U_c polar map, intrinsic roof, signed orientation ledger,
+  matching space, stadiums, and Fredholm determinant convention unchanged.
+- Proved local-uniform differentiation of the complete signed trace logarithm
+  on the safe zero-free half-plane and strict positivity of every real-axis
+  derivative summand.
+- Retained only the exact n=1 pure-left term after the full-ledger positivity
+  proof, certifying D_pol'(2)>0.0213 with 1024-bit outward Arb arithmetic and
+  an inherited 100-decimal-digit U_c bracket.
+- Applied Cauchy's estimate to obtain M_D(R)>0.0213(R-2) for R>2 and
+  M_D(R)>0.01065R for R>=4. Together with D_pol(sigma)->1, this proves
+  nonconstant/transcendental-entire status and qualitative super-polynomial
+  maximum-modulus growth.
+- Kept the analytic tuple at
+  (A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)
+  and the Riemann-target tuple at
+  (A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL). Route B remains closed.
+- Added the lower-growth source lock, Route-A evaluation, theorem note,
+  target-free certificate, focused tests, and registry/frontier updates.
+- Fixed certificate metadata to distinguish working precision from inherited
+  input accuracy and independently rechecked the 1024-bit scalar inequality.
+- Selected a separate Phragmen--Lindelöf audit for a possible order lower
+  bound as the next smallest task; positive/exact order, divisor asymptotics,
+  target matching, completed-xi, quantization, and RH remain outside scope.
+
+Evaluation source state:
+8cabec587cf0a796f4f004bf5b1b0611de3305f3. Research and mirror commit hashes
+will be recorded after their respective SSH pushes.
 
 ## 2026-08-08
 

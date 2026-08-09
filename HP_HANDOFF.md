@@ -1,5 +1,150 @@
 # HP-Dynamics Handoff
 
+## Current status — LOG-0001 cancellation-safe lower growth
+
+Current clue: `CLUE-A1-004`.
+
+Candidate ID: `LOG-0001` (formal candidate).
+
+- Evaluation source commit: `8cabec587cf0a796f4f004bf5b1b0611de3305f3`
+- HP-Dynamics research commit: to be recorded after this checkpoint commit
+- Shared standalone paper-stage mirror commit: to be recorded after mirror push
+- Source lock: `configs/source_locks/LOG-0001-LOWER-GROWTH.yaml`
+- Route-A evaluation: `evaluations/route_a/LOG-0001/20260809T073000Z.yaml`
+- Formal theorem: `formal/results/log_0001_lower_growth.md`
+- Analytic Route-A tuple:
+  `(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+  A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)`
+- Riemann-target tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Overall/scoped verdict: `ROUTE_A_EXPLORATORY / GO_WITH_LIMITATIONS`
+- Route-B tuple: all `NOT_INVOKED`; invocation is not authorized
+- Shared mirror target:
+  `hilbert-polya-structure/logistic_dynamics/projects/exact_uc_polar_lower_growth/`
+
+The determinant and every clock, branch sign, matching condition, and
+normalization are inherited unchanged:
+
+\[
+D_{\rm pol}(s)=\det_{\rm Fr}(I-\mathcal L_s|_B),
+\qquad B=\ker[v_L(0)-v_R(0)].
+\]
+
+The new lock opens only the safe real point `s=2`.  Writing
+
+\[
+\alpha_0=U_c^2/4,\qquad \tau_*=-\log\alpha_0,
+\qquad
+B_2=\frac{-\log(1-2\alpha_0^2)}{1-\alpha_0},
+\]
+
+the complete signed trace logarithm is locally uniformly differentiable on
+the inherited zero-free half-plane.  Every real-axis summand has a positive
+orientation denominator, so retaining the `n=1` pure-left word only after the
+full-ledger positivity proof gives
+
+\[
+D_{\rm pol}'(2)\ge
+c_2:=e^{-B_2}\frac{\tau_*\alpha_0^2}{1-\alpha_0}
+>0.0213.
+\]
+
+The 1024-bit outward Arb certificate uses the inherited 100-decimal-digit
+root bracket and reports `c_2=0.02130840854978611545...` with 327 relative
+accuracy bits.  Cauchy's estimate then gives
+
+\[
+M_D(R)>0.0213(R-2)\quad(R>2),
+\qquad M_D(R)>0.01065R\quad(R\ge4).
+\]
+
+Since the same determinant tends to one on the positive real axis while its
+derivative at two is nonzero, it is nonconstant and transcendental entire;
+the maximum modulus eventually dominates every fixed power.  This is a
+same-object analytic lower-growth result, not a divisor or target-zero result.
+
+### Strongest evidence
+
+- Exact signed denominators and the full repetition ledger are retained; no
+  auxiliary-`lambda` coefficient or determinant truncation is substituted.
+- Local-uniform differentiated trace-log convergence and strict positivity of
+  every real summand were independently audited.
+- The pure-left boundary word has exact `epsilon=+1`, multiplier
+  `alpha_0`, and matching multiplicity one.
+- Focused lower-growth suite: `8/8 passed`; the certificate reproduces
+  byte-for-byte under the frozen CPython/python-flint/FLINT environment.
+
+### Strongest failure
+
+The result does not establish positive or exact entire order, exponential
+lower type, any zero-count lower bound, a `T log T` law, a log-prime or
+von-Mangoldt orbit law, a functional equation, completed-`xi` divisor,
+quantization, Route B, Hilbert--Pólya, or RH.  The next order-lower audit is
+separately locked and must not be folded into this result.
+
+### New reusable knowledge
+
+1. Positivity on a safe real half-plane can turn one exact signed trace term
+   into a rigorous lower bound for the same Fredholm determinant without
+   evaluating determinant values or roots.
+2. A nonzero derivative plus `D_pol(sigma)->1` proves transcendental-entire
+   status, but not positive order or a zero-count asymptotic.
+3. A 1024-bit working context with a 100-digit inherited root bracket should
+   be reported as interval working precision, not as 300 correct decimal
+   output digits.
+
+### Updated files
+
+- `configs/source_locks/LOG-0001-LOWER-GROWTH.yaml`
+- `evaluations/route_a/LOG-0001/20260809T073000Z.yaml`
+- `formal/results/log_0001_lower_growth.md`
+- `experiments/log_0001_lower_growth.py`
+- `artifacts/log_0001_lower_growth/lower_growth_certificate.json`
+- `tests/test_log_0001_lower_growth.py`
+- `docs/candidate_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+`docs/obstruction_registry.md` and `docs/operator_obligations.md` remain
+unchanged: no obstruction was proved and Route B is still closed.
+
+### Reproduction commands
+
+```bash
+python3 experiments/log_0001_lower_growth.py \
+  --quiet \
+  --output artifacts/log_0001_lower_growth/lower_growth_certificate.json
+python3 -m unittest -v tests/test_log_0001_lower_growth.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 -c 'from pathlib import Path; import yaml; fs=list(Path("configs/source_locks").glob("*.yaml"))+list(Path("evaluations").rglob("*.yaml")); [yaml.safe_load(p.read_text(encoding="utf-8")) for p in fs]; print(len(fs))'
+git diff --check
+sha256sum \
+  artifacts/log_0001_lower_growth/lower_growth_certificate.json \
+  experiments/log_0001_lower_growth.py \
+  formal/results/log_0001_lower_growth.md \
+  configs/source_locks/LOG-0001-LOWER-GROWTH.yaml \
+  evaluations/route_a/LOG-0001/20260809T073000Z.yaml \
+  tests/test_log_0001_lower_growth.py
+```
+
+### Claim boundary and next task
+
+Established: `D_pol'(2)>0.0213`, the displayed linear maximum-modulus lower
+bounds, nonconstant/transcendental-entire status, and qualitative
+super-polynomial maximum-modulus growth for the frozen same determinant.
+
+Not established: positive or exact order, exponential lower growth, zero-count
+lower bounds, sharp divisor asymptotics, arithmetic orbit weights, target
+zeros, functional equation, completed-`xi`, quantization, Route B,
+Hilbert--Pólya, or RH.
+
+Next smallest task: under a new source lock, audit whether the proved bounded
+right half-plane, finite-order upper bound, and nonconstancy force
+`ord(D_pol)>=1` by a Phragmen--Lindelöf argument; then apply the breadth pivot.
+
+Recommended verdict: `GO_WITH_LIMITATIONS`; overall `ROUTE_A_EXPLORATORY`.
+
 ## Current status — LOG-0001 explicit conformal restriction ratios
 
 Current clue: `CLUE-A1-004`.

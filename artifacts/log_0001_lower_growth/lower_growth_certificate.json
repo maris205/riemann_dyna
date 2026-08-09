@@ -1,0 +1,179 @@
+{
+  "analytic_ledger": {
+    "B_2": "-log(1-2*alpha_0^2)/(1-alpha_0)",
+    "D_2_lower": "exp(-B_2)",
+    "D_prime_2_lower": "c_2=(1-2*alpha_0^2)^(1/(1-alpha_0))*(-log(alpha_0))*alpha_0^2/(1-alpha_0)>0.0213",
+    "all_real_derivative_summands_strictly_positive": true,
+    "differentiated_trace_log": "(log D_pol)'(sigma)=sum_(n>=1) sum_omega T_omega*exp(-sigma*T_omega)/(n*(1-epsilon_omega*exp(-T_omega)))",
+    "local_uniform_differentiation": "T*exp(-sigma*T)<=exp(-sigma_1*T)/(e*(sigma-sigma_1))",
+    "orientation_signs_preserved": true,
+    "pure_left_ledger": {
+      "T_L": "tau_*=-log(alpha_0)",
+      "epsilon_L": 1,
+      "exp_minus_T_L": "alpha_0=U_c^2/4",
+      "matching_factor": 1
+    },
+    "retained_term": "n=1 pure-left word L",
+    "retained_term_is_a_proof_lower_bound_not_a_truncation": true,
+    "trace_log_domain": "Re(s)>log(2)/log(4/U_c^2)",
+    "trace_log_identity": "log D_pol(s)=-sum_(n>=1) sum_omega exp(-s*T_omega)/(n*(1-epsilon_omega*exp(-T_omega)))"
+  },
+  "arb_interval_certificate": {
+    "B_2_ball": "[3.06058413770995492489591306195457862025148267768458346972866331620669547158829787514643333544750191 +/- 3.31e-99]",
+    "U_c_ball": "[1.543689012692076361570855971801747986525203297650983935240804037831168673927973866485157914576059125 +/- 5.01e-100]",
+    "alpha_0_ball": "[0.5957439419765593735306771341137586467373455109371440455048906693088429740024850730558983335010915349 +/- 4.70e-101]",
+    "alpha_0_squared_ball": "[0.3549108444017701415689815705816608250530223432621990308473448299255254027602458032173044274285383768 +/- 8.94e-101]",
+    "arb_bits": 1024,
+    "c_2_ball": "[0.0213084085497861154550144929964632935814277432466026376964708485913821701232448597630702443895313432 +/- 5.25e-101]",
+    "c_2_half_ball": "[0.0106542042748930577275072464982316467907138716233013188482354242956910850616224298815351221947656716 +/- 2.63e-101]",
+    "c_2_relative_accuracy_bits": 327,
+    "computed_gates": {
+      "B_2_is_strictly_positive": true,
+      "alpha_0_is_strictly_between_zero_and_one": true,
+      "c_2_has_at_least_three_hundred_relative_bits": true,
+      "c_2_is_above_published_derivative_floor": true,
+      "critical_polynomial_ball_contains_zero": true,
+      "determinant_lower_factor_is_between_zero_and_one": true,
+      "half_c_2_is_above_published_radial_floor": true,
+      "pure_left_log_derivative_is_positive": true,
+      "safe_point_is_inside_trace_log_half_plane": true,
+      "tau_star_is_strictly_positive": true,
+      "trace_gap_is_strictly_positive": true,
+      "trace_ratio_two_alpha_squared_is_below_one": true
+    },
+    "computed_gates_passed": true,
+    "critical_polynomial_ball": "[+/- 8.03e-100]",
+    "derivative_safe_floor": "0.0213",
+    "determinant_lower_factor_ball": "[0.0468603143469564230825324962789845742120497883722984723325002312180484545359820471197878572425494378 +/- 7.66e-101]",
+    "inherited_root_bracket_decimal_digits": 100,
+    "linear_radial_safe_floor": "0.01065",
+    "pure_left_log_derivative_ball": "[0.454721843989723392951372176498367900001111538138158929179099032997435308368926351962186974635331156 +/- 5.63e-100]",
+    "sigma_star_ball": "[1.338265790389953431537952046992570477429565308403450648330326149506052579300639891594750084620863928 +/- 2.85e-100]",
+    "tau_star_ball": "[0.5179443317892562581984405811653029604816406596051042403100471882428480258793799029146806311005858836 +/- 7.64e-101]",
+    "trace_gap_1_minus_2_alpha_0_squared_ball": "[0.290178311196459716862036858836678349893955313475601938305310340148949194479508393565391145142923246 +/- 5.79e-100]",
+    "trace_ratio_2_alpha_0_squared_ball": "[0.709821688803540283137963141163321650106044686524398061694689659851050805520491606434608854857076754 +/- 5.79e-100]",
+    "working_decimal_digits_floor": 300
+  },
+  "artifact_schema_version": 1,
+  "audit_id": "LOG-0001-LOWER-GROWTH",
+  "candidate_id": "LOG-0001",
+  "claim_boundary": {
+    "analytic_tuple": [
+      "A1_WEAK",
+      "A2_ANALYTIC_DETERMINANT",
+      "A3_PARTIAL_ANALYTIC_STRUCTURE",
+      "A4_FAIL"
+    ],
+    "not_established": [
+      "positive or exact entire-function order",
+      "exponential lower growth or any zero-count lower bound",
+      "sharp critical-strip divisor asymptotic or T*log(T) law",
+      "Fredholm or Riemann zero locations",
+      "completed-xi, quantization, Route B, Hilbert-Polya, or RH"
+    ],
+    "riemann_target_tuple": [
+      "A1_WEAK",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ],
+    "route_a_effect": "same-object lower-growth theorem added; tuple unchanged",
+    "route_b_invocation_allowed": false
+  },
+  "computed_gates": {
+    "all_arb_interval_gates_pass": true,
+    "all_exact_bracket_and_geometry_gates_pass": true,
+    "flint_version_is_frozen": true,
+    "python_flint_version_is_frozen": true,
+    "python_version_is_frozen": true
+  },
+  "computed_gates_passed": true,
+  "data_firewall": {
+    "Fredholm_determinant_evaluated": false,
+    "Fredholm_roots_searched": false,
+    "Riemann_zero_tables_used": false,
+    "USTC_data_used": false,
+    "auxiliary_lambda_coefficient_substituted": false,
+    "fitting_or_parameter_search_used": false,
+    "primality_predicates_used": false,
+    "prime_tables_used": false,
+    "xi_or_zeta_evaluated": false
+  },
+  "error_budget": {
+    "cancellation": "signed denominators retained; positivity is proved only on the safe real axis",
+    "normalization": "unchanged exact polar and matching ledgers",
+    "operator_truncation": "none",
+    "root_finding": "only the inherited certified U_c bracket; no determinant root",
+    "rounding": "1024-bit outward Arb scalar intervals",
+    "word_truncation": "none; one positive term is retained only after the full derivative remainder is proved positive"
+  },
+  "exact_bracket_and_cauchy_certificate": {
+    "Cauchy_center": 2,
+    "Cauchy_radius": "R-2",
+    "computed_gates": {
+      "critical_polynomial_derivative_is_globally_positive": true,
+      "critical_polynomial_is_negative_at_lower_endpoint": true,
+      "critical_polynomial_is_positive_at_upper_endpoint": true,
+      "published_linear_floor_is_half_the_derivative_floor": true,
+      "radial_factor_is_one_half": true,
+      "safe_real_point_is_two": true,
+      "simplified_radius_is_at_least_twice_the_center": true
+    },
+    "computed_gates_passed": true,
+    "critical_polynomial": "u^3-2*u^2+2*u-2",
+    "critical_polynomial_derivative": "3*u^2-4*u+2>0 on R (discriminant -8)",
+    "lower_endpoint_polynomial_sign": -1,
+    "radial_factor": "1/2",
+    "safe_real_point": 2,
+    "simplified_radius_minimum": 4,
+    "upper_endpoint_polynomial_sign": 1
+  },
+  "formal_candidate": true,
+  "frozen_object": {
+    "auxiliary_fredholm_variable_kept_separate": true,
+    "clock": "T_gamma=sum log|G'|",
+    "determinant": "D_pol(s)=det_Fr(I-L_s|_B)",
+    "matching_space": "B=ker[v_L(0)-v_R(0)]",
+    "operator": "same LOG-0001 matching-space family L_s|_B",
+    "safe_real_point": 2,
+    "signed_trace_denominator": "1-epsilon_omega*exp(-T_omega)"
+  },
+  "maximum_modulus_consequence": {
+    "Cauchy_disk": "center 2, radius R-2, contained in |s|<=R",
+    "all_R_at_least_4": "M_D(R)>0.01065*R",
+    "all_R_greater_than_2": "M_D(R)>0.0213*(R-2)",
+    "definition": "M_D(R)=max_(|s|<=R)|D_pol(s)|",
+    "nonconstant": true,
+    "qualitative_super_polynomial_growth": "M_D(R)/R^N -> infinity for every fixed N>=0",
+    "transcendental_entire": true
+  },
+  "next_smallest_test": "Under a separate lock, test whether boundedness on the proved right half-plane plus nonconstancy and finite order force ord(D_pol)>=1 by Phragmen-Lindelof; then apply the breadth rule.",
+  "parent_audit_id": "LOG-0001-CONFORMAL-RATIO",
+  "provenance": {
+    "external_target_data_used": false,
+    "generator": "experiments/log_0001_lower_growth.py",
+    "generator_sha256": "e8df1b54cb8acd3d2b03194cd7e904f9fe0907d5d6e7a571055ab5c73594d44d",
+    "reproduction_command": "python3 experiments/log_0001_lower_growth.py --quiet --output artifacts/log_0001_lower_growth/lower_growth_certificate.json",
+    "route_a_evaluation": "evaluations/route_a/LOG-0001/20260809T073000Z.yaml",
+    "source_inputs_sha256": {
+      "artifacts/log_0001_conformal_ratio/conformal_ratio_certificate.json": "005fedd097a054adba0ea303341dee3007e3ad2bdcaf417b7786fc45854babf3",
+      "artifacts/log_0001_growth_order/growth_order_certificate.json": "9e28833c0b68aabc5e9fc2d771d7e7d2c7a6ffca8e2cd6abdbb3a7dd430120ec",
+      "configs/source_locks/LOG-0001-CONFORMAL-RATIO.yaml": "50a615cb60911df144b33804ca4c935aacbeafb6c6541474f3eb39a9fa4cbdcd",
+      "configs/source_locks/LOG-0001-GROWTH-ORDER.yaml": "4a2493ae51ebce6812e05f48330ab71b161c8cad68d540f9bd3416f63b29181e",
+      "configs/source_locks/LOG-0001-LOWER-GROWTH.yaml": "f209fd14d2fa4f90f8a8cd840520f300967be2ee123f87fa72ad187aa93b27b9",
+      "experiments/p4_logistic_uc_first_return_support.py": "6165e62f5ac84f955e9474e8291d32e5213cea409760d6768b3ecec571da9b9e",
+      "formal/results/exact_uc_polar_boundary_trace.md": "1f18fdb181c0d50fb6871bfddb0085d14d9460b733f7ea36d2325b05a03d94a0",
+      "formal/results/log_0001_conformal_ratio.md": "a731f53d154526befa2b22f1cec6945e4d2c779e80258241a1a216c656d19c75",
+      "formal/results/log_0001_growth_order.md": "b005e0d0c43f31af638c9ae91c12db03a0ab450d0cb25616682a234931cc3efc",
+      "formal/results/log_0001_lower_growth.md": "769900b52ec05e2abdea038c1f19c9285e04ad847bdb45b0177cb3904a57a3cc"
+    }
+  },
+  "source_lock": "configs/source_locks/LOG-0001-LOWER-GROWTH.yaml",
+  "status": "TARGET_FREE_LOWER_GROWTH_CERTIFICATE_PASSED",
+  "validated_environment": {
+    "arb_bits": 1024,
+    "flint": "3.6.0",
+    "python": "3.12.3",
+    "python_flint": "0.9.0"
+  }
+}

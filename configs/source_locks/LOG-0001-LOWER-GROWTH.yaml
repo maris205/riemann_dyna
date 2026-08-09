@@ -1,0 +1,158 @@
+candidate_id: LOG-0001
+audit_id: LOG-0001-LOWER-GROWTH
+parent_audit_id: LOG-0001-CONFORMAL-RATIO
+lock_version: 1
+formal_candidate: true
+clue_id: CLUE-A1-004
+title: Cancellation-safe derivative and maximum-modulus lower growth
+
+candidate_definition:
+  parameter: >-
+    U_c is the unique real root of u^3-2*u^2+2*u-2=0 and rho=U_c-1.
+    The rounded legacy literal 1.543689 remains forbidden.
+  real_dynamics: >-
+    Keep the exact two-full-branch polar map G=q^(-1) o (-f^2) o q on
+    I=[-pi/2,pi/2], q(theta)=rho*sin(theta), f(x)=1-U_c*x^2, together with
+    the inherited doubled branch, half-open geometric ledger, and intrinsic
+    positive roof tau=log|G'|.
+  complex_domains: >-
+    Keep the radius-1/1000 operator stadiums U_L,U_R and the radius-3/5000
+    proof-only inner stadiums. No conformal coordinate or domain is changed
+    in this audit.
+  spaces: >-
+    X=A(U_L) direct-sum A(U_R) with the maximum norm and
+    B=ker[v_L(0)-v_R(0)].
+  transfer_family: >-
+    (L_s v)_j(z)=exp(s*ell(z))*[v_L(phi_L(z))+v_R(phi_R(z))], where
+    ell=Log(a), phi_L'=+a, and phi_R'=-a. Keep L_s restricted to B and keep
+    lambda as a separate auxiliary Fredholm variable.
+  scalar_anchor: >-
+    The sole evaluation point is the inherited safe real point s_0=2. Put
+    alpha_0=U_c^2/4 and tau_*=-log(alpha_0). The pure-left one-letter word
+    has exp(-T_L)=alpha_0, epsilon_L=+1, and T_L=tau_*.
+
+data_type:
+  primary: >-
+    An exact same-determinant lower bound for D_pol'(2), obtained by
+    differentiating the absolutely convergent signed trace logarithm on the
+    proved zero-free half-plane and retaining one positive pure-left term
+    only after positivity of every complete-ledger summand is proved.
+  consequence: >-
+    A Cauchy-estimate lower bound for M_D(R)=max_{|s|<=R}|D_pol(s)|,
+    nonconstancy and transcendental-entire status, and the qualitative
+    super-polynomial maximum-modulus consequence.
+  regression: >-
+    Target-free 1024-bit outward Arb enclosures of U_c, alpha_0, tau_*, the
+    trace-log majorant B_2, the determinant lower factor, the pure-left
+    logarithmic-derivative term, and their product c_2.
+  excluded: >-
+    Fredholm determinant evaluation, Fredholm-root searches, Riemann zeros,
+    prime tables, xi/zeta evaluations, USTC data, fitted spectral maps,
+    auxiliary-lambda coefficient substitution, and any changed determinant,
+    clock, domain, or normalization.
+
+clock:
+  determinant_clock: >-
+    T_gamma=sum tau=log|(G^n)'| is the sole determinant time. Its exact
+    one-step lower bound is tau_*=-log(alpha_0)=log(4/U_c^2).
+  physical_clock: >-
+    One G step equals two f iterates only in the separately reported physical
+    clock. It cannot replace the roof time.
+
+normalization:
+  coordinate: q(theta)=rho*sin(theta), unscaled
+  weight: exp(s*ell)=exp(-s*tau) on inverse cycles
+  orientation: epsilon_omega=(-1)^(number of R letters) remains inside every exact trace denominator
+  matching: B=ker[v_L(0)-v_R(0)] with no half, seam, or doubled-copy factor
+  spectral_parameter: s is the roof parameter; lambda is auxiliary and never identified with s
+  maximum_modulus: M_D(R)=max_{|s|<=R}|D_pol(s)| in the original s-plane
+
+determinant_convention:
+  two_variable_fredholm: >-
+    Delta(lambda,s)=det_Fr(I-lambda*L_s|_B), the same canonical Grothendieck
+    determinant proved in the nuclear audit. No regularized, spectral-zeta,
+    reciprocal, logarithmic-derivative, or separately glued determinant is
+    admitted.
+  candidate_determinant: D_pol(s)=Delta(1,s)
+  safe_trace_log: >-
+    On Re(s)>log(2)/log(4/U_c^2), use the already proved identity
+    log D_pol(s)=-sum_(n>=1) Tr(L_s^n)/n with the exact signed denominators.
+    Differentiation is allowed only after locally uniform absolute convergence
+    of the differentiated series is proved.
+
+cutoff:
+  theorem_word_cutoff: none
+  theorem_operator_cutoff: none
+  retained_lower_bound_term: n=1 pure-left based word L
+  retained_term_status: proof lower bound after full-ledger positivity; not a determinant truncation
+  safe_real_point: 2
+  maximum_modulus_domain: all R>2; simplified linear statement for R>=4
+
+precision:
+  analytic_theorem: exact
+  arb_bits: 1024
+  arb_working_decimal_digits_floor: 300
+  inherited_root_bracket_decimal_digits: 100
+  published_decimal_digits: 32
+  derivative_safe_floor: "0.0213"
+  radial_linear_safe_floor: "0.01065"
+  python_version: "3.12.3"
+  python_flint_version: "0.9.0"
+  flint_version: "3.6.0"
+
+allowed_data:
+  - exact U_c polynomial and inherited certified root bracket
+  - inherited full matching-space nuclear determinant and exact signed all-power trace theorem
+  - inherited zero-free half-plane, safe point s_0=2, and trace-log majorant
+  - inherited exact pure-left boundary trace and alpha_0=U_c^2/4
+  - standard locally uniform differentiation, Cauchy estimates, and elementary entire-function theorems
+  - target-free outward Arb scalar arithmetic
+
+forbidden_data:
+  - prime tables, primality predicates, zero tables, xi/zeta evaluations, or USTC data
+  - Fredholm determinant values, determinant roots, target roots, or any arithmetic fitting
+  - replacing D_pol(s)=Delta(1,s) by a coefficient in the auxiliary lambda expansion
+  - using D_pol'(0), a single trace term with uncontrolled remainder, or a determinant truncation
+  - dropping orientation signs or replacing required signed cancellation by a separate absolute-value determinant
+  - changing U_c, the stadiums, roof, clock, branch signs, matching condition, or determinant convention
+  - claiming positive or exact entire order, exponential lower growth, zero-count lower bounds, a T*log(T) law, completed-xi, Route B, Hilbert-Polya, or RH
+
+training_split: empty; no fitting, parameter search, arithmetic target, determinant values, or roots
+validation_split: >-
+  Prove local uniform differentiability of the same trace logarithm on the
+  zero-free half-plane, positivity of every real-axis derivative summand,
+  the pure-left lower term, the trace-log lower factor for D_pol(2), and the
+  Cauchy maximum-modulus implication.
+test_split: >-
+  Sealed target-free 1024-bit Arb intervals, exact polynomial-bracket signs,
+  safe-floor comparisons, source hashes, frozen environment, and
+  byte-identical artifact reproduction.
+
+stopping_conditions:
+  - NOT_TESTABLE if the differentiated lambda=1 trace logarithm is not locally uniformly absolutely convergent near s=2
+  - NOT_TESTABLE if any real-axis exact summand can have an uncontrolled sign, so that the pure-left term is not a valid complete-ledger lower bound
+  - REVISE if the pure-left denominator, matching multiplicity, or alpha_0 ledger differs from the inherited exact boundary theorem
+  - REVISE if a coefficient of Delta(lambda,s) is substituted for D_pol(s)=Delta(1,s)
+  - REVISE if the Cauchy disk centered at 2 is not kept inside the original radius-R disk
+  - REJECTED if target data, determinant roots, a changed clock, or a changed convention enters
+  - STOP_SCOPED for positive/exact order, exponential lower growth, zero-count lower bounds, target-divisor, Route B, Hilbert-Polya, or RH work
+
+success_conditions:
+  - D_pol'(2) is proved positive on the same determinant without evaluating it numerically
+  - the exact scalar lower bound c_2 is certified strictly above 0.0213
+  - M_D(R)>0.0213*(R-2) is proved for every R>2 and M_D(R)>0.01065*R for R>=4
+  - D_pol is proved nonconstant and transcendental entire, with M_D(R)/R^N tending to infinity for each fixed N
+  - every conclusion remains target-free and the Route-A tuple remains unchanged
+
+route_status_at_lock:
+  inherited_analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+  inherited_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+  route_b_invocation_allowed: false
+  checkpoint_status: DEFINED_NOT_EVALUATED
+  recommended_verdict_if_successful: GO_WITH_LIMITATIONS
+
+next_smallest_test_if_successful: >-
+  Under a separate source lock, audit whether the proved bounded right
+  half-plane, global finite-order upper bound, and nonconstancy force
+  ord(D_pol)>=1 by a Phragmen-Lindelof argument. Do not import that claim into
+  this audit; after the bounded order-lower test, apply the breadth-first rule.

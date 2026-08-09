@@ -1,0 +1,204 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: LOG-0001
+audit_id: LOG-0001-LOWER-GROWTH
+parent_audit_id: LOG-0001-CONFORMAL-RATIO
+source_commit: 8cabec587cf0a796f4f004bf5b1b0611de3305f3
+evaluation_date: "2026-08-09T07:30:00Z"
+
+source_lock:
+  object: >-
+    The unchanged exact-U_c two-full-branch polar transfer family L_s on
+    B=ker[v_L(0)-v_R(0)] with intrinsic roof tau=log|G'| and the canonical
+    same-object determinant D_pol(s)=det_Fr(I-L_s|_B); only the safe real point
+    s=2 is opened for the derivative lower bound.
+  data_type: >-
+    A cancellation-safe same-determinant theorem for D_pol'(2), a certified
+    scalar lower bound c_2>0.0213, and the Cauchy maximum-modulus lower bounds.
+  clock: >-
+    T_gamma=sum tau=log|(G^n)'| is the sole determinant clock; the physical
+    two-Logistic-iterate clock remains separate.
+  normalization: >-
+    q(theta)=(U_c-1)sin(theta), exp(s*Log(a))=exp(-s*tau), signed
+    epsilon_omega retained, matching condition unchanged, and M_D(R) is
+    measured in the original s-plane.
+  determinant_convention: >-
+    Delta(lambda,s)=det_Fr(I-lambda*L_s|_B), D_pol(s)=Delta(1,s), with lambda
+    kept distinct from s; no reciprocal, zeta-regularized, logarithmic-
+    derivative, or glued determinant is used.
+  cutoff: >-
+    No theorem word or operator cutoff. The n=1 pure-left word L is retained
+    only as a strict lower-bound term after positivity of the complete real
+    differentiated trace ledger is proved; it is not a determinant truncation.
+  precision: >-
+    Exact analytic inequalities plus 1024-bit outward Arb scalar arithmetic;
+    inherited U_c bracket and same-object trace theorem are frozen.
+  allowed_data:
+    - exact U_c polynomial and inherited certified root bracket
+    - inherited nuclear Fredholm determinant and exact signed all-power trace
+    - inherited zero-free half-plane and trace-log majorant
+    - inherited pure-left boundary trace alpha_0=U_c^2/4
+    - standard locally uniform differentiation and Cauchy estimates
+    - target-free outward Arb arithmetic
+  forbidden_data:
+    - prime, primality, Riemann-zero, xi, zeta, or USTC tables/evaluations
+    - Fredholm determinant values or root searches
+    - auxiliary-lambda coefficients substituted for D_pol(s)
+    - D_pol'(0), uncontrolled single terms, absolute-value determinant ledgers
+    - changed clock, normalization, domain, matching, branch signs, or convention
+  training_split: empty; no fitting, parameter search, target data, values, or roots
+  validation_split: >-
+    Local uniform differentiation, positivity of every real-axis summand,
+    exact pure-left term, trace-log lower factor, and Cauchy geometry.
+  test_split: >-
+    Sealed 1024-bit Arb scalar intervals, exact bracket signs, safe floors,
+    source hashes, frozen versions, and byte-identical artifact reproduction.
+  stopping_conditions:
+    - NOT_TESTABLE if local uniform differentiated trace-log convergence fails
+    - NOT_TESTABLE if complete real-ledger summands are not all positive
+    - REVISE if pure-left matching multiplicity or alpha_0 differs
+    - REVISE if an auxiliary-lambda coefficient or determinant truncation is used
+    - REJECTED if target data, roots, or a changed ledger enters
+    - STOP_SCOPED for positive/exact order, exponential lower growth, divisor lower bounds, Route B, Hilbert-Polya, or RH
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The intrinsic complete binary periodic ledger, exact repetition and
+    orientation convention, and non-lattice roof are inherited unchanged.
+  strongest_failure: >-
+    No primitive roof period is related to log primes and no orbit amplitude
+    produces von-Mangoldt prime-power weights.
+  metrics:
+    intrinsic_binary_primitive_ledger: PROVED
+    unique_word_fixed_points_all_orders: PROVED
+    non_lattice_roof: PROVED
+    signed_orientation: "epsilon_omega=(-1)^(#R)"
+    arithmetic_orbit_law: false
+    von_mangoldt_weights: false
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+  artifacts:
+    - formal/results/exact_uc_polar_nonlattice.md
+    - formal/results/log_0001_nuclear_fredholm.md
+
+a2:
+  verdict: A2_ANALYTIC_DETERMINANT
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The same canonical jointly entire Grothendieck determinant and exact
+    signed all-power trace remain in force. The certified nonzero derivative
+    shows that D_pol is not the constant-one function without evaluating a
+    determinant value or root.
+  strongest_failure: >-
+    Zero-error, missing/extra-zero, cutoff-drift, and sealed target matching
+    ledgers remain unopened by the source lock.
+  metrics:
+    same_object_fredholm_determinant: true
+    determinant_jointly_entire: true
+    signed_all_power_trace_formula: PROVED
+    D_pol_prime_at_2_lower: ">0.0213"
+    Fredholm_determinant_evaluated: false
+    Fredholm_roots_searched: false
+    target_comparison: not_opened
+    riemann_target_a2: A2_FAIL
+  artifacts:
+    - configs/source_locks/LOG-0001-LOWER-GROWTH.yaml
+    - formal/results/log_0001_lower_growth.md
+    - artifacts/log_0001_lower_growth/lower_growth_certificate.json
+    - tests/test_log_0001_lower_growth.py
+
+a3:
+  verdict: A3_PARTIAL_ANALYTIC_STRUCTURE
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The safe real trace logarithm has strictly positive derivative summands,
+    the pure-left term yields D_pol'(2)>=c_2>0.0213, and Cauchy gives an
+    explicit linear maximum-modulus lower bound. Together with the inherited
+    upper theorem, D_pol is nonconstant transcendental entire and has
+    qualitative super-polynomial maximum-modulus growth.
+  strongest_failure: >-
+    The lower bound is only linear and qualitative beyond that. No positive
+    or exact order, exponential lower type, zero-count lower bound, sharp
+    critical-strip divisor asymptotic, T*log(T) law, functional equation,
+    Gamma/trivial-zero ledger, or completed-xi divisor is proved.
+  metrics:
+    conjugation_symmetry: PROVED
+    analytic_continuation: entire_in_lambda_and_s
+    exact_trace_identity: PROVED
+    global_growth_upper: "log^+|D_pol(s)|<=C0+C1*(1+|s|)^2"
+    classical_order_upper: 2
+    positive_order_lower: not_established_in_this_audit
+    exact_order: OPEN
+    D_pol_prime_at_2: ">0.0213"
+    maximum_modulus_lower_R_gt_2: "M_D(R)>0.0213*(R-2)"
+    maximum_modulus_lower_R_ge_4: "M_D(R)>0.01065*R"
+    transcendental_entire: PROVED
+    qualitative_super_polynomial_growth: PROVED
+    disk_divisor_count_upper: O(R^2)
+    fixed_real_strip_divisor_count_upper: O(T^2)
+    zero_free_half_plane: "Re(s)>log(2)/log(4/U_c^2)"
+    target_counting_law: false
+    functional_equation: false
+    gamma_factor: false
+    trivial_zero_ledger: false
+    completed_xi_divisor: false
+    riemann_target_a3: A3_FAIL
+  artifacts:
+    - formal/results/log_0001_lower_growth.md
+    - formal/results/log_0001_growth_order.md
+    - artifacts/log_0001_lower_growth/lower_growth_certificate.json
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The transfer family remains natural for the same exact classical polar map
+    and intrinsic unstable-Jacobian roof.
+  strongest_failure: >-
+    A lower-growth theorem does not define a Hilbert space, operator domain,
+    self-adjoint generator, scattering lift, or same-clock quantization.
+  metrics:
+    natural_hilbert_space: null
+    operator_domain: null
+    natural_quantization: false
+    route_b_ready: false
+  artifacts: []
+
+analytic_route_tuple:
+  - A1_WEAK
+  - A2_ANALYTIC_DETERMINANT
+  - A3_PARTIAL_ANALYTIC_STRUCTURE
+  - A4_FAIL
+riemann_target_tuple:
+  - A1_WEAK
+  - A2_FAIL
+  - A3_FAIL
+  - A4_FAIL
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+recommended_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - same-determinant cancellation-safe derivative lower bound at s=2
+    - certified c_2>0.0213 and explicit linear maximum-modulus lower bounds
+    - nonconstant and transcendental-entire status
+    - qualitative super-polynomial maximum-modulus growth
+    - target-free 1024-bit scalar certificate and byte-identical reproduction
+  not_established:
+    - positive or exact entire-function order
+    - exponential lower growth, zero-count lower bounds, or T*log(T)
+    - log-prime periods, von-Mangoldt weights, target roots, or completed-xi
+    - functional equation, quantization, Route B, Hilbert-Polya, or RH
+blocking_conditions:
+  - no arithmetic primitive-orbit law
+  - no sharp same-object divisor-count theorem
+  - no completed-xi analytic ledger
+  - no natural quantization
+next_smallest_test: >-
+  Under a separate source lock, test whether the inherited bounded right
+  half-plane, global finite-order upper bound, and nonconstancy force
+  ord(D_pol)>=1 via Phragmen-Lindelof; apply the breadth-first pivot after that
+  bounded order-lower audit.
+route_b_invocation_allowed: false
