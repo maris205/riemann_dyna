@@ -3819,6 +3819,7 @@ comparing target zeros.
 
 Recommended verdict: `GO_WITH_LIMITATIONS`; overall
 `ROUTE_A_EXPLORATORY`.
+
 ## 2026-08-09 — LOG-0001 Phragmen--Lindelof order lower bound
 
 ### Stable checkpoint
@@ -3833,6 +3834,11 @@ configs/source_locks/LOG-0001-ORDER-LOWER.yaml.
 Evaluation:
 evaluations/route_a/LOG-0001/20260809T110000Z.yaml at source state
 9b0b09e305579d9ed0ae755b2e499a3bd05a261b.
+
+Provenance: HP-Dynamics research commit
+d1cfa20c6b69503af95abb96ded893eb19329371.  This bounded analytic audit is
+kept in the main repository; the lower-growth standalone mirror remains the
+active shareable paper stage.
 
 The unchanged determinant is entire, has the inherited uniform bound
 |D_pol(s)|<=K_2=exp(B_2) on Re(s)>=2, and has the inherited
@@ -3914,6 +3920,17 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 git diff --check
 ~~~
 
+Hashes at this checkpoint:
+
+~~~text
+3f58a6a3ca8ae2ac0812db36c25b7bbc011313b2ab2fd9c2af698137e51f99f2  artifacts/log_0001_order_lower/order_lower_certificate.json
+2595fae21c5eb4c71c814c3e030d674bd907d3fd28ffb437ab3ea73a0bc5e23f  experiments/log_0001_order_lower.py
+97d9121f0a6c6f982305ed6e9cfe6ba84afa50d8fc6318a9821062351be62fd5  formal/results/log_0001_order_lower.md
+aac9829fb404533ce7a0e44831867a3f1a2fc93eeb07fc06cd9f5e087acb303f  configs/source_locks/LOG-0001-ORDER-LOWER.yaml
+e586da1cde78a7a285be5980c649ee95d7998df12ed37f0283d0e412bbc32692  evaluations/route_a/LOG-0001/20260809T110000Z.yaml
+ac8c69dba4a8208a51dd0373a998c0d13ac2587cadf32d184aee8a9764fa1e8e  tests/test_log_0001_order_lower.py
+~~~
+
 ### Claim boundary and next task
 
 Established: 1<=ord(D_pol)<=2 for the same frozen determinant.
@@ -3928,6 +3945,7 @@ convention, and plausible arithmetic orbit law, or register a reusable
 structural obstruction.
 
 Recommended verdict: GO_WITH_LIMITATIONS; overall ROUTE_A_EXPLORATORY.
+
 ## 2026-08-09 — LOG-0001 cancellation-safe lower-growth theorem
 
 ### Stable checkpoint

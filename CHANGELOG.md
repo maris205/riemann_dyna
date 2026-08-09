@@ -2,6 +2,7 @@
 
 Repository-backed research status changes are recorded here. Detailed evidence
 and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
+
 ## 2026-08-09
 
 ### LOG-0001 Phragmen--Lindelof order lower bound
@@ -23,8 +24,11 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
   LOG-0001.
 
 Evaluation source state:
-9b0b09e305579d9ed0ae755b2e499a3bd05a261b. Research and any paper-mirror
-commit will be recorded after the audit files are pushed.
+9b0b09e305579d9ed0ae755b2e499a3bd05a261b; research commit:
+d1cfa20c6b69503af95abb96ded893eb19329371. The theorem is a scoped analytic
+audit; the lower-growth standalone mirror remains the active shareable paper
+stage.
+
 ### LOG-0001 cancellation-safe lower growth
 
 - Kept the exact-U_c polar map, intrinsic roof, signed orientation ledger,

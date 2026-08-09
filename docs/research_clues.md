@@ -1865,6 +1865,7 @@ new_status: ACTIVE
 candidate_id: LOG-0001
 evidence: "Uniform same-object bound on Re(s)>=2, half-plane Phragmen--Lindelof contradiction to ord(D_pol)<1, inherited D_pol'(2)>0.0213 nonconstancy witness, and 1024-bit K_2 certificate"
 source_commit: "9b0b09e305579d9ed0ae755b2e499a3bd05a261b"
+research_commit: "d1cfa20c6b69503af95abb96ded893eb19329371"
 source_lock: "configs/source_locks/LOG-0001-ORDER-LOWER.yaml"
 evaluation: "evaluations/route_a/LOG-0001/20260809T110000Z.yaml"
 analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]

@@ -437,15 +437,16 @@ M_D(R) > 0.0213*(R-2)  for R>2,
 M_D(R) > 0.01065*R     for R>=4.
 ```
 
-Thus the same determinant is nonconstant and transcendental entire. This does
-not establish positive order, exponential lower growth, a zero-count lower
-bound, or a target divisor.
+Thus the same determinant is nonconstant and transcendental entire.  The
+separate full-line Phragmen--Lindelof audit now combines its uniform
+`Re(s)>=2` bound with nonconstancy and the inherited upper theorem to prove
+`1<=ord(D_pol)<=2`.  This still gives no exact order, exponential type,
+zero-count lower bound, or target divisor.
 
-Portfolio decision: LOG-0001 remains the active analytic candidate. Its next
-bounded task is a separately locked Phragmen--Lindelof audit of whether the
-proved bounded right half-plane, finite-order upper bound, and nonconstancy
-force `ord(D_pol)>=1`. Target-zero matching, completed-xi work, and Route B
-remain closed.
+Portfolio decision: LOG-0001 remains the active analytic candidate but is
+parked at this bounded checkpoint.  The next task is the breadth pivot to a
+new intrinsic recurrent candidate or a reusable structural obstruction.
+Target-zero matching, completed-xi work, and Route B remain closed.
 
 汇总表：
 
@@ -486,6 +487,7 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Lower-growth research commit:** `726e42a93a9fabcf07c4c543c1c5962aa0fa1569`
 - **Lower-growth shared mirror commit:** `8fbe914cf4438a5a792f7e87e0c87e3a88292201`
 - **Order-lower evaluation source:** `9b0b09e305579d9ed0ae755b2e499a3bd05a261b`
+- **Order-lower research commit:** `d1cfa20c6b69503af95abb96ded893eb19329371`
 - **Conformal-ratio research commit:** `80107bc8ec2bcb4b5d0dd7a30447c5bc2d075320`
 - **Conformal-ratio shared mirror commit:** `ce0e3c88a3daa32ccf79f7fdeb9c0b22695bc6f5`
 - **Growth research commit:** `ec00bcb`

@@ -1,4 +1,5 @@
 # HP-Dynamics Handoff
+
 ## Current status — LOG-0001 Phragmen--Lindelof order lower bound
 
 Current clue: CLUE-A1-004.
@@ -6,8 +7,10 @@ Current clue: CLUE-A1-004.
 Candidate ID: LOG-0001 (formal candidate).
 
 - Evaluation source commit: 9b0b09e305579d9ed0ae755b2e499a3bd05a261b
-- HP-Dynamics research commit: to be recorded after this audit commit
-- Shared standalone paper-stage mirror commit: to be recorded if the theorem is mirrored
+- HP-Dynamics research commit: `d1cfa20c6b69503af95abb96ded893eb19329371`
+- Shared standalone paper-stage mirror: the theorem is recorded in the main
+  repository as a scoped analytic audit; the lower-growth standalone mirror
+  remains the active shareable paper stage
 - Source lock: configs/source_locks/LOG-0001-ORDER-LOWER.yaml
 - Route-A evaluation: evaluations/route_a/LOG-0001/20260809T110000Z.yaml
 - Formal theorem: formal/results/log_0001_order_lower.md
@@ -99,6 +102,21 @@ LOG-0001 obligation, not a target-divisor result.
 
 Route B remains closed; no obstruction-registry or operator-obligation entry is
 added.
+
+### Tests and reproduction commands
+
+- Focused order-lower suite: `7/7 passed`.
+- Full repository suite: `273/273 passed` (`93.770 s`).
+- All 57 source-lock/evaluation YAML files parse; `git diff --check` passes.
+
+```bash
+python3 experiments/log_0001_order_lower.py --quiet \
+  --output artifacts/log_0001_order_lower/order_lower_certificate.json
+python3 -m unittest -v tests/test_log_0001_order_lower.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 -c 'from pathlib import Path; import yaml; fs=list(Path("configs/source_locks").glob("*.yaml"))+list(Path("evaluations").rglob("*.yaml")); [yaml.safe_load(p.read_text(encoding="utf-8")) for p in fs]; print(len(fs))'
+git diff --check
+```
 
 ### Claim boundary and next task
 
