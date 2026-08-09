@@ -1831,6 +1831,8 @@ new_status: ACTIVE
 candidate_id: LOG-0001
 evidence: "Same-object signed trace-log differentiation at s=2, exact pure-left lower term, 1024-bit outward Arb certificate c_2>0.0213, and Cauchy maximum-modulus bounds"
 source_commit: "8cabec587cf0a796f4f004bf5b1b0611de3305f3"
+research_commit: "726e42a93a9fabcf07c4c543c1c5962aa0fa1569"
+shared_mirror_commit: "8fbe914cf4438a5a792f7e87e0c87e3a88292201"
 source_lock: "configs/source_locks/LOG-0001-LOWER-GROWTH.yaml"
 evaluation: "evaluations/route_a/LOG-0001/20260809T073000Z.yaml"
 analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]

@@ -3834,6 +3834,10 @@ Evaluation:
 evaluations/route_a/LOG-0001/20260809T073000Z.yaml at source state
 8cabec587cf0a796f4f004bf5b1b0611de3305f3.
 
+Provenance: HP-Dynamics research commit
+726e42a93a9fabcf07c4c543c1c5962aa0fa1569; shared standalone paper-stage
+mirror commit 8fbe914cf4438a5a792f7e87e0c87e3a88292201.
+
 The frozen object remains
 
 \[

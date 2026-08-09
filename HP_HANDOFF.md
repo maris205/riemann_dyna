@@ -7,8 +7,8 @@ Current clue: `CLUE-A1-004`.
 Candidate ID: `LOG-0001` (formal candidate).
 
 - Evaluation source commit: `8cabec587cf0a796f4f004bf5b1b0611de3305f3`
-- HP-Dynamics research commit: to be recorded after this checkpoint commit
-- Shared standalone paper-stage mirror commit: to be recorded after mirror push
+- HP-Dynamics research commit: `726e42a93a9fabcf07c4c543c1c5962aa0fa1569`
+- Shared standalone paper-stage mirror commit: `8fbe914cf4438a5a792f7e87e0c87e3a88292201`
 - Source lock: `configs/source_locks/LOG-0001-LOWER-GROWTH.yaml`
 - Route-A evaluation: `evaluations/route_a/LOG-0001/20260809T073000Z.yaml`
 - Formal theorem: `formal/results/log_0001_lower_growth.md`

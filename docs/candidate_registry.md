@@ -483,6 +483,8 @@ Evaluator controls are tracked separately and do not change the formal-candidate
 - **Growth evaluation source:** `33986f9633b7f03f2fcc1f6ab914e5e0d69f7050`
 - **Conformal-ratio evaluation source:** `dbb78f10bb3299415e022ecadb20d65e0aac5436`
 - **Lower-growth evaluation source:** `8cabec587cf0a796f4f004bf5b1b0611de3305f3`
+- **Lower-growth research commit:** `726e42a93a9fabcf07c4c543c1c5962aa0fa1569`
+- **Lower-growth shared mirror commit:** `8fbe914cf4438a5a792f7e87e0c87e3a88292201`
 - **Conformal-ratio research commit:** `80107bc8ec2bcb4b5d0dd7a30447c5bc2d075320`
 - **Conformal-ratio shared mirror commit:** `ce0e3c88a3daa32ccf79f7fdeb9c0b22695bc6f5`
 - **Growth research commit:** `ec00bcb`

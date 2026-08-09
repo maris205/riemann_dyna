@@ -31,8 +31,9 @@ and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
   target matching, completed-xi, quantization, and RH remain outside scope.
 
 Evaluation source state:
-8cabec587cf0a796f4f004bf5b1b0611de3305f3. Research and mirror commit hashes
-will be recorded after their respective SSH pushes.
+8cabec587cf0a796f4f004bf5b1b0611de3305f3; research commit:
+726e42a93a9fabcf07c4c543c1c5962aa0fa1569; shared mirror commit:
+`8fbe914cf4438a5a792f7e87e0c87e3a88292201`.
 
 ## 2026-08-08
 
