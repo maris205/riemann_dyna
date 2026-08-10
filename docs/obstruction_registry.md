@@ -909,3 +909,80 @@ Artifacts:
 - `experiments/coprime_0001_scalar_boundary.py`
 - `artifacts/coprime_0001/scalar_boundary_certificate.json`
 - `evaluations/route_a/COPRIME-0001/20260810T034453Z.yaml`
+
+---
+
+## OBR-016 — Countable irrational-roof bouquets can still have only a linear fixed-strip divisor
+
+Status:
+`PROVED_OBSTRUCTION` (prefilter scope; no formal candidate)
+
+Source:
+`CLUE-A4-002` / `SS-PREFILTER-IRRATIONAL-BOUQUET-001`
+
+Statement:
+For the target-free countable suspension
+
+```text
+Sigma = disjoint_union_{n>=2} Z/nZ,
+sigma(n,j) = (n,j+1 mod n),
+tau_n = 1 + sqrt(2)/n,
+phi_n = -n,
+```
+
+the block-diagonal transfer family on `ell^2(Sigma)` is entire and trace class,
+and its one frozen determinant is
+
+```text
+D_bouquet(s) = det_Fr(I-L_s)
+             = product_{n>=2} (1-exp(-n^2-s*(n+sqrt(2)))) .
+```
+
+Its zeros are exactly
+
+```text
+s_{n,k}=-(n^2+2*pi*i*k)/(n+sqrt(2)),   n>=2, k in Z.
+```
+
+The real parts `-n^2/(n+sqrt(2))` decrease to `-infinity`.  Therefore any
+bounded vertical strip contains only finitely many zero lines and has
+`N(T)=O(T)`, not the completed-xi `Theta(T log T)` regime.  The two primitive
+lengths `2+sqrt(2)` and `3+sqrt(2)` are incommensurate, but the base is
+disconnected and not mixing; this is not a thermodynamic non-lattice theorem.
+
+Impact:
+Countability, an entire Fredholm determinant, and global incommensurability
+alone do not produce a critical divisor.  Superexponentially escaping cycle
+actions can force the wrong density even outside the finite-state and Selberg
+subclasses.
+
+Scope:
+Only disconnected direct-sum cycle bouquets with the stated action/roof
+escape.  This does not exclude connected renewal systems, chronological
+cocycles, or other non-Selberg nuclear objects whose same-ledger cycle actions
+remain in a fixed critical strip.
+
+Invalid shortcuts:
+
+- post-hoc affine shifts or rescaling of the frozen clock;
+- replacing the direct Fredholm determinant by a reciprocal or a scattering
+  quotient;
+- treating the global incommensurability as evidence of mixing or prime-like
+  orbit statistics;
+- promoting the fixed-strip `O(T)` theorem to a global count over an unbounded
+  real half-plane.
+
+Reopening condition:
+Freeze a connected or renewal countable-state object with its own intrinsic
+clock and determinant, and first prove a same-ledger divisor-count regime before
+allocating `SS-0003`.  No Route-B or root work is authorized.
+
+Artifacts:
+
+- `configs/source_locks/SS-PREFILTER-IRRATIONAL-BOUQUET.yaml`
+- `experiments/ss_prefilter_irrational_bouquet.py`
+- `artifacts/ss_prefilter_irrational_bouquet/audit.json`
+- `formal/results/ss_prefilter_irrational_bouquet.md`
+- `formal/obstructions/countable_irrational_bouquet_linear_divisor.md`
+- `evaluations/route_a/SS-PREFILTER-IRRATIONAL-BOUQUET/20260810T162243Z.yaml`
+- `tests/test_ss_prefilter_irrational_bouquet.py`

@@ -4717,3 +4717,61 @@ Recommended verdict: `GO_WITH_LIMITATIONS`; overall
 
 - Next smallest task: stop this sub-audit; reopen only with an explicit
   multi-chart phase/Maslov transition source lock, or pivot breadth-first.
+
+## 2026-08-10 — CLUE-A4-002 irrational-roof bouquet prefilter
+
+The project-level breadth pivot selected one explicit, target-free,
+non-Selberg countable suspension before allocating `SS-0003`:
+
+\[
+\Sigma=\bigsqcup_{n\ge2}\mathbb Z/n\mathbb Z,
+\quad \sigma(n,j)=(n,j+1),
+\quad \tau_n=1+\sqrt2/n,
+\quad \phi_n=-n.
+\]
+
+The transfer family is the weighted cyclic block shift on counting-measure
+`ell^2(Sigma)`, and its only determinant ledger is
+
+\[
+D_{\rm bouquet}(s)=\det_{\rm F}(I-\mathcal L_s)
+=\prod_{n\ge2}(1-e^{-n^2-s(n+\sqrt2)}).
+\]
+
+This is an audit (`formal_candidate: false`), not `SS-0003`.  The exact
+primitive/repetition ledger has one primitive `n`-cycle per component and
+
+\[
+\operatorname{tr}(\mathcal L_s^k)
+=\sum_{n\mid k,\,n\ge2}n e^{-kn-sk(1+\sqrt2/n)}.
+\]
+
+The determinant is entire and its zeros are
+\(s_{n,k}=-(n^2+2\pi i k)/(n+\sqrt2)\).  Their real parts decrease to
+`-infinity`, so every bounded vertical strip has `O(T)` zeros.  The period set
+has no common lattice, but the base is disconnected and not mixing; this is
+not an arithmetic or thermodynamic positive result.
+
+Route-A result:
+
+```text
+(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)
+Riemann target: (A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+verdict: STOP_SCOPED; overall ROUTE_A_REJECTED; Route B not authorized
+```
+
+The reusable obstruction is `OBR-016`: countability, entire nuclearity, and
+global roof incommensurability do not force a `T log T` divisor when cycle
+actions escape each fixed strip.  The next smallest task, if this clue is
+reopened, is a connected/renewal object with a fresh source lock and an
+intrinsic same-ledger divisor theorem; no root search is allowed.
+
+Artifacts:
+
+- `configs/source_locks/SS-PREFILTER-IRRATIONAL-BOUQUET.yaml`
+- `evaluations/route_a/SS-PREFILTER-IRRATIONAL-BOUQUET/20260810T162243Z.yaml`
+- `experiments/ss_prefilter_irrational_bouquet.py`
+- `artifacts/ss_prefilter_irrational_bouquet/audit.json`
+- `formal/results/ss_prefilter_irrational_bouquet.md`
+- `formal/obstructions/countable_irrational_bouquet_linear_divisor.md`
+- `tests/test_ss_prefilter_irrational_bouquet.py`

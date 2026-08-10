@@ -1,0 +1,477 @@
+{
+  "audit_id": "SS-PREFILTER-IRRATIONAL-BOUQUET-001",
+  "candidate_id": null,
+  "claim_boundary": {
+    "established": [
+      "exact primitive/repetition ledger",
+      "entire trace-class family and same-object determinant",
+      "closed-form zero divisor",
+      "linear fixed-strip divisor-count obstruction"
+    ],
+    "not_established": [
+      "prime correspondence or von-Mangoldt weights",
+      "connected/mixing symbolic dynamics",
+      "completed-xi equality, spectrum, Route B, or RH"
+    ]
+  },
+  "closed_form_divisor": {
+    "fixed_strip_count": "N_[a,b](T)=sum_{n: a<=alpha_n<=b}(2*floor(T*(n+sqrt(2))/(2*pi))+1)=O(T)",
+    "real_part": "alpha_n=-n^2/(n+sqrt(2))",
+    "real_part_limit": "-infinity",
+    "real_part_strictly_decreasing": true,
+    "target_divisor_regime": "completed-xi has Theta(T log T) in fixed critical strips",
+    "zeros": "s_{n,k}=(-n^2-2*pi*i*k)/(n+sqrt(2)), n>=2, k in Z"
+  },
+  "clue_id": "CLUE-A4-002",
+  "determinant_ledger": {
+    "entire_trace_class_family": true,
+    "factorization": "product_{n>=2}(1-exp(-n^2-s*(n+sqrt(2))))",
+    "frozen": "D_bouquet(s)=det_Fr(I-L_s)",
+    "local_trace_norm_bound": "||L_s||_1 <= exp(2*M)*sum_{n>=2} n*exp(-n) for |Re(s)|<=M",
+    "trace_power_formula": "tr(L_s^k)=sum_{n|k,n>=2} n*exp(-k*n-s*k*(1+sqrt(2)/n))"
+  },
+  "divisor_count_diagnostics": [
+    {
+      "height": 100.0,
+      "positive_height_count": 1255,
+      "symmetric_count": 2520,
+      "symmetric_over_T_log_T": 5.472110471980972
+    },
+    {
+      "height": 1000.0,
+      "positive_height_count": 12591,
+      "symmetric_count": 25192,
+      "symmetric_over_T_log_T": 3.646915529368907
+    },
+    {
+      "height": 10000.0,
+      "positive_height_count": 125953,
+      "symmetric_count": 251916,
+      "symmetric_over_T_log_T": 2.7351432175784898
+    }
+  ],
+  "formal_candidate": false,
+  "formal_result": "formal/results/ss_prefilter_irrational_bouquet.md",
+  "generator": "experiments/ss_prefilter_irrational_bouquet.py",
+  "generator_sha256": "c5e26c05d359b8a01cf74b2631b911204c9ff535d645eceb1b4ff33369d9fd5d",
+  "hilbert_space": "ell^2(Sigma) with counting measure",
+  "map": "sigma(n,j)=(n,j+1 mod n)",
+  "next_smallest_test": "Pivot again within CLUE-A4-002 only after defining a connected or renewal object whose cycle actions do not escape every fixed strip; do not promote this bouquet.",
+  "non_lattice_certificate": {
+    "caveat": "The base is disconnected; global incommensurability does not imply mixing.",
+    "periods_checked": [
+      "2+sqrt(2)",
+      "3+sqrt(2)"
+    ],
+    "ratio": "(4+sqrt(2))/7",
+    "ratio_is_irrational": true
+  },
+  "obstruction": "formal/obstructions/countable_irrational_bouquet_linear_divisor.md",
+  "phase_space": "disjoint_union_{n>=2} Z/nZ",
+  "potential": "phi_n=-n per base step; A_n=n^2 per primitive cycle",
+  "primitive_orbit_ledger": [
+    {
+      "label": 2,
+      "primitive_action": "2^2",
+      "primitive_period": 2,
+      "primitive_roof": "2+sqrt(2)",
+      "primitive_weight": "exp(-2^2)",
+      "repeat_rule": "r -> exp(-r*n^2-s*r*(n+sqrt(2)))",
+      "states": 2
+    },
+    {
+      "label": 3,
+      "primitive_action": "3^2",
+      "primitive_period": 3,
+      "primitive_roof": "3+sqrt(2)",
+      "primitive_weight": "exp(-3^2)",
+      "repeat_rule": "r -> exp(-r*n^2-s*r*(n+sqrt(2)))",
+      "states": 3
+    },
+    {
+      "label": 4,
+      "primitive_action": "4^2",
+      "primitive_period": 4,
+      "primitive_roof": "4+sqrt(2)",
+      "primitive_weight": "exp(-4^2)",
+      "repeat_rule": "r -> exp(-r*n^2-s*r*(n+sqrt(2)))",
+      "states": 4
+    },
+    {
+      "label": 5,
+      "primitive_action": "5^2",
+      "primitive_period": 5,
+      "primitive_roof": "5+sqrt(2)",
+      "primitive_weight": "exp(-5^2)",
+      "repeat_rule": "r -> exp(-r*n^2-s*r*(n+sqrt(2)))",
+      "states": 5
+    },
+    {
+      "label": 6,
+      "primitive_action": "6^2",
+      "primitive_period": 6,
+      "primitive_roof": "6+sqrt(2)",
+      "primitive_weight": "exp(-6^2)",
+      "repeat_rule": "r -> exp(-r*n^2-s*r*(n+sqrt(2)))",
+      "states": 6
+    },
+    {
+      "label": 7,
+      "primitive_action": "7^2",
+      "primitive_period": 7,
+      "primitive_roof": "7+sqrt(2)",
+      "primitive_weight": "exp(-7^2)",
+      "repeat_rule": "r -> exp(-r*n^2-s*r*(n+sqrt(2)))",
+      "states": 7
+    },
+    {
+      "label": 8,
+      "primitive_action": "8^2",
+      "primitive_period": 8,
+      "primitive_roof": "8+sqrt(2)",
+      "primitive_weight": "exp(-8^2)",
+      "repeat_rule": "r -> exp(-r*n^2-s*r*(n+sqrt(2)))",
+      "states": 8
+    },
+    {
+      "label": 9,
+      "primitive_action": "9^2",
+      "primitive_period": 9,
+      "primitive_roof": "9+sqrt(2)",
+      "primitive_weight": "exp(-9^2)",
+      "repeat_rule": "r -> exp(-r*n^2-s*r*(n+sqrt(2)))",
+      "states": 9
+    },
+    {
+      "label": 10,
+      "primitive_action": "10^2",
+      "primitive_period": 10,
+      "primitive_roof": "10+sqrt(2)",
+      "primitive_weight": "exp(-10^2)",
+      "repeat_rule": "r -> exp(-r*n^2-s*r*(n+sqrt(2)))",
+      "states": 10
+    },
+    {
+      "label": 11,
+      "primitive_action": "11^2",
+      "primitive_period": 11,
+      "primitive_roof": "11+sqrt(2)",
+      "primitive_weight": "exp(-11^2)",
+      "repeat_rule": "r -> exp(-r*n^2-s*r*(n+sqrt(2)))",
+      "states": 11
+    },
+    {
+      "label": 12,
+      "primitive_action": "12^2",
+      "primitive_period": 12,
+      "primitive_roof": "12+sqrt(2)",
+      "primitive_weight": "exp(-12^2)",
+      "repeat_rule": "r -> exp(-r*n^2-s*r*(n+sqrt(2)))",
+      "states": 12
+    }
+  ],
+  "roof": "tau_n=1+sqrt(2)/n; L_n=n+sqrt(2)",
+  "route_effect": {
+    "analytic_tuple": [
+      "A1_WEAK",
+      "A2_ANALYTIC_DETERMINANT",
+      "A3_PARTIAL_ANALYTIC_STRUCTURE",
+      "A4_FAIL"
+    ],
+    "obstruction": "OBR-016",
+    "riemann_target_tuple": [
+      "A1_WEAK",
+      "A2_FAIL",
+      "A3_FAIL",
+      "A4_FAIL"
+    ],
+    "route_b_invocation_allowed": false,
+    "verdict": "STOP_SCOPED"
+  },
+  "source_lock": "configs/source_locks/SS-PREFILTER-IRRATIONAL-BOUQUET.yaml",
+  "source_lock_sha256": "ae15eb0c57b24db623b9d7175bfcc0e3285fda1e587de604a177711c90903a85",
+  "strip_indices": {
+    "critical_half_plane_0_1": [],
+    "deep_strip_minus100_minus1": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101
+    ],
+    "moderate_strip_minus10_1": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "structural_conclusion": "The object is an explicit target-free countable, globally incommensurate suspension with an entire trace-class Fredholm determinant, but its divisor has only O(T) zeros in every bounded vertical strip. The disconnected bouquet and superexponentially escaping cycle actions provide no arithmetic orbit law; this is a reusable negative structural prior, not a formal SS-0003 candidate.",
+  "trace_power_terms_1_to_12": {
+    "1": [],
+    "10": [
+      {
+        "block_trace_multiplicity": 2,
+        "label": 2,
+        "repetition": 5,
+        "term": "2*exp(-10*2-s*10*(1+sqrt(2)/2))"
+      },
+      {
+        "block_trace_multiplicity": 5,
+        "label": 5,
+        "repetition": 2,
+        "term": "5*exp(-10*5-s*10*(1+sqrt(2)/5))"
+      },
+      {
+        "block_trace_multiplicity": 10,
+        "label": 10,
+        "repetition": 1,
+        "term": "10*exp(-10*10-s*10*(1+sqrt(2)/10))"
+      }
+    ],
+    "11": [
+      {
+        "block_trace_multiplicity": 11,
+        "label": 11,
+        "repetition": 1,
+        "term": "11*exp(-11*11-s*11*(1+sqrt(2)/11))"
+      }
+    ],
+    "12": [
+      {
+        "block_trace_multiplicity": 2,
+        "label": 2,
+        "repetition": 6,
+        "term": "2*exp(-12*2-s*12*(1+sqrt(2)/2))"
+      },
+      {
+        "block_trace_multiplicity": 3,
+        "label": 3,
+        "repetition": 4,
+        "term": "3*exp(-12*3-s*12*(1+sqrt(2)/3))"
+      },
+      {
+        "block_trace_multiplicity": 4,
+        "label": 4,
+        "repetition": 3,
+        "term": "4*exp(-12*4-s*12*(1+sqrt(2)/4))"
+      },
+      {
+        "block_trace_multiplicity": 6,
+        "label": 6,
+        "repetition": 2,
+        "term": "6*exp(-12*6-s*12*(1+sqrt(2)/6))"
+      },
+      {
+        "block_trace_multiplicity": 12,
+        "label": 12,
+        "repetition": 1,
+        "term": "12*exp(-12*12-s*12*(1+sqrt(2)/12))"
+      }
+    ],
+    "2": [
+      {
+        "block_trace_multiplicity": 2,
+        "label": 2,
+        "repetition": 1,
+        "term": "2*exp(-2*2-s*2*(1+sqrt(2)/2))"
+      }
+    ],
+    "3": [
+      {
+        "block_trace_multiplicity": 3,
+        "label": 3,
+        "repetition": 1,
+        "term": "3*exp(-3*3-s*3*(1+sqrt(2)/3))"
+      }
+    ],
+    "4": [
+      {
+        "block_trace_multiplicity": 2,
+        "label": 2,
+        "repetition": 2,
+        "term": "2*exp(-4*2-s*4*(1+sqrt(2)/2))"
+      },
+      {
+        "block_trace_multiplicity": 4,
+        "label": 4,
+        "repetition": 1,
+        "term": "4*exp(-4*4-s*4*(1+sqrt(2)/4))"
+      }
+    ],
+    "5": [
+      {
+        "block_trace_multiplicity": 5,
+        "label": 5,
+        "repetition": 1,
+        "term": "5*exp(-5*5-s*5*(1+sqrt(2)/5))"
+      }
+    ],
+    "6": [
+      {
+        "block_trace_multiplicity": 2,
+        "label": 2,
+        "repetition": 3,
+        "term": "2*exp(-6*2-s*6*(1+sqrt(2)/2))"
+      },
+      {
+        "block_trace_multiplicity": 3,
+        "label": 3,
+        "repetition": 2,
+        "term": "3*exp(-6*3-s*6*(1+sqrt(2)/3))"
+      },
+      {
+        "block_trace_multiplicity": 6,
+        "label": 6,
+        "repetition": 1,
+        "term": "6*exp(-6*6-s*6*(1+sqrt(2)/6))"
+      }
+    ],
+    "7": [
+      {
+        "block_trace_multiplicity": 7,
+        "label": 7,
+        "repetition": 1,
+        "term": "7*exp(-7*7-s*7*(1+sqrt(2)/7))"
+      }
+    ],
+    "8": [
+      {
+        "block_trace_multiplicity": 2,
+        "label": 2,
+        "repetition": 4,
+        "term": "2*exp(-8*2-s*8*(1+sqrt(2)/2))"
+      },
+      {
+        "block_trace_multiplicity": 4,
+        "label": 4,
+        "repetition": 2,
+        "term": "4*exp(-8*4-s*8*(1+sqrt(2)/4))"
+      },
+      {
+        "block_trace_multiplicity": 8,
+        "label": 8,
+        "repetition": 1,
+        "term": "8*exp(-8*8-s*8*(1+sqrt(2)/8))"
+      }
+    ],
+    "9": [
+      {
+        "block_trace_multiplicity": 3,
+        "label": 3,
+        "repetition": 3,
+        "term": "3*exp(-9*3-s*9*(1+sqrt(2)/3))"
+      },
+      {
+        "block_trace_multiplicity": 9,
+        "label": 9,
+        "repetition": 1,
+        "term": "9*exp(-9*9-s*9*(1+sqrt(2)/9))"
+      }
+    ]
+  },
+  "transfer_operator": "(L_s f)(n,j)=exp(-n-s*tau_n) f(n,j-1 mod n)",
+  "uses_prime_table": false,
+  "uses_zero_table": false
+}

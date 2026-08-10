@@ -1,0 +1,85 @@
+audit_id: SS-PREFILTER-IRRATIONAL-BOUQUET-001
+formal_candidate: false
+candidate_id: null
+clue_id: CLUE-A4-002
+title: Countable irrational-roof cycle bouquet divisor prefilter
+mathematical_object:
+  phase_space: >-
+    Sigma = {(n,j): n >= 2, j in Z/nZ}, the countable disjoint union of one
+    cyclic component for each integer n; the shift advances j by one modulo n.
+  dynamics: >-
+    sigma(n,j)=(n,j+1 mod n).  Each component is a primitive n-cycle; no
+    primality predicate or external arithmetic table is used.
+  suspension: >-
+    One base step over component n has roof tau_n=1+sqrt(2)/n, so the
+    primitive cycle roof is L_n=n+sqrt(2).  The roof is positive and
+    non-lattice because (2+sqrt(2))/(3+sqrt(2)) is irrational.
+  potential: >-
+    The per-step potential is phi_n=-n, hence the primitive-cycle action is
+    A_n=n^2 and its positive transfer weight is w_n=exp(-n^2).
+  transfer_operator: >-
+    On ell^2(Sigma), (L_s f)(n,j)=exp(-n-s*tau_n)
+    f(n,j-1 mod n), with s in C and the same one-step clock everywhere.
+data_type:
+  primary: >-
+    Exact countable symbolic dynamics, primitive/repetition ledger, trace-class
+    block decomposition, and closed-form Fredholm divisor identities.
+  numerical: >-
+    Optional binary64 display of the exact divisor-count formula at diagnostic
+    heights; no numerical root search is part of the audit.
+clock:
+  base_clock: one suspension step
+  primitive_cycle_clock: L_n=n+sqrt(2)
+  forbidden_clock_changes:
+    - replacing L_n by log(n), log(p), or a fitted affine transform
+    - periodizing the irrational roof
+normalization:
+  hilbert_space: ell^2(Sigma) with counting measure
+  transfer_weight: exp(phi_n-s*tau_n)
+  global_phase: 1
+  potential_sign: positive weight exp(-n^2) per primitive cycle
+determinant_convention:
+  frozen: D_bouquet(s)=det_Fr(I-L_s)
+  factorization: product_{n>=2}(1-exp(-n^2-s*(n+sqrt(2))))
+  excluded_ledgers:
+    - reciprocal 1/D_bouquet
+    - logarithmic derivative D_bouquet'/D_bouquet
+    - any scattering quotient or completed-xi factor
+cutoff:
+  mathematical_object: all n>=2 and all repetitions
+  exact_ledger_audit: n=2..12
+  divisor_count_audit_strips:
+    - [0, 1]
+    - [-10, 1]
+    - [-100, -1]
+  diagnostic_heights: [100, 1000, 10000]
+precision:
+  algebraic: exact integer/rational identities with a certified rational bracket
+    for sqrt(2)
+  display: binary64 only for non-evidentiary count tables
+  root_search: forbidden; zeros are counted from the closed-form divisor
+allowed_data:
+  - exact integer labels n and cyclic shifts
+  - elementary algebra, geometric series, trace-class and Fredholm facts
+  - rational enclosures for sqrt(2) and pi only for display diagnostics
+forbidden_data:
+  - prime tables, primality tests, von-Mangoldt values, or prime-derived labels
+  - Riemann-zero tables, USTC data, GUE data, or target-zero fitting
+  - fitted weights, phases, roof offsets, affine rescaling, or post-hoc unfolding
+  - separate determinants, scattering quotients, or absolute-value ledger changes
+training_split: >-
+  Empty; there is no parameter fitting and no target data.
+validation_split: >-
+  Exact blocks n=2..6, primitive/repetition formulas, non-lattice certificate,
+  and local trace-class bound.
+test_split: >-
+  Disjoint exact blocks n=7..12, determinant product identity, and divisor-count
+  theorem over the frozen diagnostic strips.
+stopping_conditions:
+  - REVISE if the block trace or Fredholm factorization is incorrect
+  - REJECTED if any prime/zero table or fitted normalization enters
+  - STOP_SCOPED if the same-object divisor count is O(T) in every bounded strip
+  - do not allocate formal candidate SS-0003 from this prefilter
+  - do not invoke Route B, spectral computation, or numerical root searches
+skill: route-a-evaluator
+skill_version: 0.1.0

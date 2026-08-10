@@ -1,6 +1,33 @@
 # HP-Dynamics Handoff
 
-## Current status — COPRIME-0001 countable trace and primitive-cycle ledger
+## Current status — CLUE-A4-002 irrational-roof bouquet prefilter
+
+Current clue: `CLUE-A4-002`.
+
+Candidate ID: none; audit `SS-PREFILTER-IRRATIONAL-BOUQUET-001` is explicitly
+not a formal candidate and does not allocate `SS-0003`.
+
+- Source lock: `configs/source_locks/SS-PREFILTER-IRRATIONAL-BOUQUET.yaml`
+- Route-A evaluation: `evaluations/route_a/SS-PREFILTER-IRRATIONAL-BOUQUET/20260810T162243Z.yaml`
+- Formal result: `formal/results/ss_prefilter_irrational_bouquet.md`
+- Generator: `experiments/ss_prefilter_irrational_bouquet.py`
+- Artifact: `artifacts/ss_prefilter_irrational_bouquet/audit.json`
+- Scoped obstruction: `OBR-016`
+- Route-A tuple: `(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)`
+- Riemann-target tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Verdict: `ROUTE_A_REJECTED / STOP_SCOPED`
+- Route B: not invoked and not authorized
+
+The same-object determinant is entire and has the exact divisor
+`s_{n,k}=-(n^2+2*pi*i*k)/(n+sqrt(2))`; every bounded vertical strip has
+`O(T)` zeros because the real zero lines escape to `-infinity`.  The global
+periods are incommensurate, but the base is disconnected and not mixing.
+
+The next task is not to promote `SS-0003`: define a connected or renewal
+non-Selberg object with a fresh source lock only if its cycle actions remain in
+a fixed critical strip.  No root, spectrum, or Route-B work is allowed.
+
+## Previous checkpoint — COPRIME-0001 countable trace and primitive-cycle ledger
 
 Current clue: `CLUE-A1-009`.
 
@@ -4009,3 +4036,94 @@ determinant, spectrum, trace formula, Route B, Hilbert--Pólya, or RH.
 Next smallest task: stop this sub-audit. Reopen only with a new source lock
 fixing explicit multi-chart phase/Maslov transition rules, or pivot
 breadth-first to a structurally different candidate.
+
+# Current checkpoint — CLUE-A4-002 countable bouquet prefilter (2026-08-10)
+
+## Current clue
+
+`CLUE-A4-002`; no formal candidate ID is allocated.  The audit identifier is
+`SS-PREFILTER-IRRATIONAL-BOUQUET-001`.
+
+## Source lock and object
+
+`configs/source_locks/SS-PREFILTER-IRRATIONAL-BOUQUET.yaml` freezes the
+countable disjoint suspension
+
+\[
+\Sigma=\bigsqcup_{n\ge2}\mathbb Z/n\mathbb Z,
+\quad \sigma(n,j)=(n,j+1),
+\quad \tau_n=1+\sqrt2/n,
+\quad \phi_n=-n,
+\]
+
+and the single determinant ledger
+
+\[
+D_{\rm bouquet}(s)=\det_{\rm F}(I-\mathcal L_s)
+=\prod_{n\ge2}(1-e^{-n^2-s(n+\sqrt2)}).
+\]
+
+No prime/zero/USTC/GUE data, numerical root search, fitted clock, or affine
+rescaling is allowed.  This is deliberately a pre-candidate control and does
+not consume `SS-0003`.
+
+## Route-A checkpoint
+
+```text
+analytic tuple:       (A1_WEAK, A2_ANALYTIC_DETERMINANT,
+                       A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)
+Riemann-target tuple: (A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+scoped verdict:       STOP_SCOPED
+overall:              ROUTE_A_REJECTED
+Route B:              not invoked and not authorized
+```
+
+The exact block ledger has one primitive `n`-cycle per component and
+
+\[
+\operatorname{tr}(\mathcal L_s^k)
+=\sum_{n\mid k,\,n\ge2}n e^{-kn-sk(1+\sqrt2/n)}.
+\]
+
+The determinant is entire and its zeros are
+\[
+s_{n,k}=-(n^2+2\pi i k)/(n+\sqrt2).
+\]
+
+The real lines decrease to `-infinity`, so each bounded vertical strip has
+`N(T)=O(T)`.  The global period set is incommensurate, but the base is
+disconnected and not mixing; this supplies no arithmetic orbit law.
+
+## Strongest evidence and failure
+
+Strongest evidence: exact same-object Fredholm factorization, trace-class
+entire family, primitive/repetition ledger, and closed-form divisor theorem.
+
+Strongest failure: `OBR-016` — superexponentially escaping cycle actions force
+linear fixed-strip divisor growth, incompatible with the completed-xi
+`Theta(T log T)` regime.  The object is a reusable negative structural prior,
+not a formal candidate.
+
+## Verification
+
+```bash
+python3 experiments/ss_prefilter_irrational_bouquet.py \
+  --n-max 12 \
+  --output artifacts/ss_prefilter_irrational_bouquet/audit.json
+python3 -m unittest -v tests/test_ss_prefilter_irrational_bouquet.py
+```
+
+Focused suite: `7/7 passed`.
+
+## Claim boundary and next smallest task
+
+Established: target-free countable object, exact determinant and repetition
+ledger, and `O(T)` fixed-strip divisor obstruction.
+
+Not established: prime correspondence, connected/mixing renewal dynamics,
+completed-xi equality, quantization, Route B, Hilbert--Pólya, or RH.
+
+Next smallest task: do not promote `SS-0003`.  If `CLUE-A4-002` is reopened,
+freeze one connected or renewal non-Selberg object whose cycle actions remain in
+a fixed critical strip, then repeat the bounded A1/A2 prefilter without target
+data.  Otherwise park this clue and return to breadth selection.

@@ -1990,3 +1990,24 @@ overall: ROUTE_A_EXPLORATORY
 verdict: GO_WITH_LIMITATIONS
 consequence: "The caustic is a genuine stationary-Lagrangian projection singularity, not an off-shell internal-coordinate artifact. Stop this scoped audit; reopen only with a source-locked multi-chart phase/Maslov transition ledger, or pivot breadth-first. Route B remains closed."
 ```
+
+## Status update — CLUE-A4-002 irrational-roof bouquet prefilter
+
+```yaml
+date: 2026-08-10
+clue_id: CLUE-A4-002
+old_status: PROMISING
+new_status: PROMISING
+candidate_id: null
+formal_candidate: false
+audit_id: SS-PREFILTER-IRRATIONAL-BOUQUET-001
+evidence: "An explicit target-free countable disjoint-cycle suspension has an entire trace-class Fredholm determinant, exact primitive/repetition ledger, and globally incommensurate primitive lengths"
+source_lock: "configs/source_locks/SS-PREFILTER-IRRATIONAL-BOUQUET.yaml"
+evaluation: "evaluations/route_a/SS-PREFILTER-IRRATIONAL-BOUQUET/20260810T162243Z.yaml"
+obstruction: "OBR-016"
+analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+overall: ROUTE_A_REJECTED
+verdict: STOP_SCOPED
+consequence: "Countability, an entire same-object determinant, and global roof incommensurability are insufficient: the superexponentially escaping cycle actions force O(T) zeros in every bounded vertical strip. Do not allocate SS-0003 from this disconnected bouquet. Any reopening must define a connected or renewal non-Selberg object whose cycle actions remain in a fixed critical strip, with a fresh source lock and no root search."
+```

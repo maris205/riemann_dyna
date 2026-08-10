@@ -458,6 +458,13 @@ Target-zero matching, completed-xi work, and Route B remain closed.
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
 | SS-0002 | Countable-state symbolic suspension / modular transfer operator | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_REJECTED` | Not invoked | Exact C6 holonomy, nuclear Fredholm determinant, Selberg identity, and natural Laplacian | Same determinant has at least `Omega(T^2)` Selberg spectral zeros, not `Theta(T log T)` | Define one explicit non-Selberg nuclear object and prove its own divisor-count regime before assigning SS-0003 |
 
+The non-candidate prefilter `SS-PREFILTER-IRRATIONAL-BOUQUET-001` is recorded
+outside this formal table.  It defines an explicit countable non-Selberg
+Fredholm object but is `STOP_SCOPED` by `OBR-016`: its disconnected bouquet
+determinant has only `O(T)` zeros in every bounded vertical strip.  It does not
+allocate `SS-0003`; a future formal candidate must be connected or renewal-like
+and must pass a same-ledger divisor-count prefilter first.
+
 Evaluator controls are tracked separately and do not change the formal-candidate count:
 
 | Control ID | Role | Control verdict | Candidate scope | Strongest evidence | Main limitation |

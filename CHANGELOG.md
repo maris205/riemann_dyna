@@ -2,6 +2,24 @@
 
 ## 2026-08-10
 
+### CLUE-A4-002 irrational-roof bouquet prefilter
+
+- Froze one explicit target-free countable non-Selberg suspension before any
+  formal `SS-0003` allocation: a disjoint union of cyclic components with
+  roof `1+sqrt(2)/n` and per-step potential `-n`.
+- Proved the entire trace-class family, exact same-object Fredholm product,
+  primitive/repetition ledger, and closed-form divisor
+  `s_{n,k}=-(n^2+2*pi*i*k)/(n+sqrt(2))`.
+- Proved `O(T)` zeros in every bounded vertical strip because the real zero
+  lines escape to `-infinity`. The global period set is incommensurate, but the
+  base is disconnected and not mixing; no arithmetic orbit law is claimed.
+- Registered reusable obstruction `OBR-016`, kept the audit out of the formal
+  candidate registry, and left Route B closed.
+
+Focused prefilter suite: `7/7 passed`.
+
+Evaluation source state: `1b8cc8e6ba71fd2766fa88aa43487d0cb191cbdd`.
+
 ### TH-0001 on-shell caustic incidence
 
 - Added a source lock, exact SymPy certificate, formal result note, and focused
