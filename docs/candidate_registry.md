@@ -1664,7 +1664,7 @@ Riemann zeros.
 | Date | Previous state | New state | Evidence | Commit | Reviewer |
 |---|---|---|---|---|---|
 | 2026-08-09 | `GENERATED` | `ANALYTIC_REVIEW` | Trace-class theorem, exact operator boundary, and exact cycle ledger | pending | sole main research agent |
-| 2026-08-10 | `ANALYTIC_REVIEW` | `STOP_SCOPED` | Punctured `S_2` scalar continuation and infinitely many determinant zeros accumulating at `s=1` | pending | sole main research agent + two independent mathematical audits |
+| 2026-08-10 | `ANALYTIC_REVIEW` | `STOP_SCOPED` | Punctured `S_2` scalar continuation and infinitely many determinant zeros accumulating at `s=1` | `c7d50f9` | sole main research agent + two independent mathematical audits |
 
 ---
 
