@@ -1,0 +1,74 @@
+candidate_id: TH-0001
+audit_id: TH-0001-A4-PHASE-CAUSTIC-REAL-001
+clue_id: CLUE-A4-001
+title: On-shell real stationary-Lagrangian caustic audit
+parent_audit_id: TH-0001-A4-PHASE-CAUSTIC-001
+parent_source_commit: a4cb10640c44559f0520386d9c84e65c9b873134
+mathematical_object:
+  phase_space: "R^2 with coordinates (q,p), symplectic form dq wedge dp"
+  micro_map: "F_a(q,p)=(1-a*q^2-p,q)"
+  generating_function: "S_a(q,Q)=q*Q-q+(a/3)*q^3"
+  ordered_phase: >-
+    Phi=S_(1/2)(q0,q1)+S_(3/2)(q1,q2)+S_(5/2)(q2,q3), with q1,q2 the
+    internal variables of the fixed three-kick FIO kernel
+  audit_object: >-
+    The stationary equations d_(q1,q2) Phi=0 intersect the internal caustic
+    det Hess_(q1,q2) Phi=0; the induced endpoint projection and one exact
+    rational canonical trajectory are audited symbolically.
+parameter_provenance:
+  status: INHERITED_MODELING_CHOICE
+  rule: >-
+    Reuse the frozen target-free half-integer ramp (1/2,3/2,5/2); no parameter
+    is selected from a spectrum, prime table, or zero table.
+data_type:
+  primary: >-
+    Exact rational polynomial identities, stationary-Lagrangian projection
+    algebra, rank and directional-derivative checks, and exact canonical-map
+    residuals.
+  numerical: none
+clock:
+  candidate_clock: "one application of G=F_(5/2) o F_(3/2) o F_(1/2)"
+  micro_kick_count_per_clock: 3
+  forbidden_substitution: >-
+    No individual kick, finite-grid spectrum, determinant, eigenphase, or
+    alternate factor order may replace the frozen G superstep.
+normalization:
+  hbar: "1"
+  fourier_kernel: "(2*pi)^(-1/2) exp(+i*q*Q)"
+  per_factor_amplitude: "positive real (2*pi)^(-1/2)"
+  global_phase: "1"
+  hilbert_space: "L^2(R,dq)"
+  phase_convention: "exp(+i*S_a); global Maslov index remains NOT_ASSIGNED"
+determinant_convention: >-
+  NOT_OPENED. This audit defines no spectral determinant, reciprocal zeta,
+  logarithmic derivative, trace formula, eigenphase list, or zero ledger.
+cutoff:
+  operator_factors: 3
+  internal_variables: [q1, q2]
+  caustic_witness: "t=q1=1, q2=1/15"
+  orbit_scope: "one exact stationary canonical trajectory only; no periodic-orbit census"
+precision:
+  algebra: "exact SymPy rational polynomial arithmetic"
+  interval_or_numeric: "none"
+allowed_data:
+  - "TH-0001 source locks, exact generating functions, and prior caustic audit"
+  - "elementary stationary-phase and canonical-relation algebra"
+  - "exact rational arithmetic"
+forbidden_data:
+  - "prime tables, zero tables, xi/zeta values, GUE, USTC data"
+  - "spectra, FFT grids, quadrature, determinant evaluations, or root searches"
+  - "fitted hbar, phases, boundary truncations, or changed factor order"
+  - "assigning a Maslov index from signed classical multipliers"
+  - "Route-B self-adjointness, trace-formula, or Hilbert-Polya inference"
+training_split: "Empty; no fitting or target data"
+validation_split: >-
+  Exact derivatives, Hessian determinant, on-shell parameterization, rank-one
+  witness, and canonical-step residual identities
+test_split: >-
+  Independent rational witness values, source-hash parity, deterministic
+  artifact regeneration, and explicit non-claims
+stopping_conditions:
+  - "REVISE if stationary equations, Hessian, or canonical residuals disagree"
+  - "REJECTED if any target table, spectrum, determinant, or numerical root enters"
+  - "STOP_SCOPED for a global Maslov claim unless a multi-chart transition ledger is frozen"
+  - "STOP_SCOPED for Route B, self-adjointness, trace formula, determinant, spectrum, or RH inference"

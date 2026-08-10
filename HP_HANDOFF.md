@@ -3934,3 +3934,78 @@ or RH.
 
 Next smallest task: park COPRIME-0001. Reopen only with a new source-locked
 determinant or function space; do not search roots or compare Riemann zeros.
+
+# TH-0001 on-shell caustic incidence audit (2026-08-10)
+
+## Current clue
+
+`CLUE-A4-001`; candidate `TH-0001` remains in `ANALYTIC_REVIEW`.
+
+The source lock is
+`configs/source_locks/TH-0001-PHASE-CAUSTIC-REAL.yaml`, and the versioned
+Route-A evaluation is
+`evaluations/route_a/TH-0001/20260810T074238Z.yaml`.
+
+## Result
+
+For the frozen ordered phase
+
+\[
+\Phi=S_{1/2}(q_0,q_1)+S_{3/2}(q_1,q_2)+S_{5/2}(q_2,q_3),
+\]
+
+the stationary equations intersect the caustic `15*q1*q2=1` in the exact real
+family
+
+\[
+q_1=t\ne0,\quad q_2=\frac1{15t},\quad
+q_0=1-\frac32t^2-\frac1{15t},\quad
+q_3=1-t-\frac1{90t^2}.
+\]
+
+The endpoint projection Jacobian is exactly minus the internal Hessian. At
+`t=1`, the rational canonical trajectory is
+
+```text
+(q0,q1,q2,q3)=(-17/30,1,1/15,-1/90)
+(p0,p1,p2,p3)=(-289/1800,-17/30,1,1/15)
+```
+
+and all six three-kick residuals vanish. The Hessian has rank one, with null
+direction `(-1,3)` and third directional derivative `132 != 0`.
+
+## Route-A checkpoint
+
+```text
+analytic tuple:       (A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)
+Riemann-target tuple: (A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+scoped verdict:       GO_WITH_LIMITATIONS
+Route B:              not invoked and not authorized
+```
+
+This is a physical/on-shell strengthening of `OBR-011`, not a new independent
+obstruction. It does not construct a multi-chart phase/Maslov ledger and does
+not authorize determinant, spectrum, root, or Route-B work.
+
+## Verification
+
+```bash
+python3 experiments/th_0001_phase_caustic_real.py --quiet \
+  --output artifacts/th_0001/phase_caustic_real_audit.json
+python3 -m unittest -v tests/test_th_0001_phase_caustic_real.py
+```
+
+Focused audit suite: `7/7 passed`.
+
+## Claim boundary and next smallest task
+
+Established: exact on-shell caustic parameterization, singular endpoint
+projection identity, rational canonical witness, rank-one regularity witness,
+and the strengthened `OBR-011` scope.
+
+Not established: multi-chart phase/Maslov transitions, arithmetic orbit law,
+determinant, spectrum, trace formula, Route B, Hilbert--Pólya, or RH.
+
+Next smallest task: stop this sub-audit. Reopen only with a new source lock
+fixing explicit multi-chart phase/Maslov transition rules, or pivot
+breadth-first to a structurally different candidate.

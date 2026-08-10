@@ -1042,7 +1042,7 @@ D_N(s)\to D_{N+1}(s),
 
 **来源：** Area-preserving Hénon 工作与时间反演讨论  
 **证据：** `HEURISTIC` + `MODELING_CHOICE`  
-**状态：** `ACTIVE` — `TH-0001` FIO lift complete; global single-phase ledger blocked by `OBR-011`
+**状态：** `ACTIVE` — `TH-0001` FIO lift complete; the on-shell global single-phase ledger is blocked by `OBR-011`
 **对应层：** `A1`, `A4`
 
 ### 内容
@@ -1970,4 +1970,23 @@ riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
 overall: ROUTE_A_EXPLORATORY
 verdict: STOP_SCOPED
 consequence: "The scalar determinant continues on a punctured half-plane only through an explicitly named S_2 representation; the endpoint s=1 is a strict same-object meromorphic barrier. Park COPRIME-0001, keep Route B closed, and do not compute roots."
+```
+
+## Status update — CLUE-A4-001 TH-0001 on-shell caustic incidence
+
+```yaml
+date: 2026-08-10
+clue_id: CLUE-A4-001
+old_status: ACTIVE
+new_status: ACTIVE
+candidate_id: TH-0001
+evidence: "Exact SymPy parameterization proves the OBR-011 caustic is attained by every real nonzero-t stationary branch; t=1 gives a rational rank-one witness with null-direction third derivative 132"
+source_lock: "configs/source_locks/TH-0001-PHASE-CAUSTIC-REAL.yaml"
+evaluation: "evaluations/route_a/TH-0001/20260810T074238Z.yaml"
+obstruction: "OBR-011 strengthened; no new obstruction ID"
+analytic_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION]
+riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+overall: ROUTE_A_EXPLORATORY
+verdict: GO_WITH_LIMITATIONS
+consequence: "The caustic is a genuine stationary-Lagrangian projection singularity, not an off-shell internal-coordinate artifact. Stop this scoped audit; reopen only with a source-locked multi-chart phase/Maslov transition ledger, or pivot breadth-first. Route B remains closed."
 ```

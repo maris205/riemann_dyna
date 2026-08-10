@@ -1,0 +1,136 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: TH-0001
+audit_id: TH-0001-A4-PHASE-CAUSTIC-REAL-001
+parent_audit_id: TH-0001-A4-PHASE-CAUSTIC-001
+source_commit: 686c2bc6582cb097c56ccda91ae8568bd40422ad
+evaluation_date: "2026-08-10T07:42:38Z"
+
+source_lock:
+  object: >-
+    Frozen ordered three-kick FIO U_(5/2)U_(3/2)U_(1/2) with internal phase
+    Phi=S_(1/2)(q0,q1)+S_(3/2)(q1,q2)+S_(5/2)(q2,q3); audit the intersection
+    of its stationary equations with det Hess_(q1,q2) Phi=0.
+  clock: "one G superstep; three factors in fixed order"
+  normalization: >-
+    hbar=1, positive-real per-factor amplitude (2*pi)^(-1/2), phase
+    exp(+i*S_a), global phase 1, global Maslov index NOT_ASSIGNED.
+  determinant_convention: >-
+    NOT_OPENED; no spectral determinant, zeta, logarithmic derivative, trace
+    formula, spectrum, or zero ledger is defined.
+  cutoff: "exactly three frozen factors, two internal variables, and one rational witness"
+  precision: "exact SymPy rational polynomial arithmetic"
+  allowed_data:
+    - "TH-0001 source locks and prior exact phase audit"
+    - "elementary stationary-phase/canonical-relation algebra"
+    - "exact rational arithmetic"
+  forbidden_data:
+    - "prime tables, zero tables, xi/zeta values, GUE, USTC data"
+    - "spectra, FFT grids, quadrature, determinant evaluations, or root searches"
+    - "fitted hbar, phases, boundary truncations, or changed factor order"
+    - "Maslov assignment from signed classical multipliers"
+    - "Route-B self-adjointness, trace-formula, or Hilbert-Polya inference"
+  training_split: "Empty; no fitting or target data"
+  validation_split: >-
+    Exact derivatives, Hessian determinant, on-shell parameterization, endpoint
+    Jacobian identity, rank-one witness, and canonical-step residual identities.
+  test_split: >-
+    Independent rational witness values, source-hash parity, deterministic
+    artifact regeneration, and explicit non-claims.
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The inherited TH-0001 audit has a complete signed real primitive-orbit
+    prefix only through G-period two; this incidence audit does not enlarge it.
+  strongest_failure: >-
+    No arithmetic period law, von-Mangoldt repetition weight, or higher-period
+    completeness is established.
+  metrics:
+    inherited_short_prefix_complete: true
+    on_shell_caustic_is_not_orbit_ledger: true
+    arithmetic_orbit_law: false
+    higher_period_completeness: false
+  artifacts:
+    - evaluations/route_a/TH-0001/20260806T024238Z.yaml
+
+a2:
+  verdict: A2_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The audit keeps the ordered factorized unitary and determinant convention
+    separate; no scalar spectral object is introduced.
+  strongest_failure: >-
+    No dynamical zeta, Fredholm determinant, trace formula, root ledger, or
+    cutoff-stability test is defined.
+  metrics:
+    determinant_defined: false
+    zero_error_train: not_testable_no_determinant
+    zero_error_validation: not_testable_no_determinant
+    zero_error_test: not_testable_no_determinant
+    cutoff_drift: not_testable
+    precision_drift: not_applicable_exact_rational
+  artifacts: []
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: "The exact incidence identity adds no continuation claim."
+  strongest_failure: >-
+    Functional equation, completed-xi divisor, counting law, and moving-order
+    control remain undefined.
+  metrics:
+    functional_equation: false
+    analytic_continuation: false
+    target_counting_law: false
+  artifacts: []
+
+a4:
+  verdict: A4_NATURAL_QUANTIZATION
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The exact caustic 15*q1*q2=1 is attained by every real nonzero-t stationary
+    branch. At t=1 the canonical trajectory is rational, the endpoint
+    projection Jacobian is -H_int, the Hessian has rank one, and the null
+    directional third derivative is 132 != 0.
+  strongest_failure: >-
+    This strengthens OBR-011 but does not supply a multi-chart phase/Maslov
+    transition ledger or an orbit-phase law.
+  metrics:
+    factorized_unitarity_preserved: true
+    on_shell_parameterization_exact: true
+    endpoint_projection_identity: true
+    rational_canonical_witness: true
+    rank_one_caustic_witness: true
+    global_single_phase_reduction: false
+    global_maslov_index_assigned: false
+    route_b_ready: false
+  artifacts:
+    - configs/source_locks/TH-0001-PHASE-CAUSTIC-REAL.yaml
+    - experiments/th_0001_phase_caustic_real.py
+    - artifacts/th_0001/phase_caustic_real_audit.json
+    - formal/results/th_0001_phase_caustic_real.md
+    - formal/obstructions/th_0001_single_phase_caustic.md
+    - tests/test_th_0001_phase_caustic_real.py
+
+overall_verdict: ROUTE_A_EXPLORATORY
+scoped_audit_verdict: GO_WITH_LIMITATIONS
+claim_boundary:
+  established:
+    - "OBR-011 caustic is on-shell on the real stationary canonical relation"
+    - "endpoint projection Jacobian equals minus the internal Hessian"
+    - "exact rational rank-one caustic witness with nonzero cubic null derivative"
+  not_established:
+    - "multi-chart phase/Maslov transition ledger"
+    - "arithmetic orbit weights, determinant, spectrum, or trace formula"
+    - "Route B, Hilbert-Polya, or RH"
+blocking_conditions:
+  - "global single-phase reduction remains obstructed by OBR-011"
+  - "no determinant or arithmetic trace ledger is defined"
+  - "any phase assignment beyond the factorized FIO requires a new multi-chart source lock"
+next_smallest_test: >-
+  Stop this incidence audit. Reopen only with explicit multi-chart phase/Maslov
+  charts and transition rules, or pivot breadth-first to a structurally new
+  candidate; do not compute spectra or determinants.
+route_b_invocation_allowed: false

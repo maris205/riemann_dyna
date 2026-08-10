@@ -454,7 +454,7 @@ Target-zero matching, completed-xi work, and Route B remain closed.
 |---|---|---|---|---|---|---|---|
 | LOG-0001 | Exact-`U_c` polar nuclear transfer family | `ANALYTIC_REVIEW` | Analytic `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_PARTIAL_ANALYTIC_STRUCTURE,A4_FAIL)`; target `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `ROUTE_A_EXPLORATORY` | Not invoked | Same-object entire determinant with `1<=ord(D_pol)<=2`, zero-free half-plane, explicit quadratic upper envelope, and certified `D_pol'(2)>0.0213` / linear maximum-modulus lower bound | No log-prime/von-Mangoldt law, exact order, sharp divisor asymptotic, completed-xi structure, or quantization | Breadth pivot: define a new intrinsic recurrent candidate or register a reusable obstruction |
 | QG-0001 | Harmonic magnetic lollipop-theta graph tower | `STOP_SCOPED` (exact relative determinant and divisor) | Analytic `(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_UNITARY_OR_SCATTERING_CANDIDATE)`; target `A2/A3_FAIL` / `ROUTE_A_REJECTED` | Not invoked | `H^{-1}` trace class and exact `det_F(I-k^2 H^{-1})=product_n chi_0(k/n)` | Exact divisor coefficient is `2*L_0 ~= 12.7647` times target; no orbit trace law | Park; reopen only as a new lock with intrinsic normalization/tower law |
-| TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, unitary FIO lift, and exact internal-caustic obstruction | No determinant, arithmetic orbit law, higher-period completeness, or full nonlinear antiunitary audit | Stop phase sub-audit; reopen only with an explicit multi-chart phase/Maslov ledger |
+| TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, unitary FIO lift, and on-shell rank-one caustic obstruction | No determinant, arithmetic orbit law, higher-period completeness, full nonlinear antiunitary audit, or multi-chart Maslov ledger | Stop phase sub-audit; reopen only with explicit multi-chart phase/Maslov transition rules |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
 | SS-0002 | Countable-state symbolic suspension / modular transfer operator | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_REJECTED` | Not invoked | Exact C6 holonomy, nuclear Fredholm determinant, Selberg identity, and natural Laplacian | Same determinant has at least `Omega(T^2)` Selberg spectral zeros, not `Theta(T log T)` | Define one explicit non-Selberg nuclear object and prove its own divisor-count regime before assigning SS-0003 |
 
@@ -1067,7 +1067,7 @@ a3: A3_FAIL
 a4: A4_NATURAL_QUANTIZATION
 overall: ROUTE_A_EXPLORATORY
 scoped_verdict: GO_WITH_LIMITATIONS
-latest_evaluation: evaluations/route_a/TH-0001/20260806T053410Z.yaml
+latest_evaluation: evaluations/route_a/TH-0001/20260810T074238Z.yaml
 ```
 
 ### Route-B status
@@ -1102,6 +1102,12 @@ latest_evaluation: null
 - The ordered three-kick phase has internal Hessian determinant
   \(15q_1q_2-1\), with exact caustic witness \((1,1/15)\). This strictly
   blocks a global single reduced phase while leaving factorized unitarity intact.
+
+The on-shell incidence audit proves the same caustic is attained by every real
+nonzero-\(t\) stationary branch. The endpoint projection Jacobian is exactly
+\(-H_{\rm int}\); at \(t=1\) there is an exact rational rank-one witness with
+null-direction third derivative \(132\ne0\). This strengthens `OBR-011`
+without introducing a new obstruction or determinant ledger.
 
 ### Failed controls and known obstructions
 
@@ -1146,6 +1152,12 @@ experiments/th_0001_phase_caustic_audit.py
 tests/test_th_0001_three_kick_henon.py
 tests/test_th_0001_fio_quantization.py
 tests/test_th_0001_phase_caustic_audit.py
+configs/source_locks/TH-0001-PHASE-CAUSTIC-REAL.yaml
+experiments/th_0001_phase_caustic_real.py
+artifacts/th_0001/phase_caustic_real_audit.json
+formal/results/th_0001_phase_caustic_real.md
+evaluations/route_a/TH-0001/20260810T074238Z.yaml
+tests/test_th_0001_phase_caustic_real.py
 ```
 
 ### Claim boundary
@@ -1173,6 +1185,7 @@ the breadth rule to a new candidate. Do not compute a spectrum or determinant.
 | 2026-08-06 | `GENERATED` | `UPO_PASSED` (cutoff-scoped) | Exact Route-A prefilter; `A1_WEAK/A2_FAIL/A3_FAIL/A4_FORMAL_HINT` | `fb69649afbda27006d56471c5680b590f90ba43b` | sole main research agent |
 | 2026-08-06 | `UPO_PASSED` (cutoff-scoped) | `ANALYTIC_REVIEW` | Same-order unitary FIO and inherited antiunitary audit; `A4_NATURAL_QUANTIZATION` | `836f5880fac6abfb29ee031e1136e24504e2b0a9` | sole main research agent |
 | 2026-08-06 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | `OBR-011`: exact internal caustic blocks global single-phase reduction; tuple unchanged | `a4cb10640c44559f0520386d9c84e65c9b873134` | sole main research agent |
+| 2026-08-10 | `ANALYTIC_REVIEW` | `ANALYTIC_REVIEW` | On-shell caustic incidence and exact real rank-one witness; `OBR-011` strengthened, tuple unchanged | `686c2bc` | sole main research agent |
 
 ---
 

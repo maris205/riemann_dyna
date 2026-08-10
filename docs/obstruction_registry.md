@@ -607,6 +607,23 @@ Only global single-phase reduction of the frozen three-kick kernel. This does
 not obstruct the unitary factorization, and it does not exclude a future
 explicit multi-chart phase calculus.
 
+On-shell strengthening (2026-08-10):
+The exact stationary equations intersect the caustic in the full real family
+
+\[
+q_1=t\ne0,\quad q_2=(15t)^{-1},\quad
+q_0=1-\frac32t^2-(15t)^{-1},\quad
+q_3=1-t-(90t^2)^{-1}.
+\]
+
+The endpoint projection Jacobian is `-H_int`, so the caustic is the actual
+singular set of the stationary-Lagrangian projection. At `t=1`, the exact
+canonical witness has
+`(q0,q1,q2,q3)=(-17/30,1,1/15,-1/90)` and
+`(p0,p1,p2,p3)=(-289/1800,-17/30,1,1/15)`. The Hessian has rank one and the
+null-direction third derivative is `132 != 0`. This strengthens OBR-011 but is
+not a new independent obstruction.
+
 Reopening condition:
 Freeze a multi-chart phase/Maslov ledger with caustic transition rules and
 prove its compatibility with the ordered FIO. Signed classical multipliers
@@ -620,6 +637,12 @@ Artifacts:
 - `formal/obstructions/th_0001_single_phase_caustic.md`
 - `evaluations/route_a/TH-0001/20260806T053410Z.yaml`
 - `tests/test_th_0001_phase_caustic_audit.py`
+- `configs/source_locks/TH-0001-PHASE-CAUSTIC-REAL.yaml`
+- `experiments/th_0001_phase_caustic_real.py`
+- `artifacts/th_0001/phase_caustic_real_audit.json`
+- `formal/results/th_0001_phase_caustic_real.md`
+- `evaluations/route_a/TH-0001/20260810T074238Z.yaml`
+- `tests/test_th_0001_phase_caustic_real.py`
 
 ---
 

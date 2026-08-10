@@ -2,6 +2,24 @@
 
 ## 2026-08-10
 
+### TH-0001 on-shell caustic incidence
+
+- Added a source lock, exact SymPy certificate, formal result note, and focused
+  Route-A evaluation for the smallest reopening question after `OBR-011`.
+- Parameterized the full real nonzero-t stationary intersection with the
+  caustic `15*q1*q2=1`, proved the endpoint projection Jacobian is `-H_int`,
+  and certified the rational trajectory at `t=1` with all six kick residuals
+  zero.
+- Certified a rank-one Hessian and nonzero null-direction third derivative
+  `132` at the witness. This strengthens `OBR-011` but is not a new independent
+  obstruction, determinant result, spectrum result, or Route-B entry.
+- Kept the Route-A tuple `(A1_WEAK,A2_FAIL,A3_FAIL,A4_NATURAL_QUANTIZATION)`;
+  the completed-xi target tuple remains failed and Route B remains closed.
+
+Focused on-shell incidence suite: `7/7 passed`.
+
+Evaluation source state: `686c2bc6582cb097c56ccda91ae8568bd40422ad`.
+
 ### COPRIME-0001 scalar continuation and endpoint barrier
 
 - Added the versioned source lock, symbolic certificate generator, artifact,

@@ -4692,3 +4692,28 @@ computing determinant roots.
 
 Recommended verdict: `GO_WITH_LIMITATIONS`; overall
 `ROUTE_A_EXPLORATORY`.
+## 2026-08-10 — TH-0001 on-shell caustic incidence audit
+
+- Candidate/clue: `TH-0001` / `CLUE-A4-001`.
+- Source lock: `configs/source_locks/TH-0001-PHASE-CAUSTIC-REAL.yaml`.
+- Evaluation: `evaluations/route_a/TH-0001/20260810T074238Z.yaml`.
+- Result: the exact caustic `15*q1*q2=1` is attained by every real nonzero-
+  `t` stationary branch. The endpoint projection Jacobian is `-H_int`.
+- Witness: `t=1` gives `(q0,q1,q2,q3)=(-17/30,1,1/15,-1/90)` and
+  `(p0,p1,p2,p3)=(-289/1800,-17/30,1,1/15)`, with all six kick residuals zero;
+  the Hessian rank is one and the null-direction third derivative is `132`.
+- Route-A tuple remains `(A1_WEAK,A2_FAIL,A3_FAIL,A4_NATURAL_QUANTIZATION)`;
+  target tuple remains `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)`.
+- Interpretation: this is a scoped strengthening of `OBR-011`, not a new
+  independent obstruction. No determinant, spectrum, zero, or Route-B work is
+  authorized.
+- Reproduction:
+
+  ```bash
+  python3 experiments/th_0001_phase_caustic_real.py --quiet \
+    --output artifacts/th_0001/phase_caustic_real_audit.json
+  python3 -m unittest -v tests/test_th_0001_phase_caustic_real.py
+  ```
+
+- Next smallest task: stop this sub-audit; reopen only with an explicit
+  multi-chart phase/Maslov transition source lock, or pivot breadth-first.
