@@ -1,5 +1,30 @@
 # Changelog
 
+## 2026-08-10
+
+### COPRIME-0001 scalar continuation and endpoint barrier
+
+- Added the versioned source lock, symbolic certificate generator, artifact,
+  formal theorem note, obstruction note, focused tests, and Route-A evaluation
+  for the scalar-boundary audit.
+- Proved a squarefree-divisor Sylvester representation
+  `D_tilde(s)=det_2(I-C_s)` that is holomorphic on `Re(s)>1/2, s!=1` and
+  agrees with the original `D_cop` on `Re(s)>1`.
+- Proved by finite prime-coordinate min--max compression and spectral
+  continuity that infinitely many positive real zeros of `D_cop` accumulate at
+  `s=1`; consequently no holomorphic or meromorphic germ crosses that point.
+- Kept the `det_2` continuation representation separate from the original
+  bounded `ell^2` operator, did not evaluate or locate any root, and kept Route
+  B closed.
+- Updated the candidate/clue state to `STOP_SCOPED` while retaining the
+  analytic tuple `(A1_WEAK,A2_ANALYTIC_DETERMINANT,
+  A3_CONTROLLED_CONTINUATION,A4_FAIL)` and the completed-xi target tuple
+  failure.
+
+Focused scalar-boundary suite: `7/7 passed`.
+
+Evaluation source state: `a1d45507015f0a7a16de3931ebd459535a54c6e1`.
+
 Repository-backed research status changes are recorded here. Detailed evidence
 and reproduction commands remain in `docs/research_log.md` and `HP_HANDOFF.md`.
 

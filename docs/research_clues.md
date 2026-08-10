@@ -1202,7 +1202,7 @@ component law fixed before target data. Route B remains closed.
 **来源：** 2026-08-09 breadth pivot after the frozen Logistic order audit
 **证据：** `MODELING_CHOICE` at creation; upgraded to `PROVED` for the first
 trace-class and cycle-ledger theorem edge
-**状态：** `ACTIVE`
+**状态：** `STOP_SCOPED`
 **对应层：** `A1`, `A2`, `A3`
 
 ### 内容
@@ -1236,21 +1236,24 @@ give the coprime cyclic/primitive repetition ledger.
 
 ### Failure boundary
 
-No prime-to-orbit correspondence, von-Mangoldt weight, analytic continuation,
-functional equation, `T log T` divisor law, completed-xi equality, or natural
-quantization has been shown.  Do not infer arithmetic meaning from the gcd
-constraint alone.
+No prime-to-orbit correspondence, von-Mangoldt weight, functional equation,
+`T log T` divisor law, completed-xi equality, or natural quantization has been
+shown.  The scalar continuation is only punctured at `s=1`, and the endpoint
+has the `OBR-015` zero-accumulation barrier.  Do not infer arithmetic meaning
+from the gcd constraint alone.
 
 ### Source lock and first test
 
 ```text
-configs/source_locks/COPRIME-0001-COUNTABLE-TRACE.yaml
-evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml
+configs/source_locks/COPRIME-0001-SCALAR-BOUNDARY.yaml
+evaluations/route_a/COPRIME-0001/20260810T034453Z.yaml
 ```
 
-The next smallest test is whether the scalar determinant continues across the
-exact `ell^2` operator boundary at `Re(s)=1`, or whether a same-object barrier
-can be proved. Root searches and zero comparisons remain forbidden.
+The continuation audit is now closed in scope: a squarefree-divisor
+`det_2` representation gives a target-free scalar continuation on
+`Re(s)>1/2, s!=1`, while infinitely many positive real zeros of the original
+determinant accumulate at `s=1`, forbidding a holomorphic or meromorphic germ
+through that endpoint. Root locations and zero comparisons remain forbidden.
 
 ---
 
@@ -1948,4 +1951,23 @@ riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
 overall: ROUTE_A_EXPLORATORY
 verdict: GO_WITH_LIMITATIONS
 consequence: "The first countable recurrent object survives as a target-free theorem edge. The frozen ell^2 matrix is trace class exactly on Re(s)>1 and unbounded on Re(s)<=1. It has no proved prime-orbit law or global divisor mechanism. Next audit only scalar continuation across this boundary or a barrier; keep Route B closed."
+```
+
+## Status update — CLUE-A1-009 scalar continuation and endpoint closure
+
+```yaml
+date: 2026-08-10
+clue_id: CLUE-A1-009
+old_status: ACTIVE
+new_status: STOP_SCOPED
+candidate_id: COPRIME-0001
+evidence: "Squarefree-divisor Sylvester lift yields a det_2 scalar continuation on Re(s)>1/2, s!=1; min-max spectral-flow audit proves infinitely many positive real determinant zeros s_j downarrow 1"
+source_lock: "configs/source_locks/COPRIME-0001-SCALAR-BOUNDARY.yaml"
+evaluation: "evaluations/route_a/COPRIME-0001/20260810T034453Z.yaml"
+obstruction: "OBR-015"
+analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_CONTROLLED_CONTINUATION, A4_FAIL]
+riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+overall: ROUTE_A_EXPLORATORY
+verdict: STOP_SCOPED
+consequence: "The scalar determinant continues on a punctured half-plane only through an explicitly named S_2 representation; the endpoint s=1 is a strict same-object meromorphic barrier. Park COPRIME-0001, keep Route B closed, and do not compute roots."
 ```

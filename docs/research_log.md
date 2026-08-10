@@ -3820,6 +3820,101 @@ comparing target zeros.
 Recommended verdict: `GO_WITH_LIMITATIONS`; overall
 `ROUTE_A_EXPLORATORY`.
 
+## 2026-08-10 — COPRIME-0001 scalar continuation and endpoint barrier
+
+### Current clue and candidate
+
+`CLUE-A1-009` / `COPRIME-0001` remained the sole active object after the
+countable trace ledger. The source lock froze the original
+`D_cop(s)=det_F(I-L_s)` on `Re(s)>1`; no target data, determinant values, or
+root locations were allowed.
+
+### New theorem edge
+
+On the squarefree divisor space, the Mobius factorization is
+
+```text
+L_s=V_s M V_s^T,
+C_s=V_s^T V_s M=zeta(s)T_s-P_1,
+T_s(d,e)=mu(e)[d,e]^(-s).
+```
+
+The exact Hilbert--Schmidt ledger is
+
+```text
+||H_s||_{S_2}^2 = prod_p(1+3*p^(-2*Re(s))),  H_s(d,e)=[d,e]^(-s).
+```
+
+Thus `D_tilde(s)=det_2(I-C_s)` is holomorphic on
+`Re(s)>1/2, s!=1` and agrees with `D_cop` on `Re(s)>1` because
+`Tr(C_s)=0` there. This is a scalar continuation representation only; the
+original counting-measure `ell^2` matrix remains undefined as a bounded
+operator on `Re(s)<=1`.
+
+### Endpoint obstruction
+
+Adding label one only for a min--max comparison gives local rank-two prime
+coordinate kernels with
+
+```text
+alpha_p^+/-=(1 +/- sqrt((1+3*p^(-s))/(1-p^(-s))))/2.
+```
+
+The positive finite-coordinate products diverge in count as `s downarrow 1`.
+After the codimension-one compression back to labels `n>=2`, every fixed
+positive eigenvalue index eventually exceeds one, while `||L_3||<9/16<1`.
+Continuity therefore yields infinitely many distinct positive real zeros
+`s_j downarrow 1` of `D_cop`. This proves that no holomorphic or meromorphic
+germ of the same scalar determinant passes through `s=1`.
+
+No root was searched for or numerically located; the zeros are an existence
+consequence of the spectral-flow theorem. The punctured `det_2` continuation
+and the endpoint barrier are kept as separate ledgers.
+
+### Route-A update
+
+```text
+(A1_WEAK, A2_ANALYTIC_DETERMINANT,
+ A3_CONTROLLED_CONTINUATION, A4_FAIL)
+```
+
+The Riemann-target interpretation remains
+`(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`. The scoped audit is `STOP_SCOPED`; no
+Route-B invocation is authorized. Any reopening requires a new source lock
+with a new determinant or function space, and must not search roots or compare
+Riemann zeros.
+
+### Updated files
+
+- `configs/source_locks/COPRIME-0001-SCALAR-BOUNDARY.yaml`
+- `evaluations/route_a/COPRIME-0001/20260810T034453Z.yaml`
+- `experiments/coprime_0001_scalar_boundary.py`
+- `artifacts/coprime_0001/scalar_boundary_certificate.json`
+- `formal/results/coprime_0001_scalar_boundary.md`
+- `formal/obstructions/coprime_scalar_endpoint_accumulation.md`
+- `tests/test_coprime_0001_scalar_boundary.py`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+### Tests and reproduction
+
+Focused scalar-boundary suite: `7/7 passed`.
+
+```bash
+python3 experiments/coprime_0001_scalar_boundary.py \
+  --quiet \
+  --output artifacts/coprime_0001/scalar_boundary_certificate.json
+python3 -m unittest -v tests/test_coprime_0001_scalar_boundary.py
+```
+
+Recommended verdict: `STOP_SCOPED`; overall Route-A status remains
+`ROUTE_A_EXPLORATORY` for the analytic representation, with the completed-xi
+target tuple still failed.
+
 ## 2026-08-09 — COPRIME-0001 countable trace and primitive-cycle ledger
 
 ### Stable checkpoint

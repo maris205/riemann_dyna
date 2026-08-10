@@ -3819,3 +3819,118 @@ No such recurrent-base object is currently mathematically defined. This is the
 current stopping condition; the alternative reopening is a fully defined
 chronological transfer-cocycle determinant with a frozen function space,
 horizon, clock, normalization, repetition law, and trace theorem.
+
+---
+
+# COPRIME-0001 scalar continuation and endpoint closure (2026-08-10)
+
+## Current clue
+
+`CLUE-A1-009` / `COPRIME-0001` was audited after the exact countable trace
+ledger. The original object remains
+
+```text
+(L_s)_{mn}=1_{gcd(m,n)=1}(mn)^(-s/2),  n,m>=2,
+D_cop(s)=det_F(I-L_s),  Re(s)>1.
+```
+
+No prime table, zero table, determinant value, or fitted parameter was used.
+
+## New reusable theorem edge
+
+The squarefree Mobius lift
+
+```text
+L_s=V_s M V_s^T,
+C_s=V_s^T V_s M=zeta(s)T_s-P_1,
+T_s(d,e)=mu(e)[d,e]^(-s)
+```
+
+has
+
+```text
+||H_s||_{S_2}^2=prod_p(1+3*p^(-2*Re(s))),  H_s(d,e)=[d,e]^(-s).
+```
+
+Therefore
+
+```text
+D_tilde(s)=det_2(I-C_s)
+```
+
+is a holomorphic scalar representation on `Re(s)>1/2, s!=1` and equals the
+original Fredholm determinant on `Re(s)>1` because `Tr(C_s)=0` there. This is
+an explicitly named continuation representation, not an extension of the
+original bounded counting-measure `ell^2` operator.
+
+## Strict endpoint obstruction
+
+For real `s>1`, temporarily add label one and use finite prime-coordinate
+compressions. The local rank-two kernel has
+
+```text
+alpha_p^+/-=(1 +/- sqrt((1+3*p^(-s))/(1-p^(-s))))/2,
+alpha_p^+(s)>=1+p^(-s).
+```
+
+Euler divergence and min--max show that every fixed positive eigenvalue index
+of the original codimension-one compression eventually exceeds one as
+`s downarrow 1`. At `s=3`, the exact trace-class bound gives
+`||L_3||<9/16<1`. Spectral continuity therefore produces infinitely many
+distinct positive real zeros
+
+```text
+s_j downarrow 1,  D_cop(s_j)=0.
+```
+
+No zero was searched for or located. The accumulation proves that the scalar
+determinant has no holomorphic or meromorphic germ through `s=1`. The
+punctured continuation and endpoint obstruction are separate ledgers.
+
+## Route-A checkpoint
+
+```text
+analytic tuple:       (A1_WEAK, A2_ANALYTIC_DETERMINANT,
+                       A3_CONTROLLED_CONTINUATION, A4_FAIL)
+Riemann-target tuple:  (A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+scoped verdict:        STOP_SCOPED
+Route B:               not invoked
+```
+
+## Updated files
+
+- `configs/source_locks/COPRIME-0001-SCALAR-BOUNDARY.yaml`
+- `evaluations/route_a/COPRIME-0001/20260810T034453Z.yaml`
+- `experiments/coprime_0001_scalar_boundary.py`
+- `artifacts/coprime_0001/scalar_boundary_certificate.json`
+- `formal/results/coprime_0001_scalar_boundary.md`
+- `formal/obstructions/coprime_scalar_endpoint_accumulation.md`
+- `tests/test_coprime_0001_scalar_boundary.py`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `CHANGELOG.md`
+
+## Verification
+
+Focused scalar-boundary suite: `7/7 passed`.
+
+```bash
+python3 experiments/coprime_0001_scalar_boundary.py \
+  --quiet \
+  --output artifacts/coprime_0001/scalar_boundary_certificate.json
+python3 -m unittest -v tests/test_coprime_0001_scalar_boundary.py
+```
+
+## Claim boundary and next smallest task
+
+Established: a target-free punctured scalar continuation representation and a
+strict endpoint zero-accumulation obstruction at `s=1`.
+
+Not established: prime-orbit/von-Mangoldt weights, completed-xi structure,
+functional equation, target divisor law, quantization, Route B, Hilbert--Polya,
+or RH.
+
+Next smallest task: park COPRIME-0001. Reopen only with a new source-locked
+determinant or function space; do not search roots or compare Riemann zeros.

@@ -821,3 +821,68 @@ Artifacts:
 - `artifacts/coprime_0001/countable_trace_certificate.json`
 - `evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml`
 - `tests/test_coprime_0001_countable_trace.py`
+
+---
+
+## OBR-015 — COPRIME scalar determinant has an endpoint zero accumulation at s=1
+
+Status:
+`PROVED_OBSTRUCTION` (candidate-local, endpoint-scoped)
+
+Source:
+`COPRIME-0001-SCALAR-BOUNDARY-001`
+
+Statement:
+For the frozen
+
+```text
+(L_s)_{mn}=1_{gcd(m,n)=1}(mn)^(-s/2),   D_cop(s)=det_F(I-L_s),   Re(s)>1,
+```
+
+there is a sequence of distinct positive real zeros `s_j downarrow 1`.
+The proof temporarily adds label one, factorizes finite prime-coordinate
+compressions into local rank-two kernels with eigenvalues
+
+```text
+alpha_p^+/-=(1 +/- sqrt((1+3*p^(-s))/(1-p^(-s))))/2,
+```
+
+and applies min--max after the codimension-one compression back to labels
+`n>=2`.  The top positive products diverge as `s downarrow 1`, whereas
+`||L_3||<9/16<1`; continuity forces arbitrarily many crossings of eigenvalue
+one and hence Fredholm zeros.
+
+Impact:
+`D_cop` has no holomorphic or meromorphic germ through `s=1`.  Thus no
+same-object continuation to a half-plane containing that point is available.
+This is stronger than the operator-boundary statement `OBR-014`.
+
+Related positive result:
+The squarefree-divisor lift
+
+```text
+C_s=zeta(s)T_s-P_1,   ||T_s||_{S_2}^2=prod_p(1+3*p^(-2*Re(s))),
+```
+
+defines the explicitly named scalar representation
+`D_tilde(s)=det_2(I-C_s)` on `Re(s)>1/2, s!=1`, and it equals `D_cop` on
+`Re(s)>1`.  This punctured continuation does not extend the original bounded
+`ell^2` operator and does not remove the endpoint obstruction.
+
+Scope:
+Only the frozen COPRIME determinant and the stated endpoint.  No claim is
+made about continuation at every `1+it` with `t!=0`, another function space,
+or a new candidate.
+
+Reopening condition:
+Freeze a new determinant or function space and its convention explicitly;
+do not search roots or compare Riemann zeros.
+
+Artifacts:
+
+- `configs/source_locks/COPRIME-0001-SCALAR-BOUNDARY.yaml`
+- `formal/results/coprime_0001_scalar_boundary.md`
+- `formal/obstructions/coprime_scalar_endpoint_accumulation.md`
+- `experiments/coprime_0001_scalar_boundary.py`
+- `artifacts/coprime_0001/scalar_boundary_certificate.json`
+- `evaluations/route_a/COPRIME-0001/20260810T034453Z.yaml`

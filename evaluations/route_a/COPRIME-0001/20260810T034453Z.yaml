@@ -1,0 +1,159 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: COPRIME-0001
+audit_id: COPRIME-0001-SCALAR-BOUNDARY-001
+formal_candidate: true
+source_commit: a1d45507015f0a7a16de3931ebd459535a54c6e1
+evaluation_date: "2026-08-10T03:44:53Z"
+supersedes: evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml
+
+source_lock:
+  object: >-
+    Frozen countable coprime renewal suspension with labels n>=2,
+    roof tau(n)=log(n), and symmetric kernel
+    (L_s)_{mn}=1_{gcd(m,n)=1}(mn)^(-s/2) on ell^2({2,3,...}).
+  data_type: >-
+    Same-object Fredholm determinant on Re(s)>1, squarefree-divisor S_2
+    scalar continuation representation, and a target-free endpoint spectral
+    obstruction.
+  clock: "sum_i log(n_i)=log(prod_i n_i)"
+  normalization: >-
+    Label 1 excluded; symmetric half-roof factors; directed cycles; no
+    reclocking or target-dependent scale.
+  determinant_convention: >-
+    D_cop(s)=det_F(I-L_s) on Re(s)>1. The named continuation representation
+    is D_tilde(s)=det_2(I-C_s), C_s=V_s^T V_s M, and is not relabeled as the
+    original bounded ell^2 operator below Re(s)=1.
+  cutoff: >-
+    No theorem cutoff; finite prime-coordinate compressions are min-max
+    witnesses only and no determinant/root values are evaluated.
+  precision: >-
+    Symbolic Euler-factorization, Hilbert-Schmidt estimates, and exact
+    algebraic inequalities; no floating-point target data.
+  allowed_data:
+    - frozen coprime kernel and prior source lock
+    - Mobius inversion and squarefree divisor coordinates
+    - formal Euler products and zeta pole at s=1
+    - min-max spectral continuity for compact self-adjoint operators
+    - elementary bound zeta(3)<5/4
+  forbidden_data:
+    - prime tables, prime enumeration, or primality predicates
+    - Riemann-zero tables, xi/zeta numerical values, or USTC data
+    - determinant values, root locations, or root searches
+    - fitting, reclocking, or mixed determinant ledgers
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The original exact recurrent coprime cycle ledger remains valid and the
+    continuation proof uses only intrinsic gcd/divisor structure.
+  strongest_failure: >-
+    No primitive cycle correspondence to rational primes and no von-Mangoldt
+    repetition amplitude has been derived.
+  metrics:
+    arithmetic_prime_orbit_law: false
+    target_data_used: false
+    primitive_ledger_unchanged: true
+  artifacts:
+    - formal/results/coprime_0001_countable_trace.md
+    - artifacts/coprime_0001/countable_trace_certificate.json
+
+a2:
+  verdict: A2_ANALYTIC_DETERMINANT
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Squarefree Möbius factorization gives C_s=zeta(s)T_s-P_1 with T_s a
+    holomorphic Hilbert-Schmidt family for Re(s)>1/2. The 2-regularized
+    determinant det_2(I-C_s) is holomorphic on Re(s)>1/2, s!=1 and equals the
+    original Fredholm determinant on Re(s)>1 because Tr(C_s)=0 there.
+  strongest_failure: >-
+    The original ell^2 operator is still unbounded for Re(s)<=1, and no
+    continuation through s=1 is possible because of the endpoint zero
+    accumulation. No determinant roots are located.
+  metrics:
+    defining_trace_class_domain: "Re(s)>1"
+    scalar_continuation_domain: "Re(s)>1/2, s!=1"
+    continuation_representation: "det_2(I-C_s)"
+    equality_on_defining_domain: true
+    original_operator_extended_below_boundary: false
+    endpoint_zero_accumulation: true
+    root_locations_computed: false
+  artifacts:
+    - configs/source_locks/COPRIME-0001-SCALAR-BOUNDARY.yaml
+    - experiments/coprime_0001_scalar_boundary.py
+    - artifacts/coprime_0001/scalar_boundary_certificate.json
+
+a3:
+  verdict: A3_CONTROLLED_CONTINUATION
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The scalar determinant has a target-free punctured continuation on an
+    explicit half-plane Re(s)>1/2, s!=1, obtained by a locally holomorphic
+    S_2 family and det_2 identity. The endpoint obstruction is independently
+    proved by min-max spectral flow.
+  strongest_failure: >-
+    Infinitely many positive real determinant zeros accumulate at s=1, so the
+    scalar object has no holomorphic or meromorphic germ through that point.
+    Functional equation, Gamma/trivial-zero factors, divisor counting,
+    completed-xi equality, and global target structure are absent.
+  metrics:
+    continuation_domain: "Re(s)>1/2, s!=1"
+    endpoint_meromorphic_continuation: false
+    endpoint_zero_accumulation: true
+    functional_equation: false
+    gamma_and_trivial_zero_ledger: false
+    target_divisor_law: false
+    completed_xi_equality: false
+  artifacts:
+    - formal/results/coprime_0001_scalar_boundary.md
+    - formal/obstructions/coprime_scalar_endpoint_accumulation.md
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The scalar continuation is an analytic representation only; no natural
+    unitary, scattering, Hamiltonian lift, Hilbert space domain, or
+    self-adjoint generator is supplied.
+  strongest_failure: >-
+    The original candidate remains without a quantization map and Route B is
+    not authorized.
+  metrics:
+    natural_quantization: false
+    route_b_ready: false
+  artifacts: []
+
+analytic_route_tuple:
+  - A1_WEAK
+  - A2_ANALYTIC_DETERMINANT
+  - A3_CONTROLLED_CONTINUATION
+  - A4_FAIL
+riemann_target_tuple:
+  - A1_WEAK
+  - A2_FAIL
+  - A3_FAIL
+  - A4_FAIL
+overall_verdict: ROUTE_A_EXPLORATORY
+recommended_candidate_state: STOP_SCOPED
+scoped_audit_verdict: STOP_SCOPED
+recommended_verdict: STOP_SCOPED
+claim_boundary:
+  established:
+    - "D_tilde=det_2(I-C_s) is holomorphic on Re(s)>1/2, s!=1"
+    - "D_tilde equals D_cop on Re(s)>1"
+    - "D_cop has infinitely many positive real zeros accumulating at s=1"
+    - "No holomorphic or meromorphic germ crosses s=1"
+  not_established:
+    - "prime-to-orbit correspondence or von-Mangoldt weights"
+    - "functional equation, Gamma/trivial-zero ledger, or completed-xi divisor"
+    - "natural quantization, Route B, Hilbert-Polya, or RH"
+blocking_conditions:
+  - "endpoint zero accumulation prevents a meromorphic continuation through s=1"
+  - "the auxiliary det_2 representation cannot be called the original bounded ell^2 operator"
+  - "no arithmetic orbit law or target divisor mechanism"
+next_smallest_test: >-
+  Park the frozen COPRIME object. Any reopening must source-lock a new
+  determinant or function space explicitly; do not search roots or compare
+  Riemann zeros.
+route_b_invocation_allowed: false

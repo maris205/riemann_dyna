@@ -1547,10 +1547,10 @@ numerical zero match. Do not allocate `SS-0003` before that object is explicit.
 - **Family:** Countable-state coprime symbolic suspension
 - **Parent candidate:** Breadth pivot after the frozen Logistic order audit
 - **Created:** 2026-08-09
-- **Current status:** `ANALYTIC_REVIEW`
+- **Current status:** `STOP_SCOPED`
 - **Owner:** sole main research agent
 - **Branch:** `main`
-- **Latest evaluation:** `evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml`
+- **Latest evaluation:** `evaluations/route_a/COPRIME-0001/20260810T034453Z.yaml`
 - **Uses prime table:** `false`
 - **Uses zero table:** `false`
 
@@ -1576,6 +1576,7 @@ and the sole determinant convention is
 
 ```text
 configs/source_locks/COPRIME-0001-COUNTABLE-TRACE.yaml
+configs/source_locks/COPRIME-0001-SCALAR-BOUNDARY.yaml
 ```
 
 ### Route-A status
@@ -1583,10 +1584,11 @@ configs/source_locks/COPRIME-0001-COUNTABLE-TRACE.yaml
 ```yaml
 a1: A1_WEAK
 a2: A2_ANALYTIC_DETERMINANT
-a3: A3_PARTIAL_ANALYTIC_STRUCTURE
+a3: A3_CONTROLLED_CONTINUATION
 a4: A4_FAIL
 overall: ROUTE_A_EXPLORATORY
-latest_evaluation: evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml
+latest_evaluation: evaluations/route_a/COPRIME-0001/20260810T034453Z.yaml
+scoped_verdict: STOP_SCOPED
 ```
 
 ### Route-B status
@@ -1613,13 +1615,19 @@ latest_evaluation: null
   `k=6` on the sealed control cutoff.
 - Validation and sealed-test label blocks are disjoint, and the generator uses
   no prime/zero data or floating-point determinant calculation.
+- The squarefree-divisor Sylvester lift gives the scalar continuation
+  `D_tilde(s)=det_2(I-C_s)` on `Re(s)>1/2`, `s!=1`, and it agrees exactly with
+  `D_cop` on the original half-plane.
+- A target-free min--max theorem proves infinitely many positive real zeros of
+  `D_cop` accumulate at `s=1`; no root locations were computed.
 
 ### Strongest failure and open obligations
 
 - The gcd transition rule has no proved correspondence to rational primes and
   supplies no von-Mangoldt repetition amplitude.
-- The determinant is only defined here on `Re(s)>1`; continuation, global
-  growth, divisor counting, and functional-equation structure are open.
+- The scalar function continues to the punctured half-plane
+  `Re(s)>1/2, s!=1`, but `OBR-015` proves that no holomorphic or meromorphic
+  germ can pass through `s=1`.
 - `OBR-014` records that the frozen counting-measure `ell^2` matrix is not
   bounded for `Re(s)<=1`; any scalar continuation must be a separate theorem.
 - No natural quantization or operator domain is defined; Route B is closed.
@@ -1627,8 +1635,9 @@ latest_evaluation: null
 ### Claim boundary
 
 **Established:** an explicit recurrent countable object, a trace-class
-Fredholm determinant on its defining half-plane, and an exact primitive-cycle
-ledger for periods 1--3 with repetition controls.
+Fredholm determinant on its defining half-plane, an exact primitive-cycle
+ledger for periods 1--3 with repetition controls, a punctured scalar
+continuation to `Re(s)>1/2`, and an endpoint zero-accumulation obstruction.
 
 **Not established:** prime-orbit law, completed-xi identity, a `T log T`
 divisor law, quantization, Route B, Hilbert--Pólya, or RH.
@@ -1639,19 +1648,23 @@ divisor law, quantization, Route B, Hilbert--Pólya, or RH.
 python3 experiments/coprime_0001_countable_trace.py --quiet \\
   --output artifacts/coprime_0001/countable_trace_certificate.json
 python3 -m unittest -v tests/test_coprime_0001_countable_trace.py
+python3 experiments/coprime_0001_scalar_boundary.py --quiet \\
+  --output artifacts/coprime_0001/scalar_boundary_certificate.json
+python3 -m unittest -v tests/test_coprime_0001_scalar_boundary.py
 ```
 
 ### Next smallest test
 
-Audit whether the scalar `D_cop(s)` continues across `Re(s)=1` despite the
-exact `ell^2` operator boundary, or prove an intrinsic barrier. Do not search
-roots or compare Riemann zeros.
+Park the frozen object under `OBR-015`. Any reopening must source-lock a new
+determinant or function space explicitly; do not search roots or compare
+Riemann zeros.
 
 ### Decision history
 
 | Date | Previous state | New state | Evidence | Commit | Reviewer |
 |---|---|---|---|---|---|
 | 2026-08-09 | `GENERATED` | `ANALYTIC_REVIEW` | Trace-class theorem, exact operator boundary, and exact cycle ledger | pending | sole main research agent |
+| 2026-08-10 | `ANALYTIC_REVIEW` | `STOP_SCOPED` | Punctured `S_2` scalar continuation and infinitely many determinant zeros accumulating at `s=1` | pending | sole main research agent + two independent mathematical audits |
 
 ---
 

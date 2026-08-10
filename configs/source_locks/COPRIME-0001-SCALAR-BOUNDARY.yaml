@@ -1,0 +1,96 @@
+candidate_id: COPRIME-0001
+audit_id: COPRIME-0001-SCALAR-BOUNDARY-001
+lock_version: 1
+formal_candidate: true
+clue_id: CLUE-A1-009
+parent_audit: evaluations/route_a/COPRIME-0001/20260809T134933Z.yaml
+title: "Coprime scalar continuation and the s=1 endpoint barrier"
+
+candidate_definition:
+  phase_space: >-
+    Sigma_cop={(n_k)_{k in Z}: n_k in {2,3,...}, gcd(n_k,n_{k+1})=1}.
+  roof: "tau((n_k))=log(n_0)"
+  hilbert_space: "ell^2({2,3,...}) with counting measure"
+  transfer_operator: >-
+    (L_s)_{mn}=1_{gcd(m,n)=1}(mn)^(-s/2), with the frozen symmetric
+    half-roof convention and complex powers defined by the real logarithm.
+  defining_domain: "Re(s)>1"
+  determinant: "D_cop(s)=det_F(I-L_s)"
+
+auxiliary_continuation_representation:
+  purpose: >-
+    A scalar continuation formula only; it is not a claim that the original
+    counting-measure ell^2 matrix remains bounded outside Re(s)>1.
+  index_set: "S={d>=1: d is squarefree}"
+  divisor_factorization: >-
+    V_s(m,d)=1_{d|m}m^(-s/2), M=diag(mu(d)), L_s=V_s M V_s^T.
+  auxiliary_operator: >-
+    C_s=V_s^T V_s M=zeta(s)T_s-P_1, with
+    T_s(d,e)=mu(e)[d,e]^(-s) and P_1=e_1 tensor e_1.
+  regularized_convention: "D_tilde(s)=det_2(I-C_s)"
+  continuation_domain: "Omega={Re(s)>1/2, s != 1}"
+  equality_domain: "D_tilde(s)=D_cop(s) for Re(s)>1"
+
+endpoint_barrier:
+  auxiliary_label_one_completion: >-
+    K_s(m,n)=1_{gcd(m,n)=1}(mn)^(-s/2) on ell^2({1,2,...}); L_s is its
+    codimension-one compression to e_1^perp.
+  local_prime_factor: >-
+    On exponent space ell^2(N_0), M_p(q)_{ab}=1_{min(a,b)=0}q^((a+b)/2),
+    q=p^(-s), with nonzero eigenvalues alpha_p^+- and
+    alpha_p^-= (1 +- sqrt((1+3q)/(1-q)))/2.
+  spectral_flow_statement: >-
+    For every fixed M, the M-th positive eigenvalue of L_sigma tends to
+    +infinity as sigma downarrow 1; at sigma=3 its value is below 1.
+  zero_accumulation: >-
+    D_cop has infinitely many positive real zeros sigma_j downarrow 1.
+  endpoint_conclusion: >-
+    D_cop has no holomorphic or meromorphic continuation through s=1.
+
+clock: >-
+  The original and continuation ledgers use only tau(n)=log(n), with no
+  reclocking, unfolding, or target-dependent rescaling.
+normalization: >-
+  Labels n>=2, symmetric endpoint factors, directed cycles, and
+  D_cop=det_F(I-L_s) remain frozen. The det_2 expression is explicitly marked
+  as a continuation representation and is not silently substituted for D_cop.
+cutoff:
+  theorem: "no finite cutoff; finite-prime compressions are min-max witnesses only"
+  numerical_controls: "none; no determinant values or root locations are computed"
+precision:
+  theorem: "symbolic Euler products, Hilbert-Schmidt estimates, and min-max continuity"
+  finite_checks: "exact rational/algebraic identities only"
+allowed_data:
+  - "the frozen coprime kernel and source lock"
+  - "Möbius inversion, squarefree divisor coordinates, and Sylvester's determinant identity"
+  - "formal Euler-factorization and the standard pole of zeta(s) at s=1"
+  - "Courant-Fischer/min-max and compact self-adjoint spectral continuity"
+  - "the p-series bound zeta(3)<5/4"
+  - "Route-A rules and prior obstruction registry"
+forbidden_data:
+  - "prime tables, prime enumeration, primality predicates, or target arithmetic lookup"
+  - "Riemann-zero tables, xi/zeta numerical values, or USTC data"
+  - "Fredholm-root searches, root locations, or determinant numerics"
+  - "fitted parameters, reclocking, or mixed determinant conventions"
+  - "calling C_s or det_2(I-C_s) the original bounded ell^2 operator below Re(s)=1"
+training_split: "empty; parameter-free theorem audit"
+validation_split: "symbolic local-factor, Hilbert-Schmidt, and Sylvester identities"
+test_split: "endpoint min-max/zero-accumulation logic and disjoint source checks"
+stopping_conditions:
+  - "REVISE if the Sylvester or S_2 continuation identity fails"
+  - "STOP_SCOPED once the endpoint zero-accumulation obstruction is proved"
+  - "do not infer a global completed-xi determinant from the continuation"
+  - "do not invoke Route B"
+success_conditions:
+  - "D_tilde equals D_cop on Re(s)>1"
+  - "D_tilde is holomorphic on Omega as an explicit scalar continuation"
+  - "infinitely many real zeros of D_cop accumulate at s=1 without root evaluation"
+route_status_at_lock:
+  route_a_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL]
+  route_b_invocation_allowed: false
+  checkpoint_status: DEFINED_NOT_EVALUATED
+  recommended_verdict_if_successful: STOP_SCOPED
+next_smallest_test_if_successful: >-
+  Park the frozen coprime object. Any reopening must choose a new explicitly
+  source-locked determinant or function space; do not attempt target-zero
+  fitting or silently remove the s=1 endpoint singularity.
