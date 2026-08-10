@@ -45,6 +45,8 @@ s_{n,k}= -\frac{n^2+2\pi i k}{n+\sqrt2}.
 The real parts \(-n^2/(n+\sqrt2)\) decrease to \(-\infty\).  Hence every
 bounded vertical strip contains finitely many zero lines and has
 \(N_{[a,b]}(T)=O(T)\), incompatible with a \(T\log T\) divisor law.
+Indeed, all zeros lie in \(\Re s<0\), so the usual strip \(0\le\Re s\le1\)
+is already zero-free.
 
 The two primitive lengths \(2+\sqrt2\) and \(3+\sqrt2\) have irrational ratio,
 so the global period set has no common lattice.  This does not imply mixing:

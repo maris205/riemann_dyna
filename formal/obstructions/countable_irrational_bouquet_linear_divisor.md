@@ -60,6 +60,9 @@ product.  The zeros are exactly
  \qquad n\ge2,\ k\in\mathbb Z.
 \]
 
+In particular every zero has negative real part, so the frozen determinant has
+no zeros in the usual strip \(0\le\Re s\le1\).
+
 The real parts \(\alpha_n=-n^2/(n+\sqrt2)\) are strictly decreasing and tend
 to \(-\infty\).  Therefore every bounded vertical strip contains only finitely
 many zero lines, and
