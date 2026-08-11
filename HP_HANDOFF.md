@@ -1,6 +1,111 @@
 # HP-Dynamics Handoff
 
-## Current status — CLUE-A4-002 irrational-roof bouquet prefilter
+## Current status — SS-0003 connected integer-renewal closure
+
+Current clue: `CLUE-A4-002`.
+
+Candidate ID: `SS-0003` (formal candidate, now `STOP_SCOPED`).
+
+- Source lock: `configs/source_locks/SS-0003-CONNECTED-RENEWAL.yaml`
+- Route-A evaluation: `evaluations/route_a/SS-0003/20260811T112250Z.yaml`
+- Formal result: `formal/results/ss_0003_connected_renewal.md`
+- Generator: `experiments/ss_0003_connected_renewal.py`
+- Artifact: `artifacts/ss_0003/connected_renewal_audit.json`
+- Literature boundary: `docs/literature/ss_0003_a_points_sources.md`
+- Scoped obstruction: `OBR-017`
+- Analytic Route-A tuple:
+  `(A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_FAIL, A4_FAIL)`
+- Riemann-target tuple: `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)`
+- Verdict: `ROUTE_A_REJECTED / STOP_SCOPED`
+- Route B: not invoked and not authorized
+
+### Frozen object and determinant ledger
+
+The graph has vertices \(\{h\}\cup\{v_n:n\ge2\}\), directed edges
+\(h\leftrightarrow v_n\), zero potential, and roof \(\frac12\log n\) per
+edge.  It is strongly connected; the discrete edge shift has period two, and
+the first-return system at the hub is the full countable renewal shift.  On
+
+\[
+\mathcal H=\mathbb C e_h\oplus\ell^2(\{2,3,\ldots\}),
+\]
+
+the holomorphic bilinear-coordinate family is
+
+\[
+\mathcal L_s(c,x)=
+\left(\sum_{n\ge2}n^{-s/2}x_n,\;c(n^{-s/2})_{n\ge2}\right),
+\qquad \Re s>1.
+\]
+
+It has rank at most two and
+
+\[
+\|\mathcal L_s\|_1
+=2\left(\sum_{n\ge2}n^{-\Re s}\right)^{1/2},\qquad
+D_{\rm ren}(s)=\det_F(I-\mathcal L_s)=2-\zeta(s).
+\]
+
+The primitive cycles are cyclically primitive words on all integer labels,
+not prime orbits.  The trace-log is opened only where
+\(|\sum_{n\ge2}n^{-s}|<1\); the scalar continuation \(2-\zeta(s)\) below
+\(\Re s=1\) is not relabeled as the original Fredholm determinant.
+
+### Strongest evidence and strict failure
+
+Landau's fixed-\(a\) theorem gives
+
+\[
+N_2(T)=\frac{T}{2\pi}\log\frac{T}{2\pi e}+O(\log T),
+\]
+
+and the elementary Dirichlet bound confines the counted nontrivial
+\(a=2\) points to \(0<\Re s<2\).  Thus the scalar continuation genuinely has
+a fixed-strip \(\Theta(T\log T)\) divisor order without root search.
+
+However, for real \(\sigma>1\),
+\(S(\sigma)=\sum_{n\ge2}n^{-\sigma}\) decreases from \(+\infty\) to a value
+below one at \(\sigma=2\).  A unique \(\sigma_*\in(1,2)\) therefore satisfies
+\(D_{\rm ren}(\sigma_*)=0\).  This extra zero lies inside both the original
+Fredholm domain and the completed-\(\xi\) zero-free half-plane.  No zero-free
+prefactor, scalar continuation, or determinant relabeling repairs it.
+
+### Claim boundary and next task
+
+Established: connected countable renewal structure, exact primitive and
+repetition ledger, a holomorphic rank-two Fredholm family on \(\Re s>1\),
+the exact determinant identity, fixed-strip \(T\log T\) scalar divisor order,
+and the strict `OBR-017` extra-zero obstruction.
+
+Not established: rational-prime orbit correspondence, von-Mangoldt weights,
+same-operator continuation through \(\Re s=1\), functional equation,
+Gamma/trivial-zero completion, natural quantization, Route B,
+Hilbert--Pólya, or RH.
+
+Next smallest task: do not tune SS-0003.  Define and source-lock one
+structurally different signed/complex connected grammar, then prove a
+target-free zero-free right half-plane and same-ledger continuation theorem
+before any divisor comparison.  If no such mathematical object is explicit,
+stop rather than fitting phases or target zeros.
+
+Recommended verdict: `STOP_SCOPED`.
+
+Tests: focused `6/6 passed`; full repository suite `310/310 passed` in
+`96.550 s`; all 67 source-lock/evaluation YAML files parse; `git diff --check`
+passes.
+
+```bash
+python3 -m py_compile experiments/ss_0003_connected_renewal.py
+python3 experiments/ss_0003_connected_renewal.py \
+  --label-max 10 --word-length-max 4 \
+  --output artifacts/ss_0003/connected_renewal_audit.json
+python3 -m unittest -v tests/test_ss_0003_connected_renewal.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 -c 'from pathlib import Path; import yaml; fs=list(Path("configs/source_locks").glob("*.yaml"))+list(Path("evaluations").rglob("*.yaml")); [yaml.safe_load(p.read_text(encoding="utf-8")) for p in fs]; print(len(fs))'
+git diff --check
+```
+
+## Previous checkpoint — CLUE-A4-002 irrational-roof bouquet prefilter
 
 Current clue: `CLUE-A4-002`.
 

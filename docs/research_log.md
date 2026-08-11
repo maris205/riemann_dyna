@@ -4775,3 +4775,98 @@ Artifacts:
 - `formal/results/ss_prefilter_irrational_bouquet.md`
 - `formal/obstructions/countable_irrational_bouquet_linear_divisor.md`
 - `tests/test_ss_prefilter_irrational_bouquet.py`
+
+## 2026-08-11 — SS-0003 connected integer-renewal Route-A closure
+
+Current clue: `CLUE-A4-002`.
+
+Candidate ID: `SS-0003`.
+
+Source lock: `configs/source_locks/SS-0003-CONNECTED-RENEWAL.yaml`.
+
+The formal candidate is the connected hub-and-spoke graph
+\(h\leftrightarrow v_n\), \(n\ge2\), with zero potential and excursion roof
+\(\log n\).  Its holomorphic rank-two family on
+\(\mathbb C\oplus\ell^2(\{2,3,\ldots\})\) has the one frozen ledger
+
+\[
+D_{\rm ren}(s)=\det_F(I-\mathcal L_s)
+=1-\sum_{n\ge2}n^{-s}=2-\zeta(s),\qquad \Re s>1.
+\]
+
+The primitive cycles are cyclically primitive all-integer words with exact
+repetition accounting.  The scalar continuation has a theorem-level
+\(\Theta(T\log T)\) nontrivial a-point count in the fixed strip
+\(0<\Re s<2\).  This is the first symbolic-suspension object in the project
+to reach the target divisor *order* without a prime table, zero table, or
+root search.
+
+The candidate nevertheless fails strictly in its original Fredholm domain.
+For real \(\sigma>1\), the positive renewal mass decreases continuously from
+infinity to below one, so a unique \(\sigma_*\in(1,2)\) obeys
+\(D_{\rm ren}(\sigma_*)=0\).  Completed \(\xi\) is zero-free there.  This is
+registered as `OBR-017`; divisor order alone cannot override the extra-zero
+gate.
+
+Route-A result:
+
+```text
+analytic tuple:       (A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_FAIL, A4_FAIL)
+Riemann-target tuple: (A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+overall:              ROUTE_A_REJECTED / STOP_SCOPED
+Route B:              not invoked and not authorized
+```
+
+Strongest evidence: exact finite-rank Fredholm algebra and the classical
+fixed-\(a\) counting theorem give the correct fixed-strip divisor order.
+
+Strongest failure: the unique forbidden real zero in \((1,2)\), plus the
+absence of a prime/von-Mangoldt primitive-orbit law.
+
+New reusable knowledge: a connected countable renewal determinant can escape
+both `O(T)` and `Omega(T^2)` density obstructions yet fail immediately on the
+real-axis zero-free-half-plane gate.  The next breadth object needs intrinsic
+signed/complex cancellation, not merely connectivity or non-lattice roofs.
+
+Updated files:
+
+- `configs/source_locks/SS-0003-CONNECTED-RENEWAL.yaml`
+- `evaluations/route_a/SS-0003/20260811T112250Z.yaml`
+- `experiments/ss_0003_connected_renewal.py`
+- `artifacts/ss_0003/connected_renewal_audit.json`
+- `formal/results/ss_0003_connected_renewal.md`
+- `formal/obstructions/positive_renewal_right_half_plane_zero.md`
+- `docs/literature/ss_0003_a_points_sources.md`
+- `tests/test_ss_0003_connected_renewal.py`
+- `docs/candidate_registry.md`
+- `docs/obstruction_registry.md`
+- `docs/research_clues.md`
+- `docs/research_log.md`
+- `HP_HANDOFF.md`
+- `CHANGELOG.md`
+
+Tests: focused `6/6 passed`; full repository suite `310/310 passed` in
+`96.550 s`; all 67 source-lock/evaluation YAML files parse.
+
+Reproduction commands:
+
+```bash
+python3 -m py_compile experiments/ss_0003_connected_renewal.py
+python3 experiments/ss_0003_connected_renewal.py \
+  --label-max 10 --word-length-max 4 \
+  --output artifacts/ss_0003/connected_renewal_audit.json
+python3 -m unittest -v tests/test_ss_0003_connected_renewal.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 -c 'from pathlib import Path; import yaml; fs=list(Path("configs/source_locks").glob("*.yaml"))+list(Path("evaluations").rglob("*.yaml")); [yaml.safe_load(p.read_text(encoding="utf-8")) for p in fs]; print(len(fs))'
+git diff --check
+```
+
+Claim boundary: no completed-\(\xi\) determinant, natural quantization,
+Route B, Hilbert--Pólya operator, or RH statement is obtained.
+
+Next smallest task: park SS-0003 and source-lock one explicit signed/complex
+connected grammar only after its weights have an intrinsic target-free
+provenance; first prove a zero-free right half-plane and a same-ledger
+continuation theorem.
+
+Recommended verdict: `STOP_SCOPED`.

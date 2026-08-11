@@ -1,0 +1,200 @@
+skill: route-a-evaluator
+skill_version: 0.1.0
+candidate_id: SS-0003
+audit_id: SS-0003-CONNECTED-RENEWAL-001
+formal_candidate: true
+clue_id: CLUE-A4-002
+source_commit: 59819e16a2cdd50f13614a13ccf01e2c889be907
+evaluation_date: "2026-08-11T11:22:50Z"
+
+source_lock:
+  object: >-
+    Connected directed hub-and-spoke graph with vertices {h} union
+    {v_n:n>=2}, edges h->v_n and v_n->h, zero potential, and roof
+    (1/2)log(n) on each edge of the n-excursion.  On C direct_sum
+    ell^2({2,3,...}), L_s(c,x)=(sum_n n^(-s/2)x_n,
+    c(n^(-s/2))_n) for Re(s)>1, using the holomorphic bilinear coordinate
+    functional.
+  data_type: >-
+    Exact connected renewal graph and primitive/repetition ledger; same-object
+    finite-rank Fredholm determinant only on Re(s)>1; separately named scalar
+    continuation and classical target-free a-point count.
+  clock: >-
+    One directed edge is the edge clock; an n-excursion has roof log(n), and
+    a renewal word has roof sum_i log(n_i)=log(product_i n_i).
+  normalization: >-
+    Counting-measure Hilbert space, zero potential, transfer weight
+    exp(-s*tau_edge), global phase one, and no affine spectral map.
+  determinant_convention: >-
+    D_ren(s)=det_Fr(I-L_s)=1-sum_{n>=2}n^(-s)=2-zeta(s) on Re(s)>1.
+    The trace-log/Euler ledger is opened only where
+    |sum_{n>=2}n^(-s)|<1.  The scalar continuation 2-zeta(s) is not called a
+    Fredholm continuation of the original ell^2 family.
+  cutoff: >-
+    No mathematical cutoff.  The exact audit uses labels 2..10, cyclic words
+    through renewal length four, and edge traces through power eight.
+  precision: >-
+    Exact integer combinatorics, finite-rank algebra, elementary inequalities,
+    and a cited classical a-point theorem; no floating-point root or spectrum
+    computation.
+  allowed_data:
+    - "all integer labels n>=2 and graph incidence"
+    - "elementary Dirichlet-series and Fredholm finite-rank algebra"
+    - "published fixed-a counting theorem for zeta(s)=2"
+  forbidden_data:
+    - "prime tables, primality predicates, von-Mangoldt tables, or prime-derived labels"
+    - "Riemann-zero tables, USTC/GUE data, or numerical root searches"
+    - "fitted roofs, weights, phases, offsets, scales, or unfolding"
+    - "reciprocal/log-derivative substitution, scattering gluing, or hidden zero factors"
+  training_split: "empty; the object is parameter-free and no target data are used"
+  validation_split: >-
+    Exact connectivity, renewal-necklace/repetition ledger, non-lattice proof,
+    finite-rank determinant identity, and right-half-plane obstruction.
+  test_split: >-
+    Disjoint labels 7..10, source/hash reproduction, and the fixed-strip
+    a-point theorem; no target zeros are used.
+  stopping_conditions:
+    - "REVISE if the graph trace or finite-rank determinant identity fails"
+    - "REJECTED if prime/zero data, fitting, root search, or ledger gluing enters"
+    - "STOP_SCOPED once a forbidden right-half-plane zero is proved"
+
+a1:
+  verdict: A1_WEAK
+  evidence_status: PROVED
+  strongest_evidence: >-
+    Primitive renewal orbits are the intrinsic cyclically primitive words on
+    all labels n>=2.  Repetitions, cyclic rotations, edge periods, actions,
+    and the two edge-start sectors are accounted for exactly, with no orbit
+    search or arithmetic table.
+  strongest_failure: >-
+    The alphabet consists of every integer, not rational primes.  Its cycles
+    are ordered-factorization necklaces with unit potential; no natural
+    prime-orbit correspondence, von-Mangoldt amplitude, or dynamical stability
+    law is present.  The discrete edge graph also has period two.
+  metrics:
+    graph_strongly_connected: true
+    discrete_edge_period: 2
+    induced_renewal_grammar: "full countable shift on labels n>=2"
+    primitive_definition: "cyclically primitive integer words"
+    repetition_ledger_exact: true
+    non_lattice_roof: true
+    direct_prime_lookup: false
+    direct_zero_lookup: false
+    missed_orbit_risk: "none for the frozen renewal grammar"
+  artifacts:
+    - artifacts/ss_0003/connected_renewal_audit.json
+    - formal/results/ss_0003_connected_renewal.md
+
+a2:
+  verdict: A2_ANALYTIC_DETERMINANT
+  evidence_status: PROVED
+  strongest_evidence: >-
+    For Re(s)>1 the frozen graph adjacency family is holomorphic, rank at
+    most two, and trace class with
+    ||L_s||_1=2*(sum_{n>=2}n^(-Re(s)))^(1/2).  Its exact trace powers give the
+    same-object identity det_Fr(I-L_s)=1-sum_{n>=2}n^(-s)=2-zeta(s).
+  strongest_failure: >-
+    The same determinant has a unique real zero sigma_star in (1,2), already
+    inside its Fredholm domain, whereas completed xi is zero-free for Re(s)>1.
+    The scalar continuation cannot repair this extra zero, and the cycle
+    trace-log converges on a smaller domain than the Fredholm determinant.
+  metrics:
+    defining_fredholm_domain: "Re(s)>1"
+    operator_rank_bound: 2
+    trace_norm_identity: "2*(sum_(n>=2)n^(-Re(s)))^(1/2)"
+    determinant_identity_exact: true
+    cycle_log_domain: "|sum_(n>=2)n^(-s)|<1"
+    zero_error_train: "not_applicable_no_target_data"
+    zero_error_validation: "structural_extra_zero"
+    zero_error_test: "not_evaluated_after_exact_rejection"
+    extra_zero_count: "at least one; exactly one positive real zero in 1<Re(s)<2"
+    missing_zero_count: "not_enumerated; divisor equality is already impossible"
+    root_count_discrepancy: "one forbidden zero in the target zero-free half-plane"
+    cutoff_drift: "not_applicable_exact_infinite-rank-definition_and_finite-rank-collapse"
+    precision_drift: "not_applicable_exact_proof"
+    control_margin: "S(2)<3/4<1 while S(sigma)->infinity as sigma->1+"
+    numerical_root_search_used: false
+  artifacts:
+    - artifacts/ss_0003/connected_renewal_audit.json
+    - formal/obstructions/positive_renewal_right_half_plane_zero.md
+
+a3:
+  verdict: A3_FAIL
+  evidence_status: PROVED
+  strongest_evidence: >-
+    The separately named scalar continuation 2-zeta(s) has conjugation
+    symmetry and, by Landau's fixed-a theorem, Theta(T log T) nontrivial zeros
+    in the fixed strip 0<Re(s)<2.  This is a genuine divisor-order prefilter,
+    not a numerical fit.
+  strongest_failure: >-
+    Divisor-order agreement alone is insufficient.  The scalar continuation
+    is meromorphic at s=1, is not a same-operator Fredholm continuation, has a
+    forbidden extra real zero, and supplies neither the xi functional
+    equation nor the Gamma/trivial-zero/pole-removal ledger.
+  metrics:
+    scalar_continuation: "2-zeta(s) on C\\{1}"
+    same_operator_global_continuation: false
+    conjugation_symmetry: true
+    fixed_strip_divisor_growth: "Theta(T log T)"
+    functional_equation: false
+    gamma_and_trivial_zero_ledger: false
+    pole_removed: false
+    completed_xi_divisor: false
+    hidden_zero_prefactor: false
+  artifacts:
+    - docs/literature/ss_0003_a_points_sources.md
+    - formal/results/ss_0003_connected_renewal.md
+
+a4:
+  verdict: A4_FAIL
+  evidence_status: NOT_TESTABLE
+  strongest_evidence: >-
+    The weighted graph adjacency is a complete transfer-space definition, so
+    no post-hoc physical interpretation is needed for the Route-A audit.
+  strongest_failure: >-
+    No natural unitary, scattering, Hamiltonian, or self-adjoint lift is
+    defined.  The transfer Hilbert space is not a Route-B spectral operator,
+    and finite-rank collapse gives no canonical quantization preserving a
+    prime-power trace law.
+  metrics:
+    natural_quantization: false
+    antiunitary_audit: not_applicable_no_quantization
+    route_b_hilbert_space_and_domain: not_defined
+    same_clock_quantum_lift: false
+    route_b_ready: false
+  artifacts: []
+
+analytic_route_tuple:
+  - A1_WEAK
+  - A2_ANALYTIC_DETERMINANT
+  - A3_FAIL
+  - A4_FAIL
+riemann_target_tuple:
+  - A1_WEAK
+  - A2_FAIL
+  - A3_FAIL
+  - A4_FAIL
+overall_verdict: ROUTE_A_REJECTED
+recommended_candidate_state: STOP_SCOPED
+recommended_verdict: STOP_SCOPED
+claim_boundary:
+  established:
+    - "an explicit connected non-Selberg countable renewal graph"
+    - "exact primitive/repetition ledger and rank-two Fredholm determinant on Re(s)>1"
+    - "a fixed-strip Theta(T log T) scalar a-point count without target fitting"
+    - "a unique forbidden real determinant zero in (1,2), proved without root search"
+  not_established:
+    - "rational-prime orbit correspondence or von-Mangoldt repetition weights"
+    - "same-operator Fredholm continuation into Re(s)<=1"
+    - "functional equation, Gamma/trivial-zero ledger, or completed-xi divisor equality"
+    - "natural quantization, Route B, Hilbert-Polya, or RH"
+blocking_conditions:
+  - "OBR-017: positive renewal mass crosses one on the real Fredholm half-plane"
+  - "all-integer primitive alphabet has no intrinsic prime-power trace law"
+  - "scalar a-point continuation is not the original operator determinant below Re(s)=1"
+next_smallest_test: >-
+  Park SS-0003.  At project level, prefilter one structurally different
+  signed/complex connected grammar and first prove a zero-free right
+  half-plane plus a same-ledger continuation theorem, without target data or
+  numerical root search.
+route_b_invocation_allowed: false

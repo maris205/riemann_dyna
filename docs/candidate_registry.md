@@ -443,10 +443,11 @@ separate full-line Phragmen--Lindelof audit now combines its uniform
 `1<=ord(D_pol)<=2`.  This still gives no exact order, exponential type,
 zero-count lower bound, or target divisor.
 
-Portfolio decision: LOG-0001 remains the active analytic candidate but is
-parked at this bounded checkpoint.  The next task is the breadth pivot to a
-new intrinsic recurrent candidate or a reusable structural obstruction.
-Target-zero matching, completed-xi work, and Route B remain closed.
+Portfolio decision: LOG-0001 remains parked at its bounded analytic
+checkpoint.  The breadth pivot has now produced and closed SS-0003 under a
+new structural obstruction.  The next project-level task must use a
+structurally different signed/complex connected grammar; target-zero matching,
+completed-xi work, and Route B remain closed.
 
 汇总表：
 
@@ -457,13 +458,13 @@ Target-zero matching, completed-xi work, and Route B remain closed.
 | TH-0001 | Target-free non-palindromic three-kick Hénon ratchet | `ANALYTIC_REVIEW` (UPO cutoff still <=2) | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_EXPLORATORY` | Not invoked | Exact symplecticity, complete signed UPO prefix, unitary FIO lift, and on-shell rank-one caustic obstruction | No determinant, arithmetic orbit law, higher-period completeness, full nonlinear antiunitary audit, or multi-chart Maslov ledger | Stop phase sub-audit; reopen only with explicit multi-chart phase/Maslov transition rules |
 | SS-0001 | Higher-memory symbolic suspension control | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_FORMAL_HINT)` / `ROUTE_A_REJECTED` | Not invoked | Exact mod-3 modes, orbit census, determinant, and scoped family theorem | Finite-state finite-dimensional roof determinants have `O(T)` divisor count | Wait for an explicit countable-state or infinite-dimensional escape object |
 | SS-0002 | Countable-state symbolic suspension / modular transfer operator | `STOP_SCOPED` | `(A1_WEAK, A2_FAIL, A3_FAIL, A4_NATURAL_QUANTIZATION)` / `ROUTE_A_REJECTED` | Not invoked | Exact C6 holonomy, nuclear Fredholm determinant, Selberg identity, and natural Laplacian | Same determinant has at least `Omega(T^2)` Selberg spectral zeros, not `Theta(T log T)` | Define one explicit non-Selberg nuclear object and prove its own divisor-count regime before assigning SS-0003 |
+| SS-0003 | Connected integer-renewal Dirichlet transfer | `STOP_SCOPED` | Analytic `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_FAIL,A4_FAIL)`; target `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)` / `ROUTE_A_REJECTED` | Not invoked | Exact rank-two Fredholm determinant `2-zeta(s)` and a theorem-level `Theta(T log T)` scalar a-point count in a fixed strip | Unique forbidden real determinant zero in `(1,2)`; all-integer necklaces have no prime/von-Mangoldt law | Park under `OBR-017`; prefilter a structurally different signed/complex grammar |
 
-The non-candidate prefilter `SS-PREFILTER-IRRATIONAL-BOUQUET-001` is recorded
-outside this formal table.  It defines an explicit countable non-Selberg
-Fredholm object but is `STOP_SCOPED` by `OBR-016`: its disconnected bouquet
-determinant has only `O(T)` zeros in every bounded vertical strip.  It does not
-allocate `SS-0003`; a future formal candidate must be connected or renewal-like
-and must pass a same-ledger divisor-count prefilter first.
+The non-candidate prefilter `SS-PREFILTER-IRRATIONAL-BOUQUET-001` remains
+recorded outside this formal table.  Its `OBR-016` failure motivated the
+connected renewal object now registered as SS-0003.  SS-0003 escapes the
+linear fixed-strip count but is independently closed by `OBR-017`; the two
+obstructions must not be conflated.
 
 Evaluator controls are tracked separately and do not change the formal-candidate count:
 
@@ -1437,16 +1438,164 @@ Route-B entry, Hilbert--Polya operator, or RH claim is obtained.
 
 ### Next smallest test
 
-Before creating `SS-0003`, define one explicit non-Selberg countable-state or
-nuclear transfer object and prove which zero-count regime its own Fredholm
-determinant permits. A proposal that borrows a separate scattering quotient is
-inadmissible.
+Completed by the independent SS-0003 source lock.  SS-0002 remains parked
+under `OBR-006`; none of the SS-0003 evidence changes its Selberg divisor
+failure.
 
 ### Decision history
 
 | Date | Previous state | New state | Evidence | Commit | Reviewer |
 |---|---|---|---|---|---|
 | 2026-08-03 | `GENERATED` | `STOP_SCOPED` | Exact regular-holonomy audit, Mayer/Artin identity, and finite-area Weyl mismatch | current checkpoint (source `934d85c`) | sole main research agent |
+
+---
+
+## SS-0003 — Connected integer-renewal Dirichlet transfer
+
+### Identity
+
+- **Family:** Connected countable-state renewal graph / Dirichlet transfer
+- **Parent clue:** `CLUE-A4-002`
+- **Created:** 2026-08-11
+- **Current status:** `STOP_SCOPED`
+- **Owner:** sole main research agent
+- **Branch:** `main`
+- **Evaluation source:** `59819e16a2cdd50f13614a13ccf01e2c889be907`
+- **Latest evaluation:** `evaluations/route_a/SS-0003/20260811T112250Z.yaml`
+- **Uses prime table:** `false`
+- **Uses zero table:** `false`
+
+### Exact definition
+
+Let
+
+\[
+V=\{h\}\cup\{v_n:n\ge2\},\qquad h\longleftrightarrow v_n,
+\]
+
+with zero potential and roof \(\frac12\log n\) on each of the two edges in
+the \(n\)-excursion.  The graph is strongly connected; its edge shift has
+period two, while the first-return grammar at \(h\) is the full countable
+renewal shift.  On
+
+\[
+\mathcal H=\mathbb C e_h\oplus\ell^2(\{2,3,\ldots\}),
+\]
+
+the frozen family for \(\Re s>1\) is
+
+\[
+\mathcal L_s(c,x)=
+\left(\sum_{n\ge2}n^{-s/2}x_n,\;c(n^{-s/2})_{n\ge2}\right),
+\]
+
+using the holomorphic bilinear coordinate functional.  Its sole Fredholm
+ledger is
+
+\[
+D_{\rm ren}(s)=\det_F(I-\mathcal L_s)
+=1-\sum_{n\ge2}n^{-s}=2-\zeta(s),\qquad \Re s>1.
+\]
+
+The equality \(2-\zeta(s)\) outside this half-plane names a scalar
+continuation only, not the original operator determinant.
+
+### Source lock
+
+```text
+configs/source_locks/SS-0003-CONNECTED-RENEWAL.yaml
+```
+
+### Route-A status
+
+```yaml
+analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_FAIL, A4_FAIL]
+riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+overall: ROUTE_A_REJECTED
+candidate_state: STOP_SCOPED
+latest_evaluation: evaluations/route_a/SS-0003/20260811T112250Z.yaml
+```
+
+### Route-B status
+
+```yaml
+b1: NOT_INVOKED
+b2: NOT_INVOKED
+b3: NOT_INVOKED
+b4: NOT_INVOKED
+b5: NOT_INVOKED
+overall: NOT_INVOKED
+latest_evaluation: null
+```
+
+### Positive evidence
+
+- Primitive cycles are exactly cyclically primitive integer words, with
+  rotations and repetitions retained.
+- \(\mathcal L_s\) is a locally holomorphic rank-at-most-two trace-class
+  family on \(\Re s>1\), and
+  \(\operatorname{Tr}\mathcal L_s^{2k}=2(\zeta(s)-1)^k\), with odd traces
+  zero.
+- The classical fixed-\(a\) theorem gives \(\Theta(T\log T)\) nontrivial
+  zeros of the scalar continuation in the fixed strip \(0<\Re s<2\).
+- No prime table, zero table, parameter fitting, or numerical root search is
+  used.
+
+### Strongest failure and obstruction
+
+For real \(\sigma>1\),
+
+\[
+S(\sigma)=\sum_{n\ge2}n^{-\sigma}
+\]
+
+decreases continuously from \(+\infty\) to a value below one at \(\sigma=2\).
+Consequently a unique \(\sigma_*\in(1,2)\) satisfies
+\(D_{\rm ren}(\sigma_*)=0\).  This is an extra zero in the completed-\(\xi\)
+zero-free half-plane and closes the frozen candidate under `OBR-017`.
+The all-integer alphabet also provides neither a rational-prime orbit law nor
+von-Mangoldt repetition amplitudes.
+
+### Reproduction
+
+```bash
+python3 experiments/ss_0003_connected_renewal.py \
+  --label-max 10 --word-length-max 4 \
+  --output artifacts/ss_0003/connected_renewal_audit.json
+python3 -m unittest -v tests/test_ss_0003_connected_renewal.py
+```
+
+### Artifacts
+
+```text
+artifacts/ss_0003/connected_renewal_audit.json
+formal/results/ss_0003_connected_renewal.md
+formal/obstructions/positive_renewal_right_half_plane_zero.md
+docs/literature/ss_0003_a_points_sources.md
+```
+
+### Claim boundary
+
+**Established:** a connected non-Selberg renewal object, its exact
+primitive/repetition and Fredholm ledgers on the defining half-plane, a
+theorem-level fixed-strip \(T\log T\) scalar divisor order, and a strict
+right-half-plane obstruction.
+
+**Not established:** a prime/von-Mangoldt orbit law, same-operator global
+continuation, completed-\(\xi\) identity, natural quantization, Route B,
+Hilbert--Pólya, or RH.
+
+### Next smallest test
+
+Park SS-0003.  Prefilter one structurally different signed/complex connected
+grammar by proving its right-half-plane zero-free region and same-ledger
+continuation before any divisor or target comparison.
+
+### Decision history
+
+| Date | Previous state | New state | Evidence | Commit | Reviewer |
+|---|---|---|---|---|---|
+| 2026-08-11 | `GENERATED` | `STOP_SCOPED` | Exact rank-two determinant, Landau a-point order, and `OBR-017` extra-zero theorem | pending integration (source `59819e1`) | sole main research agent + scoped adversarial audits |
 
 ---
 

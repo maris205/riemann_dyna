@@ -986,3 +986,80 @@ Artifacts:
 - `formal/obstructions/countable_irrational_bouquet_linear_divisor.md`
 - `evaluations/route_a/SS-PREFILTER-IRRATIONAL-BOUQUET/20260810T162243Z.yaml`
 - `tests/test_ss_prefilter_irrational_bouquet.py`
+
+---
+
+## OBR-017 — Positive integer-renewal determinants force a right-half-plane zero
+
+Status:
+`PROVED_OBSTRUCTION` (connected one-hub renewal scope)
+
+Source:
+`CLUE-A4-002` / `SS-0003` /
+`formal/obstructions/positive_renewal_right_half_plane_zero.md`
+
+Statement:
+For the connected graph \(h\leftrightarrow v_n\), \(n\ge2\), with zero
+potential and roof \(\frac12\log n\) on each edge, the holomorphic rank-two
+family on
+
+\[
+\mathbb C e_h\oplus\ell^2(\{2,3,\ldots\}),\qquad \Re s>1,
+\]
+
+has the same-object Fredholm determinant
+
+\[
+D_{\rm ren}(s)=\det_F(I-\mathcal L_s)
+=1-\sum_{n\ge2}n^{-s}=2-\zeta(s).
+\]
+
+For real \(\sigma>1\), the positive mass
+
+\[
+S(\sigma)=\sum_{n\ge2}n^{-\sigma}
+\]
+
+is continuous and strictly decreasing, diverges as \(\sigma\downarrow1\),
+and satisfies \(S(2)<3/4<1\).  Hence there is a unique
+\(\sigma_*\in(1,2)\) with \(D_{\rm ren}(\sigma_*)=0\).  Completed \(\xi\) is
+zero-free for \(\Re s>1\), so no zero-free prefactor can make the two
+divisors equal under the frozen clock and normalization.
+
+Impact:
+SS-0003 is a genuine connected non-Selberg object whose scalar continuation
+has the desired \(\Theta(T\log T)\) fixed-strip divisor order, yet it still
+fails before zero-location comparison.  Correct growth order is therefore
+not enough: a positive renewal determinant must first pass a real-axis
+zero-free-half-plane gate.
+
+Scope:
+The proved statement covers SS-0003 and positive one-hub renewal masses with
+the same crossing behavior.  It does not exclude every connected renewal
+system, signed/complex potentials, or multi-channel cancellations.
+
+Invalid shortcuts:
+
+- shifting or rescaling the frozen clock after seeing the zero;
+- inserting a fitted phase or zero-producing completion;
+- replacing \(D\) by \(1/D\), \(D'/D\), or a separate scattering quotient;
+- calling the scalar continuation a Fredholm continuation of the original
+  \(\ell^2\) operator outside \(\Re s>1\);
+- inferring target compatibility from \(T\log T\) divisor order alone.
+
+Reopening condition:
+Freeze a structurally different connected grammar with an intrinsic
+signed/complex weight mechanism.  Prove both a target-free zero-free right
+half-plane and a same-ledger determinant/continuation theorem before any
+target divisor comparison or numerical root search.
+
+Artifacts:
+
+- `configs/source_locks/SS-0003-CONNECTED-RENEWAL.yaml`
+- `evaluations/route_a/SS-0003/20260811T112250Z.yaml`
+- `experiments/ss_0003_connected_renewal.py`
+- `artifacts/ss_0003/connected_renewal_audit.json`
+- `formal/results/ss_0003_connected_renewal.md`
+- `formal/obstructions/positive_renewal_right_half_plane_zero.md`
+- `docs/literature/ss_0003_a_points_sources.md`
+- `tests/test_ss_0003_connected_renewal.py`

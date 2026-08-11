@@ -1,0 +1,106 @@
+audit_id: SS-0003-CONNECTED-RENEWAL-001
+formal_candidate: true
+candidate_id: SS-0003
+clue_id: CLUE-A4-002
+title: Connected integer-renewal Dirichlet transfer prefilter
+parameter_provenance: >-
+  The only labels are all integers n >= 2.  The roof rule is the fixed
+  target-free choice tau(n)=log(n), with zero potential and no prime selector.
+  The hub-and-spoke graph is chosen before any target data to realize the
+  countable renewal grammar; no fitted constant, affine shift, or spectral
+  rescaling is used.
+mathematical_object:
+  phase_space: >-
+    Directed graph with vertices {h} union {v_n:n>=2} and edges h->v_n and
+    v_n->h.  Its edge shift is strongly connected and has discrete edge period
+    two.  The first-return system at h is the full countable shift on labels
+    n>=2, so its renewal grammar is topologically mixing.
+  dynamics: >-
+    A closed walk is a concatenation of hub excursions labelled by integers
+    n>=2.  Each excursion has two directed edges and is primitive at the
+    first-return level; cyclically primitive words in the labels are the
+    primitive renewal orbits.  Repetitions are retained separately.
+  roof: >-
+    Each edge of the n-excursion has roof (1/2)log(n), hence a labelled
+    excursion has roof log(n) and a word [n_1,...,n_k] has total roof
+    T=sum_i log(n_i)=log(product_i n_i).
+  potential: >-
+    phi is identically zero.  The transfer weight of a word is therefore
+    exp(-s*T), with no manually inserted arithmetic amplitude.
+  transfer_operator: >-
+    On H=C e_h direct_sum ell^2({2,3,...}), for Re(s)>1 set
+    q_s=(n^(-s/2))_{n>=2} and ell_s(x)=sum_{n>=2}n^(-s/2)x_n using the
+    holomorphic bilinear coordinate pairing.  Then L_s(c,x)=(ell_s(x),c q_s).
+    This is the weighted graph adjacency operator and has rank at most two.
+  fredholm_domain: Re(s)>1
+  scalar_continuation: >-
+    The explicitly named scalar continuation is 2-zeta(s) on C\\{1}; it is
+    not called a Fredholm determinant outside Re(s)>1.
+data_type:
+  primary: >-
+    Exact connected countable renewal graph, primitive/repetition ledger,
+    holomorphic finite-rank Fredholm determinant on its defining half-plane,
+    and target-free a-point divisor-count theorem.
+  numerical: >-
+    Exact symbolic and integer-combinatorial audit only.  No numerical root,
+    spectrum, zero table, or target matching is part of this lock.
+clock:
+  edge_clock: one graph edge
+  excursion_clock: log(n)
+  word_clock: sum_i log(n_i)
+  forbidden_clock_changes:
+    - replacing log(n) by log(p), a prime table, or a fitted affine transform
+    - changing the edge split or adding a post-hoc phase correction
+    - treating the scalar continuation as a new operator clock
+normalization:
+  hilbert_space: C direct_sum ell^2({2,3,...}) with counting measure
+  transfer_weight: exp(-s*tau_edge) with phi=0
+  global_phase: 1
+  operator_pairing: holomorphic bilinear coordinate functional, not a conjugated inner product
+  target_spectral_map: not defined
+determinant_convention:
+  frozen: D_renew(s)=det_Fr(I-L_s), Re(s)>1
+  exact_identity: 1-sum_{n>=2}n^(-s)=2-zeta(s)
+  cycle_log_domain: >-
+    The absolutely convergent primitive/repetition trace-log is opened only
+    where |sum_{n>=2}n^(-s)|<1; this is a subdomain of Re(s)>1.
+  excluded_ledgers:
+    - reciprocal renewal zeta as a replacement for D_renew
+    - logarithmic derivative as a separate determinant
+    - zeta-regularized or completed-xi factors
+    - any post-hoc zero-producing correction
+cutoff:
+  mathematical_object: all labels n>=2 and all cyclic words/repetitions
+  exact_ledger_audit: labels 2..6 and renewal-word length <=4
+  trace_formula_audit: edge powers <=8 in the finite symbolic ledger
+  divisor_count_audit: fixed strip 0<Re(s)<2 using the classical a-point theorem
+precision:
+  algebraic: exact integer word enumeration and symbolic identities
+  analytic: classical theorem for zeta a-points plus elementary integral bounds
+  display: no evidentiary floating-point values
+  root_search: forbidden
+allowed_data:
+  - exact integer labels and graph incidence
+  - elementary Dirichlet-series bounds and Fredholm finite-rank algebra
+  - cited classical a-point counting theorem for zeta(s)=2
+forbidden_data:
+  - prime tables, primality tests, von-Mangoldt values, or prime-derived labels
+  - Riemann-zero tables, USTC/GUE data, numerical root or spectrum searches
+  - fitted weights, phases, roof offsets, affine rescaling, or unfolding
+  - mixing determinant ledgers, scattering quotients, or absolute-value substitutions
+training_split: Empty; no parameters and no target data
+validation_split: >-
+  Exact graph connectivity, first-return/cyclic-word ledger, non-lattice proof,
+  finite-rank trace-class bound, determinant identity, and right-half-plane
+  extra-zero theorem.
+test_split: >-
+  Disjoint symbolic word labels 7..10, the fixed-strip a-point count theorem,
+  and source/hash reproduction.  No target zeros are used.
+stopping_conditions:
+  - REVISE if the graph trace or finite-rank determinant identity is incorrect
+  - REJECTED if any prime/zero table, fitted normalization, or root search enters
+  - STOP_SCOPED if the right-half-plane extra-zero obstruction is established
+  - do not invoke Route B from this prefilter
+  - do not claim a completed-xi identity from divisor-order agreement
+skill: route-a-evaluator
+skill_version: 0.1.0

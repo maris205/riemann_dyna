@@ -1089,7 +1089,7 @@ short primitive UPOs; no determinant or zero comparison is opened.
 ## CLUE-A4-002 — Symbolic suspension 可能是最适合解析证明的候选
 
 **来源：** 一维表达上限与 transfer-operator 路线  
-**证据：** `HEURISTIC`  
+**证据：** `HEURISTIC` + `PROVED` subclass obstructions
 **状态：** `PROMISING`  
 **对应层：** `A1`, `A2`, `A3`, `A4`
 
@@ -1123,6 +1123,29 @@ mod-2 baseline
 模覆盖的 Selberg zeta，则 `OBR-006` 的 \(\Omega(T^2)\) Weyl count 立即阻断。
 后续 symbolic-suspension 搜索必须在创建候选前报告自己的 divisor-count
 mechanism，而不能仅以“存在 Fredholm determinant”为成功标准。
+
+### 2026-08-11 connected-renewal closure
+
+`SS-0003` is the first formal connected non-Selberg renewal object spawned
+from this clue.  With all integer labels \(n\ge2\), excursion roof \(\log n\),
+and zero potential, its rank-two graph transfer family satisfies
+
+\[
+\det_F(I-\mathcal L_s)=1-\sum_{n\ge2}n^{-s}=2-\zeta(s),
+\qquad \Re s>1.
+\]
+
+The scalar continuation has the desired \(\Theta(T\log T)\) fixed-strip
+a-point count, so SS-0003 genuinely escapes both the finite-state linear count
+and the finite-area Selberg quadratic count.  Nevertheless positivity forces a
+unique real zero in \((1,2)\), inside the original Fredholm domain and the
+completed-\(\xi\) zero-free half-plane.  `OBR-017` therefore closes this
+candidate without root search.
+
+The reusable lesson is sharper than divisor order: the next symbolic object
+must possess an intrinsic signed/complex cancellation mechanism and must first
+prove a zero-free right half-plane.  Merely replacing the disconnected bouquet
+by a connected renewal graph is not enough.  Route B remains closed.
 
 ---
 
@@ -1401,10 +1424,11 @@ e^{q(E)}
 5. `[DONE]` Explicit normalized conformal restriction ratios and fully numerical same-determinant quadratic envelope
 6. `[DONE]` Cancellation-safe lower-growth theorem for `D_pol'(2)` and explicit linear maximum-modulus lower bounds
 7. `[DONE]` Phragmen--Lindelof audit proving `1<=ord(D_pol)<=2` under the inherited same-object half-plane bound
-8. `[NEXT]` Breadth pivot: define one new intrinsic recurrent candidate with an explicit arithmetic-orbit hypothesis, or register a reusable obstruction
-9. Candidate-specific shuffled-period / random-weight / random-phase controls only for a newly defined candidate
-10. Candidate-specific signed cycle expansion and moving-cutoff drift only for a newly defined candidate
-11. `[QUEUED]` Freeze one explicit same-ledger annular residual object from `CLUE-A3-001` after auditing the legacy RH handoff
+8. `[DONE]` Breadth pivot produced `SS-0003` and the reusable right-half-plane obstruction `OBR-017`
+9. `[NEXT]` Prefilter one structurally different signed/complex connected grammar by a zero-free-half-plane and same-ledger continuation theorem
+10. Candidate-specific shuffled-period / random-weight / random-phase controls only if that new object survives the theorem prefilter
+11. Candidate-specific signed cycle expansion and moving-cutoff drift only if that new object survives the theorem prefilter
+12. `[QUEUED]` Freeze one explicit same-ledger annular residual object from `CLUE-A3-001` after auditing the legacy RH handoff
 
 ## Priority 1 — 最值得并行的三条 Route-A 路线
 
@@ -2010,4 +2034,24 @@ riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
 overall: ROUTE_A_REJECTED
 verdict: STOP_SCOPED
 consequence: "Countability, an entire same-object determinant, and global roof incommensurability are insufficient: the superexponentially escaping cycle actions force O(T) zeros in every bounded vertical strip. Do not allocate SS-0003 from this disconnected bouquet. Any reopening must define a connected or renewal non-Selberg object whose cycle actions remain in a fixed critical strip, with a fresh source lock and no root search."
+```
+
+## Status update — CLUE-A4-002 SS-0003 connected-renewal closure
+
+```yaml
+date: 2026-08-11
+clue_id: CLUE-A4-002
+old_status: PROMISING
+new_status: PROMISING
+candidate_id: SS-0003
+formal_candidate: true
+evidence: "Connected integer-renewal graph gives an exact rank-two Fredholm determinant 2-zeta(s) on Re(s)>1 and a classical Theta(T log T) scalar a-point count in 0<Re(s)<2"
+source_lock: "configs/source_locks/SS-0003-CONNECTED-RENEWAL.yaml"
+evaluation: "evaluations/route_a/SS-0003/20260811T112250Z.yaml"
+obstruction: "OBR-017"
+analytic_tuple: [A1_WEAK, A2_ANALYTIC_DETERMINANT, A3_FAIL, A4_FAIL]
+riemann_target_tuple: [A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL]
+overall: ROUTE_A_REJECTED
+verdict: STOP_SCOPED
+consequence: "The desired divisor order does not rescue a positive renewal determinant: monotonicity forces a unique forbidden real zero in (1,2) inside the defining Fredholm half-plane. Park SS-0003. The next breadth object must freeze intrinsic signed/complex cancellation and prove a zero-free right half-plane plus same-ledger continuation before target comparison. Route B remains closed."
 ```

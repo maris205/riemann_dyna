@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-08-11
+
+### SS-0003 connected integer-renewal Route-A closure
+
+- Allocated the formal `SS-0003` ID only after freezing a connected,
+  target-free countable renewal graph with all integer labels, roof `log(n)`,
+  zero potential, and one explicit Fredholm convention.
+- Proved the holomorphic rank-two transfer family on `Re(s)>1`, the exact
+  primitive/repetition trace ledger, and
+  `det_F(I-L_s)=1-sum_{n>=2}n^(-s)=2-zeta(s)`.
+- Verified from Landau's fixed-a theorem that the separately named scalar
+  continuation has `Theta(T log T)` nontrivial zeros in the fixed strip
+  `0<Re(s)<2`, without zero tables or numerical root search.
+- Proved the strict `OBR-017` failure: positivity forces a unique real
+  determinant zero in `(1,2)`, inside both the original Fredholm domain and
+  the completed-xi zero-free half-plane.
+- Recorded analytic tuple
+  `(A1_WEAK,A2_ANALYTIC_DETERMINANT,A3_FAIL,A4_FAIL)`, target tuple
+  `(A1_WEAK,A2_FAIL,A3_FAIL,A4_FAIL)`, and
+  `ROUTE_A_REJECTED / STOP_SCOPED`. Route B remains closed.
+- Corrected the finite-rank nuclear-norm identity to
+  `||L_s||_1=2*(sum n^(-Re(s)))^(1/2)` before integration.
+
+Focused SS-0003 suite: `6/6 passed`. Full repository suite after integration:
+`310/310 passed`.
+
+Evaluation source state: `59819e16a2cdd50f13614a13ccf01e2c889be907`.
+
 ## 2026-08-10
 
 ### CLUE-A4-002 irrational-roof bouquet prefilter
