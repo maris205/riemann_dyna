@@ -4,6 +4,12 @@
 **版本：** v0.2
 **用途：** 保存可复用、可调用、可证伪的 Hilbert–Pólya 动力学研究线索。
 
+当前主线已经收口到 exact-`U_c` Logistic / `LOG-0001` 的稳定解析结果；
+偏出的 symbolic、quantum-graph、Hénon/FIO 和 COPRIME 探索保留在本文件、
+`docs/obstruction_registry.md` 与 `HP_HANDOFF.md` 中，作为可复用线索和
+作用域明确的结构阻碍，不作为主线论文叙事。详见
+`docs/LOG0001_STABLE_RESULTS.md` 与 `docs/EXPLORATION_CLOSEOUT.md`。
+
 ---
 
 ## 0. 使用规则
@@ -1090,7 +1096,7 @@ short primitive UPOs; no determinant or zero comparison is opened.
 
 **来源：** 一维表达上限与 transfer-operator 路线  
 **证据：** `HEURISTIC` + `PROVED` subclass obstructions
-**状态：** `PROMISING`  
+**状态：** `STOP_SCOPED`（当前 SS-0003 已关闭；仅保留结构级 reopening clue）
 **对应层：** `A1`, `A2`, `A3`, `A4`
 
 ### 内容

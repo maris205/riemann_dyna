@@ -1,5 +1,62 @@
 # HP-Dynamics Handoff
 
+## Current close-out — Logistic/LOG-0001 stable theorem boundary (2026-08-12)
+
+The primary research line is the exact-​`U_c` Logistic polar family.  Its stable
+results, source locks, evaluations, certificates, tests, and paper stages are
+summarized in `docs/LOG0001_STABLE_RESULTS.md` and mirrored under
+`hilbert-polya-structure/logistic_dynamics/`.
+
+### Stable Route-A tuple
+
+```text
+analytic tuple:       (A1_WEAK, A2_ANALYTIC_DETERMINANT,
+                       A3_PARTIAL_ANALYTIC_STRUCTURE, A4_FAIL)
+Riemann-target tuple: (A1_WEAK, A2_FAIL, A3_FAIL, A4_FAIL)
+status:               ROUTE_A_EXPLORATORY / GO_WITH_LIMITATIONS
+Route B:              not invoked and not authorized
+```
+
+### Established in the primary line
+
+- exact algebraic `U_c` anchor and physical first-return support;
+- ACIP endpoint law, branch positivity, and physical mass-ratio asymptotics;
+- intrinsic non-lattice polar roof and frozen complex inverse branches;
+- half-open partition and boundary-trace ledgers;
+- order-zero matching-space nuclearity and the same-object entire Fredholm
+  determinant `D_pol(s)=det_Fr(I-L_s|_B)`;
+- exact signed based-word trace formula;
+- target-free zero-free half-plane, quadratic upper envelope,
+  cancellation-safe lower growth, and `1 <= ord(D_pol) <= 2`.
+
+### Stable boundary
+
+No logarithmic-prime/von-Mangoldt primitive-orbit law, exact order,
+sharp `T log T` divisor asymptotic, functional equation, completed-xi identity,
+natural self-adjoint quantization, Route B result, Hilbert--Pólya realization,
+or RH claim has been established.  Do not compute Fredholm roots or compare
+Riemann zeros as a close-out task.
+
+### Exploration handoff
+
+The symbolic, quantum-graph, Hénon/FIO, and COPRIME branches are retained as
+reusable `CLUES` and scoped `OBSTRUCTIONS`, not as the primary narrative.  The
+only project-level reopening candidate is a mathematically explicit connected
+non-Selberg renewal grammar with intrinsic signed/complex cocycle weights.
+Before assigning a new candidate ID, require an explicit grammar, function
+space, clock, normalization, determinant convention, zero-free right
+half-plane theorem, and same-ledger continuation theorem.  See
+`docs/EXPLORATION_CLOSEOUT.md`.
+
+### Source and mirror
+
+The complete laboratory remains `riemann_dyna`; the shareable mirror is
+`git@github.com:maris205/hilbert-polya-structure.git` under `logistic_dynamics/`.
+The independent `docs/related_programs/prime_dynamics_theory` repository is not
+vendored.
+
+---
+
 ## Current status — SS-0003 connected integer-renewal closure
 
 Current clue: `CLUE-A4-002`.

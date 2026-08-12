@@ -259,8 +259,11 @@ latest_evaluation:
 当前状态：
 
 ```text
-Five formal Route-A candidates are registered: two symbolic baselines,
-`TH-0001`, `QG-0001`, and `LOG-0001`.
+Seven unique formal Route-A candidate IDs are registered:
+`LOG-0001`, `QG-0001`, `TH-0001`, `SS-0001`, `SS-0002`, `SS-0003`, and
+`COPRIME-0001`.  Their multiple theorem and audit stages are tracked
+separately in the synchronized mirror; stage count must not be confused with
+candidate count.
 SS-0001 is STOP_SCOPED by the finite-state divisor-count obstruction.
 SS-0002 escapes that finite-state theorem but is STOP_SCOPED by the
 finite-area Selberg/Weyl divisor obstruction.
